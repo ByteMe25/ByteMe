@@ -1,0 +1,335 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+
+\geometry{margin=2.5cm}
+
+% Intestazione e piè di pagina
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[C]{\thepage\ di \pageref{LastPage}}
+
+\begin{document}
+
+% Prima pagina - Intestazione
+\begin{titlepage}
+    \centering
+    
+    % Logo Università
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.3\textwidth]{../logoUnipd.jpg}
+    \end{figure}
+    
+    \vspace{0.5cm}
+    
+    \textbf{\Large Università degli Studi di Padova} \\
+    \vspace{0.2cm}
+    \textbf{Laurea in Informatica} \\
+    \vspace{0.2cm}
+    \textbf{Corso di Ingegneria del Software} \\
+    \vspace{0.2cm}
+    \textbf{Anno Accademico 2025/2026} \\
+    
+    \vspace{1cm}
+    
+    % Logo gruppo
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.2\textwidth]{../LogoByteMe.jpg}
+    \end{figure}
+    
+    \vspace{0.5cm}
+    
+    \textbf{\Large Gruppo ByteMe} \\
+    \vspace{0.2cm}
+    \texttt{byteme2025swe@gmail.com} \\
+    
+    \vspace{1cm}
+    
+    \textbf{\Huge Valutazione dei Capitolati} \\
+    
+    \vspace{1.5cm}
+    
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{|l|p{5cm}|}
+            \hline
+            \textbf{Versione} & 1.1.1 \\
+            \hline
+            \textbf{Stato} & Approvato \\
+            \hline
+            \textbf{Redazione} & Tutto il gruppo \\
+            \hline
+            \textbf{Verifica} & Elisa Marchioro, Chiara Grossele, Matteo Cuogo \\
+            \hline
+            \textbf{Approvazione} & Tutto il gruppo \\
+            \hline
+            \textbf{Proprietario} & ByteMe \\
+            \hline
+            \textbf{Uso} & Esterno \\
+            \hline
+            \textbf{Destinatari} & Prof. Tullio Vardanega \\ & Prof. Riccardo Cardin \\
+            \hline
+        \end{tabular}
+    \end{table}
+    
+    \vfill
+\end{titlepage}
+
+% Seconda pagina - Versionamento
+\section*{Registro dei Cambiamenti}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|c|>{\raggedright\arraybackslash}p{0.4\textwidth}|}
+        \hline
+        \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} \\
+        \hline
+        1.1.1 & 27/10/2025 & Tutto il gruppo & Verifica e approvazione del documento \\
+        \hline
+        1.1.0 & 27/10/2025 & Tutto il gruppo & Valutazione degli altri capitolati \\
+        \hline
+        1.0.0 & 26/10/2025 & Giulia Barzon & Creazione del documento e scrittura valutazione dei primi tre capitolati \\
+        \hline
+    \end{tabular}
+    \caption{Registro delle versioni del documento}
+    \label{tab:versionamento}
+\end{table}
+
+\newpage
+
+% Terza pagina - Indice
+\tableofcontents
+\thispagestyle{empty}
+\newpage
+
+% Dalla quarta pagina - Contenuto principale
+\setcounter{page}{1}
+
+\section{Introduzione}
+Il gruppo ByteMe ha analizzato i capitolati d'appalto disponibili al fine di identificare il progetto ottimale in termini di fattibilità, interesse tecnologico e coerenza con le competenze del team. Questo documento delinea il percorso decisionale svolto, motivando la candidatura per il capitolato C6 "Second Brain" - la scelta primaria - esaminando anche due ulteriori alternative meritevoli di considerazione e i rimanenti progetti. Per ognuno dei capitolati verrà fatta una breve panoramica e verranno presentati pregi e difetti a giustificazione della decisione finale.
+
+\newpage
+\section{Valutazione del Capitolato selezionato}
+
+\subsection{C6: Second Brain}
+
+\subsubsection{Descrizione}
+Il capitolato C6 "Second Brain" proposto da Zucchetti richiede lo sviluppo di un editor di testo avanzato basato su linguaggio MarkDown e potenziato da Large Language Models (LLM). L'applicazione web si articola in un'interfaccia divisa in due sezioni: un'area di editing per la scrittura in MarkDown e un'area di rendering per la visualizzazione del testo formattato.
+L'elemento distintivo del progetto è l'integrazione con sistemi LLM, che permette all'utente di:
+\begin{itemize}
+    \item Generare testi completi partendo da prompt descrittivi (Distant Writing)
+    \item Eseguire operazioni avanzate su testi esistenti (riassunto, riscrittura, traduzione)
+    \item Analizzare criticamente i contenuti attraverso il metodo dei "sei cappelli per pensare" di Edward De Bono
+    \item Migliorare e trasformare testi con diversi toni e stili
+\end{itemize}
+
+L'obiettivo è creare uno strumento di supporto alla scrittura creativa e alla produttività, sperimentando le potenzialità degli LLM nell'ambito del note-taking avanzato e permettendo all'utente di sviluppare idee partendo da input testuali brevi e trasformandoli in testi strutturati e completi.
+
+\subsubsection{Dominio}
+\textbf{Dominio tecnologico:} Il progetto richiede lo sviluppo di una web application innovativa che combina un editor di testo MarkDown con potenti funzionalità di intelligenza artificiale. L'architettura prevede un front-end diviso in due sezioni: un'area di editing per la scrittura e un'area di rendering per la visualizzazione del testo formattato. Per il back-end, il gruppo ha libertà di scelta tra tecnologie moderne come Java o Python, con particolare focus sull'integrazione di Large Language Models attraverso API REST compatibili con lo standard OpenAI. Aspetto cruciale sarà la progettazione di prompt efficaci per abilitare funzionalità avanzate come riassunto, riscrittura, traduzione e analisi critica dei testi. Lo sviluppo seguirà un approccio iterativo, partendo da un Proof of Concept fino al prodotto finale, supportato da test automatici per garantire qualità e affidabilità.
+
+\vspace{0.5cm}
+
+\noindent \textbf{Dominio applicativo:} Il Progetto Second Brain si propone come strumento avanzato di produttività per la scrittura creativa e il brainstorming,  trovando applicazione in contesti aziendali, scolastici e creativi dove è necessario trasformare input brevi in documenti strutturati.
+Il sistema permette appunto di trasformare input testuali brevi in documenti strutturati completi attraverso la funzionalità di "Distant Writing", mentre le capacità di critica basate sul metodo di Edward De Bono offrono diverse prospettive di analisi sul testo prodotto. L'approccio modulare e l'integrazione con LLM rendono lo strumento ideale per sessioni di brainstorming, revisione collaborativa e ottimizzazione di contenuti esistenti, come fosse un "secondo cervello" digitale per potenziare la creatività e l'efficienza nella scrittura.
+
+
+\subsubsection{Motivazione della scelta}
+Le motivazioni alla base di questa scelta sono le seguenti:
+\begin{itemize}
+    \item \textbf{Interesse tecnologico}: L'utilizzo di tecnologie AI all'avanguardia rappresenta un'opportunità di crescita tecnica e di sperimentazione di nuovi strumenti per tutti i membri del team.
+    \item \textbf{Fattibilità}: Il progetto rappresenta un buon compromesso tra complessità e possibilità di realizzazione nel tempo disponibile, permettendo al team di applicare le competenze web in acquisizione senza richiedere l'uso di tecnologie eccessivamente complesse.
+    \item \textbf{Supporto aziendale}: Zucchetti ha dimostrato grande disponibilità al dialogo e al supporto tecnico e ha dato un'impressione più che positiva al gruppo.
+    \item \textbf{Autonomia progettuale}: La libertà nelle scelte tecnologiche e implementative permette di valorizzare le competenze del team.
+\end{itemize}
+
+\subsubsection{Conclusioni}
+Visti i motivi sopra citati e considerata la positiva impressione avuta durante l'incontro con l'azienda, il gruppo ByteMe ha deciso di scegliere il Progetto Second Brain come progetto per cui candidarsi.
+
+\newpage
+\section{Valutazione dei Capitolati preferiti}
+
+\subsection{C3: DIPReader}
+
+\subsubsection{Descrizione}
+Il capitolato C3 "DIPReader", proposto da San Marco Informatica, richiede lo sviluppo di un'applicazione per la consultazione e ricerca offline di archivi documentali digitali. Il sistema dovrà processare i Distribution Information Package (DIP), cioè pacchetti di distribuzione forniti dai sistemi di conservazione digitale, permettendo agli utenti di effettuare ricerche avanzate sui documenti e metadati contenuti, anche in assenza di connessione Internet. L'applicazione dovrà essere completamente autonoma, multi-piattaforma e non richiedere installazioni aggiuntive sul dispositivo dell'utente.
+
+\subsubsection{Dominio}
+\textbf{Dominio tecnologico:} Il progetto richiede lo sviluppo di un'applicazione multi-piattaforma in grado di gestire grandi volumi di dati documentali in ambiente offline. Le tecnologie consigliate includono SQLite per il database embedded, framework frontend come Angular o React con TypeScript, e potenzialmente FAISS (Facebook AI Similarity Search) per implementare ricerche semantiche avanzate. L'architettura deve essere modulare per facilitare l'aggiunta di nuove funzionalità e metodologie di ricerca. Particolare attenzione sarà dedicata all'efficienza nella gestione e indicizzazione di grandi archivi documentali, con requisiti stringenti di testing automatico (test di unità e integrazione) per garantire la stabilità del sistema. L'applicazione dovrà supportare la visualizzazione di formati comuni (PDF, XML, immagini) e implementare meccanismi di ricerca sia su metadati che su contenuto testuale.
+
+\vspace{0.5cm}
+
+\noindent  \textbf{Dominio applicativo:} Il DIPReader si rivolge principalmente a professionisti e aziende che necessitano di accedere a documenti conservati digitalmente in assenza di connessione Internet. Il sistema trova applicazione in contesti dove è fondamentale garantire l'accesso continuativo a documenti ufficiali soggetti a conservazione digitale, come atti legali, documenti contabili, contratti e pratiche amministrative. La capacità di operare offline lo rende particolarmente utile in situazioni di mobilità professionale, aree con connettività limitata o come strumento di backup per l'accesso documentale indipendente dall'infrastruttura cloud.
+
+\subsubsection{Criticità riscontrate}
+\begin{itemize}
+    \item \textbf{Minore interesse del gruppo}: Il progetto è stato percepito come meno stimolante e coinvolgente rispetto ad altre proposte, con funzionalità ritenute meno creative.
+    \item \textbf{Gestione di grandi volumi di dati}: La gestione e ottimizzazione di archivi documentali di grandi dimensioni rappresenta una sfida tecnica che il gruppo non ha mai affrontato in precedenza.
+    \item \textbf{Complessità architetturale}: I requisiti di funzionalità completa in ambiente offline multi-piattaforma aggiungono complessità progettuale rispetto ad applicazioni web tradizionali.
+\end{itemize}
+
+\subsubsection{Conclusioni}
+Il capitolato C3 rappresenta un'opportunità valida per approfondire tematiche di gestione documentale aziendale e sviluppo di applicazioni offline complesse. Il progetto offre la possibilità di lavorare con tecnologie avanzate per la ricerca semantica e la gestione di grandi quantità di dati, oltre a consentire l'acquisizione di competenze in tecnologie interessanti come FAISS, SQLite e Angular. Riconosciamo inoltre che l'azienda proponente si è fin da subito mostrata molto disponibile, offrendo un buon supporto tecnico, e che il prodotto finale ha un'utilità concreta nel mondo reale, potendo essere effettivamente utilizzato in contesti professionali. Tuttavia, la complessità tecnica del progetto e la necessità di gestire volumi elevati di dati ci hanno portato a preferire il capitolato C6, ritenuto più in linea con le competenze attuali del gruppo e caratterizzato da un dominio applicativo più coinvolgente per i nostri interessi.
+
+\subsection{C9: View4Life}
+
+\subsubsection{Descrizione}
+Il capitolato C9 "View4Life", proposto da Vimar, richiede lo sviluppo di una piattaforma cloud e applicazione web per la gestione di impianti domotici in residenze protette per anziani. Il sistema dovrà interfacciarsi con dispositivi IoT Vimar tramite API per monitorare allarmi di sicurezza, consumi energetici e stato dei dispositivi, fornendo al personale sanitario strumenti per il controllo remoto e l'analisi dei dati.
+
+\subsubsection{Dominio}
+\textbf{Dominio tecnologico:} Il progetto richiede lo sviluppo di un'applicazione web responsive e un'infrastruttura cloud containerizzata con Docker. Le tecnologie consigliate includono framework frontend come Angular o React, backend in Node.js, Java o Python e database relazionali come MySQL. Particolare attenzione sarà dedicata all'integrazione con le API KNX IoT e all'implementazione di notifiche push per gli allarmi. L'infrastruttura dovrà seguire il principio di Infrastructure as Code.
+
+\vspace{0.5cm}
+
+\noindent \textbf{Dominio applicativo:} La piattaforma si rivolge a residenze protette per anziani, fornendo al personale sanitario strumenti per monitorare allarmi di caduta, presenze, consumi energetici e stato dei dispositivi domotici. Il sistema migliora la sicurezza degli ospiti e ottimizza la gestione della struttura attraverso dashboard intuitive e funzionalità di analytics.
+
+\subsubsection{Criticità riscontrate}
+\begin{itemize}
+    \item \textbf{Complessità tecnica}: L'integrazione con l'ecosistema hardware esistente richiede competenze specializzate.
+    \item \textbf{Componente hardware}: La necessità di interfacciarsi con dispositivi fisici aggiunge complessità rispetto a progetti puramente software.
+    \item \textbf{Curva di apprendimento}: Le tecnologie domotiche e IoT richiedono tempo per essere apprese.
+\end{itemize}
+
+\subsubsection{Conclusioni}
+Il capitolato C9 presenta un progetto interessante con un prodotto finale molto utile nel contesto delle residenze protette. L'accesso ai dispositivi hardware Vimar e la possibilità di lavorare su tecnologie IoT rappresentano opportunità formative molto valide. Tuttavia, la complessità tecnica del progetto, combinata con un supporto limitato da parte dell'azienda e la necessità di gestire componenti hardware, ci ha portato a preferire il capitolato C6, ritenuto più adatto alle competenze attuali del gruppo e con un percorso di sviluppo più lineare.
+
+\newpage
+\section{Valutazione degli altri Capitolati}
+\subsection{C1: Automated EN18031 Compliance Verification}
+
+\subsubsection{Descrizione}
+Il progetto ha come obiettivo lo sviluppo di un software interattivo che supporti la gestione, la valutazione e la documentazione dei requisiti previsti dalla norma EN18031. L'applicazione sarà dotata di un'interfaccia grafica intuitiva in grado di guidare l'utente nella compilazione delle domande previste all'interno dei decision tree associati ai vari requisiti per valutare se sono stati soddisfatti.
+
+\subsubsection{Pro}
+\begin{itemize}
+    \item \textbf{Azienda disponibile}: offre meeting periodici online e in presenza per verificare l'andamento del progetto
+    \item \textbf{Progetto concreto e utile}: automatizza un processo lungo e ripetitivo
+    \item \textbf{Esempio pratico fornito}: possibilità di testare il progetto su un caso reale (macchina da caffè)
+    \item \textbf{Utilizzo dell'approccio Agile}: opportunità di applicare metodologie studiate a lezione
+\end{itemize}
+
+\subsubsection{Contro}
+\begin{itemize}
+    \item \textbf{Complessità nella gestione dei decision tree}: il rispetto delle dipendenze gerarchiche tra requisiti e la gestione della logica condizionale può risultare complesso da modellare e mantenere
+    \item \textbf{Interfaccia grafica potenzialmente complessa}: deve essere intuitiva ma anche sufficientemente potente per rappresentare nodi, connessioni, condizioni e dipendenze
+    \item \textbf{Minore affinità con gli interessi del gruppo}: il dominio applicativo risulta meno coinvolgente rispetto ad altre proposte
+\end{itemize}
+
+\vspace{0.5cm}
+\subsection{C2: Code Guardian}
+
+\subsubsection{Descrizione}
+Il progetto Code Guardian è una piattaforma web basata su un sistema multi-agente che automatizza l'analisi di repository software (GitHub) per valutarne la qualità, la sicurezza (secondo standard OWASP), la copertura dei test e la documentazione. L'obiettivo è aiutare gli sviluppatori a mantenere progetti software più sicuri, documentati e di alta qualità, con possibilità di integrazione con CI/CD e notifiche.
+
+\subsubsection{Pro}
+\begin{itemize}
+    \item \textbf{Esperienza pratica su tecnologie ricercate}: Node.js, Python, React, MongoDB/PostgreSQL, AWS e GitHub Action sono competenze molto richieste nel mercato del lavoro
+    \item \textbf{Supporto tecnico qualificato}: il team di Var Group fornisce supporto tecnico, esempi e sessioni di mentoring
+    \item \textbf{Progetto concreto e innovativo}: rappresenta un tool reale e utile per arricchire il portfolio personale
+    \item \textbf{Apprendimento di architetture software avanzate}: architettura multi-agente e orchestratore, concetti utilizzati in sistemi enterprise moderni
+    \item \textbf{Sviluppo di competenze trasversali}: codice, raccolta requisiti, design thinking, diagrammi UML e interazione con committente
+    \item \textbf{Possibilità di estendere il progetto}: l'architettura modulare permette di aggiungere funzionalità anche dopo la consegna
+    \item \textbf{Comprensione della sicurezza software}: opportunità di riconoscere e risolvere vulnerabilità OWASP
+\end{itemize}
+
+\subsubsection{Contro}
+\begin{itemize}
+    \item \textbf{Complessità iniziale dei sistemi multi-agente}: configurare e far funzionare un sistema multi-agente richiede competenze tecniche avanzate
+    \item \textbf{Alto carico di lavoro}: oltre allo sviluppo del MVP sono richiesti documentazione tecnica, diagrammi UML, test con coverage $\geq$70\% e sessioni di design thinking
+    \item \textbf{Dipendenze esterne}: l'analisi dipende da strumenti e regole OWASP, che potrebbero non coprire tutti i casi d'uso
+    \item \textbf{Overhead di mantenimento}: aggiornare gli agenti e la piattaforma richiede tempo e risorse continue
+    \item \textbf{Coverage minimo obbligatorio}: il requisito del 70\% di test di unità può essere impegnativo per progetti di queste dimensioni
+\end{itemize}
+
+\vspace{0.5cm}
+\subsection{C4: L'app che Protegge e Trasforma}
+
+\subsubsection{Descrizione}
+Il progetto prevede lo sviluppo di un'applicazione mobile finalizzata alla prevenzione e al supporto delle vittime di violenza di genere. L'applicazione richiede funzionalità come rilevamento e alert basati sull'intelligenza artificiale, accesso a una rete di servizi (numeri di emergenza, centri antiviolenza, supporto psicologico), strumenti per la gestione della privacy, moduli interattivi di sensibilizzazione e uno spazio sicuro per il supporto reciproco tra utenti.
+
+\subsubsection{Pro}
+\begin{itemize}
+    \item \textbf{Tema sociale rilevante e stimolante}: i servizi offerti dall'applicazione sono molto utili e possono aiutare concretamente le persone
+    \item \textbf{Sicurezza e privacy}: la gestione di dati sensibili offre l'opportunità di approfondire tematiche cruciali nell'ambito di sicurezza informatica
+    \item \textbf{Esperienza con tecnologie popolari}: gestione di servizi cloud con AWS
+    \item \textbf{Sensibilizzazione su temi importanti}: durante il progetto sarà necessario informarsi su questioni sociali rilevanti
+\end{itemize}
+
+\subsubsection{Contro}
+\begin{itemize}
+    \item \textbf{Progetto molto ambizioso}: l'acquisizione delle competenze necessarie e l'implementazione di tutti i servizi richiesti dal MVP richiedono molto tempo
+    \item \textbf{Complessità implementativa}: conciliare le funzionalità di controllo e allarme con i vincoli di privacy e sicurezza rende il progetto particolarmente complesso da affrontare
+    \item \textbf{Ambito nuovo per l'azienda proponente}: l'azienda è specializzata in progetti diversi da questo, il che potrebbe limitare il supporto specifico
+\end{itemize}
+
+\vspace{0.5cm}
+\subsection{C5: NEXUM}
+
+\subsubsection{Descrizione}
+L'obiettivo del progetto consiste nello sviluppare nuove funzionalità intelligenti e interoperabili per la piattaforma NEXUM, che migliorino la gestione HR, il dialogo con gli studi dei Consulenti del Lavoro e l'esperienza digitale dei dipendenti. Il progetto coinvolge due ambiti funzionali: AI Assistant Generativo e AI Co-Pilot per Consulenti del Lavoro.
+
+\subsubsection{Pro}
+\begin{itemize}
+    \item \textbf{Prodotto concretamente utile}: sviluppo di funzionalità effettivamente utilizzate dall'azienda
+    \item \textbf{Sperimentazione di metodologie Agile}: opportunità di applicare approcci Agile in un contesto aziendale reale
+    \item \textbf{Apprendimento di tecnologie moderne}: utilizzo di tecnologie attuali e ampiamente diffuse
+\end{itemize}
+
+\subsubsection{Contro}
+\begin{itemize}
+    \item \textbf{Esperienza limitata nel supporto}: essendo una delle prime volte che propongono un capitolato, il supporto per i gruppi potrebbe essere limitato
+    \item \textbf{Sfide di manutenibilità}: integrazione con l'infrastruttura esistente di NEXUM potrebbe presentare complessità
+    \item \textbf{Tempo di apprendimento elevato}: la comprensione delle tecnologie richieste e l'implementazione delle funzionalità potrebbe richiedere tempo e precludere un buon risultato
+\end{itemize}
+
+\vspace{0.5cm}
+\subsection{C7: Sistema di acquisizione dati da sensori}
+
+\subsubsection{Descrizione}
+Il progetto ha come obiettivo principale l'acquisizione e la gestione dei dati da sensori distribuiti, in particolare sensori BLE. Si deve sviluppare una piattaforma in grado di ricevere, gestire e smistare questi dati, con particolare attenzione alla creazione di un'infrastruttura scalabile e sicura per dati sensibili, gestione multi-tenant, comunicazione sicura tra gateway-cloud-client e fornitura di una dashboard con strumenti di monitoraggio.
+
+\subsubsection{Pro}
+\begin{itemize}
+    \item \textbf{Azienda specializzata}: esperienza consolidata nella gestione di sensori e monitoraggio dati con buon supporto tecnico
+    \item \textbf{Sviluppo di competenze trasversali}: opportunità di acquisire familiarità con ambiti poco conosciuti e esperienza in contesto dinamico
+    \item \textbf{Formazione tecnica}: acquisizione di competenze specialistiche in ambito IoT e gestione dati sensoriali
+\end{itemize}
+
+\subsubsection{Contro}
+\begin{itemize}
+    \item \textbf{Curva di apprendimento ripida}: le tecnologie richiedono tempo e formazione per essere apprese adeguatamente
+    \item \textbf{Complessità della sicurezza}: implementazione di meccanismi robusti di autenticazione e autorizzazione per garantire la separazione delle informazioni tra utenti
+    \item \textbf{Gestione di dati eterogenei}: elaborazione di valori realistici provenienti da 4-5 tipologie diverse di sensori BLE aumenta la complessità
+\end{itemize}
+
+\vspace{0.5cm}
+\subsection{C8: Smart Order}
+
+\subsubsection{Descrizione}
+L'obiettivo del progetto è sviluppare una piattaforma che sfrutti LLM e AI multimodale per convertire input eterogenei in ordini strutturati, acquisendo competenze su NLP, visione artificiale e speech-to-text.
+
+\subsubsection{Pro}
+\begin{itemize}
+    \item \textbf{Supporto aziendale continuo}: azienda disponibile a varie modalità di contatto, fornendo anche dataset utilizzabili per i test
+    \item \textbf{Utilizzo di modelli AI avanzati}: implementazione di modelli specifici per l'interpretazione di dati da varie fonti (testo, immagini, audio)
+    \item \textbf{Progetto innovativo e pratico}: soluzione vicina alle esigenze aziendali reali per automatizzare processi tramite AI
+\end{itemize}
+
+\subsubsection{Contro}
+\begin{itemize}
+    \item \textbf{Alta complessità tecnologica}: utilizzo di tecnologie e competenze che richiedono tempo significativo per ricerca e formazione
+    \item \textbf{Architettura articolata}: progettazione di un'architettura complessa e modulare che potrebbe compromettere la fattibilità nei tempi previsti
+\end{itemize}
+
+\end{document}
