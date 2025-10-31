@@ -1,0 +1,176 @@
+:root {
+    --aside_bg: #232A3A;
+}
+
+html,
+body {
+    min-height: 100vh;
+}
+
+body {
+    display: flex;
+    margin: 0;
+    color: #f1f1e6;
+}
+
+aside {
+    background-color: var(--aside_bg);
+    width: 30%;
+    height: 100vh;
+}
+
+aside .flexbox {
+    width: 100%;
+    height: 100%;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #f1f1e6;
+    margin-left: auto;
+}
+
+.logo_wrap {
+    margin: 50px auto 20px;
+    border: 2px solid #a5abbd;
+    border-radius: 50%;
+    overflow: hidden;
+    max-width: 250px;
+    max-height: 250px;
+    width: 100%;
+    height: 100%;
+}
+
+.logo_wrap img {
+    width: 100%;
+    height: 100%;
+}
+
+#site_title {
+    text-align: center;
+}
+
+.title {
+    font-size: 1.75rem;
+    font-weight: bold;
+    color: #a5abbd;
+    margin-bottom: .2rem;
+}
+
+.title:hover {
+    color: #f1f1e6;
+    cursor: pointer;
+}
+
+.subtitle,
+.files_title {
+    color: #a5abbd;
+}
+
+.files_title {
+    padding-left: 30px;
+    background-image: url(../assets/folder.png);
+    background-repeat: no-repeat;
+    background-size: 24px;
+}
+
+.socials {
+    display: flex;
+    gap: 20px;
+    margin: auto auto 50px;
+    width: fit-content;
+}
+
+.socials img {
+    width: 32px;
+    height: 32px;
+}
+
+.main_wrap {
+    background-color: #414756;
+    width: 70%;
+    box-sizing: border-box;
+    padding: 50px 50px 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.files_list {
+    margin-left: 30px;
+}
+
+.files_list a {
+    color: #00b1b9;
+    text-decoration: none;
+}
+
+.files_list a:hover {
+    text-decoration: underline;
+}
+
+.files_list a:visited {
+    color: #66c2c8;
+}
+
+.intro {
+    box-sizing: border-box;
+    padding: 20px;
+    background-color: var(--aside_bg);
+    border-radius: 10px;
+    max-width: 800px;
+}
+
+footer {
+    margin-top: auto;
+    width: 100%;
+    text-align: center;
+}
+
+/* ----- MOBILE ----- */
+@media only screen and (max-width: 1080px) {
+    body {
+        flex-direction: column;
+    }
+
+    aside {
+        width: 100%;
+        height: auto;
+    }
+
+    aside .flexbox {
+        width: 100%;
+        height: 100%;
+        max-width: none;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        color: #f1f1e6;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    .socials{
+        align-items: center;
+        margin: auto;
+    }
+
+    .logo_wrap {
+        max-width: 100px;
+        max-height: 100px;
+    }
+
+    .main_wrap {
+        width: 100%;
+        flex: 1;
+    }
+
+    footer {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 540px) {
+    .logo_wrap {
+        display: none;
+    }
+}
