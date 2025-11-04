@@ -25,7 +25,8 @@ jobs:
           texlive-fonts-recommended \
           texlive-fonts-extra \
           texlive-lang-italian \
-          texlive-pictures
+          texlive-pictures \
+          latexmk
 
     # ======================
     # Compila verbali esterni e interni
@@ -34,23 +35,31 @@ jobs:
       run: |
         mkdir -p "$GITHUB_WORKSPACE/Verbali/Esterni" "$GITHUB_WORKSPACE/Verbali/Interni"
 
-        # 🔹 Compila verbali esterni
+        # 🔹 Compila verbali esterni (2 volte per l'indice)
         for file in "$GITHUB_WORKSPACE"/src/Verbali/Esterni/*.tex; do
           [ -e "$file" ] || continue
           name=$(basename "$file" .tex)
           echo "🧩 Compilo $file → Verbali/Esterni/${name}.pdf"
           cd "$(dirname "$file")"
+          # PRIMA compilazione
+          pdflatex -interaction=nonstopmode -halt-on-error \
+            -output-directory "$GITHUB_WORKSPACE/Verbali/Esterni" "$name.tex"
+          # SECONDA compilazione per generare l'indice
           pdflatex -interaction=nonstopmode -halt-on-error \
             -output-directory "$GITHUB_WORKSPACE/Verbali/Esterni" "$name.tex"
           cd "$GITHUB_WORKSPACE"
         done
 
-        # 🔹 Compila verbali interni
+        # 🔹 Compila verbali interni (2 volte per l'indice)
         for file in "$GITHUB_WORKSPACE"/src/Verbali/Interni/*.tex; do
           [ -e "$file" ] || continue
           name=$(basename "$file" .tex)
           echo "🧩 Compilo $file → Verbali/Interni/${name}.pdf"
           cd "$(dirname "$file")"
+          # PRIMA compilazione
+          pdflatex -interaction=nonstopmode -halt-on-error \
+            -output-directory "$GITHUB_WORKSPACE/Verbali/Interni" "$name.tex"
+          # SECONDA compilazione per generare l'indice
           pdflatex -interaction=nonstopmode -halt-on-error \
             -output-directory "$GITHUB_WORKSPACE/Verbali/Interni" "$name.tex"
           cd "$GITHUB_WORKSPACE"
@@ -67,6 +76,10 @@ jobs:
           name=$(basename "$file" .tex)
           echo "🧩 Compilo $file → Candidatura/${name}.pdf"
           cd "$(dirname "$file")"
+          # PRIMA compilazione
+          pdflatex -interaction=nonstopmode -halt-on-error \
+            -output-directory "$GITHUB_WORKSPACE/Candidatura" "$name.tex"
+          # SECONDA compilazione per generare l'indice
           pdflatex -interaction=nonstopmode -halt-on-error \
             -output-directory "$GITHUB_WORKSPACE/Candidatura" "$name.tex"
           cd "$GITHUB_WORKSPACE"
