@@ -66,7 +66,7 @@
         .filter(it => it.type === 'file' && /\.pdf$/i.test(it.name))
         .map(it => ({ name: it.name, size: it.size, download_url: it.download_url }));
       
-      pdfs.sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }));
+      pdfs.sort((a, b) => b.name.localeCompare(a.name, undefined, { sensitivity: 'base' }));
       
       container.innerHTML = '';
       
