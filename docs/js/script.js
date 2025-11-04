@@ -5,8 +5,10 @@
   const GITHUB_TOKEN = ''; // opzionale
   
   const folders = [
-    { idDiv: 'verbali_files', path: 'Verbali' },
+    { idDiv: 'verbali_files', path: 'Verbali/Interni' },
+    { idDiv: 'verbali_files', path: 'Verbali/Esterni' },
     { idDiv: 'candidatura_files', path: 'Candidatura' }
+    
   ];
   
   const headers = GITHUB_TOKEN ? { Authorization: 'token ' + GITHUB_TOKEN } : {};
