@@ -5,7 +5,8 @@
   const GITHUB_TOKEN = ''; // opzionale
   
   const folders = [
-    { idDiv: 'verbali_files', path: 'Verbali' }
+    { idDiv: 'verbali_interni', path: 'Verbali/Interni' },
+    { idDiv: 'verbali_esterni', path: 'Verbali/Esterni' },
     { idDiv: 'candidatura_files', path: 'Candidatura' }
     
   ];

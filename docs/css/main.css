@@ -16,7 +16,7 @@ body {
 aside {
     background-color: var(--aside_bg);
     width: 30%;
-    height: 100vh;
+    min-height: 100vh;
 }
 
 aside .flexbox {
