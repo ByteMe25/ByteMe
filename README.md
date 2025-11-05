@@ -16,7 +16,8 @@ Questo spazio è pensato per raccogliere e condividere tutti i materiali relativ
                     <li> <b>Esterni</b> Verbali relativi a riunioni con l'azienda committente </li>
                   </ul>
   <li><b>docs:</b> Tutti i file relativi al nostro sito web</li>
-  <li><b>src</b> File sorgenti LaTeX</li>
+  <li><b>src:</b> File sorgenti LaTeX</li>
+  <li><b>File Way_of_working:</b> File che definisce il nostro way of working (in corso)</li>
 </ul>
 
 
