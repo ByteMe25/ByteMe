@@ -199,7 +199,7 @@ a:visited {
     gap: 20px;
 }
 
-#candidatura .special_link a{
+.special_link a{
     color: var(--text);
     padding-right: 20px;
     background-image: url(../assets/arrow_forward.svg);
@@ -209,11 +209,33 @@ a:visited {
     transition: all 0.3s ease;
 }
 
-#candidatura .special_link a:hover{
+.special_link a:hover{
     padding-right: 25px;
     text-decoration: underline;
+    text-decoration-thickness: 3px;
     text-decoration-color: var(--text);
 }
+
+.special_link h3{
+    color: var(--text);
+}
+
+#intro .special_link{
+    background-color: var(--text);
+}
+
+#intro .special_link a{
+    background-image: url(../assets/arrow_forward_inv.svg);
+}
+
+#intro .special_link a:hover{
+    text-decoration-color: var(--primary);
+}
+
+#intro .special_link h3{
+    color: var(--primary);
+}
+
 
 #candidatura a{
     color: var(--background);

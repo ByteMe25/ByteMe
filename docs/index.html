@@ -52,6 +52,8 @@
                 candidature, dai documenti di progetto agli aggiornamenti più importanti. L’obiettivo è avere tutto
                 organizzato in un unico luogo, facile da consultare per i membri del team e utile anche per chi vuole
                 seguire l’evoluzione del progetto.</p>
+            <div id="wow" class="special_link">
+            </div>
         </div>
         <div id="about" class="block">
             <h2 class="subtitle">Chi siamo</h2>
@@ -86,9 +88,6 @@
             <h2 class="subtitle">Documenti per candidatura</h2>
             <p>I file seguenti spiegano le ragioni e l’impegno con cui il gruppo ByteMe porterà avanti il progetto</p>
             <div id="letter" class="special_link">
-                <!--<a href="../Candidatura/Lettera_di_Presentazione.pdf" target="_blank" rel="noopener noreferrer">
-                    <h3>Lettera di Presentazione</h3>
-                </a>-->
             </div>
             <h3 class="files_title">Altri file</h4>
                 <div id="candidatura_files"></div>
@@ -121,6 +120,12 @@
                 path: 'Candidatura',
                 fileName: 'Lettera_di_Presentazione.pdf',
                 divId: 'letter'
+            });
+
+            loadSinglePdfLink({
+                path: '',
+                fileName: 'Way_of_working.pdf',
+                divId: 'wow'
             });
 
             loadPdfFiles({

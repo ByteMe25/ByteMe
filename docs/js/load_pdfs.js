@@ -134,12 +134,12 @@ async function loadSinglePdfLink({
   owner = 'ByteMe25',
   repo = 'ByteMe',
   branch = 'main',
-  path,
+  path = '',
   fileName,
   divId,
   GITHUB_TOKEN = ''
 }) {
-  if (!path || !fileName || !divId) {
+  if (path === undefined || !fileName || !divId) {
     console.error('Parametri mancanti: servono "path", "fileName" e "divId".');
     return;
   }
