@@ -30,22 +30,46 @@ async function loadPdfFiles({
     return (size / Math.pow(1024, i)).toFixed(i ? 1 : 0) + ' ' + units[i];
   };
 
-  const openPdfInBrowser = async (url) => {
+  // ✅ apre il PDF in una scheda pulita, con titolo corretto e viewer integrato
+  const openPdfInBrowser = async (url, name) => {
     try {
       const response = await fetch(url);
       if (!response.ok) throw new Error('Errore nel download del file');
+
       const blob = await response.blob();
-      const pdfBlob = new Blob([blob], { type: 'application/pdf' });
-      const blobUrl = URL.createObjectURL(pdfBlob);
+      const blobUrl = URL.createObjectURL(new Blob([blob], { type: 'application/pdf' }));
 
-      const a = document.createElement('a');
-      a.href = blobUrl;
-      a.target = '_blank';
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
+      const newTab = window.open();
+      if (!newTab) {
+        alert('Consenti i pop-up per aprire il PDF.');
+        return;
+      }
 
-      setTimeout(() => URL.revokeObjectURL(blobUrl), 1000);
+      newTab.document.write(`
+        <html>
+          <head>
+            <title>${name}</title>
+            <style>
+              html, body {
+                margin: 0;
+                height: 100%;
+                background: #121212;
+              }
+              embed {
+                width: 100%;
+                height: 100%;
+                border: none;
+              }
+            </style>
+          </head>
+          <body>
+            <embed src="${blobUrl}" type="application/pdf">
+          </body>
+        </html>
+      `);
+      newTab.document.close();
+
+      setTimeout(() => URL.revokeObjectURL(blobUrl), 10000);
     } catch (err) {
       alert('Errore nel caricamento del PDF: ' + err.message);
     }
@@ -97,7 +121,7 @@ async function loadPdfFiles({
       meta.style.color = '#666';
       meta.style.marginLeft = '6px';
 
-      li.onclick = () => openPdfInBrowser(p.download_url);
+      li.onclick = () => openPdfInBrowser(p.download_url, p.name);
       li.appendChild(link);
       li.appendChild(meta);
       ul.appendChild(li);

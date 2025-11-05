@@ -1,3 +1,4 @@
+// ✅ funzione principale per caricare tutti i PDF in una lista
 async function loadPdfFiles({ 
   owner = 'ByteMe25', 
   repo = 'ByteMe', 
@@ -30,12 +31,10 @@ async function loadPdfFiles({
     return (size / Math.pow(1024, i)).toFixed(i ? 1 : 0) + ' ' + units[i];
   };
 
-  // ✅ apre il PDF in una scheda pulita, con titolo corretto e viewer integrato
   const openPdfInBrowser = async (url, name) => {
     try {
       const response = await fetch(url);
       if (!response.ok) throw new Error('Errore nel download del file');
-
       const blob = await response.blob();
       const blobUrl = URL.createObjectURL(new Blob([blob], { type: 'application/pdf' }));
 
@@ -68,7 +67,6 @@ async function loadPdfFiles({
         </html>
       `);
       newTab.document.close();
-
       setTimeout(() => URL.revokeObjectURL(blobUrl), 10000);
     } catch (err) {
       alert('Errore nel caricamento del PDF: ' + err.message);
@@ -92,12 +90,9 @@ async function loadPdfFiles({
       return sortOrder.toUpperCase() === 'DESC' ? -compare : compare;
     });
 
-    if (Number.isFinite(maxFiles)) {
-      pdfs = pdfs.slice(0, maxFiles);
-    }
+    if (Number.isFinite(maxFiles)) pdfs = pdfs.slice(0, maxFiles);
 
     container.innerHTML = '';
-
     if (pdfs.length === 0) {
       container.textContent = 'Nessun file trovato in questa cartella.';
       return;
@@ -131,5 +126,106 @@ async function loadPdfFiles({
   } catch (err) {
     console.error(err);
     container.innerHTML = `<div style="color:crimson">Errore: ${err.message}</div>`;
+  }
+}
+
+// ✅ funzione separata per un singolo file con struttura personalizzata
+async function loadSinglePdfLink({
+  owner = 'ByteMe25',
+  repo = 'ByteMe',
+  branch = 'main',
+  path,
+  fileName,
+  divId,
+  GITHUB_TOKEN = ''
+}) {
+  if (!path || !fileName || !divId) {
+    console.error('Parametri mancanti: servono "path", "fileName" e "divId".');
+    return;
+  }
+
+  const target = document.getElementById(divId);
+  if (!target) {
+    console.warn(`Elemento con id "${divId}" non trovato.`);
+    return;
+  }
+
+  const headers = GITHUB_TOKEN ? { Authorization: 'token ' + GITHUB_TOKEN } : {};
+  const apiUrl = `https://api.github.com/repos/${encodeURIComponent(owner)}/${encodeURIComponent(repo)}/contents/${encodeURIComponent(path)}?ref=${encodeURIComponent(branch)}`;
+
+  const openPdfInBrowser = async (url, name) => {
+    try {
+      const response = await fetch(url);
+      if (!response.ok) throw new Error('Errore nel download del file');
+      const blob = await response.blob();
+      const blobUrl = URL.createObjectURL(new Blob([blob], { type: 'application/pdf' }));
+
+      const newTab = window.open();
+      if (!newTab) {
+        alert('Consenti i pop-up per aprire il PDF.');
+        return;
+      }
+
+      newTab.document.write(`
+        <html>
+          <head>
+            <title>${name}</title>
+            <style>
+              html, body {
+                margin: 0;
+                height: 100%;
+                background: #121212;
+              }
+              embed {
+                width: 100%;
+                height: 100%;
+                border: none;
+              }
+            </style>
+          </head>
+          <body>
+            <embed src="${blobUrl}" type="application/pdf">
+          </body>
+        </html>
+      `);
+      newTab.document.close();
+      setTimeout(() => URL.revokeObjectURL(blobUrl), 10000);
+    } catch (err) {
+      alert('Errore nel caricamento del PDF: ' + err.message);
+    }
+  };
+
+  try {
+    const res = await fetch(apiUrl, { headers });
+    if (!res.ok) throw new Error(`GitHub API errore: ${res.status} ${res.statusText}`);
+
+    const items = await res.json();
+    if (!Array.isArray(items)) throw new Error('La risposta non è una lista.');
+
+    const file = items.find(it => it.name === fileName);
+    if (!file) {
+      target.innerHTML = '<div style="color:crimson">File non trovato.</div>';
+      return;
+    }
+
+    const div = document.createElement('div');
+    div.classList.add('special_link');
+
+    const a = document.createElement('a');
+    a.href = '#';
+    a.onclick = (e) => {
+      e.preventDefault();
+      openPdfInBrowser(file.download_url, file.name);
+    };
+
+    const h3 = document.createElement('h3');
+    h3.textContent = file.name.replace(/_/g, ' ').replace(/\.pdf$/i, '');
+
+    a.appendChild(h3);
+    div.appendChild(a);
+    target.appendChild(div);
+  } catch (err) {
+    console.error(err);
+    target.innerHTML = `<div style="color:crimson">Errore: ${err.message}</div>`;
   }
 }

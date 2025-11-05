@@ -85,10 +85,10 @@
         <div id="candidatura" class="block">
             <h2 class="subtitle">Documenti per candidatura</h2>
             <p>I file seguenti spiegano le ragioni e l’impegno con cui il gruppo ByteMe porterà avanti il progetto</p>
-            <div class="special_link">
-                <a href="../Candidatura/Lettera_di_Presentazione.pdf" target="_blank" rel="noopener noreferrer">
+            <div id="letter" class="special_link">
+                <!--<a href="../Candidatura/Lettera_di_Presentazione.pdf" target="_blank" rel="noopener noreferrer">
                     <h3>Lettera di Presentazione</h3>
-                </a>
+                </a>-->
             </div>
             <h3 class="files_title">Altri file</h4>
                 <div id="candidatura_files"></div>
@@ -116,6 +116,13 @@
     <script src="js/menu.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+
+            loadSinglePdfLink({
+                path: 'Candidatura',
+                fileName: 'Lettera_di_Presentazione.pdf',
+                divId: 'letter'
+            });
+
             loadPdfFiles({
                 path: 'Candidatura',
                 divId: 'candidatura_files',
