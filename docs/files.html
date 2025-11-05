@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <title>ByteMe - Official Site</title>
+    <meta name="description"
+        content="Welcome to the official ByteMe website. Explore our features, documentation, and community resources.">
+</head>
+
+<body>
+    <aside>
+        <div class="flexbox">
+            <div class="logo_wrap">
+                <img src="assets/logo.jpg" alt="Logo ByteMe">
+            </div>
+            <div id="site_title">
+                <h1 class="title">ByteMe</h1>
+                <p class="subtxt">Benvenuti nel sito di ByteMe</p>
+            </div>
+            <div id="menu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="files.html">Tutti i file</a></li>
+                </ul>
+            </div>
+            <div class="socials">
+                <a href="https://github.com/ByteMe25/ByteMe" target="_blank">
+                    <img src="assets/github_logo.png" alt="Git Repository">
+                </a>
+                <a href="mailto:byteme2025swe@gmail.com">
+                    <img src="assets/mail_icon.png" alt="E-mail Contact">
+                </a>
+            </div>
+        </div>
+    </aside>
+    <div class="main_wrap">
+        <div id="intro" class="block">
+            <h2 class="subtitle">Tutti i file</h2>
+            <p>In questa pagina sarà resa disponibile tutta la documentazione che accompagnerà lo sviluppo del progetto
+                scelto dal nostro gruppo.</p>
+        </div>
+        <div id="all_files" class="block">
+            <h2 class="subtitle">Files</h2>
+            <div class="files_blocks" class="inside_block">
+                <div id="verbali_block" class="files_list">
+                    <h3 class="files_title">Verbali</h3>
+                    <div class="inside_block">
+                        <h4 class="files_title">Interni</h4>
+                        <div id="verbali_interni"></div>
+                        <h4 class="files_title">Esterni</h4>
+                        <div id="verbali_esterni"></div>
+                    </div>
+                </div>
+                <div id="candidatura_block" class="inside_block">
+                    <h3 class="files_title">Candidatura</h3>
+                    <div class="inside_block">
+                        <div id="candidatura_files">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <p>© 2025 ByteMe. All rights reserved.</p>
+        </footer>
+    </div>
+    <!--<script src="js/script.js"></script>-->
+    <script src="js/load_pdfs.js"></script>
+    <script src="js/menu.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            loadPdfFiles({
+                path: 'Candidatura',
+                divId: 'candidatura_files',
+            });
+
+            loadPdfFiles({
+                path: 'Verbali/Interni',
+                divId: 'verbali_interni',
+            });
+
+            loadPdfFiles({
+                path: 'Verbali/Esterni',
+                divId: 'verbali_esterni',
+            });
+
+        });
+    </script>
+</body>
+
+</html>
