@@ -10,14 +10,14 @@ Questo spazio è pensato per raccogliere e condividere tutti i materiali relativ
 <ul align="left">
   <li><b>.github/workflows:</b> File sorgente di GitHub Actions e automazione della compilazione dei file LaTeX </li>
   <li><b>Candidatura:</b> Tutti i file pertinenti alla candidatura al progetto SecondBrain</li>
-  <li><b>Verbali:</b> Cartella che contiene tutti i verbali dove vengono riportate le decisioni e conseguenti azioni principali da intraprendere 
+  <li><b>Verbali:</b> Cartelle che contengono tutti i verbali dove vengono riportate le decisioni e conseguenti azioni principali da intraprendere 
                   <ul> 
                     <li> <b>Interni</b> Verbali relativi a riunioni tra membri del gruppo </li> 
                     <li> <b>Esterni</b> Verbali relativi a riunioni con l'azienda committente </li>
                   </ul>
   <li><b>docs:</b> Tutti i file relativi al nostro sito web</li>
   <li><b>src:</b> File sorgenti LaTeX</li>
-  <li><b>File Way_of_working:</b> File che definisce il nostro way of working (in corso)</li>
+  <li><b>Documenti_interni:</b> Cartella con i documenti redatti dal gruppo per l'organizzazione interna, come il Glossario e il Way of Working (Norme di progetto) (in corso)</li>
 </ul>
 
 
