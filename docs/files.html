@@ -60,10 +60,19 @@
                         <div id="verbali_esterni"></div>
                     </div>
                 </div>
+
                 <div id="candidatura_block" class="inside_block">
                     <h3 class="files_title">Candidatura</h3>
                     <div class="inside_block">
                         <div id="candidatura_files">
+                        </div>
+                    </div>
+                </div>
+
+                <div id="internal_docs_block" class="inside_block">
+                    <h3 class="files_title">Documenti interni</h3>
+                    <div class="inside_block">
+                        <div id="intDocs_files">
                         </div>
                     </div>
                 </div>
@@ -80,18 +89,23 @@
         document.addEventListener('DOMContentLoaded', () => {
 
             loadPdfFiles({
-                path: 'Candidatura',
+                path: '1_Candidatura',
                 divId: 'candidatura_files',
             });
 
             loadPdfFiles({
-                path: 'Verbali/Interni',
+                path: 'Verbali_interni',
                 divId: 'verbali_interni',
             });
 
             loadPdfFiles({
-                path: 'Verbali/Esterni',
+                path: 'Verbali_esterni',
                 divId: 'verbali_esterni',
+            });
+
+            loadPdfFiles({
+                path: 'Documenti_interni',
+                divId: 'intDocs_files',
             });
 
         });

@@ -117,32 +117,32 @@
         document.addEventListener('DOMContentLoaded', () => {
 
             loadSinglePdfLink({
-                path: 'Candidatura',
+                path: '1_Candidatura',
                 fileName: 'Lettera_di_Presentazione.pdf',
                 divId: 'letter'
             });
 
             loadSinglePdfLink({
-                path: '',
+                path: 'Documenti_interni',
                 fileName: 'Way_of_working.pdf',
                 divId: 'wow'
             });
 
             loadPdfFiles({
-                path: 'Candidatura',
+                path: '1_Candidatura',
                 divId: 'candidatura_files',
                 exclude: 'Lettera_di_Presentazione.pdf'
             });
 
             loadPdfFiles({
-                path: 'Verbali/Interni',
+                path: 'Verbali_interni',
                 divId: 'verbali_interni',
                 maxFiles: 3,
                 sortOrder: 'DESC'
             });
 
             loadPdfFiles({
-                path: 'Verbali/Esterni',
+                path: 'Verbali_esterni',
                 divId: 'verbali_esterni',
                 maxFiles: 3,
                 sortOrder: 'DESC'
