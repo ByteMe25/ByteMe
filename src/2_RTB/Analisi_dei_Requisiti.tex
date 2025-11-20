@@ -1,0 +1,378 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+
+\geometry{margin=2.5cm}
+
+% Intestazione e piè di pagina
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[C]{\thepage\ di \pageref{LastPage}}
+
+\begin{document}
+
+% Prima pagina - Intestazione
+\begin{titlepage}
+    \centering
+    
+    % Logo Università
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.3\textwidth]{../logoUnipd.jpg}
+    \end{figure}
+    
+    \vspace{0.5cm}
+    
+    \textbf{\Large Università degli Studi di Padova} \\
+    \vspace{0.2cm}
+    \textbf{Laurea in Informatica} \\
+    \vspace{0.2cm}
+    \textbf{Corso di Ingegneria del Software} \\
+    \vspace{0.2cm}
+    \textbf{Anno Accademico 2025/2026} \\
+    
+    \vspace{1cm}
+    
+    % Logo gruppo
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.2\textwidth]{../LogoByteMe.jpg}
+    \end{figure}
+    
+    \vspace{0.5cm}
+    
+    \textbf{\Large Gruppo ByteMe} \\
+    \vspace{0.2cm}
+    \texttt{byteme2025swe@gmail.com} \\
+    
+    \vspace{1cm}
+    
+    \textbf{\Huge Analisi dei Requisiti} \\
+    
+    \vspace{1.5cm}
+    
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{|l|p{5cm}|}
+            \hline
+            \textbf{Versione} & 1.0.0 \\
+            \hline
+            \textbf{Stato} & In corso \\
+            \hline
+            \textbf{Redazione} & Tutto il gruppo \\
+            \hline
+            \textbf{Verifica} & Tutto il gruppo \\
+            \hline
+            \textbf{Approvazione} & Tutto il gruppo \\
+            \hline
+            \textbf{Proprietario} & ByteMe \\
+            \hline
+            \textbf{Uso} & Esterno \\
+            \hline
+            \textbf{Destinatari} & Prof. Tullio Vardanega \\ & Prof. Riccardo Cardin \\
+            \hline
+        \end{tabular}
+    \end{table}
+    
+    \vfill
+\end{titlepage}
+
+% Seconda pagina - Versionamento
+\thispagestyle{empty}
+\section*{Registro dei Cambiamenti}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|c|>{\raggedright\arraybackslash}p{0.4\textwidth}|}
+        \hline
+        \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} \\
+        \hline
+        1.1.1 & //2025 &  &  \\
+        \hline
+        1.1.0 & //2025 &  &  \\
+        \hline
+        1.0.0 & 20/11/2025 & Giulia Barzon & Creazione del documento e scrittura introduzione \\
+        \hline
+    \end{tabular}
+    \caption{Registro delle versioni del documento}
+    \label{tab:versionamento}
+\end{table}
+
+\newpage
+
+% Terza pagina - Indice
+\tableofcontents
+\thispagestyle{empty}
+\newpage
+
+% Dalla quarta pagina - Contenuto principale
+\setcounter{page}{1}
+
+\section{Introduzione}
+\subsection{Scopo del documento}
+Questo documento descrive l'analisi dei requisiti per il progetto \textbf{"Second Brain"}. Il documento definisce in modo dettagliato i casi d'uso e i requisiti del sistema, che combina un editor di testo Markdown con funzionalità AI avanzate per assistere gli utenti nella creazione, revisione e miglioramento dei contenuti testuali.
+
+L'obiettivo principale è fornire una specifica completa delle funzionalità che il sistema deve implementare, classificando i requisiti in obbligatori, desiderabili e opzionali, in linea con le richieste della proponente Zucchetti.
+
+\subsection{Glossario}
+Per evitare ambiguità, i termini tecnici usati nel documento vengono definiti in modo più approfondito nel documento "Glossario" che si trova nella repository del gruppo nella cartella "Documenti\textunderscore interni".
+
+I termini che vengono considerati meritevoli di approfondimenti sono indicati con una G a pedice.
+
+\subsection{Riferimenti}
+\subsubsection{Riferimenti normativi}
+\begin{itemize}
+    \item Norme di Progetto - Documento interno del gruppo ByteMe
+    \item Regolamento del progetto didattico
+\end{itemize}
+
+\subsubsection{Riferimenti informativi}
+\begin{itemize}
+    \item Capitolato C6 "Second Brain", Zucchetti
+    \item Slide del corso di Ingegneria del Software
+    \item Verbali interni ed esterni
+\end{itemize}
+
+\newpage
+
+\section{Descrizione del progetto}
+\subsection{Obiettivi del prodotto}
+Il progetto \textbf{Second Brain} si propone di rivoluzionare il processo di scrittura e organizzazione delle idee attraverso l'integrazione di Large Language Models\textsubscript{G} in un editor di testo moderno. Gli obiettivi principali sono:
+
+\begin{itemize}
+    \item Fornire uno strumento di \textit{note-taking} avanzato che combini la semplicità del Markdown\textsubscript{G} con la potenza dell'IA generativa.
+    \item Implementare un sistema di \textit{critica intelligente} del testo basato sulla metodologia dei "Sei Cappelli per Pensare" di Edward De Bono.
+    \item Semplificare il processo di scrittura attraverso funzionalità di correzione, rielaborazione, traduzione e ottimizzazione automatica del testo.
+    \item Implementare un sistema di \textit{distant writing} che permette di generare un testo completo a partire da un breve prompt dell'utente.
+\end{itemize}
+
+
+\subsection{Funzionalità del prodotto}
+Il sistema offre le seguenti funzionalità principali:
+
+\begin{itemize}
+    \item \textbf{Editor Markdown\textsubscript{G}} avanzato con anteprima in tempo reale
+    \item \textbf{Integrazione LLM\textsubscript{G}} per operazioni su testo selezionato o completo
+    \item \textbf{Comandi base di elaborazione}: riassunto, riscrittura, traduzione, correzione grammaticale
+    \item \textbf{Sistema di critica testuale} basato sui 6 cappelli per pensare
+    \item \textbf{Distant Writing\textsubscript{G}} per generazione guidata di contenuti
+    \item \textbf{Persistenza dati} con salvataggio locale e opzionale su cloud
+\end{itemize}
+
+\subsection{Caratteristiche del prodotto}
+Le caratteristiche distintive che rendono unico il prodotto sono:
+
+\begin{itemize}
+    \item \textbf{Architettura ibrida}: applicazione web con possibile estensione server-side
+    \item \textbf{Interfaccia semplice}: design pulito per un editor chiaro e semplice e anteprima in tempo reale
+    \item \textbf{Multi-piattaforma}: accessibile da qualsiasi browser moderno
+    \item \textbf{Estensibilità}: architettura modulare che permette l'aggiunta di nuove funzionalità
+    
+\end{itemize}
+
+\subsection{Utenti}
+Il prodotto è rivolto alle seguenti categorie di utenti:
+
+\begin{itemize}
+    \item \textbf{Studenti}: per la stesura di appunti, riassunti e materiale di studio
+    \item \textbf{Professionisti}: per la creazione di documenti aziendali, report e presentazioni
+    \item \textbf{Scrittori e content creator}: per l'ideazione, stesura e revisione di contenuti
+    \item \textbf{Ricercatori}: per l'organizzazione di appunti di ricerca e letteratura
+    \item \textbf{Utenti generici}: chiunque abbia bisogno di un editor per esigenze di scrittura assistita
+\end{itemize}
+
+Non sono richieste competenze tecniche avanzate per l'utilizzo delle funzionalità base, rendendo il prodotto accessibile a un'ampia gamma di utenti.
+
+\newpage
+
+\section{Casi d'uso}
+\subsection{Introduzione}
+Questa sezione descrive in dettaglio i casi d'uso del sistema \textbf{Second Brain}, identificando tutte le interazioni significative tra gli attori e il sistema. Ogni caso d'uso è definito attraverso:
+
+\begin{itemize}
+    \item \textbf{Codice identificativo} univoco seguendo lo schema UC-X.Y
+    \item \textbf{Descrizione} chiara e concisa dello scenario
+    \item \textbf{Attori} coinvolti nell'interazione
+    \item \textbf{Precondizioni} necessarie per l'esecuzione
+    \item \textbf{Postcondizioni} risultanti dall'esecuzione
+    \item \textbf{Scenario principale} con sequenza di passi
+\end{itemize}
+
+I casi d'uso sono organizzati per macroaree funzionali per facilitare la lettura e il tracciamento.
+
+\subsection{Attori}
+Il sistema prevede i seguenti attori:
+
+\begin{itemize}
+    \item \textbf{Utente Non Autenticato\textsubscript{G}}: utente che accede alle funzionalità base senza registrazione
+    \item \textbf{Utente Autenticato\textsubscript{G}}: utente registrato che accede alle funzionalità avanzate e alla persistenza cloud
+    \item \textbf{Sistema AI\textsubscript{G}}: componente di intelligenza artificiale che elabora le richieste testuali
+    \item \textbf{Sistema di Persistenza\textsubscript{G}}: componente responsabile del salvataggio e recupero dei dati
+\end{itemize}
+
+L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli altri attori sono considerati secondari e interagiscono con il sistema in modo trasparente all'utente finale.
+
+
+\subsection{Macroarea 1 - Editor di testo}
+\subsubsection{UC-1.0 - Utilizzo dell'editor di testo}
+\begin{itemize}
+    \item \textbf{Attore principale}: 
+    \item \textbf{Precondizioni}: 
+    \item \textbf{Postcondizioni}: 
+    \item \textbf{Scenario principale}: 
+    \item \textbf{Trigger}: 
+\end{itemize}
+
+\subsubsection{UC-1.1 - Sottocaso d'uso}
+
+\subsubsection{UC-1.2 - Sottocaso d'uso}
+
+\subsubsection{UC-1.3 - Sottocaso d'uso}
+
+\subsubsection{UC-1.4 - Sottocaso d'uso}
+
+
+
+
+\subsection{Macroarea 2 - Funzionalità AI}
+\subsubsection{UC-2.0 - Riassunto del testo}
+% Struttura simile
+
+\subsubsection{UC-2.1 - Sottocaso d'uso}
+
+\subsubsection{UC-2.1 - Sottocaso d'uso}
+
+\subsubsection{UC-2.1 - Sottocaso d'uso}
+
+
+
+
+\subsection{Macroarea 3 - Persistenza: Caricamento}
+\subsubsection{UC-3.0 - Caricamento dei file}
+
+\subsubsection{UC-3.1 - Nome caso d'uso}
+
+\subsubsection{UC-3.2 - Nome caso d'uso}
+
+
+\subsection{Macroarea 4 - Persistenza: Salvataggio}
+\subsubsection{UC-4.0 - Nome caso d'uso}
+
+\subsubsection{UC-4.1 - Nome caso d'uso}
+
+\subsubsection{UC-4.2 - Nome caso d'uso}
+
+
+
+\subsection{Macroarea 5 - Autenticazione}
+\subsubsection{UC-5.0 - Nome caso d'uso}
+
+\subsubsection{UC-5.1 - Nome caso d'uso}
+
+\subsubsection{UC-5.2 - Nome caso d'uso}
+
+\subsubsection{UC-5.3 - Nome caso d'uso}
+
+
+\subsection{Macroarea 6 - Altri casi}
+\subsubsection{UC-6.0 - Nome caso d'uso}
+
+% Casi d'uso aggiuntivi
+
+\newpage
+
+\section{Requisiti}
+\subsection{Classificazione dei requisiti}
+Il gruppo ByteMe durante l'analisi dei requisiti e dei casi d'uso ha individuato i requisiti esposti di seguito, suddividendoli in obbligatori, cioè i requisiti esplicitamente richiesti dall'azienda Zucchetti; desiderabili, cioè requisiti opzionali che il gruppo si impegna ad implementare per migliorare il prodotto; opzionali, cioè requisiti che hanno una priorità più bassa e possono non essere implementati.
+
+\subsection{Requisiti obbligatori}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|>{\raggedright\arraybackslash}p{0.7\textwidth}|c|c|}
+        \hline
+        \textbf{Codice} & \textbf{Descrizione} \\
+        \hline
+        RO1 & Editor di testo online con supporto Markdown \\
+        \hline
+        RO2 & Rendering grafico del Markdown compilato \\
+        \hline
+        RO3 & Integrazione LLM per operazioni su testo intero o selezionato \\
+        \hline
+        RO4 & Funzioni AI di base sul testo: riassunto, riscrittura, traduzione, correzione \\
+        \hline
+        RO5 & Analisi critica tramite modello "Sei Cappelli per Pensare" \\
+        \hline
+        RO6 & Generazione testo automatico (distant writing) \\
+        \hline
+        RO7 & Persistenza locale dei file di testo: salvataggio e lettura note \\
+        \hline
+    \end{tabular}
+    \caption{Tabella dei requisiti obbligatori}
+\end{table}
+
+\subsection{Requisiti desiderabili}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|>{\raggedright\arraybackslash}p{0.7\textwidth}|c|c|}
+        \hline
+        \textbf{Codice} & \textbf{Descrizione} \\
+        \hline
+        RD1 & Sistema di registrazione e autenticazione utente \\
+        \hline
+        RD2 & Archivio centralizzato delle note su database server-side \\
+        \hline
+        RD3 & Gestione operazioni CRUD su file remoti (Create, Read, Update, Delete) \\
+        \hline
+        RD4 & Recupero e modifica note esistenti senza operazioni manuali di download/upload \\
+        \hline
+        RD5 & Accesso persistente alle note senza operazioni manuali di sincronizzazione \\
+        \hline
+        
+    \end{tabular}
+    \caption{Tabella dei requisiti desiderabili}
+\end{table}
+
+\subsection{Requisiti opzionali}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|>{\raggedright\arraybackslash}p{0.7\textwidth}|c|c|}
+        \hline
+        \textbf{Codice} & \textbf{Descrizione} \\
+        \hline
+        ROP1 & Generazione automatica di grafici, tabelle e formule matematiche \\
+        \hline
+        ROP2 & Sistema di link ipertestuali tra note all'interno del markup \\
+        \hline
+        ROP3 & Utilizzo note collegate come contesto per l'AI durante la generazione testo \\
+        \hline
+        ROP4 & Trasformazione testo in mappe concettuali e diagrammi \\
+        \hline
+        ROP5 & Ricerca avanzata di parole e frasi all'interno dei documenti \\
+        \hline
+        
+    \end{tabular}
+    \caption{Tabella dei requisiti opzionali}
+\end{table}
+
+\subsection{Tracciamento requisiti}
+\subsubsection{Tracciamento casi d'uso-requisiti}
+Tabella che collega ogni caso d'uso ai requisiti corrispondenti
+
+\subsubsection{Tabella di riepilogo}
+Tabella riassuntiva con il conteggio totale dei requisiti per categoria...
+
+\newpage
+
+\section{Conclusioni}
+
+
+\end{document}
