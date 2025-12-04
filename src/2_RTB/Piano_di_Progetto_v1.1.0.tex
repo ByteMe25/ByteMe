@@ -1,0 +1,923 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+
+\geometry{margin=2.5cm}
+
+% Intestazione e piè di pagina
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[C]{\thepage\ di \pageref{LastPage}}
+
+\begin{document}
+
+% Prima pagina - Intestazione
+\begin{titlepage}
+    \centering
+    
+    % Logo Università
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.3\textwidth]{../logoUnipd.jpg}
+    \end{figure}
+    
+    \vspace{0.5cm}
+    
+    \textbf{\Large Università degli Studi di Padova} \\
+    \vspace{0.2cm}
+    \textbf{Laurea in Informatica} \\
+    \vspace{0.2cm}
+    \textbf{Corso di Ingegneria del Software} \\
+    \vspace{0.2cm}
+    \textbf{Anno Accademico 2025/2026} \\
+    
+    \vspace{1cm}
+    
+    % Logo gruppo
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.2\textwidth]{../LogoByteMe.jpg}
+    \end{figure}
+    
+    \vspace{0.5cm}
+    
+    \textbf{\Large Gruppo ByteMe} \\
+    \vspace{0.2cm}
+    \texttt{byteme2025swe@gmail.com} \\
+    
+    \vspace{1cm}
+    
+    \textbf{\Huge Piano di Progetto} \\
+    
+    \vspace{1.5cm}
+    
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{|l|p{5cm}|}
+            \hline
+            \textbf{Versione} & 1.0.0 \\
+            \hline
+            \textbf{Stato} & In corso \\
+            \hline
+            \textbf{Redazione} & Tutto il gruppo \\
+            \hline
+            \textbf{Verifica} & Tutto il gruppo \\
+            \hline
+            \textbf{Approvazione} & Tutto il gruppo \\
+            \hline
+            \textbf{Proprietario} & ByteMe \\
+            \hline
+            \textbf{Uso} & Esterno \\
+            \hline
+            \textbf{Destinatari} & Prof. Tullio Vardanega \\ & Prof. Riccardo Cardin \\
+            \hline
+        \end{tabular}
+    \end{table}
+    
+    \vfill
+\end{titlepage}
+
+% Seconda pagina - Versionamento
+\thispagestyle{empty}
+\section*{Registro dei Cambiamenti}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|c|>{\raggedright\arraybackslash}p{0.4\textwidth}|}
+        \hline
+        \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} \\
+        \hline
+        1.1.1 & //2025 &  &  \\
+        \hline
+        1.1.0 & 04/12/2025 & Giulia Barzon & Aggiornamento del documento con Analisi dei Rischi e informazioni dello sprint corrente\\
+        \hline
+        1.0.0 & 02/12/2025 & Giulia Barzon & Creazione del documento, scrittura prime sezioni e log primo sprint \\
+        \hline
+    \end{tabular}
+    \caption{Registro delle versioni del documento}
+    \label{tab:versionamento}
+\end{table}
+
+\newpage
+
+% Terza pagina - Indice
+\tableofcontents
+\thispagestyle{empty}
+\newpage
+
+% Dalla quarta pagina - Contenuto principale
+\setcounter{page}{1}
+
+\section{Introduzione}
+\subsection{Scopo del documento}
+Il presente documento ha lo scopo di definire la pianificazione, l’organizzazione e il controllo delle attività del progetto \textbf{Second Brain}. Esso descrive:
+\begin{itemize}
+    \item La suddivisione dei ruoli e delle responsabilità;
+    \item L’analisi dei rischi e le relative contromisure;
+    \item Il modello di sviluppo adottato;
+    \item La pianificazione temporale (sprint);
+    \item La stima dei costi e il consuntivo periodico.
+\end{itemize}
+Il documento è destinato al committente Prof. Vardanega e Prof. Cardin, all'azienda proponente Zucchetti S.p.A. e al gruppo di sviluppo ByteMe.
+
+\subsection{Scopo del prodotto}
+Il progetto \textbf{Second Brain}, proposto da Zucchetti, mira a sviluppare un editor di testo avanzato basato su linguaggio MarkDown e potenziato da Large Language Models (LLM). L’applicazione web consentirà all’utente di:
+\begin{itemize}
+    \item Scrivere e visualizzare in tempo reale testi in MarkDown;
+    \item Interagire con un LLM per generare, riassumere, riscrivere, tradurre e criticare testi;
+    \item Sfruttare il metodo dei “sei cappelli per pensare” di Edward De Bono per analisi critiche;
+    \item Fornire prompt testuali per generare testo (Distant Writing).
+\end{itemize}
+L’obiettivo è creare uno strumento di supporto alla scrittura creativa, esplorando le potenzialità degli LLM nel contesto del note-taking avanzato.
+
+\subsection{Riferimenti}
+\subsubsection{Riferimenti normativi}
+\begin{enumerate}
+    \item Norme di Progetto v1.0.0 (in corso)
+    \item Capitolato d’appalto C6: Second Brain
+    \item Regolamento del progetto didattico
+\end{enumerate}
+
+\subsubsection{Riferimenti informativi}
+\begin{enumerate}
+    \item Slide del corso di Ingegneria del Software
+    \item Verbali interni ed esterni
+    \item Preventivo dei costi e impegni orari v1.1.2
+    \url{https://github.com/ByteMe25/ByteMe/blob/main/1_Candidatura/PreventivoCosti_ImpegniOrari.pdf}
+    \item Documento Analisi dei Requisiti (in corso)
+    \url{https://github.com/ByteMe25/ByteMe/blob/main/2_RTB/Analisi_dei_Requisiti.pdf}
+\end{enumerate}
+
+\newpage
+
+% --------------------------------------------
+% SEZIONE 2: ANALISI DEI RISCHI
+% --------------------------------------------
+\section{Analisi dei Rischi}
+In questa sezione vengono identificati i principali rischi che potrebbero influenzare il progetto, valutandone probabilità, gravità e definendo opportune contromisure per mitigarli. Questa analisi aggiorna l'analisi fatta precedentemente nel documento Preventivo dei Costi e degli Impegni Orari, in seguito a un ulteriore e più curato studio dei rischi.
+I rischi sono classificati in tre categorie: organizzativi, tecnologici e relativi al prodotto. Ciascun rischio è identificato tramite la sigla \textbf{R[iniziale]-[numero]}, dove l'iniziale indica la categoria (O = Organizzativo, T = Tecnologico, P = Prodotto).
+
+\subsection{Rischi organizzativi}
+I rischi organizzativi riguardano aspetti legati alla gestione del team, alla pianificazione delle attività e alla disponibilità dei membri.
+
+\subsubsection{RO-1 - Impegni personali e universitari}
+\begin{center}
+\begin{tabular}{|p{3cm}|p{12cm}|}
+    \hline
+    \textbf{Descrizione} & Gli impegni personali e universitari (es. sessioni d'esame) potrebbero limitare la disponibilità temporale di alcuni membri del gruppo. \\
+    \hline
+    \textbf{Probabilità} & Alta \\
+    \hline
+    \textbf{Gravità} & Media \\
+    \hline
+    \textbf{Misure di prevenzione} & Comunicazione anticipata degli impegni, pianificazione flessibile degli sprint, creazione di un calendario condiviso delle disponibilità. \\
+    \hline
+    \textbf{Misure di mitigazione} & Ridistribuzione dei carichi di lavoro, spostamento delle scadenze non critiche, lavoro asincrono sulle attività non urgenti. \\
+    \hline
+\end{tabular}
+\end{center}
+
+\subsubsection{RO-2 - Disaccordi nel gruppo sulla modalità di procedere}
+\begin{center}
+\begin{tabular}{|p{3cm}|p{12cm}|}
+    \hline
+    \textbf{Descrizione} & Differenze di opinione tra i membri del gruppo sulle scelte implementative, tecnologiche o organizzative potrebbero causare conflitti e rallentamenti. \\
+    \hline
+    \textbf{Probabilità} & Bassa \\
+    \hline
+    \textbf{Gravità} & Media \\
+    \hline
+    \textbf{Misure di prevenzione} & Discussioni aperte durante le riunioni, documentazione delle decisioni prese, definizione chiara dei criteri di scelta. \\
+    \hline
+    \textbf{Misure di mitigazione} & Votazioni democratiche in caso di stallo, mediazione del Responsabile, richiesta di parere al proponente per decisioni critiche. \\
+    \hline
+\end{tabular}
+\end{center}
+
+\subsubsection{RO-3 - Scarsa esperienza nell'organizzazione di progetti complessi}
+\begin{center}
+\begin{tabular}{|p{3cm}|p{12cm}|}
+    \hline
+    \textbf{Descrizione} & Il gruppo ha scarsa esperienza nell'organizzazione di un progetto complesso, con possibili imprecisioni nella pianificazione delle attività e sottostima/sovrastima delle risorse e del tempo necessari. \\
+    \hline
+    \textbf{Probabilità} & Alta \\
+    \hline
+    \textbf{Gravità} & Alta \\
+    \hline
+    \textbf{Misure di prevenzione} & Studio di casi simili, consultazione di documentazione di progetti precedenti, adozione di metodologie collaudate (Scrum), consultazioni con i professori o con la proponente. \\
+    \hline
+    \textbf{Misure di mitigazione} & Revisione continua del Piano di Progetto, tracciamento accurato delle ore, aggiustamenti periodici della pianificazione. \\
+    \hline
+\end{tabular}
+\end{center}
+
+\subsubsection{RO-4 - Mancanza di chiarezza nei ruoli e responsabilità}
+\begin{center}
+\begin{tabular}{|p{3cm}|p{12cm}|}
+    \hline
+    \textbf{Descrizione} & La mancanza di chiarezza riguardo ai ruoli e alle responsabilità all'interno del team può generare confusione, conflitti e ritardi nelle attività. \\
+    \hline
+    \textbf{Probabilità} & Bassa \\
+    \hline
+    \textbf{Gravità} & Media \\
+    \hline
+    \textbf{Misure di prevenzione} & Definizione precisa dei ruoli nel documento Norme di Progetto, rotazione sistematica dei ruoli, comunicazione chiara delle responsabilità. \\
+    \hline
+    \textbf{Misure di mitigazione} & Riunioni di chiarimento, aggiornamento della matrice dei ruoli, intervento del Responsabile per risolvere ambiguità. \\
+    \hline
+\end{tabular}
+\end{center}
+
+\subsubsection{RO-5 - Ritardi nello sviluppo}
+\begin{center}
+\begin{tabular}{|p{3cm}|p{12cm}|}
+    \hline
+    \textbf{Descrizione} & Possibili ritardi nell'avanzamento delle attività a causa di sottostima dei tempi, imprevisti tecnici o problemi di coordinamento. \\
+    \hline
+    \textbf{Probabilità} & Media \\
+    \hline
+    \textbf{Gravità} & Alta \\
+    \hline
+    \textbf{Misure di prevenzione} & Pianificazione conservativa delle attività, buffer temporali tra gli sprint, tracciamento continuo dell'avanzamento. \\
+    \hline
+    \textbf{Misure di mitigazione} & Riorganizzazione delle priorità, aumento del contributo orario, richiesta di estensione delle scadenze al committente. \\
+    \hline
+\end{tabular}
+\end{center}
+
+\subsubsection{RO-6 - Problemi di comunicazione}
+\begin{center}
+\begin{tabular}{|p{3cm}|p{12cm}|}
+    \hline
+    \textbf{Descrizione} & Comunicazioni poco chiare o inefficaci tra i membri del gruppo potrebbero causare fraintendimenti, duplicazione di lavoro e ritardi. \\
+    \hline
+    \textbf{Probabilità} & Bassa \\
+    \hline
+    \textbf{Gravità} & Media \\
+    \hline
+    \textbf{Misure di prevenzione} & Riunioni periodiche (daily stand-up, weekly sync), utilizzo di canali dedicati (Discord, email o Whatsapp). \\
+    \hline
+    \textbf{Misure di mitigazione} & Verbalizzazione di tutte le decisioni importanti, richiesta di conferma delle informazioni critiche, intervento del Responsabile. \\
+    \hline
+\end{tabular}
+\end{center}
+
+\subsection{Rischi tecnologici}
+I rischi tecnologici riguardano aspetti legati alle tecnologie utilizzate, all'integrazione tra componenti e all'apprendimento di nuovi strumenti.
+
+\subsubsection{RT-1 - Difficoltà nell'apprendimento delle tecnologie}
+\begin{center}
+\begin{tabular}{|p{3cm}|p{12cm}|}
+    \hline
+    \textbf{Descrizione} & Il gruppo potrebbe incontrare difficoltà nell'apprendimento di tecnologie nuove (LLM, API REST, framework web) a causa della limitata esperienza pregressa. \\
+    \hline
+    \textbf{Probabilità} & Alta \\
+    \hline
+    \textbf{Gravità} & Media \\
+    \hline
+    \textbf{Misure di prevenzione} & Studio anticipato delle tecnologie, sessioni di formazione interna, utilizzo di tutorial e documentazione ufficiale. \\
+    \hline
+    \textbf{Misure di mitigazione} & Palestra, supporto reciproco tra membri, richiesta di assistenza al proponente per aspetti critici. \\
+    \hline
+\end{tabular}
+\end{center}
+
+\subsubsection{RT-2 - Difficoltà nell'integrazione con API di LLM}
+\begin{center}
+\begin{tabular}{|p{3cm}|p{12cm}|}
+    \hline
+    \textbf{Descrizione} & Difficoltà nell'integrazione con API di LLM (OpenAI, Gemini,...) o problemi di compatibilità tra le diverse implementazioni. \\
+    \hline
+    \textbf{Probabilità} & Media \\
+    \hline
+    \textbf{Gravità} & Alta \\
+    \hline
+    \textbf{Misure di prevenzione} & Studio approfondito delle API disponibili, test appropriati, scelta di API ben documentate e supportate, consultazioni con la proponente. \\
+    \hline
+    \textbf{Misure di mitigazione} & Implementazione di fallback con LLM alternativi, utilizzo di librerie di astrazione, supporto tecnico del proponente. \\
+    \hline
+\end{tabular}
+\end{center}
+
+\subsubsection{RT-3 - Scarsa esperienza con strumenti di sviluppo}
+\begin{center}
+\begin{tabular}{|p{3cm}|p{12cm}|}
+    \hline
+    \textbf{Descrizione} & Il gruppo ha scarsa esperienza nell'uso degli strumenti a supporto dello sviluppo e dubbi riguardo il loro utilizzo ottimale. \\
+    \hline
+    \textbf{Probabilità} & Media \\
+    \hline
+    \textbf{Gravità} & Media \\
+    \hline
+    \textbf{Misure di prevenzione} & Definizione di procedure chiare nel Way of Working (documento Norme di Progetto), formazione interna sugli strumenti, utilizzo di template e configurazioni standard. \\
+    \hline
+    \textbf{Misure di mitigazione} & Supporto tra pari, consultazione di tutorial online, riduzione della complessità delle configurazioni iniziali. \\
+    \hline
+\end{tabular}
+\end{center}
+
+\subsubsection{RT-4 - Perdita di informazioni}
+\begin{center}
+\begin{tabular}{|p{3cm}|p{12cm}|}
+    \hline
+    \textbf{Descrizione} & La perdita di informazioni rappresenta un rischio di impatto importante. Può verificarsi in caso di guasti hardware, errori umani o malfunzionamenti dei sistemi utilizzati. \\
+    \hline
+    \textbf{Probabilità} & Bassa \\
+    \hline
+    \textbf{Gravità} & Alta \\
+    \hline
+    \textbf{Misure di prevenzione} & Backup automatici e regolari, versionamento costante su GitHub, utilizzo di cloud storage (Google Drive) per documenti critici. \\
+    \hline
+    \textbf{Misure di mitigazione} & Ripristino da backup, duplicazione delle informazioni su più supporti. \\
+    \hline
+\end{tabular}
+\end{center}
+
+\subsection{Rischi relativi al prodotto}
+I rischi relativi al prodotto riguardano aspetti legati alla soddisfazione dei requisiti, alla qualità del software e all'aderenza alle aspettative del proponente.
+
+\subsubsection{RP-1 - Comprensione erronea dei requisiti}
+\begin{center}
+\begin{tabular}{|p{3cm}|p{12cm}|}
+    \hline
+    \textbf{Descrizione} & L'azienda potrebbe essere non soddisfatta dalle modalità scelte nell'attuare lo sviluppo del prodotto a causa di una comprensione errata o incompleta dei requisiti. \\
+    \hline
+    \textbf{Probabilità} & Bassa \\
+    \hline
+    \textbf{Gravità} & Alta \\
+    \hline
+    \textbf{Misure di prevenzione} & Incontri frequenti con il proponente, documentazione dettagliata dei requisiti, prototipazione rapida per validare le scelte. \\
+    \hline
+    \textbf{Misure di mitigazione} & Revisione e correzione dei requisiti, sviluppo iterativo con feedback continuo, flessibilità nel modificare l'implementazione. \\
+    \hline
+\end{tabular}
+\end{center}
+
+\subsubsection{RP-2 - Sottostima/sovrastima dei costi orari}
+\begin{center}
+\begin{tabular}{|p{3cm}|p{12cm}|}
+    \hline
+    \textbf{Descrizione} & La sottostima/sovrastima dei costi orari delle attività, dovuta alla mancanza di esperienza del team, può causare ritardi, perdite di tempo e di risorse. \\
+    \hline
+    \textbf{Probabilità} & Media \\
+    \hline
+    \textbf{Gravità} & Alta \\
+    \hline
+    \textbf{Misure di prevenzione} & Stime conservative, analisi di progetti simili, pianificazione a buffer, tracciamento continuo delle ore effettive. \\
+    \hline
+    \textbf{Misure di mitigazione} & Rivalutazione periodica del preventivo, ridistribuzione delle risorse, priorizzazione delle funzionalità essenziali. \\
+    \hline
+\end{tabular}
+\end{center}
+
+\subsubsection{RP-3 - Mancanza di supporto esecutivo}
+\begin{center}
+\begin{tabular}{|p{3cm}|p{12cm}|}
+    \hline
+    \textbf{Descrizione} & Possibili difficoltà nel ricevere feedback tempestivi o supporto decisionale dal proponente o dal committente durante lo sviluppo. \\
+    \hline
+    \textbf{Probabilità} & Bassa \\
+    \hline
+    \textbf{Gravità} & Media \\
+    \hline
+    \textbf{Misure di prevenzione} & Definizione di un calendario di incontri regolari, canali di comunicazione chiari, richieste di feedback strutturate. \\
+    \hline
+    \textbf{Misure di mitigazione} & Escalation formale in caso di ritardi, decisioni autonome documentate, lavoro su aspetti non critici in attesa di feedback. \\
+    \hline
+\end{tabular}
+\end{center}
+
+% --------------------------------------------
+% Tabella riassuntiva dei rischi
+% --------------------------------------------
+\subsection{Tabella riassuntiva dei rischi individuati}
+\begin{center}
+    \begin{tabular}{|c|l|c|c|}
+        \hline
+        \textbf{Codice} & \textbf{Nome} & \textbf{Probabilità} & \textbf{Gravità} \\
+        \hline
+        RO-1 & Impegni personali e universitari & Alta & Media \\
+        \hline
+        RO-2 & Disaccordi nel gruppo sulla modalità di procedere & Bassa & Media \\
+        \hline
+        RO-3 & Scarsa esperienza nell'organizzazione di progetti complessi & Alta & Alta \\
+        \hline
+        RO-4 & Mancanza di chiarezza nei ruoli e responsabilità & Bassa & Media \\
+        \hline
+        RO-5 & Ritardi nello sviluppo & Media & Alta \\
+        \hline
+        RO-6 & Problemi di comunicazione & Bassa & Media \\
+        \hline
+        RT-1 & Difficoltà nell'apprendimento delle tecnologie & Alta & Media \\
+        \hline
+        RT-2 & Difficoltà nell'integrazione con API di LLM & Media & Alta \\
+        \hline
+        RT-3 & Scarsa esperienza con strumenti di sviluppo & Media & Media \\
+        \hline
+        RT-4 & Perdita di informazioni & Bassa & Alta \\
+        \hline
+        RP-1 & Comprensione erronea dei requisiti & Bassa & Alta \\
+        \hline
+        RP-2 & Sottostima/sovrastima dei costi orari & Media & Alta \\
+        \hline
+        RP-3 & Mancanza di supporto esecutivo & Bassa & Media \\
+        \hline
+    \end{tabular}
+\end{center}
+
+\textbf{Legenda delle categorie:}
+\begin{itemize}
+    \item \textbf{RO}: Rischi Organizzativi (gestione team, pianificazione, disponibilità)
+    \item \textbf{RT}: Rischi Tecnologici (tecnologie, strumenti, integrazione)
+    \item \textbf{RP}: Rischi relativi al Prodotto (requisiti, costi, supporto)
+\end{itemize}
+
+\newpage
+
+% ============================================
+% SEZIONE 3: MODELLO DI SVILUPPO
+% ============================================
+\section{Modello di sviluppo}
+\subsection{Approccio adottato}
+Il gruppo ha deciso di adottare il modello \textbf{Agile}\textsubscript{G} e in particolare il framework \textbf{Scrum}\textsubscript{G}. Questo approccio permette di gestire lo sviluppo in modo iterativo e incrementale, adattandosi rapidamente a cambiamenti nei requisiti e garantendo una consegna continua di valore.
+
+\subsubsection{Vantaggi dell'adozione di Scrum}
+\begin{itemize}
+    \item \textbf{Flessibilità}: possibilità di adattare il piano di lavoro in base ai feedback ricevuti;
+    \item \textbf{Trasparenza}: meeting periodici (Daily, Sprint Review, Retrospective) garantiscono visibilità sull’avanzamento;
+    \item \textbf{Qualità}: revisioni frequenti e testing continuo migliorano la qualità del prodotto;
+    \item \textbf{Motivazione del team}: responsabilità condivise e autonomia favoriscono il coinvolgimento.
+\end{itemize}
+
+\subsubsection{Organizzazione in sprint}
+Il lavoro del team è organizzato in sprint della durata di due settimane, al termine dei quali avviene una rotazione dei ruoli. Ciascuno sprint è strutturato nelle seguenti fasi:
+\begin{itemize}
+    \item \textbf{Sprint Planning}\textsubscript{G}: all’inizio di ogni sprint, il team definisce gli obiettivi, seleziona le attività da svolgere e stima il tempo necessario. Tipicamente questo avviene entro il martedì della prima settimana dello sprint.
+    \item \textbf{Sprint Execution}\textsubscript{G}: sviluppo delle attività pianificate, con meeting giornalieri (daily stand-up) o comunicazione asincrona per sincronizzare lo stato dei lavori.
+    \item \textbf{Sprint Review}\textsubscript{G}: al termine dello sprint, ogni membro presenta al resto del team quanto realizzato e raccoglie feedback.
+    \item \textbf{Sprint Retrospective}\textsubscript{G}: analisi interna per identificare punti di forza, criticità e azioni di miglioramento per lo sprint successivo.
+\end{itemize}
+
+\subsubsection{Rotazione dei ruoli}
+Il gruppo adotta una rotazione sistematica dei ruoli al termine di ogni sprint per garantire:
+\begin{itemize}
+    \item Apprendimento completo di tutti i membri su ogni aspetto del ciclo di vita del software;
+    \item Distribuzione equa delle responsabilità;
+    \item Sviluppo di competenze trasversali e maggiore resilienza del team.
+\end{itemize}
+I ruoli coperti includono: Responsabile, Amministratore, Analista, Progettista, Programmatore e Verificatore.
+
+\subsubsection{Strumenti di gestione}
+Per supportare il modello Scrum, il gruppo utilizzerà:
+\begin{itemize}
+    \item \textbf{GitHub}: per il versionamento del codice e della documentazione;
+    \item \textbf{GitHub Issues}: per il tracciamento temporale delle azioni da svolgere e l'assegnazione delle azioni ai componenti;
+    \item \textbf{Discord o Whatsapp}: per la comunicazione interna.
+\end{itemize}
+
+\newpage
+
+% ============================================
+% SEZIONE 4: PIANIFICAZIONE
+% ============================================
+\section{Pianificazione}
+La pianificazione del progetto è suddivisa nelle seguenti fasi:
+\begin{enumerate}
+    \item \textbf{Studio dei capitolati e assegnazione dell’appalto}, con esposizione della Lettera di Presentazione, della Valutazione dei Capitolati e del Preventivo dei Costi e degli Impegni Orari (ottobre 2025);
+    \item \textbf{RTB (Requirements and Technology Baseline)}, con esposizione dell'Analisi dei Requisiti, il Piano di Progetto e il Piano di Qualifica (novembre 2025 – gennaio 2026);
+    \item \textbf{PB (Product Baseline)}, con esposizione del Piano di Progetto e del Piano di Qualifica aggiornati (febbraio – aprile 2026).
+\end{enumerate}
+
+\subsection{Gestione degli sprint}
+Ogni sprint avrà una durata di \textbf{due settimane} e sarà documentato attraverso:
+\begin{itemize}
+    \item \textbf{Planning}: definizione degli obiettivi e delle attività;
+    \item \textbf{Review}: verifica delle attività svolte;
+    \item \textbf{Retrospective}: analisi dei rischi occorsi e miglioramenti.
+\end{itemize}
+
+\subsection{Calendario di progetto}
+Secondo una stima iniziale fatta all'inizio del periodo relativo alla RTB (2 dicembre 2025), il gruppo ByteMe si impegna a rispettare le seguenti scadenze temporali per le revisioni:
+\begin{center}
+    \begin{tabular}{|l|c|}
+        \hline
+        \textbf{Revisione} & \textbf{Data prevista} \\
+        \hline
+        Requirements and Technology Baseline\textsubscript{G} (RTB) & 15 gennaio 2026 \\
+        \hline
+        Product Baseline\textsubscript{G} (PB) & 15 marzo 2026 \\
+        \hline
+        Customer Acceptance\textsubscript{G} (CA) & 15 aprile 2026 \\
+        \hline
+    \end{tabular}
+\end{center}
+
+\subsection{Preventivo iniziale}
+Il preventivo iniziale, calcolato in fase di candidatura, ammonta a \textbf{11.395 euro} per un totale di \textbf{558 ore} di lavoro. La distribuzione delle ore per ruolo è la seguente:
+
+\begin{center}
+    \begin{tabular}{|l|c|c|c|}
+        \hline
+        \textbf{Ruolo} & \textbf{Ore totali} & \textbf{Costo orario (€)} & \textbf{Costo totale (euro)} \\
+        \hline
+        Responsabile & 64 & 30 & 1920 \\
+        \hline
+        Amministratore & 83 & 20 & 1660 \\
+        \hline
+        Analista & 80 & 25 & 2000 \\
+        \hline
+        Progettista & 85 & 25 & 2125 \\
+        \hline
+        Programmatore & 130 & 15 & 1950 \\
+        \hline
+        Verificatore & 116 & 15 & 1740 \\
+        \hline
+        \textbf{Totale} & \textbf{558} & & \textbf{11.395} \\
+        \hline
+    \end{tabular}
+\end{center}
+
+\newpage
+
+% ============================================
+% SEZIONE 5: FASE DI CANDIDATURA
+% ============================================
+\section{Studio dei Capitolati e Assegnazione dell'Appalto \\ \small\textbf{Periodo: ottobre 2025}}
+
+\subsection{Attività svolte}
+In questa fase preliminare il gruppo ByteMe ha svolto diverse attività per preparare la candidatura al capitolato C6 \textit{"Second Brain"} proposto da Zucchetti.
+
+Dopo aver analizzato tutti i capitolati proposti, il gruppo ha individuato quelli di maggiore interesse, concentrandosi in particolare sul C6 per il suo potenziale tecnologico e per l'opportunità di lavorare con tecnologie innovative come i Large Language Models (LLM). Per supportare la candidatura, è stata creata un'organizzazione GitHub omonima al gruppo e una repository principale per ospitare tutta la documentazione del progetto.
+
+Successivamente, il gruppo ha organizzato un incontro conoscitivo con il referente aziendale Gregorio Piccoli di Zucchetti, durante il quale sono stati chiariti dubbi riguardanti:
+\begin{itemize}
+    \item le tecnologie consigliate per lo sviluppo front-end e back-end;
+    \item le funzionalità da implementare per il prodotto richiesto;
+    \item il livello di autonomia concessa nelle scelte implementative;
+    \item le modalità di integrazione con API di LLM;
+    \item le aspettative rispetto alle fasi di Proof of Concept (PoC) e Minimum Viable Product (MVP).
+\end{itemize}
+
+Parallelamente, sono stati redatti tutti i documenti necessari per la candidatura:
+\begin{itemize}
+    \item la \textbf{Lettera di presentazione}, in cui il gruppo si è presentato al committente illustrando le motivazioni per la scelta del capitolato;
+    \item la \textbf{Valutazione dei capitolati}, contenente l'analisi comparativa di tutti i progetti disponibili e la giustificazione della scelta finale;
+    \item il \textbf{Preventivo dei costi e impegni orari}, con la stima delle ore di lavoro per ruolo e il costo totale del progetto.
+\end{itemize}
+
+In questa fase sono state inoltre definite le prime regole del \textbf{Way of Working} del gruppo, stabilendo strumenti comuni per la comunicazione, la gestione dei task e il versionamento. Sono stati redatti e conservati i verbali di tutti gli incontri interni ed esterni, che documentano le decisioni prese e i progressi compiuti.
+
+Dopo la presentazione della candidatura, il gruppo ha ricevuto feedback positivi dal committente e, dopo alcuni perfezionamenti organizzativi e documentali, la candidatura è stata approvata, permettendo così l'avvio ufficiale del progetto e l'inizio della fase di \textbf{Requirements and Technology Baseline (RTB)}.
+
+\newpage
+
+% ============================================
+% SEZIONE 6: REQUIREMENTS AND TECHNOLOGY BASELINE
+% ============================================
+\section{Requirements and Technology Baseline (RTB) \\ \small\textbf{Periodo: novembre 2025 - gennaio 2026}}
+
+\subsection{Introduzione}
+La fase RTB (\textit{Requirements and Technology Baseline}) comprende diversi obiettivi da soddisfare, di seguito elencati:
+
+\begin{itemize}
+    \item \textbf{Definire i requisiti e i casi d'uso}, in accordo con la proponente Zucchetti, nel documento di Analisi dei Requisiti;
+    \item \textbf{Dimostrare l'adeguatezza, la compatibilità e la fattibilità} delle tecnologie e librerie scelte tramite il Proof of Concept\textsubscript{G} (PoC);
+    \item \textbf{Sperimentare l'integrazione con Large Language Models} (LLM) per valutare le prestazioni nell'ambito del note-taking avanzato;
+    \item \textbf{Progettare l'architettura del sistema} editor MarkDown con integrazione AI.
+\end{itemize}
+
+\noindent A supporto di tali attività vi sono i seguenti obblighi documentali:
+
+\begin{itemize}
+    \item \textbf{Analisi dei Requisiti}: documento che definisce i casi d'uso, i requisiti funzionali e non funzionali del sistema;
+    \item \textbf{Piano di Progetto}: il presente documento, che pianifica attività, risorse e tempistiche;
+    \item \textbf{Piano di Qualifica}: documento che identifica le metriche e le strategie necessarie per garantire qualità al prodotto finale;
+    \item \textbf{Glossario}: documento che fornisce definizioni chiare e precise di termini ambigui o che necessitano di chiarire il contesto in cui vengono usati;
+    \item \textbf{Norme di Progetto}: documento che definisce le regole che il gruppo dovrà rispettare durante lo svolgimento del progetto;
+    \item \textbf{Verbali} interni ed esterni.
+\end{itemize}
+
+\noindent Ciascuno dei documenti elencati sarà archiviato nella repository GitHub e sarà visibile nel sito web del gruppo.
+
+I periodi presentati in questa sezione saranno descritti tramite le fasi di \textbf{sprint planning} (Pianificazione), \textbf{sprint review} (Consuntivo) e \textbf{sprint retrospective} (Retrospettiva). Per ogni sprint verranno tracciate e riportate le ore di lavoro di ciascun membro, in modo da monitorarne l'avanzamento rispetto alla pianificazione iniziale.
+
+\newpage
+% --------------------------------------------
+% SPRINT 1 (RTB)
+% --------------------------------------------
+\subsection{Sprint 1: Inizio scrittura documentazione per RTB}
+{\textbf{Periodo: 17 novembre 2025 - 30 novembre 2025}\par}
+\vspace{0.5em}
+
+\subsubsection{Pianificazione}
+\begin{itemize}
+    \item \textbf{Data inizio}: 17 novembre 2025
+    \item \textbf{Data fine}: 30 novembre 2025
+    \item \textbf{Obiettivi}:
+    \begin{itemize}
+        \item Brainstorming e inizio analisi degli scenari del prodotto;
+        \item Stesura scenari e casi d'uso individuati nelle riunioni interne e durante l'incontro con l'azienda Zucchetti avvenuto in data 11 novembre 2025;
+        \item Stesura iniziale dei documenti principali (Norme di Progetto, Glossario, Analisi dei Requisiti);
+    \end{itemize}
+    \item \textbf{Ruoli assegnati}:
+    \begin{itemize}
+        \item Joseph Grant: Responsabile e Analista;
+        \item Chiara Grossele: Amministratore e Analista;
+        \item Tommaso Tombacco: Amministratore e Analista;
+        \item Giulia Barzon: Analista e Verificatore;
+        \item Elisa Marchioro: Analista e Verificatore;
+        \item Matteo Cuogo: Analista e Verificatore.
+    \end{itemize}
+    \item \textbf{Rischi attesi}: RO-1, RO-3, RO-4, RP-1, RP-2
+\end{itemize}
+
+\subsubsection{Preventivo orario}
+\begin{center}
+    \begin{tabular}{|l|c|c|c|c|c|c|c|}
+        \hline
+        \textbf{Membro} & \textbf{Re} & \textbf{Am} & \textbf{An} & \textbf{Pj} & \textbf{Pg} & \textbf{Ve} & \textbf{Totale} \\
+        \hline
+        Joseph Grant & 0 & 0 & 3 & 0 & 0 & 0 & 7 \\
+        \hline
+        Chiara Grossele & 0 & 3 & 3 & 0 & 0 & 0 & 7 \\
+        \hline
+        Tommaso Tombacco & 0 & 2 & 2 & 0 & 0 & 0 & 7 \\
+        \hline
+        Elisa Marchioro & 0 & 0 & 3 & 0 & 0 & 0 & 7 \\
+        \hline
+        Giulia Barzon & 0 & 0 & 4 & 0 & 0 & 1 & 5 \\
+        \hline
+        Matteo Cuogo & 0 & 0 & 0 & 0 & 0 & 0 & 7 \\
+        \hline
+        \textbf{Ore totali} & 3 & 7 & 6 & 5 & 12 & 9 & 42 \\
+        \hline
+        \textbf{Costo totale} & 90 & 140 & 150 & 125 & 180 & 135 & 820 \\
+        \hline
+    \end{tabular}
+\end{center}
+
+\noindent \textbf{Legenda}: Re = Responsabile, Am = Amministratore, An = Analista, Pj = Progettista, Pg = Programmatore, Ve = Verificatore.
+
+\subsubsection{Review}
+Durante questo sprint il gruppo ha svolto le seguenti attività:
+\begin{itemize}
+    \item \textbf{Assegnazione ruoli}: Sono stati assegnati i ruoli per il periodo, con particolare attenzione alle responsabilità di ciascuno.
+    \item \textbf{Brainstorming e analisi}: Abbiamo avanzato diverse ipotesi sui requisiti e casi d'uso possibili per il progetto e abbiamo iniziato a studiarli e raccoglierli in un documento provvisorio;
+    \item \textbf{Suddivisione del lavoro}: Gli amministratori hanno ripartito il lavoro di analisi dei casi d'uso tra i membri del team;
+    \item \textbf{Gestione repository}: Tutti i membri hanno imparato a modificare il sito di GitHub e a gestire la repository del progetto;
+\end{itemize}
+
+\subsubsection{Consuntivo orario}
+\begin{center}
+    \begin{tabular}{|l|c|c|c|c|c|c|c|}
+        \hline
+        \textbf{Membro} & \textbf{Re} & \textbf{Am} & \textbf{An} & \textbf{Pj} & \textbf{Pg} & \textbf{Ve} & \textbf{Totale} \\
+        \hline
+        Joseph Grant & 2 & 0 & 3 & 0 & 0 & 0 & 7 \\
+        \hline
+        Chiara Grossele & 0 & 3 & 3 & 0 & 0 & 0 & 7 \\
+        \hline
+        Tommaso Tombacco & 0 & 2 & 2 & 0 & 0 & 0 & 7 \\
+        \hline
+        Elisa Marchioro & 0 & 0 & 3 & 0 & 0 & 0 & 7 \\
+        \hline
+        Giulia Barzon & 0 & 0 & 5 & 0 & 0 & 0 & 5 \\
+        \hline
+        Matteo Cuogo & 0 & 0 & 2 & 0 & 0 & 0 & 7 \\
+        \hline
+        \textbf{Ore totali} & 3 & 7 & 6 & 5 & 12 & 9 & 42 \\
+        \hline
+        \textbf{Costo totale} & 90 & 140 & 150 & 125 & 180 & 135 & 820 \\
+        \hline
+    \end{tabular}
+\end{center}
+
+\subsubsection{Retrospettiva}
+Il gruppo ha riscontrato alcuni dubbi sulla correttezza e completezza dei casi d'uso individuati durante il brainstorming iniziale. Per risolvere queste incertezze, è stato deciso di organizzare un incontro con l'azienda proponente Zucchetti all'inizio del prossimo sprint, in modo da mitigare il rischio RO-4.
+Non si sono verificate problematiche relative a impegni universitari o personali, il gruppo è stato collaborativo e ha avuto una buona comunicazione. Il team ha dovuto consultare varie fonti per organizzare bene le attività di analisi dei requisiti e dei casi d'uso e per la scrittura dei documenti (RO-3).
+
+Le attività pianificate per il prossimo periodo includono:
+\begin{itemize}
+    \item Creazione di issues, project board e milestones nella repository;
+    \item Sistemazione del sito web del progetto;
+    \item Aggiornamento del Way of Working e del Glossario;
+    \item Scrittura dell'introduzione del documento di Analisi dei Requisiti;
+    \item Stesura iniziale del documento Piano di Progetto;
+    \item Individuazione definitiva dei casi d'uso e dei requisiti.
+\end{itemize}
+
+\newpage
+% --------------------------------------------
+% SPRINT 2 (RTB)
+% --------------------------------------------
+\subsection{Sprint 2: Discussione e scrittura dei casi d'uso}
+{\textbf{Periodo: 1 dicembre 2025 - 14 dicembre 2025}\par}
+
+\subsubsection{Pianificazione}
+\begin{itemize}
+    \item \textbf{Data inizio}: 1 dicembre 2025
+    \item \textbf{Data fine}: 14 dicembre 2025
+    \item \textbf{Obiettivi}:
+    \begin{itemize}
+        \item Incontro con Zucchetti per discutere i casi d'uso identificati;
+        \item Correzione e completamento dei casi d'uso individuati;
+        \item Scrittura del documento formale di Analisi dei Requisiti comprendente i casi d'uso precedentemente individuati;
+        \item Studio e scrittura dei requisiti funzionali e non funzionali derivanti dai casi d'uso individuati;
+        \item Scrittura del Piano di Progetto;
+        \item Aggiornamento delle Norme di Progetto e del Glossario;
+        \item Stesura iniziale del Piano di Qualifica;
+    \end{itemize}
+    \item \textbf{Ruoli assegnati}:
+    \begin{itemize}
+        \item Matteo Cuogo: Responsabile e Analista;
+        \item Giulia Barzon: Amministratore e Analista;
+        \item Elisa Marchioro: Amministratore e Analista;
+        \item Joseph Grant: Analista e Verificatore;
+        \item Chiara Grossele: Analista e Verificatore;
+        \item Tommaso Tombacco: Analista e Verificatore.
+    \end{itemize}
+    \item \textbf{Rischi attesi}: RO-1, RO-3, RP-1, RP-2
+\end{itemize}
+
+\subsubsection{Preventivo orario}
+\begin{center}
+    \begin{tabular}{|l|c|c|c|c|c|c|c|}
+        \hline
+        \textbf{Membro} & \textbf{Re} & \textbf{Am} & \textbf{An} & \textbf{Pj} & \textbf{Pg} & \textbf{Ve} & \textbf{Totale} \\
+        \hline
+        Joseph Grant & 2 & 0 & 3 & 0 & 0 & 0 & 7 \\
+        \hline
+        Chiara Grossele & 0 & 3 & 3 & 0 & 0 & 0 & 7 \\
+        \hline
+        Tommaso Tombacco & 0 & 2 & 2 & 0 & 0 & 0 & 7 \\
+        \hline
+        Elisa Marchioro & 0 & 0 & 3 & 0 & 0 & 0 & 7 \\
+        \hline
+        Giulia Barzon & 0 & 4 & 4 & 0 & 0 & 0 & 8 \\
+        \hline
+        Matteo Cuogo & 2 & 0 & 3 & 0 & 0 & 0 & 7 \\
+        \hline
+        \textbf{Ore totali} & 3 & 7 & 6 & 5 & 12 & 9 & 42 \\
+        \hline
+        \textbf{Costo totale} & 90 & 140 & 150 & 125 & 180 & 135 & 820 \\
+        \hline
+    \end{tabular}
+\end{center}
+
+\noindent \textbf{Legenda}: Re = Responsabile, Am = Amministratore, An = Analista, Pj = Progettista, Pg = Programmatore, Ve = Verificatore.
+
+\subsubsection{Review}
+Durante questo sprint il gruppo ha svolto le seguenti attività:
+ \begin{itemize}
+        \item Incontro con l'azienda Zucchetti in data 2 dicembre 2025 per discutere sui casi d'uso individuati;
+        \item Correzione e completamento dei casi d'uso individuati: sono state fatte delle correzioni e delle precisazioni come suggerito da Zucchetti;
+        \item Scrittura iniziale del Piano di Progetto, fino allo sprint corrente;
+        \item Aggiornamento delle Norme di Progetto e del Glossario;
+    \end{itemize}
+
+\subsubsection{Consuntivo orario}
+\begin{center}
+    \begin{tabular}{|l|c|c|c|c|c|c|c|}
+        \hline
+        \textbf{Membro} & \textbf{Re} & \textbf{Am} & \textbf{An} & \textbf{Pj} & \textbf{Pg} & \textbf{Ve} & \textbf{Totale} \\
+        \hline
+        Joseph Grant & 2 & 0 & 3 & 0 & 0 & 0 & 7 \\
+        \hline
+        Chiara Grossele & 0 & 3 & 3 & 0 & 0 & 0 & 7 \\
+        \hline
+        Tommaso Tombacco & 0 & 2 & 2 & 0 & 0 & 0 & 7 \\
+        \hline
+        Elisa Marchioro & 0 & 0 & 3 & 0 & 0 & 0 & 7 \\
+        \hline
+        Giulia Barzon & 0 & 4 & 3 & 0 & 0 & 0 & 7 \\
+        \hline
+        Matteo Cuogo & 1 & 0 & 2 & 0 & 0 & 0 & 7 \\
+        \hline
+        \textbf{Ore totali} & 3 & 7 & 6 & 5 & 12 & 9 & 42 \\
+        \hline
+        \textbf{Costo totale} & 90 & 140 & 150 & 125 & 180 & 135 & 820 \\
+        \hline
+    \end{tabular}
+\end{center}
+
+\subsubsection{Retrospettiva}
+Le attività pianificate per il prossimo periodo includono:
+\begin{itemize}
+    \item Scrittura del Piano di Qualifica;
+\end{itemize}
+
+\newpage
+% --------------------------------------------
+% SPRINT 3 (RTB)
+% --------------------------------------------
+\subsection{Sprint 3: Completamento documentazione RTB}
+{\textbf{Periodo: 15 dicembre 2025 - 28 dicembre 2025}\par}
+
+\subsubsection{Pianificazione}
+\begin{itemize}
+    \item \textbf{Data inizio}: 15 dicembre 2025
+    \item \textbf{Data fine}: 28 dicembre 2025
+    \item \textbf{Obiettivi}:
+    \begin{itemize}
+        \item 
+    \end{itemize}
+    
+    \item \textbf{Ruoli assegnati}:
+    \begin{itemize}
+        \item Matteo Cuogo: 
+        \item Giulia Barzon: 
+        \item Elisa Marchioro: 
+        \item Joseph Grant: 
+        \item Chiara Grossele: 
+        \item Tommaso Tombacco:
+    \end{itemize}
+    
+    \item \textbf{Rischi attesi}: 
+\end{itemize}
+
+\subsubsection{Preventivo orario}
+\begin{center}
+    \begin{tabular}{|l|c|c|c|c|c|c|c|}
+        \hline
+        \textbf{Membro} & \textbf{Re} & \textbf{Am} & \textbf{An} & \textbf{Pj} & \textbf{Pg} & \textbf{Ve} & \textbf{Totale} \\
+        \hline
+        Joseph Grant & 2 & 0 & 3 & 0 & 0 & 0 & 7 \\
+        \hline
+        Chiara Grossele & 0 & 3 & 3 & 0 & 0 & 0 & 7 \\
+        \hline
+        Tommaso Tombacco & 0 & 2 & 2 & 0 & 0 & 0 & 7 \\
+        \hline
+        Elisa Marchioro & 0 & 0 & 3 & 0 & 0 & 0 & 7 \\
+        \hline
+        Giulia Barzon & 0 & 0 & 4 & 0 & 0 & 1 & 5 \\
+        \hline
+        Matteo Cuogo & 0 & 0 & 2 & 0 & 0 & 0 & 7 \\
+        \hline
+        \textbf{Ore totali} & 3 & 7 & 6 & 5 & 12 & 9 & 42 \\
+        \hline
+        \textbf{Costo totale} & 90 & 140 & 150 & 125 & 180 & 135 & 820 \\
+        \hline
+    \end{tabular}
+\end{center}
+
+\noindent \textbf{Legenda}: Re = Responsabile, Am = Amministratore, An = Analista, Pj = Progettista, Pg = Programmatore, Ve = Verificatore.
+
+\subsubsection{Review}
+Durante questo sprint il gruppo ha svolto le seguenti attività:
+
+
+\subsubsection{Consuntivo orario}
+\begin{center}
+    \begin{tabular}{|l|c|c|c|c|c|c|c|}
+        \hline
+        \textbf{Membro} & \textbf{Re} & \textbf{Am} & \textbf{An} & \textbf{Pj} & \textbf{Pg} & \textbf{Ve} & \textbf{Totale} \\
+        \hline
+        Joseph Grant & 2 & 0 & 3 & 0 & 0 & 0 & 7 \\
+        \hline
+        Chiara Grossele & 0 & 3 & 3 & 0 & 0 & 0 & 7 \\
+        \hline
+        Tommaso Tombacco & 0 & 2 & 2 & 0 & 0 & 0 & 7 \\
+        \hline
+        Elisa Marchioro & 0 & 0 & 3 & 0 & 0 & 0 & 7 \\
+        \hline
+        Giulia Barzon & 0 & 0 & 5 & 0 & 0 & 0 & 5 \\
+        \hline
+        Matteo Cuogo & 0 & 0 & 2 & 0 & 0 & 0 & 7 \\
+        \hline
+        \textbf{Ore totali} & 3 & 7 & 6 & 5 & 12 & 9 & 42 \\
+        \hline
+        \textbf{Costo totale} & 90 & 140 & 150 & 125 & 180 & 135 & 820 \\
+        \hline
+    \end{tabular}
+\end{center}
+
+\subsubsection{Retrospettiva}
+Le attività pianificate per il prossimo periodo includono:
+\begin{itemize}
+    \item 
+\end{itemize}
+
+\newpage
+
+
+
+\newpage
+% ============================================
+% FASE 3: PRODUCT BASELINE
+% ============================================
+\section{Product Baseline \\ \small\textbf{Periodo: febbraio - aprile 2026}}
+
+\subsection{Introduzione}
+
+
+
+\end{document}
