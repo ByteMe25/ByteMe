@@ -247,13 +247,23 @@ a:visited {
 }
 
 #all_files .files_blocks{
-    display: flex;
+    /*display: flex;
     flex-wrap: wrap;
-    gap: 40px;
+    gap: 40px;*/
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: max-content;
+    gap: 20px;
+    grid-template-rows: repeat(3, auto);
+}
+
+#all_files .files_blocks .files_list {
+    grid-row: span 3;
 }
 
 #all_files .inside_block{
     margin-left: 30px;
+    height: fit-content;
 }
 
 .file_item{
@@ -373,10 +383,28 @@ footer {
         height: 150px;
     }
 
+    #all_files .files_blocks{
+        grid-auto-flow: unset;
+    }
+
 }
 
 @media only screen and (max-width: 540px) {
     .logo_wrap {
         display: none;
+    }
+
+    #all_files .files_blocks .file_item small{
+        display: none;
+    }
+
+    #all_files .inside_block,
+    #all_files .files_blocks,
+    #all_files .files_list{
+        margin-left: 0;
+    }
+
+    .main_wrap {
+        padding: 20px 20px 0;
     }
 }

@@ -50,6 +50,7 @@
         </div>
         <div id="all_files" class="block">
             <h2 class="subtitle">Files</h2>
+
             <div class="files_blocks" class="inside_block">
                 <div id="verbali_block" class="files_list">
                     <h3 class="files_title">Verbali</h3>
@@ -76,6 +77,15 @@
                         </div>
                     </div>
                 </div>
+
+                <div id="internal_docs_block" class="inside_block">
+                    <h3 class="files_title">RTB</h3>
+                    <div class="inside_block">
+                        <div id="rtb_files">
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
         <footer>
@@ -106,6 +116,11 @@
             loadPdfFiles({
                 path: 'Documenti_interni',
                 divId: 'intDocs_files',
+            });
+
+            loadPdfFiles({
+                path: '2_RTB',
+                divId: 'rtb_files',
             });
 
         });
