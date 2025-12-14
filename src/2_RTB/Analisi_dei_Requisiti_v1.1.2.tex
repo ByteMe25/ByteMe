@@ -64,7 +64,7 @@
         \centering
         \begin{tabular}{|l|p{5cm}|}
             \hline
-            \textbf{Versione} & 1.1.1 \\
+            \textbf{Versione} & 1.1.2 \\
             \hline
             \textbf{Stato} & In corso \\
             \hline
@@ -95,6 +95,8 @@
     \begin{tabular}{|c|c|c|>{\raggedright\arraybackslash}p{0.4\textwidth}|}
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} \\
+        \hline
+        1.1.2 & 14/12/2025 & Giulia Barzon & Correzione errori e scrittura introduzione e classificazione dei requisiti\\
         \hline
         1.1.1 & 08/12/2025 & Giulia Barzon & Inserimento caso d'uso 1.9 (Unicode) e creazione primo diagramma caso d'uso di esempio (2.3 e 2.9-2.11)\\
         \hline
@@ -1074,7 +1076,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-2.7.7 - Gestione dell'Analisi Critica Generata}
+\subsubsection{UC-2.7.6 - Gestione dell'Analisi Critica Generata}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: Sistema di visualizzazione e organizzazione delle analisi critiche generate nel documento
@@ -1615,83 +1617,107 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
 
 \section{Requisiti}
 \subsection{Classificazione dei requisiti}
-Il gruppo ByteMe durante l'analisi dei requisiti e dei casi d'uso ha individuato i requisiti esposti di seguito, suddividendoli in obbligatori, cioè i requisiti esplicitamente richiesti dall'azienda Zucchetti; desiderabili, cioè requisiti opzionali che il gruppo si impegna ad implementare per migliorare il prodotto; opzionali, cioè requisiti che hanno una priorità più bassa e possono non essere implementati.
+Il gruppo ByteMe durante l'analisi dei requisiti e dei casi d'uso ha individuato i requisiti esposti di seguito.
+I requisiti sono stati classificati secondo una notazione standardizzata per garantirne la tracciabilità e una chiara comprensione.
+Ogni requisito è identificato da un codice univoco che ne esplicita l'importanza e la tipologia.
 
-\subsection{Requisiti obbligatori}
+\subsubsection{Notazione standardizzata dei requisiti}
+Il codice identificativo segue il formato:
+\[
+R[Importanza]-[Tipo]-[Numero]
+\]
+Dove le voci assumono i seguenti significati:
+
+\begin{description}
+    \item[Importanza] \hfill \\
+    Indica il grado di priorità del requisito:
+    \begin{itemize}
+        \item \textbf{O (Obbligatorio):} Requisito esplicitamente richiesto dall'azienda Zucchetti. La sua mancata implementazione implica il fallimento degli obiettivi primari del progetto.
+        \item \textbf{D (Desiderabile):} Requisito non strettamente vincolante ma che il gruppo si impegna ad implementare per migliorare il prodotto.
+        \item \textbf{OP (Opzionale):} Requisito di priorità minore, la cui implementazione può essere rimandata.
+    \end{itemize}
+    
+    \item[Tipo] \hfill \\
+    Indica la natura del requisito:
+    \begin{itemize}
+        \item \textbf{F (Funzionale):} Descrive le funzionalità e i servizi che il sistema deve fornire.
+        \item \textbf{V (Vincolo):} Descrive limitazioni tecnologiche, normative o implementative imposte esternamente.
+        \item \textbf{Q (Qualità):} Descrive le caratteristiche qualitative del sistema (es. performance, sicurezza, manutenibilità).
+    \end{itemize}
+    
+    \item[Numero] \hfill \\
+    Un numero intero progressivo univoco per tipologia di requisito.
+\end{description}
+
+\subsection{Categorie dei Requisiti}
+Per una maggiore chiarezza espositiva, i requisiti sono stati suddivisi in tre macro-categorie distinte.
+
+\subsubsection{Requisiti Funzionali}
+I requisiti funzionali\textsubscript{G} definiscono i comportamenti specifici del sistema, descrivendo le interazioni tra gli attori e il software.
+Rappresentano le funzionalità tangibili che l'utente utilizza per raggiungere i propri obiettivi (es. scrittura del testo, selezione per analisi AI, esportazione documenti). La verifica di tali requisiti determina l'aderenza del prodotto alle funzioni richieste dal capitolato.
+
+% tabella per i requisiti funzionali: codice - descrizione - UC correlati
+
 \begin{table}[H]
     \centering
-    \begin{tabular}{|c|>{\raggedright\arraybackslash}p{0.7\textwidth}|c|c|}
+    \begin{tabular}{|c|>{\raggedright\arraybackslash}p{0.6\textwidth}|c|}
         \hline
-        \textbf{Codice} & \textbf{Descrizione} \\
+        \textbf{Requisito} & \textbf{Descrizione} & \textbf{Casi d'uso correlati}\\
         \hline
-        RO1 & Editor di testo online con supporto Markdown \\
+        RO-F-1 & Descrizione... & UC-1.0 \\
         \hline
-        RO2 & Rendering grafico del Markdown compilato \\
+        RO-F-2 & Descrizione... & UC-1.1 \\
         \hline
-        RO3 & Integrazione LLM per operazioni su testo intero o selezionato \\
-        \hline
-        RO4 & Funzioni AI di base sul testo: riassunto, riscrittura, traduzione, correzione \\
-        \hline
-        RO5 & Analisi critica tramite modello "Sei Cappelli per Pensare" \\
-        \hline
-        RO6 & Generazione testo automatico (distant writing) \\
-        \hline
-        RO7 & Persistenza locale dei file di testo: salvataggio e lettura note \\
+        RO-F-3 &Descrizione... & UC-2.0 \\
         \hline
     \end{tabular}
-    \caption{Tabella dei requisiti obbligatori}
+    \caption{Tabella dei requisiti funzionali}
 \end{table}
 
-\subsection{Requisiti desiderabili}
+
+\subsubsection{Requisiti di Vincolo}
+I requisiti di vincolo\textsubscript{G} rappresentano le limitazioni entro le quali il progetto deve essere sviluppato. A differenza dei requisiti funzionali, questi non derivano da scelte progettuali del team, ma sono imposizioni esterne dettate dal committente, da normative o da limiti tecnologici.
+Questi comprendono i vincoli tecnologici, architetturali e organizzativi.
+
+% tabella per i requisiti non funzionali di vincolo
+
 \begin{table}[H]
     \centering
-    \begin{tabular}{|c|>{\raggedright\arraybackslash}p{0.7\textwidth}|c|c|}
+    \begin{tabular}{|c|>{\raggedright\arraybackslash}p{0.6\textwidth}|c|}
         \hline
-        \textbf{Codice} & \textbf{Descrizione} \\
+        \textbf{Requisito} & \textbf{Descrizione} & \textbf{Casi d'uso correlati}\\
         \hline
-        RD1 & Sistema di registrazione e autenticazione utente \\
+        RO-V-1 & Descrizione... & UC-1.0 \\
         \hline
-        RD2 & Archivio centralizzato delle note su database server-side \\
+        RO-V-2 & Descrizione... & UC-1.1 \\
         \hline
-        RD3 & Gestione operazioni CRUD su file remoti (Create, Read, Update, Delete) \\
+        RO-V-3 &Descrizione... & UC-2.0 \\
         \hline
-        RD4 & Recupero e modifica note esistenti senza operazioni manuali di download/upload \\
-        \hline
-        RD5 & Accesso persistente alle note senza operazioni manuali di sincronizzazione \\
-        \hline
-        
     \end{tabular}
-    \caption{Tabella dei requisiti desiderabili}
+    \caption{Tabella dei requisiti di vincolo}
 \end{table}
 
-\subsection{Requisiti opzionali}
+
+\subsubsection{Requisiti di Qualità}
+I requisiti di qualità\textsubscript{G} specificano le caratteristiche intrinseche del software. Non descrivono nuove funzioni, ma stabiliscono \textit{come} il sistema deve erogare quelle esistenti. 
+
+% tabella per i requisiti non funzionali di qualità
+
 \begin{table}[H]
     \centering
-    \begin{tabular}{|c|>{\raggedright\arraybackslash}p{0.7\textwidth}|c|c|}
+    \begin{tabular}{|c|>{\raggedright\arraybackslash}p{0.6\textwidth}|c|}
         \hline
-        \textbf{Codice} & \textbf{Descrizione} \\
+        \textbf{Requisito} & \textbf{Descrizione} & \textbf{Casi d'uso correlati}\\
         \hline
-        ROP1 & Generazione automatica di grafici, tabelle e formule matematiche \\
+        RO-Q-1 & Descrizione... & UC-1.0 \\
         \hline
-        ROP2 & Sistema di link ipertestuali tra note all'interno del markup \\
+        RO-Q-2 & Descrizione... & UC-1.1 \\
         \hline
-        ROP3 & Utilizzo note collegate come contesto per l'AI durante la generazione testo \\
+        RO-Q-3 &Descrizione... & UC-2.0 \\
         \hline
-        ROP4 & Trasformazione testo in mappe concettuali e diagrammi \\
-        \hline
-        ROP5 & Ricerca avanzata di parole e frasi all'interno dei documenti \\
-        \hline
-        
     \end{tabular}
-    \caption{Tabella dei requisiti opzionali}
+    \caption{Tabella dei requisiti di qualità}
 \end{table}
-
-\subsection{Tracciamento requisiti}
-\subsubsection{Tracciamento casi d'uso-requisiti}
-Tabella che collega ogni caso d'uso ai requisiti corrispondenti
-
-\subsubsection{Tabella di riepilogo}
-Tabella riassuntiva con il conteggio totale dei requisiti per categoria...
 
 \newpage
 

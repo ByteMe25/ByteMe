@@ -68,7 +68,7 @@
         \centering
         \begin{tabular}{|l|p{5cm}|}            
             \hline
-            \textbf{Versione} & 1.2.3 \\
+            \textbf{Versione} & 1.2.4 \\
             \hline
             \textbf{Stato} & Da Approvare \\
             \hline
@@ -95,6 +95,8 @@
     \begin{tabular}{|c|c|c|>{\raggedright\arraybackslash}p{0.4\textwidth}|}
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} \\
+        \hline
+        1.2.4 & 14/12/2025 & Giulia Barzon & Aggiunta parole requisiti funzionali, non funzionali, di qualità, di vincolo e Piano di qualifica \\
         \hline
         1.2.3 & 8/12/2025 & Elisa Marchioro & Aggiunta parole toolbar, user story, milestone, issue, commit, merge \\
         \hline
@@ -257,9 +259,11 @@ Il documento è strutturato in sezioni dedicate ad una specifica lettera dell'al
 \section*{P}
 \addcontentsline{toc}{section}{P}
 \begin{itemize}
-\item \textbf{Piano di Progetto}: Documento strategico e operativo che definisce il piano di esecuzione complessivo del progetto, descrivendo come il team intende raggiungere gli obiettivi prefissati. Il suo scopo è fornire una roadmap strutturata e condivisa, che indichi cosa deve essere fatto, da chi, con quali risorse, entro quando e quali rischi si possono incontrare. Serve come base per organizzare il lavoro, monitorare lo stato di avanzamento, gestire le deviazioni e comunicare in modo trasparente l’andamento a committenti e proponenti.
+\item \textbf{Piano di Progetto (PdP)}: Documento strategico e operativo che definisce il piano di esecuzione complessivo del progetto, descrivendo come il team intende raggiungere gli obiettivi prefissati. Il suo scopo è fornire una roadmap strutturata e condivisa, che indichi cosa deve essere fatto, da chi, con quali risorse, entro quando e quali rischi si possono incontrare. Serve come base per organizzare il lavoro, monitorare lo stato di avanzamento, gestire le deviazioni e comunicare in modo trasparente l’andamento a committenti e proponenti.
 
-\item \textbf{Proof of Concept (PoC)}: Prototipo iniziale per verificare la fattibilità delle funzionalità core.
+\item \textbf{Piano di Qualifica (PdQ)}: Documento che definisce la strategia, le metodologie e le risorse necessarie per garantire la qualità del prodotto software e del processo di sviluppo. Esso stabilisce gli obiettivi di qualità (tramite metriche e soglie di accettazione), pianifica le attività di verifica e validazione (analisi statica e dinamica) e descrive le procedure di miglioramento continuo (ciclo PDCA). Il PdQ funge da riferimento per assicurare che il progetto soddisfi i requisiti funzionali, di qualità e di vincolo concordati.
+
+\item \textbf{Proof of Concept (PoC)}: Prototipo iniziale e limitato del software, sviluppato per dimostrare la fattibilità delle funzionalità core e dell'idea del progetto in generale.
 
 \item \textbf{PB (Product Baseline)}: È la definizione completa del prodotto dal punto di vista funzionale e progettuale, usata come base per sviluppo, test e verifica. Include anche l’MVP (Minimum Viable Product), cioè la versione minima del prodotto che contiene solo le funzionalità essenziali per essere testata dagli utenti e ricevere feedback.
 
@@ -275,6 +279,22 @@ Il documento è strutturato in sezioni dedicate ad una specifica lettera dell'al
 \addcontentsline{toc}{section}{R}
 \begin{itemize}
 \item \textbf{Repository}: Spazio in cui viene salvato il codice del progetto insieme a tutte le versioni e i file utili. Permette al team di lavorare insieme senza perdere il lavoro svolto.
+
+\item \textbf{Requisiti funzionali}: Descrivono i comportamenti del sistema. Sono le azioni che il software deve compiere in risposta a determinati input. Se un requisito funzionale non è soddisfatto, manca una funzionalità. Rispondono alla domanda: \textit{Cosa deve fare il software?}
+
+\item \textbf{Requisiti non funzionali}: I requisiti non funzionali descrivono le proprietà del sistema o i vincoli entro cui deve operare. Non aggiungono "cose da fare", ma stabiliscono quanto bene il sistema deve farle. Rispondono alla domanda: \textit{Come si deve comportare il sistema mentre fa le cose?}
+
+\item \textbf{Requisiti di qualità}: I requisiti di qualità definiscono quanto bene il sistema deve funzionare. Non riguardano cosa fa il sistema, ma le sue caratteristiche intrinseche come affidabilità, manutenibilità, efficienza e usabilità. Spesso derivano da standard ISO (come ISO/IEC 25010).
+Rispondono alla domanda: \textit{Quali standard di eccellenza deve rispettare il mio codice/prodotto?}
+
+\item \textbf{Requisiti di vincolo}: I vincoli sono limitazioni imposte dall'esterno (dal committente, dalla legge, o dalla tecnologia disponibile) entro le quali dobbiamo muoverci. Non abbiamo libertà di scelta su questi aspetti, sono i "paletti" del progetto.
+Esempio requisiti di vincolo:
+\begin{itemize}
+\item Tecnologici: il progetto deve essere un'applicazione web basata su HTML/JS e che l'editor deve essere basato su Markdown. 
+\item Architetturali: l'applicazione deve funzionare prevalentemente client-side (sul browser).
+\item Interfaccia esterna: usare le API standard (tipo OpenAI) per collegarsi all'LLM.
+Licenza/Consegna: il codice deve essere pubblicato su un repository pubblico (es. GitHub) con licenza open-source (non so se considerarlo un requisito).
+\end{itemize}
 
 \item \textbf{RTB (Requirements and Technology Baseline)}: Punto di riferimento formale e congelato del progetto, rappresentato da un documento approvato che stabilisce in modo definitivo l’insieme dei requisiti funzionali e non funzionali del sistema, insieme alle scelte architetturali e tecnologiche fondamentali su cui si baserà lo sviluppo. 
 \end{itemize}
