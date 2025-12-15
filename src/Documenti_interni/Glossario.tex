@@ -68,7 +68,7 @@
         \centering
         \begin{tabular}{|l|p{5cm}|}            
             \hline
-            \textbf{Versione} & 1.2.4 \\
+            \textbf{Versione} & 1.2.5 \\
             \hline
             \textbf{Stato} & Da Approvare \\
             \hline
@@ -96,11 +96,13 @@
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} \\
         \hline
-        1.2.4 & 14/12/2025 & Giulia Barzon & Aggiunta parole requisiti funzionali, non funzionali, di qualità, di vincolo e Piano di qualifica \\
+        1.2.5 & 15/12/2025 & Giulia Barzon & Aggiunte parole relative a Piano di qualifica e testing\\
         \hline
-        1.2.3 & 8/12/2025 & Elisa Marchioro & Aggiunta parole toolbar, user story, milestone, issue, commit, merge \\
+        1.2.4 & 14/12/2025 & Giulia Barzon & Aggiunte parole requisiti funzionali, non funzionali, di qualità, di vincolo e Piano di qualifica \\
         \hline
-        1.2.2 & 5/12/2025 & Giulia Barzon & Verifica documento e aggiunta parole relative al Piano di Progetto e ai casi d'uso \\
+        1.2.3 & 8/12/2025 & Elisa Marchioro & Aggiunte parole toolbar, user story, milestone, issue, commit, merge \\
+        \hline
+        1.2.2 & 5/12/2025 & Giulia Barzon & Verifica documento e aggiunte parole relative al Piano di Progetto e ai casi d'uso \\
         \hline
         1.2.1 & 4/12/2025 & Elisa Marchioro & Aggiunta parole agile, scrum, varie fasi dello sprint, RTB, PB, CA, verifica, validazione \\
         \hline
@@ -134,9 +136,16 @@ Il documento è strutturato in sezioni dedicate ad una specifica lettera dell'al
 \section*{A}
 \addcontentsline{toc}{section}{A}
 \begin{itemize}
+\item \textbf{Affidabilità (Reliability)}: È la capacità del prodotto software di svolgere le proprie funzioni specificate sotto determinate condizioni e per un determinato periodo di tempo, mantenendo un livello di prestazioni corretto.
+Metrica tipica: Failure Density (densità di fallimenti nei test).
+
 \item \textbf{Agile}: È un modo di sviluppare software basato su cicli di lavoro brevi, collaborazione continua e adattamento ai cambiamenti, così da poter migliorare il prodotto passo dopo passo e consegnare rapidamente valore all’utente.
 
 \item \textbf{Analisi dei requisiti}: Fase in cui si raccolgono e si comprendono i bisogni del cliente e cosa deve fare il software.
+
+\item \textbf{Analisi Dinamica}: Attività di verifica che prevede l'esecuzione del codice software (oggetti di prova) su un processore reale o virtuale, fornendo dati in input e controllando che l'output corrisponda ai risultati attesi (oracolo). Corrisponde ai test "veri e propri" (Test di unità, Test di integrazione, Test di sistema, Test di accettazione, Test di Regressione).
+
+\item \textbf{Analisi Statica}: Attività di controllo del software effettuata senza eseguire il codice. Include la revisione dei documenti, l'analisi automatica della sintassi e del rispetto degli standard di codifica tramite strumenti. Appartiene alla categoria dei test non funzionali e aiuta a prevenire difetti prima dell'esecuzione.
 
 \item \textbf{API}: Insieme di regole che permette a diversi software di comunicare tra loro. È come un “ponte” che permette a un software di usare funzioni o dati di un altro software.
 \end{itemize}
@@ -146,6 +155,9 @@ Il documento è strutturato in sezioni dedicate ad una specifica lettera dell'al
 \addcontentsline{toc}{section}{B}
 \begin{itemize}
 \item \textbf{Backlog}: Elenco delle cose da fare nel progetto, organizzato in base a priorità.
+
+\item \textbf{Branch Coverage (Copertura dei Rami)}: Metrica specifica di copertura che verifica se ogni singolo ramo (decisione vero/falso) del flusso di controllo è stato attraversato almeno una volta dai test.
+
 \end{itemize}
 \newpage
 
@@ -155,7 +167,16 @@ Il documento è strutturato in sezioni dedicate ad una specifica lettera dell'al
 
 \item \textbf{CA (Costumer Acceptance)}: Fase in cui il cliente controlla il prodotto consegnato e conferma che rispetta i requisiti richiesti.
 
+\item \textbf{Checklist}: Lista di controllo contenente elementi specifici da verificare manualmente durante le attività di revisione (Inspection o Walkthrough) di documenti o codice. Serve a garantire che errori comuni (es. ortografia, formattazione, mancanza di caption) siano individuati e corretti in modo sistematico.
+
+\item \textbf{Code Coverage (Copertura del Codice)}: Misura che indica la percentuale di codice sorgente che viene eseguita durante l'esecuzione di una suite di test automatici.
+Serve a valutare l'efficacia dei test: più è alta, minore è il rischio di difetti non rilevati, anche se il cento per cento non garantisce l'assenza di errori.
+
 \item \textbf{Commit}: Registrazione di un insieme di modifiche nella repository, accompagnata da un messaggio che descrive cosa è stato modificato.
+
+\item \textbf{Complessità Ciclomatica}: Metrica software che misura la complessità del flusso di controllo di un programma contandone il numero di percorsi linearmente indipendenti. Si calcola con la formula $v(G)=e-n+2p$ (dove $e$ sono gli archi, $n$ i nodi, $p$ le componenti connesse). Un valore alto indica un codice difficile da testare e mantenere, poiché cresce con la presenza di branch, salti e iterazioni.
+
+\item \textbf{Cruscotto di Qualità}: sezione del Piano di Qualifica (o uno strumento software) che visualizza in modo sintetico lo stato corrente del progetto rispetto agli obiettivi prefissati. Utilizza grafici e tabelle per confrontare i valori misurati (es. costi, tempi, errori) con i valori attesi (ottimali o accettabili). Serve a monitorare l'andamento nel tempo di metriche definite nel Piano di Qualifica.
 
 \end{itemize}
 \newpage
@@ -164,6 +185,10 @@ Il documento è strutturato in sezioni dedicate ad una specifica lettera dell'al
 \addcontentsline{toc}{section}{D}
 \begin{itemize}
 \item \textbf{Database}: Sistema per memorizzare e gestire dati in modo organizzato.
+
+\item \textbf{Debito Tecnico (Technical Debt)}: metafora che indica il costo implicito di una rielaborazione aggiuntiva causata dalla scelta di una soluzione facile e rapida (ma non ottimale) invece di utilizzare un approccio migliore che richiederebbe più tempo. Può essere consapevole (deliberato) o inconsapevole (inavvertito).
+Se non si "ripaga" il debito (es. facendo refactoring), il costo degli errori residui e della manutenzione cresce nel tempo.
+
 \item \textbf{Distant Writing}: Modalità di scrittura in cui l'utente fornisce le specifiche e l'LLM genera il testo completo.
 \end{itemize}
 \newpage
@@ -175,7 +200,9 @@ Il documento è strutturato in sezioni dedicate ad una specifica lettera dell'al
 
 \item \textbf{Efficacia}: Misura della capacità di raggiungere l'obiettivo prefissato.
 
-\item \textbf{Efficienza}: Misura dell'abilità di raggiungere l’obiettivo impiegando le risorse minime indispensabili.
+\item \textbf{Efficienza (Efficiency)}: Misura dell'abilità di raggiungere l’obiettivo impiegando le risorse minime indispensabili.
+È la capacità del prodotto software di fornire prestazioni adeguate (es. tempo di risposta) in relazione alla quantità di risorse utilizzate, sotto condizioni stabilite. Metrica tipica: Tempo di risposta medio.
+
 \end{itemize}
 \newpage
 
@@ -203,6 +230,7 @@ Il documento è strutturato in sezioni dedicate ad una specifica lettera dell'al
 \section*{I}
 \addcontentsline{toc}{section}{I}
 \begin{itemize}
+\item \textbf{Inspection (Ispezione)}: Tecnica di revisione statica formale e strutturata, eseguita da un gruppo di pari con l'obiettivo specifico di rilevare difetti e non conformità. A differenza del Walkthrough, l'Inspection si basa sull'uso di checklist per verificare il rispetto di standard e regole predefinite. Nel Piano di Qualifica l'Inspection è spesso preferita al Walkthrough per le attività di verifica ufficiale perché garantisce un controllo più oggettivo e approfondito grazie alle checklist.
 
 \item \textbf{Issue}: Attività, richiesta o problema tracciato all’interno di un sistema di gestione del progetto (come GitHub), che richiede attenzione o sviluppo.
 
@@ -230,6 +258,8 @@ Il documento è strutturato in sezioni dedicate ad una specifica lettera dell'al
 \section*{M}
 \addcontentsline{toc}{section}{M}
 \begin{itemize}
+\item \textbf{Manutenibilità (Maintainability)}: È la facilità con cui il prodotto software può essere modificato da parte dei manutentori per correggere difetti, adattarlo a nuovi ambienti o soddisfare nuovi requisiti.
+Metrica tipica: Complessità Ciclomatica (più è bassa, più è manutenibile).
 
 \item \textbf{Markdown}: Linguaggio di markup leggero per la formattazione di testo semplice.
 
@@ -259,19 +289,25 @@ Il documento è strutturato in sezioni dedicate ad una specifica lettera dell'al
 \section*{P}
 \addcontentsline{toc}{section}{P}
 \begin{itemize}
+\item \textbf{PB (Product Baseline)}: È la definizione completa del prodotto dal punto di vista funzionale e progettuale, usata come base per sviluppo, test e verifica. Include anche l’MVP (Minimum Viable Product), cioè la versione minima del prodotto che contiene solo le funzionalità essenziali per essere testata dagli utenti e ricevere feedback.
+
+\item \textbf{PDCA (Plan-Do-Check-Act)}: metodo di gestione iterativo utilizzato per il controllo e il miglioramento continuo dei processi e dei prodotti. Nel Piano di Qualifica rappresenta la strategia di gestione della qualità: Plan (pianificare obiettivi e metriche), Do (eseguire le attività), Check (verificare i risultati tramite il Cruscotto), Act (applicare correzioni se i risultati non sono accettabili).
+
 \item \textbf{Piano di Progetto (PdP)}: Documento strategico e operativo che definisce il piano di esecuzione complessivo del progetto, descrivendo come il team intende raggiungere gli obiettivi prefissati. Il suo scopo è fornire una roadmap strutturata e condivisa, che indichi cosa deve essere fatto, da chi, con quali risorse, entro quando e quali rischi si possono incontrare. Serve come base per organizzare il lavoro, monitorare lo stato di avanzamento, gestire le deviazioni e comunicare in modo trasparente l’andamento a committenti e proponenti.
 
 \item \textbf{Piano di Qualifica (PdQ)}: Documento che definisce la strategia, le metodologie e le risorse necessarie per garantire la qualità del prodotto software e del processo di sviluppo. Esso stabilisce gli obiettivi di qualità (tramite metriche e soglie di accettazione), pianifica le attività di verifica e validazione (analisi statica e dinamica) e descrive le procedure di miglioramento continuo (ciclo PDCA). Il PdQ funge da riferimento per assicurare che il progetto soddisfi i requisiti funzionali, di qualità e di vincolo concordati.
 
 \item \textbf{Proof of Concept (PoC)}: Prototipo iniziale e limitato del software, sviluppato per dimostrare la fattibilità delle funzionalità core e dell'idea del progetto in generale.
 
-\item \textbf{PB (Product Baseline)}: È la definizione completa del prodotto dal punto di vista funzionale e progettuale, usata come base per sviluppo, test e verifica. Include anche l’MVP (Minimum Viable Product), cioè la versione minima del prodotto che contiene solo le funzionalità essenziali per essere testata dagli utenti e ricevere feedback.
-
 \end{itemize}
 \newpage
 
 \section*{Q}
 \addcontentsline{toc}{section}{Q}
+\begin{itemize}
+\item \textbf{Quality Gates (Cancelli di Qualità)}: Criteri di controllo automatico imposti al codice per verificare se la qualità rispetta gli standard minimi definiti. Permettono di stabilire se il progetto può passare a uno stadio successivo o se una modifica può essere accettata. Se il codice non supera il \textit{Quality Gate}, la modifica viene bloccata.
+
+\end{itemize}
 
 \newpage
 
@@ -324,6 +360,16 @@ Licenza/Consegna: il codice deve essere pubblicato su un repository pubblico (es
 
 \item \textbf{Toolbar}: Elemento dell’interfaccia grafica che raccoglie pulsanti e funzioni di uso frequente, permettendo un accesso rapido alle operazioni principali.
 
+\item \textbf{Test di Accettazione (Acceptance Testing / Collaudo)}: Validazione finale per accertare il soddisfacimento dei requisiti utente, svolta nella fase finale prima del rilascio.
+
+\item \textbf{Test di Integrazione}: Verificano le interfacce e l'interazione tra moduli o sottosistemi già testati singolarmente. Vengono fatti dopo i test di unità, risale il V-Model verso l'architettura (Global Design). Rilevano difetti nella progettazione architetturale o nello scambio dati tra componenti.
+
+\item \textbf{Test di Regressione}: Non è una fase separata, ma una pratica trasversale. Ogni volta che si modifica il codice o si aggiunge una funzionalità, si eseguono di nuovo i test precedenti per assicurarsi di non aver rotto funzionalità già esistenti.
+
+\item \textbf{Test di Sistema}: Verificano il comportamento dell'intero sistema software completo rispetto alle specifiche tecniche. Verificano il sistema completo rispetto ai requisiti funzionali e non funzionali. Includono test non funzionali (performance, sicurezza, usabilità). Comprendono anche smoke test (test rapidi di stabilità). Vengono fatti dopo l'integrazione, corrisponde alla verifica dei "System Requirements".
+
+\item \textbf{Test di Unità (Unit Testing)}: È la verifica del più piccolo componente software funzionante autonomamente (es. un metodo o una classe in Java). Vengono fatti durante la codifica (Coding) o addirittura prima (TDD - Test Driven Development). Corrispondono alla fase di "Detailed Design" nel V-Model. Devono essere Automatici, Thorough (accurati/esaustivi), Ripetibili, Indipendenti (l'ordine non conta) e Professionali (codice di qualità).
+
 \end{itemize}
 
 \newpage
@@ -331,11 +377,14 @@ Licenza/Consegna: il codice deve essere pubblicato su un repository pubblico (es
 \section*{U}
 \addcontentsline{toc}{section}{U}
 \begin{itemize}
+\item \textbf{Usabilità (Usability)}: È il grado con cui un prodotto può essere usato da specifici utenti per raggiungere specifici obiettivi con efficacia, efficienza e soddisfazione. Include la facilità di apprendimento e comprensione.
+Metrica tipica: Tempo di apprendimento, Numero di click per raggiungere un obiettivo.
+
+\item \textbf{User story}: Descrizione sintetica di una funzionalità dal punto di vista dell’utente, utilizzata nei metodi Agile per chiarire cosa il sistema deve permettere di fare.
+
 \item \textbf{Utente Autenticato}: Categoria di utente che ha completato il processo di registrazione e/o accesso al sistema. Questo profilo abilita l'accesso a funzionalità avanzate del prodotto, tra cui la persistenza cloud dei propri documenti, la gestione remota (CRUD) dei file e l'accesso persistente e sincronizzato alle note senza operazioni manuali di upload/download. È un attore primario nel sistema, destinato a utenti che necessitano di un ambiente di lavoro persistente e personalizzato.
 
 \item \textbf{Utente Non Autenticato}: Categoria di utente che interagisce con il sistema senza effettuare registrazione o login. Ha accesso alle funzionalità base del prodotto, tra cui l'utilizzo dell'editor Markdown, le operazioni AI su testo (riassunto, riscrittura, correzione, etc.) e la persistenza locale dei file. È un attore primario nel sistema, pensato per un utilizzo immediato, occasionale o privo dell'esigenza di salvataggio remoto e sincronizzazione.
-
-\item \textbf{User story}: Descrizione sintetica di una funzionalità dal punto di vista dell’utente, utilizzata nei metodi Agile per chiarire cosa il sistema deve permettere di fare.
 
 \end{itemize}
 
@@ -350,6 +399,8 @@ Licenza/Consegna: il codice deve essere pubblicato su un repository pubblico (es
 
 \item \textbf{Versionamento}: Pratica sistematica di assegnare identificativi univoci e incrementali alle diverse versioni di un documento o di un componente software, al fine di tracciarne l'evoluzione nel tempo; garantisce tracciabilità, consente il controllo delle modifiche e facilita il ripristino di versioni precedenti.
 
+\item \textbf{V-Model (Modello a V)}: modello di sviluppo software sequenziale che evidenzia la relazione diretta "uno a uno" tra le fasi di sviluppo (lato sinistro della V) e le corrispondenti fasi di test (lato destro della V). Serve a capire che non si testa "alla fine", ma ogni fase di test verifica una specifica fase di progettazione.
+
 
 \end{itemize}
 
@@ -358,6 +409,8 @@ Licenza/Consegna: il codice deve essere pubblicato su un repository pubblico (es
 \section*{W}
 \addcontentsline{toc}{section}{W}
 \begin{itemize}
+\item \textbf{Walkthrough}: Tecnica di revisione statica (generalmente informale) in cui l'autore di un artefatto software (come un documento di requisiti o una porzione di codice) guida i membri del team attraverso il suo contenuto per ricevere feedback, favorire la comprensione comune e individuare errori evidenti. È utile per la condivisione della conoscenza all'interno del team, ma è meno rigoroso dell'Inspection.
+
 \item \textbf{Way of Working}: Insieme strutturato di regole, processi, strumenti e pratiche adottate da un gruppo di lavoro per organizzare, coordinare e gestire le attività di un progetto. Definisce le modalità di comunicazione interna ed esterna, la gestione del codice e della documentazione, l’assegnazione e rotazione dei ruoli, nonché i flussi di verifica e approvazione. Il Way of Working ha lo scopo di garantire efficienza, tracciabilità, collaborazione e miglioramento continuo durante l’intero ciclo di vita del progetto.
 
 \end{itemize}
