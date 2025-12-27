@@ -96,8 +96,9 @@
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verifica} \\
         \hline
-        1.1.4 & 27/12/2025 & Joseph Grant & Aggiunta sezione 'verifica' al versionamento & \\ \hline
-        1.1.3 & 27/12/2025 & Matteo Cuogo & Correzione e ampliamento dei casi d'uso rivisti & \\
+        1.1.5 & 27/12/2025 & Elisa Marchioro & Aggiunto sottocaso 4.3.1 & \\ \hline
+        1.1.4 & 27/12/2025 & Joseph Grant & Aggiunta sezione 'verifica' al versionamento & Elisa Marchioro\\ \hline
+        1.1.3 & 27/12/2025 & Matteo Cuogo & Correzione e ampliamento dei casi d'uso rivisti & Elisa Marchioro\\
         \hline
         1.1.2 & 14/12/2025 & Giulia Barzon & Correzione errori e scrittura introduzione e classificazione dei requisiti &\\
         \hline
@@ -105,7 +106,7 @@
         \hline
         1.1.0 & 07/12/2025 & Giulia Barzon & Inserimeno casi d'uso identificati & \\
         \hline
-        1.0.0 & 20/11/2025 & Giulia Barzon & Creazione del documento e scrittura introduzione & \\
+        1.0.0 & 20/11/2025 & Giulia Barzon & Creazione del documento e scrittura introduzione & Elisa Marchioro\\
         \hline
     \end{tabular}
     \caption{Registro delle versioni del documento}
@@ -1522,7 +1523,7 @@ del documento
 \subsubsection{UC-4.3 - Stampare il documento}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
-    \item \textbf{Descrizione}: Utente desidera di stampare il documento senza doverlo prima esportare
+    \item \textbf{Descrizione}: Utente desidera stampare il documento senza doverlo prima esportare
     \item \textbf{Precondizioni}: L'utente ha un documento aperto
     \item \textbf{Postcondizioni}: L'utente ottiene il documento stampato
     \item \textbf{Scenario principale}:
@@ -1534,6 +1535,21 @@ del documento
         \end{itemize}
 \end{itemize}
 
+\subsubsection{UC-4.3.1 - Stampare selezionate pagine del documento}
+\begin{itemize}
+    \item \textbf{Attore principale}: Utente generico
+    \item \textbf{Descrizione}: Utente desidera stampare solo alcune pagine del documento
+    \item \textbf{Precondizioni}: L'utente ha un documento aperto
+    \item \textbf{Postcondizioni}: L'utente ottiene il documento stampato
+    \item \textbf{Scenario principale}:
+        \begin{itemize}
+            \item Utente ha un documento aperto che desidera stampare
+            \item Utente preme un pulsante "stampa"
+            \item Utente ha accesso alle opzioni di stampa offerte dal suo browser
+            \item Utente ha la possibilità di selezionare le pagine che desidera stampare
+            \item Utente ritorna al proprio documento una volta completata l'operazione
+        \end{itemize}
+\end{itemize}
 
 \newpage
 
