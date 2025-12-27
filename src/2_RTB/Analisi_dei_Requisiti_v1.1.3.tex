@@ -64,7 +64,7 @@
         \centering
         \begin{tabular}{|l|p{5cm}|}
             \hline
-            \textbf{Versione} & 1.1.2 \\
+            \textbf{Versione} & 1.1.3 \\
             \hline
             \textbf{Stato} & In corso \\
             \hline
@@ -95,6 +95,8 @@
     \begin{tabular}{|c|c|c|>{\raggedright\arraybackslash}p{0.4\textwidth}|}
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} \\
+        \hline
+        1.1.3 & 27/12/2025 & Matteo Cuogo & Correzione e ampliamento dei casi d'uso rivisti\\
         \hline
         1.1.2 & 14/12/2025 & Giulia Barzon & Correzione errori e scrittura introduzione e classificazione dei requisiti\\
         \hline
@@ -264,8 +266,9 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \item \textbf{Scenario principale}:
         \begin{itemize}
             \item L'utente modifica il testo nell'editor
-            \item Il sistema elabora in tempo reale la sintassi Markdown
-            \item Il sistema mostra l'anteprima formattata nel pannello di preview
+            \item L’utente preme il pulsante “Compila”
+            \item Il sistema elabora la sintassi Markdown
+            \item Il sistema aggiorna il pannello di preview mostrando l’anteprima formattata del documento
             \item L'utente può confrontare editing e risultato finale
         \end{itemize}
     \item \textbf{Estensioni}:
@@ -342,8 +345,28 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \end{itemize}
 \end{itemize}
 
+\subsubsection{UC-1.5 - Tagliare il testo}
+\begin{itemize}
+    \item \textbf{Attore principale}: Utente generico
+    \item \textbf{Descrizione}: L'utente taglia una parte di testo dall'area di modifica, rimuovendola dal documento e copiandola negli appunti
+    \item \textbf{Precondizioni}: Testo presente e selezionato
+    \item \textbf{Postcondizioni}: Il testo selezionato viene rimosso dall'editor e salvato negli appunti di sistema
+    \item \textbf{Scenario principale}:
+        \begin{itemize}
+            \item L'utente seleziona una porzione di testo
+            \item L'utente utilizza il comando "Taglia" tramite:
+                \begin{enumerate}
+                    \item Tasto di scelta rapida (Ctrl+X)
+                    \item Menu contestuale (tasto destro)
+                    \item Toolbar dell'editor (opzionale)
+                \end{enumerate}
+            \item Il sistema rimuove il testo selezionato dall'editor
+            \item Il testo rimosso viene salvato negli appunti di sistema
+        \end{itemize}
+\end{itemize}
 
-\subsubsection{UC-1.5 - Annullamento modifica (Undo)}
+
+\subsubsection{UC-1.6 - Annullamento modifica (Undo)}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: Annullamento dell'ultima operazione di modifica effettuata
@@ -370,7 +393,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
 \end{itemize}
 
 
-\subsubsection{UC-1.6 - Ripristino modifica (Redo)}
+\subsubsection{UC-1.7 - Ripristino modifica (Redo)}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: Ripristino di un'operazione precedentemente annullata
@@ -398,7 +421,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
 \end{itemize}
 
 
-\subsubsection{UC-1.7 - Modifica del testo tramite barra degli strumenti}
+\subsubsection{UC-1.8 - Modifica del testo tramite barra degli strumenti}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: Formattazione del testo tramite la barra degli strumenti dell'editor
@@ -428,7 +451,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-1.7.1 - Applicazione grassetto al testo}
+\subsubsection{UC-1.8.1 - Applicazione grassetto al testo}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: Formattazione del testo in grassetto tramite barra degli strumenti
@@ -454,7 +477,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-1.7.2 - Applicazione corsivo al testo}
+\subsubsection{UC-1.8.2 - Applicazione corsivo al testo}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: Formattazione del testo in corsivo tramite barra degli strumenti
@@ -469,22 +492,22 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-1.7.3 - Applicazione barrato al testo}
+\subsubsection{UC-1.8.3 - Applicazione sottolineato al testo}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
-    \item \textbf{Descrizione}: Formattazione del testo come barrato tramite barra degli strumenti
+    \item \textbf{Descrizione}: Formattazione del testo come sottolineato tramite barra degli strumenti
     \item \textbf{Precondizioni}: È presente testo selezionato nell'editor
-    \item \textbf{Postcondizioni}: Il testo selezionato viene formattato come barrato
+    \item \textbf{Postcondizioni}: Il testo selezionato viene formattato come sottolineato
     \item \textbf{Scenario principale}:
         \begin{itemize}
-            \item L'utente seleziona il testo da rendere barrato
-            \item L'utente clicca sul pulsante "Barrato" nella toolbar
-            \item Il sistema applica la sintassi Markdown per il barrato
-            \item Il testo viene visualizzato barrato nell'anteprima
+            \item L'utente seleziona il testo da rendere sottolineato
+            \item L'utente clicca sul pulsante "Sottolineato" nella toolbar
+            \item Il sistema applica la sintassi Markdown per sottolineare il testo
+            \item Il testo viene visualizzato sottolineato nell'anteprima
         \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-1.7.4 - Gestione intestazioni e struttura documento}
+\subsubsection{UC-1.8.4 - Gestione intestazioni e struttura documento}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: Applicazione di intestazioni e struttura al documento
@@ -503,7 +526,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-1.7.5 - Inserimento liste ed elenchi}
+\subsubsection{UC-1.8.5 - Inserimento liste ed elenchi}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: Creazione di liste ordinate e non ordinate nel documento
@@ -529,7 +552,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-1.7.6 - Inserimento link e riferimenti}
+\subsubsection{UC-1.8.6 - Inserimento link e riferimenti}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: Inserimento di link ipertestuali nel documento
@@ -544,7 +567,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-1.8 - Modalità di visualizzazione editor}
+\subsubsection{UC-1.9 - Modalità di visualizzazione editor}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: Cambio della modalità di visualizzazione dell'editor
@@ -569,7 +592,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-1.9 - Supporto caratteri multilingua (Unicode)}
+\subsubsection{UC-1.10 - Supporto caratteri multilingua (Unicode)}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: L'editor supporta l'inserimento, visualizzazione e modifica di caratteri Unicode, permettendo la scrittura in lingue diverse dall'italiano/inglese e garantendo la corretta formattazione Markdown anche con tali caratteri.
@@ -603,7 +626,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
 \end{itemize}
 
 
-\subsubsection{UC-1.10 - Ricerca nel testo (opzionale)}
+\subsubsection{UC-1.11 - Ricerca nel testo (opzionale)}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: Ricerca di occorrenze di testo all'interno del documento
@@ -654,13 +677,14 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
 \subsubsection{UC-2.1 - Mantenimento e Interazione con i testi Generati dall'AI}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
-    \item \textbf{Descrizione}: Gestione della storia e interazione con tutti i testi generati dall'AI all'interno del documento
+    \item \textbf{Descrizione}: Gestione della storia e interazione con tutti i testi generati dall’AI all’interno
+del documento
     \item \textbf{Precondizioni}: Sono state eseguite una o più operazioni AI e i relativi testi generati sono stati inseriti nell'editor
     \item \textbf{Postcondizioni}: L'utente può visualizzare e operare sull'intera sequenza di generazioni AI accumulate nel documento
     \item \textbf{Scenario principale}:
         \begin{itemize}
             \item L'utente seleziona un'operazione AI da eseguire nel testo selezionato o non selezionato
-            \item Ogni nuova operazione AI genera testo che viene inserito nell'editor sotto alla porzione di testo interessata
+            \item Ogni nuova operazione AI genera testo che viene inserito nell'editor sotto alla porzione di testo interessata o in un box apposito
             \item Le generazioni si accumulano come blocchi di testo distinti nel flusso del documento
             \item Ogni blocco mantiene la sua formattazione distintiva che identifica:
                 \begin{enumerate}
@@ -705,18 +729,21 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \begin{itemize}
             \item Il sistema formatta automaticamente il testo generato con:
                 \begin{enumerate}
-                    \item Sfondo colorato leggero (es. azzurro chiaro per traduzioni, verde chiaro per riassunti)
+                    \item Una riga separatrice orizzontale (---) o altro elemento separatore
                     \item Commento iniziale in corsivo e grigio: Generato da AI - [tipo operazione] - [data]
-                    \item Una riga separatrice orizzontale (---) (opzionale)
+                    \item Sfondo colorato leggero (es. azzurro chiaro per traduzioni, verde chiaro per riassunti) (opzionale)
+                    \item un’area apposita (box) identificativa
+                    \item colore del testo generato diverso dal colore del testo dell’utente (opzionale)
                 \end{enumerate}
-            \item L'utente può modificare sia il testo originale sia il testo generato dall'AI togliendo la formattazione automatica
+            \item L'utente può modificare il testo generato dall’AI tramite i comandi per accettare, eliminare o rigenerare la risposta, presenti nell’area identificativa
+            \item L’utente può modificare sia il testo originale sia il testo generato dall’AI
         \end{itemize}
     \item \textbf{Estensioni}:
         \begin{itemize}
             \item L'utente modifica il testo generato dall'AI:
                 \begin{enumerate}
-                    \item Il sistema elimina automaticamente il colore di sfondo che contraddistingue il testo generato
-                    \item Il testo assume lo stile standard dell'editor
+                    \item Il sistema elimina automaticamente gli elementi distintivi dell’area identificativa del testo generato (opzionale)
+                    \item Il testo assume lo stile standard dell’editor
                 \end{enumerate}
         \end{itemize}
 \end{itemize}
@@ -764,7 +791,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: Rielaborazione del testo per migliorarne stile, sintassi e chiarezza
     \item \textbf{Precondizioni}: È presente testo nell'editor (completo o selezionato)
-    \item \textbf{Postcondizioni}: Il testo viene riscritto secondo le specifiche dell'utente nell'editor con formattazione distintiva rispetto al testo originale
+    \item \textbf{Postcondizioni}: Il testo viene riscritto secondo le specifiche dell'utente nell’editor con formattazione distintiva rispetto al testo originale
     \item \textbf{Scenario principale}:
         \begin{itemize}
             \item L'utente seleziona il testo da riscrivere
@@ -915,8 +942,33 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \end{itemize}
 \end{itemize}
 
+\subsubsection{UC-2.5.5 - Traduzione del testo in Italiano}
+\begin{itemize}
+    \item \textbf{Attore principale}: Utente generico
+    \item \textbf{Descrizione}: Traduzione automatica del testo nella lingua Italiana
+    \item \textbf{Precondizioni}: È presente testo nell'editor (completo o selezionato)
+    \item \textbf{Postcondizioni}: Il testo viene tradotto in lingua Italiana
+    \item \textbf{Scenario principale}:
+        \begin{itemize}
+            \item L'utente seleziona il testo da tradurre
+            \item L'utente clicca sul comando "Traduci"
+            \item L'utente seleziona "Italiano" come lingua di destinazione
+            \item Il sistema invia il testo al LLM per traduzione in Italiano
+            \item Il sistema mostra la traduzione generata
+            \item L'utente può scegliere di sostituire il testo originale o mantenere entrambe le versioni
+        \end{itemize}
+    \item \textbf{Estensioni}:
+        \begin{itemize}
+            \item Il testo è già in Italiano:
+                \begin{enumerate}
+                    \item Il sistema avvisa l'utente
+                    \item L'operazione può essere annullata
+                \end{enumerate}
+        \end{itemize}
+\end{itemize}
 
-\subsubsection{UC-2.5.5 - Gestione del Testo Tradotto Generato}
+
+\subsubsection{UC-2.5.6 - Gestione del Testo Tradotto Generato}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: Sistema di visualizzazione e gestione del testo tradotto all'interno dell'editor
@@ -927,9 +979,11 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
             \item L'utente ha richiesto una traduzione e la traduzione è stata generata correttamente
             \item Il sistema mostra la traduzione nell'editor di testo sotto il testo originale, distinguendo le due porzioni di testo con:
                 \begin{enumerate}
-                    \item Una riga separatrice orizzontale (---) (opzionale)
-                    \item Una riga di commento in corsivo: Generato da AI - Traduzione in [lingua] - [data/ora]
-                    \item Il testo tradotto con sfondo leggermente differente (es. grigio chiaro)
+                    \item Una riga separatrice orizzontale (---) o altro elemento separatore
+                    \item Commento iniziale in corsivo e grigio: Generato da AI - Traduzione - [data]
+                    \item Sfondo colorato leggero (es. azzurro chiaro per traduzioni, verde chiaro per riassunti)
+                    \item un’area apposita (box) identificativa
+                    \item colore del testo generato diverso dal colore del testo dell’utente
                 \end{enumerate}
             \item Il testo originale rimane invariato nella sua posizione
             \item L'utente può modificare, spostare o eliminare entrambe le versioni
@@ -1087,16 +1141,19 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
             \item Il sistema mostra l'analisi critica generata nell'editor di testo
             \item Il sistema inserisce l'analisi sotto il testo analizzato distinguendola dal testo tramite:
                 \begin{enumerate}
-                    \item Una riga separatrice orizzontale (---)
-                    \item Una riga di intestazione in grassetto: Generato da AI - Analisi [Cappello] - [data/ora]
-                    \item Sfondo colorato specifico per il cappello (bianco, rosso, nero, giallo, verde, blu) (opzionale)
+                    \item Una riga separatrice orizzontale (---) o altro elemento separatore
+                    \item Commento iniziale in corsivo e grigio: Generato da AI - Analisi [cappello] - [data]
+                    \item Sfondo colorato leggero (es. azzurro chiaro per traduzioni, verde chiaro per riassunti) (opzionale)
+                    \item un’area apposita (box) identificativa
+                    \item colore del testo generato diverso dal colore del testo dell’utente (opzionale)
                 \end{enumerate}
             \item Il testo originale analizzato rimane invariato nella sua posizione
             \item L'utente può modificare, spostare o eliminare l'analisi generata
         \end{itemize}
     \item \textbf{Estensioni}:
         \begin{itemize}
-            \item L'utente ha generato analisi con più cappelli sullo stesso testo. In questo caso il sistema organizza le analisi nell'editor con:
+            \item L'utente ha generato analisi con più cappelli sullo stesso testo:
+            \item Il sistema organizza le analisi nell'editor con:
                 \begin{enumerate}
                     \item Testo originale in posizione iniziale
                     \item Separatore e titolo "Analisi Critiche Multipla"
@@ -1124,9 +1181,11 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
             \item Il sistema inserisce il testo generato nell'editor di testo nel punto dove l'utente si è posizionato
             \item Il testo generato è distinto da altro testo presente nell'editor tramite:
                 \begin{enumerate}
+                    \item Una riga separatrice orizzontale (---) o altro elemento separatore
                     \item Intestazione descrittiva in corsivo: Generato da AI - Testo generato da: "[estratto prompt]" - [data/ora]
-                    \item Sfondo colorato distintivo che identifica il testo generato dall'AI
-                    \item Linea separatrice dal testo già presente nell'editor (opzionale)
+                    \item Sfondo colorato leggero (es. azzurro chiaro per traduzioni, verde chiaro per riassunti) (opzionale)
+                    \item un’area apposita (box) identificativa
+                    \item colore del testo generato diverso dal colore del testo dell’utente (opzionale)
                 \end{enumerate}
             \item L'utente può modificare il testo generato
         \end{itemize}
@@ -1297,30 +1356,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \end{itemize}
 \end{itemize}
 
-
-\subsubsection{UC-3.1 - Rimozione file caricato}
-\begin{itemize}
-    \item \textbf{Attore principale}: Utente generico
-    \item \textbf{Descrizione}: Utente vuole rimuovere un file che ha caricato
-    \item \textbf{Precondizioni}: Utente clicca tasto per rimuovere file caricato
-    \item \textbf{Postcondizioni}: Utente ha rimosso con successo il file
-    \item \textbf{Scenario principale}:
-        \begin{itemize}
-            \item Utente clicca il pulsante rimuovi file
-            \item Utente vede la schermata "Sei sicuro di voler rimuovere?"
-            \item Utente preme si e rimuove con successo il file
-        \end{itemize}
-    \item \textbf{Estensioni}:
-        \begin{itemize}
-            \item Utente clicca no nella schermata "Sei sicuro di voler rimuovere?":
-                \begin{enumerate}
-                    \item Il file non viene rimosso
-                \end{enumerate}
-        \end{itemize}
-\end{itemize}
-
-
-\subsubsection{UC-3.2 - Errore: Formato file non supportato}
+\subsubsection{UC-3.1 - Errore: Formato file non supportato}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: L'utente prova a caricare un documento ma è di un formato non supportato
@@ -1329,7 +1365,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
 \end{itemize}
 
 
-\subsubsection{UC-3.3 - Errore: File troppo grande}
+\subsubsection{UC-3.2 - Errore: File troppo grande}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: L'utente prova a caricare un documento ma è di dimensioni troppo grandi
@@ -1338,12 +1374,30 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
 \end{itemize}
 
 
-\subsubsection{UC-3.4 - Errore: File corrotto o danneggiato}
+\subsubsection{UC-3.3 - Errore: File corrotto o danneggiato}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: L'utente prova a caricare un documento ma è corrotto/danneggiato
     \item \textbf{Precondizioni}: Il file caricato è corrotto/danneggiato
     \item \textbf{Postcondizioni}: Appare il messaggio di errore "File corrotto/danneggiato"
+\end{itemize}
+
+\subsubsection{UC-3.4 - Rimozione file caricato}
+\begin{itemize}
+    \item \textbf{Attore principale}: Utente generico
+    \item \textbf{Descrizione}: utente vuole rimuovere un file che ha caricato
+    \item \textbf{Precondizioni}: utente clicca tasto per rimuovere file caricato
+    \item \textbf{Postcondizioni}: utente ha rimosso con successo il file
+    \item \textbf{Scenario principale}:
+        \begin{itemize}
+            \item Utente clicca il pulsante rimuovi file
+            \item Utente vede la schermata “Sei sicuro di voler rimuovere?”
+            \item Utente preme si e rimuove con successo il file
+        \end{itemize}
+        \item \textbf{Estensioni}:
+        \begin{itemize}
+            \item Utente clicca no nella schermata “Sei sicuro di voler rimuovere?” e quindi il file non viene rimosso
+        \end{itemize}
 \end{itemize}
 
 
