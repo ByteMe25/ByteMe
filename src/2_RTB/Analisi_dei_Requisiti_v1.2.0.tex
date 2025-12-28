@@ -9,6 +9,7 @@
 \usepackage{hyperref}
 \usepackage{fancyhdr}
 \usepackage{lastpage}
+\usepackage{longtable}
 
 \geometry{margin=2.5cm}
 
@@ -64,7 +65,7 @@
         \centering
         \begin{tabular}{|l|p{5cm}|}
             \hline
-            \textbf{Versione} & 1.1.4 \\
+            \textbf{Versione} & 1.2.0 \\
             \hline
             \textbf{Stato} & In corso \\
             \hline
@@ -96,8 +97,12 @@
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verifica} \\
         \hline
-        1.1.5 & 27/12/2025 & Elisa Marchioro & Aggiunto sottocaso 4.3.1 & \\ \hline
-        1.1.4 & 27/12/2025 & Joseph Grant & Aggiunta sezione 'verifica' al versionamento & Elisa Marchioro\\ \hline
+        1.2.0 & 28/12/2025 & Joseph Grant & Aggiunta della maggioranza dei requisiti &  \\ 
+        \hline
+        1.1.5 & 27/12/2025 & Elisa Marchioro & Aggiunto sottocaso 4.3.1 & \\ 
+        \hline
+        1.1.4 & 27/12/2025 & Joseph Grant & Aggiunta sezione 'verifica' al versionamento & Elisa Marchioro\\ 
+        \hline
         1.1.3 & 27/12/2025 & Matteo Cuogo & Correzione e ampliamento dei casi d'uso rivisti & Elisa Marchioro\\
         \hline
         1.1.2 & 14/12/2025 & Giulia Barzon & Correzione errori e scrittura introduzione e classificazione dei requisiti &\\
@@ -1727,72 +1732,266 @@ Per una maggiore chiarezza espositiva, i requisiti sono stati suddivisi in tre m
 I requisiti funzionali\textsubscript{G} definiscono i comportamenti specifici del sistema, descrivendo le interazioni tra gli attori e il software.
 Rappresentano le funzionalità tangibili che l'utente utilizza per raggiungere i propri obiettivi (es. scrittura del testo, selezione per analisi AI, esportazione documenti). La verifica di tali requisiti determina l'aderenza del prodotto alle funzioni richieste dal capitolato.
 
+\subsubsection{Requisiti Funzionali}
 % tabella per i requisiti funzionali: codice - descrizione - UC correlati
+\begin{longtable}{|p{0.2\textwidth}|>{\raggedright\arraybackslash}p{0.5\textwidth}|p{0.2\textwidth}|}
 
-\begin{table}[H]
-    \centering
-    \begin{tabular}{|c|>{\raggedright\arraybackslash}p{0.6\textwidth}|c|}
-        \hline
-        \textbf{Requisito} & \textbf{Descrizione} & \textbf{Casi d'uso correlati}\\
-        \hline
-        RO-F-1 & Descrizione... & UC-1.0 \\
-        \hline
-        RO-F-2 & Descrizione... & UC-1.1 \\
-        \hline
-        RO-F-3 &Descrizione... & UC-2.0 \\
-        \hline
-    \end{tabular}
-    \caption{Tabella dei requisiti funzionali}
-\end{table}
-
+\caption{Tabella dei requisiti funzionali}\\
+\hline
+\textbf{Requisito} & \textbf{Descrizione} & \textbf{Casi d'uso correlati}\\
+\hline
+\endhead
+RO-F-1 & L'editor per essere utilizzato deve essere connesso a internet & - \\
+\hline
+RO-F-2 & Deve essere presente un'area di scrittura che supporti il formato markdown & UC-1.1 \\
+\hline
+RO-F-3 & Deve essere presente un'area di visualizzazione documento formattato rispetto alla sintassi markdown & UC-1.4 \\
+\hline
+RO-F-4 & L'utente deve poter compilare il testo markdown & UC-1.3 \\
+\hline
+RO-F-5 & Deve essere presente una barra degli strumenti per fare operazioni di modifica & UC-1.2.* \\
+\hline
+RO-F-6 & Il sistema deve permettere l'applicazione del grassetto al testo & UC-1.2.1 \\
+\hline
+RO-F-7 & Il sistema deve permettere l'applicazione del corsivo al testo & UC-1.2.2 \\
+\hline
+RO-F-8 & Il sistema deve permettere l'applicazione della sottolineatura al testo & UC-1.2.3 \\
+\hline
+RO-F-9 & Il sistema deve permettere di creare delle intestazioni e modificare la struttura del testo & UC-1.2.4 \\
+\hline
+RO-F-10 & Il sistema deve permettere l'inserimento di liste ed elenchi nel testo & UC-1.2.5 \\
+\hline
+RO-F-11 & Il sistema deve permettere l'inserimento di link e riferimenti & UC-1.2.6 \\
+\hline
+RO-F-12 & Il sistema deve permettere la compilazione del testo in formato markdown & UC-1.3 \\
+\hline
+RO-F-13 & Il sistema deve permettere all'utente di poter tagliare una parte del testo & UC-1.5 \\
+\hline
+RO-F-14 & Il sistema deve permettere all'utente di poter copiare una parte del testo & UC-1.6 \\
+\hline
+RO-F-15 & Il sistema deve permettere all'utente di poter incollare del testo & UC-1.7 \\
+\hline
+RO-F-16 & Il sistema deve permettere all'utente di poter annullare l'ultima modifica effettuata & UC-1.8 \\
+\hline
+RO-F-17 & Il sistema deve permettere all'utente di poter ripristinare le modifiche precedentemente cancellate & UC-1.9 \\
+\hline
+RO-F-18 & Il sistema deve permettere di poter applicare più "stili" (es: grassetto, corsivo, sottolineatura) alla stessa sezione di testo & UC-1.2.* \\
+\hline
+RO-F-19 & L'utente può caricare/aprire un file dal proprio dispositivo all'interno dell'editor & UC-3.0, UC-3.0.0, UC-3.0.1 \\
+\hline
+RO-F-20 & Il sistema deve supportare il caricamento tramite dialogo di esplorazione file (file picker) & UC-3.0, UC-3.0.1 \\
+\hline
+RO-F-21 & Il sistema deve permettere all'utente di rimuovere il file che ha caricato (chiudendo il documento o l'editor) & UC-3.1 \\
+\hline
+RO-F-22 & Il sistema deve permettere all'utente di annullare l'operazione di caricamento file & UC-3.0, UC-3.1 \\
+\hline
+RO-F-23 & Il sistema notifica l'errore se non riesce a caricare il file & UC-3.2, UC-3.3, UC-3.4 \\
+\hline
+RO-F-24 & Il sistema permette di selezionare del testo & UC-2.0, UC-2.6, UC-2.7, UC-2.7.*, UC-2.9, UC-2.10, UC-2.11 \\
+\hline
+RO-F-25 & Il sistema permette di avviare la correzione grammaticale & UC-2.6 \\
+\hline
+RO-F-26 & Il sistema permette di inviare del testo all'AI tramite API REST & UC-2.0, UC-2.6, UC-2.7, UC-2.7.*, UC-2.8, UC-2.9, UC-2.10, UC-2.11 \\
+\hline
+RO-F-27 & Il sistema può scrivere nell'editor del testo ricevuto dall'AI & UC-2.0, UC-2.2, UC-2.6, UC-2.7, UC-2.7.x, UC-2.8 \\
+\hline
+RO-F-28 & Il sistema permette all'utente di eliminare il testo generato & UC-2.0, UC-2.2, UC-2.3, UC-2.4, UC-2.5.*, UC-2.6 \\
+\hline
+RO-F-29 & Il sistema consente all'utente di avviare l'analisi del testo selezionato o dell'intero testo utilizzando il cappello scelto & UC-2.7, UC-2.7.* \\
+\hline
+RO-F-30 & Il sistema permette l'invio di un prompt per la generazione del testo & UC-2.8 \\
+\hline
+RO-F-31 & Il sistema permette la modifica del testo generato inserito nell'editor & UC-2.3, UC-2.4, UC-2.5.*, UC-2.8, UC-2.11 \\
+\hline
+RO-F-32 & Il sistema permette la modifica del prompt da inviare all'AI & UC-2.8, UC-2.9, UC-2.10, UC-2.11 \\
+\hline
+RO-F-33 & L'utente deve poter accedere alle opzioni AI in ogni momento, per applicare modifiche a tutto il testo & UC-2.0 \\
+\hline
+RO-F-34 & Ogni sezione IA include opzioni per accettare, eliminare o rigenerare il testo & UC-2.0, UC-2.2, UC-2.3, UC-2.4, UC-2.5.* \\
+\hline
+RO-F-35 & L'utente deve poter riassumere il testo usando l'IA (selezionato o tutto) & UC-2.3 \\
+\hline
+RO-F-36 & L'utente deve poter usare l'IA per riscrivere il testo (selezionato o non) & UC-2.4 \\
+\hline
+RO-F-37 & L'utente deve poter tradurre il testo usando l'IA in: inglese, italiano, tedesco, francese, spagnolo e cinese mandarino & UC-2.5.* \\
+\hline
+RO-F-38 & Se viene annullata prematuramente la generazione di testo, rimarrà ciò che è già stato generato & UC-2.3, UC-2.4, UC-2.5.* \\
+\hline
+RD-F-1 & Il sistema deve supportare le scorciatoie da tastiera per effettuare modifiche al testo & UC-1.2.*, UC-1.5, UC-1.6, UC-1.7, UC-1.8, UC-1.9, UC-1.10 \\
+\hline
+RD-F-2 & Il sistema deve supportare il caricamento tramite drag-and-drop (trascinamento file nell'area dell'editor) & UC-3.0, UC-3.0.0 \\
+\hline
+RD-F-3 & L'utente deve visualizzare un menù di opzioni per le azioni da fare sul file (carica, nuovo, stampa, chiudi) & UC-1.0, UC-3.0, UC-3.1 \\
+\hline
+RD-F-4 & Se sono presenti modifiche non salvate nell'editor, il sistema chiede conferma all'utente prima di caricare un nuovo file, permettendo di annullare l'operazione, per salvare il testo presente, o sovrascrivere il contenuto senza salvarlo & UC-3.0 \\
+\hline
+ROP-F-1 & Il sistema deve permettere all'utente di poter cercare delle parole nel testo & UC-1.10 \\
+\hline
+ROP-F-2 & AI crea una riga separatrice tra il testo generato e quello utente ('----') & UC-2.0, UC-2.2, UC-2.3, UC-2.4, UC-2.5.* \\
+\hline
+ROP-F-3 & La sezione viene colorata in base al tipo di operazione che viene fatta & UC-2.2 \\
+\hline
+ROP-F-4 & Il sistema offre esempi per la richiesta di generazione di testo a partire da un estratto & UC-2.8 \\
+\hline
+ROP-F-5 & Il sistema inserisce un grafico generato scelto tra diversi tipi disponibili all'utente & UC-2.9 \\
+\hline
+ROP-F-6 & Il sistema inserisce una tabella generata & UC-2.9 \\
+\hline
+ROP-F-7 & Il sistema inserisce una mappa concettuale generata & UC-2.10 \\
+\hline
+ROP-F-8 & Il sistema inserisce una formula matematica generata & UC-2.11 \\
+\hline
+ROP-F-9 & Il sistema permette all'utente di avviare la generazione di testo tramite un comando rapido /genera seguito da un prompt testuale & UC-2.8 \\
+\hline
+ROP-F-10 & Il sistema deve permettere all'utente di inserire le proprie credenziali (username e password) per il login & UC-5.0 \\
+\hline
+ROP-F-11 & Se le credenziali sono errate il sistema deve non far autenticare l'utente & UC-5.0 \\
+\hline
+ROP-F-12 & Il sistema deve permettere all'utente di potersi registrate tramite uno username e una password & UC-5.1 \\
+\hline
+ROP-F-13 & Il sistema deve impedire la registrazione in caso ci sia uno username uguale & UC-5.1 \\
+\hline
+ROP-F-14 & Il sistema deve salvare nel database le password criptate in fase di registrazione & UC-5.1 \\
+\hline
+ROP-F-15 & Il sistema deve permettere ad un utente autenticato di poter eliminare il proprio account & UC-5.2 \\
+\hline
+ROP-F-16 & Il sistema in caso di eliminazione account deve eliminare i dati dal database & UC-5.2 \\
+\hline
+ROP-F-17 & Le operazioni di eliminazione dell'account deve richiedere una conferma esplicita da parte dell'utente & UC-5.2 \\
+\hline
+ROP-F-18 & Il sistema deve terminare la sessione nel caso un account venga eliminato & UC-5.2 \\
+\hline
+ROP-F-19 & Il sistema deve permettere ad un utente di vedere i file che ha salvato & UC-5.3 \\
+\hline
+ROP-F-20 & Il sistema deve permettere ad un utente autenticato di selezionare una nota dall'elenco e aprirla & UC-5.3 \\
+\hline
+ROP-F-21 & Il sistema deve consentire all'utente di annullare l'operazione di apertura senza recuperare alcuna nota dal database & UC-5.3 \\
+\hline
+ROP-F-22 & Il sistema deve permettere all'utente l'apertura di un file salvato e visibile all'utente & UC-5.3 \\
+\hline
+ROP-F-23 & Il sistema deve permettere il salvataggio di una nota in un sistema di persistenza non locale & UC-5.4 \\
+\hline
+ROP-F-24 & Il sistema deve associare ogni nota al suo creatore & UC-5.4 \\
+\hline
+\end{longtable}
 
 \subsubsection{Requisiti di Vincolo}
 I requisiti di vincolo\textsubscript{G} rappresentano le limitazioni entro le quali il progetto deve essere sviluppato. A differenza dei requisiti funzionali, questi non derivano da scelte progettuali del team, ma sono imposizioni esterne dettate dal committente, da normative o da limiti tecnologici.
 Questi comprendono i vincoli tecnologici, architetturali e organizzativi.
-
 % tabella per i requisiti non funzionali di vincolo
-
 \begin{table}[H]
-    \centering
-    \begin{tabular}{|c|>{\raggedright\arraybackslash}p{0.6\textwidth}|c|}
-        \hline
-        \textbf{Requisito} & \textbf{Descrizione} & \textbf{Casi d'uso correlati}\\
-        \hline
-        RO-V-1 & Descrizione... & UC-1.0 \\
-        \hline
-        RO-V-2 & Descrizione... & UC-1.1 \\
-        \hline
-        RO-V-3 &Descrizione... & UC-2.0 \\
-        \hline
-    \end{tabular}
-    \caption{Tabella dei requisiti di vincolo}
+\centering
+\begin{tabular}{|p{0.2\textwidth}|>{\raggedright\arraybackslash}p{0.5\textwidth}|p{0.2\textwidth}|}
+\hline
+\textbf{Requisito} & \textbf{Descrizione} & \textbf{Casi d'uso correlati}\\
+\hline
+RO-V-1 & Il caricamento e la lettura del file devono avvenire localmente tramite le API del browser (es. File API), senza inviare il contenuto a un server & - \\
+\hline
+RO-V-2 & Il sistema deve supportare nativamente la codifica dei caratteri Unicode (UTF-8) durante l'importazione per garantire la leggibilità di testi multilingua & UC-1.9, UC-3.0 \\
+\hline
+RO-V-3 & AI deve sapere cosa è stato selezionato e incorporare le modifiche selezionate solo per quella parte di testo & UC-2.0 \\
+\hline
+RO-V-4 & AI deve mantenere il contesto di tutto il testo scritto quando viene chiamato, anche se sta agendo solo su una parte & UC-2.0 \\
+\hline
+RO-V-5 & Il testo generato dall'AI viene creato in una nuova sezione in fondo al testo & UC-2.0, UC-2.2 \\
+\hline
+RO-V-6 & Le sezioni che includono un riassunto diranno anche quali righe ha riassunto & UC-2.3, UC-2.4, UC-2.5.* \\
+\hline
+RO-V-7 & L'AI deve avere istruzioni sufficienti affinché il testo riscritto sia corretto grammaticalmente, sintatticamente e semanticamente e deve riflettere la richiesta dell'utente & UC-2.4 \\
+\hline
+RO-V-8 & Le sezioni create per la traduzione di un testo specificheranno la lingua di partenza e di fine & UC-2.5.* \\
+\hline
+RO-V-9 & Se il testo è già nella lingua da tradurre, l'AI genera avvisa l'utente e interrompe l'operazione & UC-2.5.* \\
+\hline
+RO-V-10 & AI deve avere delle istruzioni ottimizzate per la traduzione nella lingua selezionata & UC-2.5.* \\
+\hline
+RO-V-11 & Il sistema espone la sua limitazione nell'eseguire un'azione richiesta se i dati inviati non rispettano i limiti dell'AI & UC-2.9, UC-2.10, UC-2.11 \\
+\hline
+RD-V-1 & Il sistema deve supportare l'importazione dei formati di file più comuni: .md, .txt, .markdown & UC-3.0, UC-3.2 \\
+\hline
+ROP-V-1 & La password inserita dall'utente deve essere minimo 8 caratteri & UC-5.1 \\
+\hline
+ROP-V-2 & La password inserita dall'utente deve contenere almeno un carattere speciale & UC-5.1 \\
+\hline
+ROP-V-3 & L'accesso alle note salvate nel database deve essere consentito solo ad utenti autenticati & UC-5.3 \\
+\hline
+ROP-V-4 & Il sistema deve impedire il salvataggio di note nel database da parte di utenti non autenticati & UC-5.4 \\
+\hline
+\end{tabular}
+\caption{Tabella dei requisiti di vincolo}
 \end{table}
-
 
 \subsubsection{Requisiti di Qualità}
 I requisiti di qualità\textsubscript{G} specificano le caratteristiche intrinseche del software. Non descrivono nuove funzioni, ma stabiliscono \textit{come} il sistema deve erogare quelle esistenti. 
-
 % tabella per i requisiti non funzionali di qualità
-
 \begin{table}[H]
-    \centering
-    \begin{tabular}{|c|>{\raggedright\arraybackslash}p{0.6\textwidth}|c|}
-        \hline
-        \textbf{Requisito} & \textbf{Descrizione} & \textbf{Casi d'uso correlati}\\
-        \hline
-        RO-Q-1 & Descrizione... & UC-1.0 \\
-        \hline
-        RO-Q-2 & Descrizione... & UC-1.1 \\
-        \hline
-        RO-Q-3 &Descrizione... & UC-2.0 \\
-        \hline
-    \end{tabular}
-    \caption{Tabella dei requisiti di qualità}
+\centering
+\begin{tabular}{|p{0.2\textwidth}|>{\raggedright\arraybackslash}p{0.5\textwidth}|p{0.2\textwidth}|}
+\hline
+\textbf{Requisito} & \textbf{Descrizione} & \textbf{Casi d'uso correlati}\\
+\hline
+RO-Q-1 & Il sistema deve fornire un feedback visivo immediato all'utente (messaggio di errore o di successo) al termine del tentativo di caricamento file & UC-3.0, UC-3.2, UC-3.3, UC-3.4 \\
+\hline
+RO-Q-2 & Il sistema deve validare il formato del file caricato e impedire il caricamento di formati non supportati & UC-3.2 \\
+\hline
+RO-Q-3 & Il sistema deve validare le dimensioni del file caricato e impedire il caricamento di file che superano una dimensione massima & UC-3.3 \\
+\hline
+RO-Q-4 & Il sistema deve rilevare file corrotti o danneggiati e impedirne il caricamento & UC-3.4 \\
+\hline
+RO-Q-5 & La dimensione massima consentita per il caricamento di un file deve essere limitata a una soglia definita e ragionevole & UC-3.0, UC-3.3 \\
+\hline
+RO-Q-6 & AI deve rispondere sempre in tempi brevi, o restituire errore & UC-2.* \\
+\hline
+RO-Q-7 & Le opzioni AI devono apparire velocemente & UC-2.0 \\
+\hline
+RO-Q-8 & Le opzioni non devono sparire in maniera poco intuitiva muovendo il mouse & UC-2.0 \\
+\hline
+RO-Q-9 & Il testo creato si comporta come qualunque altro testo aggiunto dall'IA: facilmente riconoscibile e sempre modificabile dall'utente & UC-2.3, UC-2.4, UC-2.5.*, UC-2.8 \\
+\hline
+RO-Q-10 & Il sistema mostra un messaggio in caso di errore durante la generazione di contenuto & UC-2.3, UC-2.4, UC-2.5.*, UC-2.6, UC-2.7, UC-2.7.*, UC-2.8, UC-2.9, UC-2.10, UC-2.11 \\
+\hline
+RD-Q-1 & Il sistema deve compilare il testo markdown in un breve lasso di tempo & UC-1.3 \\
+\hline
+RD-Q-2 & I messaggi di errore (per formato errato, file troppo grande o corrotto) devono essere esplicativi e suggerire all'utente come procedere & UC-3.2, UC-3.3, UC-3.4 \\
+\hline
+RD-Q-3 & L'operazione di caricamento e rendering di un file di dimensioni supportate deve completarsi in meno di 3 secondi & UC-3.0, UC-3.0.0, UC-3.0.1 \\
+\hline
+RD-Q-4 & Il parsing del contenuto del file deve essere robusto, garantendo che caratteri non validi non causino il crash dell'applicazione & UC-3.* \\
+\hline
+ROP-Q-1 & Il sistema deve mostrare un messaggio di errore non specifico nel caso di fallimento del login & UC-5.0 \\
+\hline
+ROP-Q-2 & Il sistema deve avvisare l'utente che lo username è già stato usato & UC-5.1 \\
+\hline
+ROP-Q-3 & Il sistema propone all'utente di effettuare il login o scegliere un nuovo username & UC-5.1 \\
+\hline
+ROP-Q-4 & Il sistema mostra i file salvati in ordine cronologico & UC-5.3 \\
+\hline
+ROP-Q-5 & Il sistema deve notificare all'utente il fallimento del salvataggio & UC-5.4 \\
+\hline
+\end{tabular}
+\caption{Tabella dei requisiti di qualità}
 \end{table}
 
 \newpage
 
-\section{Conclusioni}
+\section{Riepilogo}
+\begin{table}[H]
+\centering
+\begin{tabular}{|p{0.2\textwidth}|>{\raggedright\arraybackslash}p{0.1\textwidth}|p{0.1\textwidth}|p{0.1\textwidth}|p{0.1\textwidth}|}
+\hline
+\textbf{Tipologia} & \textbf{O} & \textbf{D} & \textbf{OP} & \textbf{Totale}\\
+\hline
+Funzionali & 0 & 0 & 0 & 0 \\
+\hline
+Qualità & 0 & 0 & 0 & 0 \\
+\hline
+Vincolo & 0 & 0 & 0 & 0 \\
+\hline
+\textbf{Totale} & 0 & 0 & 0 & 0\\
+\hline
+\end{tabular}
+\caption{Riepilogo dei requisiti}
+\end{table}
 
 
 \end{document}
