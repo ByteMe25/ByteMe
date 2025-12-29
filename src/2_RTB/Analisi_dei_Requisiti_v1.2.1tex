@@ -65,7 +65,7 @@
         \centering
         \begin{tabular}{|l|p{5cm}|}
             \hline
-            \textbf{Versione} & 1.2.0 \\
+            \textbf{Versione} & 1.2.1 \\
             \hline
             \textbf{Stato} & In corso \\
             \hline
@@ -96,6 +96,8 @@
     \begin{tabular}{|c|c|c|>{\raggedright\arraybackslash}p{0.4\textwidth}|c|}
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verifica} \\
+        \hline
+        1.2.1 & 29/12/2025 & Tommaso Tombacco & Modifiche ad alcuni casi d'uso &  \\ 
         \hline
         1.2.0 & 28/12/2025 & Joseph Grant & Aggiunta della maggioranza dei requisiti &  \\ 
         \hline
@@ -1014,15 +1016,7 @@ del documento
         \end{itemize}
     \item \textbf{Estensioni}:
         \begin{itemize}
-            \item Non vengono rilevati errori grammaticali nel testo:
-                \begin{enumerate}
-                    \item Il sistema informa l'utente che il testo è già corretto
-                \end{enumerate}
-            \item L'utente rifiuta alcune correzioni proposte:
-                \begin{enumerate}
-                    \item Il sistema mantiene il testo originale per le modifiche rifiutate
-                \end{enumerate}
-            \item Il LLM non è disponibile o dà errore:
+            \item L'LLM non è disponibile o dà errore:
                 \begin{enumerate}
                     \item Il sistema mostra un messaggio di errore
                     \item Suggerisce di riprovare più tardi
@@ -1047,17 +1041,9 @@ del documento
         \end{itemize}
     \item \textbf{Estensioni}:
         \begin{itemize}
-            \item L'utente seleziona più cappelli contemporaneamente (da vedere, non è detto sia possibile):
-                \begin{enumerate}
-                    \item Il sistema genera un'analisi combinata
-                \end{enumerate}
             \item Il testo è troppo breve per un'analisi significativa:
                 \begin{enumerate}
                     \item Il sistema avvisa l'utente e suggerisce di aggiungere contenuto
-                \end{enumerate}
-            \item L'analisi richiede troppo tempo (opzionale):
-                \begin{enumerate}
-                    \item Il sistema mostra un indicatore di progresso
                 \end{enumerate}
         \end{itemize}
 \end{itemize}
@@ -1157,16 +1143,6 @@ del documento
             \item Il testo originale analizzato rimane invariato nella sua posizione
             \item L'utente può modificare, spostare o eliminare l'analisi generata
         \end{itemize}
-    \item \textbf{Estensioni}:
-        \begin{itemize}
-            \item L'utente ha generato analisi con più cappelli sullo stesso testo:
-            \item Il sistema organizza le analisi nell'editor con:
-                \begin{enumerate}
-                    \item Testo originale in posizione iniziale
-                    \item Separatore e titolo "Analisi Critiche Multipla"
-                    \item Sezioni separate per ogni cappello, ciascuna commentata
-                \end{enumerate}
-        \end{itemize}
 \end{itemize}
 
 
@@ -1200,7 +1176,6 @@ del documento
         \begin{itemize}
             \item L'utente fornisce un prompt troppo vago o incompleto (opzionale):
                 \begin{enumerate}
-                    \item Il sistema richiede chiarimenti aggiuntivi
                     \item Il sistema offre esempi di prompt efficaci basati sul contesto corrente (opzionale)
                 \end{enumerate}
             \item Il testo generato non soddisfa l'utente:
@@ -1232,11 +1207,6 @@ del documento
             \item Il testo non contiene dati strutturati sufficienti:
                 \begin{enumerate}
                     \item Il sistema segnala l'impossibilità di generare il grafico
-                    \item Suggerisce come formattare i dati (opzionale)
-                \end{enumerate}
-            \item L'utente non specifica il tipo di grafico:
-                \begin{enumerate}
-                    \item Il sistema seleziona automaticamente il tipo più appropriato o dà errore
                 \end{enumerate}
             \item Il grafico generato non è leggibile:
                 \begin{enumerate}
@@ -1291,10 +1261,6 @@ del documento
         \end{itemize}
     \item \textbf{Estensioni}:
         \begin{itemize}
-            \item La descrizione del problema è ambigua:
-                \begin{enumerate}
-                    \item Il sistema richiede chiarimenti all'utente
-                \end{enumerate}
             \item Le formule generate contengono errori:
                 \begin{enumerate}
                     \item L'utente può correggere manualmente o richiedere una rigenerazione
