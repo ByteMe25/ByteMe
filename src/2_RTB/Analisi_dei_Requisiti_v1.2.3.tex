@@ -65,7 +65,7 @@
         \centering
         \begin{tabular}{|l|p{5cm}|}
             \hline
-            \textbf{Versione} & 1.2.1 \\
+            \textbf{Versione} & 1.2.3 \\
             \hline
             \textbf{Stato} & In corso \\
             \hline
@@ -96,6 +96,10 @@
     \begin{tabular}{|c|c|c|>{\raggedright\arraybackslash}p{0.4\textwidth}|c|}
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verifica} \\
+        \hline
+        1.2.3 & 29/12/2025 & Giulia Barzon & Aggiunti primi diagrammi casi d'uso &  \\
+        \hline
+        1.2.2 & 29/12/2025 & Giulia Barzon & Rimosso vecchio caso d'uso 3.3 per incoerenza e sistemati relativi requisiti &  \\
         \hline
         1.2.1 & 29/12/2025 & Tommaso Tombacco & Modifiche ad alcuni casi d'uso &  \\ 
         \hline
@@ -265,7 +269,6 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \end{itemize}
 \end{itemize}
 
-
 \subsubsection{UC-1.1 - Visualizzazione anteprima in tempo reale}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
@@ -314,6 +317,13 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \end{itemize}
 \end{itemize}
 
+% DIAGRAMMA
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../UCimg/UC1.0_utilizzoBaseEditor.jpg}
+    \caption{Diagramma dei casi d'uso UC-1.0, 1.1, 1.2}
+    \label{fig:uc1.0}
+\end{figure}
 
 \subsubsection{UC-1.3 - Copiare il testo}
 \begin{itemize}
@@ -334,6 +344,13 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \end{itemize}
 \end{itemize}
 
+% DIAGRAMMA
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../UCimg/UC1.3_copia.jpg}
+    \caption{Diagramma del caso d'uso UC-1.3}
+    \label{fig:uc1.3}
+\end{figure}
 
 \subsubsection{UC-1.4 - Incollare il testo}
 \begin{itemize}
@@ -681,7 +698,6 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
                 \end{itemize}
         \end{enumerate}
 \end{itemize}
-% DIAGRAMMA DEI CASI D'USO
 
 \subsubsection{UC-2.1 - Mantenimento e Interazione con i testi Generati dall'AI}
 \begin{itemize}
@@ -726,7 +742,6 @@ del documento
                 \end{enumerate}
         \end{itemize}
 \end{itemize}
-% DIAGRAMMA DEI CASI D'USO
 
 \subsubsection{UC-2.2 - Distinzione del Testo Utente da quello Generato}
 \begin{itemize}
@@ -756,7 +771,6 @@ del documento
                 \end{enumerate}
         \end{itemize}
 \end{itemize}
-% DIAGRAMMA DEI CASI D'USO
 
 \subsubsection{UC-2.3 - Riassunto del testo}
 \begin{itemize}
@@ -786,14 +800,13 @@ del documento
         \end{itemize}
 \end{itemize}
 
-% DIAGRAMMA CASO D'USO 2.3 (come immagine)
+% DIAGRAMMA
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{../UCimg/UC2.3_Riassunto.jpg}
-    \caption{Diagramma del caso d'uso UC-2.3 - Riassunto del testo}
-    \label{fig:uc2.3} % ←nome identificativo univoco della figura
+    \includegraphics[width=0.8\textwidth]{../UCimg/UC2.3_riassunto.jpg}
+    \caption{Diagramma del caso d'uso UC-2.3}
+    \label{fig:uc2.3}
 \end{figure}
-
 
 \subsubsection{UC-2.4 - Riscrittura del testo}
 \begin{itemize}
@@ -823,7 +836,14 @@ del documento
                 \end{enumerate}
         \end{itemize}
 \end{itemize}
-% DIAGRAMMA DEI CASI D'USO
+
+% DIAGRAMMA
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../UCimg/UC2.4_riscrittura.jpg}
+    \caption{Diagramma del caso d'uso UC-2.4}
+    \label{fig:uc2.4}
+\end{figure}
 
 \subsubsection{UC-2.5 - Traduzione del testo in inglese (caso generico principale)}
 \begin{itemize}
@@ -849,7 +869,6 @@ del documento
                 \end{enumerate}
         \end{itemize}
 \end{itemize}
-% DIAGRAMMA DEI CASI D'USO
 
 \subsubsection{UC-2.5.1 - Traduzione del testo in Spagnolo}
 \begin{itemize}
@@ -999,6 +1018,13 @@ del documento
         \end{itemize}
 \end{itemize}
 
+% DIAGRAMMA
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../UCimg/UC2.5_traduzione.jpg}
+    \caption{Diagramma dei casi d'uso UC-2.5.*}
+    \label{fig:uc2.5}
+\end{figure}
 
 \subsubsection{UC-2.6 - Correzione grammaticale}
 \begin{itemize}
@@ -1024,6 +1050,13 @@ del documento
         \end{itemize}
 \end{itemize}
 
+% DIAGRAMMA
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../UCimg/UC2.6_correzione.jpg}
+    \caption{Diagramma del caso d'uso UC-2.6}
+    \label{fig:uc2.6}
+\end{figure}
 
 \subsubsection{UC-2.7 - Critica testuale con i 6 Cappelli: Cappello Bianco}
 \begin{itemize}
@@ -1145,6 +1178,13 @@ del documento
         \end{itemize}
 \end{itemize}
 
+% DIAGRAMMA
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../UCimg/UC2.7_6cappelli.jpg}
+    \caption{Diagramma dei casi d'uso UC-2.7.*}
+    \label{fig:uc2.7}
+\end{figure}
 
 \subsubsection{UC-2.8 - Generazione di testo (Distant Writing)}
 \begin{itemize}
@@ -1187,6 +1227,13 @@ del documento
         \end{itemize}
 \end{itemize}
 
+% DIAGRAMMA
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../UCimg/UC2.8_distantWriting.jpg}
+    \caption{Diagramma del caso d'uso UC-2.8}
+    \label{fig:uc2.8}
+\end{figure}
 
 \subsubsection{UC-2.9 - Generazione grafici e tabelle (opzionale)}
 \begin{itemize}
@@ -1275,11 +1322,10 @@ del documento
 % DIAGRAMMA PER CASI D'USO OPZIONALI
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{../UCimg/UC2.9_2.11.jpg}
+    \includegraphics[width=0.8\textwidth]{../UCimg/UC2.9_11_opzionali.jpg}
     \caption{Diagramma dei casi d'uso UC-2.9, UC-2.10, UC2.11 (opzionali)}
     \label{fig:uc2.9}
 \end{figure}
-
 
 \newpage
 
@@ -1299,7 +1345,6 @@ del documento
         \end{itemize}
 \end{itemize}
 
-
 \subsubsection{UC-3.0.0 - Opzione trascina file}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
@@ -1313,7 +1358,6 @@ del documento
             \item Utente ha caricato il file
         \end{itemize}
 \end{itemize}
-
 
 \subsubsection{UC-3.0.1 - Opzione esplora file}
 \begin{itemize}
@@ -1329,6 +1373,13 @@ del documento
         \end{itemize}
 \end{itemize}
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../UCimg/UC3.0_caricamento.jpg}
+    \caption{Diagramma dei casi d'uso UC-3.0, 3.0.0, 3.0.1}
+    \label{fig:uc3.0}
+\end{figure}
+
 \subsubsection{UC-3.1 - Errore: Formato file non supportato}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
@@ -1336,7 +1387,6 @@ del documento
     \item \textbf{Precondizioni}: Il file caricato è di un formato non supportato
     \item \textbf{Postcondizioni}: Appare il messaggio di errore "Formato non supportato"
 \end{itemize}
-
 
 \subsubsection{UC-3.2 - Errore: File troppo grande}
 \begin{itemize}
@@ -1346,16 +1396,7 @@ del documento
     \item \textbf{Postcondizioni}: Appare il messaggio di errore "File troppo grande"
 \end{itemize}
 
-
-\subsubsection{UC-3.3 - Errore: File corrotto o danneggiato}
-\begin{itemize}
-    \item \textbf{Attore principale}: Utente generico
-    \item \textbf{Descrizione}: L'utente prova a caricare un documento ma è corrotto/danneggiato
-    \item \textbf{Precondizioni}: Il file caricato è corrotto/danneggiato
-    \item \textbf{Postcondizioni}: Appare il messaggio di errore "File corrotto/danneggiato"
-\end{itemize}
-
-\subsubsection{UC-3.4 - Rimozione file caricato}
+\subsubsection{UC-3.3 - Rimozione file caricato}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: utente vuole rimuovere un file che ha caricato
@@ -1373,6 +1414,12 @@ del documento
         \end{itemize}
 \end{itemize}
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../UCimg/UC3.1_3.2_3.3_errori.jpg}
+    \caption{Diagramma dei casi d'uso UC-3.1, 3.2, 3.3}
+    \label{fig:uc3.1}
+\end{figure}
 
 \newpage
 
@@ -1747,11 +1794,11 @@ RO-F-19 & L'utente può caricare/aprire un file dal proprio dispositivo all'inte
 \hline
 RO-F-20 & Il sistema deve supportare il caricamento tramite dialogo di esplorazione file (file picker) & UC-3.0, UC-3.0.1 \\
 \hline
-RO-F-21 & Il sistema deve permettere all'utente di rimuovere il file che ha caricato (chiudendo il documento o l'editor) & UC-3.1 \\
+RO-F-21 & Il sistema deve permettere all'utente di rimuovere il file che ha caricato (chiudendo il documento o l'editor) & UC3.0, UC-3.3 \\
 \hline
-RO-F-22 & Il sistema deve permettere all'utente di annullare l'operazione di caricamento file & UC-3.0, UC-3.1 \\
+RO-F-22 & Il sistema deve permettere all'utente di annullare l'operazione di caricamento file & UC-3.0 \\
 \hline
-RO-F-23 & Il sistema notifica l'errore se non riesce a caricare il file & UC-3.2, UC-3.3, UC-3.4 \\
+RO-F-23 & Il sistema notifica l'errore se non riesce a caricare il file & UC-3.1, UC-3.2\\
 \hline
 RO-F-24 & Il sistema permette di selezionare del testo & UC-2.0, UC-2.6, UC-2.7, UC-2.7.*, UC-2.9, UC-2.10, UC-2.11 \\
 \hline
@@ -1787,7 +1834,7 @@ RD-F-1 & Il sistema deve supportare le scorciatoie da tastiera per effettuare mo
 \hline
 RD-F-2 & Il sistema deve supportare il caricamento tramite drag-and-drop (trascinamento file nell'area dell'editor) & UC-3.0, UC-3.0.0 \\
 \hline
-RD-F-3 & L'utente deve visualizzare un menù di opzioni per le azioni da fare sul file (carica, nuovo, stampa, chiudi) & UC-1.0, UC-3.0, UC-3.1 \\
+RD-F-3 & L'utente deve visualizzare un menù di opzioni per le azioni da fare sul file (carica, nuovo, stampa, chiudi) & UC-1.0, UC-3.0, UC-3.3 \\
 \hline
 RD-F-4 & Se sono presenti modifiche non salvate nell'editor, il sistema chiede conferma all'utente prima di caricare un nuovo file, permettendo di annullare l'operazione, per salvare il testo presente, o sovrascrivere il contenuto senza salvarlo & UC-3.0 \\
 \hline
@@ -1896,15 +1943,15 @@ I requisiti di qualità\textsubscript{G} specificano le caratteristiche intrinse
 \hline
 \textbf{Requisito} & \textbf{Descrizione} & \textbf{Casi d'uso correlati}\\
 \hline
-RO-Q-1 & Il sistema deve fornire un feedback visivo immediato all'utente (messaggio di errore o di successo) al termine del tentativo di caricamento file & UC-3.0, UC-3.2, UC-3.3, UC-3.4 \\
+RO-Q-1 & Il sistema deve fornire un feedback visivo immediato all'utente (messaggio di errore o di successo) al termine del tentativo di caricamento file & UC-3.0, UC-3.1, UC-3.2 \\
 \hline
-RO-Q-2 & Il sistema deve validare il formato del file caricato e impedire il caricamento di formati non supportati & UC-3.2 \\
+RO-Q-2 & Il sistema deve validare il formato del file caricato e impedire il caricamento di formati non supportati & UC-3.1 \\
 \hline
-RO-Q-3 & Il sistema deve validare le dimensioni del file caricato e impedire il caricamento di file che superano una dimensione massima & UC-3.3 \\
+RO-Q-3 & Il sistema deve validare le dimensioni del file caricato e impedire il caricamento di file che superano una dimensione massima & UC-3.2 \\
 \hline
-RO-Q-4 & Il sistema deve rilevare file corrotti o danneggiati e impedirne il caricamento & UC-3.4 \\
+RO-Q-4 & Il sistema deve impedire il caricamento di file corrotti & UC-3.0, UC-3.1\\
 \hline
-RO-Q-5 & La dimensione massima consentita per il caricamento di un file deve essere limitata a una soglia definita e ragionevole & UC-3.0, UC-3.3 \\
+RO-Q-5 & La dimensione massima consentita per il caricamento di un file deve essere limitata a una soglia definita e ragionevole & UC-3.0, UC-3.2 \\
 \hline
 RO-Q-6 & AI deve rispondere sempre in tempi brevi, o restituire errore & UC-2.* \\
 \hline
@@ -1918,7 +1965,7 @@ RO-Q-10 & Il sistema mostra un messaggio in caso di errore durante la generazion
 \hline
 RD-Q-1 & Il sistema deve compilare il testo markdown in un breve lasso di tempo & UC-1.3 \\
 \hline
-RD-Q-2 & I messaggi di errore (per formato errato, file troppo grande o corrotto) devono essere esplicativi e suggerire all'utente come procedere & UC-3.2, UC-3.3, UC-3.4 \\
+RD-Q-2 & I messaggi di errore (per formato errato, file troppo grande o corrotto) devono essere esplicativi e suggerire all'utente come procedere & UC-3.0, UC-3.2, UC-3.3 \\
 \hline
 RD-Q-3 & L'operazione di caricamento e rendering di un file di dimensioni supportate deve completarsi in meno di 3 secondi & UC-3.0, UC-3.0.0, UC-3.0.1 \\
 \hline
