@@ -65,7 +65,7 @@
         \centering
         \begin{tabular}{|l|p{5cm}|}
             \hline
-            \textbf{Versione} & 1.2.3 \\
+            \textbf{Versione} & 1.2.4 \\
             \hline
             \textbf{Stato} & In corso \\
             \hline
@@ -96,6 +96,8 @@
     \begin{tabular}{|c|c|c|>{\raggedright\arraybackslash}p{0.4\textwidth}|c|}
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verifica} \\
+        \hline
+        1.2.4 & 30/12/2025 & Giulia Barzon & Correzione requisiti macroarea 1 e inserimento diagrammi completi &  \\
         \hline
         1.2.3 & 29/12/2025 & Giulia Barzon & Aggiunti primi diagrammi casi d'uso &  \\
         \hline
@@ -258,7 +260,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \begin{itemize}
             \item La connessione Internet viene persa durante la digitazione:
                 \begin{enumerate}
-                    \item Il sistema salva localmente le modifiche (da vedere se fattibile)
+                    \item Il sistema salva localmente le modifiche (opzionale)
                     \item Sincronizza quando la connessione ritorna disponibile
                 \end{enumerate}
             \item L'editor non risponde ai comandi:
@@ -370,6 +372,12 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
             \item Il testo dagli appunti viene inserito nella posizione del cursore
         \end{itemize}
 \end{itemize}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../UCimg/UC1.4_incolla.jpg}
+    \caption{Diagramma del caso d'uso UC-1.4}
+    \label{fig:uc1.4}
+\end{figure}
 
 \subsubsection{UC-1.5 - Tagliare il testo}
 \begin{itemize}
@@ -390,7 +398,12 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
             \item Il testo rimosso viene salvato negli appunti di sistema
         \end{itemize}
 \end{itemize}
-
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../UCimg/UC1.5_taglia.jpg}
+    \caption{Diagramma del caso d'uso UC-1.5}
+    \label{fig:uc1.5}
+\end{figure}
 
 \subsubsection{UC-1.6 - Annullamento modifica (Undo)}
 \begin{itemize}
@@ -418,7 +431,6 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \end{itemize}
 \end{itemize}
 
-
 \subsubsection{UC-1.7 - Ripristino modifica (Redo)}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
@@ -445,7 +457,12 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
                 \end{enumerate}
         \end{itemize}
 \end{itemize}
-
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../UCimg/UC1.6_1.7_undo_redo.jpg}
+    \caption{Diagramma dei casi d'uso UC-1.6 e UC-1.7}
+    \label{fig:uc1.6}
+\end{figure}
 
 \subsubsection{UC-1.8 - Modifica del testo tramite barra degli strumenti}
 \begin{itemize}
@@ -592,6 +609,12 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
             \item Il sistema applica la sintassi Markdown per il link
         \end{itemize}
 \end{itemize}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../UCimg/UC1.8_toolbar.jpg}
+    \caption{Diagramma dei casi d'uso UC-1.8 e UC-1.8.*}
+    \label{fig:uc1.8}
+\end{figure}
 
 \subsubsection{UC-1.9 - Modalità di visualizzazione editor}
 \begin{itemize}
@@ -1438,6 +1461,12 @@ del documento
             \item Utente ottiene una serie di opzioni per l'esportazione
         \end{itemize}
 \end{itemize}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../UCimg/UC4.0_esportazioneFile.jpg}
+    \caption{Diagramma dei casi d'uso UC-4.0, UC-4.1, UC-4.1.*}
+    \label{fig:uc4.0}
+\end{figure}
 
 \subsubsection{UC-4.1 - Esportare un file in PDF}
 \begin{itemize}
@@ -1537,6 +1566,12 @@ del documento
             \item Ottiene le pagine selezionate in un nuovo documento, salvato nel formato selezionato
         \end{itemize}
 \end{itemize}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../UCimg/UC4.2_esportazionePagine.jpg}
+    \caption{Diagramma dei casi d'uso UC-4.2, UC-4.2.1}
+    \label{fig:uc4.2}
+\end{figure}
 
 \subsubsection{UC-4.3 - Stampare il documento}
 \begin{itemize}
@@ -1568,6 +1603,12 @@ del documento
             \item Utente ritorna al proprio documento una volta completata l'operazione
         \end{itemize}
 \end{itemize}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../UCimg/UC4.3_stampa.jpg}
+    \caption{Diagramma dei casi d'uso UC-4.3, UC-4.3.1}
+    \label{fig:uc4.3}
+\end{figure}
 
 \newpage
 
@@ -1623,6 +1664,12 @@ del documento
                 \end{enumerate}
         \end{itemize}
 \end{itemize}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../UCimg/UC5.0_5.1_login.jpg}
+    \caption{Diagramma dei casi d'uso UC-5.0, UC-5.1}
+    \label{fig:uc5.0}
+\end{figure}
 
 \subsubsection{UC-5.2 - Eliminazione dell'account}
 \begin{itemize}
@@ -1700,7 +1747,12 @@ del documento
                 \end{enumerate}
         \end{itemize}
 \end{itemize}
-
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../UCimg/UC5.2_5.4.jpg}
+    \caption{Diagramma dei casi d'uso UC-5.2, UC-5.3, UC-5.4}
+    \label{fig:uc5.2}
+\end{figure}
 
 \newpage
 
@@ -1746,101 +1798,102 @@ I requisiti funzionali\textsubscript{G} definiscono i comportamenti specifici de
 Rappresentano le funzionalità tangibili che l'utente utilizza per raggiungere i propri obiettivi (es. scrittura del testo, selezione per analisi AI, esportazione documenti). La verifica di tali requisiti determina l'aderenza del prodotto alle funzioni richieste dal capitolato.
 
 \subsubsection{Requisiti Funzionali}
-% tabella per i requisiti funzionali: codice - descrizione - UC correlati
 \begin{longtable}{|p{0.2\textwidth}|>{\raggedright\arraybackslash}p{0.5\textwidth}|p{0.2\textwidth}|}
-
-\caption{Tabella dei requisiti funzionali}\\
 \hline
 \textbf{Requisito} & \textbf{Descrizione} & \textbf{Casi d'uso correlati}\\
 \hline
 \endhead
-RO-F-1 & L'editor per essere utilizzato deve essere connesso a internet & - \\
+RO-F-1 & Il sistema deve fornire un editor di testo per l'inserimento e la modifica di caratteri alfanumerici & UC-1.0 \\
 \hline
-RO-F-2 & Deve essere presente un'area di scrittura che supporti il formato markdown & UC-1.1 \\
+RO-F-2 & L'editor deve compilare la sintassi Markdown & UC-1.1 \\
 \hline
-RO-F-3 & Deve essere presente un'area di visualizzazione documento formattato rispetto alla sintassi markdown & UC-1.4 \\
+RO-F-3 & Deve essere presente un'area di visualizzazione del documento formattato rispetto alla sintassi Markdown & UC-1.1 \\
 \hline
-RO-F-4 & L'utente deve poter compilare il testo markdown & UC-1.3 \\
+RO-F-4 & Il sistema deve permettere all'utente di selezionare porzioni di testo tramite mouse o tastiera & UC-1.2 \\
 \hline
-RO-F-5 & Deve essere presente una barra degli strumenti per fare operazioni di modifica & UC-1.2.* \\
+RO-F-5 & Il sistema deve permettere all'utente di modificare porzioni di testo selezionate & UC-1.2 \\
 \hline
-RO-F-6 & Il sistema deve permettere l'applicazione del grassetto al testo & UC-1.2.1 \\
+RO-F-6 & Il sistema deve permettere all'utente di copiare una parte del testo & UC-1.3 \\
 \hline
-RO-F-7 & Il sistema deve permettere l'applicazione del corsivo al testo & UC-1.2.2 \\
+RO-F-7 & Il sistema deve permettere all'utente di incollare una parte del testo & UC-1.4 \\
 \hline
-RO-F-8 & Il sistema deve permettere l'applicazione della sottolineatura al testo & UC-1.2.3 \\
+RO-F-8 & Il sistema deve permettere all'utente di tagliare una parte del testo & UC-1.5 \\
 \hline
-RO-F-9 & Il sistema deve permettere di creare delle intestazioni e modificare la struttura del testo & UC-1.2.4 \\
+RO-F-9 & Il sistema deve permettere all'utente di annullare l'ultima modifica effettuata & UC-1.6 \\
 \hline
-RO-F-10 & Il sistema deve permettere l'inserimento di liste ed elenchi nel testo & UC-1.2.5 \\
+RO-F-10 & Il sistema deve permettere all'utente di ripristinare le modifiche precedentemente cancellate & UC-1.7 \\
 \hline
-RO-F-11 & Il sistema deve permettere l'inserimento di link e riferimenti & UC-1.2.6 \\
+RO-F-11 & Nell'editor è presente una barra degli strumenti (toolbar) per applicare formattazioni Markdown senza scrivere manualmente la sintassi & UC-1.8, UC-1.8.* \\
 \hline
-RO-F-12 & Il sistema deve permettere la compilazione del testo in formato markdown & UC-1.3 \\
+RO-F-12 & Il sistema deve permettere l'applicazione del grassetto al testo tramite toolbar & UC-1.8.1 \\
 \hline
-RO-F-13 & Il sistema deve permettere all'utente di poter tagliare una parte del testo & UC-1.5 \\
+RO-F-13 & Il sistema deve permettere l'applicazione del corsivo al testo tramite toolbar & UC-1.8.2 \\
 \hline
-RO-F-14 & Il sistema deve permettere all'utente di poter copiare una parte del testo & UC-1.6 \\
+RO-F-14 & Il sistema deve permettere l'applicazione della sottolineatura al testo tramite toolbar & UC-1.8.3 \\
 \hline
-RO-F-15 & Il sistema deve permettere all'utente di poter incollare del testo & UC-1.7 \\
+RO-F-15 & Il sistema deve permettere di creare delle intestazioni e modificare la struttura del testo tramite toolbar & UC-1.8.4 \\
 \hline
-RO-F-16 & Il sistema deve permettere all'utente di poter annullare l'ultima modifica effettuata & UC-1.8 \\
+RO-F-16 & Il sistema deve permettere l'inserimento di liste ed elenchi nel testo tramite toolbar & UC-1.8.5 \\
 \hline
-RO-F-17 & Il sistema deve permettere all'utente di poter ripristinare le modifiche precedentemente cancellate & UC-1.9 \\
+RO-F-17 & Il sistema deve permettere l'inserimento di link e riferimenti tramite toolbar & UC-1.8.6 \\
 \hline
-RO-F-18 & Il sistema deve permettere di poter applicare più "stili" (es: grassetto, corsivo, sottolineatura) alla stessa sezione di testo & UC-1.2.* \\
+RO-F-18 & L'utente può applicare più "stili" (es: grassetto, corsivo, sottolineatura) alla stessa sezione di testo & UC-1.8, UC-1.8.* \\
 \hline
-RO-F-19 & L'utente può caricare/aprire un file dal proprio dispositivo all'interno dell'editor & UC-3.0, UC-3.0.0, UC-3.0.1 \\
+RO-F-19 & Il sistema deve supportare l'inserimento e la visualizzazione di caratteri Unicode (supporto multilingua) & UC-1.10 \\
 \hline
-RO-F-20 & Il sistema deve supportare il caricamento tramite dialogo di esplorazione file (file picker) & UC-3.0, UC-3.0.1 \\
+RO-F-20 & Il sistema permette di selezionare del testo & UC-2.0, UC-2.6, UC-2.7, UC-2.7.*, UC-2.9, UC-2.10, UC-2.11 \\
 \hline
-RO-F-21 & Il sistema deve permettere all'utente di rimuovere il file che ha caricato (chiudendo il documento o l'editor) & UC3.0, UC-3.3 \\
+RO-F-21 & Il sistema permette di avviare la correzione grammaticale & UC-2.6 \\
 \hline
-RO-F-22 & Il sistema deve permettere all'utente di annullare l'operazione di caricamento file & UC-3.0 \\
+RO-F-22 & Il sistema permette di inviare del testo all'AI tramite API REST & UC-2.0, UC-2.6, UC-2.7, UC-2.7.*, UC-2.8, UC-2.9, UC-2.10, UC-2.11 \\
 \hline
-RO-F-23 & Il sistema notifica l'errore se non riesce a caricare il file & UC-3.1, UC-3.2\\
+RO-F-23 & Il sistema può scrivere nell'editor del testo ricevuto dall'AI & UC-2.0, UC-2.2, UC-2.6, UC-2.7, UC-2.7.x, UC-2.8 \\
 \hline
-RO-F-24 & Il sistema permette di selezionare del testo & UC-2.0, UC-2.6, UC-2.7, UC-2.7.*, UC-2.9, UC-2.10, UC-2.11 \\
+RO-F-24 & Il sistema permette all'utente di eliminare il testo generato & UC-2.0, UC-2.2, UC-2.3, UC-2.4, UC-2.5.*, UC-2.6 \\
 \hline
-RO-F-25 & Il sistema permette di avviare la correzione grammaticale & UC-2.6 \\
+RO-F-25 & Il sistema consente all'utente di avviare l'analisi del testo selezionato o dell'intero testo utilizzando il cappello scelto & UC-2.7, UC-2.7.* \\
 \hline
-RO-F-26 & Il sistema permette di inviare del testo all'AI tramite API REST & UC-2.0, UC-2.6, UC-2.7, UC-2.7.*, UC-2.8, UC-2.9, UC-2.10, UC-2.11 \\
+RO-F-26 & Il sistema permette l'invio di un prompt per la generazione del testo & UC-2.8 \\
 \hline
-RO-F-27 & Il sistema può scrivere nell'editor del testo ricevuto dall'AI & UC-2.0, UC-2.2, UC-2.6, UC-2.7, UC-2.7.x, UC-2.8 \\
+RO-F-27 & Il sistema permette la modifica del testo generato inserito nell'editor & UC-2.3, UC-2.4, UC-2.5.*, UC-2.8, UC-2.11 \\
 \hline
-RO-F-28 & Il sistema permette all'utente di eliminare il testo generato & UC-2.0, UC-2.2, UC-2.3, UC-2.4, UC-2.5.*, UC-2.6 \\
+RO-F-28 & Il sistema permette la modifica del prompt da inviare all'AI & UC-2.8, UC-2.9, UC-2.10, UC-2.11 \\
 \hline
-RO-F-29 & Il sistema consente all'utente di avviare l'analisi del testo selezionato o dell'intero testo utilizzando il cappello scelto & UC-2.7, UC-2.7.* \\
+RO-F-29 & L'utente deve poter accedere alle opzioni AI in ogni momento, per applicare modifiche a tutto il testo & UC-2.0 \\
 \hline
-RO-F-30 & Il sistema permette l'invio di un prompt per la generazione del testo & UC-2.8 \\
+RO-F-30 & Ogni sezione IA include opzioni per accettare, eliminare o rigenerare il testo & UC-2.0, UC-2.2, UC-2.3, UC-2.4, UC-2.5.* \\
 \hline
-RO-F-31 & Il sistema permette la modifica del testo generato inserito nell'editor & UC-2.3, UC-2.4, UC-2.5.*, UC-2.8, UC-2.11 \\
+RO-F-31 & L'utente deve poter riassumere il testo usando l'IA (selezionato o tutto) & UC-2.3 \\
 \hline
-RO-F-32 & Il sistema permette la modifica del prompt da inviare all'AI & UC-2.8, UC-2.9, UC-2.10, UC-2.11 \\
+RO-F-32 & L'utente deve poter usare l'IA per riscrivere il testo (selezionato o non) & UC-2.4 \\
 \hline
-RO-F-33 & L'utente deve poter accedere alle opzioni AI in ogni momento, per applicare modifiche a tutto il testo & UC-2.0 \\
+RO-F-33 & L'utente deve poter tradurre il testo usando l'IA in: inglese, italiano, tedesco, francese, spagnolo e cinese mandarino & UC-2.5.* \\
 \hline
-RO-F-34 & Ogni sezione IA include opzioni per accettare, eliminare o rigenerare il testo & UC-2.0, UC-2.2, UC-2.3, UC-2.4, UC-2.5.* \\
+RO-F-34 & Se viene annullata prematuramente la generazione di testo, rimarrà ciò che è già stato generato & UC-2.3, UC-2.4, UC-2.5.* \\
 \hline
-RO-F-35 & L'utente deve poter riassumere il testo usando l'IA (selezionato o tutto) & UC-2.3 \\
+RO-F-35 & L'utente può caricare/aprire un file dal proprio dispositivo all'interno dell'editor & UC-3.0, UC-3.0.0, UC-3.0.1 \\
 \hline
-RO-F-36 & L'utente deve poter usare l'IA per riscrivere il testo (selezionato o non) & UC-2.4 \\
+RO-F-36 & Il sistema deve supportare il caricamento tramite dialogo di esplorazione file (file picker) & UC-3.0, UC-3.0.1 \\
 \hline
-RO-F-37 & L'utente deve poter tradurre il testo usando l'IA in: inglese, italiano, tedesco, francese, spagnolo e cinese mandarino & UC-2.5.* \\
+RO-F-37 & Il sistema deve permettere all'utente di rimuovere il file che ha caricato (chiudendo il documento o l'editor) & UC3.0, UC-3.3 \\
 \hline
-RO-F-38 & Se viene annullata prematuramente la generazione di testo, rimarrà ciò che è già stato generato & UC-2.3, UC-2.4, UC-2.5.* \\
+RO-F-38 & Il sistema deve permettere all'utente di annullare l'operazione di caricamento file & UC-3.0 \\
 \hline
-RD-F-1 & Il sistema deve supportare le scorciatoie da tastiera per effettuare modifiche al testo & UC-1.2.*, UC-1.5, UC-1.6, UC-1.7, UC-1.8, UC-1.9, UC-1.10 \\
+RO-F-39 & Il sistema notifica l'errore se non riesce a caricare il file & UC-3.1, UC-3.2\\
 \hline
-RD-F-2 & Il sistema deve supportare il caricamento tramite drag-and-drop (trascinamento file nell'area dell'editor) & UC-3.0, UC-3.0.0 \\
+RD-F-1 & Il sistema deve supportare l'uso di scorciatoie da tastiera per le operazioni di formattazione & UC-1.8.* \\
 \hline
-RD-F-3 & L'utente deve visualizzare un menù di opzioni per le azioni da fare sul file (carica, nuovo, stampa, chiudi) & UC-1.0, UC-3.0, UC-3.3 \\
+RD-F-2 & Il sistema deve permettere di cambiare modalità di visualizzazione (Solo Editor, Solo Anteprima, Split View) & UC-1.9 \\
 \hline
-RD-F-4 & Se sono presenti modifiche non salvate nell'editor, il sistema chiede conferma all'utente prima di caricare un nuovo file, permettendo di annullare l'operazione, per salvare il testo presente, o sovrascrivere il contenuto senza salvarlo & UC-3.0 \\
+RD-F-3 & Il sistema deve supportare il caricamento tramite drag-and-drop (trascinamento file nell'area dell'editor) & UC-3.0, UC-3.0.0 \\
 \hline
-ROP-F-1 & Il sistema deve permettere all'utente di poter cercare delle parole nel testo & UC-1.10 \\
+RD-F-4 & L'utente deve visualizzare un menù di opzioni per le azioni da fare sul file (carica, nuovo, stampa, chiudi) & UC-1.0, UC-3.0, UC-3.3 \\
 \hline
-ROP-F-2 & AI crea una riga separatrice tra il testo generato e quello utente ('----') & UC-2.0, UC-2.2, UC-2.3, UC-2.4, UC-2.5.* \\
+RD-F-5 & Se sono presenti modifiche non salvate nell'editor, il sistema chiede conferma all'utente prima di caricare un nuovo file, permettendo di annullare l'operazione, per salvare il testo presente, o sovrascrivere il contenuto senza salvarlo & UC-3.0 \\
+\hline
+ROP-F-1 & L'utente può ricercare parole nel testo attraverso l'editor & UC-1.10 \\
+\hline
+ROP-F-2 & AI crea una riga separatrice tra il testo generato e quello utente ('---') & UC-2.0, UC-2.2, UC-2.3, UC-2.4, UC-2.5.* \\
 \hline
 ROP-F-3 & La sezione viene colorata in base al tipo di operazione che viene fatta & UC-2.2 \\
 \hline
@@ -1886,39 +1939,46 @@ ROP-F-23 & Il sistema deve permettere il salvataggio di una nota in un sistema d
 \hline
 ROP-F-24 & Il sistema deve associare ogni nota al suo creatore & UC-5.4 \\
 \hline
+\addlinespace[1em]
+\caption{Tabella dei requisiti funzionali}
 \end{longtable}
 
+\newpage
 \subsubsection{Requisiti di Vincolo}
 I requisiti di vincolo\textsubscript{G} rappresentano le limitazioni entro le quali il progetto deve essere sviluppato. A differenza dei requisiti funzionali, questi non derivano da scelte progettuali del team, ma sono imposizioni esterne dettate dal committente, da normative o da limiti tecnologici.
 Questi comprendono i vincoli tecnologici, architetturali e organizzativi.
+
 % tabella per i requisiti non funzionali di vincolo
-\begin{table}[H]
-\centering
-\begin{tabular}{|p{0.2\textwidth}|>{\raggedright\arraybackslash}p{0.5\textwidth}|p{0.2\textwidth}|}
+\begin{longtable}{|p{0.2\textwidth}|>{\raggedright\arraybackslash}p{0.5\textwidth}|p{0.2\textwidth}|}
 \hline
 \textbf{Requisito} & \textbf{Descrizione} & \textbf{Casi d'uso correlati}\\
 \hline
-RO-V-1 & Il caricamento e la lettura del file devono avvenire localmente tramite le API del browser (es. File API), senza inviare il contenuto a un server & - \\
+
+RO-V-1 & L'applicazione deve essere accessibile via browser e necessita di connessione internet & UC-1.0 \\
 \hline
-RO-V-2 & Il sistema deve supportare nativamente la codifica dei caratteri Unicode (UTF-8) durante l'importazione per garantire la leggibilità di testi multilingua & UC-1.9, UC-3.0 \\
+RO-V-2 & Il sistema deve supportare nativamente la codifica dei caratteri Unicode (UTF-8) per garantire la leggibilità di testi multilingua & UC-1.10 \\
 \hline
-RO-V-3 & AI deve sapere cosa è stato selezionato e incorporare le modifiche selezionate solo per quella parte di testo & UC-2.0 \\
+RO-V-3 & Il formato di input e storage del testo deve essere Markdown & UC-1.0, UC-1.1 \\
 \hline
-RO-V-4 & AI deve mantenere il contesto di tutto il testo scritto quando viene chiamato, anche se sta agendo solo su una parte & UC-2.0 \\
+RO-V-4 & AI deve sapere cosa è stato selezionato e incorporare le modifiche selezionate solo per quella parte di testo & UC-2.0 \\
 \hline
-RO-V-5 & Il testo generato dall'AI viene creato in una nuova sezione in fondo al testo & UC-2.0, UC-2.2 \\
+RO-V-5 & AI deve mantenere il contesto di tutto il testo scritto quando viene chiamato, anche se sta agendo solo su una parte & UC-2.0 \\
 \hline
-RO-V-6 & Le sezioni che includono un riassunto diranno anche quali righe ha riassunto & UC-2.3, UC-2.4, UC-2.5.* \\
+RO-V-6 & Il testo generato dall'AI viene creato in una nuova sezione in fondo al testo & UC-2.0, UC-2.2 \\
 \hline
-RO-V-7 & L'AI deve avere istruzioni sufficienti affinché il testo riscritto sia corretto grammaticalmente, sintatticamente e semanticamente e deve riflettere la richiesta dell'utente & UC-2.4 \\
+RO-V-7 & Le sezioni che includono un riassunto diranno anche quali righe ha riassunto & UC-2.3, UC-2.4, UC-2.5.* \\
 \hline
-RO-V-8 & Le sezioni create per la traduzione di un testo specificheranno la lingua di partenza e di fine & UC-2.5.* \\
+RO-V-8 & L'AI deve avere istruzioni sufficienti affinché il testo riscritto sia corretto grammaticalmente, sintatticamente e semanticamente e deve riflettere la richiesta dell'utente & UC-2.4 \\
 \hline
-RO-V-9 & Se il testo è già nella lingua da tradurre, l'AI genera avvisa l'utente e interrompe l'operazione & UC-2.5.* \\
+RO-V-9 & Le sezioni create per la traduzione di un testo specificheranno la lingua di partenza e di fine & UC-2.5.* \\
 \hline
-RO-V-10 & AI deve avere delle istruzioni ottimizzate per la traduzione nella lingua selezionata & UC-2.5.* \\
+RO-V-10 & Se il testo è già nella lingua da tradurre, l'AI genera avvisa l'utente e interrompe l'operazione & UC-2.5.* \\
 \hline
-RO-V-11 & Il sistema espone la sua limitazione nell'eseguire un'azione richiesta se i dati inviati non rispettano i limiti dell'AI & UC-2.9, UC-2.10, UC-2.11 \\
+RO-V-11 & AI deve avere delle istruzioni ottimizzate per la traduzione nella lingua selezionata & UC-2.5.* \\
+\hline
+RO-V-12 & Il sistema espone la sua limitazione nell'eseguire un'azione richiesta se i dati inviati non rispettano i limiti dell'AI & UC-2.9, UC-2.10, UC-2.11 \\
+\hline
+RO-V-13 & Il caricamento e la lettura del file devono avvenire localmente tramite le API del browser (es. File API), senza inviare il contenuto a un server & UC-3.* \\
 \hline
 RD-V-1 & Il sistema deve supportare l'importazione dei formati di file più comuni: .md, .txt, .markdown & UC-3.0, UC-3.2 \\
 \hline
@@ -1930,46 +1990,51 @@ ROP-V-3 & L'accesso alle note salvate nel database deve essere consentito solo a
 \hline
 ROP-V-4 & Il sistema deve impedire il salvataggio di note nel database da parte di utenti non autenticati & UC-5.4 \\
 \hline
-\end{tabular}
+\addlinespace[1em]
 \caption{Tabella dei requisiti di vincolo}
-\end{table}
+\end{longtable}
 
+
+\newpage
 \subsubsection{Requisiti di Qualità}
 I requisiti di qualità\textsubscript{G} specificano le caratteristiche intrinseche del software. Non descrivono nuove funzioni, ma stabiliscono \textit{come} il sistema deve erogare quelle esistenti. 
 % tabella per i requisiti non funzionali di qualità
-\begin{table}[H]
-\centering
-\begin{tabular}{|p{0.2\textwidth}|>{\raggedright\arraybackslash}p{0.5\textwidth}|p{0.2\textwidth}|}
+\begin{longtable}{|p{0.2\textwidth}|>{\raggedright\arraybackslash}p{0.5\textwidth}|p{0.2\textwidth}|}
 \hline
 \textbf{Requisito} & \textbf{Descrizione} & \textbf{Casi d'uso correlati}\\
 \hline
-RO-Q-1 & Il sistema deve fornire un feedback visivo immediato all'utente (messaggio di errore o di successo) al termine del tentativo di caricamento file & UC-3.0, UC-3.1, UC-3.2 \\
+
+RO-Q-1 & Il sistema deve compilare il testo markdown in un breve lasso di tempo & UC-1.0, UC-1.1 \\
 \hline
-RO-Q-2 & Il sistema deve validare il formato del file caricato e impedire il caricamento di formati non supportati & UC-3.1 \\
+RO-Q-2 & Il sistema deve fornire messaggi di errore chiari se l'editor non risponde o se l'anteprima fallisce & UC-1.0, UC-1.1 \\
 \hline
-RO-Q-3 & Il sistema deve validare le dimensioni del file caricato e impedire il caricamento di file che superano una dimensione massima & UC-3.2 \\
+RO-Q-3 & L'aggiornamento dell'anteprima compilata deve avvenire in tempi brevi dopo la richiesta di compilazione & UC-1.0, UC-1.1 \\
 \hline
-RO-Q-4 & Il sistema deve impedire il caricamento di file corrotti & UC-3.0, UC-3.1\\
+RO-Q-4 & L'LLM deve rispondere sempre in tempi brevi, o restituire errore & UC-2.* \\
 \hline
-RO-Q-5 & La dimensione massima consentita per il caricamento di un file deve essere limitata a una soglia definita e ragionevole & UC-3.0, UC-3.2 \\
+RO-Q-5 & Le opzioni AI devono apparire velocemente & UC-2.0 \\
 \hline
-RO-Q-6 & AI deve rispondere sempre in tempi brevi, o restituire errore & UC-2.* \\
+RO-Q-6 & Le opzioni non devono sparire in maniera poco intuitiva muovendo il mouse & UC-2.0 \\
 \hline
-RO-Q-7 & Le opzioni AI devono apparire velocemente & UC-2.0 \\
+RO-Q-7 & Il testo creato si comporta come qualunque altro testo aggiunto dall'IA: facilmente riconoscibile e sempre modificabile dall'utente & UC-2.3, UC-2.4, UC-2.5.*, UC-2.8 \\
 \hline
-RO-Q-8 & Le opzioni non devono sparire in maniera poco intuitiva muovendo il mouse & UC-2.0 \\
+RO-Q-8 & Il sistema mostra un messaggio in caso di errore durante la generazione di contenuto & UC-2.3, UC-2.4, UC-2.5.*, UC-2.6, UC-2.7, UC-2.7.*, UC-2.8, UC-2.9, UC-2.10, UC-2.11 \\
 \hline
-RO-Q-9 & Il testo creato si comporta come qualunque altro testo aggiunto dall'IA: facilmente riconoscibile e sempre modificabile dall'utente & UC-2.3, UC-2.4, UC-2.5.*, UC-2.8 \\
+RO-Q-9 & Il sistema deve fornire un feedback visivo immediato all'utente (messaggio di errore o di successo) al termine del tentativo di caricamento file & UC-3.0, UC-3.1, UC-3.2 \\
 \hline
-RO-Q-10 & Il sistema mostra un messaggio in caso di errore durante la generazione di contenuto & UC-2.3, UC-2.4, UC-2.5.*, UC-2.6, UC-2.7, UC-2.7.*, UC-2.8, UC-2.9, UC-2.10, UC-2.11 \\
+RO-Q-10 & Il sistema deve validare il formato del file caricato e impedire il caricamento di formati non supportati & UC-3.1 \\
 \hline
-RD-Q-1 & Il sistema deve compilare il testo markdown in un breve lasso di tempo & UC-1.3 \\
+RO-Q-11 & Il sistema deve validare le dimensioni del file caricato e impedire il caricamento di file che superano una dimensione massima & UC-3.2 \\
 \hline
-RD-Q-2 & I messaggi di errore (per formato errato, file troppo grande o corrotto) devono essere esplicativi e suggerire all'utente come procedere & UC-3.0, UC-3.2, UC-3.3 \\
+RO-Q-12 & Il sistema deve impedire il caricamento di file corrotti & UC-3.0, UC-3.1\\
 \hline
-RD-Q-3 & L'operazione di caricamento e rendering di un file di dimensioni supportate deve completarsi in meno di 3 secondi & UC-3.0, UC-3.0.0, UC-3.0.1 \\
+RO-Q-13 & La dimensione massima consentita per il caricamento di un file deve essere limitata a una soglia definita e ragionevole & UC-3.0, UC-3.2 \\
 \hline
-RD-Q-4 & Il parsing del contenuto del file deve essere robusto, garantendo che caratteri non validi non causino il crash dell'applicazione & UC-3.* \\
+RD-Q-1 & I messaggi di errore (per formato errato, file troppo grande o corrotto) devono essere esplicativi e suggerire all'utente come procedere & UC-3.0, UC-3.2, UC-3.3 \\
+\hline
+RD-Q-2 & L'operazione di caricamento e rendering di un file di dimensioni supportate deve completarsi in meno di 3 secondi & UC-3.0, UC-3.0.0, UC-3.0.1 \\
+\hline
+RD-Q-3 & Il parsing del contenuto del file deve essere robusto, garantendo che caratteri non validi non causino il crash dell'applicazione & UC-3.* \\
 \hline
 ROP-Q-1 & Il sistema deve mostrare un messaggio di errore non specifico nel caso di fallimento del login & UC-5.0 \\
 \hline
@@ -1981,9 +2046,9 @@ ROP-Q-4 & Il sistema mostra i file salvati in ordine cronologico & UC-5.3 \\
 \hline
 ROP-Q-5 & Il sistema deve notificare all'utente il fallimento del salvataggio & UC-5.4 \\
 \hline
-\end{tabular}
+\addlinespace[1em]
 \caption{Tabella dei requisiti di qualità}
-\end{table}
+\end{longtable}
 
 \newpage
 
@@ -1994,13 +2059,13 @@ ROP-Q-5 & Il sistema deve notificare all'utente il fallimento del salvataggio & 
 \hline
 \textbf{Tipologia} & \textbf{O} & \textbf{D} & \textbf{OP} & \textbf{Totale}\\
 \hline
-Funzionali & 0 & 0 & 0 & 0 \\
+Funzionali & 39 & 5 & 24 & 68 \\
 \hline
-Qualità & 0 & 0 & 0 & 0 \\
+Vincolo & 13 & 1 & 4 & 18 \\
 \hline
-Vincolo & 0 & 0 & 0 & 0 \\
+Qualità & 13 & 3 & 5 & 21 \\
 \hline
-\textbf{Totale} & 0 & 0 & 0 & 0\\
+\textbf{Totale} & 65 & 9 & 33 & 107\\
 \hline
 \end{tabular}
 \caption{Riepilogo dei requisiti}
