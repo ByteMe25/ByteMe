@@ -65,7 +65,7 @@
         \centering
         \begin{tabular}{|l|p{5cm}|}
             \hline
-            \textbf{Versione} & 1.2.4 \\
+            \textbf{Versione} & 1.2.5 \\
             \hline
             \textbf{Stato} & In corso \\
             \hline
@@ -96,6 +96,8 @@
     \begin{tabular}{|c|c|c|>{\raggedright\arraybackslash}p{0.4\textwidth}|c|}
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verifica} \\
+        \hline
+        1.2.5 & 01/01/2026 & Joseph Grant & Crosscheck requisiti relativi a macroarea 5, piccole correzioni e aggiunte &  \\
         \hline
         1.2.4 & 30/12/2025 & Giulia Barzon & Correzione requisiti macroarea 1 e inserimento diagrammi completi &  \\
         \hline
@@ -1754,6 +1756,29 @@ del documento
     \label{fig:uc5.2}
 \end{figure}
 
+\subsubsection{UC-5.5 - Logout}
+\begin{itemize}
+    \item \textbf{Attore principale}: Utente autenticato
+    \item \textbf{Descrizione}: L'utente desidera terminare la propria sessione
+    \item \textbf{Precondizioni}: L'utente è autenticato nel sistema
+    \item \textbf{Postcondizioni}: L'utente viene disconnesso dal sistema
+    \item \textbf{Scenario principale}:
+        \begin{itemize}
+            \item L'utente accede al sistema
+            \item L'utente desidera disconnettersi
+            \item L'utente seleziona l'opzione "Logout"
+            \item L'utente viene disconnesso dal sistema
+            \item La sessione dell'utente termina
+            \item L'utente viene riportato alla pagina iniziale
+        \end{itemize}
+\end{itemize}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../UCimg/UC5.5_logout.drawio.jpg}
+    \caption{Diagramma del caso d'uso UC-5.5}
+    \label{fig:uc5.5}
+\end{figure}
+
 \newpage
 
 \section{Requisiti}
@@ -1913,9 +1938,9 @@ ROP-F-10 & Il sistema deve permettere all'utente di inserire le proprie credenzi
 \hline
 ROP-F-11 & Se le credenziali sono errate il sistema deve non far autenticare l'utente & UC-5.0 \\
 \hline
-ROP-F-12 & Il sistema deve permettere all'utente di potersi registrate tramite uno username e una password & UC-5.1 \\
+ROP-F-12 & Il sistema deve permettere all'utente di potersi registrare tramite uno username e una password & UC-5.1 \\
 \hline
-ROP-F-13 & Il sistema deve impedire la registrazione in caso ci sia uno username uguale & UC-5.1 \\
+ROP-F-13 & Il sistema deve impedire la registrazione in caso ci sia uno username uguale nel database & UC-5.1 \\
 \hline
 ROP-F-14 & Il sistema deve salvare nel database le password criptate in fase di registrazione & UC-5.1 \\
 \hline
@@ -1923,22 +1948,25 @@ ROP-F-15 & Il sistema deve permettere ad un utente autenticato di poter eliminar
 \hline
 ROP-F-16 & Il sistema in caso di eliminazione account deve eliminare i dati dal database & UC-5.2 \\
 \hline
-ROP-F-17 & Le operazioni di eliminazione dell'account deve richiedere una conferma esplicita da parte dell'utente & UC-5.2 \\
+ROP-F-17 & Le operazioni di eliminazione dell'account devono richiedere una conferma esplicita da parte dell'utente & UC-5.2 \\
 \hline
 ROP-F-18 & Il sistema deve terminare la sessione nel caso un account venga eliminato & UC-5.2 \\
 \hline
 ROP-F-19 & Il sistema deve permettere ad un utente di vedere i file che ha salvato & UC-5.3 \\
 \hline
-ROP-F-20 & Il sistema deve permettere ad un utente autenticato di selezionare una nota dall'elenco e aprirla & UC-5.3 \\
+ROP-F-20 & Il sistema deve permettere ad un utente autenticato di selezionare un file dall'elenco e aprirlo & UC-5.3 \\
 \hline
-ROP-F-21 & Il sistema deve consentire all'utente di annullare l'operazione di apertura senza recuperare alcuna nota dal database & UC-5.3 \\
+ROP-F-21 & Il sistema deve consentire all'utente di annullare l'operazione di apertura senza recuperare alcun file dal database & UC-5.3 \\
 \hline
 ROP-F-22 & Il sistema deve permettere all'utente l'apertura di un file salvato e visibile all'utente & UC-5.3 \\
 \hline
-ROP-F-23 & Il sistema deve permettere il salvataggio di una nota in un sistema di persistenza non locale & UC-5.4 \\
+ROP-F-23 & Il sistema deve permettere il salvataggio di un file in un sistema di persistenza non locale & UC-5.4 \\
 \hline
-ROP-F-24 & Il sistema deve associare ogni nota al suo creatore & UC-5.4 \\
+ROP-F-24 & Il sistema deve associare ogni file al suo creatore & UC-5.4 \\
 \hline
+ROP-F-25 & L'utente può effettuare il logout in ogni momento e terminare la propria sessione & UC-5.5 \\
+\hline
+
 \addlinespace[1em]
 \caption{Tabella dei requisiti funzionali}
 \end{longtable}
@@ -1986,9 +2014,9 @@ ROP-V-1 & La password inserita dall'utente deve essere minimo 8 caratteri & UC-5
 \hline
 ROP-V-2 & La password inserita dall'utente deve contenere almeno un carattere speciale & UC-5.1 \\
 \hline
-ROP-V-3 & L'accesso alle note salvate nel database deve essere consentito solo ad utenti autenticati & UC-5.3 \\
+ROP-V-3 & L'accesso ai file salvati nel database deve essere consentito solo ad utenti autenticati & UC-5.3 \\
 \hline
-ROP-V-4 & Il sistema deve impedire il salvataggio di note nel database da parte di utenti non autenticati & UC-5.4 \\
+ROP-V-4 & Il sistema deve impedire il salvataggio di file nel database da parte di utenti non autenticati & UC-5.4 \\
 \hline
 \addlinespace[1em]
 \caption{Tabella dei requisiti di vincolo}
@@ -2059,13 +2087,13 @@ ROP-Q-5 & Il sistema deve notificare all'utente il fallimento del salvataggio & 
 \hline
 \textbf{Tipologia} & \textbf{O} & \textbf{D} & \textbf{OP} & \textbf{Totale}\\
 \hline
-Funzionali & 39 & 5 & 24 & 68 \\
+Funzionali & 39 & 5 & 25 & 69 \\
 \hline
 Vincolo & 13 & 1 & 4 & 18 \\
 \hline
 Qualità & 13 & 3 & 5 & 21 \\
 \hline
-\textbf{Totale} & 65 & 9 & 33 & 107\\
+\textbf{Totale} & 65 & 9 & 34 & 108\\
 \hline
 \end{tabular}
 \caption{Riepilogo dei requisiti}
