@@ -97,9 +97,11 @@
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verifica} \\
         \hline
-        1.2.6 & 01/01/2026 & Tommaso Tombacco & Crosscheck requisiti relativi a macroarea 3, piccole correzioni &  \\
+        1.2.7 & 02/01/2026 & Elisa Marchioro & Aggiunti requisiti macroarea 4 &  \\
         \hline
-        1.2.5 & 01/01/2026 & Joseph Grant & Crosscheck requisiti relativi a macroarea 5, piccole correzioni e aggiunte &  \\
+        1.2.6 & 01/01/2026 & Tommaso Tombacco & Piccole correzioni &  \\
+        \hline
+        1.2.5 & 01/01/2026 & Joseph Grant & Piccole correzioni e aggiunte &  \\
         \hline
         1.2.4 & 30/12/2025 & Giulia Barzon & Correzione requisiti macroarea 1 e inserimento diagrammi completi &  \\
         \hline
@@ -1908,6 +1910,18 @@ RO-F-38 & Il sistema deve permettere all'utente di annullare l'operazione di car
 \hline
 RO-F-39 & Il sistema notifica l'errore se non riesce a caricare il file & UC-3.1, UC-3.2\\
 \hline
+RO-F-40 & Il sistema deve consentire l'esportazione del documento in formato PDF. & UC-4.0, UC-4.1\\
+\hline
+RO-F-41 & Il sistema deve essere in grado di convertire il documento da Markdown al formato selezionato dall'utente. & UC-4.0, UC-4.0, UC-4.1, UC-4.1.1, UC-4.1.2, UC-4.1.3, UC-4.1.4\\
+\hline
+RO-F-42 & Il sistema deve controllare che il range di pagine inserito dall'utente sia valido (che non superi il numero di pagine presenti o che non sia un numero negativo). & UC-4.2.1, UC-4.3.1\\
+\hline
+RO-F-43 & Il sistema deve permettere di poter scaricare il file nel dispositivo dell'utente. & UC-4.0\\
+\hline
+RO-F-44 & Il sistema deve potersi collegare a un dispositivo di stampa. & UC-4.3\\
+\hline
+RO-F-45 & Il sistema deve permettere all'utente di selezionare la stampante che preferisce tra quelle disponibili. & UC-4.3\\
+\hline
 RD-F-1 & Il sistema deve supportare l'uso di scorciatoie da tastiera per le operazioni di formattazione & UC-1.8.* \\
 \hline
 RD-F-2 & Il sistema deve permettere di cambiare modalità di visualizzazione (Solo Editor, Solo Anteprima, Split View) & UC-1.9 \\
@@ -1917,6 +1931,18 @@ RD-F-3 & Il sistema deve supportare il caricamento tramite drag-and-drop (trasci
 RD-F-4 & L'utente deve visualizzare un menù di opzioni per le azioni da fare sul file (carica, nuovo, stampa, chiudi) & UC-1.0, UC-3.0, UC-3.3 \\
 \hline
 RD-F-5 & Se sono presenti modifiche non salvate nell'editor, il sistema chiede conferma all'utente prima di caricare un nuovo file, permettendo di annullare l'operazione, per salvare il testo presente, o sovrascrivere il contenuto senza salvarlo & UC-3.0 \\
+\hline
+RD-F-6 & Il sistema deve consentire l'esportazione del documento in formato MD. & UC-4.1.1 \\
+\hline
+RD-F-7 & Il sistema deve consentire l'esportazione del documento in formato HTML. & UC-4.1.2 \\
+\hline
+RD-F-8 & Il sistema deve consentire l'esportazione del documento in formato ODT. & UC-4.1.3 \\
+\hline
+RD-F-9 & Il sistema deve consentire l'esportazione del documento in formato DOCX. & UC-4.1.4 \\
+\hline
+RD-F-10 & L'utente deve poter scegliere se esportare l'intero documento, un range di pagine o una quantità selezionata di pagine. & UC-4.2, UC-4.2.1\\
+\hline
+RD-F-11 & Il sistema deve permettere all’utente di scegliere se stampare tutto il documento o una quantità selezionata di pagine. & UC-4.3, UC-4.3.1\\
 \hline
 ROP-F-1 & L'utente può ricercare parole nel testo attraverso l'editor & UC-1.10 \\
 \hline
@@ -2010,6 +2036,8 @@ RO-V-12 & Il sistema espone la sua limitazione nell'eseguire un'azione richiesta
 \hline
 RO-V-13 & Il caricamento e la lettura del file devono avvenire localmente tramite le API del browser (es. File API), senza inviare il contenuto a un server & UC-3.* \\
 \hline
+RO-V-14 & L'operazione di esportazione o stampa non deve alterare o chiudere il documento originale nell'editor. & Tutti gli UC-4 \\
+\hline
 RD-V-1 & Il sistema deve supportare l'importazione dei formati di file più comuni: markdown (.md, .markdown) e testo (.txt) & UC-3.0, UC-3.1 \\
 \hline
 ROP-V-1 & La password inserita dall'utente deve essere minimo 8 caratteri & UC-5.1 \\
@@ -2060,11 +2088,21 @@ RO-Q-12 & Il sistema deve impedire il caricamento di file corrotti & UC-3.0, UC-
 \hline
 RO-Q-13 & La dimensione massima consentita per il caricamento di un file deve essere limitata a una soglia definita e ragionevole & UC-3.0, UC-3.2 \\
 \hline
+RO-Q-14 & Il sistema deve avvisare l'utente della buona riuscita o di eventuali errori durante il download. & UC-4.0, UC-4.1 \\
+\hline
+RO-Q-15 & Il sistema deve avvisare l’utente in caso di errore durante l’invio del documento alla stampante. & UC-4.3 \\
+\hline
 RD-Q-1 & I messaggi di errore (per formato errato, file troppo grande o corrotto) devono essere esplicativi e suggerire all'utente come procedere & UC-3.0, UC-3.1, UC-3.2 \\
 \hline
 RD-Q-2 & L'operazione di caricamento e rendering di un file di dimensioni supportate deve completarsi in meno di 3 secondi & UC-3.0, UC-3.0.0, UC-3.0.1 \\
 \hline
 RD-Q-3 & Il parsing del contenuto del file deve essere robusto, garantendo che caratteri non validi non causino il crash dell'applicazione & UC-3.* \\
+\hline
+RD-Q-4 & Il sistema deve fornire una visualizzazione in anteprima del documento nel formato selezionato prima di procedere al download. & UC-4.0, UC-4.1 \\
+\hline
+RD-Q-5 & Il sistema deve permettere all'utente di scegliere il nome del file prima di scaricare il documento. & UC-4.0, UC-4.1 \\
+\hline
+RD-Q-6 & Il sistema deve permettere la visualizzazione in anteprima del documento prima dell'invio del comando di stampa. & UC-4.3 \\
 \hline
 ROP-Q-1 & Il sistema deve mostrare un messaggio di errore non specifico nel caso di fallimento del login & UC-5.0 \\
 \hline
