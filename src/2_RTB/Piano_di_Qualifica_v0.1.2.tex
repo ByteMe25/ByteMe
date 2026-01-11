@@ -1,0 +1,632 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+
+\usepackage{array}
+\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
+
+\geometry{margin=2.5cm}
+
+% Intestazione e piè di pagina
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[C]{\thepage\ di \pageref{LastPage}}
+
+\begin{document}
+
+% Prima pagina - Intestazione
+\begin{titlepage}
+    \centering
+    
+    % Logo Università
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.3\textwidth]{../logoUnipd.jpg}
+    \end{figure}
+    
+    \vspace{0.5cm}
+    
+    \textbf{\Large Università degli Studi di Padova} \\
+    \vspace{0.2cm}
+    \textbf{Laurea in Informatica} \\
+    \vspace{0.2cm}
+    \textbf{Corso di Ingegneria del Software} \\
+    \vspace{0.2cm}
+    \textbf{Anno Accademico 2025/2026} \\
+    
+    \vspace{1cm}
+    
+    % Logo gruppo
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.2\textwidth]{../LogoByteMe.jpg}
+    \end{figure}
+    
+    \vspace{0.5cm}
+    
+    \textbf{\Large Gruppo ByteMe} \\
+    \vspace{0.2cm}
+    \texttt{byteme2025swe@gmail.com} \\
+    
+    \vspace{1cm}
+    
+    \textbf{\Huge Piano di Qualifica} \\
+    
+    \vspace{1.5cm}
+    
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{|l|p{5cm}|}
+            \hline
+            \textbf{Versione} & 0.1.2 \\
+            \hline
+            \textbf{Stato} & In corso \\
+            \hline
+            \textbf{Redazione} & Tutto il gruppo \\
+            \hline
+            \textbf{Verifica} & Tutto il gruppo \\
+            \hline
+            \textbf{Approvazione} & Tutto il gruppo \\
+            \hline
+            \textbf{Proprietario} & ByteMe \\
+            \hline
+            \textbf{Uso} & Esterno \\
+            \hline
+            \textbf{Destinatari} & Prof. Tullio Vardanega \\ & Prof. Riccardo Cardin \\
+            \hline
+        \end{tabular}
+    \end{table}
+    
+    \vfill
+\end{titlepage}
+
+% Seconda pagina - Versionamento
+\thispagestyle{empty}
+\section*{Registro dei Cambiamenti}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|c|>{\raggedright\arraybackslash}p{0.4\textwidth}|c|}
+        \hline
+        \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verifica} \\
+        \hline
+        0.1.2 & 11/01/2026 & Giulia Barzon & Aggiunte metriche qualità di processo & \\
+        \hline
+        0.1.1 & 27/12/2025 & Joseph Grant & Aggiunta sezione 'verifica' al versionamento & \\
+        \hline
+        0.1.0 & 15/12/2025 & Giulia Barzon & Creazione del documento, scrittura introduzione e checklist & \\
+        \hline
+    \end{tabular}
+    \caption{Registro delle versioni del documento}
+    \label{tab:versionamento}
+\end{table}
+
+\newpage
+
+% Terza pagina - Indice
+\tableofcontents
+\thispagestyle{empty}
+\newpage
+
+\setcounter{page}{1}
+
+\section{Introduzione}
+
+\subsection{Scopo del documento}
+Il presente documento ha lo scopo di definire la strategia, le metodologie e le risorse pianificate per garantire la qualità del prodotto software \textbf{"Second Brain"} e l'efficienza dei processi di sviluppo adottati dal gruppo. Esso funge da riferimento principale per le attività di \textbf{verifica} (accertamento che il prodotto sia costruito correttamente) e \textbf{validazione} (accertamento che il prodotto giusto sia stato costruito), stabilendo gli standard qualitativi che ogni artefatto deve soddisfare prima di essere approvato.
+In questo contesto, il termine \textbf{"Qualità"} viene inteso secondo due prospettive complementari:
+\begin{itemize}
+    \item \textbf{Qualità di Processo:} L'aderenza del team al metodo di lavoro definito nelle \textit{Norme di Progetto}, basato sul miglioramento continuo e sull'efficienza delle procedure di sviluppo e test.
+    \item \textbf{Qualità di Prodotto:} La capacità del software di soddisfare i requisiti funzionali e non funzionali esplicitati nell'\textit{Analisi dei Requisiti}.
+\end{itemize}
+Il documento è destinato al committente Prof. Vardanega e Prof. Cardin, all'azienda proponente Zucchetti S.p.A. e al gruppo di sviluppo ByteMe.
+
+\subsection{Scopo del prodotto}
+Il progetto \textbf{Second Brain}, proposto dall'azienda Zucchetti, mira a sviluppare un editor di testo avanzato basato sul linguaggio MarkDown e potenziato dall'integrazione di Large Language Models (LLM).
+L'applicazione web consentirà all'utente di:
+\begin{itemize}
+    \item Scrivere e visualizzare in tempo reale testi formattati in MarkDown;
+    \item Interagire con un LLM per generare, riassumere, riscrivere, tradurre e analizzare testi;
+    \item Sfruttare il metodo dei "Sei cappelli per pensare" di Edward De Bono per ottenere analisi critiche multi-prospettiche;
+    \item Fornire prompt testuali per delegare all'AI la stesura completa del contenuto (\textit{Distant Writing}).
+\end{itemize}
+L'obiettivo è creare uno strumento di supporto alla scrittura creativa e al note-taking avanzato, esplorando le potenzialità pratiche degli LLM nel flusso di lavoro quotidiano.
+
+
+\subsection{Glossario}
+Per evitare ambiguità e garantire un linguaggio comune all'interno del gruppo e con i committenti, i termini tecnici utilizzati in questo documento sono definiti in modo approfondito nel documento \textit{Glossario}, situato nella repository del gruppo alla sezione \textit{Documenti interni}. Per facilitare la lettura, i termini che presentano una definizione specifica nel glossario sono contrassegnati con una G a pedice.
+
+\subsection{Riferimenti}
+\subsubsection{Riferimenti Normativi}
+\begin{itemize}
+    \item \textbf{Capitolato d'appalto C6:} Second Brain - \textit{Zucchetti}
+    \item \textbf{Norme di Progetto:} Documento interno del gruppo che definisce regole, strumenti e procedure.
+    \item \textbf{Regolamento del progetto didattico:} Corso di Ingegneria del Software, Università degli Studi di Padova.
+\end{itemize}
+
+\subsubsection{Riferimenti Informativi}
+\begin{itemize}
+    \item \textbf{ISO/IEC 12207:} \textit{Systems and software engineering — Software life cycle processes}. (Standard di riferimento per il ciclo di vita del software).
+    \item \textbf{ISO/IEC 25010:} \textit{Systems and software engineering — Systems and software Quality Requirements and Evaluation (SQuaRE)}. (Modello di riferimento per la qualità del prodotto software).
+    \item \textbf{Slide del corso di Ingegneria del Software:}
+    \begin{itemize}
+        \item T9 - Verifica e validazione.
+        \item T10 - Analisi statica.
+        \item T11 - Analisi dinamica.
+    \end{itemize}
+    \item \textbf{Slide e dispense del corso opzionale:} \textit{Metodi e Tecnologie per lo Sviluppo Software}.
+    \item \textbf{Documentazione tecnica strumenti:} \textit{GitHub Actions Documentation}
+\end{itemize}
+
+\newpage
+
+\section{Metriche di Qualità}
+\subsection{Qualità di Processo}
+
+\subsubsection{Processi Primari di Fornitura\textsubscript{G}}
+In questa sezione vengono definite le metriche relative alla gestione manageriale ed economica del progetto. L'obiettivo è monitorare l'allocazione delle risorse, il rispetto delle scadenze temporali e l'aderenza al preventivo definito in fase di candidatura.
+Per garantire un controllo oggettivo sull'avanzamento dei lavori, il gruppo adotta lo standard \textbf{EVA (Earned Value Analysis)\textsubscript{G}}, che permette di integrare la misurazione di tempi, costi e valore prodotto in un unico framework quantitativo.
+
+% PARAMETRI X PROCESSI DI FORNITURA
+\paragraph{Budget at Completion\textsubscript{G} (BAC)} \hfill \\
+Questo valore indica il budget totale massimo a disposizione del gruppo per lo svolgimento del progetto; rappresenta il limite di spesa totale.
+
+Il preventivo iniziale, calcolato in fase di candidatura, ammonta a \textbf{11.395 euro} per un totale di 558 ore di lavoro.
+\begin{itemize}
+    \item \textbf{Soglia Accettabile}: minimizzato.
+    \item \textbf{Soglia Ottimale}: minimizzato.
+\end{itemize}
+
+
+\paragraph{Planned Value\textsubscript{G} (PV)} \hfill \\
+Valore monetario (o in ore) delle attività pianificate che avrebbero dovuto essere completate entro la data corrente. Si distingue in:
+\begin{itemize}
+    \item \textbf{Sprint Planned Value (SPV)} \\
+    Valore pianificato per un singolo Sprint. Calcolato come somma delle ore ruolo (OR) preventivate moltiplicate per il costo orario (CR).
+    
+    \begin{table}[H]
+        \centering
+        \renewcommand{\arraystretch}{1.5} % Aumenta l'altezza delle righe
+        \begin{tabular}{|M{0.4\textwidth}|M{0.25\textwidth}|M{0.25\textwidth}|}
+            \hline
+            \textbf{Calcolo} & \textbf{Soglia Accettabile} & \textbf{Soglia Ottimale} \\
+            \hline
+            $SPV = \sum (OR \times CR)$ & $> 0$ & $> 0$ \\
+            \hline
+        \end{tabular}
+        \caption{Parametro Sprint Planned Value (SPV)}
+    \end{table}
+
+    \item \textbf{Project Planned Value (PPV)} \\
+    Valore pianificato cumulativo per l'intero progetto (somma degli SPV passati).
+    
+    \begin{table}[H]
+        \centering
+        \renewcommand{\arraystretch}{1.5} % Aumenta l'altezza delle righe
+        \begin{tabular}{|M{0.4\textwidth}|M{0.25\textwidth}|M{0.25\textwidth}|}
+            \hline
+            \textbf{Calcolo} & \textbf{Soglia Accettabile} & \textbf{Soglia Ottimale} \\
+            \hline
+            $PPV = \sum SPV_{passati}$ & $> 0$ & $> 0$ \newline $\le BAC$ \\
+            \hline
+        \end{tabular}
+        \caption{Parametro Project Planned Value (PPV)}
+    \end{table}
+\end{itemize}
+
+
+\paragraph{Actual Cost\textsubscript{G} (AC)} \hfill \\
+Costo effettivo sostenuto (ore lavorate $\times$ costo orario) per il lavoro svolto finora. Si distingue in:
+
+\begin{itemize}
+    \item \textbf{Sprint Actual Cost (SAC)} \\
+    Costo sostenuto nel singolo Sprint.
+    
+    \begin{table}[H]
+        \centering
+        \renewcommand{\arraystretch}{1.5} % Aumenta l'altezza delle righe
+        \begin{tabular}{|M{0.4\textwidth}|M{0.25\textwidth}|M{0.25\textwidth}|}
+            \hline
+            \textbf{Calcolo} & \textbf{Soglia Accettabile} & \textbf{Soglia Ottimale} \\
+            \hline
+            $SAC = \sum \textrm{costi sostenuti nello Sprint}$ & $\le SPV + 10\%$ & $\le SPV$ \\
+            \hline
+        \end{tabular}
+        \caption{Parametro Sprint Actual Cost (SAC)}
+    \end{table}
+
+    \item \textbf{Project Actual Cost (PAC)} \\
+    Costo totale sostenuto dall'inizio del progetto.
+
+    \begin{table}[H]
+        \centering
+        \renewcommand{\arraystretch}{1.5} % Aumenta l'altezza delle righe
+        \begin{tabular}{|M{0.4\textwidth}|M{0.25\textwidth}|M{0.25\textwidth}|}
+            \hline
+            \textbf{Calcolo} & \textbf{Soglia Accettabile} & \textbf{Soglia Ottimale} \\
+            \hline
+            $PAC = \sum_{s \in S} SAC_s$ & $\le BAC$ & $\le BAC$ \\
+            \hline
+        \end{tabular}
+        \caption{Parametro Project Actual Cost (PAC)}
+    \end{table}
+\end{itemize}
+
+
+\paragraph{Earned Value\textsubscript{G} (EV)} \hfill \\
+Rappresenta il valore del lavoro effettivamente completato e verificato alla data corrente. Per calcolarlo si adotta la tecnica di misurazione fisica \textbf{0/100}\textsubscript{G}: il valore pianificato di un'attività viene accreditato solo se l'attività è completata al 100\%.
+
+\begin{itemize}
+    \item \textbf{Sprint Earned Value (SEV)} \\
+    Valore guadagnato nel singolo Sprint. È la somma del Planned Value delle sole attività completate secondo la Definition of Done.
+    
+    \begin{table}[H]
+        \centering
+        \renewcommand{\arraystretch}{1.5}
+        \begin{tabular}{|M{0.4\textwidth}|M{0.25\textwidth}|M{0.25\textwidth}|}
+            \hline
+            \textbf{Calcolo} & \textbf{Soglia Accettabile} & \textbf{Soglia Ottimale} \\
+            \hline
+            $SEV = \sum PV_{completati}$ & $\ge 90\%$ del SPV & $= SPV$ \\
+            \hline
+        \end{tabular}
+        \caption{Parametro Sprint Earned Value (SEV)}
+    \end{table}
+
+    \item \textbf{Project Earned Value (PEV)} \\
+    Valore guadagnato cumulativo dall'inizio del progetto.
+    
+    \begin{table}[H]
+        \centering
+        \renewcommand{\arraystretch}{1.5}
+        \begin{tabular}{|M{0.4\textwidth}|M{0.25\textwidth}|M{0.25\textwidth}|}
+            \hline
+            \textbf{Calcolo} & \textbf{Soglia Accettabile} & \textbf{Soglia Ottimale} \\
+            \hline
+            $PEV = \sum SEV_{passati}$ & $\ge 90\%$ del PPV & $= PPV$ \\
+            \hline
+        \end{tabular}
+        \caption{Parametro Project Earned Value (PEV)}
+    \end{table}
+\end{itemize}
+
+
+% INIZIO METRICHE FORNITURA
+\paragraph{Schedule Variance\textsubscript{G} (SV)} \hfill \\
+Misura lo scostamento temporale del progetto rispetto alla pianificazione iniziale. Indica se il progetto è in anticipo, in pari o in ritardo in termini di valore prodotto.
+
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.5} % Spaziatura aumentata
+    \begin{tabular}{|M{0.4\textwidth}|M{0.25\textwidth}|M{0.25\textwidth}|}
+        \hline
+        \textbf{Calcolo} & \textbf{Soglia Accettabile} & \textbf{Soglia Ottimale} \\
+        \hline
+        $SV = EV - PV$ & $SV \ge -10\%$ del PV & $SV \ge 0$ \\
+        \hline
+    \end{tabular}
+    \caption{Metrica Schedule Variance (SV)}
+\end{table}
+
+\paragraph{Cost Variance\textsubscript{G} (CV)} \hfill \\
+Misura l'efficienza economica del progetto, confrontando il valore prodotto (guadagnato) con i costi effettivamente sostenuti. Indica se stiamo spendendo più del necessario per il lavoro svolto.
+
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.5} % Spaziatura aumentata
+    \begin{tabular}{|M{0.4\textwidth}|M{0.25\textwidth}|M{0.25\textwidth}|}
+        \hline
+        \textbf{Calcolo} & \textbf{Soglia Accettabile} & \textbf{Soglia Ottimale} \\
+        \hline
+        $CV = EV - AC$ & $CV \ge -8\%$ del EV & $CV \ge 0$ \\
+        \hline
+    \end{tabular}
+    \caption{Metrica Cost Variance (CV)}
+\end{table}
+
+\paragraph{Cost Performance Index\textsubscript{G} (CPI)} \hfill \\
+Indice di efficienza dei costi. Rapporto tra il valore guadagnato e il costo effettivo sostenuto. Un valore inferiore a 1 indica che il costo sostenuto è superiore al valore prodotto.
+
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.5}
+    \begin{tabular}{|M{0.4\textwidth}|M{0.25\textwidth}|M{0.25\textwidth}|}
+        \hline
+        \textbf{Calcolo} & \textbf{Soglia Accettabile} & \textbf{Soglia Ottimale} \\
+        \hline
+        $CPI = \frac{PEV}{PAC}$ & $CPI \ge 0.95$ & $CPI \ge 1.00$ \\
+        \hline
+    \end{tabular}
+    \caption{Metrica Cost Performance Index (CPI)}
+\end{table}
+
+\paragraph{Schedule Performance Index\textsubscript{G} (SPI)} \hfill \\
+Indice di efficienza temporale; è il rapporto tra il valore guadagnato e il valore pianificato. Indica la velocità di avanzamento rispetto al piano.
+
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.5}
+    \begin{tabular}{|M{0.4\textwidth}|M{0.25\textwidth}|M{0.25\textwidth}|}
+        \hline
+        \textbf{Calcolo} & \textbf{Soglia Accettabile} & \textbf{Soglia Ottimale} \\
+        \hline
+        $SPI = \frac{EV}{PV}$ & $SPI \ge 0.90$ & $SPI \ge 1.00$ \\
+        \hline
+    \end{tabular}
+    \caption{Metrica Schedule Performance Index (SPI)}
+\end{table}
+
+\paragraph{Estimated at Completion\textsubscript{G} (EAC)} \hfill \\
+Stima aggiornata del costo totale finale del progetto, calcolata proiettando l'efficienza attuale (CPI) fino alla fine del progetto.
+
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.5}
+    \begin{tabular}{|M{0.4\textwidth}|M{0.25\textwidth}|M{0.25\textwidth}|}
+        \hline
+        \textbf{Calcolo} & \textbf{Soglia Accettabile} & \textbf{Soglia Ottimale} \\
+        \hline
+        $EAC = \frac{BAC}{CPI}$ & $EAC \le BAC$ & $EAC \le BAC$ \\
+        \hline
+    \end{tabular}
+    \caption{Metrica Estimated at Completion (EAC)}
+\end{table}
+
+\newpage
+\subsubsection{Processi Primari di Sviluppo\textsubscript{G}}
+Questa sezione raggruppa le metriche utilizzate per valutare la qualità delle attività di realizzazione tecnica del prodotto.
+Il monitoraggio si focalizza sulla \textbf{stabilità dei requisiti}, per controllare l'evoluzione dello scopo del progetto ed evitare cambiamenti incontrollati, e sulla \textbf{qualità strutturale del codice}, analizzando la complessità e la dimensione del software prodotto per garantirne la manutenibilità futura.
+
+\paragraph{Requirements Stability Index\textsubscript{G} (RSI)} \hfill \\
+Misura la stabilità dei requisiti nel corso del tempo, indicando la percentuale di requisiti rimasti invariati rispetto al totale. Un valore basso indica frequenti cambiamenti nello scopo del progetto.
+
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.5}
+    \begin{tabular}{|M{0.4\textwidth}|M{0.25\textwidth}|M{0.25\textwidth}|}
+        \hline
+        \textbf{Calcolo} & \textbf{Soglia Accettabile} & \textbf{Soglia Ottimale} \\
+        \hline
+        $RSI = (1 - \frac{N_{modifiche}}{N_{totali}}) \times 100$ & $RSI \ge 80\%$ & $RSI = 100\%$ \\
+        \hline
+    \end{tabular}
+    \caption{Metrica Requirements Stability Index (RSI)}
+\end{table}
+
+\paragraph{Copertura dei Requisiti\textsubscript{G} (CR)} \hfill \\
+Percentuale di requisiti implementati e verificati (soddisfatti) rispetto al totale pianificato, suddivisi per importanza (Obbligatori, Desiderabili, Opzionali).
+
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.5}
+    \begin{tabular}{|M{0.4\textwidth}|M{0.25\textwidth}|M{0.25\textwidth}|}
+        \hline
+        \textbf{Calcolo} & \textbf{Soglia Accettabile} & \textbf{Soglia Ottimale} \\
+        \hline
+        $C = \frac{N_{soddisfatti}}{N_{totali}} \times 100$ & 
+        Obbl: $100\%$ \newline Desid: $\ge 40\%$ \newline Opz: $\ge 0\%$ & 
+        Obbl: $100\%$ \newline Desid: $100\%$ \newline Opz: $100\%$ \\
+        \hline
+    \end{tabular}
+    \caption{Metrica Copertura dei Requisiti (CR)}
+\end{table}
+
+\paragraph{Lines of Code\textsubscript{G} (LOC)} \hfill \\
+Misura la dimensione fisica del software tramite il conteggio delle righe di codice sorgente (esclusi commenti e righe vuote). Questa è una metrica informativa di monitoraggio, quindi non vengono valutate le soglie.
+
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.5}
+    \begin{tabular}{|M{0.4\textwidth}|M{0.25\textwidth}|M{0.25\textwidth}|}
+        \hline
+        \textbf{Calcolo} & \textbf{Soglia Accettabile} & \textbf{Soglia Ottimale} \\
+        \hline
+        Somma righe logiche nei file sorgente & N/A & N/A \\
+        \hline
+    \end{tabular}
+    \caption{Metrica Lines of Code (LOC)}
+\end{table}
+
+\paragraph{Complessità Ciclomatica\textsubscript{G} (McCabe)} \hfill \\
+Misura la complessità del flusso di controllo di un metodo o funzione calcolando il numero di cammini linearmente indipendenti. Una complessità elevata indica codice difficile da testare e mantenere.
+
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.5}
+    \begin{tabular}{|M{0.4\textwidth}|M{0.25\textwidth}|M{0.25\textwidth}|}
+        \hline
+        \textbf{Calcolo} & \textbf{Soglia Accettabile} & \textbf{Soglia Ottimale} \\
+        \hline
+        $v(G) = E - N + 2P$ & $\le 8$ & $\le 6$ \\
+        \hline
+    \end{tabular}
+    \caption{Metrica Complessità Ciclomatica (McCabe)}
+\end{table}
+
+\newpage
+\subsubsection{Processi di Supporto\textsubscript{G}: Documentazione e Qualità}
+Le metriche esposte in questa sezione valutano l'efficacia delle attività trasversali che supportano il ciclo di vita del software.
+L'attenzione è posta sulla \textbf{qualità della documentazione}, assicurando che sia leggibile, corretta e priva di ambiguità, e sull'efficacia del \textbf{processo di verifica}, misurando la capacità del gruppo di identificare e risolvere rischi e difetti in modo proattivo.
+
+\paragraph{Indice di Gulpease\textsubscript{G} (IG)} \hfill \\
+Valuta la leggibilità di un testo redatto in lingua italiana per garantire che la documentazione sia comprensibile ai membri del gruppo e agli stakeholder esterni.
+
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.5}
+    \begin{tabular}{|M{0.4\textwidth}|M{0.25\textwidth}|M{0.25\textwidth}|}
+        \hline
+        \textbf{Calcolo} & \textbf{Soglia Accettabile} & \textbf{Soglia Ottimale} \\
+        \hline
+        $IG = 89 + \frac{300 \times N_{frasi} - 10 \times N_{lettere}}{N_{parole}}$ & $G \ge 40$ & $G \ge 60$ \\
+        \hline
+    \end{tabular}
+    \caption{Metrica Indice di Gulpease (IG)}
+\end{table}
+
+\paragraph{Correttezza Ortografica (CO)} \hfill \\
+Misura il numero di errori ortografici o grammaticali residui nei documenti individuati durante i processi di verifica o revisione.
+
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.5}
+    \begin{tabular}{|M{0.4\textwidth}|M{0.25\textwidth}|M{0.25\textwidth}|}
+        \hline
+        \textbf{Calcolo} & \textbf{Soglia Accettabile} & \textbf{Soglia Ottimale} \\
+        \hline
+        Conteggio errori manuale/tool & 0 & 0 \\
+        \hline
+    \end{tabular}
+    \caption{Metrica Correttezza Ortografica (CO)}
+\end{table}
+
+\paragraph{Rischi Non Calcolati (RNC)} \hfill \\
+Quantità di rischi che si verificano durante il progetto ma che non erano stati previsti o analizzati in fase di candidatura e nel documento Piano di Progetto.
+
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.5}
+    \begin{tabular}{|M{0.4\textwidth}|M{0.25\textwidth}|M{0.25\textwidth}|}
+        \hline
+        \textbf{Calcolo} & \textbf{Soglia Accettabile} & \textbf{Soglia Ottimale} \\
+        \hline
+        Conteggio rischi imprevisti & $\le 2$ & $0$ \\
+        \hline
+    \end{tabular}
+    \caption{Metrica Rischi Non Calcolati (RNC)}
+\end{table}
+
+\paragraph{Metriche Soddisfatte (MS)} \hfill \\
+Percentuale di metriche (tra tutte quelle definite nel presente documento) che rientrano nelle soglie di accettabilità ad ogni verifica di periodo. Indica lo stato di salute generale del progetto.
+
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.5}
+    \begin{tabular}{|M{0.4\textwidth}|M{0.25\textwidth}|M{0.25\textwidth}|}
+        \hline
+        \textbf{Calcolo} & \textbf{Soglia Accettabile} & \textbf{Soglia Ottimale} \\
+        \hline
+        $MS = \frac{metricheOK}{TOTmetriche} \times 100$ & $\ge 75\%$ & $100\%$ \\
+        \hline
+    \end{tabular}
+    \caption{Metrica Metriche Soddisfatte (MS)}
+\end{table}
+
+
+\newpage
+\subsection{Qualità di Prodotto}
+\subsubsection{Adeguatezza Funzionale}
+
+\subsubsection{Qualità dell'Output Generativo}
+
+\subsubsection{Affidabilità}
+
+\subsubsection{Efficienza}
+
+\subsubsection{Usabilità}
+
+\subsubsection{Manutenibilità}
+
+
+\newpage
+\section{Strategia di Verifica (Testing)}
+\subsection{Analisi Statica\textsubscript{G}}
+
+\subsubsection{Checklist per la Verifica (Analisi Statica tramite Inspection\textsubscript{G})}
+Questa sezione contiene le liste di controllo che i Verificatori devono utilizzare obbligatoriamente prima di approvare un documento o un pezzo di codice. L'obiettivo è standardizzare il controllo qualità ed evitare errori ricorrenti.
+Questa checklist\textsubscript{G} viene aggiornata progressivamente dai verificatori e permette di evitare gli errori più comuni e semplici da individuare.
+
+% tabella checklist documenti
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.4}
+    \begin{tabular}{|l|>{\raggedright\arraybackslash}p{0.35\textwidth}|>{\raggedright\arraybackslash}p{0.4\textwidth}|}
+        \hline
+        \textbf{Oggetto} & \textbf{Errore} & \textbf{Azione Correttiva} \\
+        \hline
+        Immagini e Tabelle & Mancanza di didascalia (caption) & Ogni tabella o immagine deve avere una didascalia esplicativa numerata. \\
+        \hline
+        Struttura & Sezioni vuote o orfane & Rimuovere o riempire le sezioni che contengono solo il titolo senza testo. \\
+        \hline
+        Glossario & Termine non marcato o errato & Verificare che i termini del glossario siano segnati con la "G" a pedice e rispettino il case sensitivity. \\
+        \hline
+        Ortografia & Errori di battitura o sintassi & Utilizzare il correttore automatico, verificare personalmente i testi, rimuovere refusi e doppi spazi. \\
+        \hline
+        Percorsi File & Path immagini errato & Verificare che i percorsi siano relativi e corretti (es: \texttt{../UCimg/diagramma.jpg} per i diagrammi, \texttt{../logo.jpg} per i loghi) per evitare errori di compilazione.\\
+        \hline
+        Versionamento & Disallineamento versione & Controllare che la versione indicata nel frontespizio coincida con l'ultima voce del registro delle modifiche. \\
+        \hline
+        Versionamento & Nome file senza versione & Il nome del documento deve contenere il numero di versione corrente (es. \texttt{Nome\_doc\_v1.0.0}). \\
+        \hline
+    \end{tabular}
+    \caption{Checklist Documentazione (LaTeX)}
+\end{table}
+
+% tabella checklist Codice e Push 
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.4}
+    \begin{tabular}{|l|>{\raggedright\arraybackslash}p{0.35\textwidth}|>{\raggedright\arraybackslash}p{0.4\textwidth}|}
+        \hline
+        \textbf{Oggetto} & \textbf{Errore} & \textbf{Azione Correttiva} \\
+        \hline
+        Sincronizzazione & Push senza Pull & Eseguire sempre \texttt{git pull} prima di \texttt{git push} per risolvere conflitti locali ed evitare merge complessi. \\
+        \hline
+        Pulizia & Codice commentato o morto & Rimuovere blocchi di codice commentato inutile o funzioni non utilizzate prima del push. \\
+        \hline
+    \end{tabular}
+    \caption{Checklist Codice e Push (Git)}
+\end{table}
+
+% tabella checklist analisi dei requisiti
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.4}
+    \begin{tabular}{|l|>{\raggedright\arraybackslash}p{0.35\textwidth}|>{\raggedright\arraybackslash}p{0.4\textwidth}|}
+        \hline
+        \textbf{Oggetto} & \textbf{Errore} & \textbf{Azione Correttiva} \\
+        \hline
+        Tracciamento & Requisiti per un caso d'uso assenti & Ad ogni caso d'uso deve corrispondere almeno un requisito. \\
+        \hline
+        Diagrammi & Diagrammi dei casi d'uso erronei & I diagrammi devono riportare la corretta numerazione e nomenclatura del caso d'uso. \\
+        \hline
+        Tracciamento & Caso d'uso senza requisiti & Ogni Caso d'Uso (UC) deve generare almeno un Requisito. \\
+        \hline
+        UML & Inconsistenza diagrammi & La numerazione e i nomi negli schemi UML devono corrispondere esattamente al testo descrittivo. \\
+        \hline
+        Attori & Attori non definiti & Verificare che tutti gli attori (es. Utente, Sistema AI) siano descritti nella sezione introduttiva degli UC. \\
+        \hline
+        Nomenclatura & Codice identificativo errato & Ogni requisito deve avere un codice univoco che segue la nomenclatura standard definita. \\
+        \hline
+    \end{tabular}
+    \caption{Checklist Analisi Dei Requisiti}
+\end{table}
+
+\newpage
+\subsection{Analisi Dinamica\textsubscript{G}}
+\subsubsection{Test di Unità\textsubscript{G}}
+
+\subsubsection{Test di Integrazione\textsubscript{G}}
+
+\subsubsection{Test di Sistema\textsubscript{G}}
+
+\subsubsection{Test di Accettazione\textsubscript{G}}
+
+
+
+\newpage
+\section{Cruscotto di Valutazione della Qualità\textsubscript{G}}
+
+
+
+\end{document}

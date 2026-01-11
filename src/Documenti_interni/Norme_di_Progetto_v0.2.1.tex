@@ -97,8 +97,12 @@
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verifica} \\
         \hline
-        0.1.9 & 30/12/2025 & Elisa Marchioro & Aggiunte subsection sui requisiti in "Analisi dei requisiti" & \\ \hline
-        0.1.8 & 27/12/2025 & Joseph Grant & Aggiunta sezione 'verifica' al versionamento & Elisa Marchioro\\ \hline
+        0.2.1 & 11/01/2026 & Giulia Barzon & Aggiunta sezione sul Piano di Qualifica & \\
+        \hline
+        0.2.0 & 30/12/2025 & Elisa Marchioro & Aggiunte subsection sui requisiti in "Analisi dei requisiti" & \\ 
+        \hline
+        0.1.8 & 27/12/2025 & Joseph Grant & Aggiunta sezione 'verifica' al versionamento & Elisa Marchioro\\ 
+        \hline
         0.1.7 & 16/12/2025 & Giulia Barzon & Gestione comunicazione durante i periodi di vacanza & Elisa Marchioro\\
         \hline
         0.1.6 & 5/12/2025 & Elisa Marchioro & Sistemata l'introduzione & \\
@@ -389,8 +393,8 @@ Di seguito viene fornita una descrizione dettagliata dei diversi ruoli, illustra
 
 \newpage
 
-\section{Analisi dei requisiti}
-L’analisi dei requisiti rappresenta una fase fondamentale del processo di sviluppo, in quanto permette di identificare gli obiettivi del sistema, le funzionalità attese e i vincoli da rispettare. Tale attività costituisce il fondamento su cui vengono impostate le successive fasi di progettazione e implementazione. 
+\section{Analisi dei Requisiti (AdR)}
+L’\textbf{analisi dei requisiti} rappresenta una fase fondamentale del processo di sviluppo, in quanto permette di identificare gli obiettivi del sistema, le funzionalità attese e i vincoli da rispettare. Tale attività costituisce il fondamento su cui vengono impostate le successive fasi di progettazione e implementazione. 
 Il gruppo ha adottato un approccio collaborativo finalizzato a garantire una definizione adeguata dei requisiti.
 
 \subsection{Identificazione iniziale dei requisiti}
@@ -459,8 +463,8 @@ L’approccio adottato durante l’analisi dei requisiti ha contribuito in modo 
 
 \newpage
 
-\section{Piano di progetto}
-Il Piano di Progetto costituisce uno strumento fondamentale per organizzare, monitorare e coordinare le attività del team durante l’intero ciclo di sviluppo. Esso definisce la pianificazione temporale, la distribuzione dei ruoli, il carico di lavoro dei membri tramite un riassunto di ogni sprint e l’analisi dei potenziali rischi, garantendo una gestione strutturata e consapevole del progetto.
+\section{Piano di Progetto (PdP)}
+Il \textbf{Piano di Progetto} costituisce uno strumento fondamentale per organizzare, monitorare e coordinare le attività del team durante l’intero ciclo di sviluppo. Esso definisce la pianificazione temporale, la distribuzione dei ruoli, il carico di lavoro dei membri tramite un riassunto di ogni sprint e l’analisi dei potenziali rischi, garantendo una gestione strutturata e consapevole del progetto.
 
 \subsection{Analisi dei rischi}
 Un elemento centrale del Piano di Progetto è stata l’analisi dei rischi, svolta con l’obiettivo di identificare gli eventi critici che avrebbero potuto compromettere tempi, qualità o continuità del lavoro.
@@ -490,7 +494,41 @@ A conclusione di ogni Sprint, il gruppo ha redatto un resoconto delle attività 
 
 \newpage
 
-\section{Conclusioni}
+\section{Piano di Qualifica (PdQ)}
+Il \textbf{Piano di Qualifica} è il documento che definisce la strategia del gruppo per garantire la qualità del prodotto software e l'efficienza dei processi di sviluppo. Rappresenta il riferimento principale per tutte le attività di Verifica e Validazione.
+
+\subsection{Scopo del documento}
+\begin{itemize}
+    \item \textbf{Pianificazione:} Fissare \textit{ex-ante} gli standard qualitativi da raggiungere. Definisce quali metriche utilizzare, come calcolarle e quali sono le soglie di accettabilità (minime) e di ottimalità (desiderabili).
+    \item \textbf{Consuntivo (Cruscotto):} Riportare \textit{ex-post} i risultati delle misurazioni effettuate durante le varie fasi di progetto, permettendo di valutare oggettivamente lo stato di salute del progetto e la conformità del prodotto rispetto ai requisiti.
+\end{itemize}
+
+\subsection{Contenuto e Struttura}
+Il documento è strutturato per rispondere alle norme di qualità ISO/IEC 9126 e ISO/IEC 25010 ed è suddiviso nelle seguenti macro-aree:
+\begin{itemize}
+    \item \textbf{Qualità di Processo:} Definisce le metriche per monitorare l'andamento dei lavori, inclusi la gestione del budget, la pianificazione temporale e la stabilità dei requisiti.
+    \item \textbf{Qualità di Prodotto:} Definisce le metriche per valutare il software prodotto, coprendo aspetti quali l'adeguatezza funzionale, l'efficienza, l'usabilità, l'affidabilità e la manutenibilità.
+    \item \textbf{Strategia di Verifica e Testing:} Descrive le procedure operative per l'Analisi Statica e l'Analisi Dinamica (livelli di test: Unit, Integration, System, Acceptance).
+    \item \textbf{Cruscotto di Qualità:} Una sezione dinamica che viene aggiornata ad ogni revisione di progetto, contenente i grafici e le tabelle con i valori effettivi misurati per ogni metrica, evidenziando eventuali non conformità e le relative azioni correttive intraprese.
+\end{itemize}
+
+\subsection{Metodologia di calcolo dell'Earned Value (EV)}
+Al fine di monitorare oggettivamente l'avanzamento del progetto ed evitare stime soggettive, il gruppo adotta la tecnica di misurazione fisica 0/100 (All-or-Nothing).
+Il calcolo avviene secondo le seguenti regole: 
+\begin{enumerate} 
+    \item Ogni attività (Task/Issue) pianificata nello Sprint ha un valore in ore associato, definito nel Piano di Progetto.
+    \item Al termine dello Sprint, o nei momenti di verifica intermedi, si controlla lo stato di ciascuna attività. 
+    \item Il valore dell'attività viene sommato all'Earned Value (EV) totale se e solo se l'attività soddisfa interamente la Definition of Done (DoD). \item Se un'attività è parzialmente completa (es. codice scritto ma non revisionato o verificato), il suo contributo all'EV è 0.
+\end{enumerate} 
+
+\subsection{Definition of Done (DoD)}
+Affinché un'unità di lavoro (Task/Issue) possa essere considerata "Fatta" (Done) e conteggiata nel calcolo dell'Earned Value, deve soddisfare i seguenti criteri:
+\begin{itemize} 
+    \item Codice: Il codice sorgente è stato scritto, committato e pushato sul repository ufficiale nel branch corretto.
+    \item Documentazione: Il codice è corredato di commenti ed eventuali modifiche o scelte tecniche sono state riportate nella documentazione ufficiale.
+    \item Analisi Statica: Il codice supera i controlli di stile e qualità senza errori o warning bloccanti. 
+    \item Revisione: Il lavoro svolto è stato revisionato e verificato da uno o più membri del gruppo.
+\end{itemize}
 
 
 \end{document}

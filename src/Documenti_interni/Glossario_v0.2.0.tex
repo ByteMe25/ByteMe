@@ -68,7 +68,7 @@
         \centering
         \begin{tabular}{|l|p{5cm}|}            
             \hline
-            \textbf{Versione} & 0.1.8 \\
+            \textbf{Versione} & 0.2.0 \\
             \hline
             \textbf{Stato} & Da Approvare \\
             \hline
@@ -96,7 +96,10 @@
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verifica} \\
         \hline
-        0.1.8 & 27/12/2025 & Joseph Grant & Aggiunta sezione 'verifica' al versionamento & Elisa Marchioro\\ \hline
+        0.2.0 & 11/01/2026 & Giulia Barzon & Aggiunti termini relativi alle metriche del PdQ &  \\
+        \hline
+        0.1.8 & 27/12/2025 & Joseph Grant & Aggiunta sezione 'verifica' al versionamento & Elisa Marchioro\\
+        \hline
         0.1.7 & 15/12/2025 & Giulia Barzon & Aggiunte parole relative a Piano di qualifica e testing & Elisa Marchioro\\
         \hline
         0.1.6 & 14/12/2025 & Giulia Barzon & Aggiunte parole requisiti funzionali, non funzionali, di qualità, di vincolo e Piano di qualifica & \\
@@ -137,6 +140,8 @@ Il documento è strutturato in sezioni dedicate ad una specifica lettera dell'al
 \section*{A}
 \addcontentsline{toc}{section}{A}
 \begin{itemize}
+\item \textbf{Actual Cost (AC)}: Costo reale sostenuto per il lavoro eseguito su un'attività durante un determinato periodo. Include i costi diretti (es. ore lavorate per il costo orario) necessari per realizzare il pacchetto di lavoro. Metrica definita nel Piano di Qualifica.
+
 \item \textbf{Affidabilità (Reliability)}: È la capacità del prodotto software di svolgere le proprie funzioni specificate sotto determinate condizioni e per un determinato periodo di tempo, mantenendo un livello di prestazioni corretto.
 Metrica tipica: Failure Density (densità di fallimenti nei test).
 
@@ -159,6 +164,8 @@ Metrica tipica: Failure Density (densità di fallimenti nei test).
 
 \item \textbf{Branch Coverage (Copertura dei Rami)}: Metrica specifica di copertura che verifica se ogni singolo ramo (decisione vero/falso) del flusso di controllo è stato attraversato almeno una volta dai test.
 
+\item \textbf{Budget at Completion (BAC)}: Il budget totale preventivato per il completamento dell'intero progetto. Corrisponde alla somma di tutti i budget allocati per i singoli pacchetti di lavoro definiti nel Preventivo. Metrica definita nel Piano di Qualifica.
+
 \end{itemize}
 \newpage
 
@@ -175,7 +182,13 @@ Serve a valutare l'efficacia dei test: più è alta, minore è il rischio di dif
 
 \item \textbf{Commit}: Registrazione di un insieme di modifiche nella repository, accompagnata da un messaggio che descrive cosa è stato modificato.
 
-\item \textbf{Complessità Ciclomatica}: Metrica software che misura la complessità del flusso di controllo di un programma contandone il numero di percorsi linearmente indipendenti. Si calcola con la formula $v(G)=e-n+2p$ (dove $e$ sono gli archi, $n$ i nodi, $p$ le componenti connesse). Un valore alto indica un codice difficile da testare e mantenere, poiché cresce con la presenza di branch, salti e iterazioni.
+\item \textbf{Complessità Ciclomatica (McCabe)}: Metrica software che misura la complessità del flusso di controllo di un programma contandone il numero di percorsi linearmente indipendenti. Si calcola con la formula $v(G)=e-n+2p$ (dove $e$ sono gli archi, $n$ i nodi, $p$ le componenti connesse). Un valore alto indica un codice difficile da testare e mantenere, poiché cresce con la presenza di branch, salti e iterazioni. Metrica definita nel Piano di Qualifica.
+
+\item \textbf{Copertura dei Requisiti (CR)}: Metrica che indica la percentuale di requisiti definiti nell'Analisi dei Requisiti che sono stati effettivamente implementati nel software e verificati tramite test. Metrica definita nel Piano di Qualifica.
+
+\item \textbf{Cost Performance Index (CPI)}: Indice di efficienza dei costi che misura il valore del lavoro completato rispetto al costo effettivo sostenuto. Un valore pari a 1 indica efficienza perfetta; inferiore a 1 indica inefficienza (costi superiori al previsto). Metrica definita nel Piano di Qualifica.
+
+\item \textbf{Cost Variance (CV)}: Differenza tra il valore guadagnato (Earned Value) e il costo effettivo (Actual Cost). Indica se il lavoro svolto è costato più o meno di quanto pianificato. Metrica definita nel Piano di Qualifica.
 
 \item \textbf{Cruscotto di Qualità}: sezione del Piano di Qualifica (o uno strumento software) che visualizza in modo sintetico lo stato corrente del progetto rispetto agli obiettivi prefissati. Utilizza grafici e tabelle per confrontare i valori misurati (es. costi, tempi, errori) con i valori attesi (ottimali o accettabili). Serve a monitorare l'andamento nel tempo di metriche definite nel Piano di Qualifica.
 
@@ -190,6 +203,8 @@ Serve a valutare l'efficacia dei test: più è alta, minore è il rischio di dif
 \item \textbf{Debito Tecnico (Technical Debt)}: metafora che indica il costo implicito di una rielaborazione aggiuntiva causata dalla scelta di una soluzione facile e rapida (ma non ottimale) invece di utilizzare un approccio migliore che richiederebbe più tempo. Può essere consapevole (deliberato) o inconsapevole (inavvertito).
 Se non si "ripaga" il debito (es. facendo refactoring), il costo degli errori residui e della manutenzione cresce nel tempo.
 
+\item \textbf{Definition of Done (DoD)}: Insieme di criteri rigorosi che una funzionalità o un incremento di software deve soddisfare per essere considerati "completati" dal team. Garantisce che il lavoro consegnato sia di alta qualità.
+
 \item \textbf{Distant Writing}: Modalità di scrittura in cui l'utente fornisce le specifiche e l'LLM genera il testo completo.
 \end{itemize}
 \newpage
@@ -197,12 +212,19 @@ Se non si "ripaga" il debito (es. facendo refactoring), il costo degli errori re
 \section*{E}
 \addcontentsline{toc}{section}{E}
 \begin{itemize}
+
+\item \textbf{Earned Value (EV)}: Valore del lavoro effettivamente eseguito espresso in termini di budget approvato per tale lavoro. Rappresenta quanto "valore" è stato prodotto dal progetto fino a un certo istante. Metrica definita nel Piano di Qualifica.
+
+\item \textbf{Earned Value Analysis (EVA)}: Metodologia di gestione del progetto che integra scopo, tempi e costi per misurare le prestazioni del progetto e prevedere i risultati futuri. Permette di identificare precocemente scostamenti rispetto al piano. Riguarda i processi primari di fornitura, definiti nel Piano di QUalifica.
+
 \item \textbf{Editor di Testo}: Componente principale dell'interfaccia utente del sistema "Second Brain". Si tratta di un editor online avanzato che supporta la sintassi Markdown, fornendo all'utente un'area di scrittura con anteprima in tempo reale del testo formattato. È l'ambiente in cui l'utente crea, modifica e visualizza i contenuti, nonché il punto di interazione per invocare le funzionalità del Sistema AI sul testo selezionato o completo.
 
 \item \textbf{Efficacia}: Misura della capacità di raggiungere l'obiettivo prefissato.
 
 \item \textbf{Efficienza (Efficiency)}: Misura dell'abilità di raggiungere l’obiettivo impiegando le risorse minime indispensabili.
 È la capacità del prodotto software di fornire prestazioni adeguate (es. tempo di risposta) in relazione alla quantità di risorse utilizzate, sotto condizioni stabilite. Metrica tipica: Tempo di risposta medio.
+
+\item \textbf{Estimated at Completion (EAC)}: Previsione del costo totale del progetto al momento del suo completamento, basata sulle prestazioni misurate fino alla data corrente. Metrica definita nel Piano di Qualifica.
 
 \end{itemize}
 \newpage
@@ -231,6 +253,8 @@ Se non si "ripaga" il debito (es. facendo refactoring), il costo degli errori re
 \section*{I}
 \addcontentsline{toc}{section}{I}
 \begin{itemize}
+\item \textbf{Indice di Gulpease (IG)}: Indice di leggibilità calibrato sulla lingua italiana. Valuta la comprensibilità di un testo basandosi sulla lunghezza delle parole e delle frasi. Un valore più alto indica una maggiore leggibilità. Metrica definita nel Piano di Qualifica.
+
 \item \textbf{Inspection (Ispezione)}: Tecnica di revisione statica formale e strutturata, eseguita da un gruppo di pari con l'obiettivo specifico di rilevare difetti e non conformità. A differenza del Walkthrough, l'Inspection si basa sull'uso di checklist per verificare il rispetto di standard e regole predefinite. Nel Piano di Qualifica l'Inspection è spesso preferita al Walkthrough per le attività di verifica ufficiale perché garantisce un controllo più oggettivo e approfondito grazie alle checklist.
 
 \item \textbf{Issue}: Attività, richiesta o problema tracciato all’interno di un sistema di gestione del progetto (come GitHub), che richiede attenzione o sviluppo.
@@ -253,6 +277,8 @@ Se non si "ripaga" il debito (es. facendo refactoring), il costo degli errori re
 \addcontentsline{toc}{section}{L}
 \begin{itemize}
 \item \textbf{LLM (Large Language Model)}: Modello di intelligenza artificiale addestrato sulla comprensione e generazione di linguaggio naturale.
+
+\item \textbf{Lines of Code (LOC)}: Metrica che misura la dimensione di un programma software contando il numero di righe di testo nel codice sorgente. Si considerano solo le righe logiche di codice, escludendo commenti e righe vuote. Metrica definita nel Piano di Qualifica, tuttavia non vincolante.
 \end{itemize}
 \newpage
 
@@ -298,6 +324,14 @@ Metrica tipica: Complessità Ciclomatica (più è bassa, più è manutenibile).
 
 \item \textbf{Piano di Qualifica (PdQ)}: Documento che definisce la strategia, le metodologie e le risorse necessarie per garantire la qualità del prodotto software e del processo di sviluppo. Esso stabilisce gli obiettivi di qualità (tramite metriche e soglie di accettazione), pianifica le attività di verifica e validazione (analisi statica e dinamica) e descrive le procedure di miglioramento continuo (ciclo PDCA). Il PdQ funge da riferimento per assicurare che il progetto soddisfi i requisiti funzionali, di qualità e di vincolo concordati.
 
+\item \textbf{Planned Value (PV)}: Valore del lavoro pianificato per essere completato entro una certa data. Rappresenta il budget autorizzato assegnato al lavoro che deve essere svolto. Metrica definita nel Piano di Qualifica.
+
+\item \textbf{Processi di Supporto}: Insieme di processi che supportano e garantiscono la qualità del prodotto e dei processi primari lungo tutto il ciclo di vita del software (es. Documentazione, Gestione della Qualità, Gestione della Configurazione).
+
+\item \textbf{Processi Primari di Fornitura}: Processi che riguardano le attività e i compiti del fornitore (il gruppo di progetto) necessari per preparare e consegnare il prodotto software al committente, inclusa la gestione manageriale ed economica.
+
+\item \textbf{Processi Primari di Sviluppo}: Processi che includono le attività di realizzazione tecnica del prodotto software, dall'analisi dei requisiti alla progettazione, codifica e integrazione.
+
 \item \textbf{Proof of Concept (PoC)}: Prototipo iniziale e limitato del software, sviluppato per dimostrare la fattibilità delle funzionalità core e dell'idea del progetto in generale.
 
 \end{itemize}
@@ -316,6 +350,8 @@ Metrica tipica: Complessità Ciclomatica (più è bassa, più è manutenibile).
 \addcontentsline{toc}{section}{R}
 \begin{itemize}
 \item \textbf{Repository}: Spazio in cui viene salvato il codice del progetto insieme a tutte le versioni e i file utili. Permette al team di lavorare insieme senza perdere il lavoro svolto.
+
+\item \textbf{Requirements Stability Index (RSI)}: Metrica che quantifica la volatilità dei requisiti del progetto. Misura la percentuale di requisiti che non hanno subito modifiche in un determinato periodo rispetto al totale dei requisiti. Metrica definita nel Piano di Qualifica.
 
 \item \textbf{Requisiti funzionali}: Descrivono i comportamenti del sistema. Sono le azioni che il software deve compiere in risposta a determinati input. Se un requisito funzionale non è soddisfatto, manca una funzionalità. Rispondono alla domanda: \textit{Cosa deve fare il software?}
 
@@ -340,6 +376,10 @@ Licenza/Consegna: il codice deve essere pubblicato su un repository pubblico (es
 \section*{S}
 \addcontentsline{toc}{section}{S}
 \begin{itemize}
+\item \textbf{Schedule Performance Index (SPI)}: Indice di efficienza della schedulazione che misura la velocità di avanzamento del progetto rispetto a quanto pianificato. Un valore inferiore a 1 indica ritardo sulla tabella di marcia. Metrica definita nel Piano di Qualifica.
+
+\item \textbf{Schedule Variance (SV)}: Differenza tra il valore guadagnato (Earned Value) e il valore pianificato (Planned Value). Indica se il progetto è in anticipo o in ritardo rispetto alla schedulazione. Metrica definita nel Piano di Qualifica.
+
 \item \textbf{Scrum}: È un metodo Agile che organizza il lavoro in Sprint regolari e utilizza ruoli ed eventi definiti per aiutare il team a lavorare in modo ordinato e trasparente.
 
 \item \textbf{Sistema AI}: Componente software del sistema "Second Brain" che integra un Large Language Model (LLM) per fornire funzionalità di elaborazione intelligente del testo. È un attore secondario che opera in modo trasparente all'utente, abilitando operazioni come: riassunto, riscrittura, traduzione, correzione grammaticale, analisi critica tramite il metodo dei "Sei Cappelli per Pensare", e generazione di testo automatico (distant writing). Il sistema AI interagisce con il testo selezionato o completo inserito nell'editor.
@@ -360,6 +400,8 @@ Licenza/Consegna: il codice deve essere pubblicato su un repository pubblico (es
 \begin{itemize}
 
 \item \textbf{Toolbar}: Elemento dell’interfaccia grafica che raccoglie pulsanti e funzioni di uso frequente, permettendo un accesso rapido alle operazioni principali.
+
+\item \textbf{Tecnica 0/100}: Tecnica di misurazione dell'avanzamento fisico di un'attività. Prevede che il valore guadagnato (Earned Value) venga assegnato solo al completamento totale dell'attività (100\%), mentre un'attività iniziata ma non finita ha valore nullo (0\%). Serve a evitare stime soggettive parziali.
 
 \item \textbf{Test di Accettazione (Acceptance Testing / Collaudo)}: Validazione finale per accertare il soddisfacimento dei requisiti utente, svolta nella fase finale prima del rilascio.
 
