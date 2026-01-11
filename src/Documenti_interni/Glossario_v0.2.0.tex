@@ -96,6 +96,8 @@
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verifica} \\
         \hline
+        0.3.0 & 11/01/2026 & Elisa Marchioro & Aggiunti termini relativi alle metriche del PdQ &  \\
+        \hline
         0.2.0 & 11/01/2026 & Giulia Barzon & Aggiunti termini relativi alle metriche del PdQ &  \\
         \hline
         0.1.8 & 27/12/2025 & Joseph Grant & Aggiunta sezione 'verifica' al versionamento & Elisa Marchioro\\
@@ -154,6 +156,10 @@ Metrica tipica: Failure Density (densità di fallimenti nei test).
 \item \textbf{Analisi Statica}: Attività di controllo del software effettuata senza eseguire il codice. Include la revisione dei documenti, l'analisi automatica della sintassi e del rispetto degli standard di codifica tramite strumenti. Appartiene alla categoria dei test non funzionali e aiuta a prevenire difetti prima dell'esecuzione.
 
 \item \textbf{API}: Insieme di regole che permette a diversi software di comunicare tra loro. È come un “ponte” che permette a un software di usare funzioni o dati di un altro software.
+
+\item \textbf{Adeguatezza funzionale}: L’adeguatezza funzionale indica se il software svolge correttamente le funzioni per cui è stato progettato. Un sistema di buona qualità include tutte le funzionalità richieste, le esegue nel modo giusto e le rende utili per permettere all’utente di raggiungere i propri obiettivi. Questa caratteristica si verifica confrontando i requisiti iniziali con ciò che è stato realmente implementato e attraverso i test di accettazione.
+
+\item \textbf{Affidabilità}: L’affidabilità indica quanto il software è stabile e quanto si può fare affidamento su di esso nel tempo. Un sistema affidabile funziona quando serve, presenta pochi guasti e riesce a riprendersi rapidamente se si verifica un problema. Questa caratteristica si valuta osservando quanto spesso il sistema si blocca e per quanto tempo rimane disponibile.
 \end{itemize}
 \newpage
 
@@ -221,8 +227,7 @@ Se non si "ripaga" il debito (es. facendo refactoring), il costo degli errori re
 
 \item \textbf{Efficacia}: Misura della capacità di raggiungere l'obiettivo prefissato.
 
-\item \textbf{Efficienza (Efficiency)}: Misura dell'abilità di raggiungere l’obiettivo impiegando le risorse minime indispensabili.
-È la capacità del prodotto software di fornire prestazioni adeguate (es. tempo di risposta) in relazione alla quantità di risorse utilizzate, sotto condizioni stabilite. Metrica tipica: Tempo di risposta medio.
+\item \textbf{Efficienza (Efficiency)}: L’efficienza riguarda la velocità del software e il modo in cui utilizza le risorse del computer. Un sistema efficiente risponde in tempi brevi, riesce a gestire molti utenti o richieste e non spreca memoria, potenza di calcolo o banda di rete. Nei sistemi di intelligenza artificiale si considera anche il costo necessario per generare ogni risposta.
 
 \item \textbf{Estimated at Completion (EAC)}: Previsione del costo totale del progetto al momento del suo completamento, basata sulle prestazioni misurate fino alla data corrente. Metrica definita nel Piano di Qualifica.
 
@@ -285,8 +290,7 @@ Se non si "ripaga" il debito (es. facendo refactoring), il costo degli errori re
 \section*{M}
 \addcontentsline{toc}{section}{M}
 \begin{itemize}
-\item \textbf{Manutenibilità (Maintainability)}: È la facilità con cui il prodotto software può essere modificato da parte dei manutentori per correggere difetti, adattarlo a nuovi ambienti o soddisfare nuovi requisiti.
-Metrica tipica: Complessità Ciclomatica (più è bassa, più è manutenibile).
+\item \textbf{Manutenibilità (Maintainability)}: La manutenibilità indica quanto è semplice correggere, modificare e migliorare il software nel tempo. Un sistema manutenibile ha un codice ben organizzato, facile da capire e supportato da test, in modo che gli sviluppatori possano aggiungere nuove funzionalità o risolvere problemi senza creare nuovi errori.
 
 \item \textbf{Markdown}: Linguaggio di markup leggero per la formattazione di testo semplice.
 
@@ -341,6 +345,8 @@ Metrica tipica: Complessità Ciclomatica (più è bassa, più è manutenibile).
 \addcontentsline{toc}{section}{Q}
 \begin{itemize}
 \item \textbf{Quality Gates (Cancelli di Qualità)}: Criteri di controllo automatico imposti al codice per verificare se la qualità rispetta gli standard minimi definiti. Permettono di stabilire se il progetto può passare a uno stadio successivo o se una modifica può essere accettata. Se il codice non supera il \textit{Quality Gate}, la modifica viene bloccata.
+
+\item \textbf{Qualità dell'output generativo}: La qualità dell’output generativo, tipica dei sistemi basati su intelligenza artificiale come il nostro, riguarda quanto le risposte o i contenuti prodotti dal sistema sono corretti, coerenti e utili. Un buon sistema generativo fornisce informazioni accurate, evita di inventare dati e risponde in modo pertinente alle richieste dell’utente, mantenendo anche una certa coerenza tra risposte simili. Questa qualità viene valutata sia con misure automatiche sia attraverso il giudizio di persone che analizzano i risultati.
 
 \end{itemize}
 
@@ -420,8 +426,7 @@ Licenza/Consegna: il codice deve essere pubblicato su un repository pubblico (es
 \section*{U}
 \addcontentsline{toc}{section}{U}
 \begin{itemize}
-\item \textbf{Usabilità (Usability)}: È il grado con cui un prodotto può essere usato da specifici utenti per raggiungere specifici obiettivi con efficacia, efficienza e soddisfazione. Include la facilità di apprendimento e comprensione.
-Metrica tipica: Tempo di apprendimento, Numero di click per raggiungere un obiettivo.
+\item \textbf{Usabilità (Usability)}: L’usabilità descrive quanto il software è facile da imparare e da usare. Un buon sistema è intuitivo, permette agli utenti di svolgere i propri compiti senza difficoltà e riduce la possibilità di commettere errori. Questa qualità si misura osservando come le persone reali utilizzano il software e raccogliendo le loro opinioni.
 
 \item \textbf{User story}: Descrizione sintetica di una funzionalità dal punto di vista dell’utente, utilizzata nei metodi Agile per chiarire cosa il sistema deve permettere di fare.
 
