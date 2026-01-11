@@ -100,6 +100,8 @@
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verifica} \\
         \hline
+        0.1.3 & 11/01/2026 & Elisa Marchioro & Aggiunte metriche qualità di prodotto & \\
+        \hline
         0.1.2 & 11/01/2026 & Giulia Barzon & Aggiunte metriche qualità di processo & \\
         \hline
         0.1.1 & 27/12/2025 & Joseph Grant & Aggiunta sezione 'verifica' al versionamento & \\
@@ -525,18 +527,108 @@ Percentuale di metriche (tra tutte quelle definite nel presente documento) che r
 
 \newpage
 \subsection{Qualità di Prodotto}
-\subsubsection{Adeguatezza Funzionale}
+La qualità di prodotto nel software indica quanto bene un sistema riesce a soddisfare i bisogni degli utenti e gli obiettivi per cui è stato creato. Non significa solo che il programma funzioni, ma anche che sia affidabile, veloce, facile da usare e capace di essere migliorato nel tempo. Un software di buona qualità è quindi utile, stabile e adatto a evolversi insieme alle esigenze degli utenti.
+\subsubsection{Adeguatezza Funzionale\textsubscript{G}}
+Indica quanto il software realizza correttamente tutte le funzioni richieste per soddisfare gli obiettivi dell’utente.
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|M{0.25\textwidth}|M{0.35\textwidth}|M{0.15\textwidth}|M{0.15\textwidth}|}
+\hline
+\textbf{Metrica} & \textbf{Scopo della metrica} & \textbf{Soglia Accettabile} & \textbf{Soglia Ottimale} \\
+\hline
+Requirement Coverage & Verifica che tutte le funzionalità principali dell’editor siano implementate & 90\% & 98\% \\ \hline
+Acceptance Test Pass Rate & Controlla che le funzionalità principali funzionino correttamente & 95\% & 99\% \\ \hline
+Functional Defect Density & Misura quanti bug ci sono per funzione principale & 0.5 bug/funzione & 0.1 bug/funzione \\
+\hline
+\end{tabular}
+\caption{Soglie metriche funzionalità del prodotto}
+\end{table}
 
-\subsubsection{Qualità dell'Output Generativo}
+\subsubsection{Qualità dell'Output Generativo\textsubscript{G}}
+Misura quanto le risposte prodotte dal sistema sono corrette, coerenti e utili per l’utente.
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|M{0.25\textwidth}|M{0.35\textwidth}|M{0.15\textwidth}|M{0.15\textwidth}|}
+\hline
+\textbf{Metrica} & \textbf{Scopo della metrica} & \textbf{Soglia Accettabile} & \textbf{Soglia Ottimale} \\
+\hline
+Accuracy & Misura quanto i suggerimenti o correzioni AI sono corretti & 85\% & 95\% \\ \hline
+Hallucination Rate & Misura quanto l’AI suggerisce contenuti errati o inventati & 10\% & 2\% \\ \hline
+Human Rating & Valutazione soggettiva della qualità dei suggerimenti AI da parte degli utenti & 3.5 / 5 & 4.5 / 5 \\ \hline
+Completion Success Rate & Percentuale di suggerimenti AI accettati dall’utente & 75\% & 90\% \\
+\hline
+\end{tabular}
+\caption{Soglie metriche qualità output AI}
+\end{table}
 
-\subsubsection{Affidabilità}
+\subsubsection{Affidabilità\textsubscript{G}}
+Rappresenta la capacità del software di funzionare in modo stabile e continuo senza guasti frequenti.
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|M{0.25\textwidth}|M{0.35\textwidth}|M{0.15\textwidth}|M{0.15\textwidth}|}
+\hline
+\textbf{Metrica} & \textbf{Scopo della metrica} & \textbf{Soglia Accettabile} & \textbf{Soglia Ottimale} \\
+\hline
+Availability & Percentuale di tempo in cui il software è operativo e stabile & 99\% & 99.9\% \\ \hline
+Error Rate & Percentuale di operazioni che falliscono (salvataggio, apertura file, AI) & 1\% & 0.1\% \\ \hline
+MTTR & Tempo medio per ripristinare il software dopo un crash & 60 minuti & 10 minuti \\
+\hline
+\end{tabular}
+\caption{Soglie metriche affidabilità del prodotto}
+\end{table}
 
-\subsubsection{Efficienza}
+\subsubsection{Efficienza\textsubscript{G}}
+Indica quanto il sistema è veloce e quanto bene utilizza le risorse disponibili.
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|M{0.25\textwidth}|M{0.35\textwidth}|M{0.15\textwidth}|M{0.15\textwidth}|}
+\hline
+\textbf{Metrica} & \textbf{Scopo della metrica} & \textbf{Soglia Accettabile} & \textbf{Soglia Ottimale} \\
+\hline
+Response Time & Tempo medio per mostrare suggerimenti AI o completamenti di testo & 500 ms & 100 ms \\ \hline
+AI Processing Time & Tempo medio necessario all’AI per generare una correzione o completamento & 1 sec & 0.5 sec \\
+\hline
+\end{tabular}
+\caption{Soglie metriche efficienza del prodotto}
+\end{table}
 
-\subsubsection{Usabilità}
+\subsubsection{Usabilità\textsubscript{G}}
+Descrive quanto il software è facile da imparare e da usare per gli utenti.
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|M{0.25\textwidth}|M{0.35\textwidth}|M{0.15\textwidth}|M{0.15\textwidth}|}
+\hline
+\textbf{Metrica} & \textbf{Scopo della metrica} & \textbf{Soglia Accettabile} & \textbf{Soglia Ottimale} \\
+\hline
+Task Success Rate & Percentuale di utenti che completano correttamente un compito (scrittura, salvataggio, uso AI) & 80\% & 95\% \\ \hline
+SUS Score & Valutazione dell’usabilità tramite questionario standard & 68 & 85 \\ \hline
+User Satisfaction Rate & Percentuale di utenti soddisfatti delle funzioni AI & 75\% & 90\% \\
+\hline
+\end{tabular}
+\caption{Soglie metriche usabilità del prodotto}
+\end{table}
 
-\subsubsection{Manutenibilità}
-
+\subsubsection{Manutenibilità\textsubscript{G}}
+Indica quanto è semplice correggere, modificare ed evolvere il software nel tempo.
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|M{0.25\textwidth}|M{0.35\textwidth}|M{0.15\textwidth}|M{0.15\textwidth}|}
+\hline
+\textbf{Metrica} & \textbf{Scopo della metrica} & \textbf{Soglia Accettabile} & \textbf{Soglia Ottimale} \\
+\hline
+Test Coverage & Percentuale di codice coperto dai test (funzioni base + AI) & 70\% & 90\% \\ \hline
+Cyclomatic Complexity & Misura della complessità del codice per facilitarne modifiche future & 15 & 10 \\ \hline
+Change Failure Rate & Percentuale di modifiche che introducono problemi o bug & 15\% & 5\% \\
+\hline
+\end{tabular}
+\caption{Soglie metriche manutenibilità del prodotto}
+\end{table}
 
 \newpage
 \section{Strategia di Verifica (Testing)}
