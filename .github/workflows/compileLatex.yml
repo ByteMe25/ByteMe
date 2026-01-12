@@ -1,4 +1,4 @@
-name: Compila LaTeX
+name: Compila LaTeX e Verifica Qualità
 
 on:
   push:
@@ -6,6 +6,9 @@ on:
       - 'src/**/*.tex'
       - 'src/**/*.jpg'
       - 'src/**/*.png'
+      - 'scripts/**/*.py'   # Aggiunto: esegue se modifichi gli script
+      - 'scripts/**/*.txt'  # Aggiunto: esegue se aggiorni la whitelist
+      - 'requirements.txt'  # Aggiunto: esegue se cambi le dipendenze
   workflow_dispatch:
 
 jobs:
@@ -20,8 +23,47 @@ jobs:
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
 
+    # ========================================================
+    # 🐍 INIZIO CONTROLLI QUALITÀ (PYTHON)
+    # ========================================================
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.x'
+
+    - name: Install Python Dependencies
+      run: |
+        if [ -f "requirements.txt" ]; then
+          echo "📦 Installazione dipendenze Python..."
+          pip install -r requirements.txt
+        else
+          echo "⚠️ Nessun file requirements.txt trovato."
+        fi
+
+    - name: 🔎 Check Spelling (Ortografia)
+      run: |
+        if [ -f "scripts/spellcheck.py" ]; then
+          echo "🔤 Avvio controllo ortografico..."
+          python scripts/spellcheck.py
+        else
+          echo "⚠️ Script scripts/spellcheck.py non trovato, salto."
+        fi
+
+    - name: 📖 Check Gulpease (Leggibilità)
+      run: |
+        if [ -f "scripts/gulpease.py" ]; then
+          echo "📊 Avvio calcolo Indice di Gulpease..."
+          python scripts/gulpease.py
+        else
+          echo "⚠️ Script scripts/gulpease.py non trovato, salto."
+        fi
+    # ========================================================
+    # 🏁 FINE CONTROLLI QUALITÀ
+    # ========================================================
+
     - name: Install LaTeX
       run: |
+        echo "⬇️ Installazione pacchetti LaTeX in corso..."
         sudo apt-get update
         sudo apt-get install -y \
           texlive-latex-base \
@@ -34,11 +76,12 @@ jobs:
         # Crea cartelle di destinazione
         mkdir -p 1_Candidatura 2_RTB 3_PB Verbali_interni Verbali_esterni Documenti_interni
         
-        echo "=== STRUTTURA INIZIALE ==="
+        echo "=== 📂 STRUTTURA INIZIALE ==="
         find src -name "*.tex" | head -5
         
         # Trova e compila TUTTI i file .tex in src/
         find src -name "*.tex" -type f | while read texfile; do
+          echo "---------------------------------------------------"
           echo "🔨 Compilando: $texfile"
           
           # Estrai cartella e nome file
@@ -70,36 +113,33 @@ jobs:
             echo "📁 DEFAULT: Messo in Documenti_interni"
           fi
           
-          echo "📁 Cartella sorgente: $dir"
-          echo "📁 Destinazione PDF: $dest/"
+          echo "📍 Cartella sorgente: $dir"
+          echo "🎯 Destinazione PDF: $dest/"
           echo "📄 Nome file: $filename"
           
           # Entra nella cartella e compila
           cd "$dir"
-          echo "📍 Directory corrente: $(pwd)"
           
           # Compila
           latexmk -pdf -interaction=nonstopmode "$filename.tex"
           
           # DEBUG: Cosa c'è nella cartella dopo la compilazione?
-          echo "📂 Contenuto cartella dopo compilazione:"
-          ls -la *.pdf 2>/dev/null || echo "Nessun PDF trovato"
+          # ls -la *.pdf 2>/dev/null || echo "Nessun PDF trovato"
           
           # Copia il PDF
           if [ -f "$filename.pdf" ]; then
             echo "📋 Copiando $filename.pdf in ../../$dest/"
             cp -v "$filename.pdf" "../../$dest/"  # -v per vedere se funziona
-            echo "✅ PDF copiato in: $dest/$filename.pdf"
+            echo "✅ PDF copiato con successo"
           else
             echo "❌ ERRORE: $filename.pdf non esiste dopo la compilazione"
             ls -la  # Mostra tutti i file per debug
           fi
           
           cd ../..
-          echo "---"
         done
         
-        echo "=== FILE FINALI ==="
+        echo "=== 📑 FILE FINALI GENERATI ==="
         echo "Candidatura/:"
         ls -la 1_Candidatura/ 2>/dev/null || echo "Vuota"
         echo "RTB/:"
@@ -120,15 +160,15 @@ jobs:
         git config --global user.name "github-actions"
         git config --global user.email "github-actions@github.com"
         
-        echo "📝 File da committare:"
+        echo "📝 Verifica file da committare..."
         git status --porcelain
         
         git add 1_Candidatura/ 2_RTB/ 3_PB/ Verbali_interni/ Verbali_esterni/ Documenti_interni
         
         if git diff --staged --quiet; then
-          echo "📝 Nessun PDF nuovo da committare"
+          echo "Nessun PDF nuovo da committare"
         else
           git commit -m "Auto-generate PDFs [skip actions]"
           git push
-          echo "✅ PDFs committati"
+          echo "PDFs committati e push completato"
         fi
