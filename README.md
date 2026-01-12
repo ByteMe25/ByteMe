@@ -9,15 +9,17 @@ Questo spazio è pensato per raccogliere e condividere tutti i materiali relativ
 <h2 align="center">Contenuti:</h2>
 <ul align="left">
   <li><b>.github/workflows:</b> File sorgente di GitHub Actions e automazione della compilazione dei file LaTeX </li>
-  <li><b>Candidatura:</b> Tutti i file pertinenti alla candidatura al progetto SecondBrain</li>
+  <li><b>1_Candidatura:</b> Tutti i file pertinenti alla candidatura al progetto SecondBrain</li>
+  <li><b>2_RTB:</b> Tutti i file necessari per la fase RTB (Analisi dei Requisiti, Piano di Progetto, Piano di Qualifica</li>
+  <li><b>Documenti_interni:</b> Cartella con i documenti redatti dal gruppo per l'organizzazione interna, come il Glossario e il Way of Working (Norme di progetto) (in corso)</li>
   <li><b>Verbali:</b> Cartelle che contengono tutti i verbali dove vengono riportate le decisioni e conseguenti azioni principali da intraprendere 
                   <ul> 
                     <li> <b>Interni</b> Verbali relativi a riunioni tra membri del gruppo </li> 
                     <li> <b>Esterni</b> Verbali relativi a riunioni con l'azienda committente </li>
                   </ul>
   <li><b>docs:</b> Tutti i file relativi al nostro sito web</li>
+  <li><b>scripts:</b> Script Python per i test automatici di cntrollo qualità della documentazione</li>
   <li><b>src:</b> File sorgenti LaTeX</li>
-  <li><b>Documenti_interni:</b> Cartella con i documenti redatti dal gruppo per l'organizzazione interna, come il Glossario e il Way of Working (Norme di progetto) (in corso)</li>
 </ul>
 
 
