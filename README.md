@@ -22,7 +22,9 @@ Questo spazio è pensato per raccogliere e condividere tutti i materiali relativ
 
 
 <h3>Leggibilità della documentazione secondo Indice di Gulpease</h3>
+
 ![Stato CI/Qualità](https://github.com/ByteMe25/ByteMe/actions/workflows/compileLatex.yml/badge.svg)
+
 
 
 <h2 align="center">Componenti del gruppo:</h2>
