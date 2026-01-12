@@ -21,6 +21,11 @@ Questo spazio è pensato per raccogliere e condividere tutti i materiali relativ
 </ul>
 
 
+<h2>Leggibilità della documentazione secondo Indice di Gulpease</h2>
+
+![Stato CI/Qualità](https://github.com/ByteMe25/ByteMe/actions/workflows/compileLatex.yml/badge.svg)
+
+
 <h2 align="center">Componenti del gruppo:</h2>
 
 <div align="center">
