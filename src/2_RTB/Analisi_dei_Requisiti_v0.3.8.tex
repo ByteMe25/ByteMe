@@ -65,7 +65,7 @@
         \centering
         \begin{tabular}{|l|p{5cm}|}
             \hline
-            \textbf{Versione} & 0.3.7 \\
+            \textbf{Versione} & 0.3.8 \\
             \hline
             \textbf{Stato} & In corso \\
             \hline
@@ -97,9 +97,11 @@
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verifica} \\
         \hline
-        0.3.7 & 15/01/2026 & Joseph Grant & Sistemate estensioni macroarea 1 e sistemato UC 3.0  &  \\
+        0.3.8 & 15/01/2026 & Giulia Barzon & Sistemati casi ed estensioni macroarea 2 &  \\
         \hline
-        0.3.6 & 12/01/2026 & Matteo Cuogo & Estensione e correzzione casi d'uso macroarea 1 & Joseph Grant\\
+        0.3.7 & 15/01/2026 & Joseph Grant & Sistemate estensioni macroarea 1 e sistemato UC 3.0 & Giulia Barzon\\
+        \hline
+        0.3.6 & 12/01/2026 & Matteo Cuogo & Estensione e correzione casi d'uso macroarea 1 & Joseph Grant\\
         \hline
         0.3.5 & 09/01/2026 & Giulia Barzon & Corretti UC 1.1, 3.1, 3.2 & Joseph Grant\\
         \hline
@@ -261,32 +263,32 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: L’utente scrive nell’apposita area di testo utilizzando la sintassi markdown
-    \item \textbf{Precondizioni}: l’area di testo è vuota o riempita parzialmente
-    \item \textbf{Postcondizioni}: l’area di testo contiene le modifiche fatte dall’utente
+    \item \textbf{Precondizioni}: L’area di testo è vuota o riempita parzialmente
+    \item \textbf{Postcondizioni}: L’area di testo contiene le modifiche fatte dall’utente
     \item \textbf{Scenario principale}:
         \begin{itemize}
             \item L’utente si posiziona sull’area di testo
             \item L’utente inserisce testo rispettando la sintassi markdown
         \end{itemize}
-    \item \textbf{Scenari secondari}:
+    \item \textbf{Estensioni}:
         \begin{itemize}
-            \item La connessione Internet viene persa durante la digitazione:
-            \item L'editor non risponde ai comandi:
+            \item La connessione Internet viene persa durante la digitazione
+            \item L'editor non risponde ai comandi
         \end{itemize}
 \end{itemize}
 
 
-\subsubsection{UC-1.0.1 - La connessione internet si interrompe}
+\subsubsection{UC-1.0.1 - Interruzione della connesione Internet}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: L'utente sta digitando testo e la connessione internet si interrompe
     \item \textbf{Precondizioni}: L'utente sta digitando testo nell'editor
     \item \textbf{Postcondizioni}: Il sistema informa l'utente e si sincronizza quando la connessione ritorna disponibile
-    \item \textbf{Scenario}:
+    \item \textbf{Scenario principale}:
         \begin{itemize}
             \item L'utente sta digitando testo nell'editor
-            \item La connessione internet si interrompe
-            \item Il sistema informa l'utente
+            \item La connessione Internet si interrompe
+            \item Il sistema informa l'utente con un messaggio
             \item Quando la connessione ritorna disponibile, il sistema sincronizza i dati con il server
         \end{itemize}
 \end{itemize}
@@ -297,11 +299,11 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \item \textbf{Descrizione}: L'utente sta digitando testo e l'editor non risponde
     \item \textbf{Precondizioni}: L'utente sta digitando testo nell'editor
     \item \textbf{Postcondizioni}: Il sistema informa l'utente e mostra un messaggio di errore
-    \item \textbf{Scenario}:
+    \item \textbf{Scenario principale}:
         \begin{itemize}
             \item L'utente sta digitando testo nell'editor
             \item L'editor non risponde
-            \item Il sistema informa l'utente
+            \item Il sistema informa l'utente con un messaggio
         \end{itemize}
 \end{itemize}
 
@@ -320,7 +322,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \end{itemize}
     \item \textbf{Estensioni}:
         \begin{itemize}
-            \item L'anteprima non si aggiorna correttamente:
+            \item L'anteprima non si aggiorna correttamente
         \end{itemize}
 \end{itemize}
 
@@ -330,11 +332,11 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \item \textbf{Descrizione}: L'utente ha scritto del testo ma la sezione di anteprima non si aggiorna correttamente
     \item \textbf{Precondizioni}: L'utente ha scritto del testo
     \item \textbf{Postcondizioni}: Il sistema informa l'utente e mostra un messaggio di errore
-    \item \textbf{Scenario}:
+    \item \textbf{Scenario principale}:
         \begin{itemize}
             \item L'utente sta digitando testo nell'editor
             \item La sezione di anteprima non si aggiorna correttamente
-            \item Il sistema informa l'utente
+            \item Il sistema informa l'utente con un messaggio di errore
         \end{itemize}
 \end{itemize}
 
@@ -346,7 +348,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \item \textbf{Postcondizioni}: Una porzione di testo viene selezionata dall’utente
     \item \textbf{Scenario principale}:
         \begin{itemize}
-            \item L'utente evidenzia una porzione di testo con il mouse o tastiera
+            \item L'utente evidenzia una porzione di testo con mouse o tastiera
         \end{itemize}
 \end{itemize}
 
@@ -371,9 +373,10 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
                 \begin{enumerate}
                     \item Tasto di scelta rapida (Ctrl+C)
                     \item Menu contestuale (tasto destro)
-                    \item Toolbar dell'editor (opzionale)
+                    \item Toolbar dell'editor
                 \end{enumerate}
             \item Il testo selezionato viene copiato negli appunti di sistema
+            \item Il sistema manda un messaggio di successo
         \end{itemize}
 \end{itemize}
 
@@ -427,6 +430,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
                 \end{enumerate}
             \item Il sistema rimuove il testo selezionato dall'editor
             \item Il testo rimosso viene salvato negli appunti di sistema
+            \item Il sistema manda un messaggio di successo
         \end{itemize}
 \end{itemize}
 \begin{figure}[H]
@@ -464,11 +468,12 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: L'utente tenta di annullare un'operazione quando non ci sono modifiche anullabili
     \item \textbf{Precondizioni}: L'utente non ha effettuato modifiche anullabili
-    \item \textbf{Postcondizioni}: Il sistema non fa niente
-    \item \textbf{Scenario}:
+    \item \textbf{Postcondizioni}: Il documento rimane invariato
+    \item \textbf{Scenario principale}:
         \begin{itemize}
             \item L'utente tenta di selezionare l'opzione "Annulla"
-            \item Il comando undo non fa niente
+            \item Il sistema informa l'utente con un messaggio
+            \item Il comando undo non modifica il documento
         \end{itemize}
 \end{itemize}
 
@@ -492,7 +497,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \end{itemize}
     \item \textbf{Estensioni}:
         \begin{itemize}
-            \item Non ci sono operazioni da ripristinare:
+            \item Non ci sono operazioni da ripristinare
         \end{itemize}
 \end{itemize}
 
@@ -501,11 +506,12 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: L'utente tenta di ripristinare un'operazione quando non ci sono modifiche ripristinabili
     \item \textbf{Precondizioni}: L'utente non ha effettuato modifiche ripristinabili
-    \item \textbf{Postcondizioni}: Il sistema non fa niente
+    \item \textbf{Postcondizioni}:  Il documento rimane invariato
     \item \textbf{Scenario}:
         \begin{itemize}
             \item L'utente tenta di selezionare l'opzione "Ripristina"
-            \item Il comando redo non fa niente
+            \item Il sistema informa l'utente con un messaggio
+            \item Il comando redo non modifica il documento
         \end{itemize}
 \end{itemize}
 
@@ -517,18 +523,18 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
 \end{figure}
 
 
-
-\subsubsection{UC-1.8 - Modifica del testo selezionato tramite barra degli strumenti}
+\subsubsection{UC-1.8.0 - Modifica del testo selezionato tramite barra degli strumenti}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: Formattazione del testo selezionato tramite la barra degli strumenti dell'editor
-    \item \textbf{Precondizioni}: È presente testo nell'editor pronto per essere modificato
+    \item \textbf{Precondizioni}: È presente testo nell'editor
     \item \textbf{Postcondizioni}: Il testo selezionato viene formattato secondo la sintassi Markdown
     \item \textbf{Scenario principale}:
         \begin{itemize}
             \item L'utente seleziona il testo da formattare
             \item L'utente clicca sul pulsante desiderato nella barra degli strumenti
-            \item Il sistema applica automaticamente la sintassi Markdown corrispondente
+            \item Il sistema applica automaticamente la sintassi Markdown corrispondente al testo selezionato
+            \item Il testo formattato viene visualizzato nell'are di anteprima
         \end{itemize}
     \item \textbf{Estensioni}:
         \begin{itemize}
@@ -543,10 +549,10 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: L'utente tenta di applicare una formattazione a un testo che ha già una formattazione
     \item \textbf{Precondizioni}: Il testo selezionato ha già una formattazione
-    \item \textbf{Postcondizioni}: Il sistema applica la nuova formattazione sopra alla formattazione esistente
-    \item \textbf{Scenario}:
+    \item \textbf{Postcondizioni}: Il sistema applica la nuova formattazione sopra alla formattazione esistente, senza eliminarla
+    \item \textbf{Scenario principale}:
         \begin{itemize}
-            \item L'utente seleziona il testo già formattato
+            \item L'utente seleziona del testo già formattato
             \item L'utente clicca sul pulsante della nuova formattazione nella toolbar
             \item Il sistema applica la nuova formattazione al testo selezionato in aggiunta alla formattazione esistente
         \end{itemize}
@@ -555,10 +561,10 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
 \subsubsection{UC-1.8.0.2 - Il testo ha già una specifica formattazione e l'utente la applica di nuovo}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
-    \item \textbf{Descrizione}: L'utente riapplica la stessa formattazione a del testo
+    \item \textbf{Descrizione}: L'utente riapplica la stessa formattazione a una porzione di testo
     \item \textbf{Precondizioni}: Il testo selezionato è formattato
     \item \textbf{Postcondizioni}: Il testo perde quella formattazione
-    \item \textbf{Scenario}:
+    \item \textbf{Scenario principale}:
         \begin{itemize}
             \item L'utente seleziona il testo formattato
             \item L'utente clicca sul pulsante della stessa formattazione nella toolbar
@@ -572,7 +578,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \item \textbf{Descrizione}: L'utente applica la stessa formattazione a una porzione del testo che contiente parzialmente la stessa formattazione
     \item \textbf{Precondizioni}: Il testo selezionato è parzialmente formattato
     \item \textbf{Postcondizioni}: Il testo viene formattato per intero
-    \item \textbf{Scenario}:
+    \item \textbf{Scenario principale}:
         \begin{itemize}
             \item L'utente seleziona del testo
             \item Il testo selezionato è parzialmente formattato
@@ -626,7 +632,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-1.8.4 - Applicazione intestazioni}
+\subsubsection{UC-1.8.4 - Applicazione intestazioni al testo selezionato}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: Applicazione di intestazioni al testo selezionato
@@ -635,17 +641,17 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \item \textbf{Scenario principale}:
         \begin{itemize}
             \item L'utente posiziona il cursore dove inserire l'intestazione
-            \item L'utente applica un'intestazione tramite:
+            \item L'utente scrive un'intestazione tramite:
                 \begin{enumerate}
                     \item Toolbar (H1, H2, H3, ecc.)
                     \item Sintassi Markdown (\#, \#\#, \#\#\#)
-                    \item Tasti di scelta rapida
                 \end{enumerate}
             \item Il sistema formatta il testo come intestazione
+            \item Le intestazioni vengono visualizzate nell'anteprima
         \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-1.8.5 - Applicazione struttura documento}
+\subsubsection{UC-1.8.5 - Applicazione elementi di struttura}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: Applicazione di elementi di struttura al documento nel testo selezionato
@@ -656,25 +662,26 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
             \item L’utente posiziona il cursore dove inserire l’elemento di struttura
             \item L’utente sceglie il tipo di struttura da applicare:
                 \begin{enumerate}
-                    \item Tabella (| col1 | col2 | … |)
-                    \item Separatore orizzontale (---)
+                    \item Tabella
+                    \item Separatore orizzontale
                 \end{enumerate}
-            \item Il sistema formatta il testo come intestazione
+            \item Gli elementi formattati vengono visualizzati nell'anteprima
         \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-1.8.6 - Applicazione inserimento liste ed elenchi}
+\subsubsection{UC-1.8.6 - Inserimento di liste ed elenchi}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
-    \item \textbf{Descrizione}: Creazione di liste ordinate e non ordinate nel documento dal testo selezionato
-    \item \textbf{Precondizioni}: È presente testo selezionato nell’editor
+    \item \textbf{Descrizione}: Creazione di liste ordinate e non ordinate nel documento da testo selezionato o non selezionato
+    \item \textbf{Precondizioni}: L'editor è aperto e funzionante
     \item \textbf{Postcondizioni}: Viene creata una lista ordinata o non ordinata
     \item \textbf{Scenario principale}:
         \begin{itemize}
-            \item L'utente posiziona il cursore dove inserire la lista
+            \item L'utente posiziona il cursore nel punto dove vuole inserire la lista
             \item L'utente seleziona il tipo di lista (ordinata/non ordinata)
             \item L'utente inserisce gli elementi della lista
             \item Il sistema formatta automaticamente la lista
+            \item La lista formattata viene visualizzata nell'anteprima
         \end{itemize}
     \item \textbf{Estensioni}:
         \begin{itemize}
@@ -688,16 +695,16 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \item \textbf{Descrizione}: L'utente vuole inserire una sotto-lista all'interno di una lista esistente
     \item \textbf{Precondizioni}: È presente una lista nell'editor
     \item \textbf{Postcondizioni}: Viene inserita una sotto-lista all'interno della lista esistente
-    \item \textbf{Scenario}:
+    \item \textbf{Scenario principale}:
         \begin{itemize}
-            \item L'utente inizializza una lista indentata dentro ad un'altra tramite
+            \item L'utente inizializza una lista indentata dentro ad un'altra
             \item Il sistema crea una sottolista
             \item Il sistema gestisce l'indentazione automatica della nuova sotto-lista
+            \item La sotto-lista formattata viene visualizzata correttamente nell'anteprima
         \end{itemize}
 \end{itemize}
 
-
-\subsubsection{UC-1.8.7 - Applicazione inserimento link e riferimenti}
+\subsubsection{UC-1.8.7 - Inserimento di link e riferimenti}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: Inserimento di link ipertestuali al testo selezionato nel documento
@@ -709,8 +716,11 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
             \item L'utente clicca sul comando "Inserisci link"
             \item L'utente inserisce l'URL di destinazione
             \item Il sistema applica la sintassi Markdown per il link
+            \item Il link viene visualizzato con la formattazione corretta nell'anteprima
         \end{itemize}
 \end{itemize}
+
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{../UCimg/UC1.8_toolbar.jpg}
@@ -719,16 +729,17 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
 \end{figure}
 
 
-\subsubsection{UC-1.9 - Impostare formattazioni al testo futuro}
+\subsubsection{UC-1.9 - Impostare formattazioni senza testo presente nell'editor}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
-    \item \textbf{Descrizione}: Applicazione formattazioni al testo futuro tramite barra degli strumenti
-    \item \textbf{Precondizioni}: L’utente ha accesso agli strumenti di formattazione
-    \item \textbf{Postcondizioni}: Il testo futuro viene formattato in base alla selezione della formattazione dell’utente
+    \item \textbf{Descrizione}: Applicazione di formattazioni tramite barra degli strumenti senza che l'utente abbia già digitato del testo nell'editor
+    \item \textbf{Precondizioni}: L’editor è aperto e l'utente ha accesso agli strumenti di formattazione
+    \item \textbf{Postcondizioni}: Il testo futuro viene formattato in base alla formattazione già selezionata dall'utente prima della scrittura di testo 
     \item \textbf{Scenario principale}:
         \begin{itemize}
             \item L’utente seleziona la formattazione per il testo futuro
             \item Il sistema applica automaticamente la sintassi Markdown corrispondente
+            \item Il testo scritto dall'utente prende automaticamente la formattazione applicata
         \end{itemize}
     \item \textbf{Estensioni}:
         \begin{itemize}
@@ -742,10 +753,12 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \item \textbf{Descrizione}: L'utente vuole scrivere del testo futuro con più formattazioni contemporaneamente
     \item \textbf{Precondizioni}: L’utente ha abilitiato diversi strumenti di formattazione
     \item \textbf{Postcondizioni}: Il testo futuro viene formattato con tutte le opzioni selezionate
-    \item \textbf{Scenario}:
+    \item \textbf{Scenario principale}:
         \begin{itemize}
             \item L'utente abilita più opzioni di formattazione per il testo futuro
             \item Il sistema applica tutte le formattazioni selezionate al testo futuro
+            \item Il testo scritto dall'utente prende automaticamente tutte le formattazioni selezionate
+            \item Il testo formattato viene visualizzato correttamente nell'anteprima
         \end{itemize}
 \end{itemize}
 
@@ -757,8 +770,10 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \item \textbf{Postcondizioni}: Il testo scritto è in grassetto
     \item \textbf{Scenario principale}:
         \begin{itemize}
-            \item L’utente clicca sul pulsante ”Grassetto” nella toolbar
+            \item L’utente clicca sul pulsante "Grassetto" nella toolbar
             \item Il sistema applica la sintassi Markdown per il grassetto
+            \item Il testo scritto successivamente dall'utente prende automaticamente la formattazione in grassetto
+            \item Il testo in grassetto viene visualizzato correttamente nell'anteprima
         \end{itemize}
 \end{itemize}
 
@@ -770,8 +785,10 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \item \textbf{Postcondizioni}: Il testo scritto è in corsivo
     \item \textbf{Scenario principale}:
         \begin{itemize}
-            \item L’utente clicca sul pulsante ”Corsivo” nella toolbar
+            \item L’utente clicca sul pulsante "Corsivo" nella toolbar
             \item Il sistema applica la sintassi Markdown per il corsivo
+            \item Il testo scritto successivamente dall'utente prende automaticamente la formattazione in corsivo
+            \item Il testo in corsivo viene visualizzato correttamente nell'anteprima
         \end{itemize}
 \end{itemize}
 
@@ -784,8 +801,10 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \item \textbf{Postcondizioni}: Il testo scritto è sottolineato
     \item \textbf{Scenario principale}:
         \begin{itemize}
-            \item L’utente clicca sul pulsante ”Sottolineato” nella toolbar
+            \item L’utente clicca sul pulsante "Sottolineato" nella toolbar
             \item Il sistema applica la sintassi Markdown per la sottolineatura
+            \item Il testo scritto successivamente dall'utente prende automaticamente la sottolineatura
+            \item Il testo sottolineato viene visualizzato correttamente nell'anteprima
         \end{itemize}
 \end{itemize}
 
@@ -797,13 +816,14 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \item \textbf{Postcondizioni}: Il testo scritto presenta le intestazioni
     \item \textbf{Scenario principale}:
         \begin{itemize}
-            \item L’utente clicca sul pulsante ”Intestazioni” nella toolbar
+            \item L’utente clicca sul pulsante "Intestazioni" nella toolbar
             \item L’utente applica un’intestazione tramite:
                 \begin{enumerate}
                     \item Toolbar (H1, H2, H3, ecc.)
                     \item Sintassi Markdown (\#, \#\#, \#\#\#)
-                    \item Tasti di scelta rapida
                 \end{enumerate}
+            \item Il testo scritto successivamente dall'utente prende automaticamente la formattazione dell'intestazione
+            \item L'intestazione viene visualizzata correttamente nell'anteprima
         \end{itemize}
 \end{itemize}
 
@@ -815,12 +835,13 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \item \textbf{Postcondizioni}: Il testo scritto rispetta la struttura selezionata dall’utente
     \item \textbf{Scenario principale}:
         \begin{itemize}
-            \item L’utente clicca sul pulsante ”Struttura” nella toolbar
+            \item L’utente clicca sul pulsante "Struttura" nella toolbar
             \item L’utente sceglie il tipo di struttura da applicare:
                 \begin{enumerate}
-                    \item Tabella (| col1 | col2 | … |)
-                    \item Separatore orizzontale (---)
+                    \item Tabella
+                    \item Separatore orizzontale
                 \end{enumerate}
+            \item L'elemento viene visualizzato correttamente nell'anteprima
         \end{itemize}
 \end{itemize}
 
@@ -832,11 +853,13 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \item \textbf{Postcondizioni}: Il testo scritto è in formato lista/elenco
     \item \textbf{Scenario principale}:
         \begin{itemize}
-            \item L’utente clicca sul pulsante ”Liste ed elenchi” nella toolbar
+            \item L’utente clicca sul pulsante "Liste ed elenchi" nella toolbar
             \item L’utente sceglie il tipo di elenco da applicare:
                 \begin{itemize}
                     \item ordinato/non ordinato
                 \end{itemize}
+            \item La formattazione viene applicata e l'utente può inserire testo nella lista già pronta
+            \item La lista viene visualizzata correttamente nell'anteprima
         \end{itemize}
 \end{itemize}
 
@@ -851,21 +874,19 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
             \item L’utente clicca sul comando ”Inserisci link o riferimento”
             \item L’utente inserisce l’URL di destinazione
             \item Il sistema applica la sintassi Markdown per il link o riferimenti
+            \item Il link viene visualizzato correttamente nell'anteprima
         \end{itemize}
 \end{itemize}
 
 \subsubsection{UC-1.10 - Modalità di visualizzazione solo editor}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
-    \item \textbf{Descrizione}: Visualizzazione esclusiva dell’editor di testo
+    \item \textbf{Descrizione}: Cambia la modalità di visualizzazione dell’editor, che mostra solo l'area di scrittura dell'editor
     \item \textbf{Precondizioni}: La modalità di visualizzazione comprende solo il documento formattato oppure è in modalità split view
-    \item \textbf{Postcondizioni}: Cambia la modalità di visualizzazione dell’editor
+    \item \textbf{Postcondizioni}: Visualizzazione esclusiva dell'area di testo dell'editor
     \item \textbf{Scenario principale}:
         \begin{itemize}
-            \item L'utente seleziona la modalità di visualizzazione:
-                    \begin{itemize}
-                    \item Solo editor (sintassi Markdown visibile)
-                    \end{itemize}
+            \item L'utente seleziona la modalità di visualizzazione "Solo editor" (sintassi Markdown visibile)
             \item Il sistema adatta l'interfaccia alla modalità scelta
         \end{itemize}
 \end{itemize}
@@ -873,15 +894,12 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
 \subsubsection{UC-1.11 - Modalità di visualizzazione solo documento formattato}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
-    \item \textbf{Descrizione}: Visualizzazione esclusiva del documento formattato
+    \item \textbf{Descrizione}: Cambia la modalità di visualizzazione dell'editor, che mostra solo l'anteprima formattata del documento
     \item \textbf{Precondizioni}: La modalità di visualizzazione comprende solo l’editor oppure è in modalità split view
-    \item \textbf{Postcondizioni}: Cambia la modalità di visualizzazione del documento tramite il pulsante “visualizzazione documento”
+    \item \textbf{Postcondizioni}: Visualizzazione esclusiva del documento formattato
     \item \textbf{Scenario principale}:
         \begin{itemize}
-            \item L'utente seleziona la modalità di visualizzazione:
-                    \begin{itemize}
-                    \item Solo documento
-                    \end{itemize}
+            \item L'utente seleziona la modalità di visualizzazione "Solo documento"/"Solo anteprima"
             \item Il sistema adatta l'interfaccia alla modalità scelta
         \end{itemize}
 \end{itemize}
@@ -889,16 +907,12 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
 \subsubsection{UC-1.12 - Modalità di visualizzazione split view}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
-    \item \textbf{Descrizione}: Visualizzazione split view dell’editor e del documento
+    \item \textbf{Descrizione}: Cambia la modalità di visualizzazione in split view, che mostra sia l'area di testo sia l'anteprima del documento formattato
     \item \textbf{Precondizioni}: La modalità di visualizzazione comprende solo l’editor oppure solo il documento
-
-    \item \textbf{Postcondizioni}: Cambia la modalità di visualizzazione split view tramite il pulsante “visualizzazione split view”
+    \item \textbf{Postcondizioni}: Visualizzazione split view dell’area di testo e del documento formattato
     \item \textbf{Scenario principale}:
         \begin{itemize}
-            \item L'utente seleziona la modalità di visualizzazione:
-                    \begin{itemize}
-                    \item split view
-                    \end{itemize}
+            \item L'utente seleziona la modalità di visualizzazione "Split View"
             \item Il sistema adatta l'interfaccia alla modalità scelta
         \end{itemize}
 \end{itemize}
@@ -917,10 +931,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \end{itemize}
     \item \textbf{Estensioni}:
         \begin{itemize}
-            \item Nessuna occorrenza trovata:
-                \begin{enumerate}
-                    \item Il sistema informa l'utente
-                \end{enumerate}
+            \item Nessuna occorrenza trovata
         \end{itemize}
 \end{itemize}
 
@@ -935,7 +946,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
             \item L'utente attiva la funzione "Ricerca"
             \item L'utente inserisce il testo da cercare
             \item Il sistema non trova occorrenze
-            \item Il sistema informa l'utente che nessuna occorrenza è stata trovata
+            \item Il sistema informa l'utente che nessuna occorrenza è stata trovata con un messaggio
         \end{itemize}
 \end{itemize}
 
@@ -943,127 +954,167 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
 \newpage
 
 \subsection{Macroarea 2 - Funzionalità AI}
-\subsubsection{UC-2.0 - Selezione testo per operazioni AI}
+\subsubsection{UC-2.0 - Distinzione del Testo Utente da quello Generato}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
-    \item \textbf{Descrizione}: Permette all’utente di selezionare una porzione di testo nell’editor per applicare operazioni di AI
-    \item \textbf{Precondizioni}: È presente testo nell'editor
-    \item \textbf{Postcondizioni}: Una porzione di testo viene selezionata per operazioni AI
-    \item \textbf{Scenario principale}: 
-        \begin{itemize}
-            \item L'utente evidenzia una porzione di testo nell'editor
-            \item È presente un menù con le opzioni AI disponibili
-            \item L'utente seleziona l'operazione desiderata
-            \item Il sistema applica l'operazione solo al testo selezionato
-        \end{itemize}
-    \item \textbf{Estensioni}: 
-         \begin{enumerate}
-            \item L'utente non seleziona alcun testo prima di scegliere un'operazione AI:
-                \begin{itemize}
-                    \item L'operazione AI viene applicata a tutto il testo presente nell'editor
-                \end{itemize}
-        \end{enumerate}
-\end{itemize}
-
-\subsubsection{UC-2.1 - Mantenimento e Interazione con i testi Generati dall'AI}
-\begin{itemize}
-    \item \textbf{Attore principale}: Utente generico
-    \item \textbf{Descrizione}: Gestione della storia e interazione con tutti i testi generati dall’AI all’interno
-del documento
-    \item \textbf{Precondizioni}: Sono state eseguite una o più operazioni AI e i relativi testi generati sono stati inseriti nell'editor
-    \item \textbf{Postcondizioni}: L'utente può visualizzare e operare sull'intera sequenza di generazioni AI accumulate nel documento
+    \item \textbf{Descrizione}: Sistema di formattazione che rende chiaramente distinguibile il testo generato dall’AI dal testo scritto dall’utente
+    \item \textbf{Precondizioni}: Nell’editor è presente sia testo digitato dall’utente che testo generato dall’AI
+    \item \textbf{Postcondizioni}: Il testo generato è chiaramente distinguibile dal testo dell’utente
     \item \textbf{Scenario principale}:
         \begin{itemize}
-            \item L'utente seleziona un'operazione AI da eseguire nel testo selezionato o non selezionato
-            \item Ogni nuova operazione AI genera testo che viene inserito nell'editor sotto alla porzione di testo interessata o in un box apposito
-            \item Le generazioni si accumulano come blocchi di testo distinti nel flusso del documento
-            \item Ogni blocco mantiene la sua formattazione distintiva che identifica:
-                \begin{enumerate}
-                    \item Il tipo di operazione
-                    \item La data/ora di generazione
-                    \item I parametri specifici (lingua, cappello, ecc.)
-                \end{enumerate}
-            \item Il documento stesso diventa la cronologia visibile delle operazioni AI
-            \item Visualizzazione contestuale della storia:
-                \begin{enumerate}
-                    \item L'utente scorre il documento e vede tutte le generazioni AI in sequenza
-                    \item Le generazioni sono intercalate con il testo utente originale
-                    \item La posizione relativa nel documento preserva il contesto temporale e logico
-                \end{enumerate}
-            \item L'utente può effettuare operazioni sulle generazioni:
-                \begin{enumerate}
-                    \item Modifica qualsiasi del testo generato
-                    \item Eliminazione di singole generazioni
-                    \item Ordinamento delle generazioni spostandole nel documento
-                    \item Raggruppamento di generazioni correlate (es: tutte le traduzioni di un paragrafo)
-                    \item Nascondere/mostrare intere sezioni di generazioni
-                \end{enumerate}
-        \end{itemize}
-    \item \textbf{Estensioni}:
-        \begin{itemize}
-            \item L'utente vuole una vista compatta della storia:
-                \begin{enumerate}
-                    \item Opzione "Mostra solo testo utente" nasconde temporaneamente tutte le generazioni
-                    \item Opzione "Mostra solo generazioni AI" evidenzia solo i blocchi generati
-                \end{enumerate}
+            \item L’utente seleziona un’operazione AI
+            \item L’editor inserisce il testo generato all’interno del documento
+            \item Il sistema formatta automaticamente il testo generato con elementi di stile che lo rendono diverso dal testo scritto dall’utente
+            \item Il sistema inserisce automaticamente degli elementi di separazione tra il testo generato e il testo originale dell’utente
         \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-2.2 - Distinzione del Testo Utente da quello Generato}
+\subsubsection{UC-2.1 - Interazione con i testi Generati dall’AI}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
-    \item \textbf{Descrizione}: Sistema di formattazione che rende chiaramente distinguibile il testo generato dall'AI dal testo scritto dall'utente
-    \item \textbf{Precondizioni}: Nell'editor è presente sia testo digitato dall'utente che testo generato dal sistema
-    \item \textbf{Postcondizioni}: Il testo generato è chiaramente distinguibile dal testo dell'utente
+    \item \textbf{Descrizione}: Gestione della storia e interazione con tutti i testi generati dall’AI all’interno del documento
+    \item \textbf{Precondizioni}: Sono state eseguite una o più operazioni AI e i relativi testi generati sono stati inseriti nell’editor
+    \item \textbf{Postcondizioni}: L’utente può visualizzare e operare sull’intera sequenza di generazioni AI accumulate nel documento
     \item \textbf{Scenario principale}:
-        \begin{itemize}
-            \item Il sistema formatta automaticamente il testo generato con:
-                \begin{enumerate}
-                    \item Una riga separatrice orizzontale (---) o altro elemento separatore
-                    \item Commento iniziale in corsivo e grigio: Generato da AI - [tipo operazione] - [data]
-                    \item Sfondo colorato leggero (es. azzurro chiaro per traduzioni, verde chiaro per riassunti) (opzionale)
-                    \item un’area apposita (box) identificativa
-                    \item colore del testo generato diverso dal colore del testo dell’utente (opzionale)
-                \end{enumerate}
-            \item L'utente può modificare il testo generato dall’AI tramite i comandi per accettare, eliminare o rigenerare la risposta, presenti nell’area identificativa
-            \item L’utente può modificare sia il testo originale sia il testo generato dall’AI
-        \end{itemize}
+    \begin{itemize}
+        \item L’utente seleziona un’operazione AI da eseguire nel testo selezionato o non selezionato
+        \item Ogni nuova operazione AI genera testo che viene inserito nell’editor sotto alla porzione di testo interessata o in un box apposito
+        \item Le generazioni si accumulano come blocchi di testo distinti nel flusso del documento
+        \item Ogni blocco mantiene la sua formattazione distintiva che identifica:
+            \begin{enumerate}
+                \item Il tipo di operazione
+                \item La data/ora di generazione
+                \item I parametri specifici (lingua, cappello, ecc.)
+            \end{enumerate}
+    \end{itemize}
     \item \textbf{Estensioni}:
-        \begin{itemize}
-            \item L'utente modifica il testo generato dall'AI:
-                \begin{enumerate}
-                    \item Il sistema elimina automaticamente gli elementi distintivi dell’area identificativa del testo generato (opzionale)
-                    \item Il testo assume lo stile standard dell’editor
-                \end{enumerate}
-        \end{itemize}
+    \begin{itemize}
+        \item L’utente può modificare o effettuare operazioni sulle generazioni
+        \item L’utente può accettare, eliminare o rigenerare la risposta dell’AI
+        \item L’utente vuole una vista compatta della storia delle generazioni
+        \item L’utente vuole vedere solo il testo digitato senza i blocchi di testo generati dall’AI
+        \item L’utente annulla l’operazione prima del completamento della generazione
+        \item Il servizio LLM restituisce un errore senza dare risposta
+    \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-2.3 - Riassunto del testo}
+
+\subsubsection{UC 2.1.1 - Modifica del testo generato}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
-    \item \textbf{Descrizione}: Generazione di un riassunto del testo selezionato o dell'intero documento
-    \item \textbf{Precondizioni}: È presente testo nell'editor (completo o selezionato)
-    \item \textbf{Postcondizioni}: Viene generato un riassunto del testo nell'editor con formattazione distintiva rispetto al testo originale
+    \item \textbf{Descrizione}: L’utente può interagire con il testo generato dall’AI modificandolo tramite sintassi markdown
+    \item \textbf{Precondizioni}: Sono state eseguite una o più operazioni AI e i relativi testi generati sono stati inseriti nell’editor
+    \item \textbf{Postcondizioni}: L’utente modifica i testi generati dall’AI accumulati nel file
     \item \textbf{Scenario principale}:
-        \begin{itemize}
-            \item L'utente seleziona il testo da riassumere (opzionale)
-            \item L'utente clicca sul comando "Riassumi"
-            \item Il sistema invia il testo al LLM
-            \item Il sistema mostra il riassunto generato sotto il testo originale, distinguendolo con elementi predefiniti
-            \item L'utente può scegliere di mantenere o modificare sia il testo originale sia il testo generato
-        \end{itemize}
-    \item \textbf{Estensioni}:
-        \begin{itemize}
-            \item L'utente annulla l'operazione prima del completamento:
-                \begin{enumerate}
-                    \item Il testo originale rimane invariato
-                \end{enumerate}
-            \item LLM dà errore:
-                \begin{enumerate}
-                    \item Il sistema notifica l'errore all'utente
-                    \item L'operazione viene annullata
-                \end{enumerate}
-        \end{itemize}
+    \begin{itemize}
+        \item L’utente individua un blocco di testo generato dall’AI
+        \item L’utente seleziona tutto o una parte del testo generato
+        \item L’utente applica una formattazione markdown al testo selezionato
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{UC 2.1.2 - Eliminazione del testo generato}
+\begin{itemize}
+    \item \textbf{Attore principale}: Utente generico
+    \item \textbf{Descrizione}: L’utente può eliminare intere sezioni di testo generato dall’AI
+    \item \textbf{Precondizioni}: Sono state eseguite una o più operazioni AI e i relativi testi generati sono stati inseriti nell’editor
+    \item \textbf{Postcondizioni}: L’utente elimina il testo generato
+    \item \textbf{Scenario principale}:
+    \begin{itemize}
+        \item L’utente individua un blocco di testo generato dall’AI
+        \item L’utente visualizza l’opzione “Elimina” accanto alla generazione
+        \item L’utente seleziona “Elimina”
+        \item Il testo generato viene cancellato dal documento
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{UC 2.1.3 - Rigenerazione testo generato}
+\begin{itemize}
+    \item \textbf{Attore principale}: Utente generico
+    \item \textbf{Descrizione}: L’utente può rigenerare intere sezioni di testo precedentemente generato dall’AI
+    \item \textbf{Precondizioni}: Sono state eseguite una o più operazioni AI e i relativi testi generati sono stati inseriti nell’editor
+    \item \textbf{Postcondizioni}: Il testo generato precedentemente viene sostituito da una nuova variante prodotta dall'AI
+    \item \textbf{Scenario principale}:
+    \begin{itemize}
+        \item L’utente individua un blocco di testo generato dall’AI
+        \item L’utente visualizza l’opzione “Rigenera” accanto alla generazione
+        \item L’utente seleziona “Rigenera”
+        \item Il sistema invia nuovamente la richiesta all'AI utilizzando gli stessi parametri
+        \item Il testo precedentemente generato viene sovrascritto da una nuova generazione
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{UC 2.1.4 - Visualizzazione solo del testo utente}
+\begin{itemize}
+    \item \textbf{Attore principale}: Utente generico
+    \item \textbf{Descrizione}: L’utente può scegliere di visualizzare solo il testo che ha scritto nel documento, senza visualizzare le sezioni di testo generato dall’AI
+    \item \textbf{Precondizioni}: Sono state eseguite una o più operazioni AI e i relativi testi generati sono stati inseriti nell’editor
+    \item \textbf{Postcondizioni}: L’utente visualizza solo il testo originario senza le generazioni AI
+    \item \textbf{Scenario principale}:
+    \begin{itemize}
+        \item L’utente seleziona l’opzione “Visualizza solo testo utente”
+        \item L’editor mostra solo il testo scritto dall’utente, rimuovendo le generazioni AI dalla visualizzazione
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{UC 2.1.5 - Visualizzazione solo del testo generato dall’AI}
+\begin{itemize}
+    \item \textbf{Attore principale}: Utente generico
+    \item \textbf{Descrizione}: L’utente può scegliere di visualizzare solo il testo che è stato generato dalle funzionalità AI, senza vedere il testo originario
+    \item \textbf{Precondizioni}: Sono state eseguite una o più operazioni AI e i relativi testi generati sono stati inseriti nell’editor
+    \item \textbf{Postcondizioni}: L’utente visualizza solo le generazioni nel documento
+    \item \textbf{Scenario principale}:
+    \begin{itemize}
+        \item L’utente seleziona l’opzione “Visualizza solo testo generato”
+        \item L’editor mostra solo i blocchi di testo generato dall’AI, rimuovendo il testo scritto dall’utente dalla visualizzazione
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{UC 2.1.6 - Annullamento dell’operazione}
+\begin{itemize}
+    \item \textbf{Attore principale}: Utente generico
+    \item \textbf{Descrizione}: L’utente interrompe volontariamente una richiesta AI in corso prima del suo completamento
+    \item \textbf{Precondizioni}: L'utente ha avviato un'operazione AI e il sistema è in fase di elaborazione
+    \item \textbf{Postcondizioni}: L’operazione viene annullata e il documento rimane nello stato precedente alla richiesta
+    \item \textbf{Scenario principale}:
+    \begin{itemize}
+        \item Il sistema sta elaborando una richiesta AI
+        \item L’editor mostra un indicatore di attesa (opzionale)
+        \item L’utente seleziona l’opzione “Annulla” per l’operazione in corso
+        \item L’editor interrompe l’operazione e la comunicazione con il servizio LLM
+        \item Il testo presente nell’editor rimane invariato
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{UC 2.1.7 - Errore dal LLM}
+\begin{itemize}
+    \item \textbf{Attore principale}: Utente generico
+    \item \textbf{Descrizione}: Il sistema gestisce un fallimento nella generazione della risposta da parte del LLM (es. timeout, assenza di connessione, errore server)
+    \item \textbf{Precondizioni}: L'utente ha avviato un'operazione AI e il sistema è in fase di elaborazione
+    \item \textbf{Postcondizioni}: L’utente viene informato dell'errore e il documento rimane nello stato precedente alla richiesta
+    \item \textbf{Scenario principale}:
+    \begin{itemize}
+        \item Il sistema tenta di comunicare con il servizio LLM esterno
+        \item Il servizio LLM non risponde o restituisce un codice di errore
+        \item Il sistema intercetta l'errore interrompendo il processo di attesa
+        \item L’editor manda un messaggio di errore
+        \item Il testo presente nell’editor rimane invariato
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{UC-2.2 - Riassunto del testo}
+\begin{itemize}
+    \item \textbf{Attore principale}: Utente generico
+    \item \textbf{Descrizione}: Generazione di un riassunto del testo selezionato o dell’intero documento
+    \item \textbf{Precondizioni}: L’editor contiene del testo
+    \item \textbf{Postcondizioni}: Un nuovo blocco di testo contenente il riassunto viene inserito nell’editor, formattato in modo distinto rispetto al testo originale
+    \item \textbf{Scenario principale}:
+    \begin{itemize}
+        \item L’utente seleziona una porzione di testo (o non seleziona nulla per indicare l'intero documento)
+        \item L’utente attiva il comando ”Riassumi”
+        \item Il sistema elabora la richiesta e invia il testo al LLM
+        \item Il sistema genera il riassunto e lo inserisce nell'editor, dopo il testo originale selezionato, applicando lo stile distintivo per il testo generato
+    \end{itemize}
 \end{itemize}
 
 % DIAGRAMMA
@@ -1074,524 +1125,492 @@ del documento
     \label{fig:uc2.3}
 \end{figure}
 
-\subsubsection{UC-2.4 - Riscrittura del testo}
+
+\subsubsection{UC-2.3 - Riscrittura del testo}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
-    \item \textbf{Descrizione}: Rielaborazione del testo per migliorarne stile, sintassi e chiarezza
-    \item \textbf{Precondizioni}: È presente testo nell'editor (completo o selezionato)
-    \item \textbf{Postcondizioni}: Il testo viene riscritto secondo le specifiche dell'utente nell’editor con formattazione distintiva rispetto al testo originale
+    \item \textbf{Descrizione}: Rielaborazione del testo per modificarne stile, sintassi e chiarezza
+    \item \textbf{Precondizioni}: L’editor contiene del testo
+    \item \textbf{Postcondizioni}: Una variante riscritta del testo viene inserita nell’editor con formattazione distintiva, preservando il testo originale
     \item \textbf{Scenario principale}:
-        \begin{itemize}
-            \item L'utente seleziona il testo da riscrivere
-            \item L'utente clicca sul comando "Riscrivi"
-            \item L'utente specifica come riscrivere il testo (opzionale)
-            \item Il sistema invia il testo al LLM
-            \item Il sistema mostra il testo riscritto sotto il testo originale
-            \item L'utente può scegliere se sostituire il testo originale con quello generato o se modificare parti di testo
-        \end{itemize}
-    \item \textbf{Estensioni}:
-        \begin{itemize}
-            \item L'utente annulla l'operazione prima del completamento o rifiuta la riscrittura:
-                \begin{enumerate}
-                    \item Il testo originale rimane invariato
-                \end{enumerate}
-            \item Il LLM dà errore:
-                \begin{enumerate}
-                    \item Il sistema notifica l'errore all'utente
-                    \item L'operazione viene annullata
-                \end{enumerate}
-        \end{itemize}
+    \begin{itemize}
+        \item L’utente seleziona il testo da riscrivere
+        \item L’utente attiva il comando ”Riscrivi”
+        \item L’utente specifica come riscrivere il testo (opzionale)
+        \item Il sistema elabora la richiesta e invia il testo al LLM
+        \item Il sistema riscrive il testo e lo inserisce nell'editor, dopo il testo originale selezionato, applicando lo stile distintivo per il testo generato
+    \end{itemize}
 \end{itemize}
 
-% DIAGRAMMA
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{../UCimg/UC2.4_riscrittura.jpg}
-    \caption{Diagramma del caso d'uso UC-2.4}
-    \label{fig:uc2.4}
-\end{figure}
 
-\subsubsection{UC-2.5 - Traduzione del testo in inglese (caso generico principale)}
+\subsubsection{UC-2.4 - Traduzione del testo}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
-    \item \textbf{Descrizione}: Traduzione automatica del testo nella lingua inglese (lingua predefinita)
-    \item \textbf{Precondizioni}: È presente testo nell'editor (completo o selezionato)
-    \item \textbf{Postcondizioni}: Il testo viene tradotto in lingua inglese
+    \item \textbf{Descrizione}: Traduzione automatica del testo nella lingua selezionata
+    \item \textbf{Precondizioni}: È presente testo nell’editor (completo o selezionato)
+    \item \textbf{Postcondizioni}: La traduzione viene generata e inserita nel documento con la formattazione distintiva del testo AI
     \item \textbf{Scenario principale}:
-        \begin{itemize}
-            \item L'utente seleziona il testo da tradurre (opzionale)
-            \item L'utente clicca sul comando "Traduci"
-            \item Il sistema seleziona automaticamente l'inglese come lingua di destinazione (predefinita)
-            \item Il sistema invia il testo al LLM
-            \item Il sistema mostra la traduzione generata
-            \item L'utente può scegliere di sostituire il testo originale o mantenere entrambe le versioni
-        \end{itemize}
+    \begin{itemize}
+        \item L’utente seleziona la porzione di testo da tradurre (o nessuna selezione per l'intero documento)
+        \item L’utente attiva il comando ”Traduci”
+        \item L’utente definisce la lingua di destinazione
+        \item Il sistema elabora la richiesta e invia il testo al LLM
+        \item Il sistema mostra la traduzione generata
+        \item Il sistema inserisce il testo nell'editor, dopo il testo originale selezionato, applicando lo stile distintivo per il testo generato
+    \end{itemize}
     \item \textbf{Estensioni}:
-        \begin{itemize}
-            \item Il testo è già in lingua inglese:
-                \begin{enumerate}
-                    \item Il sistema avvisa l'utente
-                    \item L'operazione può essere annullata
-                \end{enumerate}
-        \end{itemize}
+    \begin{itemize}
+        \item Il testo è già nella lingua selezionata: il testo originale rimane invariato e il sistema manda un messaggio all’utente
+        \item L’utente non seleziona nessuna lingua di destinazione
+    \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-2.5.1 - Traduzione del testo in Spagnolo}
+\subsubsection{UC-2.4.1 - Mancata selezione della lingua di destinazione}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
-    \item \textbf{Descrizione}: Traduzione automatica del testo nella lingua spagnola %FORSE SI POTREBBE OMETTERE LA DESCRIZIONE PER I SOTTOCASI (molte ripetizioni)
-    \item \textbf{Precondizioni}: È presente testo nell'editor (completo o selezionato)
-    \item \textbf{Postcondizioni}: Il testo viene tradotto in lingua spagnola
+    \item \textbf{Descrizione}: L’utente attiva l’operazione di traduzione senza aver confermato una lingua di destinazione
+    \item \textbf{Precondizioni}: È presente testo nell’editor (completo o selezionato) e l’utente attiva il comando di traduzione
+    \item \textbf{Postcondizioni}: Viene generata la traduzione in inglese e viene inserita nel documento con la formattazione distintiva del testo AI
     \item \textbf{Scenario principale}:
-        \begin{itemize}
-            \item L'utente seleziona il testo da tradurre
-            \item L'utente clicca sul comando "Traduci"
-            \item L'utente seleziona "Spagnolo" come lingua di destinazione
-            \item Il sistema invia il testo al LLM per traduzione in spagnolo
-            \item Il sistema mostra la traduzione generata
-            \item L'utente può scegliere di sostituire il testo originale o mantenere entrambe le versioni
-        \end{itemize}
-    \item \textbf{Estensioni}:
-        \begin{itemize}
-            \item Il testo è già in spagnolo:
-                \begin{enumerate}
-                    \item Il sistema avvisa l'utente
-                    \item L'operazione può essere annullata
-                \end{enumerate}
-        \end{itemize}
+    \begin{itemize}
+        \item L’utente seleziona la porzione di testo da tradurre (o nessuna selezione per l'intero documento)
+        \item L’utente attiva il comando ”Traduci” senza selezionare una lingua di destinazione
+        \item Il sistema imposta la lingua inglese come lingua di default per la traduzione
+        \item Il sistema elabora la richiesta e invia il testo al LLM
+        \item Il sistema mostra la traduzione generata
+        \item Il sistema inserisce il testo nell'editor, dopo il testo originale selezionato, applicando lo stile distintivo per il testo generato
+    \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-2.5.2 - Traduzione del testo in Francese}
+\subsubsection{UC-2.4.2 - Traduzione del testo in inglese}
 \begin{itemize}
+    \item \textbf{Attore principale}: Utente generico
+    \item \textbf{Descrizione}: Traduzione automatica del testo nella lingua inglese
+    \item \textbf{Precondizioni}: È presente testo nell’editor (completo o selezionato)
+    \item \textbf{Postcondizioni}: Il testo viene tradotto in lingua inglese e inserito nel documento con la formattazione distintiva del testo AI
+    \item \textbf{Scenario principale}:
+    \begin{itemize}
+        \item L’utente seleziona la porzione di testo da tradurre (o nessuna selezione per l'intero documento)
+        \item L’utente attiva il comando ”Traduci”
+        \item L’utente imposta “Inglese” come lingua di destinazione
+        \item Il sistema elabora la richiesta e invia il testo al LLM
+        \item Il sistema mostra la traduzione generata
+        \item Il sistema inserisce il testo nell'editor, dopo il testo originale selezionato, applicando lo stile distintivo per il testo generato
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{UC-2.4.3 - Traduzione del testo in Spagnolo}
+\begin{itemize}
+    \item \textbf{Attore principale}: Utente generico
+    \item \textbf{Descrizione}: Traduzione automatica del testo nella lingua spagnola
+    \item \textbf{Precondizioni}: È presente testo nell’editor (completo o selezionato)
+    \item \textbf{Postcondizioni}: Il testo viene tradotto in lingua spagnola e inserito nel documento con la formattazione distintiva del testo AI
+    \item \textbf{Scenario principale}:
+    \begin{itemize}
+        \item L’utente seleziona la porzione di testo da tradurre (o nessuna selezione per l'intero documento)
+        \item L’utente attiva il comando ”Traduci”
+        \item L’utente imposta “Spagnolo” come lingua di destinazione
+        \item Il sistema elabora la richiesta e invia il testo al LLM
+        \item Il sistema mostra la traduzione generata
+        \item Il sistema inserisce il testo nell'editor, dopo il testo originale selezionato, applicando lo stile distintivo per il testo generato
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{UC-2.4.4 - Traduzione del testo in Francese}
+    \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: Traduzione automatica del testo nella lingua francese
-    \item \textbf{Precondizioni}: È presente testo nell'editor (completo o selezionato)
-    \item \textbf{Postcondizioni}: Il testo viene tradotto in lingua francese
+    \item \textbf{Precondizioni}: È presente testo nell’editor (completo o selezionato)
+    \item \textbf{Postcondizioni}: Il testo viene tradotto in lingua francese e inserito nel documento con la formattazione distintiva del testo AI
     \item \textbf{Scenario principale}:
-        \begin{itemize}
-            \item L'utente seleziona il testo da tradurre (opzionale)
-            \item L'utente clicca sul comando "Traduci"
-            \item L'utente seleziona "Francese" come lingua di destinazione
-            \item Il sistema invia il testo al LLM per traduzione in francese
-            \item Il sistema mostra la traduzione generata
-            \item L'utente può scegliere di sostituire il testo originale o mantenere entrambe le versioni
-        \end{itemize}
-    \item \textbf{Estensioni}:
-        \begin{itemize}
-            \item Il testo è già in francese:
-                \begin{enumerate}
-                    \item Il sistema avvisa l'utente
-                    \item L'operazione può essere annullata
-                \end{enumerate}
-        \end{itemize}
+    \begin{itemize}
+        \item L’utente seleziona la porzione di testo da tradurre (o nessuna selezione per l'intero documento)
+        \item L’utente attiva il comando ”Traduci”
+        \item L’utente imposta “Francese” come lingua di destinazione
+        \item Il sistema elabora la richiesta e invia il testo al LLM
+        \item Il sistema mostra la traduzione generata
+        \item Il sistema inserisce il testo nell'editor, dopo il testo originale selezionato, applicando lo stile distintivo per il testo generato
+    \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-2.5.3 - Traduzione del testo in Tedesco}
+\subsubsection{UC-2.4.5 - Traduzione del testo in Tedesco}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: Traduzione automatica del testo nella lingua tedesca
-    \item \textbf{Precondizioni}: È presente testo nell'editor (completo o selezionato)
-    \item \textbf{Postcondizioni}: Il testo viene tradotto in lingua tedesca
+    \item \textbf{Precondizioni}: È presente testo nell’editor (completo o selezionato)
+    \item \textbf{Postcondizioni}: Il testo viene tradotto in lingua tedesca e inserito nel documento con la formattazione distintiva del testo AI
     \item \textbf{Scenario principale}:
-        \begin{itemize}
-            \item L'utente seleziona il testo da tradurre
-            \item L'utente clicca sul comando "Traduci"
-            \item L'utente seleziona "Tedesco" como lingua di destinazione
-            \item Il sistema invia il testo al LLM per traduzione in tedesco
-            \item Il sistema mostra la traduzione generata
-            \item L'utente può scegliere di sostituire il testo originale o mantenere entrambe le versioni
-        \end{itemize}
-    \item \textbf{Estensioni}:
-        \begin{itemize}
-            \item Il testo è già in tedesco:
-                \begin{enumerate}
-                    \item Il sistema avvisa l'utente
-                    \item L'operazione può essere annullata
-                \end{enumerate}
-        \end{itemize}
+    \begin{itemize}
+        \item L’utente seleziona la porzione di testo da tradurre (o nessuna selezione per l'intero documento)
+        \item L’utente attiva il comando ”Traduci”
+        \item L’utente imposta “Tedesco” come lingua di destinazione
+        \item Il sistema elabora la richiesta e invia il testo al LLM
+        \item Il sistema mostra la traduzione generata
+        \item Il sistema inserisce il testo nell'editor, dopo il testo originale selezionato, applicando lo stile distintivo per il testo generato
+    \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-2.5.4 - Traduzione del testo in Cinese Mandarino}
+\subsubsection{UC-2.4.6 - Traduzione del testo in Cinese Mandarino}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: Traduzione automatica del testo nella lingua cinese mandarino
-    \item \textbf{Precondizioni}: È presente testo nell'editor (completo o selezionato)
-    \item \textbf{Postcondizioni}: Il testo viene tradotto in lingua cinese mandarino
+    \item \textbf{Precondizioni}: È presente testo nell’editor (completo o selezionato)
+    \item \textbf{Postcondizioni}: Il testo viene tradotto in lingua cinese mandarino e inserito nel documento con la formattazione distintiva del testo AI
     \item \textbf{Scenario principale}:
-        \begin{itemize}
-            \item L'utente seleziona il testo da tradurre
-            \item L'utente clicca sul comando "Traduci"
-            \item L'utente seleziona "Cinese Mandarino" come lingua di destinazione
-            \item Il sistema invia il testo al LLM per traduzione in cinese mandarino
-            \item Il sistema mostra la traduzione generata
-            \item L'utente può scegliere di sostituire il testo originale o mantenere entrambe le versioni
-        \end{itemize}
-    \item \textbf{Estensioni}:
-        \begin{itemize}
-            \item Il testo è già in cinese mandarino:
-                \begin{enumerate}
-                    \item Il sistema avvisa l'utente
-                    \item L'operazione può essere annullata
-                \end{enumerate}
-        \end{itemize}
+    \begin{itemize}
+        \item L’utente seleziona la porzione di testo da tradurre (o nessuna selezione per l'intero documento)
+        \item L’utente attiva il comando ”Traduci”
+        \item L’utente imposta “Cinese Mandarino” come lingua di destinazione
+        \item Il sistema elabora la richiesta e invia il testo al LLM
+        \item Il sistema mostra la traduzione generata
+        \item Il sistema inserisce il testo nell'editor, dopo il testo originale selezionato, applicando lo stile distintivo per il testo generato
+    \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-2.5.5 - Traduzione del testo in Italiano}
+\subsubsection{UC-2.4.7 - Traduzione del testo in Italiano}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: Traduzione automatica del testo nella lingua Italiana
-    \item \textbf{Precondizioni}: È presente testo nell'editor (completo o selezionato)
-    \item \textbf{Postcondizioni}: Il testo viene tradotto in lingua Italiana
+    \item \textbf{Precondizioni}: È presente testo nell’editor (completo o selezionato)
+    \item \textbf{Postcondizioni}: Il testo viene tradotto in lingua Italiana e inserito nel documento con la formattazione distintiva del testo AI
     \item \textbf{Scenario principale}:
-        \begin{itemize}
-            \item L'utente seleziona il testo da tradurre
-            \item L'utente clicca sul comando "Traduci"
-            \item L'utente seleziona "Italiano" come lingua di destinazione
-            \item Il sistema invia il testo al LLM per traduzione in Italiano
-            \item Il sistema mostra la traduzione generata
-            \item L'utente può scegliere di sostituire il testo originale o mantenere entrambe le versioni
-        \end{itemize}
-    \item \textbf{Estensioni}:
-        \begin{itemize}
-            \item Il testo è già in Italiano:
-                \begin{enumerate}
-                    \item Il sistema avvisa l'utente
-                    \item L'operazione può essere annullata
-                \end{enumerate}
-        \end{itemize}
+    \begin{itemize}
+        \item L’utente seleziona la porzione di testo da tradurre (o nessuna selezione per l'intero documento)
+        \item L’utente attiva il comando ”Traduci”
+        \item L’utente imposta “Italiano” come lingua di destinazione
+        \item Il sistema elabora la richiesta e invia il testo al LLM
+        \item Il sistema mostra la traduzione generata
+        \item Il sistema inserisce il testo nell'editor, dopo il testo originale selezionato, applicando lo stile distintivo per il testo generato
+    \end{itemize}
 \end{itemize}
 
 
-\subsubsection{UC-2.5.6 - Gestione del Testo Tradotto Generato}
-\begin{itemize}
-    \item \textbf{Attore principale}: Utente generico
-    \item \textbf{Descrizione}: Sistema di visualizzazione e gestione del testo tradotto all'interno dell'editor
-    \item \textbf{Precondizioni}: È stata generata una traduzione e il sistema mostra sia il testo originale che la traduzione
-    \item \textbf{Postcondizioni}: Il testo tradotto viene inserito nell'editor con un formato distintivo
-    \item \textbf{Scenario principale}:
-        \begin{itemize}
-            \item L'utente ha richiesto una traduzione e la traduzione è stata generata correttamente
-            \item Il sistema mostra la traduzione nell'editor di testo sotto il testo originale, distinguendo le due porzioni di testo con:
-                \begin{enumerate}
-                    \item Una riga separatrice orizzontale (---) o altro elemento separatore
-                    \item Commento iniziale in corsivo e grigio: Generato da AI - Traduzione - [data]
-                    \item Sfondo colorato leggero (es. azzurro chiaro per traduzioni, verde chiaro per riassunti)
-                    \item un’area apposita (box) identificativa
-                    \item colore del testo generato diverso dal colore del testo dell’utente
-                \end{enumerate}
-            \item Il testo originale rimane invariato nella sua posizione
-            \item L'utente può modificare, spostare o eliminare entrambe le versioni
-        \end{itemize}
-\end{itemize}
-
-% DIAGRAMMA
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{../UCimg/UC2.5_traduzione.jpg}
-    \caption{Diagramma dei casi d'uso UC-2.5.*}
-    \label{fig:uc2.5}
-\end{figure}
-
-\subsubsection{UC-2.6 - Correzione grammaticale}
+\subsubsection{UC-2.5 - Correzione grammaticale}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: Rilevamento e correzione automatica di errori grammaticali, ortografici e di punteggiatura
-    \item \textbf{Precondizioni}: È presente testo nell'editor (completo o selezionato)
-    \item \textbf{Postcondizioni}: Gli errori grammaticali vengono corretti
+    \item \textbf{Precondizioni}: È presente testo nell’editor (completo o selezionato)
+    \item \textbf{Postcondizioni}: Una versione corretta del testo viene inserita nell’editor con formattazione distintiva, preservando il testo originale
     \item \textbf{Scenario principale}:
-        \begin{itemize}
-            \item L'utente seleziona il testo da correggere
-            \item L'utente clicca sul comando "Correggi"
-            \item Il sistema invia il testo al LLM
-            \item Il sistema mostra il testo corretto evidenziando le modifiche (opzionale)
-            \item L'utente conferma le correzioni
-        \end{itemize}
+    \begin{itemize}
+        \item L’utente seleziona la porzione di testo da correggere (o nessuna selezione per l'intero documento)
+        \item L’utente attiva il comando ”Correggi”
+        \item Il sistema elabora la richiesta e invia il testo al LLM
+        \item Il sistema riscrive il testo corretto e lo inserisce nell'editor, dopo il testo originale selezionato, applicando lo stile distintivo per il testo generato
+    \end{itemize}
     \item \textbf{Estensioni}:
-        \begin{itemize}
-            \item L'LLM non è disponibile o dà errore:
-                \begin{enumerate}
-                    \item Il sistema mostra un messaggio di errore
-                    \item Suggerisce di riprovare più tardi
-                \end{enumerate}
-        \end{itemize}
+    \begin{itemize}
+        \item Non vengono rilevati errori
+    \end{itemize}
 \end{itemize}
 
-% DIAGRAMMA
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{../UCimg/UC2.6_correzione.jpg}
-    \caption{Diagramma del caso d'uso UC-2.6}
-    \label{fig:uc2.6}
-\end{figure}
+\subsubsection{UC-2.5.1 - Nessun errore grammaticale rilevato}
+\begin{itemize}
+    \item \textbf{Attore principale}: Utente generico
+    \item \textbf{Descrizione}: Dopo l’operazione di correzione grammaticale non vengono rilevati errori
+    \item \textbf{Precondizioni}: È presente testo nell’editor (completo o selezionato) e l’utente ha attivato il comando di correzione grammaticale
+    \item \textbf{Postcondizioni}: Non ci sono errori e il documento rimane invariato
+    \item \textbf{Scenario principale}:
+    \begin{itemize}
+        \item Il sistema analizza il testo e non rileva errori
+        \item Il sistema mostra una notifica all’utente
+        \item Il testo originale rimane invariato e nessun nuovo blocco viene generato
+    \end{itemize}
+\end{itemize}
 
-\subsubsection{UC-2.7 - Critica testuale con i 6 Cappelli: Cappello Bianco}
+\subsubsection{UC-2.6 - Critica testuale con i 6 Cappelli di De Bono}
+\begin{itemize}
+    \item \textbf{Attore principale}: Utente generico
+    \item \textbf{Descrizione}: Analisi del testo basata su una delle modalità del modello dei "Sei Cappelli per pensare" di Edward De Bono
+    \item \textbf{Precondizioni}: È presente testo nell’editor (completo o selezionato)
+    \item \textbf{Postcondizioni}: Viene generata un’analisi del testo secondo la prospettiva scelta e inserita nel documento con formattazione distintiva
+    \item \textbf{Scenario principale}:
+    \begin{itemize}
+        \item L’utente seleziona la porzione di testo da analizzare (o nessuna selezione per l'intero documento)
+        \item L’utente attiva il menu ”Analisi critica”
+        \item L’utente definisce la modalità di analisi (colore del Cappello) desiderata
+        \item Il sistema elabora la richiesta e invia il testo al LLM
+        \item Il sistema genera l'analisi e la inserisce nell'editor, dopo il testo originale selezionato, applicando lo stile distintivo per il testo generato
+    \end{itemize}
+    \item \textbf{Estensioni}:
+    \begin{itemize}
+        \item Il testo è troppo breve per un’analisi significativa
+        \item L’utente non seleziona nessun colore per l’analisi
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{UC-2.6.1 - Testo insufficiente per analisi critica}
+\begin{itemize}
+    \item \textbf{Attore principale}: Utente generico
+    \item \textbf{Descrizione}: Gestione dell’errore nel caso in cui il contenuto selezionato non sia sufficiente per applicare il modello di analisi dei Sei Cappelli
+    \item \textbf{Precondizioni}: È presente testo nell’editor e l’utente attiva il comando di analisi su una porzione di testo
+    \item \textbf{Postcondizioni}: L’operazione viene annullata e viene mostrato un messaggio di avviso. Il testo originale rimane invariato
+    \item \textbf{Scenario principale}:
+    \begin{itemize}
+        \item L’utente seleziona una porzione di testo molto breve da analizzare (o il documento contiene testo insufficiente)
+        \item L’utente attiva il comando ”Analisi critica” e seleziona una modalità
+        \item Il sistema rileva che la quantità di testo è inferiore alla soglia minima per produrre un'analisi semantica significativa
+        \item Il sistema interrompe l'elaborazione
+        \item Il sistema mostra un messaggio di avviso all'utente (es. "Testo troppo breve per l'analisi") suggerendo di aggiungere contenuto.
+        \item Il testo originale rimane invariato e nessun blocco di analisi viene generato
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{UC-2.6.2 - Mancata selezione della modalità di analisi}
+\begin{itemize}
+    \item \textbf{Attore principale}: Utente generico
+    \item \textbf{Descrizione}: L’utente attiva l’analisi critica senza aver confermato uno specifico Cappello
+    \item \textbf{Precondizioni}: È presente testo nell’editor e l’utente attiva il comando di analisi
+    \item \textbf{Postcondizioni}: Viene generata un'analisi "Cappello Bianco" (default) inserita nel documento con formattazione distintiva
+    \item \textbf{Scenario principale}:
+    \begin{itemize}
+        \item L’utente seleziona la porzione di testo da analizzare (o nessuna selezione per l'intero documento)
+        \item L’utente attiva il comando ”Analisi critica” senza selezionare una modalità specifica
+        \item Il sistema imposta il "Cappello Bianco" (Analisi Oggettiva) come modalità di default
+        \item Il sistema elabora la richiesta e invia il testo al LLM
+        \item Il sistema genera l'analisi e la inserisce nell'editor, dopo il testo originale selezionato, applicando lo stile distintivo per il testo generato
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{UC-2.6.3 - Critica testuale con il Cappello Bianco}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: Analisi oggettiva e fattuale del testo basata sul modello del Cappello Bianco di De Bono
-    \item \textbf{Precondizioni}: È presente testo selezionato nell'editor
-    \item \textbf{Postcondizioni}: Viene generata un'analisi oggettiva e fattuale del testo
+    \item \textbf{Precondizioni}: È presente testo nell’editor
+    \item \textbf{Postcondizioni}: Viene generata un’analisi fattuale inserita nel documento con formattazione distintiva
     \item \textbf{Scenario principale}:
-        \begin{itemize}
-            \item L'utente seleziona il testo da analizzare (opzionale)
-            \item L'utente clicca sul menu "Analisi critica"
-            \item Il sistema seleziona automaticamente il Cappello Bianco come modalità predefinita oppure l'utente sceglie "Cappello Bianco" dal menu analisi
-            \item Il sistema invia il testo al LLM con focus su dati, fatti e informazioni oggettive
-            \item Il sistema mostra l'analisi fattuale generata
-        \end{itemize}
-    \item \textbf{Estensioni}:
-        \begin{itemize}
-            \item Il testo è troppo breve per un'analisi significativa:
-                \begin{enumerate}
-                    \item Il sistema avvisa l'utente e suggerisce di aggiungere contenuto
-                \end{enumerate}
-        \end{itemize}
+    \begin{itemize}
+        \item L’utente seleziona il testo da analizzare (o nessuna selezione per l'intero documento)
+        \item L’utente clicca sul menu ”Analisi critica”
+        \item L’utente imposta ”Cappello Bianco” come modalità di analisi
+        \item Il sistema elabora la richiesta e invia il testo al LLM
+        \item Il sistema genera l'analisi e la inserisce nell'editor, dopo il testo originale selezionato, applicando lo stile distintivo per il testo generato
+    \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-2.7.1 - Analisi Cappello Rosso}
+\subsubsection{UC-2.6.4 - Critica testuale con il Cappello Rosso}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: Analisi emotiva e intuitiva del testo basata sul modello del Cappello Rosso di De Bono
-    \item \textbf{Precondizioni}: È presente testo selezionato nell'editor
-    \item \textbf{Postcondizioni}: Viene generata un'analisi emotiva e intuitiva del testo
+    \item \textbf{Precondizioni}: È presente testo nell’editor
+    \item \textbf{Postcondizioni}: Viene generata un’analisi emotiva inserita nel documento con formattazione distintiva
     \item \textbf{Scenario principale}:
-        \begin{itemize}
-            \item L'utente seleziona il testo da analizzare (opzionale)
-            \item L'utente sceglie "Cappello Rosso" dal menu analisi
-            \item Il sistema invia il testo al LLM con focus su emozioni, sentimenti e reazioni intuitive
-            \item Il sistema mostra l'analisi emotiva generata
-        \end{itemize}
+    \begin{itemize}
+        \item L’utente seleziona il testo da analizzare (o nessuna selezione per l'intero documento)
+        \item L’utente clicca sul menu ”Analisi critica”
+        \item L’utente imposta ”Cappello Rosso” come modalità di analisi
+        \item Il sistema elabora la richiesta e invia il testo al LLM
+        \item Il sistema genera l'analisi e la inserisce nell'editor, dopo il testo originale selezionato, applicando lo stile distintivo per il testo generato
+    \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-2.7.2 - Analisi Cappello Nero}
+\subsubsection{UC-2.6.5 - Critica testuale con il Cappello Nero}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: Analisi critica e cautelativa del testo basata sul modello del Cappello Nero di De Bono
-    \item \textbf{Precondizioni}: È presente testo selezionato nell'editor
-    \item \textbf{Postcondizioni}: Viene generata un'analisi critica e cautelativa del testo
+    \item \textbf{Precondizioni}: È presente testo nell’editor
+    \item \textbf{Postcondizioni}: Viene generata un’analisi critica inserita nel documento con formattazione distintiva
     \item \textbf{Scenario principale}:
-        \begin{itemize}
-            \item L'utente seleziona il testo da analizzare (opzionale)
-            \item L'utente sceglie "Cappello Nero" dal menu analisi
-            \item Il sistema invia il testo al LLM con focus su criticità, rischi e punti deboli
-            \item Il sistema mostra l'analisi critica generata
-        \end{itemize}
+    \begin{itemize}
+        \item L’utente seleziona il testo da analizzare (o nessuna selezione per l'intero documento)
+        \item L’utente clicca sul menu ”Analisi critica”
+        \item L’utente imposta ”Cappello Nero” come modalità di analisi
+        \item Il sistema elabora la richiesta e invia il testo al LLM
+        \item Il sistema genera l'analisi e la inserisce nell'editor, dopo il testo originale selezionato, applicando lo stile distintivo per il testo generato
+    \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-2.7.3 - Analisi Cappello Giallo}
+\subsubsection{UC-2.6.6 - Critica testuale con il Cappello Giallo}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: Analisi ottimistica e costruttiva del testo basata sul modello del Cappello Giallo di De Bono
-    \item \textbf{Precondizioni}: È presente testo selezionato nell'editor
-    \item \textbf{Postcondizioni}: Viene generata un'analisi ottimistica e costruttiva del testo
+    \item \textbf{Precondizioni}: È presente testo nell’editor
+    \item \textbf{Postcondizioni}: Viene generata un’analisi ottimistica inserita nel documento con formattazione distintiva
     \item \textbf{Scenario principale}:
-        \begin{itemize}
-            \item L'utente seleziona il testo da analizzare (opzionale)
-            \item L'utente sceglie "Cappello Giallo" dal menu analisi
-            \item Il sistema invia il testo al LLM con focus su benefici, opportunità e aspetti positivi
-            \item Il sistema mostra l'analisi ottimistica generata
-        \end{itemize}
+    \begin{itemize}
+        \item L’utente seleziona il testo da analizzare (o nessuna selezione per l'intero documento)
+        \item L’utente clicca sul menu ”Analisi critica”
+        \item L’utente imposta ”Cappello Giallo” come modalità di analisi
+        \item Il sistema elabora la richiesta e invia il testo al LLM
+        \item Il sistema genera l'analisi e la inserisce nell'editor, dopo il testo originale selezionato, applicando lo stile distintivo per il testo generato
+    \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-2.7.4 - Analisi Cappello Verde}
+\subsubsection{UC-2.6.7 - Critica testuale con il Cappello Verde}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: Analisi creativa e innovativa del testo basata sul modello del Cappello Verde di De Bono
-    \item \textbf{Precondizioni}: È presente testo selezionato nell'editor
-    \item \textbf{Postcondizioni}: Viene generata un'analisi creativa e innovativa del testo
+    \item \textbf{Precondizioni}: È presente testo nell’editor
+    \item \textbf{Postcondizioni}: Viene generata un’analisi creativa inserita nel documento con formattazione distintiva
     \item \textbf{Scenario principale}:
-        \begin{itemize}
-            \item L'utente seleziona il testo da analizzare (opzionale)
-            \item L'utente sceglie "Cappello Verde" dal menu analisi
-            \item Il sistema invia il testo al LLM con focus su idee creative, alternative e innovazioni
-            \item Il sistema mostra l'analisi creativa generata
-        \end{itemize}
+    \begin{itemize}
+        \item L’utente seleziona il testo da analizzare (o nessuna selezione per l'intero documento)
+        \item L’utente clicca sul menu ”Analisi critica”
+        \item L’utente imposta ”Cappello Verde” come modalità di analisi
+        \item Il sistema elabora la richiesta e invia il testo al LLM
+        \item Il sistema genera l'analisi e la inserisce nell'editor, dopo il testo originale selezionato, applicando lo stile distintivo per il testo generato
+    \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-2.7.5 - Analisi Cappello Blu}
+\subsubsection{UC-2.6.8 - Critica testuale con il Cappello Blu}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: Analisi processuale e organizzativa del testo basata sul modello del Cappello Blu di De Bono
-    \item \textbf{Precondizioni}: È presente testo selezionato nell'editor
-    \item \textbf{Postcondizioni}: Viene generata un'analisi processuale e organizzativa del testo
+    \item \textbf{Precondizioni}: È presente testo nell’editor
+    \item \textbf{Postcondizioni}: Viene generata un’analisi processuale inserita nel documento con formattazione distintiva
     \item \textbf{Scenario principale}:
-        \begin{itemize}
-            \item L'utente seleziona il testo da analizzare (opzionale)
-            \item L'utente sceglie "Cappello Blu" dal menu analisi
-            \item Il sistema invia il testo al LLM con focus su struttura, processo e organizzazione
-            \item Il sistema mostra l'analisi processuale generata
-        \end{itemize}
+    \begin{itemize}
+        \item L’utente seleziona il testo da analizzare (o nessuna selezione per l'intero documento)
+        \item L’utente clicca sul menu ”Analisi critica”
+        \item L’utente imposta ”Cappello Blu” come modalità di analisi
+        \item Il sistema elabora la richiesta e invia il testo al LLM
+        \item Il sistema genera l'analisi e la inserisce nell'editor, dopo il testo originale selezionato, applicando lo stile distintivo per il testo generato
+    \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-2.7.6 - Gestione dell'Analisi Critica Generata}
+
+\subsubsection{UC-2.7 - Generazione di testo (Distant Writing)}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
-    \item \textbf{Descrizione}: Sistema di visualizzazione e organizzazione delle analisi critiche generate nel documento
-    \item \textbf{Precondizioni}: È stata generata un'analisi critica
-    \item \textbf{Postcondizioni}: L'analisi critica viene inserita nell'editor con formattazione distintiva
+    \item \textbf{Descrizione}: Creazione di nuovo testo inedito a partire da un prompt descrittivo fornito dall’utente
+    \item \textbf{Precondizioni}: L’editor è aperto e pronto per la scrittura
+    \item \textbf{Postcondizioni}: Viene generato un nuovo testo basato sul prompt e inserito nell’editor con la formattazione distintiva del testo AI
     \item \textbf{Scenario principale}:
-        \begin{itemize}
-            \item Il sistema mostra l'analisi critica generata nell'editor di testo
-            \item Il sistema inserisce l'analisi sotto il testo analizzato distinguendola dal testo tramite:
-                \begin{enumerate}
-                    \item Una riga separatrice orizzontale (---) o altro elemento separatore
-                    \item Commento iniziale in corsivo e grigio: Generato da AI - Analisi [cappello] - [data]
-                    \item Sfondo colorato leggero (es. azzurro chiaro per traduzioni, verde chiaro per riassunti) (opzionale)
-                    \item un’area apposita (box) identificativa
-                    \item colore del testo generato diverso dal colore del testo dell’utente (opzionale)
-                \end{enumerate}
-            \item Il testo originale analizzato rimane invariato nella sua posizione
-            \item L'utente può modificare, spostare o eliminare l'analisi generata
-        \end{itemize}
-\end{itemize}
-
-% DIAGRAMMA
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{../UCimg/UC2.7_6cappelli.jpg}
-    \caption{Diagramma dei casi d'uso UC-2.7.*}
-    \label{fig:uc2.7}
-\end{figure}
-
-\subsubsection{UC-2.8 - Generazione di testo (Distant Writing)}
-\begin{itemize}
-    \item \textbf{Attore principale}: Utente generico
-    \item \textbf{Descrizione}: Creazione di nuovo testo a partire da un prompt descrittivo fornito dall'utente
-    \item \textbf{Precondizioni}: L'editor è aperto e pronto per la scrittura
-    \item \textbf{Postcondizioni}: Viene generato un nuovo testo basato sul prompt dell'utente e inserito nell'editor con formattazione che ne identifica l'origine AI
-    \item \textbf{Scenario principale}:
-        \begin{itemize}
-            \item L'utente si posiziona nel punto del documento dove vuole inserire il testo generato
-            \item L'utente inserisce un prompt descrivendo il testo desiderato tramite:
-                \begin{enumerate}
-                    \item Chatbox dedicata nell'interfaccia
-                    \item Comando rapido \textit{/genera} seguito dal prompt
-                \end{enumerate}
-            \item Il sistema invia il prompt al LLM
-            \item Il sistema inserisce il testo generato nell'editor di testo nel punto dove l'utente si è posizionato
-            \item Il testo generato è distinto da altro testo presente nell'editor tramite:
-                \begin{enumerate}
-                    \item Una riga separatrice orizzontale (---) o altro elemento separatore
-                    \item Intestazione descrittiva in corsivo: Generato da AI - Testo generato da: "[estratto prompt]" - [data/ora]
-                    \item Sfondo colorato leggero (es. azzurro chiaro per traduzioni, verde chiaro per riassunti) (opzionale)
-                    \item un’area apposita (box) identificativa
-                    \item colore del testo generato diverso dal colore del testo dell’utente (opzionale)
-                \end{enumerate}
-            \item L'utente può modificare il testo generato
-        \end{itemize}
+    \begin{itemize}
+        \item L’utente si posiziona nel punto del documento dove vuole inserire il testo generato
+        \item L’utente inserisce un prompt descrivendo il contenuto desiderato (tramite chatbox o comando rapido)
+        \item Il sistema invia il prompt al LLM
+        \item Il sistema inserisce nell'editor il testo generato nel punto indicato, applicando lo stile distintivo per il testo generato
+    \end{itemize}
     \item \textbf{Estensioni}:
-        \begin{itemize}
-            \item L'utente fornisce un prompt troppo vago o incompleto (opzionale):
-                \begin{enumerate}
-                    \item Il sistema offre esempi di prompt efficaci basati sul contesto corrente (opzionale)
-                \end{enumerate}
-            \item Il testo generato non soddisfa l'utente:
-                \begin{enumerate}
-                    \item L'utente può richiedere una rigenerazione con modifiche al prompt
-                    \item Ogni rigenerazione viene trattata come una nuova generazione separata nell'editor
-                    \item Le generazioni precedenti vengono comunque mantenute (salvo eliminazione o modifica da parte dell'utente)
-                \end{enumerate}
-        \end{itemize}
+    \begin{itemize}
+        \item L’utente fornisce un prompt troppo vago o incompleto
+    \end{itemize}
 \end{itemize}
 
-% DIAGRAMMA
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{../UCimg/UC2.8_distantWriting.jpg}
-    \caption{Diagramma del caso d'uso UC-2.8}
-    \label{fig:uc2.8}
-\end{figure}
-
-\subsubsection{UC-2.9 - Generazione grafici e tabelle (opzionale)}
+\subsubsection{UC-2.7.1 - Gestione prompt incompleto}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
-    \item \textbf{Descrizione}: Creazione automatica di grafici e tabelle basate su dati descritti nel testo
-    \item \textbf{Precondizioni}: È presente testo descrittivo nell'editor
-    \item \textbf{Postcondizioni}: Viene generato un grafico o tabella basato sul testo
+    \item \textbf{Descrizione}: Il sistema rileva una richiesta poco chiara o incompleta e guida l'utente nel miglioramento del prompt prima di invocare l'AI
+    \item \textbf{Precondizioni}: L'utente ha avviato una richiesta di generazione testo (Distant Writing)
+    \item \textbf{Postcondizioni}: La generazione viene sospesa e all'utente vengono forniti suggerimenti operativi per affinare la richiesta
     \item \textbf{Scenario principale}:
-        \begin{itemize}
-            \item L'utente seleziona il testo descrittivo dei dati
-            \item L'utente clicca sul bottone "Genera grafico"
-            \item L'utente specifica il tipo di grafico/tabella desiderato
-            \item Il sistema invia la richiesta al LLM
-            \item Il sistema mostra il grafico/tabella generato
-        \end{itemize}
-    \item \textbf{Estensioni}:
-        \begin{itemize}
-            \item Il testo non contiene dati strutturati sufficienti:
-                \begin{enumerate}
-                    \item Il sistema segnala l'impossibilità di generare il grafico
-                \end{enumerate}
-            \item Il grafico generato non è leggibile:
-                \begin{enumerate}
-                    \item L'utente può richiedere una rigenerazione con parametri diversi
-                \end{enumerate}
-        \end{itemize}
+    \begin{itemize}
+        \item L’utente si posiziona nel punto del documento dove vuole inserire il testo generato
+        \item L’utente inserisce un prompt descrivendo il contenuto desiderato (tramite chatbox o comando rapido)
+        \item LLM analizza il prompt e lo valuta come troppo vago, breve o privo di contesto sufficiente
+        \item Il sistema interrompe la richiesta e mostra un messaggio di avviso chiedendo chiarimenti
+        \item Il sistema propone esempi di prompt efficaci o template basati sul contesto corrente (opzionale)
+        \item Il sistema rimane in attesa di un nuovo input migliorativo da parte dell'utente
+    \end{itemize}
 \end{itemize}
 
-
-\subsubsection{UC-2.10 - Generazione mappe concettuali (opzionale)}
+\subsubsection{UC-2.8 - Generazione di grafici e tabelle}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
-    \item \textbf{Descrizione}: Creazione di mappe concettuali per visualizzare e organizzare le relazioni tra concetti nel testo
-    \item \textbf{Precondizioni}: È presente testo nell'editor (completo o selezionato)
-    \item \textbf{Postcondizioni}: Viene generata una mappa concettuale del testo
+    \item \textbf{Descrizione}: Creazione automatica di rappresentazioni visive (grafici o tabelle) basate su dati descritti nel testo
+    \item \textbf{Precondizioni}: È presente testo descrittivo contenente dati nell’editor
+    \item \textbf{Postcondizioni}: Viene generato un elemento grafico o tabellare inserito nel documento con formattazione distintiva
     \item \textbf{Scenario principale}:
-        \begin{itemize}
-            \item L'utente seleziona il testo da visualizzare come mappa
-            \item L'utente clicca su "Genera mappa concettuale"
-            \item Il sistema invia il testo al LLM
-            \item Il sistema mostra la mappa concettuale generata
-        \end{itemize}
+    \begin{itemize}
+    \item L’utente seleziona la porzione di testo contenente i dati
+    \item L’utente attiva il comando ”Genera grafico/tabella”
+    \item L’utente specifica il tipo di visualizzazione desiderata (es. tabella, grafico a barre, torta)
+    \item Il sistema elabora la richiesta e invia i dati al LLM
+    \item Il sistema genera l'elemento visivo e lo inserisce nell'editor, dopo il testo selezionato, applicando lo stile distintivo per il contenuto generato
+    \end{itemize}
     \item \textbf{Estensioni}:
-        \begin{itemize}
-            \item Il testo è troppo complesso per una singola mappa:
-                \begin{enumerate}
-                    \item Il sistema genera mappe multiple o una mappa semplificata o segnala l'impossibilità di generarla
-                \end{enumerate}
-            \item La mappa generata non è chiara:
-                \begin{enumerate}
-                    \item L'utente può richiedere una riorganizzazione con focus diversi
-                \end{enumerate}
-            \item Problemi di visualizzazione della mappa:
-                \begin{enumerate}
-                    \item Il sistema offre alternative testuali o esportazione in altri formati o dà errore
-                \end{enumerate}
-        \end{itemize}
+    \begin{itemize}
+        \item Il testo non contiene dati strutturati sufficienti
+    \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-2.11 - Generazione formule matematiche (opzionale)}
+\subsubsection{UC-2.8.1 - Gestire dati insufficienti per la visualizzazione di grafici e tabelle}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
-    \item \textbf{Descrizione}: Creazione automatica di formule matematiche basate su descrizioni testuali di problemi
-    \item \textbf{Precondizioni}: È presente testo descrittivo di problemi matematici
-    \item \textbf{Postcondizioni}: Vengono generate formule matematiche appropriate
+    \item \textbf{Descrizione}: Il sistema rileva l'impossibilità di creare un grafico o una tabella a causa della mancanza di dati strutturati nel testo selezionato
+    \item \textbf{Precondizioni}: L’utente ha attivato il comando di generazione grafico/tabella su una selezione di testo
+    \item \textbf{Postcondizioni}: L’operazione viene annullata e viene mostrato un messaggio di avviso. Il testo originale rimane invariato
     \item \textbf{Scenario principale}:
-        \begin{itemize}
-            \item L'utente seleziona il testo descrittivo del problema
-            \item L'utente clicca su "Genera formule"
-            \item Il sistema invia la richiesta al LLM
-            \item Il sistema mostra le formule matematiche generate in formato LaTeX o simili
-        \end{itemize}
-    \item \textbf{Estensioni}:
-        \begin{itemize}
-            \item Le formule generate contengono errori:
-                \begin{enumerate}
-                    \item L'utente può correggere manualmente o richiedere una rigenerazione
-                \end{enumerate}
-            \item Il sistema non supporta simboli matematici complessi:
-                \begin{enumerate}
-                    \item Il sistema segnala le limitazioni e suggerisce alternative
-                \end{enumerate}
-        \end{itemize}
+    \begin{itemize}
+        \item L'utente attiva il comando "Genera grafico/tabella" su una porzione di testo
+        \item Il sistema elabora la richiesta e invia i dati al LLM
+        \item LLM analizza il contenuto selezionato per estrarre serie di dati
+        \item LLM rileva che il testo è puramente descrittivo o privo di valori numerici/categorici sufficienti per una rappresentazione visiva
+        \item Il sistema interrompe la generazione dell'elemento visivo
+        \item Il sistema mostra un avviso all'utente
+        \item Il testo originale rimane invariato
+    \end{itemize}
 \end{itemize}
 
-% DIAGRAMMA PER CASI D'USO OPZIONALI
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{../UCimg/UC2.9_11_opzionali.jpg}
-    \caption{Diagramma dei casi d'uso UC-2.9, UC-2.10, UC2.11 (opzionali)}
-    \label{fig:uc2.9}
-\end{figure}
+\subsubsection{UC-2.9 - Generazione di mappe concettuali}
+\begin{itemize}
+    \item \textbf{Attore principale}: Utente generico
+    \item \textbf{Descrizione}: Creazione automatica di mappe concettuali per visualizzare le relazioni logiche tra i concetti presenti nel testo
+    \item \textbf{Precondizioni}: È presente testo nell’editor (completo o selezionato)
+    \item \textbf{Postcondizioni}: Viene generata una mappa concettuale che viene inserita nel documento
+    \item \textbf{Scenario principale}:
+    \begin{itemize}
+        \item L’utente seleziona il testo da visualizzare come mappa (o nessuna selezione per l'intero documento)
+        \item L’utente attiva il comando ”Genera mappa concettuale”
+        \item Il sistema elabora la richiesta e invia il testo al LLM
+        \item Il sistema renderizza la mappa concettuale e la inserisce nell'editor, applicando lo stile distintivo per il contenuto generato
+    \end{itemize}
+    \item \textbf{Estensioni}:
+    \begin{itemize}
+        \item Errore di visualizzazione o generazione della mappa
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{UC-2.9.1 - Gestire errori di visualizzazione delle mappe concettuali generate}
+\begin{itemize}
+    \item \textbf{Attore principale}: Utente generico
+    \item \textbf{Descrizione}: Il sistema gestisce il fallimento del rendering grafico della mappa concettuale fornendo il codice sorgente utilizzabile esternamente
+    \item \textbf{Precondizioni}: L’utente ha attivato la generazione di una mappa concettuale
+    \item \textbf{Postcondizioni}: Il codice sorgente della mappa viene inserito nel documento al posto della rappresentazione grafica
+    \item \textbf{Scenario principale}:
+    \begin{itemize}
+        \item Il sistema tenta di renderizzare la mappa concettuale generata dal LLM
+        \item Il sistema rileva un errore di visualizzazione o una incompatibilità tecnica
+        \item Il sistema mostra un avviso all'utente
+        \item Il sistema inserisce nel documento il blocco di codice sorgente eseguibile (es. sintassi Mermaid o Graphviz) generato dal LLM, permettendo all'utente di generarla con strumenti esterni
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{UC-2.10 - Generazione di formule matematiche}
+\begin{itemize}
+    \item \textbf{Attore principale}: Utente generico
+    \item \textbf{Descrizione}: Conversione automatica di descrizioni testuali di problemi matematici in formule formattate
+    \item \textbf{Precondizioni}: È presente testo descrittivo di un problema matematico nell’editor
+    \item \textbf{Postcondizioni}: Vengono generate le formule matematiche corrispondenti e inserite nel documento con formattazione distintiva
+    \item \textbf{Scenario principale}:
+    \begin{itemize}
+    \item L’utente seleziona il testo descrittivo del problema
+    \item L’utente attiva il comando ”Genera formule”
+    \item Il sistema elabora la richiesta e invia il testo al LLM
+    \item Il sistema genera il codice matematico (simile LaTeX) e lo inserisce nell'editor renderizzandolo, applicando lo stile distintivo per il contenuto generato
+    \end{itemize}
+    \item \textbf{Estensioni}:
+    \begin{itemize}
+        \item Il sistema non supporta simboli matematici complessi
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{UC-2.10.1 - Gestire simboli non supportati}
+\begin{itemize}
+    \item \textbf{Attore principale}: Utente generico
+    \item \textbf{Descrizione}: Il sistema gestisce la presenza di notazioni matematiche complesse non supportate dal motore di rendering locale
+    \item \textbf{Precondizioni}: L’utente ha attivato la generazione di formule matematiche
+    \item \textbf{Postcondizioni}: La formula viene inserita come codice grezzo o testo approssimato invece che renderizzata graficamente
+    \item \textbf{Scenario principale}:
+    \begin{itemize}
+        \item Il sistema analizza l'output matematico generato dal LLM
+        \item Il sistema identifica simboli o costrutti non supportati dal motore di rendering integrato
+        \item Il sistema segnala la limitazione all'utente tramite un avviso
+        \item Il sistema inserisce la formula in formato codice grezzo o in una rappresentazione testuale approssimata, applicando lo stile distintivo per il contenuto generato
+    \end{itemize}
+\end{itemize}
+
 
 \newpage
 
