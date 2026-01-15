@@ -97,7 +97,7 @@
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verifica} \\
         \hline
-        0.3.9 & 15/01/2026 & Giulia Barzon & Aggiunti diagrammi macroarea 1 &  \\
+        0.3.9 & 15/01/2026 & Giulia Barzon & Aggiunti diagrammi macroarea 1 e 2 &  \\
         \hline
         0.3.8 & 15/01/2026 & Giulia Barzon & Sistemati casi ed estensioni macroarea 2 &  \\
         \hline
@@ -1038,8 +1038,14 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \end{itemize}
 \end{itemize}
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../UCimg/UC2.1.jpg}
+    \caption{Diagramma dei casi d'uso UC-2.1, 2.1.*}
+    \label{fig:uc2.1}
+\end{figure}
 
-\subsubsection{UC 2.1.1 - Modifica del testo generato}
+\subsubsection{UC-2.1.1 - Modifica del testo generato}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: L’utente può interagire con il testo generato dall’AI modificandolo tramite sintassi markdown
@@ -1053,7 +1059,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \end{itemize}
 \end{itemize}
 
-\subsubsection{UC 2.1.2 - Eliminazione del testo generato}
+\subsubsection{UC-2.1.2 - Eliminazione del testo generato}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: L’utente può eliminare intere sezioni di testo generato dall’AI
@@ -1068,7 +1074,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \end{itemize}
 \end{itemize}
 
-\subsubsection{UC 2.1.3 - Rigenerazione testo generato}
+\subsubsection{UC-2.1.3 - Rigenerazione testo generato}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: L’utente può rigenerare intere sezioni di testo precedentemente generato dall’AI
@@ -1084,7 +1090,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \end{itemize}
 \end{itemize}
 
-\subsubsection{UC 2.1.4 - Visualizzazione solo del testo utente}
+\subsubsection{UC-2.1.4 - Visualizzazione solo del testo utente}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: L’utente può scegliere di visualizzare solo il testo che ha scritto nel documento, senza visualizzare le sezioni di testo generato dall’AI
@@ -1097,7 +1103,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \end{itemize}
 \end{itemize}
 
-\subsubsection{UC 2.1.5 - Visualizzazione solo del testo generato dall’AI}
+\subsubsection{UC-2.1.5 - Visualizzazione solo del testo generato dall’AI}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: L’utente può scegliere di visualizzare solo il testo che è stato generato dalle funzionalità AI, senza vedere il testo originario
@@ -1110,7 +1116,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \end{itemize}
 \end{itemize}
 
-\subsubsection{UC 2.1.6 - Annullamento dell’operazione}
+\subsubsection{UC-2.1.6 - Annullamento dell’operazione}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: L’utente interrompe volontariamente una richiesta AI in corso prima del suo completamento
@@ -1126,7 +1132,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \end{itemize}
 \end{itemize}
 
-\subsubsection{UC 2.1.7 - Errore dal LLM}
+\subsubsection{UC-2.1.7 - Errore dal LLM}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: Il sistema gestisce un fallimento nella generazione della risposta da parte del LLM (es. timeout, assenza di connessione, errore server)
@@ -1157,14 +1163,12 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \end{itemize}
 \end{itemize}
 
-% DIAGRAMMA
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{../UCimg/UC2.3_riassunto.jpg}
-    \caption{Diagramma del caso d'uso UC-2.3}
-    \label{fig:uc2.3}
+    \includegraphics[width=0.8\textwidth]{../UCimg/UC2.2.jpg}
+    \caption{Diagramma dei casi d'uso UC-2.2}
+    \label{fig:uc2.2}
 \end{figure}
-
 
 \subsubsection{UC-2.3 - Riscrittura del testo}
 \begin{itemize}
@@ -1182,6 +1186,12 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \end{itemize}
 \end{itemize}
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../UCimg/UC2.3.jpg}
+    \caption{Diagramma dei casi d'uso UC-2.3}
+    \label{fig:uc2.3}
+\end{figure}
 
 \subsubsection{UC-2.4 - Traduzione del testo}
 \begin{itemize}
@@ -1205,7 +1215,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-2.4.1 - Mancata selezione della lingua di destinazione}
+\subsubsection{UC-2.4.1 - Gestione mancata selezione della lingua di destinazione}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: L’utente attiva l’operazione di traduzione senza aver confermato una lingua di destinazione
@@ -1221,6 +1231,13 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \item Il sistema inserisce il testo nell'editor, dopo il testo originale selezionato, applicando lo stile distintivo per il testo generato
     \end{itemize}
 \end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../UCimg/UC2.4.jpg}
+    \caption{Diagramma dei casi d'uso UC-2.4.*}
+    \label{fig:uc2.4}
+\end{figure}
 
 \subsubsection{UC-2.4.2 - Traduzione del testo in inglese}
 \begin{itemize}
@@ -1324,7 +1341,6 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \end{itemize}
 \end{itemize}
 
-
 \subsubsection{UC-2.5 - Correzione grammaticale}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
@@ -1358,6 +1374,13 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \end{itemize}
 \end{itemize}
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../UCimg/UC2.5.jpg}
+    \caption{Diagramma dei casi d'uso UC-2.5, 2.5.1}
+    \label{fig:uc2.5}
+\end{figure}
+
 \subsubsection{UC-2.6 - Critica testuale con i 6 Cappelli di De Bono}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
@@ -1379,7 +1402,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-2.6.1 - Testo insufficiente per analisi critica}
+\subsubsection{UC-2.6.1 - Gestione testo insufficiente per analisi critica}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: Gestione dell’errore nel caso in cui il contenuto selezionato non sia sufficiente per applicare il modello di analisi dei Sei Cappelli
@@ -1396,7 +1419,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-2.6.2 - Mancata selezione della modalità di analisi}
+\subsubsection{UC-2.6.2 - Gestione mancata selezione della modalità di analisi}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: L’utente attiva l’analisi critica senza aver confermato uno specifico Cappello
@@ -1411,6 +1434,13 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \item Il sistema genera l'analisi e la inserisce nell'editor, dopo il testo originale selezionato, applicando lo stile distintivo per il testo generato
     \end{itemize}
 \end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../UCimg/UC2.6.jpg}
+    \caption{Diagramma dei casi d'uso UC-2.6, 2.6.1, 2.6.2}
+    \label{fig:uc2.6}
+\end{figure}
 
 \subsubsection{UC-2.6.3 - Critica testuale con il Cappello Bianco}
 \begin{itemize}
@@ -1508,6 +1538,12 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \end{itemize}
 \end{itemize}
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../UCimg/UC2.6.3.jpg}
+    \caption{Diagramma dei casi d'uso UC-2.6.3 - 2.6.8}
+    \label{fig:uc2.6.3}
+\end{figure}
 
 \subsubsection{UC-2.7 - Generazione di testo (Distant Writing)}
 \begin{itemize}
@@ -1544,6 +1580,13 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \item Il sistema rimane in attesa di un nuovo input migliorativo da parte dell'utente
     \end{itemize}
 \end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../UCimg/UC2.7.jpg}
+    \caption{Diagramma dei casi d'uso UC-2.7, 2.7.1}
+    \label{fig:uc2.7}
+\end{figure}
 
 \subsubsection{UC-2.8 - Generazione di grafici e tabelle}
 \begin{itemize}
@@ -1583,6 +1626,13 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \end{itemize}
 \end{itemize}
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../UCimg/UC2.8.jpg}
+    \caption{Diagramma dei casi d'uso UC-2.8, 2.8.1}
+    \label{fig:uc2.8}
+\end{figure}
+
 \subsubsection{UC-2.9 - Generazione di mappe concettuali}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
@@ -1602,7 +1652,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-2.9.1 - Gestire errori di visualizzazione delle mappe concettuali generate}
+\subsubsection{UC-2.9.1 - Gestione errori di visualizzazione delle mappe concettuali generate}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: Il sistema gestisce il fallimento del rendering grafico della mappa concettuale fornendo il codice sorgente utilizzabile esternamente
@@ -1616,6 +1666,13 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \item Il sistema inserisce nel documento il blocco di codice sorgente eseguibile (es. sintassi Mermaid o Graphviz) generato dal LLM, permettendo all'utente di generarla con strumenti esterni
     \end{itemize}
 \end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../UCimg/UC2.9.jpg}
+    \caption{Diagramma dei casi d'uso UC-2.9, 2.9.1}
+    \label{fig:uc2.9}
+\end{figure}
 
 \subsubsection{UC-2.10 - Generazione di formule matematiche}
 \begin{itemize}
@@ -1651,6 +1708,12 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \end{itemize}
 \end{itemize}
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../UCimg/UC2.10.jpg}
+    \caption{Diagramma dei casi d'uso UC-2.10, 2.10.1}
+    \label{fig:uc2.10}
+\end{figure}
 
 \newpage
 
