@@ -9,6 +9,7 @@
 \usepackage{hyperref}
 \usepackage{fancyhdr}
 \usepackage{lastpage}
+\usepackage{amsmath}
 
 \geometry{margin=2.5cm}
 
@@ -66,7 +67,7 @@
         \centering
         \begin{tabular}{|l|p{5cm}|}
             \hline
-            \textbf{Versione} & 0.2.1 \\
+            \textbf{Versione} & 0.2.2 \\
             \hline
             \textbf{Stato} & In corso \\
             \hline
@@ -96,6 +97,8 @@
     \begin{tabular}{|c|c|c|>{\raggedright\arraybackslash}p{0.4\textwidth}|c|}
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verifica} \\
+        \hline
+        0.2.2 & 15/01/2026 & Giulia Barzon & Aggiunta sezione su test automatici per qualità documentazione & \\
         \hline
         0.2.1 & 11/01/2026 & Giulia Barzon & Aggiunta sezione sul Piano di Qualifica & \\
         \hline
@@ -530,5 +533,49 @@ Affinché un'unità di lavoro (Task/Issue) possa essere considerata "Fatta" (Don
     \item Revisione: Il lavoro svolto è stato revisionato e verificato da uno o più membri del gruppo.
 \end{itemize}
 
+\subsection{Strumenti e Metriche di Qualità Automatizzate}
+Al fine di garantire un monitoraggio continuo e oggettivo della qualità, il gruppo ha integrato nel processo di sviluppo una serie di script automatici eseguiti tramite GitHub Actions. Di seguito vengono descritte le metriche monitorate e il funzionamento degli strumenti adottati.
+
+\subsubsection{Qualità della Documentazione}
+
+\paragraph{Correttezza Ortografica (CO)}
+\begin{itemize}
+    \item \textbf{Descrizione e Scopo}: Misura il numero di errori ortografici di battitura presenti nei documenti. L'obiettivo è garantire professionalità e assenza di refusi che potrebbero compromettere la comprensione del testo.
+    \item \textbf{Calcolo}: Conteggio ed esposizione delle parole non presenti nel dizionario italiano standard e non incluse nella \texttt{whitelist} di progetto (che contiene acronimi, nomi propri e termini tecnici accettati).
+    \item \textbf{Automazione}: Uno script Python (\texttt{scripts/spellcheck.py}) analizza ricorsivamente tutti i file \texttt{.tex}. Lo script rimuove i comandi LaTeX (es. \texttt{\textbackslash section}, \texttt{\textbackslash textbf}) per analizzare solo il testo puro. Le parole sconosciute vengono confrontate con la libreria \texttt{pyspellchecker} e, se non presenti nella whitelist, vengono segnalate come errori. Le parole individuate vanno controllate e corrette nei documenti per evitare errori ortografici.
+\end{itemize}
+
+\paragraph{Indice di Gulpease (IG)}
+\begin{itemize}
+    \item \textbf{Descrizione e Scopo}: È un indice di leggibilità calibrato sulla lingua italiana. Valuta quanto un testo sia comprensibile in base alla lunghezza delle parole e delle frasi.
+    \item \textbf{Calcolo}: La formula utilizzata è:
+    \[ 89 + \frac{300 \times (\text{numero frasi}) - 10 \times (\text{numero lettere})}{\text{numero parole}} \]
+    \item \textbf{Automazione}: Uno script Python (\texttt{scripts/gulpease.py}) analizza i file sorgente, calcolando i totali di lettere, parole e frasi (riconoscendo la punteggiatura di fine periodo). Restituisce un valore medio per documento, che deve essere superiore a 40. Se tutti i documenti hanno un IG adeguato, il badge presente nel README della repo della documentazione diventa verde; in caso contrario diventa rosso e i file vanno rivisitati.
+\end{itemize}
+
+\subsubsection{Qualità del Codice}
+\paragraph{Lines of Code (LOC)}
+\begin{itemize}
+    \item \textbf{Descrizione e Scopo}: Rappresenta la dimensione fisica del software misurata in righe di codice. Serve a monitorare la crescita del progetto e a stimare lo sforzo di manutenzione.
+    \item \textbf{Calcolo}: Conteggio delle righe non vuote e non di commento nei file sorgente.
+    \item \textbf{Automazione}: Viene utilizzato il tool \texttt{cloc} (Count Lines of Code) all'interno della pipeline GitHub. Lo strumento è configurato per escludere file generati automaticamente, immagini, librerie esterne (es. \texttt{node\_modules}) e file di configurazione, fornendo un conteggio fedele del lavoro svolto dal team. Questa metrica non è vincolante ma permette di monitorare la dimensione dei sorgenti.
+\end{itemize}
+
+\paragraph{Complessità Ciclomatica (McCabe)}
+\begin{itemize}
+    \item \textbf{Descrizione e Scopo}: Misura la complessità logica di una funzione o metodo contando il numero di cammini linearmente indipendenti attraverso il codice sorgente. Una complessità elevata indica codice difficile da testare e manutenere.
+    \item \textbf{Calcolo}: Basato sul grafo di flusso di controllo del programma. Semplificando, incrementa il conteggio per ogni struttura di controllo (if, while, for, case).
+    \item \textbf{Automazione}: Viene utilizzato il tool \texttt{lizard}. La pipeline analizza i file di logica (JavaScript, PHP, Python) ignorando i file puramente strutturali o di stile (HTML, CSS, LaTeX). Il tool segnala la complessità media (CCN) e avvisa se specifiche funzioni superano la soglia di guardia stabilita nel Piano di Qualifica.
+\end{itemize}
+
+\subsubsection{Visualizzazione dei Risultati}
+L'esecuzione di questi controlli avviene automaticamente ad ogni \texttt{push} sulla repository remota. Per consultare i risultati:
+\begin{enumerate}
+    \item Accedere alla scheda \textbf{Actions} della repository GitHub.
+    \item Selezionare l'ultimo workflow eseguito (es. \textit{"Compila LaTeX e Verifica Qualità"} o \textit{"Code Metrics"}).
+    \item Cliccare sui singoli job (es. \textit{"Check Spelling"}, \textit{"Calcolo LOC"}) per espandere il log e visualizzare i report dettagliati e le tabelle riassuntive generate dagli script.
+    \item Le metriche per la qualità della documentazione sono calcolate nella repository della documentazione ufficiale del gruppo.
+    \item Le metriche per la qualità del codice sono calcolate nella repository del POC e del prodotto finale.
+\end{enumerate}
 
 \end{document}
