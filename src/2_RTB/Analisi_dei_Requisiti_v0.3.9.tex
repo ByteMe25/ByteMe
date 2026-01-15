@@ -65,7 +65,7 @@
         \centering
         \begin{tabular}{|l|p{5cm}|}
             \hline
-            \textbf{Versione} & 0.3.8 \\
+            \textbf{Versione} & 0.3.9 \\
             \hline
             \textbf{Stato} & In corso \\
             \hline
@@ -96,6 +96,8 @@
     \begin{tabular}{|c|c|c|>{\raggedright\arraybackslash}p{0.3\textwidth}|c|}
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verifica} \\
+        \hline
+        0.3.9 & 15/01/2026 & Giulia Barzon & Aggiunti diagrammi macroarea 1 &  \\
         \hline
         0.3.8 & 15/01/2026 & Giulia Barzon & Sistemati casi ed estensioni macroarea 2 &  \\
         \hline
@@ -277,8 +279,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \end{itemize}
 \end{itemize}
 
-
-\subsubsection{UC-1.0.1 - Interruzione della connesione Internet}
+\subsubsection{UC-1.0.1 - Gestione perdita della connesione Internet}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: L'utente sta digitando testo e la connessione internet si interrompe
@@ -293,7 +294,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-1.0.2 - L'editor non risponde}
+\subsubsection{UC-1.0.2 - Gestione mancante risposta dell'editor}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: L'utente sta digitando testo e l'editor non risponde
@@ -306,6 +307,13 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
             \item Il sistema informa l'utente con un messaggio
         \end{itemize}
 \end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../UCimg/UC1.0.jpg}
+    \caption{Diagramma dei casi d'uso UC-1.0, 1.0.1, 1.0.2}
+    \label{fig:uc1.0}
+\end{figure}
 
 \subsubsection{UC-1.1 - Visualizzazione anteprima in tempo reale}
 \begin{itemize}
@@ -326,7 +334,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-1.1.1 - L'anteprima non si aggiorna correttamente}
+\subsubsection{UC-1.1.1 - Gestione errore nell'anteprima}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: L'utente ha scritto del testo ma la sezione di anteprima non si aggiorna correttamente
@@ -340,6 +348,13 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \end{itemize}
 \end{itemize}
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../UCimg/UC1.1.jpg}
+    \caption{Diagramma dei casi d'uso UC-1.1, 1.1.1}
+    \label{fig:uc1.1}
+\end{figure}
+
 \subsubsection{UC-1.2 - Selezione del testo}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
@@ -352,12 +367,11 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \end{itemize}
 \end{itemize}
 
-% DIAGRAMMA
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{../UCimg/UC1.0_utilizzoBaseEditor.jpg}
-    \caption{Diagramma dei casi d'uso UC-1.0, 1.1, 1.2}
-    \label{fig:uc1.0}
+    \includegraphics[width=0.8\textwidth]{../UCimg/UC1.2.jpg}
+    \caption{Diagramma dei casi d'uso UC-1.2}
+    \label{fig:uc1.2}
 \end{figure}
 
 \subsubsection{UC-1.3 - Copiare il testo}
@@ -380,14 +394,6 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \end{itemize}
 \end{itemize}
 
-% DIAGRAMMA
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{../UCimg/UC1.3_copia.jpg}
-    \caption{Diagramma del caso d'uso UC-1.3}
-    \label{fig:uc1.3}
-\end{figure}
-
 \subsubsection{UC-1.4 - Incollare il testo}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
@@ -406,12 +412,6 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
             \item Il testo dagli appunti viene inserito nella posizione del cursore
         \end{itemize}
 \end{itemize}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{../UCimg/UC1.4_incolla.jpg}
-    \caption{Diagramma del caso d'uso UC-1.4}
-    \label{fig:uc1.4}
-\end{figure}
 
 \subsubsection{UC-1.5 - Tagliare il testo}
 \begin{itemize}
@@ -433,11 +433,12 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
             \item Il sistema manda un messaggio di successo
         \end{itemize}
 \end{itemize}
+
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{../UCimg/UC1.5_taglia.jpg}
-    \caption{Diagramma del caso d'uso UC-1.5}
-    \label{fig:uc1.5}
+    \includegraphics[width=0.8\textwidth]{../UCimg/UC1.3_1.5.jpg}
+    \caption{Diagramma dei casi d'uso UC-1.3, 1.4, 1.5}
+    \label{fig:uc1.3}
 \end{figure}
 
 \subsubsection{UC-1.6 - Annullamento modifica (Undo)}
@@ -501,7 +502,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-1.7.1 - L'utente non ha effettuato modifiche ripristinabili}
+\subsubsection{UC-1.7.1 - Errore per modifiche non ripristinabili}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: L'utente tenta di ripristinare un'operazione quando non ci sono modifiche ripristinabili
@@ -517,11 +518,10 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{../UCimg/UC1.6_1.7_undo_redo.jpg}
-    \caption{Diagramma dei casi d'uso UC-1.6 e UC-1.7}
+    \includegraphics[width=0.8\textwidth]{../UCimg/UC1.6_1.7.jpg}
+    \caption{Diagramma dei casi d'uso UC-1.6, 1.7 e estensioni}
     \label{fig:uc1.6}
 \end{figure}
-
 
 \subsubsection{UC-1.8.0 - Modifica del testo selezionato tramite barra degli strumenti}
 \begin{itemize}
@@ -534,7 +534,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
             \item L'utente seleziona il testo da formattare
             \item L'utente clicca sul pulsante desiderato nella barra degli strumenti
             \item Il sistema applica automaticamente la sintassi Markdown corrispondente al testo selezionato
-            \item Il testo formattato viene visualizzato nell'are di anteprima
+            \item Il testo formattato viene visualizzato nell'area di anteprima
         \end{itemize}
     \item \textbf{Estensioni}:
         \begin{itemize}
@@ -544,7 +544,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-1.8.0.1 - L'utente vuole applicare una nuova formattazione a un testo già formattato}
+\subsubsection{UC-1.8.0.1 - Gestione combinazioni di più formattazioni diverse}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: L'utente tenta di applicare una formattazione a un testo che ha già una formattazione
@@ -558,7 +558,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-1.8.0.2 - Il testo ha già una specifica formattazione e l'utente la applica di nuovo}
+\subsubsection{UC-1.8.0.2 - Rimozione formattazione}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: L'utente riapplica la stessa formattazione a una porzione di testo
@@ -572,10 +572,10 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-1.8.0.3 - Il testo selezionato è solo parzialmente formattato}
+\subsubsection{UC-1.8.0.3 - Gestione testo già parzialmente formattato}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
-    \item \textbf{Descrizione}: L'utente applica la stessa formattazione a una porzione del testo che contiente parzialmente la stessa formattazione
+    \item \textbf{Descrizione}: L'utente applica la stessa formattazione a una porzione del testo che contiene parzialmente la stessa formattazione
     \item \textbf{Precondizioni}: Il testo selezionato è parzialmente formattato
     \item \textbf{Postcondizioni}: Il testo viene formattato per intero
     \item \textbf{Scenario principale}:
@@ -586,6 +586,13 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
             \item Il sistema applica la formattazione a tutto il testo selezionato
         \end{itemize}
 \end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../UCimg/UC1.8.0.1.jpg}
+    \caption{Diagramma dei casi d'uso UC-1.8.0, 1.8.0.1, 1.8.0.2, 1.8.0.3}
+    \label{fig:uc1.8.0}
+\end{figure}
 
 \subsubsection{UC-1.8.1 - Applicazione grassetto al testo selezionato}
 \begin{itemize}
@@ -651,7 +658,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-1.8.5 - Applicazione elementi di struttura}
+\subsubsection{UC-1.8.5 - Inserimento elementi di struttura}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: Applicazione di elementi di struttura al documento nel testo selezionato
@@ -689,7 +696,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-1.8.6.1 - L'utente vuole inserire una sotto-lista}
+\subsubsection{UC-1.8.6.1 - Gestione di sotto-liste}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: L'utente vuole inserire una sotto-lista all'interno di una lista esistente
@@ -720,14 +727,12 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \end{itemize}
 \end{itemize}
 
-
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{../UCimg/UC1.8_toolbar.jpg}
-    \caption{Diagramma dei casi d'uso UC-1.8 e UC-1.8.*}
+    \includegraphics[width=0.8\textwidth]{../UCimg/UC1.8.jpg}
+    \caption{Diagramma dei casi d'uso UC-1.8.*}
     \label{fig:uc1.8}
 \end{figure}
-
 
 \subsubsection{UC-1.9 - Impostare formattazioni senza testo presente nell'editor}
 \begin{itemize}
@@ -747,7 +752,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-1.9.0.1 - L'utente vuole scrivere con multiple opzioni di formattazione}
+\subsubsection{UC-1.9.0.1 - Gestione multiple opzioni di formattazione}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: L'utente vuole scrivere del testo futuro con più formattazioni contemporaneamente
@@ -755,7 +760,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \item \textbf{Postcondizioni}: Il testo futuro viene formattato con tutte le opzioni selezionate
     \item \textbf{Scenario principale}:
         \begin{itemize}
-            \item L'utente abilita più opzioni di formattazione per il testo futuro
+            \item L'utente applica più opzioni di formattazione per il testo futuro
             \item Il sistema applica tutte le formattazioni selezionate al testo futuro
             \item Il testo scritto dall'utente prende automaticamente tutte le formattazioni selezionate
             \item Il testo formattato viene visualizzato correttamente nell'anteprima
@@ -878,7 +883,28 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-1.10 - Modalità di visualizzazione solo editor}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../UCimg/UC1.9.jpg}
+    \caption{Diagramma dei casi d'uso UC-1.9.*}
+    \label{fig:uc1.9}
+\end{figure}
+
+\subsubsection{UC-1.10 - Gestione modalità di visualizzazione}
+\begin{itemize}
+    \item \textbf{Attore principale}: Utente generico
+    \item \textbf{Descrizione}: Selezione della modalità di visualizzazione dell’area di lavoro per alternare tra scrittura, anteprima o visione combinata
+    \item \textbf{Precondizioni}: L’editor è aperto e funzionante
+    \item \textbf{Postcondizioni}: L’interfaccia viene adattata alla modalità di visualizzazione selezionata
+    \item \textbf{Scenario principale}:
+        \begin{itemize}
+            \item L’utente accede ai comandi di visualizzazione
+            \item ’utente seleziona la modalità di visualizzazione desiderata tra quelle disponibili
+            \item Il sistema riconfigura i pannelli dell'interfaccia in base alla scelta effettuata
+        \end{itemize}
+\end{itemize}
+
+\subsubsection{UC-1.10.1 - Modalità di visualizzazione solo editor}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: Cambia la modalità di visualizzazione dell’editor, che mostra solo l'area di scrittura dell'editor
@@ -891,7 +917,8 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-1.11 - Modalità di visualizzazione solo documento formattato}
+
+\subsubsection{UC-1.10.2 - Modalità di visualizzazione solo documento formattato}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: Cambia la modalità di visualizzazione dell'editor, che mostra solo l'anteprima formattata del documento
@@ -904,7 +931,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-1.12 - Modalità di visualizzazione split view}
+\subsubsection{UC-1.10.3 - Modalità di visualizzazione split view}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: Cambia la modalità di visualizzazione in split view, che mostra sia l'area di testo sia l'anteprima del documento formattato
@@ -917,7 +944,14 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-1.13 - Ricerca nel testo}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../UCimg/UC1.10.jpg}
+    \caption{Diagramma dei casi d'uso UC-1.10, 1.10.*}
+    \label{fig:uc1.10}
+\end{figure}
+
+\subsubsection{UC-1.11 - Ricerca nel testo}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: Ricerca di occorrenze di testo all'interno del documento
@@ -935,7 +969,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-1.13.1 - La ricerca non ha occorrenze nel testo}
+\subsubsection{UC-1.11.1 - Gestione assenza di occorrenze}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: La ricerca non trova occorrenze di testo nell'editor
@@ -950,6 +984,12 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \end{itemize}
 \end{itemize}
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../UCimg/UC1.11.jpg}
+    \caption{Diagramma dei casi d'uso UC-1.11, 1.11.1}
+    \label{fig:uc1.11}
+\end{figure}
 
 \newpage
 
