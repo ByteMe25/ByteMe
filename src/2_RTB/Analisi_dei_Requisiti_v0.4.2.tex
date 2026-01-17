@@ -65,7 +65,7 @@
         \centering
         \begin{tabular}{|l|p{5cm}|}
             \hline
-            \textbf{Versione} & 0.3.9 \\
+            \textbf{Versione} & 0.4.2 \\
             \hline
             \textbf{Stato} & In corso \\
             \hline
@@ -97,9 +97,11 @@
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verifica} \\
         \hline
-        0.4.1 & 17/01/2026 & Elisa Marchioro & Mini fix &  \\
+        0.4.2 & 17/01/2026 & Giulia Barzon & Fix area 5 e diagrammi &  \\
         \hline
-        0.4.0 & 17/01/2026 & Elisa Marchioro & Sistemata macroarea 3 e 4 e i suoi diagrammi &  \\
+        0.4.1 & 17/01/2026 & Elisa Marchioro & Fix nomi casi d'uso &  \\
+        \hline
+        0.4.0 & 17/01/2026 & Elisa Marchioro & Sistemata macroarea 3 e 4 e relativi diagrammi &  \\
         \hline
         0.3.9 & 15/01/2026 & Giulia Barzon & Aggiunti diagrammi macroarea 1 e 2 &  \\
         \hline
@@ -1735,7 +1737,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
             \item Utente sceglie tra due opzioni: trascina file e esplora file
             \item Utente carica il documento
         \end{itemize}
-    \item \textbf{Scenari secondari}:
+    \item \textbf{Estensioni}:
         \begin{itemize}
             \item Utente seleziona un file non supportato
             \item Utente seleziona un file troppo grande
@@ -1777,7 +1779,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \label{fig:uc3.0}
 \end{figure}
 
-\subsubsection{UC-3.1 - Errore: Formato file non supportato}
+\subsubsection{UC-3.1 - Gestione formati file non supportati}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: L'utente prova a caricare un documento ma è di un formato non supportato
@@ -1793,7 +1795,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-3.2 - Errore: File troppo grande}
+\subsubsection{UC-3.2 - Gestione file troppo grandi}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: L'utente prova a caricare un documento ma è di dimensioni troppo grandi
@@ -1821,7 +1823,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
             \item Utente vede la schermata “Sei sicuro di voler rimuovere?”
             \item Utente preme si e rimuove con successo il file
         \end{itemize}
-        \item \textbf{Scenario secondario}:
+        \item \textbf{Estensioni}:
         \begin{itemize}
             \item Utente clicca no nella schermata “Sei sicuro di voler rimuovere?” e quindi il file non viene rimosso
         \end{itemize}
@@ -1840,7 +1842,6 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
             \item L'utente torna nella pagina del file che ha caricato
         \end{itemize}
 \end{itemize}
-
 
 \begin{figure}[H]
     \centering
@@ -1955,9 +1956,9 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
             \item Seleziona modalità di esportazione
             \item Ottiene le pagine selezionate in un nuovo documento, salvato nel formato selezionato
         \end{itemize}
-    \item \textbf{Scenari secondari}:
+    \item \textbf{Estensioni}:
         \begin{itemize}
-            \item Esportare un range di pagine del documento
+            \item L'utente esporta un range di pagine del documento
         \end{itemize}
 \end{itemize}
 
@@ -1995,9 +1996,9 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
             \item Utente ha accesso alle opzioni di stampa offerte dal suo browser
             \item Utente ritorna al proprio documento una volta completata l'operazione
         \end{itemize}
-    \item \textbf{Scenari secondari}:
+    \item \textbf{Estensioni}:
         \begin{itemize}
-            \item Stampare selezionate pagine del documento
+            \item L'utente stampa solo selezionate pagine del documento
         \end{itemize}
 \end{itemize}
 
@@ -2041,17 +2042,42 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \end{itemize}
     \item \textbf{Estensioni}:
         \begin{itemize}
-            \item L'utente inserisce un username non presente nel db:
-                \begin{enumerate}
-                    \item All'utente non viene garantito l'accesso
-                    \item Il sistema avvisa l'utente di aver inserito un username inesistente
-                \end{enumerate}
-            \item L'utente inserisce un username esistente ma la password sbagliata:
-                \begin{enumerate}
-                    \item All'utente non viene garantito l'accesso
-                    \item Il sistema avvisa l'utente che la password inserita è errata
-                \end{enumerate}
+            \item L'utente inserisce un username non presente nel db
+            \item L'utente inserisce un username esistente ma la password sbagliata
         \end{itemize}
+\end{itemize}
+
+\subsubsection{UC-5.0.1 - Gestione username inesistente}
+\begin{itemize}
+    \item \textbf{Attore principale}: Utente non autenticato
+    \item \textbf{Descrizione}: Il sistema gestisce il tentativo di accesso con un identificativo utente non presente nel database
+    \item \textbf{Precondizioni}: L’utente ha inviato una richiesta di login
+    \item \textbf{Postcondizioni}: L’accesso viene negato e viene mostrato un messaggio di errore specifico
+    \item \textbf{Scenario principale}:
+    \begin{itemize}
+        \item Il sistema interroga il database alla ricerca dell'username fornito
+        \item Il sistema non rileva alcuna corrispondenza (account inesistente)
+        \item Il sistema nega l'accesso
+        \item Il sistema mostra all’utente un messaggio di avviso
+        \item L'utente rimane nella schermata di login
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{UC-5.0.2 - Gestione password errata}
+\begin{itemize}
+    \item \textbf{Attore principale}: Utente non autenticato
+    \item \textbf{Descrizione}: Il sistema gestisce il tentativo di accesso con un username valido ma associato a una password non corrispondente
+    \item \textbf{Precondizioni}: L’utente ha inviato una richiesta di login con un username esistente
+    \item \textbf{Postcondizioni}: L’accesso viene negato e viene mostrato un messaggio di errore specifico
+    \item \textbf{Scenario principale}:
+    \begin{itemize}
+        \item Il sistema rileva che l'username esiste
+        \item Il sistema verifica la corrispondenza crittografica della password inserita con quella memorizzata
+        \item Il sistema rileva una incongruenza
+        \item Il sistema nega l'accesso
+        \item Il sistema mostra all’utente un messaggio di avviso
+        \item L'utente rimane nella schermata di login
+    \end{itemize}
 \end{itemize}
 
 \subsubsection{UC-5.1 - Registrazione}
@@ -2069,20 +2095,33 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \end{itemize}
     \item \textbf{Estensioni}:
         \begin{itemize}
-            \item L'utente inserisce un username già esistente nel sistema:
-                \begin{enumerate}
-                    \item L'utente non viene registrato
-                    \item Il sistema avvisa l'utente che l'username inserito è già in utilizzo
-                    \item Il sistema propone all'utente di effettuare il login o di scegliere un nuovo username
-                \end{enumerate}
+            \item L'utente inserisce un username già esistente nel sistema
         \end{itemize}
 \end{itemize}
+
+\subsubsection{UC-5.1.1 - Gestione username già esistente}
+\begin{itemize}
+\item \textbf{Attore principale}: Utente non autenticato
+\item \textbf{Descrizione}: Il sistema impedisce la creazione di un account duplicato se l'identificativo scelto è già presente nel database
+\item \textbf{Precondizioni}: L’utente ha inviato i dati per la registrazione
+\item \textbf{Postcondizioni}: La registrazione viene bloccata e l'utente viene avvisato
+\item \textbf{Scenario principale}:
+\begin{itemize}
+\item Il sistema controlla la disponibilità dell'username (o email) nel database
+\item Il sistema rileva che l'username è già associato a un account esistente
+\item Il sistema blocca la creazione del nuovo record
+\item Il sistema visualizza un messaggio di errore
+\item L'utente viene riportato al modulo di login
+\end{itemize}
+\end{itemize}
+
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{../UCimg/UC5.0_5.1_login.jpg}
-    \caption{Diagramma dei casi d'uso UC-5.0, UC-5.1}
+    \includegraphics[width=0.8\textwidth]{../UCimg/UC5.0.jpg}
+    \caption{Diagramma dei casi d'uso UC-5.0, 5.0.*, 5.1, 5.1.*}
     \label{fig:uc5.0}
 \end{figure}
+
 
 \subsubsection{UC-5.2 - Eliminazione dell'account}
 \begin{itemize}
@@ -2100,13 +2139,32 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \end{itemize}
     \item \textbf{Estensioni}:
         \begin{itemize}
-            \item L'utente seleziona "annulla" nel pop up di conferma:
-                \begin{enumerate}
-                    \item Il sistema non procede con l'eliminazione dell'account
-                    \item Il pop up viene chiuso
-                \end{enumerate}
+            \item L'utente seleziona "annulla" nel pop up di conferma
         \end{itemize}
 \end{itemize}
+
+\subsubsection{UC-5.2.1 - Annullamento della procedura di eliminazione account}
+\begin{itemize}
+    \item \textbf{Attore principale}: Utente autenticato
+    \item \textbf{Descrizione}: Il sistema gestisce l'interruzione della procedura di eliminazione su richiesta dell'utente
+    \item \textbf{Precondizioni}: È visualizzata la richiesta di conferma per l'eliminazione dell'account
+    \item \textbf{Postcondizioni}: La procedura viene interrotta, l'account rimane attivo e i dati intatti
+    \item \textbf{Scenario principale}:
+    \begin{itemize}
+        \item L’utente, di fronte alla richiesta di conferma, seleziona l’opzione ”Annulla” (o chiude il popup)
+        \item Il sistema chiude la finestra di dialogo
+        \item Il sistema abortisce l'operazione di cancellazione sul database
+        \item L'utente viene riportato alla schermata delle impostazioni del profilo nello stato precedente
+    \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../UCimg/UC5.2.jpg}
+    \caption{Diagramma dei casi d'uso UC-5.2, 5.2.1}
+    \label{fig:uc5.2}
+\end{figure}
+
 
 \subsubsection{UC-5.3 - Apertura file recenti}
 \begin{itemize}
@@ -2125,13 +2183,31 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \end{itemize}
     \item \textbf{Estensioni}:
         \begin{itemize}
-            \item L'utente seleziona "annulla" nel pop up di selezione:
-                \begin{enumerate}
-                    \item Il sistema non recupera nessuna nota dal db
-                    \item Il pop up viene chiuso
-                \end{enumerate}
+            \item L'utente seleziona "annulla" nel pop up di selezione
         \end{itemize}
 \end{itemize}
+
+\subsubsection{UC-5.3.1 - Gestione annullamento apertura}
+\begin{itemize}
+    \item \textbf{Attore principale}: Utente autenticato
+    \item \textbf{Descrizione}: Il sistema gestisce l'interruzione della procedura di apertura file senza effettuare caricamenti
+    \item \textbf{Precondizioni}: La finestra di selezione dei file è aperta
+    \item \textbf{Postcondizioni}: La finestra viene chiusa e l'editor mantiene lo stato precedente (nessun file caricato o file precedente mantenuto)
+    \item \textbf{Scenario principale}:
+    \begin{itemize}
+        \item L’utente, all'interno della finestra di selezione, clicca sul pulsante ”Annulla” (o chiude il popup)
+        \item Il sistema chiude la finestra di dialogo
+        \item Il sistema abortisce l'operazione di recupero dati dal database
+        \item L'interfaccia dell'editor rimane invariata rispetto allo stato precedente l'apertura della finestra
+    \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../UCimg/UC5.3.jpg}
+    \caption{Diagramma dei casi d'uso UC-5.3, 5.3.1}
+    \label{fig:uc5.3}
+\end{figure}
 
 \subsubsection{UC-5.4 - Salvataggio file nel DataBase}
 \begin{itemize}
@@ -2148,23 +2224,49 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \end{itemize}
     \item \textbf{Estensioni}:
         \begin{itemize}
-            \item L'utente non ha scritto o generato alcun testo:
-                \begin{enumerate}
-                    \item Il sistema avvisa che non può salvare note vuote
-                    \item Il salvataggio non avviene
-                \end{enumerate}
-            \item L'utente non è autenticato:
-                \begin{enumerate}
-                    \item Il sistema avvisa che è necessario eseguire l'accesso per poter salvare nel db
-                    \item Il sistema consiglia di eseguire l'accesso o esportare la nota in uno dei formati concessi
-                \end{enumerate}
+            \item L'utente non ha scritto o generato alcun testo
+            \item L'utente non è autenticato
         \end{itemize}
 \end{itemize}
+
+\subsubsection{UC-5.4.1 - Gestione tentativo salvataggio nota vuota}
+\begin{itemize}
+    \item \textbf{Attore principale}: Utente autenticato
+    \item \textbf{Descrizione}: Il sistema impedisce il salvataggio di documenti privi di contenuto nel database per evitare record inutili
+    \item \textbf{Precondizioni}: L’editor è vuoto e l'utente attiva il comando di salvataggio
+    \item \textbf{Postcondizioni}: Il salvataggio viene abortito e l'utente viene avvisato
+    \item \textbf{Scenario principale}:
+    \begin{itemize}
+        \item Il sistema analizza il contenuto dell'editor prima di procedere al salvataggio
+        \item Il sistema rileva che non vi è testo o contenuto generato (lunghezza zero o solo spazi bianchi)
+        \item Il sistema blocca la procedura di invio al database
+        \item Il sistema visualizza un messaggio di avviso
+        \item Il documento non viene salvato
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{UC-5.4.2 - Gestione salvataggio senza autenticazione}
+\begin{itemize}
+    \item \textbf{Attore principale}: Utente non autenticato (Utente generico)
+    \item \textbf{Descrizione}: Il sistema gestisce il tentativo di utilizzare la funzionalità di salvataggio in cloud da parte di un utente non loggato
+    \item \textbf{Precondizioni}: L’utente non ha effettuato il login e tenta di salvare su DB
+    \item \textbf{Postcondizioni}: Il salvataggio su DB viene negato e vengono proposte alternative
+    \item \textbf{Scenario principale}:
+    \begin{itemize}
+        \item L’utente seleziona l’opzione "Salva nel Database"
+        \item Il sistema verifica lo stato della sessione utente
+        \item Il sistema rileva che l'utente non è autenticato
+        \item Il sistema blocca l'operazione di salvataggio remoto
+        \item Il sistema mostra un avviso indicando la necessità di eseguire l'accesso
+        \item Il sistema suggerisce all'utente le alternative disponibili
+    \end{itemize}
+\end{itemize}
+
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{../UCimg/UC5.2_5.4.jpg}
-    \caption{Diagramma dei casi d'uso UC-5.2, UC-5.3, UC-5.4}
-    \label{fig:uc5.2}
+    \includegraphics[width=0.8\textwidth]{../UCimg/UC5.4.jpg}
+    \caption{Diagramma dei casi d'uso UC-5.4, 5.4.1, 5.4.2}
+    \label{fig:uc5.4}
 \end{figure}
 
 \subsubsection{UC-5.5 - Logout}
@@ -2183,6 +2285,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
             \item L'utente viene riportato alla pagina iniziale
         \end{itemize}
 \end{itemize}
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{../UCimg/UC5.5_logout.drawio.jpg}
