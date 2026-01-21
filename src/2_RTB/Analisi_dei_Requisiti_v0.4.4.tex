@@ -65,7 +65,7 @@
         \centering
         \begin{tabular}{|l|p{5cm}|}
             \hline
-            \textbf{Versione} & 0.4.3 \\
+            \textbf{Versione} & 0.4.4 \\
             \hline
             \textbf{Stato} & In corso \\
             \hline
@@ -96,6 +96,8 @@
     \begin{tabular}{|c|c|c|>{\raggedright\arraybackslash}p{0.3\textwidth}|c|}
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verifica} \\
+        \hline
+        0.4.4 & 21/01/2026 & Joseph Grant & Aggiunta requisiti dal doc FIX REQUISITI &  \\
         \hline
         0.4.3 & 19/01/2026 & Joseph Grant & Fix diagrammi &  \\
         \hline
@@ -2386,49 +2388,54 @@ RO-F-20 & Il sistema permette di avviare la correzione grammaticale & UC-2.6 \\
 \hline
 RO-F-21 & Il sistema permette di inviare del testo ad un agente esterno & UC-2.0, UC-2.6, UC-2.7, UC-2.7.*, UC-2.8, UC-2.9, UC-2.10, UC-2.11 \\
 \hline
-RO-F-22 & Una volta generato, il testo dell'agente esterno viene inserito nell'editor dal sistema, in modo che tutte le funzionalità dell'editor siano applicate anche al testo generato & UC-2.0, UC-2.2, UC-2.6, UC-2.7, UC-2.7.x, UC-2.8 \\
+RO-F-22 & L’utente può modificare, formattare e annullare le generazioni di testo & UC-2.1.* \\
 \hline
-RO-F-23 & Il sistema permette all'utente di eliminare il testo generato da un agente esterno & UC-2.0, UC-2.2, UC-2.3, UC-2.4, UC-2.5.*, UC-2.6 \\
+RO-F-23 & Se l'utente annulla la generazione di testo, il sistema deve garantire che nessuna porzione parziale di testo generato venga inserita nel documento.
+ & UC-2.1.* \\
 \hline
-RO-F-24 & Il sistema consente all'utente di avviare l'analisi del testo selezionato o dell'intero testo utilizzando il cappello scelto & UC-2.7, UC-2.7.* \\
+RO-F-24 & Una volta generato, il testo dell'agente esterno viene inserito nell'editor dal sistema, in modo che tutte le funzionalità dell'editor siano applicate anche al testo generato & UC-2.0, UC-2.2, UC-2.6, UC-2.7, UC-2.7.x, UC-2.8 \\
 \hline
-RO-F-25 & Il sistema permette l'invio di un prompt scritto dall’utente per la generazione del testo tramite agente esterno & UC-2.8 \\
+RO-F-25 & Il sistema permette all'utente di eliminare il testo generato da un agente esterno & UC-2.0, UC-2.2, UC-2.3, UC-2.4, UC-2.5.*, UC-2.6 \\
 \hline
-RO-F-26 & Il sistema permette la modifica del testo generato inserito nell'editor & UC-2.3, UC-2.4, UC-2.5.*, UC-2.8, UC-2.11 \\
+RO-F-26 & Il sistema consente all'utente di avviare l'analisi del testo selezionato o dell'intero testo utilizzando il cappello scelto & UC-2.7, UC-2.7.* \\
 \hline
-RO-F-27 & Il sistema permette la modifica del prompt da inviare ad un agente esterno & UC-2.8, UC-2.9, UC-2.10, UC-2.11 \\
+RO-F-27 & Il sistema permette l'invio di un prompt scritto dall’utente per la generazione del testo tramite agente esterno & UC-2.8 \\
 \hline
-RO-F-28 & L'utente deve poter accedere alle azioni sul testo tramite agente esterno in ogni momento & UC-2.0 \\
+RO-F-28 & Il sistema permette la modifica del testo generato inserito nell'editor & UC-2.3, UC-2.4, UC-2.5.*, UC-2.8, UC-2.11 \\
 \hline
-RO-F-29 & Ogni sezione che contiene testo ricevuto da un agente esterno include opzioni per eliminare o rigenerare il testo & UC-2.0, UC-2.2, UC-2.3, UC-2.4, UC-2.5.* \\
+RO-F-29 & Il sistema permette la modifica del prompt da inviare ad un agente esterno & UC-2.8, UC-2.9, UC-2.10, UC-2.11 \\
 \hline
-RO-F-30 & L'utente deve poter riassumere tutto o una parte selezionata del testo usando un agente esterno & UC-2.3 \\
+RO-F-30 & L'utente deve poter accedere alle azioni sul testo tramite agente esterno in ogni momento & UC-2.0 \\
 \hline
-RO-F-31 &  L'utente deve poter usare un agente esterno per riscrivere tutto o una parte selezionata del testo migliorandolo seguendo determinate specifiche come sintassi, stile e chiarezza & UC-2.4 \\
+RO-F-31 & Ogni sezione che contiene testo ricevuto da un agente esterno include opzioni per eliminare o rigenerare il testo & UC-2.0, UC-2.2, UC-2.3, UC-2.4, UC-2.5.* \\
 \hline
-RO-F-32 & L'utente deve poter tradurre il testo usando un agente esterno in: inglese, italiano, tedesco, francese, spagnolo e cinese mandarino & UC-2.5.* \\
+RO-F-32 & L'utente deve poter riassumere tutto o una parte selezionata del testo usando un agente esterno & UC-2.3 \\
 \hline
-RO-F-33 & Se viene annullata prematuramente la generazione di testo, rimarrà ciò che è già stato generato & UC-2.3, UC-2.4, UC-2.5.* \\
+RO-F-33 &  L'utente deve poter usare un agente esterno per riscrivere tutto o una parte selezionata del testo migliorandolo seguendo determinate specifiche come sintassi, stile e chiarezza & UC-2.4 \\
 \hline
-RO-F-34 & L'utente può caricare/aprire un file dal proprio dispositivo all'interno dell'editor & UC-3.0, UC-3.0.0, UC-3.0.1 \\
+RO-F-34 & L'utente deve poter tradurre il testo usando un agente esterno in: inglese, italiano, tedesco, francese, spagnolo e cinese mandarino & UC-2.5.* \\
 \hline
-RO-F-35 & Il sistema deve supportare il caricamento tramite dialogo di esplorazione file (file picker) & UC-3.0, UC-3.0.1 \\
+RO-F-35 & Se viene annullata prematuramente la generazione di testo, rimarrà ciò che è già stato generato & UC-2.3, UC-2.4, UC-2.5.* \\
 \hline
-RO-F-36 & Il sistema deve permettere all'utente di rimuovere il file che ha caricato (chiudendo il documento o l'editor) & UC3.0, UC-3.3 \\
+RO-F-36 & L'utente può caricare/aprire un file dal proprio dispositivo all'interno dell'editor & UC-3.0, UC-3.0.0, UC-3.0.1 \\
 \hline
-RO-F-37 & Il sistema deve permettere all'utente di annullare l'operazione di caricamento file & UC-3.0 \\
+RO-F-37 & Il sistema deve supportare il caricamento tramite dialogo di esplorazione file (file picker) & UC-3.0, UC-3.0.1 \\
 \hline
-RO-F-38 & Il sistema notifica l'errore se non riesce a caricare il file & UC-3.1, UC-3.2\\
+RO-F-38 & Il sistema deve permettere all'utente di rimuovere il file che ha caricato (chiudendo il documento o l'editor) & UC3.0, UC-3.3 \\
 \hline
-RO-F-39 & Il sistema deve consentire l'esportazione del documento in formato PDF. & UC-4.0, UC-4.1\\
+RO-F-39 & Il sistema deve permettere all'utente di annullare l'operazione di caricamento file & UC-3.0 \\
 \hline
-RO-F-40 & Il sistema deve essere in grado di convertire il documento da Markdown al formato selezionato dall'utente. & UC-4.0, UC-4.0, UC-4.1, UC-4.1.1, UC-4.1.2, UC-4.1.3, UC-4.1.4\\
+RO-F-40 & Il sistema notifica l'errore se non riesce a caricare il file & UC-3.1, UC-3.2\\
 \hline
-RO-F-41 & Il sistema deve controllare che il range di pagine inserito dall'utente sia valido (che non superi il numero di pagine presenti o che non sia un numero negativo). & UC-4.2.1, UC-4.3.1\\
+RO-F-41 & Il sistema deve consentire l'esportazione del documento in formato PDF. & UC-4.0, UC-4.1\\
 \hline
-RO-F-42 & Il sistema deve permettere di poter scaricare il file nel dispositivo dell'utente. & UC-4.0\\
+RO-F-42 & Il sistema deve essere in grado di convertire il documento da Markdown al formato selezionato dall'utente. & UC-4.0, UC-4.0, UC-4.1, UC-4.1.1, UC-4.1.2, UC-4.1.3, UC-4.1.4\\
 \hline
-RO-F-43 & Il sistema deve potersi collegare a un dispositivo di stampa. & UC-4.3\\
+RO-F-43 & Il sistema deve controllare che il range di pagine inserito dall'utente sia valido (che non superi il numero di pagine presenti o che non sia un numero negativo). & UC-4.2.1, UC-4.3.1\\
+\hline
+RO-F-44 & Il sistema deve permettere di poter scaricare il file nel dispositivo dell'utente. & UC-4.0\\
+\hline
+RO-F-45 & Il sistema deve potersi collegare a un dispositivo di stampa. & UC-4.3\\
 \hline
 RD-F-1 & Il sistema deve supportare l'uso di scorciatoie da tastiera per le operazioni di formattazione & UC-1.8.* \\
 \hline
@@ -2526,21 +2533,23 @@ RO-V-3 & Il formato di input e storage del testo deve essere Markdown & UC-1.0, 
 \hline
 RO-V-4 & L’agente esterno applica modifiche esclusivamente al testo selezionato. Un contesto aggiuntivo può essere fornito solo a scopo interpretativo e non deve essere alterato. & UC-2.0 \\
 \hline
-RO-V-5 & Il testo generato da un agente esterno viene inserito nella posizione del cursore, se presente nell’editor, altrimenti in fondo al testo & UC-2.0, UC-2.2 \\
+RO-V-5 & I testi generati dall'agente esterno devono indicare il tipo di operazione che li ha generati & UC-2.* \\
 \hline
-RO-V-6 & L'agente esterno deve avere istruzioni sufficienti affinché il testo riscritto sia corretto grammaticalmente, sintatticamente e semanticamente e deve riflettere la richiesta dell'utente & UC-2.4 \\
+RO-V-6 & Il testo generato da un agente esterno viene inserito nella posizione del cursore, se presente nell’editor, altrimenti in fondo al testo & UC-2.0, UC-2.2 \\
 \hline
-RO-V-7 & Le sezioni create per la traduzione di un testo specificheranno la lingua di partenza e di fine & UC-2.5.* \\
+RO-V-7 & L'agente esterno deve avere istruzioni sufficienti affinché il testo riscritto sia corretto grammaticalmente, sintatticamente e semanticamente e deve riflettere la richiesta dell'utente & UC-2.4 \\
 \hline
-RO-V-8 & All'agente esterno devono essere passate delle istruzioni ottimizzate per garantire una traduzione accurata nella lingua selezionata & UC-2.5, UC-2.5.* \\
+RO-V-8 & Le sezioni create per la traduzione di un testo specificheranno la lingua di partenza e di fine & UC-2.5.* \\
 \hline
-RO-V-9 & Il sistema espone la sua limitazione nell'eseguire un'azione richiesta se i dati inviati non rispettano i limiti dell'agente esterno & UC-2.9, UC-2.10, UC-2.11 \\
+RO-V-9 & All'agente esterno devono essere passate delle istruzioni ottimizzate per garantire una traduzione accurata nella lingua selezionata & UC-2.5, UC-2.5.* \\
 \hline
-RO-V-10 & Il caricamento e la lettura del file devono avvenire localmente tramite le API del browser (es. File API), senza inviare il contenuto a un server & UC-3.* \\
+RO-V-10 & Il sistema espone la sua limitazione nell'eseguire un'azione richiesta se i dati inviati non rispettano i limiti dell'agente esterno & UC-2.9, UC-2.10, UC-2.11 \\
 \hline
-RO-V-11 & L'operazione di esportazione o stampa non deve alterare o chiudere il documento originale nell'editor. & Tutti gli UC-4 \\
+RO-V-11 & Il caricamento e la lettura del file devono avvenire localmente tramite le API del browser (es. File API), senza inviare il contenuto a un server & UC-3.* \\
 \hline
-RO-V-12 & Il sistema deve collegarsi ad un LLM tramite API REST & UC-2.0, UC-2.2, UC-2.3, UC-2.4, UC-2.5, UC-2.5.x, UC-2.7, UC-2.7.x, UC-2.8, UC-2.9, UC-2.10, UC-2.11 \\
+RO-V-12 & L'operazione di esportazione o stampa non deve alterare o chiudere il documento originale nell'editor. & UC-4.* \\
+\hline
+RO-V-13 & Il sistema deve collegarsi ad un LLM tramite API REST & UC-2.0, UC-2.2, UC-2.3, UC-2.4, UC-2.5, UC-2.5.x, UC-2.7, UC-2.7.x, UC-2.8, UC-2.9, UC-2.10, UC-2.11 \\
 \hline
 RD-V-1 & Il sistema deve supportare l'importazione dei formati di file più comuni: markdown (.md, .markdown) e testo (.txt) & UC-3.0, UC-3.1 \\
 \hline
@@ -2553,6 +2562,8 @@ ROP-V-3 & L'accesso ai file salvati nel database deve essere consentito solo ad 
 ROP-V-4 & Il sistema deve impedire il salvataggio di file nel database da parte di utenti non autenticati & UC-5.4 \\
 \hline
 ROP-V-5 & Se il testo è già nella lingua da tradurre, l'utente viene avvisato e l'operazione viene interrotta & UC-2.5.* \\
+\hline
+ROP-V-6 &  testi generati dall’agente esterno devono indicare la data e l’ora della generazione & UC-2.* \\
 \hline
 \addlinespace[1em]
 \caption{Tabella dei requisiti di vincolo}
@@ -2576,27 +2587,29 @@ RO-Q-3 & L'aggiornamento dell'anteprima compilata deve avvenire in tempi brevi d
 \hline
 RO-Q-4 & L'agente esterno deve rispondere sempre in tempi brevi, o restituire errore & UC-2.* \\
 \hline
-RO-Q-5 & Le opzioni, relative alle operazioni con agente esterno, non devono sparire in maniera poco intuitiva muovendo il mouse & UC-2.0 \\
+RO-Q-5 & Il sistema deve intercettare e gestire gli errori di comunicazione con il servizio LLM. & UC-2.* \\
 \hline
-RO-Q-6 & Il testo creato si comporta come qualunque altro testo generato da un agente esterno: facilmente riconoscibile e sempre modificabile dall'utente & UC-2.3, UC-2.4, UC-2.5., UC-2.6, UC-2.7, UC-2.7,x, UC-2.8, UC-2.9, UC-2.10, UC-2.11 \\
+RO-Q-6 & Le opzioni, relative alle operazioni con agente esterno, non devono sparire in maniera poco intuitiva muovendo il mouse & UC-2.0 \\
 \hline
-RO-Q-7 & Il sistema mostra un messaggio in caso di errore durante la generazione di contenuto & UC-2.3, UC-2.4, UC-2.5.*, UC-2.6, UC-2.7, UC-2.7.*, UC-2.8, UC-2.9, UC-2.10, UC-2.11 \\
+RO-Q-7 & Il testo creato si comporta come qualunque altro testo generato da un agente esterno: facilmente riconoscibile e sempre modificabile dall'utente & UC-2.3, UC-2.4, UC-2.5., UC-2.6, UC-2.7, UC-2.7,x, UC-2.8, UC-2.9, UC-2.10, UC-2.11 \\
 \hline
-RO-Q-8 & Il sistema deve fornire un feedback visivo immediato all'utente (messaggio di errore o di successo) al termine del tentativo di caricamento file & UC-3.0, UC-3.1, UC-3.2 \\
+RO-Q-8 & Il sistema mostra un messaggio in caso di errore durante la generazione di contenuto & UC-2.3, UC-2.4, UC-2.5.*, UC-2.6, UC-2.7, UC-2.7.*, UC-2.8, UC-2.9, UC-2.10, UC-2.11 \\
 \hline
-RO-Q-9 & Il sistema deve validare il formato del file caricato e impedire il caricamento di formati non supportati & UC-3.1 \\
+RO-Q-9 & Il sistema deve fornire un feedback visivo immediato all'utente (messaggio di errore o di successo) al termine del tentativo di caricamento file & UC-3.0, UC-3.1, UC-3.2 \\
 \hline
-RO-Q-10 & Il sistema deve validare le dimensioni del file caricato e impedire il caricamento di file che superano una dimensione massima & UC-3.2 \\
+RO-Q-10 & Il sistema deve validare il formato del file caricato e impedire il caricamento di formati non supportati & UC-3.1 \\
 \hline
-RO-Q-11 & Il sistema deve impedire il caricamento di file corrotti & UC-3.0, UC-3.1\\
+RO-Q-11 & Il sistema deve validare le dimensioni del file caricato e impedire il caricamento di file che superano una dimensione massima & UC-3.2 \\
 \hline
-RO-Q-12 & La dimensione massima consentita per il caricamento di un file deve essere limitata a una soglia definita e ragionevole & UC-3.0, UC-3.2 \\
+RO-Q-12 & Il sistema deve impedire il caricamento di file corrotti & UC-3.0, UC-3.1\\
 \hline
-RO-Q-13 & Il sistema deve avvisare l'utente della buona riuscita o di eventuali errori durante il download. & UC-4.0, UC-4.1 \\
+RO-Q-13 & La dimensione massima consentita per il caricamento di un file deve essere limitata a una soglia definita e ragionevole & UC-3.0, UC-3.2 \\
 \hline
-RO-Q-14 & Il sistema deve avvisare l’utente in caso di errore durante l’invio del documento alla stampante. & UC-4.3 \\
+RO-Q-14 & Il sistema deve avvisare l'utente della buona riuscita o di eventuali errori durante il download. & UC-4.0, UC-4.1 \\
 \hline
-RO-Q-15 & Il sistema deve poter permettere di visualizzare sia il testo in lingua originale che la traduzione generata & UC-2.5, UC-2.5.x \\
+RO-Q-15 & Il sistema deve avvisare l’utente in caso di errore durante l’invio del documento alla stampante. & UC-4.3 \\
+\hline
+RO-Q-16 & Il sistema deve poter permettere di visualizzare sia il testo in lingua originale che la traduzione generata & UC-2.5, UC-2.5.x \\
 \hline
 RD-Q-1 & I messaggi di errore (per formato errato, file troppo grande o corrotto) devono essere esplicativi e suggerire all'utente come procedere & UC-3.0, UC-3.1, UC-3.2 \\
 \hline
