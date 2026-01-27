@@ -65,7 +65,7 @@
         \centering
         \begin{tabular}{|l|p{5cm}|}
             \hline
-            \textbf{Versione} & 0.4.5 \\
+            \textbf{Versione} & 0.4.6 \\
             \hline
             \textbf{Stato} & In corso \\
             \hline
@@ -96,6 +96,8 @@
     \begin{tabular}{|c|c|c|>{\raggedright\arraybackslash}p{0.3\textwidth}|c|}
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verifica} \\
+        \hline
+        0.4.6 & 28/01/2026 & Joseph Grant & Correzione requisiti macroarea 1 &  \\
         \hline
         0.4.5 & 27/01/2026 & Joseph Grant & Aggiunta requisiti inerenti alla macroarea 1 &  \\
         \hline
@@ -2352,17 +2354,17 @@ RO-F-1 & Il sistema deve fornire un editor di testo per l'inserimento e la modif
 \hline
 RO-F-2 & L'editor deve compilare la sintassi Markdown in tempo reale & UC-1.1 \\
 \hline
-RO-F-3 & Deve essere presente un'area di visualizzazione del documento formattato rispetto alla sintassi Markdown che si aggiorna automaticamente & UC-1.1 \\
+RO-F-3 & Deve essere presente un'area di visualizzazione del documento formattato rispetto alla sintassi Markdown & UC-1.1 \\
 \hline
 RO-F-4 & Il sistema deve permettere all'utente di selezionare porzioni di testo tramite mouse o tastiera & UC-1.2, UC-2.0, UC-2.6, UC-2.7, UC-2.7.*, UC-2.9, UC-2.10, UC-2.11 \\
 \hline
 RO-F-5 & Il sistema deve permettere all'utente di modificare porzioni di testo selezionate & UC-1.2 \\
 \hline
-RO-F-6 & Il sistema deve permettere all'utente di copiare una parte del testo & UC-1.3 \\
+RO-F-6 & Il sistema deve permettere all'utente di copiare una parte di testo selezionato& UC-1.3 \\
 \hline
 RO-F-7 & Il sistema deve permettere all'utente di incollare una parte del testo & UC-1.4 \\
 \hline
-RO-F-8 & Il sistema deve permettere all'utente di tagliare una parte del testo & UC-1.5 \\
+RO-F-8 & Il sistema deve permettere all'utente di tagliare di testo selezionato & UC-1.5 \\
 \hline
 RO-F-9 & Il sistema deve permettere all'utente di annullare l'ultima modifica effettuata & UC-1.6 \\
 \hline
@@ -2376,78 +2378,82 @@ RO-F-13 & Il sistema deve permettere l'applicazione del corsivo al testo tramite
 \hline
 RO-F-14 & Il sistema deve permettere l'applicazione della sottolineatura al testo tramite toolbar & UC-1.8.3 \\
 \hline
-RO-F-15 & Il sistema deve permettere di creare delle intestazioni e modificare la struttura del testo tramite toolbar & UC-1.8.4 \\
+RO-F-15 & Il sistema deve permettere di creare delle intestazioni tramite toolbar & UC-1.8.4 \\
 \hline
-RO-F-16 & Il sistema deve permettere l'inserimento di elementi di struttura (tabelle, separatori) tramite toolbar & UC-1.8.5 \\
+RO-F-16 & Il sistema deve permettere di modificare la struttura del testo tramite toolbar & UC-1.8.4 \\
 \hline
-RO-F-17 & Il sistema deve permettere l'inserimento di liste ed elenchi nel testo tramite toolbar & UC-1.8.6 \\
+RO-F-17 & Il sistema deve permettere l'inserimento di elementi di struttura (tabelle, separatori) tramite toolbar & UC-1.8.5 \\
 \hline
-RO-F-18 & Il sistema deve permettere l'inserimento di link e riferimenti tramite toolbar & UC-1.8.7 \\
+RO-F-18 & Il sistema deve permettere l'inserimento di liste numerate testo tramite toolbar & UC-1.8.6 \\
 \hline
-RO-F-19 & L'utente può applicare più "stili" (es: grassetto, corsivo, sottolineatura) alla stessa sezione di testo & UC-1.8.* \\
+RO-F-19 & Il sistema deve permettere l'inserimento di elenchi puntati nel testo tramite toolbar & UC-1.8.6 \\
 \hline
-RO-F-20 & L'utente può annullare una formattazione di una porzione di testo selezionato riselezionandola dalla toolbar & UC-1.8.* \\
+RO-F-20 & Il sistema deve permettere l'inserimento di link e riferimenti tramite toolbar & UC-1.8.7 \\
 \hline
-RO-F-21 & L'utentea può estendere la formattazione di una porzione di testo selezionato riselezionandola dalla toolbar & UC-1.8.* \\
+RO-F-21 & L'utente può applicare più stili (es: grassetto, corsivo, sottolineatura) alla stessa sezione di testo & UC-1.8.* \\
 \hline
-RO-F-22 & L'utente può creare sottoliste scegliendo di creare una lista dalla toolbar quando il cursore è già all'interno di una lista  & UC-1.8.6.* \\
+RO-F-22 & L'utente può annullare una formattazione di una porzione di testo selezionato riselezionandola dalla toolbar & UC-1.8.* \\
 \hline
-RO-F-23 & L'utente può scegliere una combinazione di opzioni di formattazioni dalla toolbar quando non c'è alcun testo selezionato per applicarle a testo futuro & UC-1.9.* \\
+RO-F-23 & L'utente può estendere la formattazione di una porzione di testo selezionato riselezionandola dalla toolbar & UC-1.8.* \\
 \hline
-RO-F-24 & Il sistema deve supportare l'inserimento e la visualizzazione di caratteri Unicode (supporto multilingua) & UC-1.0 \\
+RO-F-24 & L'utente può creare sottoliste scegliendo di creare una lista dalla toolbar quando il cursore è già all'interno di una lista  & UC-1.8.6.* \\
 \hline
-RO-F-25 & Il sistema permette di avviare la correzione grammaticale & UC-2.6 \\
+RO-F-25 & L'utente può scegliere una combinazione di opzioni di formattazioni dalla toolbar quando non c'è alcun testo selezionato per applicarle a testo futuro & UC-1.9.* \\
 \hline
-RO-F-26 & Il sistema permette di inviare del testo ad un agente esterno & UC-2.0, UC-2.6, UC-2.7, UC-2.7.*, UC-2.8, UC-2.9, UC-2.10, UC-2.11 \\
+RO-F-26 & Il sistema deve supportare l'inserimento e la visualizzazione di caratteri Unicode (supporto multilingua) & UC-1.0 \\
 \hline
-RO-F-27 & L’utente può modificare, formattare e annullare le generazioni di testo & UC-2.1.* \\
+RO-F-27 & Il sistema permette di avviare la correzione grammaticale & UC-2.6 \\
 \hline
-RO-F-28 & Se l'utente annulla la generazione di testo, il sistema deve garantire che nessuna porzione parziale di testo generato venga inserita nel documento.
+RO-F-28 & Il sistema permette di inviare del testo ad un agente esterno & UC-2.0, UC-2.6, UC-2.7, UC-2.7.*, UC-2.8, UC-2.9, UC-2.10, UC-2.11 \\
+\hline
+RO-F-29 & L’utente può modificare, formattare e annullare le generazioni di testo & UC-2.1.* \\
+\hline
+RO-F-30 & Se l'utente annulla la generazione di testo, il sistema deve garantire che nessuna porzione parziale di testo generato venga inserita nel documento.
  & UC-2.1.* \\
 \hline
-RO-F-29 & Una volta generato, il testo dell'agente esterno viene inserito nell'editor dal sistema, in modo che tutte le funzionalità dell'editor siano applicate anche al testo generato & UC-2.0, UC-2.2, UC-2.6, UC-2.7, UC-2.7.x, UC-2.8 \\
+RO-F-31 & Una volta generato, il testo dell'agente esterno viene inserito nell'editor dal sistema, in modo che tutte le funzionalità dell'editor siano applicate anche al testo generato & UC-2.0, UC-2.2, UC-2.6, UC-2.7, UC-2.7.x, UC-2.8 \\
 \hline
-RO-F-30 & Il sistema permette all'utente di eliminare il testo generato da un agente esterno & UC-2.0, UC-2.2, UC-2.3, UC-2.4, UC-2.5.*, UC-2.6 \\
+RO-F-32 & Il sistema permette all'utente di eliminare il testo generato da un agente esterno & UC-2.0, UC-2.2, UC-2.3, UC-2.4, UC-2.5.*, UC-2.6 \\
 \hline
-RO-F-31 & Il sistema consente all'utente di avviare l'analisi del testo selezionato o dell'intero testo utilizzando il cappello scelto & UC-2.7, UC-2.7.* \\
+RO-F-33 & Il sistema consente all'utente di avviare l'analisi del testo selezionato o dell'intero testo utilizzando il cappello scelto & UC-2.7, UC-2.7.* \\
 \hline
-RO-F-32 & Il sistema permette l'invio di un prompt scritto dall’utente per la generazione del testo tramite agente esterno & UC-2.8 \\
+RO-F-34 & Il sistema permette l'invio di un prompt scritto dall’utente per la generazione del testo tramite agente esterno & UC-2.8 \\
 \hline
-RO-F-33 & Il sistema permette la modifica del testo generato inserito nell'editor & UC-2.3, UC-2.4, UC-2.5.*, UC-2.8, UC-2.11 \\
+RO-F-35 & Il sistema permette la modifica del testo generato inserito nell'editor & UC-2.3, UC-2.4, UC-2.5.*, UC-2.8, UC-2.11 \\
 \hline
-RO-F-34 & Il sistema permette la modifica del prompt da inviare ad un agente esterno & UC-2.8, UC-2.9, UC-2.10, UC-2.11 \\
+RO-F-36 & Il sistema permette la modifica del prompt da inviare ad un agente esterno & UC-2.8, UC-2.9, UC-2.10, UC-2.11 \\
 \hline
-RO-F-35 & L'utente deve poter accedere alle azioni sul testo tramite agente esterno in ogni momento & UC-2.0 \\
+RO-F-37 & L'utente deve poter accedere alle azioni sul testo tramite agente esterno in ogni momento & UC-2.0 \\
 \hline
-RO-F-36 & Ogni sezione che contiene testo ricevuto da un agente esterno include opzioni per eliminare o rigenerare il testo & UC-2.0, UC-2.2, UC-2.3, UC-2.4, UC-2.5.* \\
+RO-F-38 & Ogni sezione che contiene testo ricevuto da un agente esterno include opzioni per eliminare o rigenerare il testo & UC-2.0, UC-2.2, UC-2.3, UC-2.4, UC-2.5.* \\
 \hline
-RO-F-37 & L'utente deve poter riassumere tutto o una parte selezionata del testo usando un agente esterno & UC-2.3 \\
+RO-F-39 & L'utente deve poter riassumere tutto o una parte selezionata del testo usando un agente esterno & UC-2.3 \\
 \hline
-RO-F-38 &  L'utente deve poter usare un agente esterno per riscrivere tutto o una parte selezionata del testo migliorandolo seguendo determinate specifiche come sintassi, stile e chiarezza & UC-2.4 \\
+RO-F-40 &  L'utente deve poter usare un agente esterno per riscrivere tutto o una parte selezionata del testo migliorandolo seguendo determinate specifiche come sintassi, stile e chiarezza & UC-2.4 \\
 \hline
-RO-F-39 & L'utente deve poter tradurre il testo usando un agente esterno in: inglese, italiano, tedesco, francese, spagnolo e cinese mandarino & UC-2.5.* \\
+RO-F-41 & L'utente deve poter tradurre il testo usando un agente esterno in: inglese, italiano, tedesco, francese, spagnolo e cinese mandarino & UC-2.5.* \\
 \hline
-RO-F-40 & Se viene annullata prematuramente la generazione di testo, rimarrà ciò che è già stato generato & UC-2.3, UC-2.4, UC-2.5.* \\
+RO-F-42 & Se viene annullata prematuramente la generazione di testo, rimarrà ciò che è già stato generato & UC-2.3, UC-2.4, UC-2.5.* \\
 \hline
-RO-F-41 & L'utente può caricare/aprire un file dal proprio dispositivo all'interno dell'editor & UC-3.0, UC-3.0.0, UC-3.0.1 \\
+RO-F-43 & L'utente può caricare/aprire un file dal proprio dispositivo all'interno dell'editor & UC-3.0, UC-3.0.0, UC-3.0.1 \\
 \hline
-RO-F-42 & Il sistema deve supportare il caricamento tramite dialogo di esplorazione file (file picker) & UC-3.0, UC-3.0.1 \\
+RO-F-44 & Il sistema deve supportare il caricamento tramite dialogo di esplorazione file (file picker) & UC-3.0, UC-3.0.1 \\
 \hline
-RO-F-43 & Il sistema deve permettere all'utente di rimuovere il file che ha caricato (chiudendo il documento o l'editor) & UC3.0, UC-3.3 \\
+RO-F-45 & Il sistema deve permettere all'utente di rimuovere il file che ha caricato (chiudendo il documento o l'editor) & UC3.0, UC-3.3 \\
 \hline
-RO-F-44 & Il sistema deve permettere all'utente di annullare l'operazione di caricamento file & UC-3.0 \\
+RO-F-46 & Il sistema deve permettere all'utente di annullare l'operazione di caricamento file & UC-3.0 \\
 \hline
-RO-F-45 & Il sistema notifica l'errore se non riesce a caricare il file & UC-3.1, UC-3.2\\
+RO-F-47 & Il sistema notifica l'errore se non riesce a caricare il file & UC-3.1, UC-3.2\\
 \hline
-RO-F-46 & Il sistema deve consentire l'esportazione del documento in formato PDF. & UC-4.0, UC-4.1\\
+RO-F-48 & Il sistema deve consentire l'esportazione del documento in formato PDF. & UC-4.0, UC-4.1\\
 \hline
-RO-F-47 & Il sistema deve essere in grado di convertire il documento da Markdown al formato selezionato dall'utente. & UC-4.0, UC-4.0, UC-4.1, UC-4.1.1, UC-4.1.2, UC-4.1.3, UC-4.1.4\\
+RO-F-49 & Il sistema deve essere in grado di convertire il documento da Markdown al formato selezionato dall'utente. & UC-4.0, UC-4.0, UC-4.1, UC-4.1.1, UC-4.1.2, UC-4.1.3, UC-4.1.4\\
 \hline
-RO-F-48 & Il sistema deve controllare che il range di pagine inserito dall'utente sia valido (che non superi il numero di pagine presenti o che non sia un numero negativo). & UC-4.2.1, UC-4.3.1\\
+RO-F-50 & Il sistema deve controllare che il range di pagine inserito dall'utente sia valido (che non superi il numero di pagine presenti o che non sia un numero negativo). & UC-4.2.1, UC-4.3.1\\
 \hline
-RO-F-49 & Il sistema deve permettere di poter scaricare il file nel dispositivo dell'utente. & UC-4.0\\
+RO-F-51 & Il sistema deve permettere di poter scaricare il file nel dispositivo dell'utente. & UC-4.0\\
 \hline
-RO-F-50 & Il sistema deve potersi collegare a un dispositivo di stampa. & UC-4.3\\
+RO-F-52 & Il sistema deve potersi collegare a un dispositivo di stampa. & UC-4.3\\
 \hline
 RD-F-1 & Il sistema deve supportare l'uso di scorciatoie da tastiera per le operazioni di formattazione & UC-1.8.* \\
 \hline
