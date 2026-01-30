@@ -65,7 +65,7 @@
         \centering
         \begin{tabular}{|l|p{5cm}|}
             \hline
-            \textbf{Versione} & 0.4.8 \\
+            \textbf{Versione} & 0.4.9 \\
             \hline
             \textbf{Stato} & In corso \\
             \hline
@@ -96,6 +96,8 @@
     \label{tab:versionamento} \\
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verifica} \\
+        \hline
+        0.4.9 & 30/01/2026 & Joseph Grant & Correzioni requisiti inerenti alla macroarea 4 &  \\
         \hline
         0.4.8 & 29/01/2026 & Joseph Grant & Correzioni requisiti inerenti alla macroarea 3 &  \\
         \hline
@@ -2035,7 +2037,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
 
 \newpage
 
-\subsection{Macroarea 5 - Autenticazione (opzionale)}
+\subsection{Macroarea 5 - Autenticazione}
 \subsubsection{UC-5.0 - Login}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente non autenticato
@@ -2452,15 +2454,15 @@ RO-F-49 & Il sistema deve permettere all'utente di rimuovere il file che ha cari
 \hline
 RO-F-50 & Prima di procedere con il caricamento di un file, il sistema chiede conferma all'utente & UC-3.0 \\
 \hline
-RO-F-51 & Il sistema deve consentire l'esportazione del documento in formato PDF. & UC-4.0, UC-4.1\\
+RO-F-51 & Il sistema deve consentire l'esportazione del documento in formato PDF. & UC-4.0.1\\
 \hline
-RO-F-52 & Il sistema deve essere in grado di convertire il documento da Markdown al formato selezionato dall'utente. & UC-4.0, UC-4.0, UC-4.1, UC-4.1.1, UC-4.1.2, UC-4.1.3, UC-4.1.4\\
+RO-F-52 & Il sistema deve essere in grado di convertire il documento da Markdown al formato selezionato dall'utente. & UC-4.0 \\
 \hline
-RO-F-53 & Il sistema deve controllare che il range di pagine inserito dall'utente sia valido (che non superi il numero di pagine presenti o che non sia un numero negativo). & UC-4.2.1, UC-4.3.1\\
+RO-F-53 & Il sistema deve controllare che il range di pagine inserito dall'utente sia valido (che non superi il numero di pagine presenti o che non sia un numero negativo). & UC-4.1.* \\
 \hline
 RO-F-54 & Il sistema deve permettere di poter scaricare il file nel dispositivo dell'utente. & UC-4.0\\
 \hline
-RO-F-55 & Il sistema deve potersi collegare a un dispositivo di stampa. & UC-4.3\\
+RO-F-55 & Il sistema deve potersi collegare a un dispositivo di stampa. & UC-4.2\\
 \hline
 RD-F-1 & Il sistema deve supportare l'uso di scorciatoie da tastiera per le operazioni di formattazione & UC-1.8.* \\
 \hline
@@ -2472,17 +2474,17 @@ RD-F-4 & Il sistema deve offrire opzioni per le operazioni comuni sui file come 
 \hline
 RD-F-5 & Se sono presenti modifiche non salvate nell'editor, il sistema chiede conferma all'utente prima di caricare un nuovo file, permettendo di annullare l'operazione, per salvare il testo presente, o sovrascrivere il contenuto senza salvarlo & UC-3.0 \\
 \hline
-RD-F-6 & Il sistema deve consentire l'esportazione del documento in formato MD. & UC-4.1.1 \\
+RD-F-6 & Il sistema deve consentire l'esportazione del documento in formato MD. & UC-4.0.2 \\
 \hline
-RD-F-7 & Il sistema deve consentire l'esportazione del documento in formato HTML. & UC-4.1.2 \\
+RD-F-7 & Il sistema deve consentire l'esportazione del documento in formato HTML. & UC-4.0.3 \\
 \hline
-RD-F-8 & Il sistema deve consentire l'esportazione del documento in formato ODT. & UC-4.1.3 \\
+RD-F-8 & Il sistema deve consentire l'esportazione del documento in formato ODT. & UC-4.0.4 \\
 \hline
-RD-F-9 & Il sistema deve consentire l'esportazione del documento in formato DOCX. & UC-4.1.4 \\
+RD-F-9 & Il sistema deve consentire l'esportazione del documento in formato DOCX. & UC-4.0.5 \\
 \hline
-RD-F-10 & L'utente deve poter scegliere se esportare l'intero documento, un range di pagine o una quantità selezionata di pagine. & UC-4.2, UC-4.2.1\\
+RD-F-10 & L'utente deve poter scegliere se esportare l'intero documento, un range di pagine o una quantità selezionata di pagine. & UC-4.1.*\\
 \hline
-RD-F-11 & Il sistema deve permettere all’utente di scegliere se stampare tutto il documento o una quantità selezionata di pagine. & UC-4.3, UC-4.3.1\\
+RD-F-11 & Il sistema deve permettere all'utente di scegliere se stampare tutto il documento o una quantità selezionata di pagine. & UC-4.2.*\\
 \hline
 ROP-F-1 & L'utente può ricercare parole nel testo attraverso l'editor & UC-1.11 \\
 \hline
@@ -2642,9 +2644,9 @@ RO-Q-18 & Il sistema deve impedire il caricamento di file corrotti & UC-3.0, UC-
 \hline
 RO-Q-19 & La dimensione massima consentita per il caricamento di un file deve essere limitata a una soglia definita e ragionevole & UC-3.2 \\
 \hline
-RO-Q-20 & Il sistema deve avvisare l'utente della buona riuscita o di eventuali errori durante il download. & UC-4.0, UC-4.1 \\
+RO-Q-20 & Il sistema deve avvisare l'utente della buona riuscita o di eventuali errori durante il download. & UC-4.0 \\
 \hline
-RO-Q-21 & Il sistema deve avvisare l’utente in caso di errore durante l’invio del documento alla stampante. & UC-4.3 \\
+RO-Q-21 & Il sistema deve avvisare l'utente in caso di errore durante l'invio del documento alla stampante. & UC-4.2 \\
 \hline
 RO-Q-22 & Il sistema deve poter permettere di visualizzare sia il testo in lingua originale che la traduzione generata & UC-2.5, UC-2.5.x \\
 \hline
@@ -2654,11 +2656,9 @@ RD-Q-2 & L'operazione di caricamento e rendering di un file di dimensioni suppor
 \hline
 RD-Q-3 & Il parsing del contenuto del file deve essere robusto, garantendo che caratteri non validi non causino il crash dell'applicazione & UC-3.* \\
 \hline
-RD-Q-4 & Il sistema deve fornire una visualizzazione in anteprima del documento nel formato selezionato prima di procedere al download. & UC-4.0, UC-4.1 \\
+RD-Q-4 & Il sistema deve fornire una visualizzazione in anteprima del documento nel formato selezionato prima di procedere al download. & UC-4.0 \\
 \hline
-RD-Q-5 & Il sistema deve permettere all'utente di scegliere il nome del file prima di scaricare il documento. & UC-4.0, UC-4.1 \\
-\hline
-RD-Q-6 & Il sistema deve permettere la visualizzazione in anteprima del documento prima dell'invio del comando di stampa. & UC-4.3 \\
+RD-Q-5 & Il sistema deve permettere all'utente di scegliere il nome del file prima di scaricare il documento. & UC-4.0 \\
 \hline
 ROP-Q-1 & Il sistema deve mostrare un messaggio di errore non specifico nel caso di fallimento del login & UC-5.0 \\
 \hline
