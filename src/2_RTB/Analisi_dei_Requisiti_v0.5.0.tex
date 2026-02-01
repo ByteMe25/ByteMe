@@ -65,7 +65,7 @@
         \centering
         \begin{tabular}{|l|p{5cm}|}
             \hline
-            \textbf{Versione} & 0.4.9 \\
+            \textbf{Versione} & 0.5.0 \\
             \hline
             \textbf{Stato} & In corso \\
             \hline
@@ -96,6 +96,8 @@
     \label{tab:versionamento} \\
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verifica} \\
+        \hline
+        0.5.0 & 01/02/2026 & Joseph Grant & Aggiunta casi d'uso macroarea 5 &  \\
         \hline
         0.4.9 & 30/01/2026 & Joseph Grant & Correzioni requisiti inerenti alla macroarea 4 &  \\
         \hline
@@ -2504,7 +2506,7 @@ ROP-F-8 & Il sistema permette di inserire una formula matematica generata con da
 \hline
 ROP-F-9 & Il sistema deve permettere all'utente di inserire le proprie credenziali (username e password) per il login & UC-5.0 \\
 \hline
-ROP-F-10 & Se le credenziali sono errate il sistema deve non far autenticare l'utente & UC-5.0 \\
+ROP-F-10 & Se le credenziali sono errate il sistema deve non far autenticare l'utente & UC-5.0.* \\
 \hline
 ROP-F-11 & Il sistema deve permettere all'utente di potersi registrare tramite uno username e una password & UC-5.1 \\
 \hline
@@ -2522,18 +2524,19 @@ ROP-F-17 & Il sistema deve terminare la sessione nel caso un account venga elimi
 \hline
 ROP-F-18 & Il sistema deve permettere ad un utente di vedere i file che ha salvato & UC-5.3 \\
 \hline
-ROP-F-19 & Il sistema deve permettere ad un utente autenticato di selezionare un file dall'elenco e aprirlo & UC-5.3 \\
+ROP-F-19 & Il sistema deve permettere ad un utente autenticato di selezionare un file dall'elenco di quelli salvat e aprirlo & UC-5.3 \\
 \hline
 ROP-F-20 & Il sistema deve consentire all'utente di annullare l'operazione di apertura senza recuperare alcun file dal database & UC-5.3 \\
 \hline
-ROP-F-21 & Il sistema deve permettere all'utente l'apertura di un file salvato e visibile all'utente & UC-5.3 \\
+ROP-F-21 & Il sistema deve permettere all'utente l'apertura di un file salvato & UC-5.3 \\
 \hline
 ROP-F-22 & Il sistema deve permettere il salvataggio di un file in un sistema di persistenza non locale & UC-5.4 \\
 \hline
 ROP-F-23 & Il sistema deve associare ogni file al suo creatore & UC-5.4 \\
 \hline
-ROP-F-24 & L'utente può effettuare il logout in ogni momento e terminare la propria sessione & UC-5.5 \\
+ROP-F-24 & Un utente non autenticato che prova a salvare un file viene riportato alla pagina di login  & UC-5.4.2 \\
 \hline
+ROP-F-25 & L'utente può effettuare il logout in ogni momento e terminare la propria sessione & UC-5.5 \\
 
 \addlinespace[1em]
 \caption{Tabella dei requisiti funzionali}
@@ -2580,7 +2583,7 @@ RD-V-1 & Il sistema deve supportare l'importazione dei formati di file più comu
 \hline
 ROP-V-1 & La password inserita dall'utente deve essere minimo 8 caratteri & UC-5.1 \\
 \hline
-ROP-V-2 & La password inserita dall'utente deve contenere almeno un carattere speciale & UC-5.1 \\
+ROP-V-2 & La password inserita dall'utente deve contenere almeno un carattere speciale e un numero & UC-5.1 \\
 \hline
 ROP-V-3 & L'accesso ai file salvati nel database deve essere consentito solo ad utenti autenticati & UC-5.3 \\
 \hline
