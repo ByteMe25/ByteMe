@@ -65,7 +65,7 @@
         \centering
         \begin{tabular}{|l|p{5cm}|}
             \hline
-            \textbf{Versione} & 0.5.0 \\
+            \textbf{Versione} & 0.5.1 \\
             \hline
             \textbf{Stato} & In corso \\
             \hline
@@ -96,6 +96,8 @@
     \label{tab:versionamento} \\
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verifica} \\
+        \hline
+        0.5.1 & 05/02/2026 & Joseph Grant & Macroarea 2, modifica UC 2.1.* e relativi requisiti &  \\
         \hline
         0.5.0 & 01/02/2026 & Joseph Grant & Aggiunta casi d'uso macroarea 5 &  \\
         \hline
@@ -1037,8 +1039,8 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \item \textbf{Scenario principale}:
     \begin{itemize}
         \item L’utente seleziona un’operazione AI da eseguire nel testo selezionato o non selezionato
-        \item Ogni nuova operazione AI genera testo che viene inserito nell’editor sotto alla porzione di testo interessata o in un box apposito
-        \item Le generazioni si accumulano come blocchi di testo distinti nel flusso del documento
+        \item Ogni nuova operazione AI genera testo che viene inserito nell’editor in una sezione apposita
+        \item Queste sezioni sono considerate delle proposte, che includono le seguenti opzioni: accetta, annulla, rigenera
         \item Ogni blocco mantiene la sua formattazione distintiva che identifica:
             \begin{enumerate}
                 \item Il tipo di operazione
@@ -1049,7 +1051,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \item \textbf{Estensioni}:
     \begin{itemize}
         \item L’utente può modificare o effettuare operazioni sulle generazioni
-        \item L’utente può accettare, eliminare o rigenerare la risposta dell’AI
+        \item L’utente può confermare, eliminare o rigenerare la risposta dell’AI
         \item L’utente vuole una vista compatta della storia delle generazioni
         \item L’utente vuole vedere solo il testo digitato senza i blocchi di testo generati dall’AI
         \item L’utente annulla l’operazione prima del completamento della generazione
@@ -1064,7 +1066,21 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \label{fig:uc2.1}
 \end{figure}
 
-\subsubsection{UC-2.1.1 - Modifica del testo generato}
+\subsubsection{UC-2.1.1 - Conferma del testo generato}
+\begin{itemize}
+    \item \textbf{Attore principale}: Utente generico
+    \item \textbf{Descrizione}: L’utente decide di accettare la proposta di testo generata dall'AI
+    \item \textbf{Precondizioni}: Il foglio di lavoro contiene una proposta di testo, generata dall’AI
+    \item \textbf{Postcondizioni}: L’utente accetta la proposta di testo e viene integrata nel documento
+    \item \textbf{Scenario principale}:
+    \begin{itemize}
+        \item L’utente visualizza una proposta di testo generata dall’AI
+        \item L’utente seleziona l’opzione "Accetta"
+        \item Il testo generato viene integrato nel documento
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{UC-2.1.2 - Modifica del testo generato}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: L’utente può interagire con il testo generato dall’AI modificandolo tramite sintassi markdown
@@ -1078,7 +1094,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-2.1.2 - Eliminazione del testo generato}
+\subsubsection{UC-2.1.3 - Eliminazione del testo generato}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: L’utente può eliminare intere sezioni di testo generato dall’AI
@@ -1087,13 +1103,13 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \item \textbf{Scenario principale}:
     \begin{itemize}
         \item L’utente individua un blocco di testo generato dall’AI
-        \item L’utente visualizza l’opzione “Elimina” accanto alla generazione
-        \item L’utente seleziona “Elimina”
+        \item L’utente visualizza l’opzione "Annulla" accanto alla generazione
+        \item L’utente seleziona “Annulla”
         \item Il testo generato viene cancellato dal documento
     \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-2.1.3 - Rigenerazione testo generato}
+\subsubsection{UC-2.1.4 - Rigenerazione testo generato}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: L’utente può rigenerare intere sezioni di testo precedentemente generato dall’AI
@@ -1109,29 +1125,16 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-2.1.4 - Visualizzazione solo del testo utente}
+\subsubsection{UC-2.1.5 - Visualizzazione del registro delle generazioni}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
-    \item \textbf{Descrizione}: L’utente può scegliere di visualizzare solo il testo che ha scritto nel documento, senza visualizzare le sezioni di testo generato dall’AI
-    \item \textbf{Precondizioni}: Sono state eseguite una o più operazioni AI e i relativi testi generati sono stati inseriti nell’editor
-    \item \textbf{Postcondizioni}: L’utente visualizza solo il testo originario senza le generazioni AI
+    \item \textbf{Descrizione}: L'utente può scegliere di visualizzare solo il testo che è stato generato dalle funzionalità AI, consultando un registro delle generazioni
+    \item \textbf{Precondizioni}: Sono state eseguite una o più operazioni AI e i relativi testi generati vengono in contemporanea inseriti in un registro dedicato
+    \item \textbf{Postcondizioni}: L'utente visualizza il registro delle generazioni
     \item \textbf{Scenario principale}:
     \begin{itemize}
-        \item L’utente seleziona l’opzione “Visualizza solo testo utente”
-        \item L’editor mostra solo il testo scritto dall’utente, rimuovendo le generazioni AI dalla visualizzazione
-    \end{itemize}
-\end{itemize}
-
-\subsubsection{UC-2.1.5 - Visualizzazione solo del testo generato dall’AI}
-\begin{itemize}
-    \item \textbf{Attore principale}: Utente generico
-    \item \textbf{Descrizione}: L’utente può scegliere di visualizzare solo il testo che è stato generato dalle funzionalità AI, senza vedere il testo originario
-    \item \textbf{Precondizioni}: Sono state eseguite una o più operazioni AI e i relativi testi generati sono stati inseriti nell’editor
-    \item \textbf{Postcondizioni}: L’utente visualizza solo le generazioni nel documento
-    \item \textbf{Scenario principale}:
-    \begin{itemize}
-        \item L’utente seleziona l’opzione “Visualizza solo testo generato”
-        \item L’editor mostra solo i blocchi di testo generato dall’AI, rimuovendo il testo scritto dall’utente dalla visualizzazione
+        \item L’utente seleziona l’opzione “Visualizza storico generazioni”
+        \item Il sistema mostra un registro con tutte le generazioni AI effettuate nel documento
     \end{itemize}
 \end{itemize}
 
@@ -2407,58 +2410,59 @@ RO-F-25 & L'utente può scegliere una combinazione di opzioni di formattazioni d
 \hline
 RO-F-26 & Il sistema deve supportare l'inserimento e la visualizzazione di caratteri Unicode (supporto multilingua) & UC-1.0 \\
 \hline
-RO-F-27 & Il sistema permette di avviare la correzione grammaticale & UC-2.5.* \\
+RO-F-27 & Il sistema permette di inviare del testo ad un agente esterno & UC-2.* \\
 \hline
-RO-F-28 & Il sistema permette di inviare del testo ad un agente esterno & UC-2.* \\
+RO-F-28 & L'utente deve poter accedere alle azioni sul testo tramite agente esterno in ogni momento & UC-2.0 \\ 
 \hline
-RO-F-29 & L’utente può modificare, formattare e annullare le generazioni di testo & UC-2.1.* \\
+RO-F-29 & Una volta generato, il testo dell'agente esterno viene inserito nell'editor dal sistema, in modo che tutte le funzionalità dell'editor siano applicabili anche al testo generato & UC-2.* \\
 \hline
-RO-F-30 & Se l'utente annulla la generazione di testo, il sistema deve garantire che nessuna porzione parziale di testo generato venga inserita nel documento.
- & UC-2.1.* \\
+RO-F-30 & L’utente può modificare, formattare e annullare le generazioni di testo & UC-2.1.* \\
 \hline
-RO-F-31 & Una volta generato, il testo dell'agente esterno viene inserito nell'editor dal sistema, in modo che tutte le funzionalità dell'editor siano applicate anche al testo generato & UC-2.* \\
+RO-F-31 & Ogni interazione con un agente esterno che ha come effetto quella di generare del testo, viene inclusa in un registro delle generazioni, anche quelle annullate dall'utente & UC-2.1.4 \\
 \hline
-RO-F-32 & Il sistema permette all'utente di rimuovere tutto il testo generato da un agente esterno& UC-2.* \\
+RO-F-32 & Il testo generato viene prima mostrato come proposta: ogni proposta viene generata separata dal testo dell'utente & UC-2.1 \\
 \hline
-RO-F-33 & Il sistema consente all'utente di avviare l'analisi del testo selezionato o dell'intero testo utilizzando il cappello scelto & UC-2.6 \\
+RO-F-33 & Il testo in stato di proposta, include le opzioni di conferma, annullamento o rigenerazione & UC-2.1 \\
 \hline
-RO-F-34 & Il sistema permette l'invio di un prompt scritto dall’utente per la generazione del testo tramite agente esterno & UC-2.7 \\
+RO-F-34 & Il sistema permette la modifica del testo generato in stato di proposta & UC-2.* \\
 \hline
-RO-F-35 & Il sistema permette la modifica del testo generato inserito nell'editor & UC-2.* \\
+RO-F-35 & Una proposta che viene confermata viene inserito nel documento e la sezione di proposta viene rimossa & UC-2.1.1 \\
 \hline
-RO-F-36 & Il sistema permette la modifica del prompt da inviare ad un agente esterno & UC-2.6 \\
+RO-F-36 & Una proposta che viene rigenerata viene rimandata all'agente esterno con gli stessi parametri e la nuova risposta sovrascrive la proposta corrente & UC-2.1.4 \\
 \hline
-RO-F-37 & L'utente deve poter accedere alle azioni sul testo tramite agente esterno in ogni momento & UC-2.0 \\
+RO-F-37 & Una proposta annullata comporta la rimozione del testo generato e della sezione corrispondente & UC-2.1.5 \\
 \hline
-RO-F-38 & Ogni sezione che contiene testo ricevuto da un agente esterno include opzioni per eliminare o rigenerare il testo & UC-2.* \\
+RO-F-38 & L'utente può consultare il registro delle generazioni effettuate & UC-2.1.6 \\
 \hline
-RO-F-39 & L'utente deve poter riassumere tutto o una parte selezionata del testo usando un agente esterno & UC-2.2 \\
+RO-F-39 & Il sistema consente all'utente di avviare l'analisi del testo selezionato o dell'intero testo utilizzando il cappello scelto & UC-2.6 \\
 \hline
-RO-F-40 &  L'utente deve poter usare un agente esterno per riscrivere tutto o una parte selezionata del testo migliorandolo seguendo determinate specifiche come sintassi, stile e chiarezza & UC-2.3 \\
+RO-F-40 & Il sistema permette l'invio di un prompt scritto dall'utente per la generazione del testo tramite agente esterno & UC-2.7 \\
 \hline
-RO-F-41 & L'utente deve poter tradurre il testo usando un agente esterno in: inglese, italiano, tedesco, francese, spagnolo e cinese mandarino & UC-2.4.* \\
+RO-F-41 & Il sistema permette la modifica del prompt da inviare ad un agente esterno & UC-2.6 \\
 \hline
-RO-F-42 & Se viene annullata prematuramente la generazione di testo, rimarrà ciò che è già stato generato & UC-2.* \\
+RO-F-42 & Il sistema permette di avviare la correzione grammaticale & UC-2.5.* \\
 \hline
-RO-F-43 & L'agente esterno può generare testo basandosi su prompt inviatogli dall'utente & UC-2.7.* \\
+RO-F-43 & L'utente deve poter riassumere tutto o una parte selezionata del testo usando un agente esterno & UC-2.2 \\
 \hline
-RO-F-44 & L'utente può rigenerare la risposta alla propria query nel caso fosse insoddisfatto con l'output dell'agente esterno & UC-2.1.3 \\
+RO-F-44 &  L'utente deve poter usare un agente esterno per riscrivere tutto o una parte selezionata del testo migliorandolo seguendo determinate specifiche come sintassi, stile e chiarezza & UC-2.3 \\
 \hline
-RO-F-45 & L'utente può visualizzare il testo scritto da se stesso, senza quello generato da un agente esterno & UC-2.1.4 \\
+RO-F-45 & L'utente deve poter tradurre il testo usando un agente esterno in: inglese, italiano, tedesco, francese, spagnolo e cinese mandarino & UC-2.4.* \\
 \hline
-RO-F-46 & L'utente può visualizzare il testo generato da un agente esterno, senza quello che ha scritto dall'utente & UC-2.1.5 \\
+RO-F-46 & Se la generazione di testo si blocca prematuramente, rimarrà ciò che è già stato generato, in attesa che l'utente confermi, rigeneri o elimini ciò che è stato generato & UC-2.* \\
 \hline
-RO-F-47 & L'utente può caricare/aprire un file dal proprio dispositivo all'interno dell'editor & UC-3.* \\
+RO-F-47 & L'agente esterno può generare testo basandosi su prompt inviatogli dall'utente & UC-2.7.* \\
 \hline
-RO-F-48 & Il sistema deve supportare il caricamento tramite dialogo di esplorazione file (file picker) & UC-3.0.* \\
+RO-F-48 & L'utente può caricare/aprire un file dal proprio dispositivo all'interno dell'editor & UC-3.* \\
 \hline
-RO-F-49 & Il sistema deve permettere all'utente di rimuovere il file che ha caricato (chiudendo il documento o l'editor) & UC-3.3 \\
+RO-F-49 & Il sistema deve supportare il caricamento tramite dialogo di esplorazione file (file picker) & UC-3.0.* \\
 \hline
-RO-F-50 & Prima di procedere con il caricamento di un file, il sistema chiede conferma all'utente & UC-3.0 \\
+RO-F-50 & Il sistema deve permettere all'utente di rimuovere il file che ha caricato (chiudendo il documento o l'editor) & UC-3.3 \\
 \hline
-RO-F-51 & Il sistema deve consentire l'esportazione del documento in formato PDF. & UC-4.0.1\\
+RO-F-51 & Prima di procedere con il caricamento di un file, il sistema chiede conferma all'utente & UC-3.0 \\
 \hline
-RO-F-52 & Il sistema deve essere in grado di convertire il documento da Markdown al formato selezionato dall'utente. & UC-4.0 \\
+RO-F-52 & Il sistema deve consentire l'esportazione del documento in formato PDF. & UC-4.0.1\\
+\hline
+RO-F-53 & Il sistema deve essere in grado di convertire il documento da Markdown al formato selezionato dall'utente. & UC-4.0 \\
 \hline
 RO-F-53 & Il sistema deve controllare che il range di pagine inserito dall'utente sia valido (che non superi il numero di pagine presenti o che non sia un numero negativo). & UC-4.1.* \\
 \hline
@@ -2490,9 +2494,9 @@ RD-F-11 & Il sistema deve permettere all'utente di scegliere se stampare tutto i
 \hline
 ROP-F-1 & L'utente può ricercare parole nel testo attraverso l'editor & UC-1.11 \\
 \hline
-ROP-F-2 & Il sistema separa visivamente il testo generato e quello utente & UC-2.* \\
+ROP-F-2 & La sezione di testo generata come proposta è visibilmente diversa dal testo utente & UC-2.* \\
 \hline
-ROP-F-3 & La sezione viene colorata in base al tipo di operazione che viene fatta & UC-2.0 \\
+ROP-F-3 & La sezione di testo in stato di proposta viene colorata in base al tipo di operazione che viene fatta & UC-2.0 \\
 \hline
 ROP-F-4 & Il sistema offre esempi per la richiesta di generazione di testo a partire da un estratto & UC-2.7 \\
 \hline
@@ -2559,11 +2563,11 @@ RO-V-2 & Il sistema deve supportare nativamente la codifica dei caratteri Unicod
 \hline
 RO-V-3 & Il formato di input e storage del testo deve essere Markdown & UC-1.0, UC-1.1 \\
 \hline
-RO-V-4 & L’agente esterno applica modifiche esclusivamente al testo selezionato. Un contesto aggiuntivo può essere fornito solo a scopo interpretativo e non deve essere alterato. & UC-2.0 \\
+RO-V-4 & L’agente esterno applica modifiche relative esclusivamente al testo selezionato. Un contesto aggiuntivo può essere fornito solo a scopo interpretativo e non deve essere alterato. & UC-2.0 \\
 \hline
-RO-V-5 & I testi generati dall'agente esterno devono indicare il tipo di operazione che li ha generati & UC-2.* \\
+RO-V-5 & I testi generati dall'agente esterno devono indicare il tipo di operazione che li ha generati nel registro delle generazioni & UC-2.* \\
 \hline
-RO-V-6 & Il testo generato da un agente esterno viene inserito nella posizione del cursore, se presente nell’editor, altrimenti in fondo al testo & UC-2.* \\
+RO-V-6 & Il testo generato da un agente esterno che viene accettato dall'utente, viene inserito nella posizione del cursore, se presente nell’editor, altrimenti in fondo al testo & UC-2.* \\
 \hline
 RO-V-7 & L'agente esterno deve avere istruzioni sufficienti affinché il testo riscritto sia corretto grammaticalmente, sintatticamente e semanticamente e deve riflettere la richiesta dell'utente & UC-2.3 \\
 \hline
@@ -2591,9 +2595,7 @@ ROP-V-4 & Il sistema deve impedire il salvataggio di file nel database da parte 
 \hline
 ROP-V-5 & Se il testo è già nella lingua da tradurre, l'utente viene avvisato e l'operazione viene interrotta & UC-2.4.* \\
 \hline
-ROP-V-6 &  testi generati dall’agente esterno devono indicare la data e l’ora della generazione & UC-2.* \\
-\hline
-ROP-V-7 & I testi generati dall’agente esterno devono indicare il tipo di operazione che li ha generati & UC-2.* \\
+ROP-V-6 & I testi generati dall’agente esterno nel registro delle generazioni devono indicare la data e l’ora della generazione & UC-2.* \\
 \hline
 \addlinespace[1em]
 \caption{Tabella dei requisiti di vincolo}
@@ -2633,25 +2635,23 @@ RO-Q-11 & Il sistema deve intercettare e gestire gli errori di comunicazione con
 \hline
 RO-Q-12 & Le opzioni, relative alle operazioni con agente esterno, non devono sparire in maniera poco intuitiva muovendo il mouse & UC-2.0 \\
 \hline
-RO-Q-13 & Il testo creato si comporta come qualunque altro testo generato da un agente esterno: facilmente riconoscibile e sempre modificabile dall'utente & UC-2.* \\
+RO-Q-13 & Il sistema mostra un messaggio in caso di errore durante la generazione di contenuto & UC-2.* \\
 \hline
-RO-Q-14 & Il sistema mostra un messaggio in caso di errore durante la generazione di contenuto & UC-2.* \\
+RO-Q-14 & Il sistema deve fornire un feedback visivo immediato all'utente (messaggio di errore o di successo) al termine del tentativo di caricamento file & UC-3.* \\
 \hline
-RO-Q-15 & Il sistema deve fornire un feedback visivo immediato all'utente (messaggio di errore o di successo) al termine del tentativo di caricamento file & UC-3.* \\
+RO-Q-15 & Il sistema deve validare il formato del file caricato e impedire il caricamento di formati non supportati & UC-3.1 \\
 \hline
-RO-Q-16 & Il sistema deve validare il formato del file caricato e impedire il caricamento di formati non supportati & UC-3.1 \\
+RO-Q-16 & Il sistema deve validare le dimensioni del file caricato e impedire il caricamento di file che superano una dimensione massima & UC-3.2 \\
 \hline
-RO-Q-17 & Il sistema deve validare le dimensioni del file caricato e impedire il caricamento di file che superano una dimensione massima & UC-3.2 \\
+RO-Q-17 & Il sistema deve impedire il caricamento di file corrotti & UC-3.0, UC-3.1\\
 \hline
-RO-Q-18 & Il sistema deve impedire il caricamento di file corrotti & UC-3.0, UC-3.1\\
+RO-Q-18 & La dimensione massima consentita per il caricamento di un file deve essere limitata a una soglia definita e ragionevole & UC-3.2 \\
 \hline
-RO-Q-19 & La dimensione massima consentita per il caricamento di un file deve essere limitata a una soglia definita e ragionevole & UC-3.2 \\
+RO-Q-19 & Il sistema deve avvisare l'utente della buona riuscita o di eventuali errori durante il download. & UC-4.0 \\
 \hline
-RO-Q-20 & Il sistema deve avvisare l'utente della buona riuscita o di eventuali errori durante il download. & UC-4.0 \\
+RO-Q-20 & Il sistema deve avvisare l'utente in caso di errore durante l'invio del documento alla stampante. & UC-4.2 \\
 \hline
-RO-Q-21 & Il sistema deve avvisare l'utente in caso di errore durante l'invio del documento alla stampante. & UC-4.2 \\
-\hline
-RO-Q-22 & Il sistema deve poter permettere di visualizzare sia il testo in lingua originale che la traduzione generata & UC-2.5, UC-2.5.x \\
+RO-Q-21 & Il sistema deve poter permettere di visualizzare sia il testo in lingua originale che la traduzione generata & UC-2.5, UC-2.5.x \\
 \hline
 RD-Q-1 & I messaggi di errore (per formato errato, file troppo grande o corrotto) devono essere esplicativi e suggerire all'utente come procedere & UC-3.* \\
 \hline
