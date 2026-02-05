@@ -65,7 +65,7 @@
         \centering
         \begin{tabular}{|l|p{5cm}|}
             \hline
-            \textbf{Versione} & 0.5.1 \\
+            \textbf{Versione} & 0.5.2 \\
             \hline
             \textbf{Stato} & In corso \\
             \hline
@@ -97,21 +97,23 @@
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verifica} \\
         \hline
-        0.5.1 & 05/02/2026 & Joseph Grant & Macroarea 2, modifica UC 2.1.* e relativi requisiti &  \\
+        0.5.2 & 05/02/2026 & Elisa Marchioro & Mini modifiche & \\
         \hline
-        0.5.0 & 01/02/2026 & Joseph Grant & Aggiunta casi d'uso macroarea 5 &  \\
+        0.5.1 & 05/02/2026 & Joseph Grant & Macroarea 2, modifica UC 2.1.* e relativi requisiti & Elisa Marchioro\\
         \hline
-        0.4.9 & 30/01/2026 & Joseph Grant & Correzioni requisiti inerenti alla macroarea 4 &  \\
+        0.5.0 & 01/02/2026 & Joseph Grant & Aggiunta casi d'uso macroarea 5 & Elisa Marchioro\\
         \hline
-        0.4.8 & 29/01/2026 & Joseph Grant & Correzioni requisiti inerenti alla macroarea 3 &  \\
+        0.4.9 & 30/01/2026 & Joseph Grant & Correzioni requisiti inerenti alla macroarea 4 & Elisa Marchioro\\
         \hline
-        0.4.7 & 28/01/2026 & Joseph Grant & Aggiunta requisiti inerenti alla macroarea 2 &  \\
+        0.4.8 & 29/01/2026 & Joseph Grant & Correzioni requisiti inerenti alla macroarea 3 & Elisa Marchioro\\
         \hline
-        0.4.6 & 27/01/2026 & Joseph Grant & Correzione requisiti macroarea 1 &  \\
+        0.4.7 & 28/01/2026 & Joseph Grant & Aggiunta requisiti inerenti alla macroarea 2 & Elisa Marchioro\\
         \hline
-        0.4.5 & 27/01/2026 & Joseph Grant & Aggiunta requisiti inerenti alla macroarea 1 &  \\
+        0.4.6 & 27/01/2026 & Joseph Grant & Correzione requisiti macroarea 1 & Elisa Marchioro\\
         \hline
-        0.4.4 & 21/01/2026 & Joseph Grant & Aggiunta requisiti dal doc FIX REQUISITI &  \\
+        0.4.5 & 27/01/2026 & Joseph Grant & Aggiunta requisiti inerenti alla macroarea 1 & Elisa Marchioro\\
+        \hline
+        0.4.4 & 21/01/2026 & Joseph Grant & Aggiunta requisiti dal doc FIX REQUISITI & Elisa Marchioro \\
         \hline
         0.4.3 & 19/01/2026 & Joseph Grant & Fix diagrammi &  \\
         \hline
@@ -300,7 +302,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-1.0.1 - Gestione perdita della connesione Internet}
+\subsubsection{UC-1.0.1 - Gestione perdita della connessione Internet}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: L'utente sta digitando testo e la connessione internet si interrompe
@@ -315,7 +317,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-1.0.2 - Gestione mancante risposta dell'editor}
+\subsubsection{UC-1.0.2 - Gestione errore di risposta dell'editor}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: L'utente sta digitando testo e l'editor non risponde
@@ -645,7 +647,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-1.8.3 - Applicazione sottolineato al testo selezionato}
+\subsubsection{UC-1.8.3 - Applicazione sottolineatura al testo selezionato}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: Formattazione del testo selezionato come sottolineato tramite barra degli strumenti
@@ -818,7 +820,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-1.9.3 - Impostare sottolineato al testo futuro}
+\subsubsection{UC-1.9.3 - Impostare sottolineatura al testo futuro}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: Formattazione del testo futuro scritto dall’utente in modalità sottolineata
@@ -1066,21 +1068,21 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \label{fig:uc2.1}
 \end{figure}
 
-\subsubsection{UC-2.1.1 - Conferma del testo generato}
+\subsubsection{UC-2.1.1 - Accettazione del testo generato dall'AI}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
-    \item \textbf{Descrizione}: L’utente decide di accettare la proposta di testo generata dall'AI
-    \item \textbf{Precondizioni}: Il foglio di lavoro contiene una proposta di testo, generata dall’AI
-    \item \textbf{Postcondizioni}: L’utente accetta la proposta di testo e viene integrata nel documento
+    \item \textbf{Descrizione}: L’utente accetta la proposta di testo generata dall'AI
+    \item \textbf{Precondizioni}: Il foglio di lavoro contiene la proposta di testo generata dall’AI
+    \item \textbf{Postcondizioni}: L’utente accetta la proposta di testo generato, che viene successivamente integrata nel documento nell'editor
     \item \textbf{Scenario principale}:
     \begin{itemize}
         \item L’utente visualizza una proposta di testo generata dall’AI
         \item L’utente seleziona l’opzione "Accetta"
-        \item Il testo generato viene integrato nel documento
+        \item Il testo generato viene integrato nel documento nell'editor
     \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-2.1.2 - Modifica del testo generato}
+\subsubsection{UC-2.1.2 - Modifica del testo generato dall'AI}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: L’utente può interagire con il testo generato dall’AI modificandolo tramite sintassi markdown
@@ -1090,7 +1092,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \begin{itemize}
         \item L’utente individua un blocco di testo generato dall’AI
         \item L’utente seleziona tutto o una parte del testo generato
-        \item L’utente applica una formattazione markdown al testo selezionato
+        \item L’utente applica modifiche tramite sintassi markdown al testo selezionato
     \end{itemize}
 \end{itemize}
 
@@ -1105,7 +1107,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \item L’utente individua un blocco di testo generato dall’AI
         \item L’utente visualizza l’opzione "Annulla" accanto alla generazione
         \item L’utente seleziona “Annulla”
-        \item Il testo generato viene cancellato dal documento
+        \item Il testo generato viene cancellato dal documento nell'editor
     \end{itemize}
 \end{itemize}
 
@@ -1158,14 +1160,14 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: Il sistema gestisce un fallimento nella generazione della risposta da parte del LLM (es. timeout, assenza di connessione, errore server)
-    \item \textbf{Precondizioni}: L'utente ha avviato un'operazione AI e il sistema è in fase di elaborazione
+    \item \textbf{Precondizioni}: L'utente ha avviato un'operazione AI e il sistema ha qualche errore in fase di elaborazione
     \item \textbf{Postcondizioni}: L’utente viene informato dell'errore e il documento rimane nello stato precedente alla richiesta
     \item \textbf{Scenario principale}:
     \begin{itemize}
         \item Il sistema tenta di comunicare con il servizio LLM esterno
         \item Il servizio LLM non risponde o restituisce un codice di errore
-        \item Il sistema intercetta l'errore interrompendo il processo di attesa
-        \item L’editor manda un messaggio di errore
+        \item Il sistema riceve l'errore interrompendo il processo di attesa
+        \item Il sistema manda un messaggio di errore all'utente
         \item Il testo presente nell’editor rimane invariato
     \end{itemize}
 \end{itemize}
@@ -2418,19 +2420,19 @@ RO-F-29 & Una volta generato, il testo dell'agente esterno viene inserito nell'e
 \hline
 RO-F-30 & L’utente può modificare, formattare e annullare le generazioni di testo & UC-2.1.* \\
 \hline
-RO-F-31 & Ogni interazione con un agente esterno che ha come effetto quella di generare del testo, viene inclusa in un registro delle generazioni, anche quelle annullate dall'utente & UC-2.1.4 \\
+RO-F-31 & Ogni generazione di testo dell'agente esterno viene inclusa in un registro delle generazioni, anche quelle annullate dall'utente & UC-2.1.4 \\
 \hline
 RO-F-32 & Il testo generato viene prima mostrato come proposta: ogni proposta viene generata separata dal testo dell'utente & UC-2.1 \\
 \hline
-RO-F-33 & Il testo in stato di proposta, include le opzioni di conferma, annullamento o rigenerazione & UC-2.1 \\
+RO-F-33 & Il testo in stato di proposta include le opzioni di conferma, annullamento o rigenerazione & UC-2.1 \\
 \hline
 RO-F-34 & Il sistema permette la modifica del testo generato in stato di proposta & UC-2.* \\
 \hline
-RO-F-35 & Una proposta che viene confermata viene inserito nel documento e la sezione di proposta viene rimossa & UC-2.1.1 \\
+RO-F-35 & Una proposta che viene confermata viene inserita nel documento nell'editor e la sezione di proposta viene rimossa & UC-2.1.1 \\
 \hline
 RO-F-36 & Una proposta che viene rigenerata viene rimandata all'agente esterno con gli stessi parametri e la nuova risposta sovrascrive la proposta corrente & UC-2.1.4 \\
 \hline
-RO-F-37 & Una proposta annullata comporta la rimozione del testo generato e della sezione corrispondente & UC-2.1.5 \\
+RO-F-37 & Una proposta annullata comporta la rimozione del testo generato dalla sezione di proposta e la rimozione della sezione stessa & UC-2.1.5 \\
 \hline
 RO-F-38 & L'utente può consultare il registro delle generazioni effettuate & UC-2.1.6 \\
 \hline
