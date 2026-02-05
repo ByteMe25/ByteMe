@@ -68,7 +68,7 @@
         \centering
         \begin{tabular}{|l|p{5cm}|}
             \hline
-            \textbf{Versione} & 0.1.2 \\
+            \textbf{Versione} & 0.1.4 \\
             \hline
             \textbf{Stato} & In corso \\
             \hline
@@ -100,7 +100,9 @@
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verifica} \\
         \hline
-        0.1.3 & 11/01/2026 & Elisa Marchioro & Aggiunte metriche qualità di prodotto & \\
+        0.1.4 & 05/02/2026 & Giulia Barzon & Aggiornamento cruscotto di qualità &  \\
+        \hline
+        0.1.3 & 11/01/2026 & Elisa Marchioro & Aggiunte metriche qualità di prodotto & Giulia Barzon \\
         \hline
         0.1.2 & 11/01/2026 & Giulia Barzon & Aggiunte metriche qualità di processo & \\
         \hline
@@ -589,8 +591,8 @@ Indica quanto il sistema è veloce e quanto bene utilizza le risorse disponibili
 \hline
 \textbf{Metrica} & \textbf{Scopo della metrica} & \textbf{Soglia Accettabile} & \textbf{Soglia Ottimale} \\
 \hline
-Response Time & Tempo medio per mostrare suggerimenti AI o completamenti di testo & 500 ms & 100 ms \\ \hline
-AI Processing Time & Tempo medio necessario all’AI per generare una correzione o completamento & 1 sec & 0.5 sec \\
+Response Time (Latenza Interfaccia) & Tempo medio che l'interfaccia impiega per aggiornarsi correttamente & 500 ms & 100 ms \\ \hline
+AI Processing Time & Tempo medio necessario all’AI per generare un testo & 10 sec & 3 sec \\
 \hline
 \end{tabular}
 \caption{Soglie metriche efficienza del prodotto}
@@ -623,7 +625,6 @@ Indica quanto è semplice correggere, modificare ed evolvere il software nel tem
 \textbf{Metrica} & \textbf{Scopo della metrica} & \textbf{Soglia Accettabile} & \textbf{Soglia Ottimale} \\
 \hline
 Test Coverage & Percentuale di codice coperto dai test (funzioni base + AI) & 70\% & 90\% \\ \hline
-Cyclomatic Complexity & Misura della complessità del codice per facilitarne modifiche future & 15 & 10 \\ \hline
 Change Failure Rate & Percentuale di modifiche che introducono problemi o bug & 15\% & 5\% \\
 \hline
 \end{tabular}
@@ -718,7 +719,54 @@ Questa checklist\textsubscript{G} viene aggiornata progressivamente dai verifica
 
 \newpage
 \section{Cruscotto di Valutazione della Qualità\textsubscript{G}}
+In questa sezione vengono presentati gli indicatori di qualità relativi al processo produttivo, al fine di valutarne l'andamento durante le due fasi di progetto: RTB (Requirements and Technology Baseline) e PB (Product Baseline).
 
+\subsection{Qualità di Processo}
+
+\subsubsection{Estimated at Completion (EAC)}
+% [GRAFICO DELL'ANDAMENTO EAC]
+
+\textbf{RTB:} L'analisi dell'Estimated at Completion mostra un andamento inizialmente fluttuante, tipico delle prime fasi di assestamento del team, per poi stabilizzarsi verso la fine della fase RTB. Il valore finale proiettato risulta leggermente inferiore o in linea rispetto al preventivo iniziale (Budget at Completion). Questo indica che, nonostante i rallentamenti temporali, il gruppo non rischia di sforare il budget totale assegnato.
+
+\newpage
+\subsubsection{Planned Value (PV) e Earned Value (EV)}
+% [GRAFICO CON LE DUE LINEE PV ED EV]
+
+\textbf{RTB:} Dal confronto tra le curve di Planned Value (costo pianificato) ed Earned Value (valore prodotto), emerge una divergenza a partire dallo Sprint 4. La curva del PV si mantiene superiore a quella dell'EV, evidenziando che il gruppo ha completato un volume di attività inferiore rispetto a quanto pianificato inizialmente. Tale divario è giustificato dalla ridotta disponibilità oraria dei membri durante le festività natalizie e la sessione d'esami invernali. Nonostante il ritardo, la curva EV mantiene un trend di crescita positivo, segnalando che il lavoro prosegue costantemente senza blocchi critici.
+
+\newpage
+\subsubsection{Schedule Performance Index (SPI)}
+% [GRAFICO DELL'SPI]
+
+\textbf{RTB:} L'indice di efficienza della schedulazione (SPI) si è attestato, specialmente nella seconda metà della RTB, su valori inferiori alla soglia ottimale di 1.0 (oscillando tra 0.80 e 0.90). Questo dato quantifica il ritardo temporale accumulato: il gruppo sta procedendo a una velocità inferiore rispetto alla pianificazione ideale. Tuttavia, essendo l'SPI stabile e non in crollo verticale, il ritardo è considerato recuperabile attraverso una ri-pianificazione delle attività nella fase di Product Baseline.
+
+\newpage
+\subsubsection{Cost Performance Index (CPI)}
+% [GRAFICO DEL CPI]
+
+\textbf{RTB:} L'indice di efficienza dei costi (CPI) mostra un andamento eccellente, mantenendosi costantemente attorno al valore 1.0 o superiore. Ciò significa che per ogni euro speso dal progetto, il valore prodotto è stato pari o superiore a un euro. Nonostante il ritardo temporale (SPI < 1), il gruppo è stato molto efficiente economicamente: le ore lavorate sono state produttive e non ci sono stati sprechi di risorse o rilavorazioni costose che avrebbero abbassato il CPI.
+
+\newpage
+\subsubsection{Cost Variance (CV)}
+% [GRAFICO DELLA CV]
+\textbf{RTB:} La varianza dei costi (CV), calcolata come differenza tra Earned Value e Actual Cost ($EV - AC$), si è mantenuta positiva o prossima allo zero per tutta la durata della fase. Al termine della RTB, il consuntivo totale risulta inferiore al preventivo totale (circa 2.947€ spesi contro 3.355€ preventivati), confermando che il progetto è ampiamente sotto controllo economico (under budget).
+
+\newpage
+\subsubsection{MPC07 - Requirements Stability Index (RSI)}
+% [GRAFICO RSI]
+
+\textbf{RTB:} L'indice di stabilità dei requisiti ha subito alcune variazioni in particolare durante lo Sprint 4 e 5. A seguito del colloquio di verifica con il prof. Cardin, il gruppo ha dovuto apportare correzioni e raffinamenti ai casi d'uso e ai requisiti precedentemente individuati. Negli ultimi sprint (6), con il consolidamento dell'architettura per il PoC, l'indice si è stabilizzato, indicando che il perimetro del progetto è ora ben definito.
+
+\newpage
+\subsubsection{Rischi Non Calcolati (RNC)}
+% [GRAFICO RNC]
+
+\textbf{RTB:} Durante la fase RTB, il numero di rischi imprevisti è stato pari a zero (o molto basso). Le principali criticità riscontrate, come la ridotta disponibilità dovuta agli esami (RO-1) e le difficoltà di apprendimento delle tecnologie LLM (RT-1), erano state correttamente previste e mitigate. Il gruppo può ritenersi soddisfatto della capacità di previsione e gestione dei rischi.
+
+\newpage
+\subsubsection{Metriche Soddisfatte (MS)}
+% [GRAFICO MS]
+\textbf{RTB:} Al termine della fase RTB, la percentuale complessiva di metriche che rispettano i valori di accettabilità si attesta al di sopra della soglia minima accettabile. Tale risultato positivo è trainato dall'eccellente performance degli indicatori economici (CPI, CV, EAC) e dalla corretta gestione dei rischi (RNC), che hanno bilanciato le criticità riscontrate negli indicatori temporali (SPI, SV).
 
 
 \end{document}
