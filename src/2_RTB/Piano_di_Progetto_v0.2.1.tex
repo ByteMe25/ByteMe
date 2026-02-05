@@ -92,11 +92,11 @@
 
 \begin{table}[H]
     \centering
-    \begin{tabular}{|c|c|c|>{\raggedright\arraybackslash}p{0.4\textwidth}|c|}
+    \begin{tabularx}{\textwidth}{|c|c|c|>{\raggedright\arraybackslash}X|c|}
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verifica} \\
         \hline
-        0.2.1 & 04/02/2026 & Tommaso Tombacco & Retrospettiva sprint 5 e pianificazione per sprint 6 & \\
+        0.2.1 & 04/02/2026 & Tommaso Tombacco & Retrospettiva sprint 5 e pianificazione per sprint 6 & Giulia Barzon\\
         \hline
         0.2.0 & 12/01/2026 & Giulia Barzon & Retrospettiva sprint 4 e pianificazione per sprint 5 & Matteo Cuogo\\
         \hline
@@ -108,15 +108,15 @@
         \hline
         0.1.5 & 22/12/2025 & Joseph Grant & Aggiornamento sprint 2 e 3 & Elisa Marchioro\\
         \hline
-        0.1.4 & 05/12/2025 & Tommaso Tombacco & Aggiornamento delle tabelle Preventivo e Consuntivo orario & \\
+        0.1.4 & 05/12/2025 & Tommaso Tombacco & Aggiornamento delle tabelle Preventivo e Consuntivo orario & Elisa Marchioro\\
         \hline
-        0.1.3 & 05/12/2025 & Chiara Grossele & Aggiornamento delle tabelle Preventivo e Consuntivo orario, correzione di errori & \\
+        0.1.3 & 05/12/2025 & Chiara Grossele & Aggiornamento delle tabelle Preventivo e Consuntivo orario, correzione di errori & Elisa Marchioro\\
         \hline
-        0.1.2 & 04/12/2025 & Giulia Barzon & Aggiornamento del documento con Analisi dei Rischi e informazioni dello sprint corrente & \\
+        0.1.2 & 04/12/2025 & Giulia Barzon & Aggiornamento del documento con Analisi dei Rischi e informazioni dello sprint corrente & Elisa Marchioro\\
         \hline
-        0.1.0 & 02/12/2025 & Giulia Barzon & Creazione del documento, scrittura prime sezioni e log primo sprint & \\
+        0.1.0 & 02/12/2025 & Giulia Barzon & Creazione del documento, scrittura prime sezioni e log primo sprint & Elisa Marchioro\\
         \hline
-    \end{tabular}
+    \end{tabularx}
     \caption{Registro delle versioni del documento}
     \label{tab:versionamento}
 \end{table}
@@ -1151,6 +1151,7 @@ Le attività pianificate per il prossimo periodo includono:
     \item Verifica del documento Piano di Qualifica;
 \end{itemize}
 
+\newpage
 % --------------------------------------------
 % SPRINT 6 (RTB)
 % --------------------------------------------
@@ -1164,7 +1165,7 @@ Le attività pianificate per il prossimo periodo includono:
     \item \textbf{Obiettivi}:
     \begin{itemize}
         \item Versione finale e verificata del documento di Analisi dei Requisiti;
-        \item Completamento Piano di Qualifica;
+        \item Aggiornamento e verifica Piano di Qualifica;
         \item Avanzamento nello sviluppo del PoC.
     \end{itemize}
     \item \textbf{Ruoli assegnati}:
@@ -1254,10 +1255,68 @@ Le attività pianificate per il prossimo periodo includono:
 
 
 \newpage
-% ============================================
-% FASE 3: PRODUCT BASELINE
-% ============================================
-\section{Product Baseline \textbf{Periodo: febbraio - aprile 2026}}
+% --------------------------------------------
+% RIEPILOGO PREVENTIVI E CONSUNTIVI FASE RTB 
+% DA COMPLETARE (prima di consegnare POC)
+% --------------------------------------------
+\section{Riepilogo Preventivi e consuntivi}
 
-\subsection{Introduzione}
+\subsection{Analisi fase RTB}
+
+\subsubsection{Preventivo RTB}
+In questa sezione è presente il preventivo orario ed economico parziale scelto per la fase \textit{RTB}\textsubscript{G}, calcolato sommando i preventivi degli sprint dal 1 al 7.
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|c|c|c|c|c|c|}
+        \hline
+        \textbf{Membro} & \textbf{Re} & \textbf{Am} & \textbf{An} & \textbf{Pj} & \textbf{Pg} & \textbf{Ve} & \textbf{Totale} \\
+        \hline
+        Joseph Grant & 2 & 3 & 14 & 0 & 3 & 3 & 25 \\
+        Chiara Grossele & 2 & 5 & 7 & 0 & 4 & 7 & 25 \\
+        Tommaso Tombacco & 1 & 6 & 9 & 0 & 6 & 4 & 26 \\
+        Elisa Marchioro & 1 & 5 & 8 & 0 & 3 & 8 & 25 \\
+        Giulia Barzon & 2 & 8 & 12 & 0 & 5 & 5 & 32 \\
+        Matteo Cuogo & 3 & 3 & 13 & 0 & 2 & 4 & 25 \\
+        \hline
+        \textbf{Ore totali} & 11 & 30 & 63 & 0 & 23 & 31 & 158 \\
+        \hline
+        \textbf{Costo totale} & 330 & 600 & 1575 & 0 & 345 & 465 & 3315 \\
+        \hline
+    \end{tabular}
+    \caption{Preventivo orario ed economico parziale per la fase RTB, in base al ruolo}
+\end{table}
+
+\textbf{Legenda}: Re = Responsabile, Am = Amministratore, An = Analista, Pj = Progettista, Pg = Programmatore, Ve = Verificatore.
+
+\subsubsection{Consuntivo RTB}
+In questa sezione è presente il consuntivo orario ed economico parziale relativo alla fase \textit{RTB}\textsubscript{G}, calcolato sommando i consuntivi degli sprint dal 1 al 7.
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|c|c|c|c|c|c|}
+        \hline
+        \textbf{Membro} & \textbf{Re} & \textbf{Am} & \textbf{An} & \textbf{Pj} & \textbf{Pg} & \textbf{Ve} & \textbf{Totale} \\
+        \hline
+        Joseph Grant & 1,5 & 3 & 17 & 0 & 0 & 1 & 22,5 \\
+        Chiara Grossele & 0 & 7 & 5,5 & 0 & 0 & 3 & 15,5 \\
+        Tommaso Tombacco & 2 & 3 & 8,5 & 0 & 2 & 2 & 17,5 \\
+        Elisa Marchioro & 0 & 4 & 11,5 & 0 & 0 & 5 & 20,5 \\
+        Giulia Barzon & 1 & 9 & 12 & 0 & 6 & 4 & 32 \\
+        Matteo Cuogo & 2 & 4 & 16 & 0 & 0 & 3 & 25 \\
+        \hline
+        \textbf{Ore totali} & 6,5 & 30 & 70,5 & 0 & 8 & 18 & 133 \\
+        \hline
+        \textbf{Costo totale} & 195 & 600 & 1762,5 & 0 & 120 & 270 & 2947,5 \\
+        \hline
+    \end{tabular}
+    \caption{Consuntivo orario ed economico parziale per la fase RTB, in base al ruolo}
+\end{table}
+
+\textbf{Legenda}: Re = Responsabile, Am = Amministratore, An = Analista, Pj = Progettista, Pg = Programmatore, Ve = Verificatore.
+
+
+
+
+
 \end{document}
