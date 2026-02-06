@@ -1017,45 +1017,37 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
 \newpage
 
 \subsection{Macroarea 2 - Funzionalità AI}
-\subsubsection{UC-2.0 - Distinzione del Testo Utente da quello Generato}
+\subsubsection{UC-2.0 - Visualizzazione storico generazioni AI}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
-    \item \textbf{Descrizione}: Sistema di formattazione che rende chiaramente distinguibile il testo generato dall’AI dal testo scritto dall’utente
-    \item \textbf{Precondizioni}: Nell’editor è presente sia testo digitato dall’utente che testo generato dall’AI
-    \item \textbf{Postcondizioni}: Il testo generato è chiaramente distinguibile dal testo dell’utente
+    \item \textbf{Descrizione}: L’utente può visualizzare un registro di tutte le generazioni AI che ha effettuato
+    \item \textbf{Precondizioni}: Sono state eseguite una o più operazioni AI
+    \item \textbf{Postcondizioni}: L’utente visualizza il registro delle generazioni AI
     \item \textbf{Scenario principale}:
         \begin{itemize}
-            \item L’utente seleziona un’operazione AI
-            \item L’editor inserisce il testo generato all’interno del documento
-            \item Il sistema formatta automaticamente il testo generato con elementi di stile che lo rendono diverso dal testo scritto dall’utente
-            \item Il sistema inserisce automaticamente degli elementi di separazione tra il testo generato e il testo originale dell’utente
+            \item L'utente ha effettuato una o più operazioni AI
+            \item L’utente seleziona l’opzione “Visualizza storico generazioni"
+            \item Il sistema mostra un registro con tutte le generazioni AI effettuate nel documento
         \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-2.1 - Interazione con i testi Generati dall’AI}
+\subsubsection{UC-2.1 - Interazione con le proposte di testi generati dall’AI}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
-    \item \textbf{Descrizione}: Gestione della storia e interazione con tutti i testi generati dall’AI all’interno del documento
-    \item \textbf{Precondizioni}: Sono state eseguite una o più operazioni AI e i relativi testi generati sono stati inseriti nell’editor
-    \item \textbf{Postcondizioni}: L’utente può visualizzare e operare sull’intera sequenza di generazioni AI accumulate nel documento
+    \item \textbf{Descrizione}: Ogni volta che l’utente effettua un’operazione AI può decidere se confermare, eliminare o rigenerare la proposta
+    \item \textbf{Precondizioni}: E’ stata eseguita un’operazione AI
+    \item \textbf{Postcondizioni}: L’utente ha confermato, eliminato o rigenerato la proposta AI e la proposta è stata inserita nello storico delle generazioni AI
     \item \textbf{Scenario principale}:
     \begin{itemize}
-        \item L’utente seleziona un’operazione AI da eseguire nel testo selezionato o non selezionato
-        \item Ogni nuova operazione AI genera testo che viene inserito nell’editor in una sezione apposita
-        \item Queste sezioni sono considerate delle proposte, che includono le seguenti opzioni: accetta, annulla, rigenera
-        \item Ogni blocco mantiene la sua formattazione distintiva che identifica:
-            \begin{enumerate}
-                \item Il tipo di operazione
-                \item La data/ora di generazione
-                \item I parametri specifici (lingua, cappello, ecc.)
-            \end{enumerate}
+        \item L’utente seleziona un’operazione AI da eseguire nel testo selezionato o non selezionato 
+        \item Ogni nuova operazione AI può essere confermata, eliminata o rigenerata dall’utente
+        \item Ogni generazione, a prescindere dalla scelta dell’utente, viene inserita nello storico delle generazioni AI
     \end{itemize}
     \item \textbf{Estensioni}:
     \begin{itemize}
-        \item L’utente può modificare o effettuare operazioni sulle generazioni
-        \item L’utente può confermare, eliminare o rigenerare la risposta dell’AI
-        \item L’utente vuole una vista compatta della storia delle generazioni
-        \item L’utente vuole vedere solo il testo digitato senza i blocchi di testo generati dall’AI
+        \item Conferma proposta
+        \item Elimina proposta
+        \item Rigenera proposta
         \item L’utente annulla l’operazione prima del completamento della generazione
         \item Il servizio LLM restituisce un errore senza dare risposta
     \end{itemize}
@@ -1082,21 +1074,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-2.1.2 - Modifica del testo generato dall'AI}
-\begin{itemize}
-    \item \textbf{Attore principale}: Utente generico
-    \item \textbf{Descrizione}: L’utente può interagire con il testo generato dall’AI modificandolo tramite sintassi markdown
-    \item \textbf{Precondizioni}: Sono state eseguite una o più operazioni AI e i relativi testi generati sono stati inseriti nell’editor
-    \item \textbf{Postcondizioni}: L’utente modifica i testi generati dall’AI accumulati nel file
-    \item \textbf{Scenario principale}:
-    \begin{itemize}
-        \item L’utente individua un blocco di testo generato dall’AI
-        \item L’utente seleziona tutto o una parte del testo generato
-        \item L’utente applica modifiche tramite sintassi markdown al testo selezionato
-    \end{itemize}
-\end{itemize}
-
-\subsubsection{UC-2.1.3 - Eliminazione del testo generato}
+\subsubsection{UC-2.1.2 - Eliminazione del testo generato}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: L’utente può eliminare intere sezioni di testo generato dall’AI
@@ -1111,7 +1089,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-2.1.4 - Rigenerazione testo generato}
+\subsubsection{UC-2.1.3 - Rigenerazione testo generato}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: L’utente può rigenerare intere sezioni di testo precedentemente generato dall’AI
@@ -1127,20 +1105,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-2.1.5 - Visualizzazione del registro delle generazioni}
-\begin{itemize}
-    \item \textbf{Attore principale}: Utente generico
-    \item \textbf{Descrizione}: L'utente può scegliere di visualizzare solo il testo che è stato generato dalle funzionalità AI, consultando un registro delle generazioni
-    \item \textbf{Precondizioni}: Sono state eseguite una o più operazioni AI e i relativi testi generati vengono in contemporanea inseriti in un registro dedicato
-    \item \textbf{Postcondizioni}: L'utente visualizza il registro delle generazioni
-    \item \textbf{Scenario principale}:
-    \begin{itemize}
-        \item L’utente seleziona l’opzione “Visualizza storico generazioni”
-        \item Il sistema mostra un registro con tutte le generazioni AI effettuate nel documento
-    \end{itemize}
-\end{itemize}
-
-\subsubsection{UC-2.1.6 - Annullamento dell’operazione}
+\subsubsection{UC-2.1.4 - Annullamento dell’operazione}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: L’utente interrompe volontariamente una richiesta AI in corso prima del suo completamento
@@ -1156,7 +1121,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-2.1.7 - Errore dal LLM}
+\subsubsection{UC-2.1.5 - Errore dal LLM}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: Il sistema gestisce un fallimento nella generazione della risposta da parte del LLM (es. timeout, assenza di connessione, errore server)
@@ -1177,13 +1142,15 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: Generazione di un riassunto del testo selezionato o dell’intero documento
     \item \textbf{Precondizioni}: L’editor contiene del testo
-    \item \textbf{Postcondizioni}: Un nuovo blocco di testo contenente il riassunto viene inserito nell’editor, formattato in modo distinto rispetto al testo originale
+    \item \textbf{Postcondizioni}: Un nuovo blocco di testo contenente il riassunto viene inserito nell’editor, in seguito alla conferma dell'utente
     \item \textbf{Scenario principale}:
     \begin{itemize}
         \item L’utente seleziona una porzione di testo (o non seleziona nulla per indicare l'intero documento)
         \item L’utente attiva il comando ”Riassumi”
         \item Il sistema elabora la richiesta e invia il testo al LLM
-        \item Il sistema genera il riassunto e lo inserisce nell'editor, dopo il testo originale selezionato, applicando lo stile distintivo per il testo generato
+        \item Il sistema genera il riassunto
+        \item L'utente conferma il riassunto
+        \item Il sistema lo inserisce nell'editor
     \end{itemize}
 \end{itemize}
 
@@ -1199,14 +1166,16 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: Rielaborazione del testo per modificarne stile, sintassi e chiarezza
     \item \textbf{Precondizioni}: L’editor contiene del testo
-    \item \textbf{Postcondizioni}: Una variante riscritta del testo viene inserita nell’editor con formattazione distintiva, preservando il testo originale
+    \item \textbf{Postcondizioni}: Una variante riscritta del testo viene inserita nell’editor, in seguito alla conferma dell'utente
     \item \textbf{Scenario principale}:
     \begin{itemize}
         \item L’utente seleziona il testo da riscrivere
         \item L’utente attiva il comando ”Riscrivi”
         \item L’utente specifica come riscrivere il testo (opzionale)
         \item Il sistema elabora la richiesta e invia il testo al LLM
-        \item Il sistema riscrive il testo e lo inserisce nell'editor, dopo il testo originale selezionato, applicando lo stile distintivo per il testo generato
+        \item Il sistema riscrive il testo
+        \item L'utente conferma la proposta
+        \item Il sistema inserisce il testo nell'editor
     \end{itemize}
 \end{itemize}
 
@@ -1222,7 +1191,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: Traduzione automatica del testo nella lingua selezionata
     \item \textbf{Precondizioni}: È presente testo nell’editor (completo o selezionato)
-    \item \textbf{Postcondizioni}: La traduzione viene generata e inserita nel documento con la formattazione distintiva del testo AI
+    \item \textbf{Postcondizioni}: La traduzione viene generata e inserita nell'editor, in seguito alla conferma dell'utente
     \item \textbf{Scenario principale}:
     \begin{itemize}
         \item L’utente seleziona la porzione di testo da tradurre (o nessuna selezione per l'intero documento)
@@ -1230,7 +1199,8 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \item L’utente definisce la lingua di destinazione
         \item Il sistema elabora la richiesta e invia il testo al LLM
         \item Il sistema mostra la traduzione generata
-        \item Il sistema inserisce il testo nell'editor, dopo il testo originale selezionato, applicando lo stile distintivo per il testo generato
+        \item L'utente conferma la proposta
+        \item Il sistema inserisce il testo nell'editor
     \end{itemize}
     \item \textbf{Estensioni}:
     \begin{itemize}
