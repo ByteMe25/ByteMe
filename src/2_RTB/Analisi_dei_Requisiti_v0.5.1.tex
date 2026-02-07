@@ -97,6 +97,10 @@
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verifica} \\
         \hline
+        0.5.4 & 07/02/2026 & Elisa Marchioro & Correzione macroarea 2 & \\
+        \hline
+        0.5.3 & 06/02/2026 & Elisa Marchioro & Correzione macroarea 2 & \\
+        \hline
         0.5.2 & 05/02/2026 & Elisa Marchioro & Mini modifiche & \\
         \hline
         0.5.1 & 05/02/2026 & Joseph Grant & Macroarea 2, modifica UC 2.1.* e relativi requisiti & Elisa Marchioro\\
@@ -1214,7 +1218,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: L’utente attiva l’operazione di traduzione senza aver confermato una lingua di destinazione
     \item \textbf{Precondizioni}: È presente testo nell’editor (completo o selezionato) e l’utente attiva il comando di traduzione
-    \item \textbf{Postcondizioni}: Viene generata la traduzione in inglese e viene inserita nel documento con la formattazione distintiva del testo AI
+    \item \textbf{Postcondizioni}: Viene generata la traduzione in inglese e viene inserita nel documento, in seguito alla conferma dell'utente
     \item \textbf{Scenario principale}:
     \begin{itemize}
         \item L’utente seleziona la porzione di testo da tradurre (o nessuna selezione per l'intero documento)
@@ -1222,7 +1226,8 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \item Il sistema imposta la lingua inglese come lingua di default per la traduzione
         \item Il sistema elabora la richiesta e invia il testo al LLM
         \item Il sistema mostra la traduzione generata
-        \item Il sistema inserisce il testo nell'editor, dopo il testo originale selezionato, applicando lo stile distintivo per il testo generato
+        \item L'utente conferma la proposta
+        \item Il sistema inserisce il testo nell'editor
     \end{itemize}
 \end{itemize}
 
@@ -1238,7 +1243,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: Traduzione automatica del testo nella lingua inglese
     \item \textbf{Precondizioni}: È presente testo nell’editor (completo o selezionato)
-    \item \textbf{Postcondizioni}: Il testo viene tradotto in lingua inglese e inserito nel documento con la formattazione distintiva del testo AI
+    \item \textbf{Postcondizioni}: Il testo viene tradotto in lingua inglese e inserito nel documento in seguito alla conferma dell'utente
     \item \textbf{Scenario principale}:
     \begin{itemize}
         \item L’utente seleziona la porzione di testo da tradurre (o nessuna selezione per l'intero documento)
@@ -1246,7 +1251,8 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \item L’utente imposta “Inglese” come lingua di destinazione
         \item Il sistema elabora la richiesta e invia il testo al LLM
         \item Il sistema mostra la traduzione generata
-        \item Il sistema inserisce il testo nell'editor, dopo il testo originale selezionato, applicando lo stile distintivo per il testo generato
+        \item L'utente conferma la proposta
+        \item Il sistema inserisce il testo nell'editor
     \end{itemize}
 \end{itemize}
 
@@ -1255,7 +1261,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: Traduzione automatica del testo nella lingua spagnola
     \item \textbf{Precondizioni}: È presente testo nell’editor (completo o selezionato)
-    \item \textbf{Postcondizioni}: Il testo viene tradotto in lingua spagnola e inserito nel documento con la formattazione distintiva del testo AI
+    \item \textbf{Postcondizioni}: Il testo viene tradotto in lingua spagnola e inserito nel documento in seguito alla conferma dell'utente
     \item \textbf{Scenario principale}:
     \begin{itemize}
         \item L’utente seleziona la porzione di testo da tradurre (o nessuna selezione per l'intero documento)
@@ -1263,7 +1269,8 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \item L’utente imposta “Spagnolo” come lingua di destinazione
         \item Il sistema elabora la richiesta e invia il testo al LLM
         \item Il sistema mostra la traduzione generata
-        \item Il sistema inserisce il testo nell'editor, dopo il testo originale selezionato, applicando lo stile distintivo per il testo generato
+        \item L'utente conferma la proposta
+        \item Il sistema inserisce il testo nell'editor
     \end{itemize}
 \end{itemize}
 
@@ -1272,7 +1279,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: Traduzione automatica del testo nella lingua francese
     \item \textbf{Precondizioni}: È presente testo nell’editor (completo o selezionato)
-    \item \textbf{Postcondizioni}: Il testo viene tradotto in lingua francese e inserito nel documento con la formattazione distintiva del testo AI
+    \item \textbf{Postcondizioni}: Il testo viene tradotto in lingua francese e inserito nel documento in seguito alla conferma dell'utente
     \item \textbf{Scenario principale}:
     \begin{itemize}
         \item L’utente seleziona la porzione di testo da tradurre (o nessuna selezione per l'intero documento)
@@ -1280,7 +1287,8 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \item L’utente imposta “Francese” come lingua di destinazione
         \item Il sistema elabora la richiesta e invia il testo al LLM
         \item Il sistema mostra la traduzione generata
-        \item Il sistema inserisce il testo nell'editor, dopo il testo originale selezionato, applicando lo stile distintivo per il testo generato
+        \item L'utente conferma la proposta
+        \item Il sistema inserisce il testo nell'editor
     \end{itemize}
 \end{itemize}
 
@@ -1289,7 +1297,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: Traduzione automatica del testo nella lingua tedesca
     \item \textbf{Precondizioni}: È presente testo nell’editor (completo o selezionato)
-    \item \textbf{Postcondizioni}: Il testo viene tradotto in lingua tedesca e inserito nel documento con la formattazione distintiva del testo AI
+    \item \textbf{Postcondizioni}: Il testo viene tradotto in lingua tedesca e inserito nel documento in seguito alla conferma dell'utente
     \item \textbf{Scenario principale}:
     \begin{itemize}
         \item L’utente seleziona la porzione di testo da tradurre (o nessuna selezione per l'intero documento)
@@ -1297,7 +1305,8 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \item L’utente imposta “Tedesco” come lingua di destinazione
         \item Il sistema elabora la richiesta e invia il testo al LLM
         \item Il sistema mostra la traduzione generata
-        \item Il sistema inserisce il testo nell'editor, dopo il testo originale selezionato, applicando lo stile distintivo per il testo generato
+        \item L'utente conferma la proposta
+        \item Il sistema inserisce il testo nell'editor
     \end{itemize}
 \end{itemize}
 
@@ -1306,7 +1315,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: Traduzione automatica del testo nella lingua cinese mandarino
     \item \textbf{Precondizioni}: È presente testo nell’editor (completo o selezionato)
-    \item \textbf{Postcondizioni}: Il testo viene tradotto in lingua cinese mandarino e inserito nel documento con la formattazione distintiva del testo AI
+    \item \textbf{Postcondizioni}: Il testo viene tradotto in lingua cinese mandarino e inserito nel documento in seguito alla conferma dell'utente
     \item \textbf{Scenario principale}:
     \begin{itemize}
         \item L’utente seleziona la porzione di testo da tradurre (o nessuna selezione per l'intero documento)
@@ -1314,7 +1323,8 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \item L’utente imposta “Cinese Mandarino” come lingua di destinazione
         \item Il sistema elabora la richiesta e invia il testo al LLM
         \item Il sistema mostra la traduzione generata
-        \item Il sistema inserisce il testo nell'editor, dopo il testo originale selezionato, applicando lo stile distintivo per il testo generato
+        \item L'utente conferma la proposta
+        \item Il sistema inserisce il testo nell'editor
     \end{itemize}
 \end{itemize}
 
@@ -1323,7 +1333,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: Traduzione automatica del testo nella lingua Italiana
     \item \textbf{Precondizioni}: È presente testo nell’editor (completo o selezionato)
-    \item \textbf{Postcondizioni}: Il testo viene tradotto in lingua Italiana e inserito nel documento con la formattazione distintiva del testo AI
+    \item \textbf{Postcondizioni}: Il testo viene tradotto in lingua Italiana e inserito nel documento in seguito alla conferma dell'utente
     \item \textbf{Scenario principale}:
     \begin{itemize}
         \item L’utente seleziona la porzione di testo da tradurre (o nessuna selezione per l'intero documento)
@@ -1331,7 +1341,8 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \item L’utente imposta “Italiano” come lingua di destinazione
         \item Il sistema elabora la richiesta e invia il testo al LLM
         \item Il sistema mostra la traduzione generata
-        \item Il sistema inserisce il testo nell'editor, dopo il testo originale selezionato, applicando lo stile distintivo per il testo generato
+        \item L'utente conferma la proposta
+        \item Il sistema inserisce il testo nell'editor
     \end{itemize}
 \end{itemize}
 
@@ -1340,13 +1351,15 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: Rilevamento e correzione automatica di errori grammaticali, ortografici e di punteggiatura
     \item \textbf{Precondizioni}: È presente testo nell’editor (completo o selezionato)
-    \item \textbf{Postcondizioni}: Una versione corretta del testo viene inserita nell’editor con formattazione distintiva, preservando il testo originale
+    \item \textbf{Postcondizioni}: Una versione corretta del testo viene inserita nell’editor in seguito alla conferma dell'utente
     \item \textbf{Scenario principale}:
     \begin{itemize}
         \item L’utente seleziona la porzione di testo da correggere (o nessuna selezione per l'intero documento)
         \item L’utente attiva il comando ”Correggi”
         \item Il sistema elabora la richiesta e invia il testo al LLM
-        \item Il sistema riscrive il testo corretto e lo inserisce nell'editor, dopo il testo originale selezionato, applicando lo stile distintivo per il testo generato
+        \item Il sistema riscrive il testo corretto
+        \item L'utente conferma la proposta
+        \item Il sistema inserisce il testo corretto nell'editor
     \end{itemize}
     \item \textbf{Estensioni}:
     \begin{itemize}
@@ -1380,14 +1393,16 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: Analisi del testo basata su una delle modalità del modello dei "Sei Cappelli per pensare" di Edward De Bono
     \item \textbf{Precondizioni}: È presente testo nell’editor (completo o selezionato)
-    \item \textbf{Postcondizioni}: Viene generata un’analisi del testo secondo la prospettiva scelta e inserita nel documento con formattazione distintiva
+    \item \textbf{Postcondizioni}: Viene generata un’analisi del testo secondo la prospettiva scelta e inserita nel documento in seguito alla conferma dell'utente
     \item \textbf{Scenario principale}:
     \begin{itemize}
         \item L’utente seleziona la porzione di testo da analizzare (o nessuna selezione per l'intero documento)
         \item L’utente attiva il menu ”Analisi critica”
         \item L’utente definisce la modalità di analisi (colore del Cappello) desiderata
         \item Il sistema elabora la richiesta e invia il testo al LLM
-        \item Il sistema genera l'analisi e la inserisce nell'editor, dopo il testo originale selezionato, applicando lo stile distintivo per il testo generato
+        \item Il sistema genera l'analisi 
+        \item L'utente conferma la proposta 
+        \item Il sistema inserisce la critica nell'editor, dopo il testo originale selezionato
     \end{itemize}
     \item \textbf{Estensioni}:
     \begin{itemize}
@@ -1441,14 +1456,16 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: Analisi oggettiva e fattuale del testo basata sul modello del Cappello Bianco di De Bono
     \item \textbf{Precondizioni}: È presente testo nell’editor
-    \item \textbf{Postcondizioni}: Viene generata un’analisi fattuale inserita nel documento con formattazione distintiva
+    \item \textbf{Postcondizioni}: Viene generata un’analisi fattuale inserita nel documento in seguito alla conferma dell'utente
     \item \textbf{Scenario principale}:
     \begin{itemize}
         \item L’utente seleziona il testo da analizzare (o nessuna selezione per l'intero documento)
         \item L’utente clicca sul menu ”Analisi critica”
         \item L’utente imposta ”Cappello Bianco” come modalità di analisi
         \item Il sistema elabora la richiesta e invia il testo al LLM
-        \item Il sistema genera l'analisi e la inserisce nell'editor, dopo il testo originale selezionato, applicando lo stile distintivo per il testo generato
+        \item Il sistema genera l'analisi 
+        \item L'utente conferma la proposta
+        \item Il sistema inserisce la critica nell'editor, dopo il testo originale selezionato
     \end{itemize}
 \end{itemize}
 
@@ -1457,14 +1474,16 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: Analisi emotiva e intuitiva del testo basata sul modello del Cappello Rosso di De Bono
     \item \textbf{Precondizioni}: È presente testo nell’editor
-    \item \textbf{Postcondizioni}: Viene generata un’analisi emotiva inserita nel documento con formattazione distintiva
+    \item \textbf{Postcondizioni}: Viene generata un’analisi emotiva inserita nel documento in seguito alla conferma dell'utente
     \item \textbf{Scenario principale}:
     \begin{itemize}
         \item L’utente seleziona il testo da analizzare (o nessuna selezione per l'intero documento)
         \item L’utente clicca sul menu ”Analisi critica”
         \item L’utente imposta ”Cappello Rosso” come modalità di analisi
         \item Il sistema elabora la richiesta e invia il testo al LLM
-        \item Il sistema genera l'analisi e la inserisce nell'editor, dopo il testo originale selezionato, applicando lo stile distintivo per il testo generato
+        \item Il sistema genera l'analisi 
+        \item L'utente conferma la proposta 
+        \item Il sistema inserisce la critica nell'editor, dopo il testo originale selezionato
     \end{itemize}
 \end{itemize}
 
@@ -1473,14 +1492,16 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: Analisi critica e cautelativa del testo basata sul modello del Cappello Nero di De Bono
     \item \textbf{Precondizioni}: È presente testo nell’editor
-    \item \textbf{Postcondizioni}: Viene generata un’analisi critica inserita nel documento con formattazione distintiva
+    \item \textbf{Postcondizioni}: Viene generata un’analisi critica inserita nel documento in seguito alla conferma dell'utente
     \item \textbf{Scenario principale}:
     \begin{itemize}
         \item L’utente seleziona il testo da analizzare (o nessuna selezione per l'intero documento)
         \item L’utente clicca sul menu ”Analisi critica”
         \item L’utente imposta ”Cappello Nero” come modalità di analisi
         \item Il sistema elabora la richiesta e invia il testo al LLM
-        \item Il sistema genera l'analisi e la inserisce nell'editor, dopo il testo originale selezionato, applicando lo stile distintivo per il testo generato
+        \item Il sistema genera l'analisi 
+        \item L'utente conferma la proposta 
+        \item Il sistema inserisce la critica nell'editor, dopo il testo originale selezionato
     \end{itemize}
 \end{itemize}
 
@@ -1489,14 +1510,16 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: Analisi ottimistica e costruttiva del testo basata sul modello del Cappello Giallo di De Bono
     \item \textbf{Precondizioni}: È presente testo nell’editor
-    \item \textbf{Postcondizioni}: Viene generata un’analisi ottimistica inserita nel documento con formattazione distintiva
+    \item \textbf{Postcondizioni}: Viene generata un’analisi ottimistica inserita nel documento in seguito alla conferma dell'utente
     \item \textbf{Scenario principale}:
     \begin{itemize}
         \item L’utente seleziona il testo da analizzare (o nessuna selezione per l'intero documento)
         \item L’utente clicca sul menu ”Analisi critica”
         \item L’utente imposta ”Cappello Giallo” come modalità di analisi
         \item Il sistema elabora la richiesta e invia il testo al LLM
-        \item Il sistema genera l'analisi e la inserisce nell'editor, dopo il testo originale selezionato, applicando lo stile distintivo per il testo generato
+        \item Il sistema genera l'analisi 
+        \item L'utente conferma la proposta 
+        \item Il sistema inserisce la critica nell'editor, dopo il testo originale selezionato
     \end{itemize}
 \end{itemize}
 
@@ -1505,14 +1528,16 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: Analisi creativa e innovativa del testo basata sul modello del Cappello Verde di De Bono
     \item \textbf{Precondizioni}: È presente testo nell’editor
-    \item \textbf{Postcondizioni}: Viene generata un’analisi creativa inserita nel documento con formattazione distintiva
+    \item \textbf{Postcondizioni}: Viene generata un’analisi creativa inserita nel documento in seguito alla conferma dell'utente
     \item \textbf{Scenario principale}:
     \begin{itemize}
         \item L’utente seleziona il testo da analizzare (o nessuna selezione per l'intero documento)
         \item L’utente clicca sul menu ”Analisi critica”
         \item L’utente imposta ”Cappello Verde” come modalità di analisi
         \item Il sistema elabora la richiesta e invia il testo al LLM
-        \item Il sistema genera l'analisi e la inserisce nell'editor, dopo il testo originale selezionato, applicando lo stile distintivo per il testo generato
+        \item Il sistema genera l'analisi 
+        \item L'utente conferma la proposta 
+        \item Il sistema inserisce la critica nell'editor, dopo il testo originale selezionato
     \end{itemize}
 \end{itemize}
 
@@ -1521,14 +1546,16 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: Analisi processuale e organizzativa del testo basata sul modello del Cappello Blu di De Bono
     \item \textbf{Precondizioni}: È presente testo nell’editor
-    \item \textbf{Postcondizioni}: Viene generata un’analisi processuale inserita nel documento con formattazione distintiva
+    \item \textbf{Postcondizioni}: Viene generata un’analisi processuale inserita nel documento in seguito alla conferma dell'utente
     \item \textbf{Scenario principale}:
     \begin{itemize}
         \item L’utente seleziona il testo da analizzare (o nessuna selezione per l'intero documento)
         \item L’utente clicca sul menu ”Analisi critica”
         \item L’utente imposta ”Cappello Blu” come modalità di analisi
         \item Il sistema elabora la richiesta e invia il testo al LLM
-        \item Il sistema genera l'analisi e la inserisce nell'editor, dopo il testo originale selezionato, applicando lo stile distintivo per il testo generato
+        \item Il sistema genera l'analisi 
+        \item L'utente conferma la proposta 
+        \item Il sistema inserisce la critica nell'editor, dopo il testo originale selezionato
     \end{itemize}
 \end{itemize}
 
@@ -1544,13 +1571,14 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: Creazione di nuovo testo inedito a partire da un prompt descrittivo fornito dall’utente
     \item \textbf{Precondizioni}: L’editor è aperto e pronto per la scrittura
-    \item \textbf{Postcondizioni}: Viene generato un nuovo testo basato sul prompt e inserito nell’editor con la formattazione distintiva del testo AI
+    \item \textbf{Postcondizioni}: Viene generato un nuovo testo basato sul prompt e inserito nell’editor in seguito alla conferma dell'utente
     \item \textbf{Scenario principale}:
     \begin{itemize}
         \item L’utente si posiziona nel punto del documento dove vuole inserire il testo generato
         \item L’utente inserisce un prompt descrivendo il contenuto desiderato (tramite chatbox o comando rapido)
         \item Il sistema invia il prompt al LLM
-        \item Il sistema inserisce nell'editor il testo generato nel punto indicato, applicando lo stile distintivo per il testo generato
+        \item L'utente conferma la proposta
+        \item Il sistema inserisce nell'editor il testo generato nel punto indicato
     \end{itemize}
     \item \textbf{Estensioni}:
     \begin{itemize}
@@ -1587,14 +1615,16 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: Creazione automatica di rappresentazioni visive (grafici o tabelle) basate su dati descritti nel testo
     \item \textbf{Precondizioni}: È presente testo descrittivo contenente dati nell’editor
-    \item \textbf{Postcondizioni}: Viene generato un elemento grafico o tabellare inserito nel documento con formattazione distintiva
+    \item \textbf{Postcondizioni}: Viene generato un elemento grafico o tabellare inserito nel documento in seguito alla conferma dell'utente
     \item \textbf{Scenario principale}:
     \begin{itemize}
     \item L’utente seleziona la porzione di testo contenente i dati
     \item L’utente attiva il comando ”Genera grafico/tabella”
     \item L’utente specifica il tipo di visualizzazione desiderata (es. tabella, grafico a barre, torta)
     \item Il sistema elabora la richiesta e invia i dati al LLM
-    \item Il sistema genera l'elemento visivo e lo inserisce nell'editor, dopo il testo selezionato, applicando lo stile distintivo per il contenuto generato
+    \item Il sistema genera l'elemento visivo 
+    \item L'utente conferma la proposta 
+    \item Il sistema inserisce l'elemento visivo nell'editor, dopo il testo selezionato
     \end{itemize}
     \item \textbf{Estensioni}:
     \begin{itemize}
@@ -1638,7 +1668,9 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \item L’utente seleziona il testo da visualizzare come mappa (o nessuna selezione per l'intero documento)
         \item L’utente attiva il comando ”Genera mappa concettuale”
         \item Il sistema elabora la richiesta e invia il testo al LLM
-        \item Il sistema renderizza la mappa concettuale e la inserisce nell'editor, applicando lo stile distintivo per il contenuto generato
+        \item Il sistema renderizza la mappa concettuale
+        \item L'utente conferma la proposta 
+        \item Il sistema inserisce la mappa nell'editor, applicando lo stile distintivo per il contenuto generato
     \end{itemize}
     \item \textbf{Estensioni}:
     \begin{itemize}
@@ -1679,7 +1711,9 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \item L’utente seleziona il testo descrittivo del problema
     \item L’utente attiva il comando ”Genera formule”
     \item Il sistema elabora la richiesta e invia il testo al LLM
-    \item Il sistema genera il codice matematico (simile LaTeX) e lo inserisce nell'editor renderizzandolo, applicando lo stile distintivo per il contenuto generato
+    \item Il sistema genera il codice matematico (simile LaTeX) 
+    \item L'utente conferma la proposta
+    \item Il sistema inserisce la formula nell'editor renderizzandolo
     \end{itemize}
     \item \textbf{Estensioni}:
     \begin{itemize}
