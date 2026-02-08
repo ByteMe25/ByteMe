@@ -65,7 +65,7 @@
         \centering
         \begin{tabular}{|l|p{5cm}|}
             \hline
-            \textbf{Versione} & 0.5.2 \\
+            \textbf{Versione} & 0.5.4 \\
             \hline
             \textbf{Stato} & In corso \\
             \hline
@@ -97,11 +97,11 @@
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verifica} \\
         \hline
-        0.5.4 & 07/02/2026 & Elisa Marchioro & Correzione macroarea 2 & \\
+        0.5.4 & 07/02/2026 & Elisa Marchioro & Correzione macroarea 2 & Giulia Barzon\\
         \hline
-        0.5.3 & 06/02/2026 & Elisa Marchioro & Correzione macroarea 2 & \\
+        0.5.3 & 06/02/2026 & Elisa Marchioro & Correzione macroarea 2 & Giulia Barzon\\
         \hline
-        0.5.2 & 05/02/2026 & Elisa Marchioro & Mini modifiche & \\
+        0.5.2 & 05/02/2026 & Elisa Marchioro & Mini modifiche & Giulia Barzon\\
         \hline
         0.5.1 & 05/02/2026 & Joseph Grant & Macroarea 2, modifica UC 2.1.* e relativi requisiti & Elisa Marchioro\\
         \hline
@@ -350,7 +350,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \item \textbf{Postcondizioni}: Viene visualizzata l'anteprima formattata del testo in un'area apposita
     \item \textbf{Scenario principale}:
         \begin{itemize}
-            \item L'utente modifica il testo nell'editor
+            \item L'utente sta digitando testo nell'editor
             \item Il sistema elabora la sintassi Markdown
             \item Il sistema aggiorna il pannello di preview mostrando l’anteprima formattata del documento
             \item L'utente può confrontare editing e risultato finale
@@ -491,7 +491,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-1.6.1 - L'utente non ha effettuato modifiche anullabili}
+\subsubsection{UC-1.6.1 - Gestione assenza di modifiche annullabili}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: L'utente tenta di annullare un'operazione quando non ci sono modifiche anullabili
@@ -926,7 +926,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \item \textbf{Scenario principale}:
         \begin{itemize}
             \item L’utente accede ai comandi di visualizzazione
-            \item ’utente seleziona la modalità di visualizzazione desiderata tra quelle disponibili
+            \item L’utente seleziona la modalità di visualizzazione desiderata tra quelle disponibili
             \item Il sistema riconfigura i pannelli dell'interfaccia in base alla scelta effettuata
         \end{itemize}
 \end{itemize}
@@ -1035,7 +1035,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-2.1 - Interazione con le proposte di testi generati dall’AI}
+\subsubsection{UC-2.1 - Interazione con i testi generati dall’AI}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: Ogni volta che l’utente effettua un’operazione AI può decidere se confermare, eliminare o rigenerare la proposta
@@ -1064,7 +1064,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \label{fig:uc2.1}
 \end{figure}
 
-\subsubsection{UC-2.1.1 - Accettazione del testo generato dall'AI}
+\subsubsection{UC-2.1.1 - Conferma del testo generato dall'AI}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: L’utente accetta la proposta di testo generata dall'AI
@@ -1073,8 +1073,8 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \item \textbf{Scenario principale}:
     \begin{itemize}
         \item L’utente visualizza una proposta di testo generata dall’AI
-        \item L’utente seleziona l’opzione "Accetta"
-        \item Il testo generato viene integrato nel documento nell'editor
+        \item L’utente seleziona l’opzione "Conferma"
+        \item Il testo generato viene integrato nel documento aperto nell'editor
     \end{itemize}
 \end{itemize}
 
@@ -1109,7 +1109,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-2.1.4 - Annullamento dell’operazione}
+\subsubsection{UC-2.1.4 - Annullamento dell’operazione AI}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: L’utente interrompe volontariamente una richiesta AI in corso prima del suo completamento
@@ -1357,9 +1357,8 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \item L’utente seleziona la porzione di testo da correggere (o nessuna selezione per l'intero documento)
         \item L’utente attiva il comando ”Correggi”
         \item Il sistema elabora la richiesta e invia il testo al LLM
-        \item Il sistema riscrive il testo corretto
-        \item L'utente conferma la proposta
-        \item Il sistema inserisce il testo corretto nell'editor
+        \item Il sistema rileva gli errori grammaticali e li mostra all'utente
+        \item L'utente conferma le correzioni proposte
     \end{itemize}
     \item \textbf{Estensioni}:
     \begin{itemize}
@@ -1401,8 +1400,8 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \item L’utente definisce la modalità di analisi (colore del Cappello) desiderata
         \item Il sistema elabora la richiesta e invia il testo al LLM
         \item Il sistema genera l'analisi 
-        \item L'utente conferma la proposta 
-        \item Il sistema inserisce la critica nell'editor, dopo il testo originale selezionato
+        \item L'utente visualizza la critica generata
+        \item L'utente può scegliere se inserire la critica generata nell'editor, rigenerarla o eliminarla
     \end{itemize}
     \item \textbf{Estensioni}:
     \begin{itemize}
@@ -1440,7 +1439,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \item L’utente attiva il comando ”Analisi critica” senza selezionare una modalità specifica
         \item Il sistema imposta il "Cappello Bianco" (Analisi Oggettiva) come modalità di default
         \item Il sistema elabora la richiesta e invia il testo al LLM
-        \item Il sistema genera l'analisi e la inserisce nell'editor, dopo il testo originale selezionato, applicando lo stile distintivo per il testo generato
+        \item L'utente visualizza l'analisi generata
     \end{itemize}
 \end{itemize}
 
@@ -1464,8 +1463,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \item L’utente imposta ”Cappello Bianco” come modalità di analisi
         \item Il sistema elabora la richiesta e invia il testo al LLM
         \item Il sistema genera l'analisi 
-        \item L'utente conferma la proposta
-        \item Il sistema inserisce la critica nell'editor, dopo il testo originale selezionato
+        \item L'utente visualizza l'analisi generata
     \end{itemize}
 \end{itemize}
 
@@ -1482,8 +1480,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \item L’utente imposta ”Cappello Rosso” come modalità di analisi
         \item Il sistema elabora la richiesta e invia il testo al LLM
         \item Il sistema genera l'analisi 
-        \item L'utente conferma la proposta 
-        \item Il sistema inserisce la critica nell'editor, dopo il testo originale selezionato
+        \item L'utente visualizza l'analisi generata
     \end{itemize}
 \end{itemize}
 
@@ -1500,8 +1497,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \item L’utente imposta ”Cappello Nero” come modalità di analisi
         \item Il sistema elabora la richiesta e invia il testo al LLM
         \item Il sistema genera l'analisi 
-        \item L'utente conferma la proposta 
-        \item Il sistema inserisce la critica nell'editor, dopo il testo originale selezionato
+        \item L'utente visualizza l'analisi generata
     \end{itemize}
 \end{itemize}
 
@@ -1518,8 +1514,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \item L’utente imposta ”Cappello Giallo” come modalità di analisi
         \item Il sistema elabora la richiesta e invia il testo al LLM
         \item Il sistema genera l'analisi 
-        \item L'utente conferma la proposta 
-        \item Il sistema inserisce la critica nell'editor, dopo il testo originale selezionato
+        \item L'utente visualizza l'analisi generata
     \end{itemize}
 \end{itemize}
 
@@ -1536,8 +1531,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \item L’utente imposta ”Cappello Verde” come modalità di analisi
         \item Il sistema elabora la richiesta e invia il testo al LLM
         \item Il sistema genera l'analisi 
-        \item L'utente conferma la proposta 
-        \item Il sistema inserisce la critica nell'editor, dopo il testo originale selezionato
+        \item L'utente visualizza l'analisi generata
     \end{itemize}
 \end{itemize}
 
@@ -1554,8 +1548,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \item L’utente imposta ”Cappello Blu” come modalità di analisi
         \item Il sistema elabora la richiesta e invia il testo al LLM
         \item Il sistema genera l'analisi 
-        \item L'utente conferma la proposta 
-        \item Il sistema inserisce la critica nell'editor, dopo il testo originale selezionato
+        \item L'utente visualizza l'analisi generata
     \end{itemize}
 \end{itemize}
 
@@ -2364,7 +2357,7 @@ Rappresentano le funzionalità tangibili che l'utente utilizza per raggiungere i
 \textbf{Requisito} & \textbf{Descrizione} & \textbf{Casi d'uso correlati}\\
 \hline
 \endhead
-RO-F-1 & Il sistema deve fornire un editor di testo per l'inserimento e la modifica di caratteri alfanumerici e la compilazione markdown& UC-1.0 \\
+RO-F-1 & Il sistema deve fornire un'area di testo per l'inserimento e la modifica di caratteri alfanumerici e la compilazione Markdown & UC-1.0 \\
 \hline
 RO-F-2 & L'editor deve compilare la sintassi Markdown in tempo reale & UC-1.1 \\
 \hline
@@ -2374,9 +2367,9 @@ RO-F-4 & Il sistema deve permettere all'utente di selezionare porzioni di testo 
 \hline
 RO-F-5 & Il sistema deve permettere all'utente di modificare porzioni di testo selezionate & UC-1.2 \\
 \hline
-RO-F-6 & Il sistema deve permettere all'utente di copiare una parte di testo selezionato& UC-1.3 \\
+RO-F-6 & Il sistema deve permettere all'utente di copiare una parte di testo selezionato & UC-1.3 \\
 \hline
-RO-F-7 & Il sistema deve permettere all'utente di incollare una parte del testo & UC-1.4 \\
+RO-F-7 & Il sistema deve permettere all'utente di incollare un testo nell'area di testo & UC-1.4 \\
 \hline
 RO-F-8 & Il sistema deve permettere all'utente di tagliare di testo selezionato & UC-1.5 \\
 \hline
@@ -2420,17 +2413,17 @@ RO-F-27 & Il sistema permette di inviare del testo ad un agente esterno & UC-2.*
 \hline
 RO-F-28 & L'utente deve poter accedere alle azioni sul testo tramite agente esterno in ogni momento & UC-2.0 \\ 
 \hline
-RO-F-29 & Una volta generato, il testo dell'agente esterno viene inserito nell'editor dal sistema, in modo che tutte le funzionalità dell'editor siano applicabili anche al testo generato & UC-2.* \\
+RO-F-29 & Una volta generato e confermato, il testo dell'agente esterno viene inserito nell'area di testo dal sistema, in modo che tutte le funzionalità dell'editor siano applicabili anche al testo generato & UC-2.*  \\
 \hline
-RO-F-30 & L’utente può modificare, formattare e annullare le generazioni di testo & UC-2.1.* \\
+RO-F-30 & Ogni generazione di testo dell'agente esterno viene inclusa in un registro delle generazioni, anche quelle annullate dall'utente & UC-2.1.4\\
 \hline
-RO-F-31 & Ogni generazione di testo dell'agente esterno viene inclusa in un registro delle generazioni, anche quelle annullate dall'utente & UC-2.1.4 \\
+RO-F-31 & Il testo generato viene prima mostrato come proposta: ogni proposta viene generata separata dal testo dell'utente & UC-2.1  \\
 \hline
-RO-F-32 & Il testo generato viene prima mostrato come proposta: ogni proposta viene generata separata dal testo dell'utente & UC-2.1 \\
+RO-F-32 & Il testo in stato di proposta include le opzioni di conferma, annullamento o rigenerazione & UC-2.1 \\
 \hline
-RO-F-33 & Il testo in stato di proposta include le opzioni di conferma, annullamento o rigenerazione & UC-2.1 \\
+RO-F-33 & Il sistema non permette la modifica del testo generato in stato di proposta & UC-2.* \\
 \hline
-RO-F-34 & Il sistema permette la modifica del testo generato in stato di proposta & UC-2.* \\
+RO-F-34 & Il testo generato, confermato e inserito nell'area di testo può essere modificato tramite sintassi Markdown \\
 \hline
 RO-F-35 & Una proposta che viene confermata viene inserita nel documento nell'editor e la sezione di proposta viene rimossa & UC-2.1.1 \\
 \hline
@@ -2466,15 +2459,15 @@ RO-F-50 & Il sistema deve permettere all'utente di rimuovere il file che ha cari
 \hline
 RO-F-51 & Prima di procedere con il caricamento di un file, il sistema chiede conferma all'utente & UC-3.0 \\
 \hline
-RO-F-52 & Il sistema deve consentire l'esportazione del documento in formato PDF. & UC-4.0.1\\
+RO-F-52 & Il sistema deve consentire l'esportazione del documento in formato MD & UC-4.0.1\\
 \hline
-RO-F-53 & Il sistema deve essere in grado di convertire il documento da Markdown al formato selezionato dall'utente. & UC-4.0 \\
+RO-F-53 & Il sistema deve essere in grado di convertire il documento da Markdown al formato selezionato dall'utente & UC-4.0 \\
 \hline
-RO-F-53 & Il sistema deve controllare che il range di pagine inserito dall'utente sia valido (che non superi il numero di pagine presenti o che non sia un numero negativo). & UC-4.1.* \\
+RO-F-54 & Il sistema deve controllare che il range di pagine inserito dall'utente sia valido (che non superi il numero di pagine presenti o che non sia un numero negativo) & UC-4.1.* \\
 \hline
-RO-F-54 & Il sistema deve permettere di poter scaricare il file nel dispositivo dell'utente. & UC-4.0\\
+RO-F-55 & Il sistema deve permettere di poter scaricare il file nel dispositivo dell'utente & UC-4.0\\
 \hline
-RO-F-55 & Il sistema deve potersi collegare a un dispositivo di stampa. & UC-4.2\\
+RO-F-56 & Il sistema deve potersi collegare a un dispositivo di stampa & UC-4.2\\
 \hline
 RD-F-1 & Il sistema deve supportare l'uso di scorciatoie da tastiera per le operazioni di formattazione & UC-1.8.* \\
 \hline
@@ -2482,21 +2475,21 @@ RD-F-2 & Il sistema deve permettere di cambiare modalità di visualizzazione (So
 \hline
 RD-F-3 & Il sistema deve supportare il caricamento tramite drag-and-drop (trascinamento file nell'area dell'editor) & UC-3.0.1 \\
 \hline
-RD-F-4 & Il sistema deve offrire opzioni per le operazioni comuni sui file come carica nuovo, stampa, chiudi & UC-1.0 \\
+RD-F-4 & Il sistema deve offrire opzioni per le operazioni comuni sui file come carica nuovo, stampa, chiudi & UC-3.0, UC-3.3, UC-4.0, UC-4.2\\
 \hline
 RD-F-5 & Se sono presenti modifiche non salvate nell'editor, il sistema chiede conferma all'utente prima di caricare un nuovo file, permettendo di annullare l'operazione, per salvare il testo presente, o sovrascrivere il contenuto senza salvarlo & UC-3.0 \\
 \hline
-RD-F-6 & Il sistema deve consentire l'esportazione del documento in formato MD. & UC-4.0.2 \\
+RD-F-6 & Il sistema deve consentire l'esportazione del documento in formato PDF & UC-4.0.2 \\
 \hline
-RD-F-7 & Il sistema deve consentire l'esportazione del documento in formato HTML. & UC-4.0.3 \\
+RD-F-7 & Il sistema deve consentire l'esportazione del documento in formato HTML & UC-4.0.3 \\
 \hline
-RD-F-8 & Il sistema deve consentire l'esportazione del documento in formato ODT. & UC-4.0.4 \\
+RD-F-8 & Il sistema deve consentire l'esportazione del documento in formato ODT & UC-4.0.4 \\
 \hline
-RD-F-9 & Il sistema deve consentire l'esportazione del documento in formato DOCX. & UC-4.0.5 \\
+RD-F-9 & Il sistema deve consentire l'esportazione del documento in formato DOCX & UC-4.0.5 \\
 \hline
-RD-F-10 & L'utente deve poter scegliere se esportare l'intero documento, un range di pagine o una quantità selezionata di pagine. & UC-4.1.*\\
+RD-F-10 & L'utente deve poter scegliere se esportare l'intero documento o un range di pagine selezionate & UC-4.1.*\\
 \hline
-RD-F-11 & Il sistema deve permettere all'utente di scegliere se stampare tutto il documento o una quantità selezionata di pagine. & UC-4.2.*\\
+RD-F-11 & Il sistema deve permettere all'utente di scegliere se stampare tutto il documento o un range di pagine selezionate & UC-4.2.*\\
 \hline
 ROP-F-1 & L'utente può ricercare parole nel testo attraverso l'editor & UC-1.11 \\
 \hline
@@ -2516,7 +2509,7 @@ ROP-F-8 & Il sistema permette di inserire una formula matematica generata con da
 \hline
 ROP-F-9 & Il sistema deve permettere all'utente di inserire le proprie credenziali (username e password) per il login & UC-5.0 \\
 \hline
-ROP-F-10 & Se le credenziali sono errate il sistema deve non far autenticare l'utente & UC-5.0.* \\
+ROP-F-10 & Se le credenziali sono errate il sistema non permette all'utente di autenticarsi & UC-5.0.* \\
 \hline
 ROP-F-11 & Il sistema deve permettere all'utente di potersi registrare tramite uno username e una password & UC-5.1 \\
 \hline
@@ -2530,11 +2523,11 @@ ROP-F-15 & Il sistema in caso di eliminazione account deve eliminare i dati dal 
 \hline
 ROP-F-16 & Le operazioni di eliminazione dell'account devono richiedere una conferma esplicita da parte dell'utente & UC-5.2 \\
 \hline
-ROP-F-17 & Il sistema deve terminare la sessione nel caso un account venga eliminato & UC-5.2 \\
+ROP-F-17 & Il sistema deve terminare la sessione se un account viene eliminato & UC-5.2 \\
 \hline
 ROP-F-18 & Il sistema deve permettere ad un utente di vedere i file che ha salvato & UC-5.3 \\
 \hline
-ROP-F-19 & Il sistema deve permettere ad un utente autenticato di selezionare un file dall'elenco di quelli salvat e aprirlo & UC-5.3 \\
+ROP-F-19 & Il sistema deve permettere ad un utente autenticato di selezionare un file dall'elenco di quelli salvati e aprirlo & UC-5.3 \\
 \hline
 ROP-F-20 & Il sistema deve consentire all'utente di annullare l'operazione di apertura senza recuperare alcun file dal database & UC-5.3 \\
 \hline
@@ -2544,7 +2537,7 @@ ROP-F-22 & Il sistema deve permettere il salvataggio di un file in un sistema di
 \hline
 ROP-F-23 & Il sistema deve associare ogni file al suo creatore & UC-5.4 \\
 \hline
-ROP-F-24 & Un utente non autenticato che prova a salvare un file viene riportato alla pagina di login  & UC-5.4.2 \\
+ROP-F-24 & Un utente non autenticato che prova a salvare un file viene riportato alla pagina di login & UC-5.4.2 \\
 \hline
 ROP-F-25 & L'utente può effettuare il logout in ogni momento e terminare la propria sessione & UC-5.5 \\
 
@@ -2562,14 +2555,13 @@ Questi comprendono i vincoli tecnologici, architetturali e organizzativi.
 \hline
 \textbf{Requisito} & \textbf{Descrizione} & \textbf{Casi d'uso correlati}\\
 \hline
-
 RO-V-1 & L'applicazione deve essere accessibile via browser e necessita di connessione internet & UC-1.0 \\
 \hline
 RO-V-2 & Il sistema deve supportare nativamente la codifica dei caratteri Unicode (UTF-8) per garantire la leggibilità di testi multilingua & UC-1.0 \\
 \hline
 RO-V-3 & Il formato di input e storage del testo deve essere Markdown & UC-1.0, UC-1.1 \\
 \hline
-RO-V-4 & L’agente esterno applica modifiche relative esclusivamente al testo selezionato. Un contesto aggiuntivo può essere fornito solo a scopo interpretativo e non deve essere alterato. & UC-2.0 \\
+RO-V-4 & L’agente esterno applica modifiche relative esclusivamente al testo selezionato. Un contesto aggiuntivo può essere fornito solo a scopo interpretativo e non deve essere alterato & UC-2.0 \\
 \hline
 RO-V-5 & I testi generati dall'agente esterno devono indicare il tipo di operazione che li ha generati nel registro delle generazioni & UC-2.* \\
 \hline
@@ -2585,7 +2577,7 @@ RO-V-10 & Il sistema espone la sua limitazione nell'eseguire un'azione richiesta
 \hline
 RO-V-11 & Il caricamento e la lettura del file devono avvenire localmente tramite le API del browser (es. File API), senza inviare il contenuto a un server & UC-3.* \\
 \hline
-RO-V-12 & L'operazione di esportazione o stampa non deve alterare o chiudere il documento originale nell'editor. & UC-4.* \\
+RO-V-12 & L'operazione di esportazione o stampa non deve alterare o chiudere il documento originale nell'editor & UC-4.* \\
 \hline
 RO-V-13 & Il sistema deve collegarsi ad un LLM tramite API REST & UC-2.* \\
 \hline
@@ -2621,7 +2613,7 @@ RO-Q-1 & Il sistema deve compilare il testo markdown in un breve lasso di tempo 
 \hline
 RO-Q-2 & Il sistema deve fornire messaggi di errore chiari se l'editor non risponde o se l'anteprima fallisce & UC-1.0, UC-1.1 \\
 \hline
-RO-Q-3 & L'aggiornamento dell'anteprima compilata deve avvenire automaticamente quando viene modificato del testo& UC-1.0, UC-1.1 \\
+RO-Q-3 & L'aggiornamento dell'anteprima compilata deve avvenire automaticamente quando viene modificato del testo & UC-1.0, UC-1.1 \\
 \hline
 RO-Q-4 & Il sistema deve avvisare l'utente in caso di mancanza di connessione & UC-1.0 \\
 \hline
@@ -2635,9 +2627,9 @@ RO-Q-8 & Il sistema non fa niente se non ci sono azioni da ripetere & UC-1.7 \\
 \hline
 RO-Q-9 & Il sistema esplicita se la ricerca non ha prodotto risultati & UC-1.11 \\
 \hline
-RO-Q-10 & L'agente esterno deve rispondere sempre in tempi brevi, o restituire errore & UC-2.* \\
+RO-Q-10 & L'agente esterno deve rispondere sempre in tempi brevi o restituire errore & UC-2.* \\
 \hline
-RO-Q-11 & Il sistema deve intercettare e gestire gli errori di comunicazione con il servizio LLM. & UC-2.* \\
+RO-Q-11 & Il sistema deve intercettare e gestire gli errori di comunicazione con il servizio LLM & UC-2.* \\
 \hline
 RO-Q-12 & Le opzioni, relative alle operazioni con agente esterno, non devono sparire in maniera poco intuitiva muovendo il mouse & UC-2.0 \\
 \hline
@@ -2653,9 +2645,9 @@ RO-Q-17 & Il sistema deve impedire il caricamento di file corrotti & UC-3.0, UC-
 \hline
 RO-Q-18 & La dimensione massima consentita per il caricamento di un file deve essere limitata a una soglia definita e ragionevole & UC-3.2 \\
 \hline
-RO-Q-19 & Il sistema deve avvisare l'utente della buona riuscita o di eventuali errori durante il download. & UC-4.0 \\
+RO-Q-19 & Il sistema deve avvisare l'utente della buona riuscita o di eventuali errori durante il downloa & UC-4.0 \\
 \hline
-RO-Q-20 & Il sistema deve avvisare l'utente in caso di errore durante l'invio del documento alla stampante. & UC-4.2 \\
+RO-Q-20 & Il sistema deve avvisare l'utente in caso di errore durante l'invio del documento alla stampante & UC-4.2 \\
 \hline
 RO-Q-21 & Il sistema deve poter permettere di visualizzare sia il testo in lingua originale che la traduzione generata & UC-2.5, UC-2.5.x \\
 \hline
@@ -2665,9 +2657,9 @@ RD-Q-2 & L'operazione di caricamento e rendering di un file di dimensioni suppor
 \hline
 RD-Q-3 & Il parsing del contenuto del file deve essere robusto, garantendo che caratteri non validi non causino il crash dell'applicazione & UC-3.* \\
 \hline
-RD-Q-4 & Il sistema deve fornire una visualizzazione in anteprima del documento nel formato selezionato prima di procedere al download. & UC-4.0 \\
+RD-Q-4 & Il sistema deve fornire una visualizzazione in anteprima del documento nel formato selezionato prima di procedere al download & UC-4.0 \\
 \hline
-RD-Q-5 & Il sistema deve permettere all'utente di scegliere il nome del file prima di scaricare il documento. & UC-4.0 \\
+RD-Q-5 & Il sistema deve permettere all'utente di scegliere il nome del file prima di scaricare il documento & UC-4.0 \\
 \hline
 ROP-Q-1 & Il sistema deve mostrare un messaggio di errore non specifico nel caso di fallimento del login & UC-5.0 \\
 \hline
@@ -2692,13 +2684,13 @@ ROP-Q-5 & Il sistema deve notificare all'utente il fallimento del salvataggio & 
 \hline
 \textbf{Tipologia} & \textbf{O} & \textbf{D} & \textbf{OP} & \textbf{Totale}\\
 \hline
-Funzionali & 43 & 11 & 25 & 79 \\
+Funzionali & 56 & 11 & 25 & 92 \\
 \hline
-Vincolo & 12 & 1 & 5 & 18 \\
+Vincolo & 13 & 1 & 6 & 20 \\
 \hline
-Qualità & 15 & 6 & 5 & 26 \\
+Qualità & 21 & 5 & 5 & 31 \\
 \hline
-\textbf{Totale} & 70 & 18 & 35 & 123\\
+\textbf{Totale} & 90 & 17 & 36 & 143\\
 \hline
 \end{tabular}
 \caption{Riepilogo dei requisiti}
