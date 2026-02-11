@@ -64,7 +64,7 @@
         \centering
         \begin{tabular}{|l|p{5cm}|}
             \hline
-            \textbf{Versione} & 0.2.1 \\
+            \textbf{Versione} & 0.2.2 \\
             \hline
             \textbf{Stato} & In corso \\
             \hline
@@ -95,6 +95,8 @@
     \begin{tabularx}{\textwidth}{|c|c|c|>{\raggedright\arraybackslash}X|c|}
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verifica} \\
+        \hline
+        0.2.2 & 11/02/2026 & Giulia Barzon & Retrospettiva sprint 6 e pianificazione per sprint 7 & \\
         \hline
         0.2.1 & 04/02/2026 & Tommaso Tombacco & Retrospettiva sprint 5 e pianificazione per sprint 6 & Giulia Barzon\\
         \hline
@@ -1209,14 +1211,119 @@ Le attività pianificate per il prossimo periodo includono:
 
 \subsubsection{Review}
 Durante questo sprint il gruppo ha svolto le seguenti attività:
+\begin{itemize}
+    \item Verifica e correzione di casi d'uso e relativi diagrammi;
+    \item Verifica dell'Analisi dei Requisiti;
+    \item Aggiornamento del Piano di Qualifica e del Piano di Progetto;
+    \item Sviluppo dell'interfaccia base dell'editor per il PoC;
+    \item Sviluppo parziale del database e dell'interfaccia di login per il PoC;
+    \item Sviluppo parziale delle funzionalità AI per il PoC.
+\end{itemize}
+
+\subsubsection{Consuntivo orario}
+\begin{center}
+    \begin{tabular}{|l|c|c|c|c|c|c|c|}
+        \hline
+        \textbf{Membro} & \textbf{Re} & \textbf{Am} & \textbf{An} & \textbf{Pj} & \textbf{Pg} & \textbf{Ve} & \textbf{Totale} \\
+        \hline
+        Joseph Grant & 0 & 0 & 2 & 0 & 2 & 0 & 4 \\
+        \hline
+        Chiara Grossele & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+        \hline
+        Tommaso Tombacco & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+        \hline
+        Elisa Marchioro & 1 & 0 & 0 & 0 & 0 & 3 & 4 \\
+        \hline
+        Giulia Barzon & 0 & 0 & 0 & 0 & 3 & 2 & 5 \\
+        \hline
+        Matteo Cuogo & 0 & 0 & 0 & 0 & 2 & 1 & 3 \\
+        \hline
+        \textbf{Ore totali} & 1 & 0 & 2 & 0 & 7 & 6 & 16 \\
+        \hline
+        \textbf{Costo totale} & 30 & 0 & 50 & 0 & 105 & 90 & 275 \\
+        \hline
+    \end{tabular}
+\end{center}
+
+\subsubsection{Retrospettiva}
+Durante questo periodo il gruppo ha proseguito efficacemente lo sviluppo del Proof of Concept (PoC). Nello specifico, la progettazione dell'interfaccia utente è stata ultimata e l'editor di testo, con le sue funzionalità essenziali, risulta completo e operativo. Per quanto riguarda il backend, lo sviluppo del database (funzionalità opzionale) è in corso, mentre l'implementazione delle funzionalità AI ha raggiunto circa il 70\% di completamento. È stato inoltre validato con successo il collegamento con i Large Language Models (LLM), le cui funzioni sono ora in fase di affinamento.
+Sul fronte documentale, l'Analisi dei Requisiti è stata finalizzata e verificata, così come il Piano di Progetto e il Piano di Qualifica, che sono stati aggiornati correttamente.
+Non si sono concretizzati rischi critici, sebbene si sia registrato un lieve rallentamento nelle attività dovuto alla concomitanza con la sessione d'esami universitaria.
+
+Le attività pianificate per il prossimo periodo includono:
+\begin{itemize}
+    \item Aggiornamento e verifica del Piano di Progetto;
+    \item Aggiornamento e verifica del Piano di Qualifica;
+    \item Completamento dello sviluppo del PoC;
+    \item Scrittura della lettera di candidatura per la presentazione RTB;
+    \item Preparazione delle slide e del discorso per la presentazione RTB;
+    \item Richiesta della presentazione RTB al Prof. Cardin.
+\end{itemize}
+
+\newpage
+% --------------------------------------------
+% SPRINT 7 (RTB)
+% --------------------------------------------
+\subsection{Sprint 7: Completamento del PoC}
+{\textbf{Periodo: 09 febbraio 2026 - 23 febbraio 2026}\par}
+
+\subsubsection{Pianificazione}
+\begin{itemize}
+    \item \textbf{Data inizio}: 09 febbraio 2026
+    \item \textbf{Data fine}: 23 febbraio 2026
+    \item \textbf{Obiettivi}:
+    \begin{itemize}
+        \item Aggiornamento e verifica del Piano di Progetto;
+        \item Aggiornamento e verifica Piano di Qualifica;
+        \item Completamento dello sviluppo del PoC;
+        \item Scrittura lettera di candidatura per la presentazione RTB;
+        \item Preparazione slide e discorso per la presentazione RTB;
+        \item Richiesta presentazione RTB a Cardin.
+    \end{itemize}
+    \item \textbf{Ruoli assegnati}:
+    \begin{itemize}
+        \item Matteo Cuogo: Programmatore e Verificatore 
+        \item Giulia Barzon: Amministratore e Programmatore
+        \item Elisa Marchioro: Amministratore e Programmatore
+        \item Joseph Grant: Responsabile e Programmatore
+        \item Chiara Grossele: Programmatore e Verificatore
+        \item Tommaso Tombacco: Programmatore e Verificatore 
+    \end{itemize}
+    \item \textbf{Rischi attesi}: RO-1, RO-3, RT-1, RT-2, RT-3
+\end{itemize}
+
+\subsubsection{Preventivo orario}
+\begin{center}
+    \begin{tabular}{|l|c|c|c|c|c|c|c|}
+        \hline
+        \textbf{Membro} & \textbf{Re} & \textbf{Am} & \textbf{An} & \textbf{Pj} & \textbf{Pg} & \textbf{Ve} & \textbf{Totale} \\
+        \hline
+        Joseph Grant & 1 & 0 & 0 & 0 & 2 & 0 & 3 \\
+        \hline
+        Chiara Grossele & 0 & 0 & 0 & 0 & 3 & 1 & 4 \\
+        \hline
+        Tommaso Tombacco & 0 & 0 & 0 & 0 & 3 & 1 & 4 \\
+        \hline
+        Elisa Marchioro & 0 & 2 & 0 & 0 & 0 & 1 & 3 \\
+        \hline
+        Giulia Barzon & 0 & 2 & 0 & 0 & 0 & 1 & 3 \\
+        \hline
+        Matteo Cuogo & 0 & 0 & 0 & 0 & 2 & 1 & 3 \\
+        \hline
+        \textbf{Ore totali} & 1 & 4 & 0 & 0 & 10 & 5 & 20 \\
+        \hline
+        \textbf{Costo totale} & 30 & 80 & 0 & 0 & 150 & 75 & 335 \\
+        \hline
+    \end{tabular}
+\end{center}
+
+\noindent \textbf{Legenda}: Re = Responsabile, Am = Amministratore, An = Analista, Pj = Progettista, Pg = Programmatore, Ve = Verificatore.
+
+\subsubsection{Review}
+Durante questo sprint il gruppo ha svolto le seguenti attività:
 
 \begin{itemize}
-        \item Verifica e correzione di casi d'uso e relativi diagrammi;
-        \item Aggiornamento del Piano di Qualifica;
-        \item Sviluppo dell'interfaccia base dell'editor per il PoC;
-        \item Sviluppo del database e dell'interfaccia di login per il PoC;
-        \item Sviluppo delle funzionalità AI per il PoC;
-        \item Verifica documento Analisi dei Requisiti e correzione requisiti;
+        \item
     \end{itemize}
 
 \subsubsection{Consuntivo orario}
@@ -1252,7 +1359,6 @@ Le attività pianificate per il prossimo periodo includono:
     \item 
     \item 
 \end{itemize}
-
 
 \newpage
 % --------------------------------------------
