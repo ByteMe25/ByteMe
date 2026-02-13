@@ -1,0 +1,181 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{geometry}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{float}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+
+\geometry{margin=2.5cm}
+
+% Intestazione e piè di pagina
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[C]{\thepage\ di \pageref{LastPage}}
+
+\begin{document}
+
+% Prima pagina - Intestazione
+\begin{titlepage}
+    \centering
+    
+    % Logo Università
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.3\textwidth]{../logoUnipd.jpg}
+    \end{figure}
+    
+    \vspace{0.5cm}
+    
+    \textbf{\Large Università degli Studi di Padova} \\
+    \vspace{0.2cm}
+    \textbf{Laurea in Informatica} \\
+    \vspace{0.2cm}
+    \textbf{Corso di Ingegneria del Software} \\
+    \vspace{0.2cm}
+    \textbf{Anno Accademico 2025/2026} \\
+    
+    \vspace{1cm}
+    
+    % Logo gruppo
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.2\textwidth]{../LogoByteMe.jpg}
+    \end{figure}
+    
+    \vspace{0.5cm}
+    
+    \textbf{\Large Gruppo ByteMe} \\
+    \vspace{0.2cm}
+    \texttt{byteme2025swe@gmail.com} \\
+    
+    \vspace{1cm}
+    
+    \textbf{\Huge Lettera di Candidatura per la RTB} \\
+    
+    \vspace{1.5cm}
+    
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{|l|p{5cm}|}
+            \hline
+            \textbf{Versione} & 0.0.0 \\
+            \hline
+            \textbf{Stato} & Approvato \\
+            \hline
+            \textbf{Redazione} & Elisa Marchioro \\
+            \hline
+            \textbf{Verifica} &  \\
+            \hline
+            \textbf{Approvazione} & Tutto il gruppo \\
+            \hline
+            \textbf{Proprietario} & ByteMe \\
+            \hline
+            \textbf{Uso} & Esterno \\
+            \hline
+            \textbf{Destinatari} & Prof. Tullio Vardanega \\ & Prof. Riccardo Cardin \\
+            \hline
+        \end{tabular}
+    \end{table}
+    
+    \vfill
+\end{titlepage}
+
+\section*{Registro dei cambiamenti}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|>{\raggedright\arraybackslash}p{0.25\textwidth}|>{\raggedright\arraybackslash}p{0.4\textwidth}|}
+        \hline
+        \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} \\
+        \hline
+        0.0.0 & 13/02/2026 & Elisa Marchioro & Iniziale stesura documento \\
+        \hline
+    \end{tabular}
+    \caption{Registro delle versioni del documento}
+    \label{tab:versionamento}
+\end{table}
+
+\newpage
+
+% Terza pagina - Indice
+\tableofcontents
+\thispagestyle{empty}
+\newpage
+
+% Quarta pagina - Contenuto principale
+\setcounter{page}{1}
+
+\section{Presentazione}
+Alla cortese attenzione del Prof. Tullio Vardanega e del Prof. Riccardo Cardin.
+
+Il gruppo ByteMe intende formalmente candidarsi per la revisione Requirements and Tecnology Baseline (RTB) relativa all capitolato C6 "Progetto Second Brain", proposto dall'azienda Zucchetti.
+
+Viene riportato di seguito il link alla repository dove è possibile consultare la documentazione del gruppo:
+\begin{center}
+\texttt{https://github.com/ByteMe25/ByteMe}
+\end{center}
+
+\noindent In particolare, all'interno troverete la cartella RTB con i seguenti documenti:
+\begin{itemize}
+    \item Lettera di presentazione
+    \item Analisi dei requisiti
+    \item Piano di progetto
+    \item Piano di qualifica
+\end{itemize}
+
+\noindent Viene riportato di seguito anche il link alla repository dove è presente il nostro Proof of Concept (PoC):
+\begin{center}
+\url{https://github.com/ByteMe25/POC_ByteMe.git}
+\end{center}
+
+\newpage
+\section{Analisi dei requisiti}
+Abbiamo dedicato molto tempo a definire un’analisi dei requisiti che fosse il più dettagliata possibile, perchè il nostro obiettivo era quello di facilitare lo sviluppo del prodotto, in modo da sapere esattamente le funzionalità e i requisiti che volevamo successivamente implementare.
+
+\section{Piano di progetto}
+Il piano di progetto è stato lo strumento fondamentale per gestire il nostro lavoro nel tempo. Lo abbiamo utilizzato principalmente per monitorare l'avanzamento delle attività durante i vari sprint, assicurandoci che ogni obiettivo venisse raggiunto nei tempi previsti. 
+
+\section{Piano di qualifica}
+Questo documento definisce le strategie e le metodologie necessarie per garantire la qualità del prodotto finale. In questa prima fase, dedicata alla Requirements Technological Baseline (RTB), ci siamo concentrati sulla sperimentazione: abbiamo testato diverse metriche di valutazione per individuare quelle più efficaci e adatte alle caratteristiche specifiche del nostro progetto. Questo ci ha permesso di gettare delle basi solide per poter raggiungere più facilmente la seconda fase del progetto, la Product Baseline (PB).
+
+\section{Proof of Concept}
+Durante la realizzazione del Proof of Concept ci siamo posti come obiettivo quello di sperimentare con diverse tecnologie, in modo da poter scegliere per il prodotto finale quelle più compatibili e affini al nostro progetto. 
+Oltre alle funzioni base, abbiamo inoltre voluto testare la fattibilità anche di aspetti più complessi. Ad esempio, abbiamo scelto di inserire un sistema di autenticazione, anche se era un requisito opzionale, proprio per essere sicuri che tutto funzionasse correttamente prima di procedere con lo sviluppo vero e proprio.
+
+
+
+\newpage
+\section{Conclusione}
+Restiamo a disposizione per ogni eventuale chiarimento e porgiamo distinti saluti.
+
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|c|}
+        \hline
+        \textbf{Cognome} & \textbf{Nome} & \textbf{Matricola} \\
+        \hline
+        Cuogo & Matteo & 2111013 \\
+        \hline
+        Grant & Joseph & 1224441 \\
+        \hline
+        Grossele & Chiara & 2101063 \\
+        \hline
+        Marchioro & Elisa & 2111941 \\
+        \hline
+        Barzon & Giulia & 2101074 \\
+        \hline
+        Tombacco & Tommaso & 2076447 \\
+        \hline
+    \end{tabular}
+\end{table}
+
+\hfill Il gruppo ByteMe
+
+\end{document}
