@@ -64,13 +64,13 @@
         \centering
         \begin{tabular}{|l|p{5cm}|}
             \hline
-            \textbf{Versione} & 0.0.0 \\
+            \textbf{Versione} & 0.2.0 \\
             \hline
             \textbf{Stato} & Approvato \\
             \hline
             \textbf{Redazione} & Elisa Marchioro \\
             \hline
-            \textbf{Verifica} &  \\
+            \textbf{Verifica} & Giulia Barzon\\
             \hline
             \textbf{Approvazione} & Tutto il gruppo \\
             \hline
@@ -94,7 +94,9 @@
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} \\
         \hline
-        0.0.0 & 13/02/2026 & Elisa Marchioro & Iniziale stesura documento \\
+        0.2.0 & 14/02/2026 & Giulia Barzon & Verifica e aggiunta costi e impegni orari \\
+        \hline
+        0.1.0 & 13/02/2026 & Elisa Marchioro & Iniziale stesura documento \\
         \hline
     \end{tabular}
     \caption{Registro delle versioni del documento}
@@ -123,37 +125,60 @@ Viene riportato di seguito il link alla repository dove è possibile consultare 
 
 \noindent In particolare, all'interno troverete la cartella RTB con i seguenti documenti:
 \begin{itemize}
-    \item Lettera di presentazione
+    \item Lettera di candidatura alla presentazione RTB
     \item Analisi dei requisiti
     \item Piano di progetto
     \item Piano di qualifica
 \end{itemize}
 
-\noindent Viene riportato di seguito anche il link alla repository dove è presente il nostro Proof of Concept (PoC):
+
+\subsection{Proof of Concept}
+Lo scopo del Proof of Concept è stato quello di testare diverse tecnologie per individuare le più idonee al prodotto finale. Per assicurarci della stabilità del progetto, non ci siamo limitati alle funzioni essenziali, ma abbiamo affrontato anticipatamente anche i componenti più complessi. L'inserimento del sistema di autenticazione, seppur opzionale in questa fase, è stato deciso proprio per validare le fondamenta tecniche prima di procedere con lo sviluppo su larga scala.
+
+Viene riportato di seguito il link alla repository del nostro \textbf{Proof of Concept (PoC)}:
 \begin{center}
 \url{https://github.com/ByteMe25/POC_ByteMe.git}
 \end{center}
 
 \newpage
-\section{Analisi dei requisiti}
-Abbiamo dedicato molto tempo a definire un’analisi dei requisiti che fosse il più dettagliata possibile, perchè il nostro obiettivo era quello di facilitare lo sviluppo del prodotto, in modo da sapere esattamente le funzionalità e i requisiti che volevamo successivamente implementare.
+\section{Costi e impegni orari}
+Di seguito viene presentato un riepilogo dell'impegno orario e dei costi relativi al lavoro svolto in questa prima fase, unito alle previsioni per le fasi successive, sulla base dei dati rendicontati all'interno del \textit{Piano di Progetto}.
 
-\section{Piano di progetto}
-Il piano di progetto è stato lo strumento fondamentale per gestire il nostro lavoro nel tempo. Lo abbiamo utilizzato principalmente per monitorare l'avanzamento delle attività durante i vari sprint, assicurandoci che ogni obiettivo venisse raggiunto nei tempi previsti. 
+\subsection*{Bilancio della fase RTB}
+Per la fase di Requirements and Technology Baseline (RTB), il preventivo parziale stimato prevedeva un impiego di 158 ore lavorative, corrispondenti a un costo di 3.315,00 euro. 
 
-\section{Piano di qualifica}
-Questo documento definisce le strategie e le metodologie necessarie per garantire la qualità del prodotto finale. In questa prima fase, dedicata alla Requirements Technological Baseline (RTB), ci siamo concentrati sulla sperimentazione: abbiamo testato diverse metriche di valutazione per individuare quelle più efficaci e adatte alle caratteristiche specifiche del nostro progetto. Questo ci ha permesso di gettare delle basi solide per poter raggiungere più facilmente la seconda fase del progetto, la Product Baseline (PB).
+Al termine degli sprint rendicontati per questa fase, il consuntivo effettivo si attesta su 133 ore lavorative, per un costo totale di 2.947,50 euro. Il bilancio risulta dunque positivo: il gruppo è riuscito a completare gli obiettivi previsti, ottimizzando le ore a disposizione nonostante qualche periodo di rallentamento. Questo ha generato un risparmio rispetto a quanto inizialmente preventivato, garantendoci un margine di sicurezza per affrontare eventuali imprevisti nelle fasi successive.
 
-\section{Proof of Concept}
-Durante la realizzazione del Proof of Concept ci siamo posti come obiettivo quello di sperimentare con diverse tecnologie, in modo da poter scegliere per il prodotto finale quelle più compatibili e affini al nostro progetto. 
-Oltre alle funzioni base, abbiamo inoltre voluto testare la fattibilità anche di aspetti più complessi. Ad esempio, abbiamo scelto di inserire un sistema di autenticazione, anche se era un requisito opzionale, proprio per essere sicuri che tutto funzionasse correttamente prima di procedere con lo sviluppo vero e proprio.
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.3} % Aumenta leggermente lo spazio tra le righe
+    \begin{tabular}{|l|c|c|}
+        \hline
+        \textbf{Voce} & \textbf{Ore} & \textbf{Costo (€)} \\
+        \hline
+        Preventivo parziale fase RTB & 158 & 3.315,00 \\
+        Consuntivo effettivo fase RTB & 133 & 2.947,50 \\
+        \hline
+        \textbf{Risparmio accumulato} & \textbf{25} & \textbf{367,50} \\
+        \hline\hline
+        \textbf{Residuo per fasi PB e CA} & \textbf{425} & \textbf{8.447,50} \\
+        \hline
+        \textbf{Preventivo totale di progetto} & \textbf{558} & \textbf{11.395,00} \\
+        \hline
+    \end{tabular}
+    \vspace{0.2cm}
+    \caption{Riepilogo ore e costi: bilancio RTB e proiezioni future.}
+\end{table}
 
+\subsection*{Prospettive per la fase PB}
+Sottraendo le ore e i costi consuntivati fino ad oggi dal totale preventivato per l'intero progetto, il gruppo dispone attualmente di un monte ore residuo di \textbf{425 ore} (pari a un budget rimanente di \textbf{8.447,50 euro}). Queste risorse saranno interamente destinate alla fase di Product Baseline (PB).
+
+Durante la fase PB, l'impegno orario subirà una naturale redistribuzione: la maggior parte delle ore sarà concentrata sui ruoli di Progettista, Programmatore e Verificatore. L'obiettivo principale sarà quello di evolvere l'attuale Proof of Concept nel vero e proprio Minimum Viable Product (MVP), implementando in modo completo le funzionalità tracciate nell'Analisi dei Requisiti e assicurando la solidità del prodotto tramite le rigorose metriche di testing definite nel Piano di Qualifica.
 
 
 \newpage
 \section{Conclusione}
-Restiamo a disposizione per ogni eventuale chiarimento e porgiamo distinti saluti.
-
+Confidando in una valutazione positiva della nostra proposta, restiamo a disposizione per ogni eventuale chiarimento e porgiamo distinti saluti.
 
 \begin{table}[H]
     \centering
