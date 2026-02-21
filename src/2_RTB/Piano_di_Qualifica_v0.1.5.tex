@@ -68,7 +68,7 @@
         \centering
         \begin{tabular}{|l|p{5cm}|}
             \hline
-            \textbf{Versione} & 0.1.4 \\
+            \textbf{Versione} & 0.1.5 \\
             \hline
             \textbf{Stato} & In corso \\
             \hline
@@ -99,6 +99,8 @@
     \begin{tabular}{|c|c|c|>{\raggedright\arraybackslash}p{0.4\textwidth}|c|}
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verifica} \\
+        \hline
+        0.1.5 & 21/02/2026 & Giulia Barzon & Aggiunti test analisi dinamica &  \\
         \hline
         0.1.4 & 05/02/2026 & Giulia Barzon & Aggiornamento cruscotto di qualità &  \\
         \hline
@@ -705,17 +707,95 @@ Questa checklist\textsubscript{G} viene aggiornata progressivamente dai verifica
     \caption{Checklist Analisi Dei Requisiti}
 \end{table}
 
+% SEZIONE PER ANALISI DINAMICA: test implementati sul codice
 \newpage
 \subsection{Analisi Dinamica\textsubscript{G}}
+L'analisi dinamica del software \textit{Second Brain} viene condotta attraverso l'esecuzione di test strutturati su diversi livelli di granularità, secondo il modello a V del ciclo di vita del software. L'obiettivo è verificare che il sistema soddisfi i requisiti funzionali e non funzionali, garantendo affidabilità, correttezza e usabilità del prodotto finale.
+
+\paragraph{Priorità di Testing (per la fase RTB)}
+Durante lo sviluppo del Proof of Concept (PoC), l'analisi dinamica si concentra sulla verifica della fattibilità tecnologica e sull'integrazione tra i componenti. Le priorità sono così definite:
+\begin{itemize}
+    \item \textbf{Alta}: Test di Sistema (funzionalità AI core) e Test di Integrazione (API Auth + AI, Backend-Database).
+    \item \textbf{Media}: Test di Unità (logiche isolate come \texttt{auth.py} o formattazione dei prompt).
+\end{itemize}
+L'obiettivo attuale non è raggiungere una \textit{Code Coverage} esaustiva (che sarà centrale nella fase PB), ma validare che i rischi tecnologici siano stati mitigati.
+
+% ----------------------------------------------------
+% TEST DI UNITA'
+% ----------------------------------------------------
 \subsubsection{Test di Unità\textsubscript{G}}
+\textbf{Obiettivo}: Verificare il corretto funzionamento delle singole unità software in isolamento (funzioni, metodi, moduli), assicurando che producano l'output atteso per ogni input fornito.
 
+\begin{table}[H]
+    \centering
+    \small % Carattere leggermente ridotto per far stare tutte le colonne
+    \begin{tabularx}{\textwidth}{|c|c|X|p{2.5cm}|p{2.5cm}|}
+        \hline
+        \textbf{Test ID} & \textbf{Funzione Testata} & \textbf{Descrizione} & \textbf{Input} & \textbf{Output Atteso} \\
+        \hline
+        TU-1 & \texttt{genera\_hash()} & Verifica generazione hash PBKDF2 con salt casuale. & pwd: "test123" & Stringa formato \texttt{salt\$hash} \\
+        \hline
+        TU-2 & \texttt{verifica\_pwd()} & Verifica confronto con una password corretta. & pwd: "test123", hash valido & \texttt{True} \\
+        \hline
+        TU-3 & \texttt{verifica\_pwd()} & Verifica rifiuto con una password errata. & pwd: "wrong", hash valido & \texttt{False} \\
+        \hline
+        TU-4 & \texttt{verifica\_pwd()} & Gestione delle eccezioni per hash malformati o nulli. & hash malformato & \texttt{False} \\
+        \hline
+    \end{tabularx}
+    \caption{Test di Unità}
+\end{table}
+
+% ----------------------------------------------------
+% TEST DI INTEGRAZIONE
+% ----------------------------------------------------
 \subsubsection{Test di Integrazione\textsubscript{G}}
+\textbf{Obiettivo}: Verificare che i diversi moduli del sistema (Frontend, Backend, Database e LLM esterni) comunichino correttamente tra loro attraverso le rispettive interfacce e API.
 
+\begin{table}[H]
+    \centering
+    \small
+    \begin{tabularx}{\textwidth}{|c|X|c|}
+        \hline
+        \textbf{Test ID} & \textbf{Descrizione} & \textbf{Requisito} \\
+        \hline
+        TI-1 & \textbf{Health Check Database}: Verifica che il backend riesca a stabilire una connessione stabile con il database PostgreSQL interrogando l'endpoint dedicato (\texttt{/api/test-db-connection}) ed eseguendo una query di test. & ROP-F-22 \\
+        \hline
+        TI-2 & \textbf{Health Check LLM}: Verifica in fase di avvio dell'applicazione che le variabili d'ambiente (API Key e Base URL) siano correttamente caricate e che il client verso il provider esterno venga inizializzato con successo. & RO-V-13 \\
+        \hline
+        TI-3 & Verifica che la chiamata di registrazione dal backend salvi correttamente e persistentemente il record del nuovo utente all'interno del database PostgreSQL. & ROP-F-11 \\
+        \hline
+        TI-4 & Verifica che l'endpoint del backend formatti correttamente il prompt richiesto e lo inoltri con successo alle API del provider LLM, ricevendo una risposta valida. & RO-V-13 \\
+        \hline
+        TI-5 & Verifica che la funzione frontend \texttt{loginUtente()} componga correttamente il body JSON della richiesta HTTP POST e gestisca adeguatamente la risposta del backend (es. token di sessione o errore). & ROP-F-9 \\
+        \hline
+    \end{tabularx}
+    \caption{Test di Integrazione}
+\end{table}
+
+% ----------------------------------------------------
+% TEST DI SISTEMA
+% ----------------------------------------------------
 \subsubsection{Test di Sistema\textsubscript{G}}
+\textbf{Obiettivo}: Validare il comportamento del software nel suo complesso, simulando i percorsi d'uso (End-to-End) dell'utente finale tramite l'interfaccia grafica per garantire la copertura dei casi d'uso.
 
-\subsubsection{Test di Accettazione\textsubscript{G}}
+\begin{table}[H]
+    \centering
+    \small
+    \begin{tabularx}{\textwidth}{|c|X|c|}
+        \hline
+        \textbf{Test ID} & \textbf{Descrizione} & \textbf{Caso d'Uso (UC)} \\
+        \hline
+        TS-1 & \textbf{Flusso Autenticazione}: L'utente accede alla pagina di login, inserisce credenziali valide e preme "Accedi". Il sistema lo reindirizza all'editor, nasconde i bottoni di login/registrazione e l'area utente. & UC-5.0, UC-5.5 \\
+        \hline
+        TS-2 & \textbf{Flusso AI Core}: L'utente carica un file locale, ne seleziona una porzione, richiede un'operazione all'AI (es. "Riassumi"). Il sistema elabora la richiesta e inietta il risultato nel pannello "Storico Generazioni". & UC-2.* \\
+        \hline
+        TS-3 & \textbf{Flusso Editor e I/O}: L'utente scrive testo formattato in Markdown nell'editor, verifica che la sintassi venga riconosciuta, ed esegue il salvataggio (download) del file in formato .md sul proprio dispositivo. & UC-1.0, UC-4.0 \\
+        \hline
+    \end{tabularx}
+    \caption{Test di Sistema}
+\end{table}
 
-
+% \subsubsection{Test di Accettazione\textsubscript{G}}
 
 \newpage
 \section{Cruscotto di Valutazione della Qualità\textsubscript{G}}
