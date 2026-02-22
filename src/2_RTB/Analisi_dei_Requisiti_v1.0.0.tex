@@ -1034,8 +1034,34 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
             \item L'utente ha effettuato una o più operazioni AI
             \item L’utente seleziona l’opzione “Visualizza storico generazioni"
             \item Il sistema mostra un registro con tutte le generazioni AI effettuate nel documento
+            \item se l'utente cambia documento o chiude la pagina, l'utente perde lo storico delle generazioni AI effettuate per quel documento
+        \end{itemize}
+        \item \textbf{Estensioni}:
+        \begin{itemize}
+            \item L'utente ha effettuato il log-in
         \end{itemize}
 \end{itemize}
+
+\subsubsection{UC-2.0.1 - Visualizzazione storico generazioni AI per utente registrato}
+\begin{itemize}
+    \item \textbf{Attore principale}: Utente registrato
+    \item \textbf{Descrizione}: Lo storico delle generazioni AI è persistente ed è associato ai documenti salvati nell’account dell’utente
+    \item \textbf{Precondizioni}: L’utente ha effettuato il log-in e ha eseguito una o più operazioni AI
+    \item \textbf{Postcondizioni}: L’utente visualizza il registro delle generazioni AI associate ai documenti salvati nel suo account
+    \item \textbf{Scenario principale}:
+        \begin{itemize}
+            \item L'utente ha effettuato il log-in e ha eseguito una o più operazioni AI
+            \item L’utente seleziona l’opzione “Visualizza storico generazioni"
+            \item Il sistema mostra un registro con tutte le generazioni AI associate ai documenti salvati nel suo account
+        \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../UCimg/UC2.0_2.0.1_activity.jpg}
+    \caption{Diagramma delle attività UC-2.0, 2.0.1}
+    \label{fig:da2.0_2.0.1}
+\end{figure}
 
 \subsubsection{UC-2.1 - Interazione con i testi generati dall’AI}
 \begin{itemize}
