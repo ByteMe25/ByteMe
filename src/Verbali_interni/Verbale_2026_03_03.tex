@@ -1,0 +1,86 @@
+\documentclass[a4paper,12pt]{article}
+
+% ===== Pacchetti utili =====
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[italian]{babel}
+\usepackage{geometry}
+\usepackage{array}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+
+% ===== Impostazioni di pagina =====
+\geometry{margin=2.5cm}
+\setlength{\parskip}{6pt}
+\setlength{\parindent}{0pt}
+
+% ===== Intestazione e piè di pagina =====
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Verbale 03/03/26}
+\rhead{ByteMe}
+\cfoot{\thepage}
+
+% ===== Documento =====
+\begin{document}
+
+\vspace*{\fill}
+\begin{center}
+    \includegraphics[width=0.5\textwidth]{../LogoByteMe.jpg}\\[1cm]
+    {\Huge \textbf{Verbale Riunione}}\\[0.5cm]
+    {\Large ByteMe}\\[0.5cm]
+    \rule{0.6\textwidth}{0.6pt}\\[0.5cm]
+    \textit{Data: 3 marzo 2026}
+\end{center}
+\vspace*{\fill}
+
+\pagebreak
+   \rule{1\textwidth}{0.4pt}\\[4pt]
+
+\textbf{Data:} 03/03/26 \\
+\textbf{Ora di inizio:} 14:30 \\
+\textbf{Ora di fine:} 16:00 \\
+\textbf{Luogo / Piattaforma:} Discord
+\begin{center}
+   \rule{1\textwidth}{0.4pt}\\
+\end{center}
+
+\section*{ Partecipanti}
+
+\begin{longtable}{|p{0.45\textwidth}|p{0.45\textwidth}|}
+\hline
+\textbf{Nome e Cognome} & \textbf{Ruolo} \\ \hline
+ Tommaso Tombacco & programmatore \\ \hline
+ Joseph Grant &  programmatore\\ \hline
+ Giulia Barzon & verificatore e programmatore \\ \hline
+ Matteo Cuogo & responsabile e programmatore  \\ \hline
+ Chiara Grossele & programmatore e amministratore  \\ \hline
+ Elisa Marchioro & programmatore e amministratore \\ \hline
+\end{longtable}
+
+\section*{ Ordine del Giorno}
+1. Discussione ulteriori tecnologie da implementare per strutturare il POC\\
+ \\
+
+
+\section*{ Sintesi della Discussione}
+
+\begin{longtable}{|p{0.3\textwidth}|p{0.35\textwidth}|p{0.25\textwidth}|}
+\hline
+\textbf{Argomento} & \textbf{Sintesi} & \textbf{Decisioni Prese} \\ \hline
+Discussione ulteriori tecnologie da implementare per strutturare il POC & Abbiamo deciso di implementare React per dare più struttura e mantenibilità al codice & Suddivisione studio e implementazione del codice \\ \hline
+\end{longtable}
+
+\section*{ Prossima Riunione}
+\textbf{Data prevista:} da definire \\
+\textbf{Luogo / Piattaforma:} Discord \\
+\textbf{Obiettivo principale:} Implementazione finale POC
+
+\textbf{Redatto da:} Matteo Cuogo \\
+\textbf{Data di redazione:} 03/03/26
+
+\end{document}
