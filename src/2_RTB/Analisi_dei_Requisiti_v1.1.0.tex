@@ -65,15 +65,15 @@
         \centering
         \begin{tabular}{|l|p{5cm}|}
             \hline
-            \textbf{Versione} & 1.0.0 \\
+            \textbf{Versione} & 1.1.0 \\
             \hline
-            \textbf{Stato} & Approvato \\
+            \textbf{Stato} & Da approvare \\
             \hline
             \textbf{Redazione} & Tutto il gruppo \\
             \hline
             \textbf{Verifica} & Giulia Barzon, Elisa Marchioro, Matteo Cuogo \\
             \hline
-            \textbf{Approvazione} & Joseph Grant \\
+            \textbf{Approvazione} & \\
             \hline
             \textbf{Proprietario} & ByteMe \\
             \hline
@@ -96,6 +96,8 @@
     \label{tab:versionamento} \\
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verifica} \\
+        \hline
+        1.1.0 & 4/03/2026 & Giulia Barzon & Correzioni a requisiti e casi d'uso & \\
         \hline
         1.0.0 & 22/02/2026 & Joseph Grant & Approvazione documento & \\
         \hline
@@ -190,14 +192,14 @@ Questo documento descrive l'analisi dei requisiti per il progetto \textbf{"Secon
 L'obiettivo principale è fornire una specifica completa delle funzionalità che il sistema deve implementare, classificando i requisiti in obbligatori, desiderabili e opzionali, in linea con le richieste della proponente Zucchetti.
 
 \subsection{Glossario}
-Per evitare ambiguità, i termini tecnici usati nel documento vengono definiti in modo più approfondito nel documento "Glossario" che si trova nella repository del gruppo nella cartella "Documenti\textunderscore interni".
+Per evitare ambiguità, i termini tecnici usati nel documento vengono definiti in modo più approfondito nel documento "Glossario v.1.0.0" che si trova nella repository del gruppo nella cartella "Documenti\textunderscore interni".
 
 I termini che vengono considerati meritevoli di approfondimenti sono indicati con una G a pedice.
 
 \subsection{Riferimenti}
 \subsubsection{Riferimenti normativi}
 \begin{itemize}
-    \item Norme di Progetto - Documento interno del gruppo ByteMe
+    \item Norme di Progetto v1.0.0 - Documento interno del gruppo ByteMe
     \item Regolamento del progetto didattico
 \end{itemize}
 
@@ -290,16 +292,17 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
 \newpage
 
 \subsection{Macroarea 1 - Editor di testo}
-\subsubsection{UC-1.0 - Modifica del testo tramite sintassi markdown}
+\subsubsection{UC-1.0 - Scrittura nell'editor}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
-    \item \textbf{Descrizione}: L’utente scrive nell’apposita area di testo utilizzando la sintassi markdown
+    \item \textbf{Descrizione}: L'utente scrive testo nell'area di editing dell'editor. Il sistema supporta la sintassi Markdown standard (CommonMark), interpretando il testo inserito e visualizzandolo formattato nell'anteprima in tempo reale
     \item \textbf{Precondizioni}: L’area di testo è vuota o riempita parzialmente
-    \item \textbf{Postcondizioni}: L’area di testo contiene le modifiche fatte dall’utente
+    \item \textbf{Postcondizioni}: L’area di editing contiene il testo e le modifiche fatte dall’utente
     \item \textbf{Scenario principale}:
         \begin{itemize}
             \item L’utente si posiziona sull’area di testo
-            \item L’utente inserisce testo rispettando la sintassi markdown
+            \item L'utente digita il testo desiderato
+            \item Il sistema aggiorna l'anteprima in tempo reale
         \end{itemize}
     \item \textbf{Estensioni}:
         \begin{itemize}
@@ -565,43 +568,9 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
             \item Il sistema applica automaticamente la sintassi Markdown corrispondente al testo selezionato
             \item Il testo formattato viene visualizzato nell'area di anteprima
         \end{itemize}
-    \item \textbf{Estensioni}:
-        \begin{itemize}
-            \item Combinazione di più formattazioni diverse
-            \item Il testo ha già una specifica formattazione e l'utente la applica di nuovo
-            \item Selezione di testo che è parzialmente formattato
-        \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-1.8.0.1 - Gestione combinazioni di più formattazioni diverse}
-\begin{itemize}
-    \item \textbf{Attore principale}: Utente generico
-    \item \textbf{Descrizione}: L'utente tenta di applicare una formattazione a un testo che ha già una formattazione
-    \item \textbf{Precondizioni}: Il testo selezionato ha già una formattazione
-    \item \textbf{Postcondizioni}: Il sistema applica la nuova formattazione sopra alla formattazione esistente, senza eliminarla
-    \item \textbf{Scenario principale}:
-        \begin{itemize}
-            \item L'utente seleziona del testo già formattato
-            \item L'utente clicca sul pulsante della nuova formattazione nella toolbar
-            \item Il sistema applica la nuova formattazione al testo selezionato in aggiunta alla formattazione esistente
-        \end{itemize}
-\end{itemize}
-
-\subsubsection{UC-1.8.0.2 - Rimozione formattazione}
-\begin{itemize}
-    \item \textbf{Attore principale}: Utente generico
-    \item \textbf{Descrizione}: L'utente riapplica la stessa formattazione a una porzione di testo
-    \item \textbf{Precondizioni}: Il testo selezionato è formattato
-    \item \textbf{Postcondizioni}: Il testo perde quella formattazione
-    \item \textbf{Scenario principale}:
-        \begin{itemize}
-            \item L'utente seleziona il testo formattato
-            \item L'utente clicca sul pulsante della stessa formattazione nella toolbar
-            \item Il sistema rimuove la formattazione dal testo selezionato
-        \end{itemize}
-\end{itemize}
-
-\subsubsection{UC-1.8.0.3 - Gestione testo già parzialmente formattato}
+\subsubsection{UC-1.8.0.1 - Testo già parzialmente formattato}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: L'utente applica la stessa formattazione a una porzione del testo che contiene parzialmente la stessa formattazione
@@ -616,14 +585,28 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \end{itemize}
 \end{itemize}
 
+\subsubsection{UC-1.8.1 - Rimozione formattazione tramite toolbar}
+\begin{itemize}
+    \item \textbf{Attore principale}: Utente generico
+    \item \textbf{Descrizione}: L'utente riapplica la stessa formattazione a una porzione di testo
+    \item \textbf{Precondizioni}: Il testo selezionato è formattato
+    \item \textbf{Postcondizioni}: Il testo perde quella formattazione
+    \item \textbf{Scenario principale}:
+        \begin{itemize}
+            \item L'utente seleziona il testo formattato
+            \item L'utente clicca sul pulsante della stessa formattazione nella toolbar
+            \item Il sistema rimuove la formattazione dal testo selezionato
+        \end{itemize}
+\end{itemize}
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{../UCimg/UC1.8.0.1.jpg}
-    \caption{Diagramma dei casi d'uso UC-1.8.0, 1.8.0.1, 1.8.0.2, 1.8.0.3}
+    \caption{Diagramma dei casi d'uso UC-1.8.0, 1.8.0.1, 1.8.1}
     \label{fig:uc1.8.0}
 \end{figure}
 
-\subsubsection{UC-1.8.1 - Applicazione grassetto al testo selezionato}
+\subsubsection{UC-1.8.2 - Applicazione grassetto al testo selezionato}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: Formattazione del testo selezionato in grassetto tramite barra degli strumenti
@@ -638,7 +621,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-1.8.2 - Applicazione corsivo al testo selezionato}
+\subsubsection{UC-1.8.3 - Applicazione corsivo al testo selezionato}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: Formattazione del testo selezionato in corsivo tramite barra degli strumenti
@@ -653,7 +636,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-1.8.3 - Applicazione sottolineatura al testo selezionato}
+\subsubsection{UC-1.8.4 - Applicazione sottolineatura al testo selezionato}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: Formattazione del testo selezionato come sottolineato tramite barra degli strumenti
@@ -668,7 +651,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-1.8.4 - Applicazione intestazioni al testo selezionato}
+\subsubsection{UC-1.8.5 - Applicazione intestazioni al testo selezionato}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: Applicazione di intestazioni al testo selezionato
@@ -687,7 +670,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-1.8.5 - Inserimento elementi di struttura}
+\subsubsection{UC-1.8.6 - Inserimento elementi di struttura}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: Applicazione di elementi di struttura al documento nel testo selezionato
@@ -705,7 +688,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-1.8.6 - Inserimento di liste ed elenchi}
+\subsubsection{UC-1.8.7 - Inserimento di liste ed elenchi}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: Creazione di liste ordinate e non ordinate nel documento da testo selezionato o non selezionato
@@ -719,13 +702,9 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
             \item Il sistema formatta automaticamente la lista
             \item La lista formattata viene visualizzata nell'anteprima
         \end{itemize}
-    \item \textbf{Estensioni}:
-        \begin{itemize}
-            \item Inserimento di sotto-liste
-        \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-1.8.6.1 - Gestione di sotto-liste}
+\subsubsection{UC-1.8.7.1 - Gestione di sotto-liste}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: L'utente vuole inserire una sotto-lista all'interno di una lista esistente
@@ -740,7 +719,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-1.8.7 - Inserimento di link e riferimenti}
+\subsubsection{UC-1.8.8 - Inserimento di link e riferimenti}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: Inserimento di link ipertestuali al testo selezionato nel documento
@@ -772,27 +751,8 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \item \textbf{Scenario principale}:
         \begin{itemize}
             \item L’utente seleziona la formattazione per il testo futuro
-            \item Il sistema applica automaticamente la sintassi Markdown corrispondente
-            \item Il testo scritto dall'utente prende automaticamente la formattazione applicata
-        \end{itemize}
-    \item \textbf{Estensioni}:
-        \begin{itemize}
-            \item Combinazione di più formattazioni diverse
-        \end{itemize}
-\end{itemize}
-
-\subsubsection{UC-1.9.0.1 - Gestione multiple opzioni di formattazione}
-\begin{itemize}
-    \item \textbf{Attore principale}: Utente generico
-    \item \textbf{Descrizione}: L'utente vuole scrivere del testo futuro con più formattazioni contemporaneamente
-    \item \textbf{Precondizioni}: L’utente ha abilitiato diversi strumenti di formattazione
-    \item \textbf{Postcondizioni}: Il testo futuro viene formattato con tutte le opzioni selezionate
-    \item \textbf{Scenario principale}:
-        \begin{itemize}
-            \item L'utente applica più opzioni di formattazione per il testo futuro
-            \item Il sistema applica tutte le formattazioni selezionate al testo futuro
-            \item Il testo scritto dall'utente prende automaticamente tutte le formattazioni selezionate
-            \item Il testo formattato viene visualizzato correttamente nell'anteprima
+            \item Il sistema applica la sintassi Markdown corrispondente, anche in caso di multiple formattazioni
+            \item Il testo scritto dall'utente prende la formattazione applicata
         \end{itemize}
 \end{itemize}
 
@@ -983,14 +943,18 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
 \subsubsection{UC-1.11 - Ricerca nel testo}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
-    \item \textbf{Descrizione}: Ricerca di occorrenze di testo all'interno del documento
+    \item \textbf{Descrizione}: Ricerca di occorrenze di una stringa di testo all'interno del documento tramite corrispondenza esatta e non 
+    case-sensitive.
     \item \textbf{Precondizioni}: È presente testo nell'editor
-    \item \textbf{Postcondizioni}: Vengono trovate occorrenze di testo
+    \item \textbf{Postcondizioni}: Le occorrenze della stringa cercata 
+    vengono evidenziate nel testo
     \item \textbf{Scenario principale}:
         \begin{itemize}
             \item L'utente attiva la funzione "Ricerca"
-            \item L'utente inserisce il testo da cercare
-            \item Il sistema evidenzia le occorrenze trovate
+            \item L'utente inserisce la stringa di testo da cercare
+            \item Il sistema cerca tutte le occorrenze esatte della stringa nel documento in modo non case-sensitive
+            \item Il sistema evidenzia simultaneamente tutte le occorrenze 
+            trovate nel testo
         \end{itemize}
     \item \textbf{Estensioni}:
         \begin{itemize}
@@ -1026,23 +990,75 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
 \subsubsection{UC-2.0 - Visualizzazione storico generazioni AI}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
-    \item \textbf{Descrizione}: L’utente può visualizzare un registro di tutte le generazioni AI che ha effettuato
-    \item \textbf{Precondizioni}: Sono state eseguite una o più operazioni AI
+    \item \textbf{Descrizione}: L'utente visualizza il registro delle generazioni AI effettuate nel documento corrente
+    \item \textbf{Precondizioni}: Sono state eseguite una o più operazioni AI nel documento corrente
     \item \textbf{Postcondizioni}: L’utente visualizza il registro delle generazioni AI
     \item \textbf{Scenario principale}:
         \begin{itemize}
-            \item L'utente ha effettuato una o più operazioni AI
             \item L’utente seleziona l’opzione “Visualizza storico generazioni"
             \item Il sistema mostra un registro con tutte le generazioni AI effettuate nel documento
-            \item se l'utente cambia documento o chiude la pagina, l'utente perde lo storico delle generazioni AI effettuate per quel documento
         \end{itemize}
         \item \textbf{Estensioni}:
         \begin{itemize}
-            \item L'utente ha effettuato il log-in
+            \item Il registro delle generazioni è vuoto
         \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-2.0.1 - Visualizzazione storico generazioni AI per utente registrato}
+\subsubsection{UC-2.0.1 - Visualizzazione storico generazioni vuoto}
+\begin{itemize}
+    \item \textbf{Attore principale}: Utente generico
+    \item \textbf{Descrizione}: L'utente accede allo storico ma non sono presenti generazioni AI
+    \item \textbf{Precondizioni}: L'utente ha selezionato "Visualizza storico generazioni" e non sono state eseguite operazioni AI nella sessione corrente
+    \item \textbf{Postcondizioni}: Il sistema informa l'utente che il registro è vuoto
+    \item \textbf{Scenario principale}:
+        \begin{itemize}
+            \item L'utente seleziona "Visualizza storico generazioni"
+            \item Il sistema rileva che non sono presenti generazioni AI
+            \item Il sistema mostra un messaggio informativo
+        \end{itemize}
+\end{itemize}
+
+\subsubsection{UC-2.0.2 - Visualizzazione titolo generazione}
+\begin{itemize}
+    \item \textbf{Attore principale}: Utente generico
+    \item \textbf{Descrizione}: Per ogni voce dello storico il sistema mostra un titolo che identifica la generazione, composto dal 
+    nome della funzionalità AI utilizzata e dalla data e ora della generazione
+    \item \textbf{Precondizioni}: Lo storico delle generazioni AI è aperto e contiene almeno una voce
+    \item \textbf{Postcondizioni}: Il titolo di ogni generazione è visibile nel registro
+    \item \textbf{Scenario principale}:
+        \begin{itemize}
+            \item Il sistema recupera il titolo della generazione 
+            \item Il titolo viene mostrato per ogni voce del registro
+        \end{itemize}
+\end{itemize}
+
+\subsubsection{UC-2.0.3 - Visualizzazione testo generato}
+\begin{itemize}
+    \item \textbf{Attore principale}: Utente generico
+    \item \textbf{Descrizione}: Per ogni voce dello storico il sistema mostra il testo prodotto dalla generazione AI
+    \item \textbf{Precondizioni}: Lo storico delle generazioni AI è aperto e contiene almeno una voce
+    \item \textbf{Postcondizioni}: Il testo generato è visibile per ogni voce del registro
+    \item \textbf{Scenario principale}:
+        \begin{itemize}
+            \item Il sistema recupera il testo generato associato alla voce
+            \item Il testo viene mostrato per ogni voce del registro
+        \end{itemize}
+\end{itemize}
+
+\subsubsection{UC-2.0.4 - Eliminazione di una generazione dallo storico generazioni AI}
+\begin{itemize}
+    \item \textbf{Attore principale}: Utente generico
+    \item \textbf{Descrizione}: L'utente elimina una voce dal registro delle generazioni AI
+    \item \textbf{Precondizioni}: Lo storico delle generazioni AI è aperto e contiene almeno una voce
+    \item \textbf{Postcondizioni}: La voce selezionata viene rimossa dal registro
+    \item \textbf{Scenario principale}:
+        \begin{itemize}
+            \item L'utente seleziona l'opzione "Elimina" associata a una generazione del registro
+            \item Il sistema rimuove la voce dal registro
+        \end{itemize}
+\end{itemize}
+
+\subsubsection{UC-2.0.5 - Visualizzazione storico generazioni AI per utente registrato}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente registrato
     \item \textbf{Descrizione}: Lo storico delle generazioni AI è persistente ed è associato ai documenti salvati nell’account dell’utente
@@ -1066,21 +1082,19 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
 \subsubsection{UC-2.1 - Interazione con i testi generati dall’AI}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
-    \item \textbf{Descrizione}: Ogni volta che l’utente effettua un’operazione AI può decidere se confermare, eliminare o rigenerare la proposta
+    \item \textbf{Descrizione}: Ogni volta che l’utente effettua un’operazione AI può leggerla e interagire con essa
     \item \textbf{Precondizioni}: E’ stata eseguita un’operazione AI
-    \item \textbf{Postcondizioni}: L’utente ha confermato, eliminato o rigenerato la proposta AI e la proposta è stata inserita nello storico delle generazioni AI
+    \item \textbf{Postcondizioni}: La proposta AI è stata inserita nello storico delle generazioni AI e l'utente ha interagito con essa confermandola, eliminandola o rigenerandola
     \item \textbf{Scenario principale}:
     \begin{itemize}
-        \item L’utente seleziona un’operazione AI da eseguire nel testo selezionato o non selezionato 
-        \item Ogni nuova operazione AI può essere confermata, eliminata o rigenerata dall’utente
-        \item Ogni generazione, a prescindere dalla scelta dell’utente, viene inserita nello storico delle generazioni AI
+        \item L'utente avvia un'operazione AI sul testo selezionato o sull'intero documento
+        \item Il sistema comunica con il servizio LLM e attende la risposta
+        \item Il sistema mostra la proposta generata distinta visivamente dal testo dell'utente
+        \item L'utente interagisce con la proposta
+        \item La generazione viene inserita nello storico delle generazioni AI
     \end{itemize}
     \item \textbf{Estensioni}:
     \begin{itemize}
-        \item Conferma proposta
-        \item Elimina proposta
-        \item Rigenera proposta
-        \item L’utente annulla l’operazione prima del completamento della generazione
         \item Il servizio LLM restituisce un errore senza dare risposta
     \end{itemize}
 \end{itemize}
@@ -1137,23 +1151,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-2.1.4 - Annullamento dell’operazione AI}
-\begin{itemize}
-    \item \textbf{Attore principale}: Utente generico
-    \item \textbf{Descrizione}: L’utente interrompe volontariamente una richiesta AI in corso prima del suo completamento
-    \item \textbf{Precondizioni}: L'utente ha avviato un'operazione AI e il sistema è in fase di elaborazione
-    \item \textbf{Postcondizioni}: L’operazione viene annullata e il documento rimane nello stato precedente alla richiesta
-    \item \textbf{Scenario principale}:
-    \begin{itemize}
-        \item Il sistema sta elaborando una richiesta AI
-        \item L’editor mostra un indicatore di attesa (opzionale)
-        \item L’utente seleziona l’opzione “Annulla” per l’operazione in corso
-        \item L’editor interrompe l’operazione e la comunicazione con il servizio LLM
-        \item Il testo presente nell’editor rimane invariato
-    \end{itemize}
-\end{itemize}
-
-\subsubsection{UC-2.1.5 - Errore dal LLM}
+\subsubsection{UC-2.1.4 - Errore dal LLM}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: Il sistema gestisce un fallimento nella generazione della risposta da parte del LLM (es. timeout, assenza di connessione, errore server)
@@ -1165,6 +1163,22 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \item Il servizio LLM non risponde o restituisce un codice di errore
         \item Il sistema riceve l'errore interrompendo il processo di attesa
         \item Il sistema manda un messaggio di errore all'utente
+        \item Il testo presente nell’editor rimane invariato
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{UC-2.1.5 - Annullamento dell’operazione AI}
+\begin{itemize}
+    \item \textbf{Attore principale}: Utente generico
+    \item \textbf{Descrizione}: L’utente interrompe volontariamente una richiesta AI in corso prima del suo completamento
+    \item \textbf{Precondizioni}: L'utente ha avviato un'operazione AI e il sistema è in fase di elaborazione
+    \item \textbf{Postcondizioni}: L’operazione viene annullata e il documento rimane nello stato precedente alla richiesta
+    \item \textbf{Scenario principale}:
+    \begin{itemize}
+        \item Il sistema sta elaborando una richiesta AI
+        \item L’editor mostra un indicatore di attesa (opzionale)
+        \item L’utente seleziona l’opzione “Annulla” per l’operazione in corso
+        \item L’editor interrompe l’operazione e la comunicazione con il servizio LLM
         \item Il testo presente nell’editor rimane invariato
     \end{itemize}
 \end{itemize}
@@ -1787,7 +1801,33 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-3.0.1 - Opzione trascina file}
+\subsubsection{UC-3.0.1 - Caricamento file Markdown}
+\begin{itemize}
+    \item \textbf{Attore principale}: Utente generico
+    \item \textbf{Descrizione}: L'utente carica un file in formato Markdown (\texttt{.md}, \texttt{.markdown}) nell'editor
+    \item \textbf{Precondizioni}: L'utente dispone di un file in formato Markdown
+    \item \textbf{Postcondizioni}: Il contenuto del file Markdown viene caricato nell'editor
+    \item \textbf{Scenario principale}:
+        \begin{itemize}
+            \item L'utente seleziona un file con estensione \texttt{.md} o \texttt{.markdown}
+            \item Il sistema carica il contenuto del file nell'editor
+        \end{itemize}
+\end{itemize}
+
+\subsubsection{UC-3.0.2 - Caricamento file di testo}
+\begin{itemize}
+    \item \textbf{Attore principale}: Utente generico
+    \item \textbf{Descrizione}: L'utente carica un file in formato testo semplice (\texttt{.txt}) nell'editor
+    \item \textbf{Precondizioni}: L'utente dispone di un file in formato \texttt{.txt}
+    \item \textbf{Postcondizioni}: Il contenuto del file di testo viene caricato nell'editor
+    \item \textbf{Scenario principale}:
+        \begin{itemize}
+            \item L'utente seleziona un file con estensione \texttt{.txt}
+            \item Il sistema carica il contenuto del file nell'editor
+        \end{itemize}
+\end{itemize}
+
+\subsubsection{UC-3.0.3 - Opzione trascina file}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: Utente trascina il file nella finestra per caricare file
@@ -1801,7 +1841,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-3.0.2 - Opzione esplora file}
+\subsubsection{UC-3.0.4 - Opzione esplora file}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: Utente vede i propri file e ne sceglie uno da caricare
@@ -1818,7 +1858,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{../UCimg/UC3.0.jpg}
-    \caption{Diagramma dei casi d'uso UC-3.0, 3.0.1, 3.0.2}
+    \caption{Diagramma dei casi d'uso UC-3.0, 3.0.*}
     \label{fig:uc3.0}
 \end{figure}
 
@@ -1986,7 +2026,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \label{fig:uc4.0}
 \end{figure}
 
-\subsubsection{UC-4.1 - Esportare selezionate pagine del documento}
+\subsubsection{UC-4.0.6 - Esportare selezionate pagine del documento}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: Scaricare nel formato desiderato solo alcune pagine del documento
@@ -1999,13 +2039,9 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
             \item Seleziona modalità di esportazione
             \item Ottiene le pagine selezionate in un nuovo documento, salvato nel formato selezionato
         \end{itemize}
-    \item \textbf{Estensioni}:
-        \begin{itemize}
-            \item L'utente esporta un range di pagine del documento
-        \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-4.1.1 - Esportare un range di pagine del documento}
+\subsubsection{UC-4.0.7 - Esportare un range di pagine del documento}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: Scaricare nel formato desiderato solo un range di pagine del documento
@@ -2209,20 +2245,20 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
 \end{figure}
 
 
-\subsubsection{UC-5.3 - Apertura file recenti}
+\subsubsection{UC-5.3 - Apertura di un file salvato}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente autenticato
-    \item \textbf{Descrizione}: L'utente vuole aprire un file dal db creato in precedenza
-    \item \textbf{Precondizioni}: L'utente è autenticato nel sistema
-    \item \textbf{Postcondizioni}: L'utente continua a lavorare su una nota precedentemente salvata
+    \item \textbf{Descrizione}: L'utente autenticato può aprire un documento precedentemente salvato nel proprio account
+    \item \textbf{Precondizioni}: L'utente è autenticato nel sistema e ha almeno un documento salvato nel proprio account
+    \item \textbf{Postcondizioni}: Il documento selezionato viene caricato 
+    nell'editor e l'utente può riprendere a modificarlo
     \item \textbf{Scenario principale}:
         \begin{itemize}
-            \item L'utente accede al sistema
-            \item L'utente seleziona l'opzione "Apri"
-            \item Il sistema mostra un pop up in cui vengono mostrati i file salvati dall'utente attualmente loggato
+            \item L'utente accede all'area personale, dove può visualizzare i documenti salvati
+            \item Il sistema mostra i documenti salvati dall'utente autenticato
             \item L'utente seleziona il file da aprire
-            \item Il sistema recupera dal db la nota e la rende visibile
-            \item L'utente può continuare a modificare la nota
+            \item Il sistema carica il contenuto del documento nell'editor
+            \item L'utente può riprendere la modifica del documento
         \end{itemize}
     \item \textbf{Estensioni}:
         \begin{itemize}
@@ -2701,6 +2737,26 @@ ROP-Q-5 & Il sistema deve notificare all'utente il fallimento del salvataggio & 
 \hline
 \addlinespace[1em]
 \caption{Tabella dei requisiti di qualità}
+\end{longtable}
+
+\newpage
+
+\subsection{Tracciamento}
+\subsubsection{Fonte - Requisiti}
+\begin{longtable}{|l|p{6cm}|l|}
+\hline
+\textbf{Caso d'uso} & \textbf{Descrizione} & \textbf{Requisiti} \\
+\hline
+UC-1.0 & Utilizzo editor Markdown & RO-F-1, RO-F-26 \\
+\hline
+UC-1.1 & Visualizzazione anteprima & RO-F-2, RO-F-3 \\
+\hline
+UC-1.2 & Selezione del testo & RO-F-4, RO-F-5 \\
+\hline
+UC-1.3 & Copiare il testo & RO-F-6 \\
+\hline
+
+\hline
 \end{longtable}
 
 \newpage
