@@ -2611,129 +2611,61 @@ ROP-F-25 & L'utente può effettuare il logout in ogni momento e terminare la pro
 
 \newpage
 \subsubsection{Requisiti di Vincolo}
-I requisiti di vincolo\textsubscript{G} rappresentano le limitazioni entro le quali il progetto deve essere sviluppato. A differenza dei requisiti funzionali, questi non derivano da scelte progettuali del team, ma sono imposizioni esterne dettate dal committente, da normative o da limiti tecnologici.
-Questi comprendono i vincoli tecnologici, architetturali e organizzativi.
+I requisiti di vincolo\textsubscript{G} rappresentano le limitazioni entro le quali il progetto deve essere sviluppato. A differenza dei requisiti funzionali, questi non derivano da scelte progettuali del team, ma sono imposizioni esterne dettate dal committente, da normative o da limiti tecnologici. Questi comprendono i vincoli tecnologici, architetturali e organizzativi.
 
-% tabella per i requisiti non funzionali di vincolo
-\begin{longtable}{|p{0.2\textwidth}|>{\raggedright\arraybackslash}p{0.5\textwidth}|p{0.2\textwidth}|}
+\begin{longtable}{|p{0.15\textwidth}|>{
+  \raggedright\arraybackslash}p{0.55\textwidth}|p{0.2\textwidth}|}
 \hline
-\textbf{Requisito} & \textbf{Descrizione} & \textbf{Casi d'uso correlati}\\
+\textbf{Requisito} & \textbf{Descrizione} & \textbf{Fonte} \\
 \hline
-RO-V-1 & L'applicazione deve essere accessibile via browser e necessita di connessione internet & UC-1.0 \\
+RO-V-1 & L'applicazione deve essere accessibile tramite browser web. 
+I browser supportati sono: Google Chrome ($\geq$ v110), Mozilla Firefox 
+($\geq$ v110), Microsoft Edge ($\geq$ v110), Safari ($\geq$ v16). & Capitolato \\
 \hline
-RO-V-2 & Il sistema deve supportare nativamente la codifica dei caratteri Unicode (UTF-8) per garantire la leggibilità di testi multilingua & UC-1.0 \\
+RO-V-2 & Il sistema deve utilizzare la codifica Unicode (UTF-8) per la rappresentazione interna e lo storage del testo. & Capitolato \\
 \hline
-RO-V-3 & Il formato di input e storage del testo deve essere Markdown & UC-1.0, UC-1.1 \\
+RO-V-3 & Il formato di input e di storage del testo deve essere Markdown, in conformità allo standard CommonMark. & Capitolato \\
 \hline
-RO-V-4 & L’agente esterno applica modifiche relative esclusivamente al testo selezionato. Un contesto aggiuntivo può essere fornito solo a scopo interpretativo e non deve essere alterato & UC-2.0 \\
+RO-V-4 & Il sistema deve integrarsi con il servizio LLM di OpenAI tramite le relative API REST.  & Capitolato \\
 \hline
-RO-V-5 & I testi generati dall'agente esterno devono indicare il tipo di operazione che li ha generati nel registro delle generazioni & UC-2.* \\
+RO-V-5 & La password degli utenti registrati deve essere lunga almeno 8 caratteri e contenere almeno un carattere speciale e un numero. & UC-5.1 \\
 \hline
-RO-V-6 & Il testo generato da un agente esterno che viene accettato dall'utente, viene inserito nella posizione del cursore, se presente nell’editor, altrimenti in fondo al testo & UC-2.* \\
+RO-V-6 & Il sistema deve essere sviluppato rispettando le Norme 
+di Progetto del gruppo ByteMe. & Norme di Progetto v1.0.0 \\
 \hline
-RO-V-7 & L'agente esterno deve avere istruzioni sufficienti affinché il testo riscritto sia corretto grammaticalmente, sintatticamente e semanticamente e deve riflettere la richiesta dell'utente & UC-2.3 \\
+RO-V-7 & Il sistema deve essere verificato secondo il Piano di Qualifica prima di ogni rilascio. & Piano di Qualifica v1.0.0 \\
 \hline
-RO-V-8 & Le sezioni create per la traduzione di un testo specificheranno la lingua di partenza e di fine & UC-2.4.* \\
-\hline
-RO-V-9 & All'agente esterno devono essere passate delle istruzioni ottimizzate per garantire una traduzione accurata nella lingua selezionata & UC-2.4.* \\
-\hline
-RO-V-10 & Il sistema espone la sua limitazione nell'eseguire un'azione richiesta se i dati inviati non rispettano i limiti dell'agente esterno & UC-2.9, UC-2.9, UC-2.10 \\
-\hline
-RO-V-11 & Il caricamento e la lettura del file devono avvenire localmente tramite le API del browser (es. File API), senza inviare il contenuto a un server & UC-3.* \\
-\hline
-RO-V-12 & L'operazione di esportazione o stampa non deve alterare o chiudere il documento originale nell'editor & UC-4.* \\
-\hline
-RO-V-13 & Il sistema deve collegarsi ad un LLM tramite API REST & UC-2.* \\
-\hline
-RD-V-1 & Il sistema deve supportare l'importazione dei formati di file più comuni: markdown (.md, .markdown) e testo (.txt) & UC-3.0, UC-3.1 \\
-\hline
-ROP-V-1 & La password inserita dall'utente deve essere minimo 8 caratteri & UC-5.1 \\
-\hline
-ROP-V-2 & La password inserita dall'utente deve contenere almeno un carattere speciale e un numero & UC-5.1 \\
-\hline
-ROP-V-3 & L'accesso ai file salvati nel database deve essere consentito solo ad utenti autenticati & UC-5.3 \\
-\hline
-ROP-V-4 & Il sistema deve impedire il salvataggio di file nel database da parte di utenti non autenticati & UC-5.4 \\
-\hline
-ROP-V-5 & Se il testo è già nella lingua da tradurre, l'utente viene avvisato e l'operazione viene interrotta & UC-2.4.* \\
-\hline
-ROP-V-6 & I testi generati dall’agente esterno nel registro delle generazioni devono indicare la data e l’ora della generazione & UC-2.* \\
+RD-V-1 & Il sistema deve supportare l'importazione dei formati Markdown (.md, .markdown) e testo semplice (.txt). & UC-3.0 \\
 \hline
 \addlinespace[1em]
 \caption{Tabella dei requisiti di vincolo}
 \end{longtable}
 
-
 \newpage
-\subsubsection{Requisiti di Qualità}
-I requisiti di qualità\textsubscript{G} specificano le caratteristiche intrinseche del software. Non descrivono nuove funzioni, ma stabiliscono \textit{come} il sistema deve erogare quelle esistenti. 
-% tabella per i requisiti non funzionali di qualità
-\begin{longtable}{|p{0.2\textwidth}|>{\raggedright\arraybackslash}p{0.5\textwidth}|p{0.2\textwidth}|}
-\hline
-\textbf{Requisito} & \textbf{Descrizione} & \textbf{Casi d'uso correlati}\\
-\hline
 
-RO-Q-1 & Il sistema deve compilare il testo markdown in un breve lasso di tempo & UC-1.0, UC-1.1 \\
+\subsubsection{Requisiti di Qualità}
+I requisiti di qualità\textsubscript{G} specificano le caratteristiche 
+misurabili del software e della documentazione. Non descrivono nuove 
+funzionalità, ma stabiliscono soglie quantitative che il sistema deve 
+rispettare, verificabili tramite le metriche definite nel 
+Piano di Qualifica v1.0.0.
+
+\begin{longtable}{|p{0.15\textwidth}|>{\raggedright\arraybackslash}
+  p{0.55\textwidth}|p{0.2\textwidth}|}
 \hline
-RO-Q-2 & Il sistema deve fornire messaggi di errore chiari se l'editor non risponde o se l'anteprima fallisce & UC-1.0, UC-1.1 \\
+\textbf{Requisito} & \textbf{Descrizione} & \textbf{Fonte} \\
 \hline
-RO-Q-3 & L'aggiornamento dell'anteprima compilata deve avvenire automaticamente quando viene modificato del testo & UC-1.0, UC-1.1 \\
+RO-Q-1 & Il tempo di risposta dell'interfaccia utente (aggiornamento anteprima, applicazione formattazioni) deve essere inferiore a 500 ms nel 95\% dei casi. & PdQ – Response Time, soglia accettabile \\
 \hline
-RO-Q-4 & Il sistema deve avvisare l'utente in caso di mancanza di connessione & UC-1.0 \\
+RO-Q-2 & Il tempo medio di generazione di una risposta da parte del servizio LLM non deve superare i 10 secondi. & PdQ – AI Processing Time, soglia accettabile \\
 \hline
-RO-Q-5 & Il sistema deve avvisare l'utente se l'editor non risponde & UC-1.0 \\
+RO-Q-3 & Il tasso di errori nelle operazioni principali (salvataggio, apertura file, chiamate AI) non deve superare l'1\%. & PdQ – Error Rate, soglia accettabile \\
 \hline
-RO-Q-6 & Il sistema deve avvisare l'utente se l'anteprima non si aggiorna & UC-1.1 \\
+RO-Q-4 & La percentuale di codice coperta dai test automatici (test coverage) deve essere almeno il 70\%. & PdQ – Test Coverage, soglia accettabile \\
 \hline
-RO-Q-7 & Il sistema non fa niente se non ci sono azioni da annullare & UC-1.6 \\
+RO-Q-5 & La complessità ciclomatica (McCabe) di ogni funzione/metodo del codice prodotto non deve superare il valore 8. & PdQ – Complessità Ciclomatica, soglia accettabile \\
 \hline
-RO-Q-8 & Il sistema non fa niente se non ci sono azioni da ripetere & UC-1.7 \\
-\hline
-RO-Q-9 & Il sistema esplicita se la ricerca non ha prodotto risultati & UC-1.11 \\
-\hline
-RO-Q-10 & L'agente esterno deve rispondere sempre in tempi brevi o restituire errore & UC-2.* \\
-\hline
-RO-Q-11 & Il sistema deve intercettare e gestire gli errori di comunicazione con il servizio LLM & UC-2.* \\
-\hline
-RO-Q-12 & Le opzioni, relative alle operazioni con agente esterno, non devono sparire in maniera poco intuitiva muovendo il mouse & UC-2.0 \\
-\hline
-RO-Q-13 & Il sistema mostra un messaggio in caso di errore durante la generazione di contenuto & UC-2.* \\
-\hline
-RO-Q-14 & Il sistema deve fornire un feedback visivo immediato all'utente (messaggio di errore o di successo) al termine del tentativo di caricamento file & UC-3.* \\
-\hline
-RO-Q-15 & Il sistema deve validare il formato del file caricato e impedire il caricamento di formati non supportati & UC-3.1 \\
-\hline
-RO-Q-16 & Il sistema deve validare le dimensioni del file caricato e impedire il caricamento di file che superano una dimensione massima & UC-3.2 \\
-\hline
-RO-Q-17 & Il sistema deve impedire il caricamento di file corrotti & UC-3.0, UC-3.1\\
-\hline
-RO-Q-18 & La dimensione massima consentita per il caricamento di un file deve essere limitata a una soglia definita e ragionevole & UC-3.2 \\
-\hline
-RO-Q-19 & Il sistema deve avvisare l'utente della buona riuscita o di eventuali errori durante il downloa & UC-4.0 \\
-\hline
-RO-Q-20 & Il sistema deve avvisare l'utente in caso di errore durante l'invio del documento alla stampante & UC-4.2 \\
-\hline
-RO-Q-21 & Il sistema deve poter permettere di visualizzare sia il testo in lingua originale che la traduzione generata & UC-2.5, UC-2.5.x \\
-\hline
-RD-Q-1 & I messaggi di errore (per formato errato, file troppo grande o corrotto) devono essere esplicativi e suggerire all'utente come procedere & UC-3.* \\
-\hline
-RD-Q-2 & L'operazione di caricamento e rendering di un file di dimensioni supportate deve completarsi in tempi brevi & UC-3.0.*\\
-\hline
-RD-Q-3 & Il parsing del contenuto del file deve essere robusto, garantendo che caratteri non validi non causino il crash dell'applicazione & UC-3.* \\
-\hline
-RD-Q-4 & Il sistema deve fornire una visualizzazione in anteprima del documento nel formato selezionato prima di procedere al download & UC-4.0 \\
-\hline
-RD-Q-5 & Il sistema deve permettere all'utente di scegliere il nome del file prima di scaricare il documento & UC-4.0 \\
-\hline
-ROP-Q-1 & Il sistema deve mostrare un messaggio di errore non specifico nel caso di fallimento del login & UC-5.0 \\
-\hline
-ROP-Q-2 & Il sistema deve avvisare l'utente che lo username è già stato usato & UC-5.1 \\
-\hline
-ROP-Q-3 & Il sistema propone all'utente di effettuare il login o scegliere un nuovo username & UC-5.1 \\
-\hline
-ROP-Q-4 & Il sistema mostra i file salvati in ordine cronologico & UC-5.3 \\
-\hline
-ROP-Q-5 & Il sistema deve notificare all'utente il fallimento del salvataggio & UC-5.4 \\
+RO-Q-6 & La documentazione prodotta deve ottenere un Indice di Gulpease (IG) maggiore o uguale a 40. & PdQ – Indice di Gulpease, soglia accettabile \\
 \hline
 \addlinespace[1em]
 \caption{Tabella dei requisiti di qualità}
