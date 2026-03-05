@@ -67,15 +67,15 @@
         \centering
         \begin{tabular}{|l|p{5cm}|}
             \hline
-            \textbf{Versione} & 0.2.2 \\
+            \textbf{Versione} & 1.0.0 \\
             \hline
-            \textbf{Stato} & In corso \\
+            \textbf{Stato} & Approvato \\
             \hline
             \textbf{Redazione} & Tutto il gruppo \\
             \hline
             \textbf{Verifica} & Tutto il gruppo \\
             \hline
-            \textbf{Approvazione} & Tutto il gruppo \\
+            \textbf{Approvazione} & Matteo Cuogo \\
             \hline
             \textbf{Proprietario} & ByteMe \\
             \hline
@@ -98,11 +98,11 @@
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verifica} \\
         \hline
-        0.2.2 & 15/01/2026 & Giulia Barzon & Aggiunta sezione su test automatici per qualità documentazione & \\
+        0.2.2 & 15/01/2026 & Giulia Barzon & Aggiunta sezione su test automatici per qualità documentazione & Matteo Cuogo\\
         \hline
-        0.2.1 & 11/01/2026 & Giulia Barzon & Aggiunta sezione sul Piano di Qualifica & \\
+        0.2.1 & 11/01/2026 & Giulia Barzon & Aggiunta sezione sul Piano di Qualifica & Matteo Cuogo\\
         \hline
-        0.2.0 & 30/12/2025 & Elisa Marchioro & Aggiunte subsection sui requisiti in "Analisi dei requisiti" & \\ 
+        0.2.0 & 30/12/2025 & Elisa Marchioro & Aggiunte subsection sui requisiti in "Analisi dei requisiti" & Matteo Cuogo\\ 
         \hline
         0.1.8 & 27/12/2025 & Joseph Grant & Aggiunta sezione 'verifica' al versionamento & Elisa Marchioro\\ 
         \hline
@@ -182,9 +182,10 @@ ByteMe/
 |-- 3_PB/
 |-- Documenti_interni/
 |-- docs/
+|-- scripts/
 |-- src/
 |-- Verbali_esterni/
-`-- Verbali_interni/
+|-- Verbali_interni/
 \end{verbatim}
 
 Ogni cartella contiene tutti i documenti relativi alle rispettive fasi del progetto.
@@ -326,6 +327,8 @@ Questa cartella contiene tutti i file relativi al nostro sito web, in particolar
 \item \textbf{index.html}: file html della home del sito.
 \end{itemize}
 
+\subsection{scripts}
+Questa cartella contiene degli scripts, quali uno script(gulpease.py) per calcolare l'indice di leggibilità di un testo, un correttore automatico (spellcheck.py) e infine un file whitelist.txt che contiene l'elenco di tutte le parole da ignorare per la correzione ortografica.
 \subsection{src}
 Questa cartella contiene i file sorgenti LaTeX, divisi nelle rispettive cartelle (omonime a quelle contenenti i pdf relativi).
 
