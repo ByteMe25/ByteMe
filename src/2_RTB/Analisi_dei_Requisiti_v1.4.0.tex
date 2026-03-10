@@ -65,7 +65,7 @@
         \centering
         \begin{tabular}{|l|p{5cm}|}
             \hline
-            \textbf{Versione} & 1.3.1 \\
+            \textbf{Versione} & 1.4.0 \\
             \hline
             \textbf{Stato} & Da approvare \\
             \hline
@@ -96,6 +96,8 @@
     \label{tab:versionamento} \\
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verifica} \\
+        \hline
+        1.4.0 & 10/03/2026 & Giulia Barzon & Ultime correzioni ai requisiti & \\
         \hline
         1.3.1 & 5/03/2026 & Elisa Marchioro & Mini fix & Matteo Cuogo\\
         \hline
@@ -574,18 +576,18 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-1.8.0.1 - Testo già parzialmente formattato}
+\subsubsection{UC-1.8.0.1 - Estensione formattazione a testo parzialmente formattato}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
-    \item \textbf{Descrizione}: L'utente applica la stessa formattazione a una porzione del testo che contiene parzialmente la stessa formattazione
-    \item \textbf{Precondizioni}: Il testo selezionato è parzialmente formattato
-    \item \textbf{Postcondizioni}: Il testo viene formattato per intero
+    \item \textbf{Descrizione}: Quando l'utente applica una formattazione a una selezione di testo che la contiene solo parzialmente, il sistema estende la formattazione all'intera selezione anziché rimuoverla
+    \item \textbf{Precondizioni}: L'utente ha selezionato una porzione di testo parzialmente formattata
+    \item \textbf{Postcondizioni}: L'intera selezione risulta formattata uniformemente con la formattazione applicata
     \item \textbf{Scenario principale}:
         \begin{itemize}
-            \item L'utente seleziona del testo
-            \item Il testo selezionato è parzialmente formattato
-            \item L'utente clicca sul pulsante della stessa formattazione nella toolbar
-            \item Il sistema applica la formattazione a tutto il testo selezionato
+            \item L'utente seleziona una porzione di testo parzialmente formattata
+            \item L'utente clicca sul pulsante della formattazione desiderata nella toolbar
+            \item Il sistema rileva che la selezione contiene solo parzialmente quella formattazione
+            \item Il sistema applica la formattazione all'intera selezione
         \end{itemize}
 \end{itemize}
 
@@ -1660,14 +1662,20 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
 \subsubsection{UC-2.8 - Generazione di grafici e tabelle}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
-    \item \textbf{Descrizione}: Creazione automatica di rappresentazioni visive (grafici o tabelle) basate su dati descritti nel testo
+    \item \textbf{Descrizione}: Creazione automatica di appresentazioni visive basate su dati descritti nel testo. I tipi di visualizzazione supportati sono:
+        \begin{itemize}
+            \item Tabella
+            \item Grafico a barre
+            \item Grafico a torta
+            \item Grafico a linee
+        \end{itemize}
     \item \textbf{Precondizioni}: È presente testo descrittivo contenente dati nell’editor
     \item \textbf{Postcondizioni}: Viene generato un elemento grafico o tabellare inserito nel documento in seguito alla conferma dell'utente
     \item \textbf{Scenario principale}:
     \begin{itemize}
     \item L’utente seleziona la porzione di testo contenente i dati
     \item L’utente attiva il comando ”Genera grafico/tabella”
-    \item L’utente specifica il tipo di visualizzazione desiderata (es. tabella, grafico a barre, torta)
+    \item L’utente specifica il tipo di visualizzazione desiderata (tabella, grafico a barre, a torta, a linee)
     \item Il sistema elabora la richiesta e invia i dati al LLM
     \item Il sistema genera l'elemento visivo 
     \item L'utente conferma la proposta 
@@ -1839,39 +1847,53 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-3.0.3 - Opzione trascina file}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../UCimg/UC3.0.jpg}
+    \caption{Diagramma dei casi d'uso UC-3.0, 3.0.1, 3.0.2}
+    \label{fig:uc3.0}
+\end{figure}
+
+
+\subsubsection{UC-3.0.3 - Caricamento tramite trascinamento (drag-and-drop)}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
-    \item \textbf{Descrizione}: Utente trascina il file nella finestra per caricare file
-    \item \textbf{Precondizioni}: Utente clicca tasto per trascinare file
-    \item \textbf{Postcondizioni}: Utente ha trascinato file
+    \item \textbf{Descrizione}: L'utente carica un file nell'editor trascinandolo direttamente nell'area di editing, senza aprire il dialogo di esplorazione file
+    \item \textbf{Precondizioni}:L'editor è aperto e l'utente dispone di un file da caricare
+    \item \textbf{Postcondizioni}: Il contenuto del file trascinato viene caricato nell'editor
     \item \textbf{Scenario principale}:
         \begin{itemize}
-            \item Utente sceglie opzione trascina file
-            \item Utente trascina file
-            \item Utente ha caricato il file
+            \item L'utente trascina un file dal proprio filesystem nell'area dell'editor
+            \item Il sistema intercetta l'evento di rilascio del file (drop)
+            \item Il sistema verifica il formato e le dimensioni del file
+            \item Il sistema carica il contenuto del file nell'editor
         \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-3.0.4 - Opzione esplora file}
+\subsubsection{UC-3.0.4 - Caricamento tramite dialogo di esplorazione file (file picker)}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
-    \item \textbf{Descrizione}: Utente vede i propri file e ne sceglie uno da caricare
-    \item \textbf{Precondizioni}: Utente clicca tasto per aprire esplora file
-    \item \textbf{Postcondizioni}: Utente ha scelto un file
+    \item \textbf{Descrizione}: L'utente carica un file nell'editor selezionandolo tramite il dialogo nativo del browser per l'esplorazione del filesystem
+    \item \textbf{Precondizioni}: L'utente ha attivato il comando di caricamento file
+    \item \textbf{Postcondizioni}: Il file selezionato tramite il dialogo viene passato al sistema per il caricamento nell'editor
     \item \textbf{Scenario principale}:
         \begin{itemize}
-            \item Utente sceglie opzione esplora file
-            \item Utente trascina file
-            \item Utente ha caricato il file
+            \item Il sistema apre il dialogo nativo del browser per la selezione di file
+            \item L'utente naviga nel proprio filesystem e seleziona il file desiderato
+            \item L'utente conferma la selezione
+            \item Il file selezionato viene restituito al sistema per il caricamento
         \end{itemize}
+    \item \textbf{Estensioni}:
+    \begin{itemize}
+        \item L'utente chiude il dialogo senza selezionare alcun file: l'operazione viene annullata e l'editor rimane invariato
+    \end{itemize}
 \end{itemize}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{../UCimg/UC3.0.jpg}
-    \caption{Diagramma dei casi d'uso UC-3.0, 3.0.*}
-    \label{fig:uc3.0}
+    \includegraphics[width=0.8\textwidth]{../UCimg/UC3.0.3.jpg}
+    \caption{Diagramma dei casi d'uso UC-3.0, 3.0.3, 3.0.4}
+    \label{fig:uc3.0.3}
 \end{figure}
 
 \subsubsection{UC-3.1 - Gestione formati file non supportati}
@@ -1951,15 +1973,16 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
 \subsubsection{UC-4.0 - Esportazione di un file}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
-    \item \textbf{Descrizione}: Permettere all'utente di esportare il documento su cui ha lavorato
-    \item \textbf{Precondizioni}: Testo scritto nell'editor di testo
-    \item \textbf{Postcondizioni}: L'utente ha il documento salvato in locale
+    \item \textbf{Descrizione}: L'utente esporta il documento corrente in un formato a scelta tra quelli supportati dal sistema. Di default viene esportato l'intero documento; l'utente può opzionalmente limitare l'esportazione a pagine selezionate o a un intervallo
+    \item \textbf{Precondizioni}: È presente testo nell'editor
+    \item \textbf{Postcondizioni}: Il documento viene convertito nel formato selezionato e salvato localmente sul dispositivo dell'utente
     \item \textbf{Scenario principale}:
         \begin{itemize}
-            \item Utente scrive del testo
-            \item Utente decide di esportare il documento
-            \item Utente preme sul tasto esporta
-            \item Utente può selezionare il formato con cui esportare il file e le pagine che vuole esportare
+            \item L'utente attiva il comando di esportazione
+            \item Il sistema presenta le opzioni di formato disponibili
+            \item L'utente seleziona il formato desiderato
+            \item Il sistema converte il documento nel formato selezionato
+            \item Il sistema avvia il download del file sul dispositivo dell'utente
         \end{itemize}
 \end{itemize}
 
@@ -2071,7 +2094,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \centering
     \includegraphics[width=0.8\textwidth]{../UCimg/UC4.0.6.jpg}
     \caption{Diagramma dei casi d'uso UC-4.0, UC-4.0.6, UC-4.0.7}
-    \label{fig:uc4.2}
+    \label{fig:uc4.0.6}
 \end{figure}
 
 \subsubsection{UC-4.1 - Stampare il documento}
@@ -2093,25 +2116,113 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-4.1.1 - Stampare selezionate pagine del documento}
-\begin{itemize}
-    \item \textbf{Attore principale}: Utente generico
-    \item \textbf{Descrizione}: Utente desidera stampare solo alcune pagine del documento
-    \item \textbf{Precondizioni}: L'utente ha un documento aperto
-    \item \textbf{Postcondizioni}: L'utente ottiene il documento stampato
-    \item \textbf{Scenario principale}:
-        \begin{itemize}
-            \item Utente ha un documento aperto che desidera stampare
-            \item Utente preme un pulsante "stampa"
-            \item Utente ha accesso alle opzioni di stampa offerte dal suo browser
-            \item Utente ha la possibilità di selezionare le pagine che desidera stampare
-            \item Utente ritorna al proprio documento una volta completata l'operazione
-        \end{itemize}
-\end{itemize}
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{../UCimg/UC4.1.jpg}
-    \caption{Diagramma dei casi d'uso UC-4.1, UC-4.1.1}
+    \caption{Diagramma dei casi d'uso UC-4.1}
+    \label{fig:uc4.1}
+\end{figure}
+
+\subsubsection{UC-4.2 - Apertura di un file salvato}
+\begin{itemize}
+    \item \textbf{Attore principale}: Utente autenticato
+    \item \textbf{Descrizione}: L'utente autenticato può aprire un documento precedentemente salvato nel proprio account
+    \item \textbf{Precondizioni}: L'utente è autenticato nel sistema e ha almeno un documento salvato nel proprio account
+    \item \textbf{Postcondizioni}: Il documento selezionato viene caricato 
+    nell'editor e l'utente può riprendere a modificarlo
+    \item \textbf{Scenario principale}:
+        \begin{itemize}
+            \item L'utente accede all'area personale, dove può visualizzare i documenti salvati
+            \item Il sistema mostra i documenti salvati dall'utente autenticato
+            \item L'utente seleziona il file da aprire
+            \item Il sistema carica il contenuto del documento nell'editor
+            \item L'utente può riprendere la modifica del documento
+        \end{itemize}
+    \item \textbf{Estensioni}:
+        \begin{itemize}
+            \item L'utente seleziona "annulla" nel pop up di selezione
+        \end{itemize}
+\end{itemize}
+
+\subsubsection{UC-4.2.1 - Gestione annullamento apertura}
+\begin{itemize}
+    \item \textbf{Attore principale}: Utente autenticato
+    \item \textbf{Descrizione}: Il sistema gestisce l'interruzione della procedura di apertura file senza effettuare caricamenti
+    \item \textbf{Precondizioni}: La finestra di selezione dei file è aperta
+    \item \textbf{Postcondizioni}: La finestra viene chiusa e l'editor mantiene lo stato precedente (nessun file caricato o file precedente mantenuto)
+    \item \textbf{Scenario principale}:
+    \begin{itemize}
+        \item L’utente, all'interno della finestra di selezione, clicca sul pulsante ”Annulla” (o chiude il popup)
+        \item Il sistema chiude la finestra di dialogo
+        \item Il sistema abortisce l'operazione di recupero dati dal database
+        \item L'interfaccia dell'editor rimane invariata rispetto allo stato precedente l'apertura della finestra
+    \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../UCimg/UC4.2.jpg}
+    \caption{Diagramma dei casi d'uso UC-4.2, 4.2.1}
+    \label{fig:uc4.2}
+\end{figure}
+
+\subsubsection{UC-4.3 - Salvataggio file nel DataBase}
+\begin{itemize}
+    \item \textbf{Attore principale}: Utente autenticato
+    \item \textbf{Descrizione}: L'utente vuole salvare la nota scritta nel database, senza scaricarla nel suo dispositivo corrente
+    \item \textbf{Precondizioni}: L'utente ha scritto una nota ed ha eseguito l'accesso al sistema con il suo account
+    \item \textbf{Postcondizioni}: Il sistema mantiene nel Database una copia della nota scritta, legandola all'account dell'utente
+    \item \textbf{Scenario principale}:
+        \begin{itemize}
+            \item L'utente accede al sistema
+            \item L'utente scrive del testo o ne genera con l'opzione relativa
+            \item L'utente seleziona l'opzione di salvataggio
+            \item Il sistema salva nel db una copia della nota dell'utente
+        \end{itemize}
+    \item \textbf{Estensioni}:
+        \begin{itemize}
+            \item L'utente non ha scritto o generato alcun testo
+            \item L'utente non è autenticato
+        \end{itemize}
+\end{itemize}
+
+\subsubsection{UC-4.3.1 - Gestione tentativo salvataggio nota vuota}
+\begin{itemize}
+    \item \textbf{Attore principale}: Utente autenticato
+    \item \textbf{Descrizione}: Il sistema impedisce il salvataggio di documenti privi di contenuto nel database per evitare record inutili
+    \item \textbf{Precondizioni}: L’editor è vuoto e l'utente attiva il comando di salvataggio
+    \item \textbf{Postcondizioni}: Il salvataggio viene abortito e l'utente viene avvisato
+    \item \textbf{Scenario principale}:
+    \begin{itemize}
+        \item Il sistema analizza il contenuto dell'editor prima di procedere al salvataggio
+        \item Il sistema rileva che non vi è testo o contenuto generato (lunghezza zero o solo spazi bianchi)
+        \item Il sistema blocca la procedura di invio al database
+        \item Il sistema visualizza un messaggio di avviso
+        \item Il documento non viene salvato
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{UC-4.3.2 - Gestione salvataggio senza autenticazione}
+\begin{itemize}
+    \item \textbf{Attore principale}: Utente non autenticato (Utente generico)
+    \item \textbf{Descrizione}: Il sistema gestisce il tentativo di utilizzare la funzionalità di salvataggio in cloud da parte di un utente non loggato
+    \item \textbf{Precondizioni}: L’utente non ha effettuato il login e tenta di salvare su DB
+    \item \textbf{Postcondizioni}: Il salvataggio su DB viene negato e vengono proposte alternative
+    \item \textbf{Scenario principale}:
+    \begin{itemize}
+        \item L’utente seleziona l’opzione "Salva nel Database"
+        \item Il sistema verifica lo stato della sessione utente
+        \item Il sistema rileva che l'utente non è autenticato
+        \item Il sistema blocca l'operazione di salvataggio remoto
+        \item Il sistema mostra un avviso indicando la necessità di eseguire l'accesso
+        \item Il sistema suggerisce all'utente le alternative disponibili
+    \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../UCimg/UC4.3.jpg}
+    \caption{Diagramma dei casi d'uso UC-4.3, 4.3.1, 4.3.2}
     \label{fig:uc4.3}
 \end{figure}
 
@@ -2143,13 +2254,13 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \item \textbf{Attore principale}: Utente non autenticato
     \item \textbf{Descrizione}: Il sistema gestisce il tentativo di accesso con un identificativo utente non presente nel database
     \item \textbf{Precondizioni}: L’utente ha inviato una richiesta di login
-    \item \textbf{Postcondizioni}: L’accesso viene negato e viene mostrato un messaggio di errore specifico
+    \item \textbf{Postcondizioni}: L’accesso viene negato e viene mostrato un messaggio di errore generico
     \item \textbf{Scenario principale}:
     \begin{itemize}
         \item Il sistema interroga il database alla ricerca dell'username fornito
         \item Il sistema non rileva alcuna corrispondenza (account inesistente)
         \item Il sistema nega l'accesso
-        \item Il sistema mostra all’utente un messaggio di avviso
+        \item Il sistema mostra all’utente un messaggio di avviso generico
         \item L'utente rimane nella schermata di login
     \end{itemize}
 \end{itemize}
@@ -2159,14 +2270,14 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \item \textbf{Attore principale}: Utente non autenticato
     \item \textbf{Descrizione}: Il sistema gestisce il tentativo di accesso con un username valido ma associato a una password non corrispondente
     \item \textbf{Precondizioni}: L’utente ha inviato una richiesta di login con un username esistente
-    \item \textbf{Postcondizioni}: L’accesso viene negato e viene mostrato un messaggio di errore specifico
+    \item \textbf{Postcondizioni}: L’accesso viene negato e viene mostrato un messaggio di errore generico
     \item \textbf{Scenario principale}:
     \begin{itemize}
         \item Il sistema rileva che l'username esiste
         \item Il sistema verifica la corrispondenza crittografica della password inserita con quella memorizzata
         \item Il sistema rileva una incongruenza
         \item Il sistema nega l'accesso
-        \item Il sistema mostra all’utente un messaggio di avviso
+        \item Il sistema mostra all’utente un messaggio di avviso generico
         \item L'utente rimane nella schermata di login
     \end{itemize}
 \end{itemize}
@@ -2257,110 +2368,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
 \end{figure}
 
 
-\subsubsection{UC-5.3 - Apertura di un file salvato}
-\begin{itemize}
-    \item \textbf{Attore principale}: Utente autenticato
-    \item \textbf{Descrizione}: L'utente autenticato può aprire un documento precedentemente salvato nel proprio account
-    \item \textbf{Precondizioni}: L'utente è autenticato nel sistema e ha almeno un documento salvato nel proprio account
-    \item \textbf{Postcondizioni}: Il documento selezionato viene caricato 
-    nell'editor e l'utente può riprendere a modificarlo
-    \item \textbf{Scenario principale}:
-        \begin{itemize}
-            \item L'utente accede all'area personale, dove può visualizzare i documenti salvati
-            \item Il sistema mostra i documenti salvati dall'utente autenticato
-            \item L'utente seleziona il file da aprire
-            \item Il sistema carica il contenuto del documento nell'editor
-            \item L'utente può riprendere la modifica del documento
-        \end{itemize}
-    \item \textbf{Estensioni}:
-        \begin{itemize}
-            \item L'utente seleziona "annulla" nel pop up di selezione
-        \end{itemize}
-\end{itemize}
-
-\subsubsection{UC-5.3.1 - Gestione annullamento apertura}
-\begin{itemize}
-    \item \textbf{Attore principale}: Utente autenticato
-    \item \textbf{Descrizione}: Il sistema gestisce l'interruzione della procedura di apertura file senza effettuare caricamenti
-    \item \textbf{Precondizioni}: La finestra di selezione dei file è aperta
-    \item \textbf{Postcondizioni}: La finestra viene chiusa e l'editor mantiene lo stato precedente (nessun file caricato o file precedente mantenuto)
-    \item \textbf{Scenario principale}:
-    \begin{itemize}
-        \item L’utente, all'interno della finestra di selezione, clicca sul pulsante ”Annulla” (o chiude il popup)
-        \item Il sistema chiude la finestra di dialogo
-        \item Il sistema abortisce l'operazione di recupero dati dal database
-        \item L'interfaccia dell'editor rimane invariata rispetto allo stato precedente l'apertura della finestra
-    \end{itemize}
-\end{itemize}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{../UCimg/UC5.3.jpg}
-    \caption{Diagramma dei casi d'uso UC-5.3, 5.3.1}
-    \label{fig:uc5.3}
-\end{figure}
-
-\subsubsection{UC-5.4 - Salvataggio file nel DataBase}
-\begin{itemize}
-    \item \textbf{Attore principale}: Utente autenticato
-    \item \textbf{Descrizione}: L'utente vuole salvare la nota scritta nel database, senza scaricarla nel suo dispositivo corrente
-    \item \textbf{Precondizioni}: L'utente ha scritto una nota ed ha eseguito l'accesso al sistema con il suo account
-    \item \textbf{Postcondizioni}: Il sistema mantiene nel Database una copia della nota scritta, legandola all'account dell'utente
-    \item \textbf{Scenario principale}:
-        \begin{itemize}
-            \item L'utente accede al sistema
-            \item L'utente scrive del testo o ne genera con l'opzione relativa
-            \item L'utente seleziona l'opzione di salvataggio
-            \item Il sistema salva nel db una copia della nota dell'utente
-        \end{itemize}
-    \item \textbf{Estensioni}:
-        \begin{itemize}
-            \item L'utente non ha scritto o generato alcun testo
-            \item L'utente non è autenticato
-        \end{itemize}
-\end{itemize}
-
-\subsubsection{UC-5.4.1 - Gestione tentativo salvataggio nota vuota}
-\begin{itemize}
-    \item \textbf{Attore principale}: Utente autenticato
-    \item \textbf{Descrizione}: Il sistema impedisce il salvataggio di documenti privi di contenuto nel database per evitare record inutili
-    \item \textbf{Precondizioni}: L’editor è vuoto e l'utente attiva il comando di salvataggio
-    \item \textbf{Postcondizioni}: Il salvataggio viene abortito e l'utente viene avvisato
-    \item \textbf{Scenario principale}:
-    \begin{itemize}
-        \item Il sistema analizza il contenuto dell'editor prima di procedere al salvataggio
-        \item Il sistema rileva che non vi è testo o contenuto generato (lunghezza zero o solo spazi bianchi)
-        \item Il sistema blocca la procedura di invio al database
-        \item Il sistema visualizza un messaggio di avviso
-        \item Il documento non viene salvato
-    \end{itemize}
-\end{itemize}
-
-\subsubsection{UC-5.4.2 - Gestione salvataggio senza autenticazione}
-\begin{itemize}
-    \item \textbf{Attore principale}: Utente non autenticato (Utente generico)
-    \item \textbf{Descrizione}: Il sistema gestisce il tentativo di utilizzare la funzionalità di salvataggio in cloud da parte di un utente non loggato
-    \item \textbf{Precondizioni}: L’utente non ha effettuato il login e tenta di salvare su DB
-    \item \textbf{Postcondizioni}: Il salvataggio su DB viene negato e vengono proposte alternative
-    \item \textbf{Scenario principale}:
-    \begin{itemize}
-        \item L’utente seleziona l’opzione "Salva nel Database"
-        \item Il sistema verifica lo stato della sessione utente
-        \item Il sistema rileva che l'utente non è autenticato
-        \item Il sistema blocca l'operazione di salvataggio remoto
-        \item Il sistema mostra un avviso indicando la necessità di eseguire l'accesso
-        \item Il sistema suggerisce all'utente le alternative disponibili
-    \end{itemize}
-\end{itemize}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{../UCimg/UC5.4.jpg}
-    \caption{Diagramma dei casi d'uso UC-5.4, 5.4.1, 5.4.2}
-    \label{fig:uc5.4}
-\end{figure}
-
-\subsubsection{UC-5.5 - Logout}
+\subsubsection{UC-5.3 - Logout}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente autenticato
     \item \textbf{Descrizione}: L'utente desidera terminare la propria sessione
@@ -2379,9 +2387,9 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{../UCimg/UC5.5_logout.drawio.jpg}
-    \caption{Diagramma del caso d'uso UC-5.5}
-    \label{fig:uc5.5}
+    \includegraphics[width=0.8\textwidth]{../UCimg/UC5.3.jpg}
+    \caption{Diagramma del caso d'uso UC-5.3}
+    \label{fig:uc5.3}
 \end{figure}
 
 \newpage
@@ -2432,7 +2440,6 @@ Rappresentano le funzionalità tangibili che l'utente utilizza per raggiungere i
 \textbf{Requisito} & \textbf{Descrizione} & \textbf{Casi d'uso correlati}\\
 \hline
 \endhead
-% OBBLIGATORI
 % OBBLIGATORI
 RO-F-1 & Il sistema deve fornire un'area di testo per l'inserimento e la modifica del testo con supporto alla sintassi Markdown standard (CommonMark). & UC-1.0 \\
 \hline
@@ -2624,7 +2631,7 @@ RD-F-13 & Il sistema deve consentire all'utente di scegliere il nome del file pr
 \hline
 RD-F-14 & Il sistema deve fornire un'anteprima del documento nel formato selezionato prima di procedere al download. & UC-4.0 \\
 \hline
-RD-F-15 & Il sistema deve permettere all'utente di scegliere se stampare tutto il documento o un range di pagine selezionate & UC-4.1, UC-4.1.1\\
+RD-F-15 & Il sistema deve aprire il dialogo di stampa nativo del browser, tramite il quale l'utente può configurare le opzioni di stampa disponibili (inclusa la selezione delle pagine). & UC-4.1 \\
 \hline
 
 % OPZIONALI
@@ -2688,29 +2695,29 @@ ROP-F-29 & Il sistema deve terminare la sessione se un account viene eliminato &
 \hline
 ROP-F-30 & L'utente può annullare la procedura di eliminazione del proprio account. & UC-5.2.1 \\
 \hline
-ROP-F-31 & Il sistema deve permettere ad un utente di vedere i file che ha salvato & UC-5.3 \\
+ROP-F-31 & Il sistema deve permettere ad un utente di vedere i file che ha salvato & UC-4.2 \\
 \hline
-ROP-F-32 & Il sistema deve permettere ad un utente autenticato di selezionare un file dall'elenco di quelli salvati e aprirlo & UC-5.3 \\
+ROP-F-32 & Il sistema deve permettere ad un utente autenticato di selezionare un file dall'elenco di quelli salvati e aprirlo & UC-4.2 \\
 \hline
-ROP-F-33 & Il sistema deve permettere all'utente di annullare l'operazione di apertura file, lasciando l'editor nel suo stato precedente. & UC-5.3.1 \\
+ROP-F-33 & Il sistema deve permettere all'utente di annullare l'operazione di apertura file, lasciando l'editor nel suo stato precedente. & UC-4.2.1 \\
 \hline
-ROP-F-34 & Il sistema deve mostrare i file salvati in ordine cronologico per data di ultima modifica. & UC-5.3 \\
+ROP-F-34 & Il sistema deve mostrare i file salvati in ordine cronologico per data di ultima modifica. & UC-4.2 \\
 \hline
-ROP-F-35 & L'accesso ai file salvati nel database è consentito solo ad utenti autenticati. & UC-5.3 \\
+ROP-F-35 & L'accesso ai file salvati nel database è consentito solo ad utenti autenticati. & UC-4.2 \\
 \hline
-ROP-F-36 & Il sistema deve permettere il salvataggio di un file in un sistema di persistenza non locale & UC-5.4 \\
+ROP-F-36 & Il sistema deve permettere il salvataggio di un file in un sistema di persistenza non locale & UC-4.3 \\
 \hline
-ROP-F-37 & Il sistema deve notificare l'utente in caso di fallimento del salvataggio nel database. & UC-5.4 \\
+ROP-F-37 & Il sistema deve notificare l'utente in caso di fallimento del salvataggio nel database. & UC-4.3 \\
 \hline
-ROP-F-38 & Il sistema deve associare ogni file al suo creatore & UC-5.4 \\
+ROP-F-38 & Il sistema deve associare ogni file al suo creatore & UC-4.3 \\
 \hline
-ROP-F-39 & Il sistema deve impedire il salvataggio di file nel database da parte di utenti non autenticati. & UC-5.4, UC-5.4.2 \\
+ROP-F-39 & Il sistema deve impedire il salvataggio di file nel database da parte di utenti non autenticati. & UC-4.3, UC-4.3.2 \\
 \hline
-ROP-F-40 & Il sistema deve impedire il salvataggio di un documento vuoto nel database. & UC-5.4.1 \\
+ROP-F-40 & Il sistema deve impedire il salvataggio di un documento vuoto nel database. & UC-4.3.1 \\
 \hline
-ROP-F-41 & Un utente non autenticato che prova a salvare un file viene riportato alla pagina di login & UC-5.4.2 \\
+ROP-F-41 & Un utente non autenticato che prova a salvare un file viene riportato alla pagina di login & UC-4.3.2 \\
 \hline
-ROP-F-42 & L'utente può effettuare il logout in ogni momento e terminare la propria sessione & UC-5.5 \\
+ROP-F-42 & L'utente può effettuare il logout in ogni momento e terminare la propria sessione & UC-5.3 \\
 \hline
 \addlinespace[1em]
 \caption{Tabella dei requisiti funzionali}
@@ -2735,11 +2742,6 @@ RO-V-3 & Il formato di input e di storage del testo deve essere Markdown, in con
 \hline
 RO-V-4 & Il sistema deve integrarsi con un servizio LLM tramite API REST compatibili con lo standard OpenAI. & Capitolato \\
 \hline
-RO-V-5 & Il sistema deve essere sviluppato rispettando le Norme 
-di Progetto del gruppo ByteMe. & Norme di Progetto v1.0.0 \\
-\hline
-RO-V-6 & Il sistema deve essere verificato secondo il Piano di Qualifica prima di ogni rilascio. & Piano di Qualifica v1.0.0 \\
-\hline
 \addlinespace[1em]
 \caption{Tabella dei requisiti di vincolo}
 \end{longtable}
@@ -2758,17 +2760,26 @@ Piano di Qualifica v1.0.0.
 \hline
 \textbf{Requisito} & \textbf{Descrizione} & \textbf{Fonte} \\
 \hline
-RO-Q-1 & Il tempo di risposta dell'interfaccia utente (aggiornamento anteprima, applicazione formattazioni) deve essere inferiore a 500 ms nel 95\% dei casi. & PdQ – Response Time, soglia accettabile \\
+RO-Q-1 & Il tempo di risposta dell'interfaccia utente (aggiornamento anteprima, applicazione formattazioni) deve essere inferiore a 500 ms nel 95\% dei casi, misurato su una sessione utente attiva di almeno 30 minuti.  & PdQ – Response Time, soglia accettabile \\
 \hline
-RO-Q-2 & Il tempo medio di generazione di una risposta da parte del servizio LLM non deve superare i 10 secondi. & PdQ – AI Processing Time, soglia accettabile \\
+RO-Q-2 & Il tempo medio di generazione di una risposta da parte del servizio LLM non deve superare i 10 secondi, misurato su un campione di almeno 20 richieste consecutive in condizioni di utilizzo normale.  & PdQ – AI Processing Time, soglia accettabile \\
 \hline
-RO-Q-3 & Il tasso di errori nelle operazioni principali (salvataggio, apertura file, chiamate AI) non deve superare l'1\%. & PdQ – Error Rate, soglia accettabile \\
+RO-Q-3 & Il tasso di errori nelle operazioni principali (salvataggio, apertura file, chiamate AI) non deve superare l'1\%, misurato sul totale delle operazioni eseguite in una sessione utente attiva di almeno 30 minuti. & PdQ – Error Rate, soglia accettabile \\
 \hline
-RO-Q-4 & La percentuale di codice coperta dai test automatici (test coverage) deve essere almeno il 70\%. & PdQ – Test Coverage, soglia accettabile \\
+RO-Q-4 & La percentuale di codice coperta dai test automatici (test coverage) deve essere almeno il 70\%, misurata sull'insieme completo dei moduli rilasciati ad ogni versione. & PdQ – Test Coverage, soglia accettabile \\
 \hline
 RO-Q-5 & La complessità ciclomatica (McCabe) di ogni funzione/metodo del codice prodotto non deve superare il valore 8. & PdQ – Complessità Ciclomatica, soglia accettabile \\
 \hline
 RO-Q-6 & La documentazione prodotta deve ottenere un Indice di Gulpease (IG) maggiore o uguale a 40. & PdQ – Indice di Gulpease, soglia accettabile \\
+\hline
+RO-Q-7 & Il sistema deve essere sviluppato rispettando le Norme 
+di Progetto del gruppo ByteMe. & Norme di Progetto v1.0.0 \\
+\hline
+RO-Q-8 & Il sistema deve essere verificato secondo il Piano di Qualifica prima di ogni rilascio. & Piano di Qualifica v1.0.0 \\
+\hline
+RO-Q-9 & Il manuale utente deve documentare tutte le funzionalità obbligatorie del sistema e deve ottenere un Indice di Gulpease (IG) maggiore o uguale a 40. & PdQ – Indice di Gulpease, soglia accettabile \\
+\hline
+RO-Q-10 & Il manuale di installazione e deployment del sistema deve ottenere un Indice di Gulpease (IG) maggiore o uguale a 40. & PdQ – Indice di Gulpease, soglia accettabile \\
 \hline
 \addlinespace[1em]
 \caption{Tabella dei requisiti di qualità}
@@ -2975,9 +2986,17 @@ UC-4.0.6 & Esportazione pagine selezionate & RO-F-78, RD-F-12 \\
 \hline
 UC-4.0.7 & Esportazione range di pagine & RO-F-78, RD-F-12 \\
 \hline
-UC-4.1 & Stampare il documento & RO-F-75, RO-F-79, RO-F-80, RD-F-7 \\
+UC-4.1 & Stampare il documento & RO-F-75, RO-F-79, RO-F-80, RD-F-7, RD-F-15 \\
 \hline
-UC-4.1.1 & Stampare pagine selezionate & RD-F-15 \\
+UC-4.2 & Apertura di un file salvato & ROP-F-31, ROP-F-32, ROP-F-34, ROP-F-35 \\
+\hline
+UC-4.2.1 & Gestione annullamento apertura & ROP-F-33 \\
+\hline
+UC-4.3 & Salvataggio file nel database & ROP-F-36, ROP-F-37, ROP-F-38, ROP-F-39 \\
+\hline
+UC-4.3.1 & Gestione salvataggio nota vuota & ROP-F-40 \\
+\hline
+UC-4.3.2 & Gestione salvataggio senza autenticazione & ROP-F-39, ROP-F-41 \\
 \hline
 UC-5.0 & Login & ROP-F-19 \\
 \hline
@@ -2993,17 +3012,7 @@ UC-5.2 & Eliminazione dell'account & ROP-F-26, ROP-F-27, ROP-F-28, ROP-F-29 \\
 \hline
 UC-5.2.1 & Annullamento eliminazione account & ROP-F-30 \\
 \hline
-UC-5.3 & Apertura di un file salvato & ROP-F-31, ROP-F-32, ROP-F-34, ROP-F-35 \\
-\hline
-UC-5.3.1 & Gestione annullamento apertura & ROP-F-33 \\
-\hline
-UC-5.4 & Salvataggio file nel database & ROP-F-36, ROP-F-37, ROP-F-38, ROP-F-39 \\
-\hline
-UC-5.4.1 & Gestione salvataggio nota vuota & ROP-F-40 \\
-\hline
-UC-5.4.2 & Gestione salvataggio senza autenticazione & ROP-F-39, ROP-F-41 \\
-\hline
-UC-5.5 & Logout & ROP-F-42 \\
+UC-5.3 & Logout & ROP-F-42 \\
 \hline
 \addlinespace[1em]
 \caption{Tracciamento casi d'uso - requisiti funzionali}
@@ -3020,11 +3029,11 @@ UC-5.5 & Logout & ROP-F-42 \\
 \hline
 Funzionali & 80 & 15 & 42 & 137 \\
 \hline
-Vincolo & 6 & 0 & 0 & 6 \\
+Vincolo & 4 & 0 & 0 & 4 \\
 \hline
-Qualità & 6 & 0 & 0 & 6 \\
+Qualità & 10 & 0 & 0 & 10 \\
 \hline
-\textbf{Totale} & 92 & 15 & 42 & 149 \\
+\textbf{Totale} & 94 & 15 & 42 & 151 \\
 \hline
 \end{tabular}
 \caption{Riepilogo dei requisiti}
