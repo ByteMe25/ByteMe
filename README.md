@@ -11,6 +11,7 @@ Questo spazio è pensato per raccogliere e condividere tutti i materiali relativ
   <li><b>.github/workflows:</b> File sorgente di GitHub Actions e automazione della compilazione dei file LaTeX </li>
   <li><b>1_Candidatura:</b> Tutti i file pertinenti alla candidatura al progetto SecondBrain</li>
   <li><b>2_RTB:</b> Tutti i file necessari per la fase RTB (Analisi dei Requisiti, Piano di Progetto, Piano di Qualifica, Lettera di Candidatura alla Revisione RTB)</li>
+  <li><b>3_PB:</b> Tutti i file necessari per la fase PB (Analisi dei Requisiti, Piano di Progetto, Piano di Qualifica, Manuale utente)</li>
   <li><b>Documenti_interni:</b> Cartella con i documenti redatti dal gruppo per l'organizzazione interna, come il Glossario e il Way of Working (Norme di progetto)</li>
   <li><b>Verbali:</b> Cartelle che contengono tutti i verbali dove vengono riportate le decisioni e conseguenti azioni principali da intraprendere 
                   <ul> 
