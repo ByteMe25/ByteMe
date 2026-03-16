@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.3.16)  16 MAR 2026 17:18
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.3.16)  16 MAR 2026 17:29
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -944,11 +944,11 @@ d.
 (rerunfilecheck)             Checksum: 45C7E05EC904316C4100F80FADA64909;17166.
  ) 
 Here is how much of TeX's memory you used:
- 21640 strings out of 476171
- 406042 string characters out of 5795119
+ 21642 strings out of 476171
+ 406061 string characters out of 5795119
  1950975 words of memory out of 5000000
- 43155 multiletter control sequences out of 15000+600000
- 565400 words of font info for 60 fonts, out of 8000000 for 9000
+ 43156 multiletter control sequences out of 15000+600000
+ 565710 words of font info for 61 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  84i,14n,93p,901b,927s stack positions out of 10000i,1000n,20000p,200000b,200000s
  </home/runner/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1000.60
@@ -956,16 +956,17 @@ Here is how much of TeX's memory you used:
 600pk> </home/runner/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm109
 5.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pf
 b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share
-/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texliv
-e/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmtt10.pfb>
-Output written on Piano_di_Progetto_v1.0.3.pdf (32 pages, 1126160 bytes).
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></usr/share
+/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share/texliv
+e/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmtt10.pfb>
+Output written on Piano_di_Progetto_v1.0.3.pdf (32 pages, 1134383 bytes).
 PDF statistics:
- 747 PDF objects out of 1000 (max. 8388607)
- 685 compressed objects within 7 object streams
+ 752 PDF objects out of 1000 (max. 8388607)
+ 688 compressed objects within 7 object streams
  138 named destinations out of 1000 (max. 500000)
  767 words of extra memory for PDF output out of 10000 (max. 10000000)
 

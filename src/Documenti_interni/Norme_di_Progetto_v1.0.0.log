@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.3.16)  16 MAR 2026 17:18
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.3.16)  16 MAR 2026 17:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -712,11 +712,11 @@ d.
 (rerunfilecheck)             Checksum: B6371627A5C84D002AAACB2269EF53FA;11692.
  ) 
 Here is how much of TeX's memory you used:
- 11415 strings out of 476171
- 179306 string characters out of 5795119
+ 11429 strings out of 476171
+ 179542 string characters out of 5795119
  1942975 words of memory out of 5000000
- 33173 multiletter control sequences out of 15000+600000
- 567036 words of font info for 67 fonts, out of 8000000 for 9000
+ 33186 multiletter control sequences out of 15000+600000
+ 570757 words of font info for 80 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  75i,14n,79p,583b,621s stack positions out of 10000i,1000n,20000p,200000b,200000s
  </home/runner/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1095.60
@@ -730,7 +730,7 @@ type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/
 public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
 /amsfonts/cm/cmti8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
 ts/cm/cmtt10.pfb>
-Output written on Norme_di_Progetto_v1.0.0.pdf (19 pages, 1105097 bytes).
+Output written on Norme_di_Progetto_v1.0.0.pdf (19 pages, 1105211 bytes).
 PDF statistics:
  515 PDF objects out of 1000 (max. 8388607)
  466 compressed objects within 5 object streams

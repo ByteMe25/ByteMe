@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.3.16)  16 MAR 2026 17:18
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.3.16)  16 MAR 2026 17:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -790,49 +790,49 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `subscript' on input line 806.
 
-<../graficiMetriche/EAC.png, id=344, 619.31375pt x 354.32375pt>
+<../graficiMetriche/EAC.png, id=345, 619.31375pt x 354.32375pt>
 File: ../graficiMetriche/EAC.png Graphic file (type png)
 <use ../graficiMetriche/EAC.png>
 Package pdftex.def Info: ../graficiMetriche/EAC.png  used on input line 815.
 (pdftex.def)             Requested size: 341.43307pt x 195.34903pt.
 [15 <../graficiMetriche/EAC.png>]
-<../graficiMetriche/PV.png, id=353, 602.25pt x 372.39125pt>
+<../graficiMetriche/PV.png, id=354, 602.25pt x 372.39125pt>
 File: ../graficiMetriche/PV.png Graphic file (type png)
 <use ../graficiMetriche/PV.png>
 Package pdftex.def Info: ../graficiMetriche/PV.png  used on input line 826.
 (pdftex.def)             Requested size: 341.43307pt x 211.12877pt.
  [16 <../graficiMetriche/PV.png>]
-<../graficiMetriche/SPI.png, id=362, 602.25pt x 372.39125pt>
+<../graficiMetriche/SPI.png, id=363, 602.25pt x 372.39125pt>
 File: ../graficiMetriche/SPI.png Graphic file (type png)
 <use ../graficiMetriche/SPI.png>
 Package pdftex.def Info: ../graficiMetriche/SPI.png  used on input line 839.
 (pdftex.def)             Requested size: 341.43307pt x 211.12877pt.
  [17 <../graficiMetriche/SPI.png>]
-<../graficiMetriche/CPI.png, id=370, 602.25pt x 372.39125pt>
+<../graficiMetriche/CPI.png, id=371, 602.25pt x 372.39125pt>
 File: ../graficiMetriche/CPI.png Graphic file (type png)
 <use ../graficiMetriche/CPI.png>
 Package pdftex.def Info: ../graficiMetriche/CPI.png  used on input line 852.
 (pdftex.def)             Requested size: 341.43307pt x 211.12877pt.
  [18 <../graficiMetriche/CPI.png>]
-<../graficiMetriche/CV.png, id=378, 602.25pt x 372.39125pt>
+<../graficiMetriche/CV.png, id=379, 602.25pt x 372.39125pt>
 File: ../graficiMetriche/CV.png Graphic file (type png)
 <use ../graficiMetriche/CV.png>
 Package pdftex.def Info: ../graficiMetriche/CV.png  used on input line 863.
 (pdftex.def)             Requested size: 341.43307pt x 211.12877pt.
  [19 <../graficiMetriche/CV.png>]
-<../graficiMetriche/RSI.png, id=386, 602.25pt x 372.39125pt>
+<../graficiMetriche/RSI.png, id=387, 602.25pt x 372.39125pt>
 File: ../graficiMetriche/RSI.png Graphic file (type png)
 <use ../graficiMetriche/RSI.png>
 Package pdftex.def Info: ../graficiMetriche/RSI.png  used on input line 874.
 (pdftex.def)             Requested size: 341.43307pt x 211.12877pt.
  [20 <../graficiMetriche/RSI.png>]
-<../graficiMetriche/RNC.png, id=394, 602.25pt x 372.39125pt>
+<../graficiMetriche/RNC.png, id=395, 602.25pt x 372.39125pt>
 File: ../graficiMetriche/RNC.png Graphic file (type png)
 <use ../graficiMetriche/RNC.png>
 Package pdftex.def Info: ../graficiMetriche/RNC.png  used on input line 885.
 (pdftex.def)             Requested size: 341.43307pt x 211.12877pt.
  [21 <../graficiMetriche/RNC.png>]
-<../graficiMetriche/MS.png, id=402, 602.25pt x 372.39125pt>
+<../graficiMetriche/MS.png, id=403, 602.25pt x 372.39125pt>
 File: ../graficiMetriche/MS.png Graphic file (type png)
 <use ../graficiMetriche/MS.png>
 Package pdftex.def Info: ../graficiMetriche/MS.png  used on input line 896.
@@ -851,34 +851,35 @@ ed.
 (rerunfilecheck)             Checksum: 01A77D817907756E933E7BE5DC1F610D;6827.
  ) 
 Here is how much of TeX's memory you used:
- 12055 strings out of 476171
- 197149 string characters out of 5795119
+ 12057 strings out of 476171
+ 197168 string characters out of 5795119
  1941975 words of memory out of 5000000
- 33799 multiletter control sequences out of 15000+600000
- 566488 words of font info for 65 fonts, out of 8000000 for 9000
+ 33800 multiletter control sequences out of 15000+600000
+ 566798 words of font info for 66 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  75i,17n,79p,675b,528s stack positions out of 10000i,1000n,20000p,200000b,200000s
  </home/runner/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/tctt1000.60
 0pk> </home/runner/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1095.
 600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb>
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/
-share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share/t
-exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf
--dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.
-pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></
-usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/sha
-re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/tex
-live/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
-Output written on Piano_di_Qualifica_v1.0.0.pdf (25 pages, 1260385 bytes).
+share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></usr/share/t
+exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share/texlive/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/f
+onts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.
+pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></u
+sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/sha
+re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/share/texl
+ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
+Output written on Piano_di_Qualifica_v1.0.0.pdf (25 pages, 1268480 bytes).
 PDF statistics:
- 516 PDF objects out of 1000 (max. 8388607)
- 431 compressed objects within 5 object streams
+ 521 PDF objects out of 1000 (max. 8388607)
+ 434 compressed objects within 5 object streams
  122 named destinations out of 1000 (max. 500000)
  339 words of extra memory for PDF output out of 10000 (max. 10000000)
 
