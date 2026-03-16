@@ -1,4 +1,5 @@
 \documentclass[11pt,a4paper]{article}
+\newcommand{\gls}[1]{#1\textsubscript{G}}
 \usepackage[utf8]{inputenc}
 \usepackage[italian]{babel}
 \usepackage{geometry}
@@ -98,37 +99,37 @@
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verifica} \\
         \hline
-        1.0.3 & 15/03/2026 & Chiara Grossele & Retrospettiva sprint 8 & Giulia Barzon\\
+        1.0.3 & 15/03/2026 & Chiara Grossele & Retrospettiva \gls{sprint} 8 & Giulia Barzon\\
         \hline
-        1.0.2 & 04/03/2026 & Chiara Grossele & Correzioni sprint 8 e preventivo RTB & \\
+        1.0.2 & 04/03/2026 & Chiara Grossele & Correzioni \gls{sprint} 8 e preventivo RTB & \\
         \hline
-        1.0.1 & 03/03/2026 & Chiara Grossele & Pianificazione sprint 8 e aggiornamento preventivo RTB & \\
+        1.0.1 & 03/03/2026 & Chiara Grossele & Pianificazione \gls{sprint} 8 e aggiornamento preventivo RTB & \\
         \hline
         1.0.0 & 24/02/2026 & Joseph Grant & Approvazione documento & \\
         \hline
-        0.3.0 & 23/02/2026 & Giulia Barzon & Retrospettiva sprint 7 e riepilogo finale & Chiara Grossele e Elisa Marchioro\\
+        0.3.0 & 23/02/2026 & Giulia Barzon & Retrospettiva \gls{sprint} 7 e riepilogo finale & Chiara Grossele e Elisa Marchioro\\
         \hline
-        0.2.2 & 11/02/2026 & Giulia Barzon & Retrospettiva sprint 6 e pianificazione per sprint 7 & Chiara Grossele e Elisa Marchioro\\
+        0.2.2 & 11/02/2026 & Giulia Barzon & Retrospettiva \gls{sprint} 6 e pianificazione per \gls{sprint} 7 & Chiara Grossele e Elisa Marchioro\\
         \hline
-        0.2.1 & 04/02/2026 & Tommaso Tombacco & Retrospettiva sprint 5 e pianificazione per sprint 6 & Giulia Barzon\\
+        0.2.1 & 04/02/2026 & Tommaso Tombacco & Retrospettiva \gls{sprint} 5 e pianificazione per \gls{sprint} 6 & Giulia Barzon\\
         \hline
-        0.2.0 & 12/01/2026 & Giulia Barzon & Retrospettiva sprint 4 e pianificazione per sprint 5 & Matteo Cuogo\\
+        0.2.0 & 12/01/2026 & Giulia Barzon & Retrospettiva \gls{sprint} 4 e pianificazione per \gls{sprint} 5 & Matteo Cuogo\\
         \hline
         0.1.9 & 07/01/2026 & Chiara Grossele & Piccole correzioni al documento & Matteo Cuogo\\ 
         \hline
-        0.1.8 & 31/12/2025 & Elisa Marchioro & Aggiornato sprint 3 e 4 & Matteo Cuogo\\ \hline
-        0.1.7 & 27/12/2025 & Joseph Grant & Aggiunta sezione 'verifica' al versionamento & Elisa Marchioro\\ \hline
-        0.1.6 & 23/12/2025 & Matteo Cuogo & Completamento Aggiornamento sprint 2 e sprint 3 & Elisa Marchioro\\
+        0.1.8 & 31/12/2025 & Elisa Marchioro & Aggiornato \gls{sprint} 3 e 4 & Matteo Cuogo\\ \hline
+        0.1.7 & 27/12/2025 & Joseph Grant & Aggiunta sezione '\gls{verifica}' al \gls{versionamento} & Elisa Marchioro\\ \hline
+        0.1.6 & 23/12/2025 & Matteo Cuogo & Completamento Aggiornamento \gls{sprint} 2 e \gls{sprint} 3 & Elisa Marchioro\\
         \hline
-        0.1.5 & 22/12/2025 & Joseph Grant & Aggiornamento sprint 2 e 3 & Elisa Marchioro\\
+        0.1.5 & 22/12/2025 & Joseph Grant & Aggiornamento \gls{sprint} 2 e 3 & Elisa Marchioro\\
         \hline
         0.1.4 & 05/12/2025 & Tommaso Tombacco & Aggiornamento delle tabelle Preventivo e Consuntivo orario & Elisa Marchioro\\
         \hline
         0.1.3 & 05/12/2025 & Chiara Grossele & Aggiornamento delle tabelle Preventivo e Consuntivo orario, correzione di errori & Elisa Marchioro\\
         \hline
-        0.1.2 & 04/12/2025 & Giulia Barzon & Aggiornamento del documento con Analisi dei Rischi e informazioni dello sprint corrente & Elisa Marchioro\\
+        0.1.2 & 04/12/2025 & Giulia Barzon & Aggiornamento del documento con Analisi dei Rischi e informazioni dello \gls{sprint} corrente & Elisa Marchioro\\
         \hline
-        0.1.0 & 02/12/2025 & Giulia Barzon & Creazione del documento, scrittura prime sezioni e log primo sprint & Elisa Marchioro\\
+        0.1.0 & 02/12/2025 & Giulia Barzon & Creazione del documento, scrittura prime sezioni e log primo \gls{sprint} & Elisa Marchioro\\
         \hline
     \end{tabular}
     \caption{Registro delle versioni del documento}
@@ -152,25 +153,25 @@ Il presente documento ha lo scopo di definire la pianificazione, l’organizzazi
     \item La suddivisione dei ruoli e delle responsabilità;
     \item L’analisi dei rischi e le relative contromisure;
     \item Il modello di sviluppo adottato;
-    \item La pianificazione temporale (sprint);
+    \item La pianificazione temporale (\gls{sprint});
     \item La stima dei costi e il consuntivo periodico.
 \end{itemize}
 Il documento è destinato al committente Prof. Vardanega e Prof. Cardin, all'azienda proponente Zucchetti S.p.A. e al gruppo di sviluppo ByteMe.
 
 \subsection{Scopo del prodotto}
-Il progetto \textbf{Second Brain}, proposto da Zucchetti, mira a sviluppare un editor di testo avanzato basato su linguaggio MarkDown e potenziato da Large Language Models (LLM). L’applicazione web consentirà all’utente di:
+Il progetto \textbf{Second Brain}, proposto da Zucchetti, mira a sviluppare un \gls{editor di testo} avanzato basato su linguaggio \gls{MarkDown} e potenziato da Large Language Models (LLM). L’applicazione web consentirà all’utente di:
 \begin{itemize}
-    \item Scrivere e visualizzare in tempo reale testi in MarkDown;
+    \item Scrivere e visualizzare in tempo reale testi in \gls{MarkDown};
     \item Interagire con un LLM per generare, riassumere, riscrivere, tradurre e criticare testi;
     \item Sfruttare il metodo dei “Sei cappelli per pensare” di Edward De Bono per analisi critiche;
-    \item Fornire prompt testuali per generare testo (Distant Writing).
+    \item Fornire prompt testuali per generare testo (\gls{Distant Writing}).
 \end{itemize}
 L’obiettivo è creare uno strumento di supporto alla scrittura creativa, esplorando le potenzialità degli LLM nel contesto del note-taking avanzato.
 
 \subsection{Riferimenti}
 \subsubsection{Riferimenti normativi}
 \begin{enumerate}
-    \item Norme di Progetto v1.0.0 (in corso)
+    \item \gls{Norme di Progetto} v1.0.0 (in corso)
     \item Capitolato d’appalto C6: Second Brain
     \item Regolamento del progetto didattico
 \end{enumerate}
@@ -181,7 +182,7 @@ L’obiettivo è creare uno strumento di supporto alla scrittura creativa, esplo
     \item Verbali interni ed esterni
     \item Preventivo dei costi e impegni orari v1.1.2 
     \url{https://github.com/ByteMe25/ByteMe/blob/main/1_Candidatura/PreventivoCosti_ImpegniOrari.pdf}
-    \item Documento Analisi dei Requisiti (in corso) 
+    \item Documento \gls{Analisi dei Requisiti} (in corso) 
     \url{https://github.com/ByteMe25/ByteMe/blob/main/2_RTB/Analisi_dei_Requisiti.pdf}
 \end{enumerate}
 
@@ -207,7 +208,7 @@ I rischi organizzativi riguardano aspetti legati alla gestione del team, alla pi
     \hline
     \textbf{Gravità} & Media \\
     \hline
-    \textbf{Misure di prevenzione} & Comunicazione anticipata degli impegni, pianificazione flessibile degli sprint, creazione di un calendario condiviso delle disponibilità. \\
+    \textbf{Misure di prevenzione} & Comunicazione anticipata degli impegni, pianificazione flessibile degli \gls{sprint}, creazione di un calendario condiviso delle disponibilità. \\
     \hline
     \textbf{Misure di mitigazione} & Ridistribuzione dei carichi di lavoro, spostamento delle scadenze non critiche, lavoro asincrono sulle attività non urgenti. \\
     \hline
@@ -241,7 +242,7 @@ I rischi organizzativi riguardano aspetti legati alla gestione del team, alla pi
     \hline
     \textbf{Gravità} & Alta \\
     \hline
-    \textbf{Misure di prevenzione} & Studio di casi simili, consultazione di documentazione di progetti precedenti, adozione di metodologie collaudate (Scrum), consultazioni con i professori o con la proponente. \\
+    \textbf{Misure di prevenzione} & Studio di casi simili, consultazione di documentazione di progetti precedenti, adozione di metodologie collaudate (\gls{Scrum}), consultazioni con i professori o con la proponente. \\
     \hline
     \textbf{Misure di mitigazione} & Revisione continua del Piano di Progetto, tracciamento accurato delle ore, aggiustamenti periodici della pianificazione. \\
     \hline
@@ -258,7 +259,7 @@ I rischi organizzativi riguardano aspetti legati alla gestione del team, alla pi
     \hline
     \textbf{Gravità} & Media \\
     \hline
-    \textbf{Misure di prevenzione} & Definizione precisa dei ruoli nel documento Norme di Progetto, rotazione sistematica dei ruoli, comunicazione chiara delle responsabilità. \\
+    \textbf{Misure di prevenzione} & Definizione precisa dei ruoli nel documento \gls{Norme di Progetto}, rotazione sistematica dei ruoli, comunicazione chiara delle responsabilità. \\
     \hline
     \textbf{Misure di mitigazione} & Riunioni di chiarimento, aggiornamento della matrice dei ruoli, intervento del Responsabile per risolvere ambiguità. \\
     \hline
@@ -275,7 +276,7 @@ I rischi organizzativi riguardano aspetti legati alla gestione del team, alla pi
     \hline
     \textbf{Gravità} & Alta \\
     \hline
-    \textbf{Misure di prevenzione} & Pianificazione conservativa delle attività, buffer temporali tra gli sprint, tracciamento continuo dell'avanzamento. \\
+    \textbf{Misure di prevenzione} & Pianificazione conservativa delle attività, buffer temporali tra gli \gls{sprint}, tracciamento continuo dell'avanzamento. \\
     \hline
     \textbf{Misure di mitigazione} & Riorganizzazione delle priorità, aumento del contributo orario, richiesta di estensione delle scadenze al committente. \\
     \hline
@@ -306,7 +307,7 @@ I rischi tecnologici riguardano aspetti legati alle tecnologie utilizzate, all'i
 \begin{center}
 \begin{tabular}{|p{3cm}|p{12cm}|}
     \hline
-    \textbf{Descrizione} & Il gruppo potrebbe incontrare difficoltà nell'apprendimento di tecnologie nuove (LLM, API REST, framework web) a causa della limitata esperienza pregressa. \\
+    \textbf{Descrizione} & Il gruppo potrebbe incontrare difficoltà nell'apprendimento di tecnologie nuove (LLM, \gls{API} REST, framework web) a causa della limitata esperienza pregressa. \\
     \hline
     \textbf{Probabilità} & Alta \\
     \hline
@@ -319,17 +320,17 @@ I rischi tecnologici riguardano aspetti legati alle tecnologie utilizzate, all'i
 \end{tabular}
 \end{center}
 
-\subsubsection{RT-2 - Difficoltà nell'integrazione con API di LLM}
+\subsubsection{RT-2 - Difficoltà nell'integrazione con \gls{API} di LLM}
 \begin{center}
 \begin{tabular}{|p{3cm}|p{12cm}|}
     \hline
-    \textbf{Descrizione} & Difficoltà nell'integrazione con API di LLM (OpenAI, Gemini,...) o problemi di compatibilità tra le diverse implementazioni. \\
+    \textbf{Descrizione} & Difficoltà nell'integrazione con \gls{API} di LLM (OpenAI, Gemini,...) o problemi di compatibilità tra le diverse implementazioni. \\
     \hline
     \textbf{Probabilità} & Media \\
     \hline
     \textbf{Gravità} & Alta \\
     \hline
-    \textbf{Misure di prevenzione} & Studio approfondito delle API disponibili, test appropriati, scelta di API ben documentate e supportate, consultazioni con la proponente. \\
+    \textbf{Misure di prevenzione} & Studio approfondito delle \gls{API} disponibili, test appropriati, scelta di \gls{API} ben documentate e supportate, consultazioni con la proponente. \\
     \hline
     \textbf{Misure di mitigazione} & Implementazione di fallback con LLM alternativi, utilizzo di librerie di astrazione, supporto tecnico del proponente. \\
     \hline
@@ -346,7 +347,7 @@ I rischi tecnologici riguardano aspetti legati alle tecnologie utilizzate, all'i
     \hline
     \textbf{Gravità} & Media \\
     \hline
-    \textbf{Misure di prevenzione} & Definizione di procedure chiare nel Way of Working (documento Norme di Progetto), formazione interna sugli strumenti, utilizzo di template e configurazioni standard. \\
+    \textbf{Misure di prevenzione} & Definizione di procedure chiare nel \gls{Way of Working} (documento \gls{Norme di Progetto}), formazione interna sugli strumenti, utilizzo di template e configurazioni standard. \\
     \hline
     \textbf{Misure di mitigazione} & Supporto tra pari, consultazione di tutorial online, riduzione della complessità delle configurazioni iniziali. \\
     \hline
@@ -363,7 +364,7 @@ I rischi tecnologici riguardano aspetti legati alle tecnologie utilizzate, all'i
     \hline
     \textbf{Gravità} & Alta \\
     \hline
-    \textbf{Misure di prevenzione} & Backup automatici e regolari, versionamento costante su GitHub, utilizzo di cloud storage (Google Drive) per documenti critici. \\
+    \textbf{Misure di prevenzione} & Backup automatici e regolari, \gls{versionamento} costante su \gls{GitHub}, utilizzo di cloud storage (Google Drive) per documenti critici. \\
     \hline
     \textbf{Misure di mitigazione} & Ripristino da backup, duplicazione delle informazioni su più supporti. \\
     \hline
@@ -447,7 +448,7 @@ I rischi relativi al prodotto riguardano aspetti legati alla soddisfazione dei r
         \hline
         RT-1 & Difficoltà nell'apprendimento delle tecnologie & Alta & Media \\
         \hline
-        RT-2 & Difficoltà nell'integrazione con API di LLM & Media & Alta \\
+        RT-2 & Difficoltà nell'integrazione con \gls{API} di LLM & Media & Alta \\
         \hline
         RT-3 & Scarsa esperienza con strumenti di sviluppo & Media & Media \\
         \hline
@@ -478,25 +479,25 @@ I rischi relativi al prodotto riguardano aspetti legati alla soddisfazione dei r
 \subsection{Approccio adottato}
 Il gruppo ha deciso di adottare il modello \textbf{Agile}\textsubscript{G} e in particolare il framework \textbf{Scrum}\textsubscript{G}. Questo approccio permette di gestire lo sviluppo in modo iterativo e incrementale, adattandosi rapidamente a cambiamenti nei requisiti e garantendo una consegna continua di valore.
 
-\subsubsection{Vantaggi dell'adozione di Scrum}
+\subsubsection{Vantaggi dell'adozione di \gls{Scrum}}
 \begin{itemize}
     \item \textbf{Flessibilità}: possibilità di adattare il piano di lavoro in base ai feedback ricevuti;
-    \item \textbf{Trasparenza}: meeting periodici (Daily, Sprint Review, Retrospective) garantiscono visibilità sull’avanzamento;
+    \item \textbf{Trasparenza}: meeting periodici (Daily, \gls{Sprint Review}, Retrospective) garantiscono visibilità sull’avanzamento;
     \item \textbf{Qualità}: revisioni frequenti e testing continuo migliorano la qualità del prodotto;
     \item \textbf{Motivazione del team}: responsabilità condivise e autonomia favoriscono il coinvolgimento.
 \end{itemize}
 
-\subsubsection{Organizzazione in sprint}
-Il lavoro del team è organizzato in sprint della durata di due settimane, al termine dei quali avviene una rotazione dei ruoli. Ciascuno sprint è strutturato nelle seguenti fasi:
+\subsubsection{Organizzazione in \gls{sprint}}
+Il lavoro del team è organizzato in \gls{sprint} della durata di due settimane, al termine dei quali avviene una rotazione dei ruoli. Ciascuno \gls{sprint} è strutturato nelle seguenti fasi:
 \begin{itemize}
-    \item \textbf{Sprint Planning}\textsubscript{G}: all’inizio di ogni sprint, il team definisce gli obiettivi, seleziona le attività da svolgere e stima il tempo necessario. Tipicamente questo avviene entro il martedì della prima settimana dello sprint.
+    \item \textbf{Sprint Planning}\textsubscript{G}: all’inizio di ogni \gls{sprint}, il team definisce gli obiettivi, seleziona le attività da svolgere e stima il tempo necessario. Tipicamente questo avviene entro il martedì della prima settimana dello \gls{sprint}.
     \item \textbf{Sprint Execution}\textsubscript{G}: sviluppo delle attività pianificate, con meeting giornalieri (daily stand-up) o comunicazione asincrona per sincronizzare lo stato dei lavori.
-    \item \textbf{Sprint Review}\textsubscript{G}: al termine dello sprint, ogni membro presenta al resto del team quanto realizzato e raccoglie feedback.
-    \item \textbf{Sprint Retrospective}\textsubscript{G}: analisi interna per identificare punti di forza, criticità e azioni di miglioramento per lo sprint successivo.
+    \item \textbf{Sprint Review}\textsubscript{G}: al termine dello \gls{sprint}, ogni membro presenta al resto del team quanto realizzato e raccoglie feedback.
+    \item \textbf{Sprint Retrospective}\textsubscript{G}: analisi interna per identificare punti di forza, criticità e azioni di miglioramento per lo \gls{sprint} successivo.
 \end{itemize}
 
 \subsubsection{Rotazione dei ruoli}
-Il gruppo adotta una rotazione sistematica dei ruoli al termine di ogni sprint per garantire:
+Il gruppo adotta una rotazione sistematica dei ruoli al termine di ogni \gls{sprint} per garantire:
 \begin{itemize}
     \item Apprendimento completo di tutti i membri su ogni aspetto del ciclo di vita del software;
     \item Distribuzione equa delle responsabilità;
@@ -505,9 +506,9 @@ Il gruppo adotta una rotazione sistematica dei ruoli al termine di ogni sprint p
 I ruoli coperti includono: Responsabile, Amministratore, Analista, Progettista, Programmatore e Verificatore.
 
 \subsubsection{Strumenti di gestione}
-Per supportare il modello Scrum, il gruppo utilizzerà:
+Per supportare il modello \gls{Scrum}, il gruppo utilizzerà:
 \begin{itemize}
-    \item \textbf{GitHub}: per il versionamento del codice e della documentazione;
+    \item \textbf{GitHub}: per il \gls{versionamento} del codice e della documentazione;
     \item \textbf{GitHub Issues}: per il tracciamento temporale delle azioni da svolgere e l'assegnazione delle azioni ai componenti;
     \item \textbf{Discord o Whatsapp}: per la comunicazione interna.
 \end{itemize}
@@ -521,15 +522,15 @@ Per supportare il modello Scrum, il gruppo utilizzerà:
 La pianificazione del progetto è suddivisa nelle seguenti fasi:
 \begin{enumerate}
     \item \textbf{Studio dei capitolati e assegnazione dell’appalto}, con esposizione della Lettera di Presentazione, della Valutazione dei Capitolati e del Preventivo dei Costi e degli Impegni Orari (ottobre 2025);
-    \item \textbf{RTB (Requirements and Technology Baseline)}, con esposizione dell'Analisi dei Requisiti, il Piano di Progetto e il Piano di Qualifica (novembre 2025 – febbraio 2026);
+    \item \textbf{RTB (Requirements and Technology Baseline)}, con esposizione dell'\gls{Analisi dei Requisiti}, il Piano di Progetto e il Piano di Qualifica (novembre 2025 – febbraio 2026);
     \item \textbf{PB (Product Baseline)}, con esposizione del Piano di Progetto e del Piano di Qualifica aggiornati (febbraio – aprile 2026).
 \end{enumerate}
 
-\subsection{Gestione degli sprint}
-Ogni sprint avrà una durata di \textbf{due settimane} e sarà documentato attraverso:
+\subsection{Gestione degli \gls{sprint}}
+Ogni \gls{sprint} avrà una durata di \textbf{due settimane} e sarà documentato attraverso:
 \begin{itemize}
     \item \textbf{Planning}: definizione degli obiettivi e delle attività;
-    \item \textbf{Review}: verifica delle attività svolte;
+    \item \textbf{Review}: \gls{verifica} delle attività svolte;
     \item \textbf{Retrospective}: analisi dei rischi occorsi e miglioramenti.
 \end{itemize}
 
@@ -585,14 +586,14 @@ Il preventivo iniziale, calcolato in fase di candidatura, ammonta a \textbf{11.3
 \subsection{Attività svolte}
 In questa fase preliminare il gruppo ByteMe ha svolto diverse attività per preparare la candidatura al capitolato C6 \textit{"Second Brain"} proposto da Zucchetti.
 
-Dopo aver analizzato tutti i capitolati proposti, il gruppo ha individuato quelli di maggiore interesse, concentrandosi in particolare sul C6 per il suo potenziale tecnologico e per l'opportunità di lavorare con tecnologie innovative come i Large Language Models (LLM). Per supportare la candidatura, è stata creata un'organizzazione GitHub omonima al gruppo e una repository principale per ospitare tutta la documentazione del progetto.
+Dopo aver analizzato tutti i capitolati proposti, il gruppo ha individuato quelli di maggiore interesse, concentrandosi in particolare sul C6 per il suo potenziale tecnologico e per l'opportunità di lavorare con tecnologie innovative come i Large Language Models (LLM). Per supportare la candidatura, è stata creata un'organizzazione \gls{GitHub} omonima al gruppo e una \gls{repository} principale per ospitare tutta la documentazione del progetto.
 
 Successivamente, il gruppo ha organizzato un incontro conoscitivo con il referente aziendale Gregorio Piccoli di Zucchetti, durante il quale sono stati chiariti dubbi riguardanti:
 \begin{itemize}
     \item le tecnologie consigliate per lo sviluppo front-end e back-end;
     \item le funzionalità da implementare per il prodotto richiesto;
     \item il livello di autonomia concessa nelle scelte implementative;
-    \item le modalità di integrazione con API di LLM;
+    \item le modalità di integrazione con \gls{API} di LLM;
     \item le aspettative rispetto alle fasi di sviluppo del Proof of Concept (PoC) e del Minimum Viable Product (MVP).
 \end{itemize}
 
@@ -603,7 +604,7 @@ Parallelamente, sono stati redatti tutti i documenti necessari per la candidatur
     \item il \textbf{Preventivo dei costi e impegni orari}, con la stima delle ore di lavoro per ruolo e il costo totale del progetto.
 \end{itemize}
 
-In questa fase sono state inoltre definite le prime regole del \textbf{Way of Working} del gruppo, stabilendo strumenti comuni per la comunicazione, la gestione dei task e il versionamento. Sono stati redatti e conservati i verbali di tutti gli incontri interni ed esterni, che documentano le decisioni prese e i progressi compiuti.
+In questa fase sono state inoltre definite le prime regole del \textbf{Way of Working} del gruppo, stabilendo strumenti comuni per la comunicazione, la gestione dei task e il \gls{versionamento}. Sono stati redatti e conservati i verbali di tutti gli incontri interni ed esterni, che documentano le decisioni prese e i progressi compiuti.
 
 Dopo la presentazione della candidatura, il gruppo ha ricevuto feedback positivi dal committente e, dopo alcuni perfezionamenti organizzativi e documentali, la candidatura è stata approvata, permettendo così l'avvio ufficiale del progetto e l'inizio della fase di \textbf{Requirements and Technology Baseline (RTB)}.
 
@@ -619,16 +620,16 @@ Dopo la presentazione della candidatura, il gruppo ha ricevuto feedback positivi
 La fase RTB (\textit{Requirements and Technology Baseline}) comprende diversi obiettivi da soddisfare, di seguito elencati:
 
 \begin{itemize}
-    \item \textbf{Definire i requisiti e i casi d'uso}, in accordo con la proponente Zucchetti, nel documento di Analisi dei Requisiti;
+    \item \textbf{Definire i requisiti e i casi d'uso}, in accordo con la proponente Zucchetti, nel documento di \gls{Analisi dei Requisiti};
     \item \textbf{Dimostrare l'adeguatezza, la compatibilità e la fattibilità} delle tecnologie e librerie scelte tramite il Proof of Concept\textsubscript{G} (PoC);
     \item \textbf{Sperimentare l'integrazione con Large Language Models} (LLM) per valutare le prestazioni nell'ambito del note-taking avanzato;
-    \item \textbf{Progettare l'architettura del sistema} editor MarkDown con integrazione AI.
+    \item \textbf{Progettare l'architettura del sistema} editor \gls{MarkDown} con integrazione AI.
 \end{itemize}
 
 \noindent A supporto di tali attività vi sono i seguenti obblighi documentali:
 
 \begin{itemize}
-    \item \textbf{Analisi dei Requisiti}: documento che definisce i casi d'uso, i requisiti funzionali e non funzionali del sistema;
+    \item \textbf{Analisi dei Requisiti}: documento che definisce i casi d'uso, i \gls{requisiti funzionali} e non funzionali del sistema;
     \item \textbf{Piano di Progetto}: il presente documento, che pianifica attività, risorse e tempistiche;
     \item \textbf{Piano di Qualifica}: documento che identifica le metriche e le strategie necessarie per garantire qualità al prodotto finale;
     \item \textbf{Glossario}: documento che fornisce definizioni chiare e precise di termini ambigui o che necessitano di chiarire il contesto in cui vengono usati;
@@ -636,15 +637,15 @@ La fase RTB (\textit{Requirements and Technology Baseline}) comprende diversi ob
     \item \textbf{Verbali} interni ed esterni.
 \end{itemize}
 
-\noindent Ciascuno dei documenti elencati sarà archiviato nella repository GitHub e sarà visibile nel sito web del gruppo.
+\noindent Ciascuno dei documenti elencati sarà archiviato nella \gls{repository} \gls{GitHub} e sarà visibile nel sito web del gruppo.
 
-I periodi presentati in questa sezione saranno descritti tramite le fasi di \textbf{sprint planning} (Pianificazione), \textbf{sprint review} (Consuntivo) e \textbf{sprint retrospective} (Retrospettiva). Per ogni sprint verranno tracciate e riportate le ore di lavoro di ciascun membro, in modo da monitorarne l'avanzamento rispetto alla pianificazione iniziale.
+I periodi presentati in questa sezione saranno descritti tramite le fasi di \textbf{sprint planning} (Pianificazione), \textbf{sprint review} (Consuntivo) e \textbf{sprint retrospective} (Retrospettiva). Per ogni \gls{sprint} verranno tracciate e riportate le ore di lavoro di ciascun membro, in modo da monitorarne l'avanzamento rispetto alla pianificazione iniziale.
 
 \newpage
 % --------------------------------------------
 % SPRINT 1 (RTB)
 % --------------------------------------------
-\subsection{Sprint 1: Inizio scrittura documentazione per RTB}
+\subsection{\gls{Sprint} 1: Inizio scrittura documentazione per RTB}
 {\textbf{Periodo: 17 novembre 2025 - 30 novembre 2025}\par}
 \vspace{0.5em}
 
@@ -656,7 +657,7 @@ I periodi presentati in questa sezione saranno descritti tramite le fasi di \tex
     \begin{itemize}
         \item Brainstorming e inizio analisi degli scenari del prodotto;
         \item Stesura scenari e casi d'uso individuati nelle riunioni interne e durante l'incontro con l'azienda Zucchetti avvenuto in data 11 novembre 2025;
-        \item Stesura iniziale dei documenti principali (Norme di Progetto, Glossario, Analisi dei Requisiti);
+        \item Stesura iniziale dei documenti principali (\gls{Norme di Progetto}, \gls{Glossario}, \gls{Analisi dei Requisiti});
     \end{itemize}
     \item \textbf{Ruoli assegnati}:
     \begin{itemize}
@@ -698,12 +699,12 @@ I periodi presentati in questa sezione saranno descritti tramite le fasi di \tex
 \noindent \textbf{Legenda}: Re = Responsabile, Am = Amministratore, An = Analista, Pj = Progettista, Pg = Programmatore, Ve = Verificatore.
 
 \subsubsection{Review}
-Durante questo sprint il gruppo ha svolto le seguenti attività:
+Durante questo \gls{sprint} il gruppo ha svolto le seguenti attività:
 \begin{itemize}
     \item \textbf{Assegnazione ruoli}: Sono stati assegnati i ruoli per il periodo, con particolare attenzione alle responsabilità di ciascuno.
     \item \textbf{Brainstorming e analisi}: Abbiamo avanzato diverse ipotesi sui requisiti e casi d'uso possibili per il progetto e abbiamo iniziato a studiarli e raccoglierli in un documento provvisorio;
     \item \textbf{Suddivisione del lavoro}: Gli amministratori hanno ripartito il lavoro di analisi dei casi d'uso tra i membri del team;
-    \item \textbf{Gestione repository}: Tutti i membri hanno imparato a modificare il sito di GitHub e a gestire la repository del progetto;
+    \item \textbf{Gestione repository}: Tutti i membri hanno imparato a modificare il sito di \gls{GitHub} e a gestire la \gls{repository} del progetto;
 \end{itemize}
 
 \subsubsection{Consuntivo orario}
@@ -732,15 +733,15 @@ Durante questo sprint il gruppo ha svolto le seguenti attività:
 \end{center}
 
 \subsubsection{Retrospettiva}
-Il gruppo ha riscontrato alcuni dubbi sulla correttezza e completezza dei casi d'uso individuati durante il brainstorming iniziale. Per risolvere queste incertezze, è stato deciso di organizzare un incontro con l'azienda proponente Zucchetti all'inizio del prossimo sprint, in modo da mitigare il rischio RO-4.
-Non si sono verificate problematiche relative a impegni universitari o personali, il gruppo è stato collaborativo e ha avuto una buona comunicazione. Il team ha dovuto consultare varie fonti per organizzare bene le attività di analisi dei requisiti e dei casi d'uso e per la scrittura dei documenti (RO-3).
+Il gruppo ha riscontrato alcuni dubbi sulla correttezza e completezza dei casi d'uso individuati durante il brainstorming iniziale. Per risolvere queste incertezze, è stato deciso di organizzare un incontro con l'azienda proponente Zucchetti all'inizio del prossimo \gls{sprint}, in modo da mitigare il rischio RO-4.
+Non si sono verificate problematiche relative a impegni universitari o personali, il gruppo è stato collaborativo e ha avuto una buona comunicazione. Il team ha dovuto consultare varie fonti per organizzare bene le attività di \gls{analisi dei requisiti} e dei casi d'uso e per la scrittura dei documenti (RO-3).
 
 Le attività pianificate per il prossimo periodo includono:
 \begin{itemize}
-    \item Creazione di issues, project board e milestones nella repository;
+    \item Creazione di issues, project board e milestones nella \gls{repository};
     \item Sistemazione del sito web del progetto;
-    \item Aggiornamento del Way of Working e del Glossario;
-    \item Scrittura dell'introduzione del documento di Analisi dei Requisiti;
+    \item Aggiornamento del \gls{Way of Working} e del \gls{Glossario};
+    \item Scrittura dell'introduzione del documento di \gls{Analisi dei Requisiti};
     \item Stesura iniziale del documento Piano di Progetto;
     \item Individuazione definitiva dei casi d'uso e dei requisiti.
 \end{itemize}
@@ -749,7 +750,7 @@ Le attività pianificate per il prossimo periodo includono:
 % --------------------------------------------
 % SPRINT 2 (RTB)
 % --------------------------------------------
-\subsection{Sprint 2: Discussione e scrittura dei casi d'uso}
+\subsection{\gls{Sprint} 2: Discussione e scrittura dei casi d'uso}
 {\textbf{Periodo: 1 dicembre 2025 - 14 dicembre 2025}\par}
 
 \subsubsection{Pianificazione}
@@ -760,10 +761,10 @@ Le attività pianificate per il prossimo periodo includono:
     \begin{itemize}
         \item Incontro con Zucchetti per discutere i casi d'uso identificati;
         \item Correzione e completamento dei casi d'uso individuati;
-        \item Scrittura del documento formale di Analisi dei Requisiti comprendente i casi d'uso precedentemente individuati;
-        \item Studio e scrittura dei requisiti funzionali e non funzionali derivanti dai casi d'uso individuati;
+        \item Scrittura del documento formale di \gls{Analisi dei Requisiti} comprendente i casi d'uso precedentemente individuati;
+        \item Studio e scrittura dei \gls{requisiti funzionali} e non funzionali derivanti dai casi d'uso individuati;
         \item Scrittura del Piano di Progetto;
-        \item Aggiornamento delle Norme di Progetto e del Glossario;
+        \item Aggiornamento delle \gls{Norme di Progetto} e del \gls{Glossario};
         \item Stesura iniziale del Piano di Qualifica;
     \end{itemize}
     \item \textbf{Ruoli assegnati}:
@@ -806,12 +807,12 @@ Le attività pianificate per il prossimo periodo includono:
 \noindent \textbf{Legenda}: Re = Responsabile, Am = Amministratore, An = Analista, Pj = Progettista, Pg = Programmatore, Ve = Verificatore.
 
 \subsubsection{Review}
-Durante questo sprint il gruppo ha svolto le seguenti attività:
+Durante questo \gls{sprint} il gruppo ha svolto le seguenti attività:
  \begin{itemize}
         \item Incontro con l'azienda Zucchetti in data 2 dicembre 2025 per discutere sui casi d'uso individuati;
         \item Correzione e completamento dei casi d'uso individuati: sono state fatte delle correzioni e delle precisazioni come suggerito da Zucchetti;
-        \item Scrittura iniziale del Piano di Progetto, fino allo sprint corrente;
-        \item Aggiornamento delle Norme di Progetto e del Glossario;
+        \item Scrittura iniziale del Piano di Progetto, fino allo \gls{sprint} corrente;
+        \item Aggiornamento delle \gls{Norme di Progetto} e del \gls{Glossario};
     \end{itemize}
 
 \subsubsection{Consuntivo orario}
@@ -840,19 +841,19 @@ Durante questo sprint il gruppo ha svolto le seguenti attività:
 \end{center}
 
 \subsubsection{Retrospettiva}
-Il gruppo si è impegnato nella finalizzazione dei casi d'uso e nella creazione dei requisiti. il gruppo ha discusso ampiamente in riunione sui requisiti e ha trovato numerose difficoltà nella loro creazione. Nessun membro del team ha avuto particolari problemi di impegno. Infine il gruppo ha deciso di aggiornare le tabelle di versionamento con una casella per i verificatori, permettendogli di segnare la loro verifiche anche in assenza di modifiche.
+Il gruppo si è impegnato nella finalizzazione dei casi d'uso e nella creazione dei requisiti. il gruppo ha discusso ampiamente in riunione sui requisiti e ha trovato numerose difficoltà nella loro creazione. Nessun membro del team ha avuto particolari problemi di impegno. Infine il gruppo ha deciso di aggiornare le tabelle di \gls{versionamento} con una casella per i verificatori, permettendogli di segnare la loro verifiche anche in assenza di modifiche.
 Le attività pianificate per il prossimo periodo includono:
 \begin{itemize}
     \item Scrittura dei requisiti;
     \item Discussione sul Piano di Qualifica
-    \item Aggiornamento del glossario e del piano di progetto
+    \item Aggiornamento del \gls{glossario} e del piano di progetto
 \end{itemize}
 
 \newpage
 % --------------------------------------------
 % SPRINT 3 (RTB)
 % --------------------------------------------
-\subsection{Sprint 3: Avanzamento documentazione RTB}
+\subsection{\gls{Sprint} 3: Avanzamento documentazione RTB}
 {\textbf{Periodo: 15 dicembre 2025 - 28 dicembre 2025}\par}
 
 \subsubsection{Pianificazione}
@@ -905,12 +906,12 @@ Le attività pianificate per il prossimo periodo includono:
 \noindent \textbf{Legenda}: Re = Responsabile, Am = Amministratore, An = Analista, Pj = Progettista, Pg = Programmatore, Ve = Verificatore.
 
 \subsubsection{Review}
-Durante questo sprint il gruppo ha svolto le seguenti attività:
+Durante questo \gls{sprint} il gruppo ha svolto le seguenti attività:
 
 \begin{itemize}
         \item Scrittura dei requisiti;
-        \item Verifica dei requisiti;
-        \item Scrittura del documento ufficiale dell'analisi dei requisiti.
+        \item \gls{Verifica} dei requisiti;
+        \item Scrittura del documento ufficiale dell'\gls{analisi dei requisiti}.
     \end{itemize}
 
 \subsubsection{Consuntivo orario}
@@ -943,7 +944,7 @@ Il gruppo ha redatto i requisiti partendo dai casi d’uso e li ha poi verificat
 Le attività hanno subito un leggero rallentamento a causa di altri impegni universitari, ma la situazione è stata gestita efficacemente grazie alla comunicazione tra i membri del gruppo.
 Le attività pianificate per il prossimo periodo includono:
 \begin{itemize}
-    \item Versione finale del documento dell'analisi dei requisiti;
+    \item Versione finale del documento dell'\gls{analisi dei requisiti};
     \item Scrittura del documento Piano di Qualifica;
     \item Inizio sviluppo del PoC.
 \end{itemize}
@@ -953,7 +954,7 @@ Le attività pianificate per il prossimo periodo includono:
 % --------------------------------------------
 % SPRINT 4 (RTB)
 % --------------------------------------------
-\subsection{Sprint 4: Completamento AdR e inizio PoC}
+\subsection{\gls{Sprint} 4: Completamento AdR e inizio PoC}
 {\textbf{Periodo: 29 dicembre 2025 - 11 gennaio 2026}\par}
 
 \subsubsection{Pianificazione}
@@ -962,7 +963,7 @@ Le attività pianificate per il prossimo periodo includono:
     \item \textbf{Data fine}: 11 gennaio 2026
     \item \textbf{Obiettivi}:
     \begin{itemize}
-        \item Versione finale del documento di Analisi dei Requisiti;
+        \item Versione finale del documento di \gls{Analisi dei Requisiti};
         \item Incontro con prof. Cardin per discutere di AdR;
         \item Inizio scrittura del documento Piano di Qualifica;
         \item Studio delle tecnologie per sviluppare il PoC;
@@ -1008,7 +1009,7 @@ Le attività pianificate per il prossimo periodo includono:
 \noindent \textbf{Legenda}: Re = Responsabile, Am = Amministratore, An = Analista, Pj = Progettista, Pg = Programmatore, Ve = Verificatore.
 
 \subsubsection{Review}
-Durante questo sprint il gruppo ha svolto le seguenti attività:
+Durante questo \gls{sprint} il gruppo ha svolto le seguenti attività:
 
 \begin{itemize}
         \item Correzione dei casi d'uso e dei requisiti;
@@ -1016,7 +1017,7 @@ Durante questo sprint il gruppo ha svolto le seguenti attività:
         \item Attività di palestra con libreria EasyMDE;
         \item Meeting con prof. Cardin;
         \item Scrittura delle metriche del Piano di Qualifica;
-        \item Implementazione di test automatici per la verifica della correzione e della leggibilità della documentazione.
+        \item Implementazione di test automatici per la \gls{verifica} della correzione e della leggibilità della documentazione.
     \end{itemize}
 
 \subsubsection{Consuntivo orario}
@@ -1045,9 +1046,9 @@ Durante questo sprint il gruppo ha svolto le seguenti attività:
 \end{center}
 
 \subsubsection{Retrospettiva}
-Il gruppo ha rilevato alcune criticità riguardo alla correttezza e completezza dei casi d’uso e dei requisiti identificati. L’incontro con il professor Cardin ha permesso di chiarire diversi punti e di definire le modifiche necessarie per il documento di Analisi dei Requisiti.
+Il gruppo ha rilevato alcune criticità riguardo alla correttezza e completezza dei casi d’uso e dei requisiti identificati. L’incontro con il professor Cardin ha permesso di chiarire diversi punti e di definire le modifiche necessarie per il documento di \gls{Analisi dei Requisiti}.
 
-Lo studio delle tecnologie per lo sviluppo del Proof of Concept (PoC) è stato portato a termine con successo. Nel prossimo sprint il gruppo inizierà lo sviluppo concreto, con l’obiettivo di avere il materiale pronto per la candidatura RTB entro la prima settimana di febbraio.
+Lo studio delle tecnologie per lo sviluppo del Proof of Concept (PoC) è stato portato a termine con successo. Nel prossimo \gls{sprint} il gruppo inizierà lo sviluppo concreto, con l’obiettivo di avere il materiale pronto per la candidatura RTB entro la prima settimana di febbraio.
 
 L’unico problema emerso è stato legato all’apprendimento di tecnologie non precedentemente utilizzate dalla maggior parte dei membri (rischio RT-1). Questa difficoltà è stata superata attraverso una fase di studio mirato e preparatorio.
 
@@ -1055,17 +1056,17 @@ Infine, sono sorti dubbi nella definizione delle metriche da inserire nel Piano 
 
 Le attività pianificate per il prossimo periodo includono:
 \begin{itemize}
-    \item Sviluppo del PoC: interfaccia dell'editor, database per la persistenza dei file e per gestire l'autenticazione degli utenti, funzionalità AI;
+    \item Sviluppo del PoC: interfaccia dell'editor, \gls{database} per la persistenza dei file e per gestire l'autenticazione degli utenti, funzionalità AI;
     \item Correzione dei casi d'uso identificati nel meeting con il prof. Cardin;
-    \item Verifica del documento Analisi dei Requisiti;
-    \item Verifica del documento Piano di Qualifica.
+    \item \gls{Verifica} del documento \gls{Analisi dei Requisiti};
+    \item \gls{Verifica} del documento Piano di Qualifica.
 \end{itemize}
 
 \newpage
 % --------------------------------------------
 % SPRINT 5 (RTB)
 % --------------------------------------------
-\subsection{Sprint 5: Sviluppo del PoC}
+\subsection{\gls{Sprint} 5: Sviluppo del PoC}
 {\textbf{Periodo: 12 gennaio 2026 - 26 gennaio 2026}\par}
 
 \subsubsection{Pianificazione}
@@ -1074,7 +1075,7 @@ Le attività pianificate per il prossimo periodo includono:
     \item \textbf{Data fine}: 26 gennaio 2026
     \item \textbf{Obiettivi}:
     \begin{itemize}
-        \item Versione finale e verificata del documento di Analisi dei Requisiti;
+        \item Versione finale e verificata del documento di \gls{Analisi dei Requisiti};
         \item Completamento Piano di Qualifica;
         \item Avanzamento nello sviluppo del PoC.
     \end{itemize}
@@ -1118,15 +1119,15 @@ Le attività pianificate per il prossimo periodo includono:
 \noindent \textbf{Legenda}: Re = Responsabile, Am = Amministratore, An = Analista, Pj = Progettista, Pg = Programmatore, Ve = Verificatore.
 
 \subsubsection{Review}
-Durante questo sprint il gruppo ha svolto le seguenti attività:
+Durante questo \gls{sprint} il gruppo ha svolto le seguenti attività:
 
 \begin{itemize}
-        \item Verifica e correzione di casi d'uso e relativi diagrammi;
+        \item \gls{Verifica} e correzione di casi d'uso e relativi diagrammi;
         \item Aggiornamento del Piano di Qualifica;
         \item Sviluppo dell'interfaccia base dell'editor per il PoC;
-        \item Sviluppo del database e dell'interfaccia di login per il PoC;
+        \item Sviluppo del \gls{database} e dell'interfaccia di login per il PoC;
         \item Sviluppo delle funzionalità AI per il PoC;
-        \item Verifica documento Analisi dei Requisiti e correzione requisiti;
+        \item \gls{Verifica} documento \gls{Analisi dei Requisiti} e correzione requisiti;
     \end{itemize}
 
 \subsubsection{Consuntivo orario}
@@ -1156,20 +1157,20 @@ Durante questo sprint il gruppo ha svolto le seguenti attività:
 
 \subsubsection{Retrospettiva}
 Data la sessione di esami, il gruppo ha potuto dedicare meno tempo del previsto al progetto. Portanto ad un rallentamento nelle attività programmate, o richiedendone la continuazione nel periodo successivo (rischio RO-1). 
-Nel prossimo sprint, il gruppo si impegna a concludere le attività pianificate e a concludere la documentazione per la candidatura RTB. Procederà inoltre lo sviluppo del PoC, in vista di una possibile consegna nel periodo di metà febbraio.
+Nel prossimo \gls{sprint}, il gruppo si impegna a concludere le attività pianificate e a concludere la documentazione per la candidatura RTB. Procederà inoltre lo sviluppo del PoC, in vista di una possibile consegna nel periodo di metà febbraio.
 
 Le attività pianificate per il prossimo periodo includono:
 \begin{itemize}
-    \item Verifica finale documento Analisi dei Requisiti;
+    \item \gls{Verifica} finale documento \gls{Analisi dei Requisiti};
     \item Sviluppo PoC: funzionalità AI, autenticazione utenti;
-    \item Verifica del documento Piano di Qualifica;
+    \item \gls{Verifica} del documento Piano di Qualifica;
 \end{itemize}
 
 \newpage
 % --------------------------------------------
 % SPRINT 6 (RTB)
 % --------------------------------------------
-\subsection{Sprint 6: Sviluppo del PoC}
+\subsection{\gls{Sprint} 6: Sviluppo del PoC}
 {\textbf{Periodo: 26 gennaio 2026 - 09 febbraio 2026}\par}
 
 \subsubsection{Pianificazione}
@@ -1178,8 +1179,8 @@ Le attività pianificate per il prossimo periodo includono:
     \item \textbf{Data fine}: 09 febbraio 2026
     \item \textbf{Obiettivi}:
     \begin{itemize}
-        \item Versione finale e verificata del documento di Analisi dei Requisiti;
-        \item Aggiornamento e verifica Piano di Qualifica;
+        \item Versione finale e verificata del documento di \gls{Analisi dei Requisiti};
+        \item Aggiornamento e \gls{verifica} Piano di Qualifica;
         \item Avanzamento nello sviluppo del PoC.
     \end{itemize}
     \item \textbf{Ruoli assegnati}:
@@ -1222,13 +1223,13 @@ Le attività pianificate per il prossimo periodo includono:
 \noindent \textbf{Legenda}: Re = Responsabile, Am = Amministratore, An = Analista, Pj = Progettista, Pg = Programmatore, Ve = Verificatore.
 
 \subsubsection{Review}
-Durante questo sprint il gruppo ha svolto le seguenti attività:
+Durante questo \gls{sprint} il gruppo ha svolto le seguenti attività:
 \begin{itemize}
-    \item Verifica e correzione di casi d'uso e relativi diagrammi;
-    \item Verifica dell'Analisi dei Requisiti;
+    \item \gls{Verifica} e correzione di casi d'uso e relativi diagrammi;
+    \item \gls{Verifica} dell'\gls{Analisi dei Requisiti};
     \item Aggiornamento del Piano di Qualifica e del Piano di Progetto;
     \item Sviluppo dell'interfaccia base dell'editor per il PoC;
-    \item Sviluppo parziale del database e dell'interfaccia di login per il PoC;
+    \item Sviluppo parziale del \gls{database} e dell'interfaccia di login per il PoC;
     \item Sviluppo parziale delle funzionalità AI per il PoC.
 \end{itemize}
 
@@ -1258,14 +1259,14 @@ Durante questo sprint il gruppo ha svolto le seguenti attività:
 \end{center}
 
 \subsubsection{Retrospettiva}
-Durante questo periodo il gruppo ha proseguito efficacemente lo sviluppo del Proof of Concept (PoC). Nello specifico, la progettazione dell'interfaccia utente è stata ultimata e l'editor di testo, con le sue funzionalità essenziali, risulta completo e operativo. Per quanto riguarda il backend, lo sviluppo del database (funzionalità opzionale) è in corso, mentre l'implementazione delle funzionalità AI ha raggiunto circa il 70\% di completamento. È stato inoltre validato con successo il collegamento con i Large Language Models (LLM), le cui funzioni sono ora in fase di affinamento.
-Sul fronte documentale, l'Analisi dei Requisiti è stata finalizzata e verificata, così come il Piano di Progetto e il Piano di Qualifica, che sono stati aggiornati correttamente.
+Durante questo periodo il gruppo ha proseguito efficacemente lo sviluppo del Proof of Concept (PoC). Nello specifico, la progettazione dell'interfaccia utente è stata ultimata e l'\gls{editor di testo}, con le sue funzionalità essenziali, risulta completo e operativo. Per quanto riguarda il backend, lo sviluppo del \gls{database} (funzionalità opzionale) è in corso, mentre l'implementazione delle funzionalità AI ha raggiunto circa il 70\% di completamento. È stato inoltre validato con successo il collegamento con i Large Language Models (LLM), le cui funzioni sono ora in fase di affinamento.
+Sul fronte documentale, l'\gls{Analisi dei Requisiti} è stata finalizzata e verificata, così come il Piano di Progetto e il Piano di Qualifica, che sono stati aggiornati correttamente.
 Non si sono concretizzati rischi critici, sebbene si sia registrato un lieve rallentamento nelle attività dovuto alla concomitanza con la sessione d'esami universitaria.
 
 Le attività pianificate per il prossimo periodo includono:
 \begin{itemize}
-    \item Aggiornamento e verifica del Piano di Progetto;
-    \item Aggiornamento e verifica del Piano di Qualifica;
+    \item Aggiornamento e \gls{verifica} del Piano di Progetto;
+    \item Aggiornamento e \gls{verifica} del Piano di Qualifica;
     \item Completamento dello sviluppo del PoC;
     \item Scrittura della lettera di candidatura per la presentazione RTB;
     \item Preparazione delle slide e del discorso per la presentazione RTB;
@@ -1276,7 +1277,7 @@ Le attività pianificate per il prossimo periodo includono:
 % --------------------------------------------
 % SPRINT 7 (RTB)
 % --------------------------------------------
-\subsection{Sprint 7: Completamento del PoC}
+\subsection{\gls{Sprint} 7: Completamento del PoC}
 {\textbf{Periodo: 09 febbraio 2026 - 23 febbraio 2026}\par}
 
 \subsubsection{Pianificazione}
@@ -1285,8 +1286,8 @@ Le attività pianificate per il prossimo periodo includono:
     \item \textbf{Data fine}: 23 febbraio 2026
     \item \textbf{Obiettivi}:
     \begin{itemize}
-        \item Aggiornamento e verifica del Piano di Progetto;
-        \item Aggiornamento e verifica Piano di Qualifica;
+        \item Aggiornamento e \gls{verifica} del Piano di Progetto;
+        \item Aggiornamento e \gls{verifica} Piano di Qualifica;
         \item Completamento dello sviluppo del PoC;
         \item Scrittura lettera di candidatura per la presentazione RTB;
         \item Preparazione slide e discorso per la presentazione RTB;
@@ -1332,12 +1333,12 @@ Le attività pianificate per il prossimo periodo includono:
 \noindent \textbf{Legenda}: Re = Responsabile, Am = Amministratore, An = Analista, Pj = Progettista, Pg = Programmatore, Ve = Verificatore.
 
 \subsubsection{Review}
-Durante questo sprint il gruppo ha svolto le seguenti attività:
+Durante questo \gls{sprint} il gruppo ha svolto le seguenti attività:
 \begin{itemize}
     \item Completamento dello sviluppo delle funzionalità del Proof of Concept (PoC);
-    \item Esecuzione dei test e verifica generale del PoC;
-    \item Verifica e approvazione interna del documento di Analisi dei Requisiti;
-    \item Completamento, aggiornamento e verifica del Piano di Progetto e del Piano di Qualifica;
+    \item Esecuzione dei test e \gls{verifica} generale del PoC;
+    \item \gls{Verifica} e approvazione interna del documento di \gls{Analisi dei Requisiti};
+    \item Completamento, aggiornamento e \gls{verifica} del Piano di Progetto e del Piano di Qualifica;
     \item Richiesta del colloquio al prof. Cardin;
     \item Email a Zucchetti per aggiornamenti.
 \end{itemize}
@@ -1368,7 +1369,7 @@ Durante questo sprint il gruppo ha svolto le seguenti attività:
 \end{center}
 
 \subsubsection{Retrospettiva}
-Lo sprint si è concluso positivamente con il completamento del Proof of Concept (PoC), il quale integra ora tutte le funzionalità previste per questa fase. Le tecnologie adottate sono state testate con successo, confermando la loro adeguatezza e fattibilità per lo sviluppo del progetto. Sul fronte documentale, l'Analisi dei Requisiti è stata verificata e formalmente approvata; similmente, il Piano di Progetto e il Piano di Qualifica sono stati ultimati e verificati per la fase RTB, in attesa della loro approvazione finale. Il team ha lavorato con un buon ritmo, superando le difficoltà tecniche iniziali e preparando tutto il materiale necessario alla candidatura. Il gruppo è attualmente in attesa del colloquio di revisione con il Prof. Cardin per consolidare quanto prodotto e procedere ufficialmente con le fasi successive.
+Lo \gls{sprint} si è concluso positivamente con il completamento del Proof of Concept (PoC), il quale integra ora tutte le funzionalità previste per questa fase. Le tecnologie adottate sono state testate con successo, confermando la loro adeguatezza e fattibilità per lo sviluppo del progetto. Sul fronte documentale, l'\gls{Analisi dei Requisiti} è stata verificata e formalmente approvata; similmente, il Piano di Progetto e il Piano di Qualifica sono stati ultimati e verificati per la fase RTB, in attesa della loro approvazione finale. Il team ha lavorato con un buon ritmo, superando le difficoltà tecniche iniziali e preparando tutto il materiale necessario alla candidatura. Il gruppo è attualmente in attesa del colloquio di revisione con il Prof. Cardin per consolidare quanto prodotto e procedere ufficialmente con le fasi successive.
 
 Le attività pianificate per il prossimo periodo includono:
 \begin{itemize}
@@ -1387,7 +1388,7 @@ Le attività pianificate per il prossimo periodo includono:
 \subsection{Analisi fase RTB}
 
 \subsubsection{Preventivo RTB}
-In questa sezione è presente il preventivo orario ed economico parziale scelto per la fase \textit{RTB}\textsubscript{G}, calcolato sommando i preventivi degli sprint dal 1 al 8.
+In questa sezione è presente il preventivo orario ed economico parziale scelto per la fase \textit{RTB}\textsubscript{G}, calcolato sommando i preventivi degli \gls{sprint} dal 1 al 8.
 
 \begin{table}[H]
     \centering
@@ -1413,7 +1414,7 @@ In questa sezione è presente il preventivo orario ed economico parziale scelto 
 \textbf{Legenda}: Re = Responsabile, Am = Amministratore, An = Analista, Pj = Progettista, Pg = Programmatore, Ve = Verificatore.
 
 \subsubsection{Consuntivo RTB}
-In questa sezione è presente il consuntivo orario ed economico parziale relativo alla fase \textit{RTB}\textsubscript{G}, calcolato sommando i consuntivi degli sprint dal 1 al 8.
+In questa sezione è presente il consuntivo orario ed economico parziale relativo alla fase \textit{RTB}\textsubscript{G}, calcolato sommando i consuntivi degli \gls{sprint} dal 1 al 8.
 
 \begin{table}[H]
     \centering
@@ -1440,7 +1441,7 @@ In questa sezione è presente il consuntivo orario ed economico parziale relativ
 
 
 \subsubsection{Analisi della distribuzione oraria}
-Dal grafico sottostante è possibile osservare come lo sforzo maggiore durante la fase di RTB sia stato impiegato nel ruolo di \textbf{Analista} (36.8\%). Questo dato è perfettamente coerente con gli obiettivi del periodo, che richiedevano un forte impegno nella stesura dell'Analisi dei Requisiti e nello studio dei casi d'uso. 
+Dal grafico sottostante è possibile osservare come lo sforzo maggiore durante la fase di RTB sia stato impiegato nel ruolo di \textbf{Analista} (36.8\%). Questo dato è perfettamente coerente con gli obiettivi del periodo, che richiedevano un forte impegno nella stesura dell'\gls{Analisi dei Requisiti} e nello studio dei casi d'uso. 
 Il ruolo di \textbf{Programmatore} (26.4\%) ha assorbito il secondo carico di lavoro maggiore, giustificato dallo studio delle tecnologie necessarie e dallo sviluppo del Proof of Concept (PoC).
 Come da pianificazione, il ruolo di \textbf{Progettista} non è stato ricoperto (0\%), in quanto l'ideazione della vera e propria architettura del sistema è un'attività riservata alla successiva fase di Product Baseline (PB).
 
@@ -1487,15 +1488,15 @@ La fase PB (Product Baseline) rappresenta il cuore dello sviluppo del progetto e
     \item \textbf{Verbali} interni ed esterni.
 \end{itemize}
 
-\noindent Ciascuno dei documenti elencati sarà archiviato nella repository GitHub e sarà visibile nel sito web del gruppo.
+\noindent Ciascuno dei documenti elencati sarà archiviato nella \gls{repository} \gls{GitHub} e sarà visibile nel sito web del gruppo.
 I periodi presentati in questa sezione saranno descritti tramite le fasi di \textbf{sprint planning} (Pianificazione), \textbf{sprint review} (Consuntivo) e \textbf{sprint retrospective} (Retrospettiva).
-Per ogni sprint verranno tracciate e riportate le ore di lavoro di ciascun membro, in modo da monitorarne l'avanzamento rispetto alla pianificazione iniziale.
+Per ogni \gls{sprint} verranno tracciate e riportate le ore di lavoro di ciascun membro, in modo da monitorarne l'avanzamento rispetto alla pianificazione iniziale.
 
 \newpage
 % --------------------------------------------
 % SPRINT 8 (inizio PB)
 % --------------------------------------------
-\subsection{Sprint 8: Inizio fase PB}
+\subsection{\gls{Sprint} 8: Inizio fase PB}
 {\textbf{Periodo: 02 marzo 2026 - 16 marzo 2026}\par}
 
 \subsubsection{Pianificazione}
@@ -1504,9 +1505,9 @@ Per ogni sprint verranno tracciate e riportate le ore di lavoro di ciascun membr
     \item \textbf{Data fine}: 16 marzo 2026
     \item \textbf{Obiettivi}:
     \begin{itemize}
-        \item Aggiornamento e verifica del Piano di Progetto;
-        \item Aggiornamento e verifica del Piano di Qualifica;
-        \item Correzioni al documento Analisi dei Requisiti;
+        \item Aggiornamento e \gls{verifica} del Piano di Progetto;
+        \item Aggiornamento e \gls{verifica} del Piano di Qualifica;
+        \item Correzioni al documento \gls{Analisi dei Requisiti};
         \item Integrazione del framework React al PoC;
         \item Superamento della fase RTB e inizio PB.
         
@@ -1551,9 +1552,9 @@ Per ogni sprint verranno tracciate e riportate le ore di lavoro di ciascun membr
 \noindent \textbf{Legenda}: Re = Responsabile, Am = Amministratore, An = Analista, Pj = Progettista, Pg = Programmatore, Ve = Verificatore.
 
 \subsubsection{Review}
-Durante questo sprint il gruppo ha svolto le seguenti attività:
+Durante questo \gls{sprint} il gruppo ha svolto le seguenti attività:
 \begin{itemize}
-    \item Correzione dell'Analisi dei Requisiti e stesura del documento finale.
+    \item Correzione dell'\gls{Analisi dei Requisiti} e stesura del documento finale.
     \item Integrazione del framework React.
     \item Superamento della fase RTB con il prof. Cardin.
     \item Richiesta del colloquio al prof. Vardanega.
@@ -1585,7 +1586,7 @@ Durante questo sprint il gruppo ha svolto le seguenti attività:
 \end{center}
 
 \subsubsection{Retrospettiva}
-In questo sprint il gruppo ha svolto un lavoro di correzione e miglioramento del PoC. In seguito al colloquio con il prof. Cardin sono sorti alcuni errori da correggere nel documento dell'Analisi dei Requisiti. Inoltre il gruppo ha appreso la necessità di adottare una tecnologia aggiuntiva per il miglior sviluppo del progetto. Dopo un'approfondita ricerca da parte di ogni componente del gruppo la scelta è ricaduta su React e durante questo sprint il gruppo si è impegnato a integrarlo correttamente con il lavoro già svolto. Il team ha ricevuto l'approvazione del prof. Cardin in seguito alle modifiche apportate all'Analisi dei Requisiti (con dei piccoli accorgimenti da sistemare). Il gruppo attualmente si sta preparando in vista del colloquio di revisione con il prof. Vardanega fissato il giorno 17/03/26.
+In questo \gls{sprint} il gruppo ha svolto un lavoro di correzione e miglioramento del PoC. In seguito al colloquio con il prof. Cardin sono sorti alcuni errori da correggere nel documento dell'\gls{Analisi dei Requisiti}. Inoltre il gruppo ha appreso la necessità di adottare una tecnologia aggiuntiva per il miglior sviluppo del progetto. Dopo un'approfondita ricerca da parte di ogni componente del gruppo la scelta è ricaduta su React e durante questo \gls{sprint} il gruppo si è impegnato a integrarlo correttamente con il lavoro già svolto. Il team ha ricevuto l'approvazione del prof. Cardin in seguito alle modifiche apportate all'\gls{Analisi dei Requisiti} (con dei piccoli accorgimenti da sistemare). Il gruppo attualmente si sta preparando in vista del colloquio di revisione con il prof. Vardanega fissato il giorno 17/03/26.
 
 Le attività pianificate per il prossimo periodo includono:
 \begin{itemize}

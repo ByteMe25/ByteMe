@@ -1,4 +1,5 @@
 \documentclass[11pt,a4paper]{article}
+\newcommand{\gls}[1]{#1\textsubscript{G}}
 \usepackage[utf8]{inputenc}
 \usepackage[italian]{babel}
 \usepackage{geometry}
@@ -59,7 +60,7 @@
     
     \textbf{\Huge Norme di Progetto} \\
     \vspace{0.2cm}
-    {\Large Il nostro Way of Working} \\
+    {\Large Il nostro \gls{Way of Working}} \\
     
     \vspace{1cm}
     
@@ -102,9 +103,9 @@
         \hline
         0.2.1 & 11/01/2026 & Giulia Barzon & Aggiunta sezione sul Piano di Qualifica & Matteo Cuogo\\
         \hline
-        0.2.0 & 30/12/2025 & Elisa Marchioro & Aggiunte subsection sui requisiti in "Analisi dei requisiti" & Matteo Cuogo\\ 
+        0.2.0 & 30/12/2025 & Elisa Marchioro & Aggiunte subsection sui requisiti in "\gls{Analisi dei requisiti}" & Matteo Cuogo\\ 
         \hline
-        0.1.8 & 27/12/2025 & Joseph Grant & Aggiunta sezione 'verifica' al versionamento & Elisa Marchioro\\ 
+        0.1.8 & 27/12/2025 & Joseph Grant & Aggiunta sezione '\gls{verifica}' al \gls{versionamento} & Elisa Marchioro\\ 
         \hline
         0.1.7 & 16/12/2025 & Giulia Barzon & Gestione comunicazione durante i periodi di vacanza & Elisa Marchioro\\
         \hline
@@ -112,9 +113,9 @@
         \hline
         0.1.5 & 5/12/2025 & Elisa Marchioro & Aggiunta sezione documenti, modifica sezione pianificazione del lavoro, aggiunta sezione piano di progetto & \\
         \hline
-        0.1.4 & 5/12/2025 & Elisa Marchioro & Aggiunta analisi dei requisiti & \\
+        0.1.4 & 5/12/2025 & Elisa Marchioro & Aggiunta \gls{analisi dei requisiti} & \\
         \hline
-        0.1.3 & 19/11/2025 & Giulia Barzon & Aggiornamento regole GitHub issues e dashboard & \\
+        0.1.3 & 19/11/2025 & Giulia Barzon & Aggiornamento regole \gls{GitHub} issues e dashboard & \\
         \hline
         0.1.2 & 16/11/2025 & Elisa Marchioro & Aggiunta descrizione dei ruoli & \\
         \hline
@@ -138,10 +139,10 @@
 \subsection{Scopo del documento}
 Questo documento nasce dall’esigenza di ottimizzare l’organizzazione interna del gruppo, avendo una distribuzione chiara dei compiti, una buona pianificazione delle attività e un controllo costante sui progressi durante tutta la durata del progetto. Vogliamo mantenere un ambiente di
 lavoro positivo e produttivo, basato sulla collaborazione, in modo da poter lavorare in maniera efficiente, risolvendo anche eventuali imprevisti riscontrati durante lo sviluppo.
-Crediamo nel miglioramento continuo: per questo ci impegniamo ad aggiornare e rivedere le nostre Norme di Progetto ogni volta che si renda necessario, così da garantire che restino sempre allineate alle esigenze del progetto e alla crescita del team. Le Norme di Progetto costituiscono infatti la formalizzazione del nostro Way of Working, ovvero il modo in cui intendiamo collaborare e gestire le attività nel corso del progetto.
+Crediamo nel miglioramento continuo: per questo ci impegniamo ad aggiornare e rivedere le nostre \gls{Norme di Progetto} ogni volta che si renda necessario, così da garantire che restino sempre allineate alle esigenze del progetto e alla crescita del team. Le \gls{Norme di Progetto} costituiscono infatti la formalizzazione del nostro \gls{Way of Working}, ovvero il modo in cui intendiamo collaborare e gestire le attività nel corso del progetto.
 
-\subsection{Cosa sono per noi le norme di progetto?}
-Le Norme di Progetto rappresentano il nostro modo di organizzare il lavoro nel progetto. È l’insieme di pratiche, strumenti e valori che il nostro team adotterà per realizzare le proprie attività. L’obiettivo è definire delle regole che possano garantire efficienza, efficacia e collaborazione tra i membri del gruppo durante tutto il ciclo di vita del progetto.
+\subsection{Cosa sono per noi le \gls{norme di progetto}?}
+Le \gls{Norme di Progetto} rappresentano il nostro modo di organizzare il lavoro nel progetto. È l’insieme di pratiche, strumenti e valori che il nostro team adotterà per realizzare le proprie attività. L’obiettivo è definire delle regole che possano garantire efficienza, \gls{efficacia} e collaborazione tra i membri del gruppo durante tutto il ciclo di vita del progetto.
 
 \newpage
 
@@ -164,16 +165,16 @@ Per le comunicazioni con proponenti e committenti:
 \end{itemize}
 
 \subsection{Comunicazione nei periodi di vacanza/sessione}
-Il team si impegna a rimanere operativo durante i periodi di vacanza ed esami, privilegiando la comunicazione asincrona per gli aggiornamenti. Pur consapevoli di un potenziale rallentamento, i membri concorderanno obiettivi sprint realistici e manterranno un dialogo costante. Questa evenienza è stata già considerata nell'analisi dei rischi in fase di candidatura, e sono state definite specifiche contromisure per mitigarne l'impatto.
+Il team si impegna a rimanere operativo durante i periodi di vacanza ed esami, privilegiando la comunicazione asincrona per gli aggiornamenti. Pur consapevoli di un potenziale rallentamento, i membri concorderanno obiettivi \gls{sprint} realistici e manterranno un dialogo costante. Questa evenienza è stata già considerata nell'analisi dei rischi in fase di candidatura, e sono state definite specifiche contromisure per mitigarne l'impatto.
 
 \newpage
 
 \section{Gestione del codice e documentazione}
 
-\subsection{Organizzazione della repository GitHub}
+\subsection{Organizzazione della \gls{repository} \gls{GitHub}}
 
-\subsubsection{Repository per la documentazione}
-Per la documentazione del progetto abbiamo strutturato come segue la repository Github:
+\subsubsection{\gls{Repository} per la documentazione}
+Per la documentazione del progetto abbiamo strutturato come segue la \gls{repository} \gls{Github}:
 \begin{verbatim}
 ByteMe/
 |-- .gitignore
@@ -189,34 +190,34 @@ ByteMe/
 \end{verbatim}
 
 Ogni cartella contiene tutti i documenti relativi alle rispettive fasi del progetto.
-La cartella dei Documenti interni contiene le Norme di Progetto (ovvero il documento Way of working) e il Glossario.
+La cartella dei Documenti interni contiene le \gls{Norme di Progetto} (ovvero il documento \gls{Way of working}) e il \gls{Glossario}.
 La cartella docs contiene i file relativi al sito web del gruppo, dove sono esposti i documenti in pdf.
-La cartella src contiene i file .tex di tutti i documenti del gruppo, che vengono convertiti in .pdf nelle cartelle corrette al momento del push sulla repository. Per rendere automatico questo processo si usa il file compileLatex.yml che si trova nella cartella .gitignore.
+La cartella src contiene i file .tex di tutti i documenti del gruppo, che vengono convertiti in .pdf nelle cartelle corrette al momento del push sulla \gls{repository}. Per rendere automatico questo processo si usa il file compileLatex.yml che si trova nella cartella .gitignore.
 Le cartelle relative ai verbali contengono tutti i verbali in pdf relativi alle riunioni interne del gruppo o agli incontri con la proponente.
 
-\subsubsection{Versionamento della documentazione}
+\subsubsection{\gls{Versionamento} della documentazione}
 Per ogni documento, eccetto i verbali, vengono registrate le modifiche apportate nella tabella "Registro dei Cambiamenti". 
-Come convenzione per il versionamento è stato adottato il formato \textbf{SEMVER} (Semantic Versioning). Ad ogni modifica, la versione del documento viene aggiornata secondo il formato \texttt{x.y.z}, dove:
+Come convenzione per il \gls{versionamento} è stato adottato il formato \textbf{SEMVER} (Semantic Versioning). Ad ogni modifica, la versione del documento viene aggiornata secondo il formato \texttt{x.y.z}, dove:
 \begin{itemize}
     \item \texttt{x} (major): indica modifiche sostanziali
     \item \texttt{y} (minor): indica aggiunte di funzionalità
     \item \texttt{z} (patch): indica correzioni di errori
 \end{itemize}
 
-\subsubsection{Verifica della documentazione}
-Ogni documento viene verificato da uno o più membri del gruppo secondo il principio della ``verifica incrociata'', dove i verificatori sono diversi dagli autori originali.
+\subsubsection{\gls{Verifica} della documentazione}
+Ogni documento viene verificato da uno o più membri del gruppo secondo il principio della ``\gls{verifica} incrociata'', dove i verificatori sono diversi dagli autori originali.
 Il documento viene considerato approvato quando:
 \begin{itemize}
     \item Tutte le verifiche sono state superate
     \item Il responsabile di progetto dà l'approvazione finale
 \end{itemize}
 
-\subsection{Utilizzo di Git e GitHub}
+\subsection{Utilizzo di \gls{Git} e \gls{GitHub}}
 
 \subsubsection{Workflow di sviluppo}
 Il gruppo adotta il seguente flusso di lavoro per la gestione dei documenti:
 \begin{itemize}
-    \item \textbf{Sincronizzazione iniziale}: Prima di iniziare a lavorare, aggiornare sempre la repository locale con il comando:
+    \item \textbf{Sincronizzazione iniziale}: Prima di iniziare a lavorare, aggiornare sempre la \gls{repository} locale con il comando:
     \begin{verbatim}
     git pull origin main
     \end{verbatim}
@@ -239,11 +240,11 @@ Il gruppo adotta il seguente flusso di lavoro per la gestione dei documenti:
     \begin{verbatim}
     \includegraphics{../logo.png}
     \end{verbatim}
-    \item I messaggi di commit devono essere descrittivi
+    \item I messaggi di \gls{commit} devono essere descrittivi
 \end{itemize}
 
-\subsubsection{GitHub Actions per LaTeX}
-Il repository è configurato con un sistema di automazione che gestisce la compilazione dei documenti:
+\subsubsection{\gls{GitHub} Actions per LaTeX}
+Il \gls{repository} è configurato con un sistema di automazione che gestisce la compilazione dei documenti:
 
 \begin{itemize}
     \item \textbf{File di configurazione}: \texttt{compileLatex.yml}
@@ -257,42 +258,42 @@ Il repository è configurato con un sistema di automazione che gestisce la compi
     \end{itemize}
 \end{itemize}
 
-\subsubsection{Gestione dei compiti tramite GitHub Issues}
-Per una gestione efficiente e tracciabile delle attività di progetto, il gruppo utilizza le \textbf{GitHub Issues} come strumento principale. Ogni attività viene registrata come Issue nella repository e assegnata un \textbf{numero identificativo univoco} generato automaticamente da GitHub. Le Issue vengono categorizzate tramite label specifiche e assegnate ai membri del team responsabili.
+\subsubsection{Gestione dei compiti tramite \gls{GitHub} Issues}
+Per una gestione efficiente e tracciabile delle attività di progetto, il gruppo utilizza le \textbf{GitHub Issues} come strumento principale. Ogni attività viene registrata come \gls{Issue} nella \gls{repository} e assegnata un \textbf{numero identificativo univoco} generato automaticamente da \gls{GitHub}. Le \gls{Issue} vengono categorizzate tramite label specifiche e assegnate ai membri del team responsabili.
 
-Nei verbali interni, nella sezione "Azioni da Intraprendere", viene fatto esplicito riferimento alle Issue correlate tramite il loro numero identificativo (\#numero). Questo approccio garantisce un tracciamento completo dalle decisioni dei verbali alle attività concrete da svolgere.
+Nei verbali interni, nella sezione "Azioni da Intraprendere", viene fatto esplicito riferimento alle \gls{Issue} correlate tramite il loro numero identificativo (\#numero). Questo approccio garantisce un tracciamento completo dalle decisioni dei verbali alle attività concrete da svolgere.
 
 
 \subsubsection{Dashboard per il tracking delle Issues}
-Per organizzare meglio il flusso di lavoro, sono state create due dashboard distinte per le Issue:
+Per organizzare meglio il flusso di lavoro, sono state create due dashboard distinte per le \gls{Issue}:
 \begin{itemize}
-    \item \textbf{Dashboard RTB}: dedicata alla prima fase del progetto, comprendente analisi dei requisiti, definizione dei casi d'uso, definizione architettura e scelta tecnologie
+    \item \textbf{Dashboard RTB}: dedicata alla prima fase del progetto, comprendente \gls{analisi dei requisiti}, definizione dei casi d'uso, definizione architettura e scelta tecnologie
     
     \item \textbf{Dashboard PB}: riservata alla seconda fase, focalizzata sullo sviluppo del prodotto
 \end{itemize}
 
-Questa suddivisione permette di monitorare separatamente lo stato di avanzamento delle due fasi principali del progetto, garantendo che tutte le attività vengano completate entro le scadenze stabilite per ciascuna milestone.
+Questa suddivisione permette di monitorare separatamente lo stato di avanzamento delle due fasi principali del progetto, garantendo che tutte le attività vengano completate entro le scadenze stabilite per ciascuna \gls{milestone}.
 
 
 \subsection{Sito Web della documentazione}
 Il gruppo ha implementato un sito web per ospitare la documentazione del progetto, accessibile all'indirizzo: \url{https://byteme25.github.io/ByteMe/}
 
-Il sito, generato automaticamente dalla repository GitHub, offre i seguenti benefici:
+Il sito, generato automaticamente dalla \gls{repository} \gls{GitHub}, offre i seguenti benefici:
 \begin{itemize}
     \item \textbf{Versionamento}: mantenimento dello storico delle versioni dei documenti
     \item \textbf{Accesso centralizzato}: punto unico di accesso per tutta la documentazione
     \item \textbf{Responsive design}: consultabile da qualsiasi dispositivo
 \end{itemize}
 
-La pubblicazione avviene tramite GitHub Pages, assicurando che la documentazione online sia sempre aggiornata all'ultima versione approvata.
+La pubblicazione avviene tramite \gls{GitHub} Pages, assicurando che la documentazione online sia sempre aggiornata all'ultima versione approvata.
 
 \newpage
 
 \section{Documenti}
-All’interno della repository di progetto è presente una serie di cartelle e documenti strutturati con l’obiettivo di organizzare in modo ordinato i materiali prodotti dal gruppo. Di seguito si riporta una descrizione delle principali sezioni e del loro contenuto.
+All’interno della \gls{repository} di progetto è presente una serie di cartelle e documenti strutturati con l’obiettivo di organizzare in modo ordinato i materiali prodotti dal gruppo. Di seguito si riporta una descrizione delle principali sezioni e del loro contenuto.
 
-\subsection{.github/workflows}
-Questa cartella contiene gli script di automazione utilizzati per la compilazione automatica dei documenti LaTeX tramite GitHub Actions. Contiene il file compileLatex.yml.
+\subsection{.\gls{github}/workflows}
+Questa cartella contiene gli script di automazione utilizzati per la compilazione automatica dei documenti LaTeX tramite \gls{GitHub} Actions. Contiene il file compileLatex.yml.
 
 \subsection{Candidatura}
 Questa cartella racchiude tutti i file pdf relativi alla fase di candidatura del gruppo al progetto. Include la lettera di presentazione, il documento sul preventivo dei costi e dell'impegno orari e la valutazione di tutti i capitolati.
@@ -300,15 +301,15 @@ Questa cartella racchiude tutti i file pdf relativi alla fase di candidatura del
 \subsection{RTB}
 Questa cartella contiene tutti i documenti pdf relativi alla RTB (Requirements and Technology Baseline), ovvero raccoglie tutto ciò che costituisce la prima baseline del progetto. Sono presenti:
 \begin{itemize}
-\item \textbf{Analisi dei requisiti}: questo documento descrive l'analisi dei requisiti per il progetto "Second Brain". Vengono quindi descritti i casi d'uso, e per ciascuno, i rispettivi requisiti funzionali o non funzionali.
-\item \textbf{Piano di progetto}: questo documento ha lo scopo di definire la pianificazione, l’organizzazione e il controllo delle attività del progetto Second Brain. Viene quindi fornita una sintesi delle attività, dei risultati e dei progressi conseguiti in ogni Sprint.
+\item \textbf{Analisi dei requisiti}: questo documento descrive l'\gls{analisi dei requisiti} per il progetto "Second Brain". Vengono quindi descritti i casi d'uso, e per ciascuno, i rispettivi \gls{requisiti funzionali} o non funzionali.
+\item \textbf{Piano di progetto}: questo documento ha lo scopo di definire la pianificazione, l’organizzazione e il controllo delle attività del progetto Second Brain. Viene quindi fornita una sintesi delle attività, dei risultati e dei progressi conseguiti in ogni \gls{Sprint}.
 \end{itemize}
 
 \subsection{Documenti interni}
 Questa cartella contiene i documenti pdf redatti dal gruppo per l’organizzazione interna delle attività. Sono presenti:
 \begin{itemize}
 \item \textbf{Glossario}: questo documento ha lo scopo di raccogliere i termini utilizzati nella documentazione del gruppo ByteMe durante il progetto.
-\item \textbf{Norme di progetto}: questo documento stabilisce regole, procedure e strumenti per organizzare il lavoro del gruppo. Include anche il Way of Working, descrivendo ruoli, responsabilità, riunioni e modalità di collaborazione per garantire efficienza e qualità.
+\item \textbf{Norme di progetto}: questo documento stabilisce regole, procedure e strumenti per organizzare il lavoro del gruppo. Include anche il \gls{Way of Working}, descrivendo ruoli, responsabilità, riunioni e modalità di collaborazione per garantire efficienza e qualità.
 \end{itemize}
 
 \subsection{Verbali esterni}
@@ -333,12 +334,12 @@ Questa cartella contiene degli scripts, quali uno script(gulpease.py) per calcol
 Questa cartella contiene i file sorgenti LaTeX, divisi nelle rispettive cartelle (omonime a quelle contenenti i pdf relativi).
 
 \subsection{README.md}
-Questo è il file che presenta il gruppo e la repository.
+Questo è il file che presenta il gruppo e la \gls{repository}.
 
 \newpage
 
 \section{Pianificazione del lavoro}
-Il lavoro del team è organizzato in sprint, al termine dei quali avviene una rotazione dei ruoli. Questa pratica consente a tutti di acquisire esperienza in diverse aree e di migliorare la collaborazione complessiva del gruppo.
+Il lavoro del team è organizzato in \gls{sprint}, al termine dei quali avviene una rotazione dei ruoli. Questa pratica consente a tutti di acquisire esperienza in diverse aree e di migliorare la collaborazione complessiva del gruppo.
 
 \subsection{Divisione dei ruoli}
 Il gruppo adotta una rotazione dei ruoli per garantire:
@@ -361,14 +362,14 @@ Di seguito viene fornita una descrizione dettagliata dei diversi ruoli, illustra
 
 \subsubsection{Amministratore}
 \begin{itemize}
-    \item Sistema la repository: crea e assegna le issues, crea le milestone…;
+    \item Sistema la \gls{repository}: crea e assegna le issues, crea le \gls{milestone}…;
     \item Aggiorna il sito web del gruppo;
     \item Si occupa della redazione dei documenti.
 \end{itemize}
 
 \subsubsection{Analista}
 \begin{itemize}
-    \item Analisi dei requisiti e dei casi d'uso.
+    \item \gls{Analisi dei requisiti} e dei casi d'uso.
 \end{itemize}
 
 \subsubsection{Progettista}
@@ -389,17 +390,17 @@ Di seguito viene fornita una descrizione dettagliata dei diversi ruoli, illustra
     \item Controlla codice e documenti.
 \end{itemize}
 
-\subsection{Sprint planning}
+\subsection{\gls{Sprint planning}}
 \begin{itemize}
-    \item Durata sprint: 2 settimane
-    \item Planning meeting all'inizio di ogni sprint
-    \item Review meeting alla fine di ogni sprint
+    \item Durata \gls{sprint}: 2 settimane
+    \item Planning meeting all'inizio di ogni \gls{sprint}
+    \item Review meeting alla fine di ogni \gls{sprint}
     \item Retrospettiva per il miglioramento continuo
 \end{itemize}
 
 \newpage
 
-\section{Analisi dei Requisiti (AdR)}
+\section{\gls{Analisi dei Requisiti} (AdR)}
 L’\textbf{analisi dei requisiti} rappresenta una fase fondamentale del processo di sviluppo, in quanto permette di identificare gli obiettivi del sistema, le funzionalità attese e i vincoli da rispettare. Tale attività costituisce il fondamento su cui vengono impostate le successive fasi di progettazione e implementazione. 
 Il gruppo ha adottato un approccio collaborativo finalizzato a garantire una definizione adeguata dei requisiti.
 
@@ -441,12 +442,12 @@ Una volta definiti e validati i casi d’uso, il gruppo ha proceduto alla defini
 \item scritto i requisiti partendo dai casi d’uso analizzati;
 \item formulato i requisiti in modo semplice ma chiaro;
 \item utilizzato una dicitura condivisa per identificare in modo univoco i requisiti, distinguendo tra requisiti obbligatori (O), desiderabili (D) e opzionali (OP);
-\item classificato ogni requisito in base alla sua tipologia, distinguendo tra requisiti funzionali (F), di qualità (Q) e di vincolo (V).
+\item classificato ogni requisito in base alla sua tipologia, distinguendo tra \gls{requisiti funzionali} (F), di qualità (Q) e di vincolo (V).
 \end{itemize}
-Questa organizzazione del lavoro e l’adozione di una notazione comune hanno permesso di ottenere un insieme di requisiti coerente, uniforme e facilmente comprensibile, permettendo inoltre la verifica e eventuale correzione ulteriore dei casi d’uso precedentemente scritti.
+Questa organizzazione del lavoro e l’adozione di una notazione comune hanno permesso di ottenere un insieme di requisiti coerente, uniforme e facilmente comprensibile, permettendo inoltre la \gls{verifica} e eventuale correzione ulteriore dei casi d’uso precedentemente scritti.
 
 \subsection{Revisione dei requisiti}
-Una fase essenziale del processo è stata la verifica incrociata dei requisiti redatti. I membri del gruppo si sono impegnati ad esaminare tutti i requisiti al fine di:
+Una fase essenziale del processo è stata la \gls{verifica} incrociata dei requisiti redatti. I membri del gruppo si sono impegnati ad esaminare tutti i requisiti al fine di:
 \begin{itemize}
 \item verificare la coerenza con i casi d’uso precedentemente definiti;
 \item controllare la completezza dei requisiti rispetto alle funzionalità previste;
@@ -456,10 +457,10 @@ Una fase essenziale del processo è stata la verifica incrociata dei requisiti r
 Il confronto tra i membri del gruppo ha contribuito a rafforzare la qualità complessiva del documento dei requisiti e a ridurre il rischio di errori, mancanze o ridondanze.
 
 \subsection{Scrittura del documento definitivo}
-Al termine delle fasi precedenti, il team ha proceduto alla redazione del documento “Analisi dei Requisiti”, nel quale tutti i casi d’uso sono stati integrati e uniformati in un’unica struttura coerente. Il risultato è un insieme di requisiti chiari, consistenti e verificabili.
+Al termine delle fasi precedenti, il team ha proceduto alla redazione del documento “\gls{Analisi dei Requisiti}”, nel quale tutti i casi d’uso sono stati integrati e uniformati in un’unica struttura coerente. Il risultato è un insieme di requisiti chiari, consistenti e verificabili.
 
 \subsection{Giudizio sull'approccio adottato}
-L’approccio adottato durante l’analisi dei requisiti ha contribuito in modo significativo alla crescita del team, sia sul piano tecnico sia su quello organizzativo. Grazie alle attività svolte, il gruppo ha:
+L’approccio adottato durante l’\gls{analisi dei requisiti} ha contribuito in modo significativo alla crescita del team, sia sul piano tecnico sia su quello organizzativo. Grazie alle attività svolte, il gruppo ha:
 \begin{itemize}
 \item imparato a strutturare i casi d’uso in maniera chiara e coerente, anche dopo un iniziale disallineamento nello stile di documentazione che ha richiesto un successivo lavoro di uniformazione;
 \item acquisito maggiore familiarità con i processi di revisione incrociata, migliorando la capacità di individuare errori, ambiguità o parti mancanti nel lavoro dei colleghi;
@@ -470,7 +471,7 @@ L’approccio adottato durante l’analisi dei requisiti ha contribuito in modo 
 \newpage
 
 \section{Piano di Progetto (PdP)}
-Il \textbf{Piano di Progetto} costituisce uno strumento fondamentale per organizzare, monitorare e coordinare le attività del team durante l’intero ciclo di sviluppo. Esso definisce la pianificazione temporale, la distribuzione dei ruoli, il carico di lavoro dei membri tramite un riassunto di ogni sprint e l’analisi dei potenziali rischi, garantendo una gestione strutturata e consapevole del progetto.
+Il \textbf{Piano di Progetto} costituisce uno strumento fondamentale per organizzare, monitorare e coordinare le attività del team durante l’intero ciclo di sviluppo. Esso definisce la pianificazione temporale, la distribuzione dei ruoli, il carico di lavoro dei membri tramite un riassunto di ogni \gls{sprint} e l’analisi dei potenziali rischi, garantendo una gestione strutturata e consapevole del progetto.
 
 \subsection{Analisi dei rischi}
 Un elemento centrale del Piano di Progetto è stata l’analisi dei rischi, svolta con l’obiettivo di identificare gli eventi critici che avrebbero potuto compromettere tempi, qualità o continuità del lavoro.
@@ -486,22 +487,22 @@ Per ogni rischio sono stati definiti gli elementi essenziali per una valutazione
 In questo modo abbiamo potuto capire meglio i possibili problemi e prepararci a gestirli.
 
 \subsection{Approccio adottato, identificazione dei ruoli e pianificazione delle attività}
-Il nostro approccio usa la metodologia Agile, in particolare il framework Scrum, che prevede una pianificazione continua e iterativa del lavoro. 
-Fin dall’inizio sono stati definiti i ruoli di progetto, assegnati e alternati tra i membri del team nei diversi Sprint per garantire una distribuzione equilibrata delle responsabilità e favorire la crescita delle competenze.
-La pianificazione delle attività è stata gestita Sprint per Sprint, adattandosi ai progressi del team e ai risultati ottenuti. 
+Il nostro approccio usa la metodologia \gls{Agile}, in particolare il framework \gls{Scrum}, che prevede una pianificazione continua e iterativa del lavoro. 
+Fin dall’inizio sono stati definiti i ruoli di progetto, assegnati e alternati tra i membri del team nei diversi \gls{Sprint} per garantire una distribuzione equilibrata delle responsabilità e favorire la crescita delle competenze.
+La pianificazione delle attività è stata gestita \gls{Sprint} per \gls{Sprint}, adattandosi ai progressi del team e ai risultati ottenuti. 
 
-\subsection{Riassunto di ciascuno Sprint}
-A conclusione di ogni Sprint, il gruppo ha redatto un resoconto delle attività svolte, documentando le sue fasi:
+\subsection{Riassunto di ciascuno \gls{Sprint}}
+A conclusione di ogni \gls{Sprint}, il gruppo ha redatto un resoconto delle attività svolte, documentando le sue fasi:
 \begin{itemize}
 \item Pianificazione: con obiettivi, ruoli, rischi e ore occupate previsti;
 \item Review: con attività e ore svolte e eventuali problemi riscontrati;
-\item Retrospettiva: con eventuali dubbi o problemi e la soluzione trovata, e eventuali attività programmate per lo sprint successivo. 
+\item Retrospettiva: con eventuali dubbi o problemi e la soluzione trovata, e eventuali attività programmate per lo \gls{sprint} successivo. 
 \end{itemize}
 
 \newpage
 
 \section{Piano di Qualifica (PdQ)}
-Il \textbf{Piano di Qualifica} è il documento che definisce la strategia del gruppo per garantire la qualità del prodotto software e l'efficienza dei processi di sviluppo. Rappresenta il riferimento principale per tutte le attività di Verifica e Validazione.
+Il \textbf{Piano di Qualifica} è il documento che definisce la strategia del gruppo per garantire la qualità del prodotto software e l'efficienza dei processi di sviluppo. Rappresenta il riferimento principale per tutte le attività di \gls{Verifica} e \gls{Validazione}.
 
 \subsection{Scopo del documento}
 \begin{itemize}
@@ -513,8 +514,8 @@ Il \textbf{Piano di Qualifica} è il documento che definisce la strategia del gr
 Il documento è strutturato per rispondere alle norme di qualità ISO/IEC 9126 e ISO/IEC 25010 ed è suddiviso nelle seguenti macro-aree:
 \begin{itemize}
     \item \textbf{Qualità di Processo:} Definisce le metriche per monitorare l'andamento dei lavori, inclusi la gestione del budget, la pianificazione temporale e la stabilità dei requisiti.
-    \item \textbf{Qualità di Prodotto:} Definisce le metriche per valutare il software prodotto, coprendo aspetti quali l'adeguatezza funzionale, l'efficienza, l'usabilità, l'affidabilità e la manutenibilità.
-    \item \textbf{Strategia di Verifica e Testing:} Descrive le procedure operative per l'Analisi Statica e l'Analisi Dinamica (livelli di test: Unit, Integration, System, Acceptance).
+    \item \textbf{Qualità di Prodotto:} Definisce le metriche per valutare il software prodotto, coprendo aspetti quali l'\gls{adeguatezza funzionale}, l'efficienza, l'usabilità, l'affidabilità e la manutenibilità.
+    \item \textbf{Strategia di Verifica e Testing:} Descrive le procedure operative per l'\gls{Analisi Statica} e l'\gls{Analisi Dinamica} (livelli di test: Unit, Integration, System, Acceptance).
     \item \textbf{Cruscotto di Qualità:} Una sezione dinamica che viene aggiornata ad ogni revisione di progetto, contenente i grafici e le tabelle con i valori effettivi misurati per ogni metrica, evidenziando eventuali non conformità e le relative azioni correttive intraprese.
 \end{itemize}
 
@@ -522,22 +523,22 @@ Il documento è strutturato per rispondere alle norme di qualità ISO/IEC 9126 e
 Al fine di monitorare oggettivamente l'avanzamento del progetto ed evitare stime soggettive, il gruppo adotta la tecnica di misurazione fisica 0/100 (All-or-Nothing).
 Il calcolo avviene secondo le seguenti regole: 
 \begin{enumerate} 
-    \item Ogni attività (Task/Issue) pianificata nello Sprint ha un valore in ore associato, definito nel Piano di Progetto.
-    \item Al termine dello Sprint, o nei momenti di verifica intermedi, si controlla lo stato di ciascuna attività. 
+    \item Ogni attività (Task/\gls{Issue}) pianificata nello \gls{Sprint} ha un valore in ore associato, definito nel Piano di Progetto.
+    \item Al termine dello \gls{Sprint}, o nei momenti di \gls{verifica} intermedi, si controlla lo stato di ciascuna attività. 
     \item Il valore dell'attività viene sommato all'Earned Value (EV) totale se e solo se l'attività soddisfa interamente la Definition of Done (DoD). \item Se un'attività è parzialmente completa (es. codice scritto ma non revisionato o verificato), il suo contributo all'EV è 0.
 \end{enumerate} 
 
 \subsection{Definition of Done (DoD)}
-Affinché un'unità di lavoro (Task/Issue) possa essere considerata "Fatta" (Done) e conteggiata nel calcolo dell'Earned Value, deve soddisfare i seguenti criteri:
+Affinché un'unità di lavoro (Task/\gls{Issue}) possa essere considerata "Fatta" (Done) e conteggiata nel calcolo dell'Earned Value, deve soddisfare i seguenti criteri:
 \begin{itemize} 
-    \item Codice: Il codice sorgente è stato scritto, committato e pushato sul repository ufficiale nel branch corretto.
+    \item Codice: Il codice sorgente è stato scritto, committato e pushato sul \gls{repository} ufficiale nel branch corretto.
     \item Documentazione: Il codice è corredato di commenti ed eventuali modifiche o scelte tecniche sono state riportate nella documentazione ufficiale.
-    \item Analisi Statica: Il codice supera i controlli di stile e qualità senza errori o warning bloccanti. 
+    \item \gls{Analisi Statica}: Il codice supera i controlli di stile e qualità senza errori o warning bloccanti. 
     \item Revisione: Il lavoro svolto è stato revisionato e verificato da uno o più membri del gruppo.
 \end{itemize}
 
 \subsection{Strumenti e Metriche di Qualità Automatizzate}
-Al fine di garantire un monitoraggio continuo e oggettivo della qualità, il gruppo ha integrato nel processo di sviluppo una serie di script automatici eseguiti tramite GitHub Actions. Di seguito vengono descritte le metriche monitorate e il funzionamento degli strumenti adottati.
+Al fine di garantire un monitoraggio continuo e oggettivo della qualità, il gruppo ha integrato nel processo di sviluppo una serie di script automatici eseguiti tramite \gls{GitHub} Actions. Di seguito vengono descritte le metriche monitorate e il funzionamento degli strumenti adottati.
 
 \subsubsection{Qualità della Documentazione}
 
@@ -561,7 +562,7 @@ Al fine di garantire un monitoraggio continuo e oggettivo della qualità, il gru
 \begin{itemize}
     \item \textbf{Descrizione e Scopo}: Rappresenta la dimensione fisica del software misurata in righe di codice. Serve a monitorare la crescita del progetto e a stimare lo sforzo di manutenzione.
     \item \textbf{Calcolo}: Conteggio delle righe non vuote e non di commento nei file sorgente.
-    \item \textbf{Automazione}: Viene utilizzato il tool \texttt{cloc} (Count Lines of Code) all'interno della pipeline GitHub. Lo strumento è configurato per escludere file generati automaticamente, immagini, librerie esterne (es. \texttt{node\_modules}) e file di configurazione, fornendo un conteggio fedele del lavoro svolto dal team. Questa metrica non è vincolante ma permette di monitorare la dimensione dei sorgenti.
+    \item \textbf{Automazione}: Viene utilizzato il tool \texttt{cloc} (Count Lines of Code) all'interno della pipeline \gls{GitHub}. Lo strumento è configurato per escludere file generati automaticamente, immagini, librerie esterne (es. \texttt{node\_modules}) e file di configurazione, fornendo un conteggio fedele del lavoro svolto dal team. Questa metrica non è vincolante ma permette di monitorare la dimensione dei sorgenti.
 \end{itemize}
 
 \paragraph{Complessità Ciclomatica (McCabe)}
@@ -572,13 +573,13 @@ Al fine di garantire un monitoraggio continuo e oggettivo della qualità, il gru
 \end{itemize}
 
 \subsubsection{Visualizzazione dei Risultati}
-L'esecuzione di questi controlli avviene automaticamente ad ogni \texttt{push} sulla repository remota. Per consultare i risultati:
+L'esecuzione di questi controlli avviene automaticamente ad ogni \texttt{push} sulla \gls{repository} remota. Per consultare i risultati:
 \begin{enumerate}
-    \item Accedere alla scheda \textbf{Actions} della repository GitHub.
-    \item Selezionare l'ultimo workflow eseguito (es. \textit{"Compila LaTeX e Verifica Qualità"} o \textit{"Code Metrics"}).
+    \item Accedere alla scheda \textbf{Actions} della \gls{repository} \gls{GitHub}.
+    \item Selezionare l'ultimo workflow eseguito (es. \textit{"Compila LaTeX e \gls{Verifica} Qualità"} o \textit{"Code Metrics"}).
     \item Cliccare sui singoli job (es. \textit{"Check Spelling"}, \textit{"Calcolo LOC"}) per espandere il log e visualizzare i report dettagliati e le tabelle riassuntive generate dagli script.
-    \item Le metriche per la qualità della documentazione sono calcolate nella repository della documentazione ufficiale del gruppo.
-    \item Le metriche per la qualità del codice sono calcolate nella repository del POC e del prodotto finale.
+    \item Le metriche per la qualità della documentazione sono calcolate nella \gls{repository} della documentazione ufficiale del gruppo.
+    \item Le metriche per la qualità del codice sono calcolate nella \gls{repository} del POC e del prodotto finale.
 \end{enumerate}
 
 \end{document}

@@ -1,4 +1,5 @@
 \documentclass[11pt,a4paper]{article}
+\newcommand{\gls}[1]{#1\textsubscript{G}}
 \usepackage[utf8]{inputenc}
 \usepackage[italian]{babel}
 \usepackage{geometry}
@@ -95,7 +96,7 @@
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} \\
         \hline
-        1.1.1 & 27/10/2025 & Tutto il gruppo & Verifica e approvazione del documento \\
+        1.1.1 & 27/10/2025 & Tutto il gruppo & \gls{Verifica} e approvazione del documento \\
         \hline
         1.1.0 & 27/10/2025 & Tutto il gruppo & Valutazione degli altri capitolati \\
         \hline
@@ -125,10 +126,10 @@ Il gruppo ByteMe ha analizzato i capitolati d'appalto disponibili al fine di ide
 \subsection{C6: Second Brain}
 
 \subsubsection{Descrizione}
-Il capitolato C6 "Second Brain" proposto da Zucchetti richiede lo sviluppo di un editor di testo avanzato basato su linguaggio MarkDown e potenziato da Large Language Models (LLM). L'applicazione web si articola in un'interfaccia divisa in due sezioni: un'area di editing per la scrittura in MarkDown e un'area di rendering per la visualizzazione del testo formattato.
+Il capitolato C6 "Second Brain" proposto da Zucchetti richiede lo sviluppo di un \gls{editor di testo} avanzato basato su linguaggio \gls{MarkDown} e potenziato da Large Language Models (LLM). L'applicazione web si articola in un'interfaccia divisa in due sezioni: un'area di editing per la scrittura in \gls{MarkDown} e un'area di rendering per la visualizzazione del testo formattato.
 L'elemento distintivo del progetto è l'integrazione con sistemi LLM, che permette all'utente di:
 \begin{itemize}
-    \item Generare testi completi partendo da prompt descrittivi (Distant Writing)
+    \item Generare testi completi partendo da prompt descrittivi (\gls{Distant Writing})
     \item Eseguire operazioni avanzate su testi esistenti (riassunto, riscrittura, traduzione)
     \item Analizzare criticamente i contenuti attraverso il metodo dei "sei cappelli per pensare" di Edward De Bono
     \item Migliorare e trasformare testi con diversi toni e stili
@@ -137,12 +138,12 @@ L'elemento distintivo del progetto è l'integrazione con sistemi LLM, che permet
 L'obiettivo è creare uno strumento di supporto alla scrittura creativa e alla produttività, sperimentando le potenzialità degli LLM nell'ambito del note-taking avanzato e permettendo all'utente di sviluppare idee partendo da input testuali brevi e trasformandoli in testi strutturati e completi.
 
 \subsubsection{Dominio}
-\textbf{Dominio tecnologico:} Il progetto richiede lo sviluppo di una web application innovativa che combina un editor di testo MarkDown con potenti funzionalità di intelligenza artificiale. L'architettura prevede un front-end diviso in due sezioni: un'area di editing per la scrittura e un'area di rendering per la visualizzazione del testo formattato. Per il back-end, il gruppo ha libertà di scelta tra tecnologie moderne come Java o Python, con particolare focus sull'integrazione di Large Language Models attraverso API REST compatibili con lo standard OpenAI. Aspetto cruciale sarà la progettazione di prompt efficaci per abilitare funzionalità avanzate come riassunto, riscrittura, traduzione e analisi critica dei testi. Lo sviluppo seguirà un approccio iterativo, partendo da un Proof of Concept fino al prodotto finale, supportato da test automatici per garantire qualità e affidabilità.
+\textbf{Dominio tecnologico:} Il progetto richiede lo sviluppo di una web application innovativa che combina un \gls{editor di testo} \gls{MarkDown} con potenti funzionalità di intelligenza artificiale. L'architettura prevede un front-end diviso in due sezioni: un'area di editing per la scrittura e un'area di rendering per la visualizzazione del testo formattato. Per il back-end, il gruppo ha libertà di scelta tra tecnologie moderne come Java o Python, con particolare focus sull'integrazione di Large Language Models attraverso \gls{API} REST compatibili con lo standard OpenAI. Aspetto cruciale sarà la progettazione di prompt efficaci per abilitare funzionalità avanzate come riassunto, riscrittura, traduzione e analisi critica dei testi. Lo sviluppo seguirà un approccio iterativo, partendo da un Proof of Concept fino al prodotto finale, supportato da test automatici per garantire qualità e affidabilità.
 
 \vspace{0.5cm}
 
 \noindent \textbf{Dominio applicativo:} Il Progetto Second Brain si propone come strumento avanzato di produttività per la scrittura creativa e il brainstorming,  trovando applicazione in contesti aziendali, scolastici e creativi dove è necessario trasformare input brevi in documenti strutturati.
-Il sistema permette appunto di trasformare input testuali brevi in documenti strutturati completi attraverso la funzionalità di "Distant Writing", mentre le capacità di critica basate sul metodo di Edward De Bono offrono diverse prospettive di analisi sul testo prodotto. L'approccio modulare e l'integrazione con LLM rendono lo strumento ideale per sessioni di brainstorming, revisione collaborativa e ottimizzazione di contenuti esistenti, come fosse un "secondo cervello" digitale per potenziare la creatività e l'efficienza nella scrittura.
+Il sistema permette appunto di trasformare input testuali brevi in documenti strutturati completi attraverso la funzionalità di "\gls{Distant Writing}", mentre le capacità di critica basate sul metodo di Edward De Bono offrono diverse prospettive di analisi sul testo prodotto. L'approccio modulare e l'integrazione con LLM rendono lo strumento ideale per sessioni di brainstorming, revisione collaborativa e ottimizzazione di contenuti esistenti, come fosse un "secondo cervello" digitale per potenziare la creatività e l'efficienza nella scrittura.
 
 
 \subsubsection{Motivazione della scelta}
@@ -166,7 +167,7 @@ Visti i motivi sopra citati e considerata la positiva impressione avuta durante 
 Il capitolato C3 "DIPReader", proposto da San Marco Informatica, richiede lo sviluppo di un'applicazione per la consultazione e ricerca offline di archivi documentali digitali. Il sistema dovrà processare i Distribution Information Package (DIP), cioè pacchetti di distribuzione forniti dai sistemi di conservazione digitale, permettendo agli utenti di effettuare ricerche avanzate sui documenti e metadati contenuti, anche in assenza di connessione Internet. L'applicazione dovrà essere completamente autonoma, multi-piattaforma e non richiedere installazioni aggiuntive sul dispositivo dell'utente.
 
 \subsubsection{Dominio}
-\textbf{Dominio tecnologico:} Il progetto richiede lo sviluppo di un'applicazione multi-piattaforma in grado di gestire grandi volumi di dati documentali in ambiente offline. Le tecnologie consigliate includono SQLite per il database embedded, framework frontend come Angular o React con TypeScript, e potenzialmente FAISS (Facebook AI Similarity Search) per implementare ricerche semantiche avanzate. L'architettura deve essere modulare per facilitare l'aggiunta di nuove funzionalità e metodologie di ricerca. Particolare attenzione sarà dedicata all'efficienza nella gestione e indicizzazione di grandi archivi documentali, con requisiti stringenti di testing automatico (test di unità e integrazione) per garantire la stabilità del sistema. L'applicazione dovrà supportare la visualizzazione di formati comuni (PDF, XML, immagini) e implementare meccanismi di ricerca sia su metadati che su contenuto testuale.
+\textbf{Dominio tecnologico:} Il progetto richiede lo sviluppo di un'applicazione multi-piattaforma in grado di gestire grandi volumi di dati documentali in ambiente offline. Le tecnologie consigliate includono SQLite per il \gls{database} embedded, framework frontend come Angular o React con TypeScript, e potenzialmente FAISS (Facebook AI Similarity Search) per implementare ricerche semantiche avanzate. L'architettura deve essere modulare per facilitare l'aggiunta di nuove funzionalità e metodologie di ricerca. Particolare attenzione sarà dedicata all'efficienza nella gestione e indicizzazione di grandi archivi documentali, con requisiti stringenti di testing automatico (test di unità e integrazione) per garantire la stabilità del sistema. L'applicazione dovrà supportare la visualizzazione di formati comuni (PDF, XML, immagini) e implementare meccanismi di ricerca sia su metadati che su contenuto testuale.
 
 \vspace{0.5cm}
 
@@ -185,10 +186,10 @@ Il capitolato C3 rappresenta un'opportunità valida per approfondire tematiche d
 \subsection{C9: View4Life}
 
 \subsubsection{Descrizione}
-Il capitolato C9 "View4Life", proposto da Vimar, richiede lo sviluppo di una piattaforma cloud e applicazione web per la gestione di impianti domotici in residenze protette per anziani. Il sistema dovrà interfacciarsi con dispositivi IoT Vimar tramite API per monitorare allarmi di sicurezza, consumi energetici e stato dei dispositivi, fornendo al personale sanitario strumenti per il controllo remoto e l'analisi dei dati.
+Il capitolato C9 "View4Life", proposto da Vimar, richiede lo sviluppo di una piattaforma cloud e applicazione web per la gestione di impianti domotici in residenze protette per anziani. Il sistema dovrà interfacciarsi con dispositivi IoT Vimar tramite \gls{API} per monitorare allarmi di sicurezza, consumi energetici e stato dei dispositivi, fornendo al personale sanitario strumenti per il controllo remoto e l'analisi dei dati.
 
 \subsubsection{Dominio}
-\textbf{Dominio tecnologico:} Il progetto richiede lo sviluppo di un'applicazione web responsive e un'infrastruttura cloud containerizzata con Docker. Le tecnologie consigliate includono framework frontend come Angular o React, backend in Node.js, Java o Python e database relazionali come MySQL. Particolare attenzione sarà dedicata all'integrazione con le API KNX IoT e all'implementazione di notifiche push per gli allarmi. L'infrastruttura dovrà seguire il principio di Infrastructure as Code.
+\textbf{Dominio tecnologico:} Il progetto richiede lo sviluppo di un'applicazione web responsive e un'infrastruttura cloud containerizzata con Docker. Le tecnologie consigliate includono framework frontend come Angular o React, backend in Node.js, Java o Python e \gls{database} relazionali come MySQL. Particolare attenzione sarà dedicata all'integrazione con le \gls{API} KNX IoT e all'implementazione di notifiche push per gli allarmi. L'infrastruttura dovrà seguire il principio di Infrastructure as Code.
 
 \vspace{0.5cm}
 
@@ -230,11 +231,11 @@ Il progetto ha come obiettivo lo sviluppo di un software interattivo che support
 \subsection{C2: Code Guardian}
 
 \subsubsection{Descrizione}
-Il progetto Code Guardian è una piattaforma web basata su un sistema multi-agente che automatizza l'analisi di repository software (GitHub) per valutarne la qualità, la sicurezza (secondo standard OWASP), la copertura dei test e la documentazione. L'obiettivo è aiutare gli sviluppatori a mantenere progetti software più sicuri, documentati e di alta qualità, con possibilità di integrazione con CI/CD e notifiche.
+Il progetto Code Guardian è una piattaforma web basata su un sistema multi-agente che automatizza l'analisi di \gls{repository} software (\gls{GitHub}) per valutarne la qualità, la sicurezza (secondo standard OWASP), la copertura dei test e la documentazione. L'obiettivo è aiutare gli sviluppatori a mantenere progetti software più sicuri, documentati e di alta qualità, con possibilità di integrazione con CI/CD e notifiche.
 
 \subsubsection{Pro}
 \begin{itemize}
-    \item \textbf{Esperienza pratica su tecnologie ricercate}: Node.js, Python, React, MongoDB/PostgreSQL, AWS e GitHub Action sono competenze molto richieste nel mercato del lavoro
+    \item \textbf{Esperienza pratica su tecnologie ricercate}: Node.js, Python, React, MongoDB/PostgreSQL, AWS e \gls{GitHub} Action sono competenze molto richieste nel mercato del lavoro
     \item \textbf{Supporto tecnico qualificato}: il team di Var Group fornisce supporto tecnico, esempi e sessioni di mentoring
     \item \textbf{Progetto concreto e innovativo}: rappresenta un tool reale e utile per arricchire il portfolio personale
     \item \textbf{Apprendimento di architetture software avanzate}: architettura multi-agente e orchestratore, concetti utilizzati in sistemi enterprise moderni
@@ -282,7 +283,7 @@ L'obiettivo del progetto consiste nello sviluppare nuove funzionalità intellige
 \subsubsection{Pro}
 \begin{itemize}
     \item \textbf{Prodotto concretamente utile}: sviluppo di funzionalità effettivamente utilizzate dall'azienda
-    \item \textbf{Sperimentazione di metodologie Agile}: opportunità di applicare approcci Agile in un contesto aziendale reale
+    \item \textbf{Sperimentazione di metodologie Agile}: opportunità di applicare approcci \gls{Agile} in un contesto aziendale reale
     \item \textbf{Apprendimento di tecnologie moderne}: utilizzo di tecnologie attuali e ampiamente diffuse
 \end{itemize}
 

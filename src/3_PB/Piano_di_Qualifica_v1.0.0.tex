@@ -1,4 +1,5 @@
 \documentclass[11pt,a4paper]{article}
+\newcommand{\gls}[1]{#1\textsubscript{G}}
 \usepackage[utf8]{inputenc}
 \usepackage[italian]{babel}
 \usepackage{geometry}
@@ -102,19 +103,19 @@
         \hline
         1.0.0 & 26/02/2026 & Joseph Grant & Approvazione finale del documento &  \\
         \hline
-        0.2.0 & 24/02/2026 & Giulia Barzon & Aggiornamento cruscotto di qualità & Elisa Marchioro e Chiara Grossele\\
+        0.2.0 & 24/02/2026 & Giulia Barzon & Aggiornamento \gls{cruscotto di qualità} & Elisa Marchioro e Chiara Grossele\\
         \hline
-        0.1.5 & 21/02/2026 & Giulia Barzon & Aggiunti test analisi dinamica & Elisa Marchioro e Chiara Grossele\\
+        0.1.5 & 21/02/2026 & Giulia Barzon & Aggiunti test \gls{analisi dinamica} & Elisa Marchioro e Chiara Grossele\\
         \hline
-        0.1.4 & 05/02/2026 & Giulia Barzon & Aggiornamento cruscotto di qualità & Elisa Marchioro e Chiara Grossele\\
+        0.1.4 & 05/02/2026 & Giulia Barzon & Aggiornamento \gls{cruscotto di qualità} & Elisa Marchioro e Chiara Grossele\\
         \hline
         0.1.3 & 11/01/2026 & Elisa Marchioro & Aggiunte metriche qualità di prodotto & Giulia Barzon \\
         \hline
         0.1.2 & 11/01/2026 & Giulia Barzon & Aggiunte metriche qualità di processo & Elisa Marchioro\\
         \hline
-        0.1.1 & 27/12/2025 & Joseph Grant & Aggiunta sezione 'verifica' al versionamento & Giulia Barzon\\
+        0.1.1 & 27/12/2025 & Joseph Grant & Aggiunta sezione '\gls{verifica}' al \gls{versionamento} & Giulia Barzon\\
         \hline
-        0.1.0 & 15/12/2025 & Giulia Barzon & Creazione del documento, scrittura introduzione e checklist & Elisa Marchioro\\
+        0.1.0 & 15/12/2025 & Giulia Barzon & Creazione del documento, scrittura introduzione e \gls{checklist} & Elisa Marchioro\\
         \hline
     \end{tabular}
     \caption{Registro delle versioni del documento}
@@ -136,25 +137,25 @@
 Il presente documento ha lo scopo di definire la strategia, le metodologie e le risorse pianificate per garantire la qualità del prodotto software \textbf{"Second Brain"} e l'efficienza dei processi di sviluppo adottati dal gruppo. Esso funge da riferimento principale per le attività di \textbf{verifica} (accertamento che il prodotto sia costruito correttamente) e \textbf{validazione} (accertamento che il prodotto giusto sia stato costruito), stabilendo gli standard qualitativi che ogni artefatto deve soddisfare prima di essere approvato.
 In questo contesto, il termine \textbf{"Qualità"} viene inteso secondo due prospettive complementari:
 \begin{itemize}
-    \item \textbf{Qualità di Processo:} L'aderenza del team al metodo di lavoro definito nelle \textit{Norme di Progetto}, basato sul miglioramento continuo e sull'efficienza delle procedure di sviluppo e test.
-    \item \textbf{Qualità di Prodotto:} La capacità del software di soddisfare i requisiti funzionali e non funzionali esplicitati nell'\textit{Analisi dei Requisiti}.
+    \item \textbf{Qualità di Processo:} L'aderenza del team al metodo di lavoro definito nelle \textit{\gls{Norme di Progetto}}, basato sul miglioramento continuo e sull'efficienza delle procedure di sviluppo e test.
+    \item \textbf{Qualità di Prodotto:} La capacità del software di soddisfare i \gls{requisiti funzionali} e non funzionali esplicitati nell'\textit{\gls{Analisi dei Requisiti}}.
 \end{itemize}
 Il documento è destinato al committente Prof. Vardanega e Prof. Cardin, all'azienda proponente Zucchetti S.p.A. e al gruppo di sviluppo ByteMe.
 
 \subsection{Scopo del prodotto}
-Il progetto \textbf{Second Brain}, proposto dall'azienda Zucchetti, mira a sviluppare un editor di testo avanzato basato sul linguaggio MarkDown e potenziato dall'integrazione di Large Language Models (LLM).
+Il progetto \textbf{Second Brain}, proposto dall'azienda Zucchetti, mira a sviluppare un \gls{editor di testo} avanzato basato sul linguaggio \gls{MarkDown} e potenziato dall'integrazione di Large Language Models (LLM).
 L'applicazione web consentirà all'utente di:
 \begin{itemize}
-    \item Scrivere e visualizzare in tempo reale testi formattati in MarkDown;
+    \item Scrivere e visualizzare in tempo reale testi formattati in \gls{MarkDown};
     \item Interagire con un LLM per generare, riassumere, riscrivere, tradurre e analizzare testi;
     \item Sfruttare il metodo dei "Sei cappelli per pensare" di Edward De Bono per ottenere analisi critiche multi-prospettiche;
-    \item Fornire prompt testuali per delegare all'AI la stesura completa del contenuto (\textit{Distant Writing}).
+    \item Fornire prompt testuali per delegare all'AI la stesura completa del contenuto (\textit{\gls{Distant Writing}}).
 \end{itemize}
 L'obiettivo è creare uno strumento di supporto alla scrittura creativa e al note-taking avanzato, esplorando le potenzialità pratiche degli LLM nel flusso di lavoro quotidiano.
 
 
-\subsection{Glossario}
-Per evitare ambiguità e garantire un linguaggio comune all'interno del gruppo e con i committenti, i termini tecnici utilizzati in questo documento sono definiti in modo approfondito nel documento \textit{Glossario}, situato nella repository del gruppo alla sezione \textit{Documenti interni}. Per facilitare la lettura, i termini che presentano una definizione specifica nel glossario sono contrassegnati con una G a pedice.
+\subsection{\gls{Glossario}}
+Per evitare ambiguità e garantire un linguaggio comune all'interno del gruppo e con i committenti, i termini tecnici utilizzati in questo documento sono definiti in modo approfondito nel documento \textit{\gls{Glossario}}, situato nella \gls{repository} del gruppo alla sezione \textit{Documenti interni}. Per facilitare la lettura, i termini che presentano una definizione specifica nel \gls{glossario} sono contrassegnati con una G a pedice.
 
 \subsection{Riferimenti}
 \subsubsection{Riferimenti Normativi}
@@ -170,12 +171,12 @@ Per evitare ambiguità e garantire un linguaggio comune all'interno del gruppo e
     \item \textbf{ISO/IEC 25010:} \textit{Systems and software engineering — Systems and software Quality Requirements and Evaluation (SQuaRE)}. (Modello di riferimento per la qualità del prodotto software).
     \item \textbf{Slide del corso di Ingegneria del Software:}
     \begin{itemize}
-        \item T9 - Verifica e validazione.
-        \item T10 - Analisi statica.
-        \item T11 - Analisi dinamica.
+        \item T9 - \gls{Verifica} e \gls{validazione}.
+        \item T10 - \gls{Analisi statica}.
+        \item T11 - \gls{Analisi dinamica}.
     \end{itemize}
     \item \textbf{Slide e dispense del corso opzionale:} \textit{Metodi e Tecnologie per lo Sviluppo Software}.
-    \item \textbf{Documentazione tecnica strumenti:} \textit{GitHub Actions Documentation}
+    \item \textbf{Documentazione tecnica strumenti:} \textit{\gls{GitHub} Actions Documentation}
 \end{itemize}
 
 \newpage
@@ -183,7 +184,7 @@ Per evitare ambiguità e garantire un linguaggio comune all'interno del gruppo e
 \section{Metriche di Qualità}
 \subsection{Qualità di Processo}
 
-\subsubsection{Processi Primari di Fornitura\textsubscript{G}}
+\subsubsection{\gls{Processi Primari di Fornitura}}
 In questa sezione vengono definite le metriche relative alla gestione manageriale ed economica del progetto. L'obiettivo è monitorare l'allocazione delle risorse, il rispetto delle scadenze temporali e l'aderenza al preventivo definito in fase di candidatura.
 Per garantire un controllo oggettivo sull'avanzamento dei lavori, il gruppo adotta lo standard \textbf{EVA (Earned Value Analysis)\textsubscript{G}}, che permette di integrare la misurazione di tempi, costi e valore prodotto in un unico framework quantitativo.
 
@@ -202,7 +203,7 @@ Il preventivo iniziale, calcolato in fase di candidatura, ammonta a \textbf{11.3
 Valore monetario (o in ore) delle attività pianificate che avrebbero dovuto essere completate entro la data corrente. Si distingue in:
 \begin{itemize}
     \item \textbf{Sprint Planned Value (SPV)} \\
-    Valore pianificato per un singolo Sprint. Calcolato come somma delle ore ruolo (OR) preventivate moltiplicate per il costo orario (CR).
+    Valore pianificato per un singolo \gls{Sprint}. Calcolato come somma delle ore ruolo (OR) preventivate moltiplicate per il costo orario (CR).
     
     \begin{table}[H]
         \centering
@@ -214,7 +215,7 @@ Valore monetario (o in ore) delle attività pianificate che avrebbero dovuto ess
             $SPV = \sum (OR \times CR)$ & $> 0$ & $> 0$ \\
             \hline
         \end{tabular}
-        \caption{Parametro Sprint Planned Value (SPV)}
+        \caption{Parametro \gls{Sprint} Planned Value (SPV)}
     \end{table}
 
     \item \textbf{Project Planned Value (PPV)} \\
@@ -240,7 +241,7 @@ Costo effettivo sostenuto (ore lavorate $\times$ costo orario) per il lavoro svo
 
 \begin{itemize}
     \item \textbf{Sprint Actual Cost (SAC)} \\
-    Costo sostenuto nel singolo Sprint.
+    Costo sostenuto nel singolo \gls{Sprint}.
     
     \begin{table}[H]
         \centering
@@ -249,10 +250,10 @@ Costo effettivo sostenuto (ore lavorate $\times$ costo orario) per il lavoro svo
             \hline
             \textbf{Calcolo} & \textbf{Soglia Accettabile} & \textbf{Soglia Ottimale} \\
             \hline
-            $SAC = \sum \textrm{costi sostenuti nello Sprint}$ & $\le SPV + 10\%$ & $\le SPV$ \\
+            $SAC = \sum \textrm{costi sostenuti nello \gls{Sprint}}$ & $\le SPV + 10\%$ & $\le SPV$ \\
             \hline
         \end{tabular}
-        \caption{Parametro Sprint Actual Cost (SAC)}
+        \caption{Parametro \gls{Sprint} Actual Cost (SAC)}
     \end{table}
 
     \item \textbf{Project Actual Cost (PAC)} \\
@@ -278,7 +279,7 @@ Rappresenta il valore del lavoro effettivamente completato e verificato alla dat
 
 \begin{itemize}
     \item \textbf{Sprint Earned Value (SEV)} \\
-    Valore guadagnato nel singolo Sprint. È la somma del Planned Value delle sole attività completate secondo la Definition of Done.
+    Valore guadagnato nel singolo \gls{Sprint}. È la somma del Planned Value delle sole attività completate secondo la Definition of Done.
     
     \begin{table}[H]
         \centering
@@ -290,7 +291,7 @@ Rappresenta il valore del lavoro effettivamente completato e verificato alla dat
             $SEV = \sum PV_{completati}$ & $\ge 90\%$ del SPV & $= SPV$ \\
             \hline
         \end{tabular}
-        \caption{Parametro Sprint Earned Value (SEV)}
+        \caption{Parametro \gls{Sprint} Earned Value (SEV)}
     \end{table}
 
     \item \textbf{Project Earned Value (PEV)} \\
@@ -393,7 +394,7 @@ Stima aggiornata del costo totale finale del progetto, calcolata proiettando l'e
 \end{table}
 
 \newpage
-\subsubsection{Processi Primari di Sviluppo\textsubscript{G}}
+\subsubsection{\gls{Processi Primari di Sviluppo}}
 Questa sezione raggruppa le metriche utilizzate per valutare la qualità delle attività di realizzazione tecnica del prodotto.
 Il monitoraggio si focalizza sulla \textbf{stabilità dei requisiti}, per controllare l'evoluzione dello scopo del progetto ed evitare cambiamenti incontrollati, e sulla \textbf{qualità strutturale del codice}, analizzando la complessità e la dimensione del software prodotto per garantirne la manutenibilità futura.
 
@@ -464,9 +465,9 @@ Misura la complessità del flusso di controllo di un metodo o funzione calcoland
 \end{table}
 
 \newpage
-\subsubsection{Processi di Supporto\textsubscript{G}: Documentazione e Qualità}
-Le metriche esposte in questa sezione valutano l'efficacia delle attività trasversali che supportano il ciclo di vita del software.
-L'attenzione è posta sulla \textbf{qualità della documentazione}, assicurando che sia leggibile, corretta e priva di ambiguità, e sull'efficacia del \textbf{processo di verifica}, misurando la capacità del gruppo di identificare e risolvere rischi e difetti in modo proattivo.
+\subsubsection{\gls{Processi di Supporto}: Documentazione e Qualità}
+Le metriche esposte in questa sezione valutano l'\gls{efficacia} delle attività trasversali che supportano il ciclo di vita del software.
+L'attenzione è posta sulla \textbf{qualità della documentazione}, assicurando che sia leggibile, corretta e priva di ambiguità, e sull'\gls{efficacia} del \textbf{processo di verifica}, misurando la capacità del gruppo di identificare e risolvere rischi e difetti in modo proattivo.
 
 \paragraph{Indice di Gulpease\textsubscript{G} (IG)} \hfill \\
 Valuta la leggibilità di un testo redatto in lingua italiana per garantire che la documentazione sia comprensibile ai membri del gruppo e agli stakeholder esterni.
@@ -485,7 +486,7 @@ Valuta la leggibilità di un testo redatto in lingua italiana per garantire che 
 \end{table}
 
 \paragraph{Correttezza Ortografica (CO)} \hfill \\
-Misura il numero di errori ortografici o grammaticali residui nei documenti individuati durante i processi di verifica o revisione.
+Misura il numero di errori ortografici o grammaticali residui nei documenti individuati durante i processi di \gls{verifica} o revisione.
 
 \begin{table}[H]
     \centering
@@ -517,7 +518,7 @@ Quantità di rischi che si verificano durante il progetto ma che non erano stati
 \end{table}
 
 \paragraph{Metriche Soddisfatte (MS)} \hfill \\
-Percentuale di metriche (tra tutte quelle definite nel presente documento) che rientrano nelle soglie di accettabilità ad ogni verifica di periodo. Indica lo stato di salute generale del progetto.
+Percentuale di metriche (tra tutte quelle definite nel presente documento) che rientrano nelle soglie di accettabilità ad ogni \gls{verifica} di periodo. Indica lo stato di salute generale del progetto.
 
 \begin{table}[H]
     \centering
@@ -536,7 +537,7 @@ Percentuale di metriche (tra tutte quelle definite nel presente documento) che r
 \newpage
 \subsection{Qualità di Prodotto}
 La qualità di prodotto nel software indica quanto bene un sistema riesce a soddisfare i bisogni degli utenti e gli obiettivi per cui è stato creato. Non significa solo che il programma funzioni, ma anche che sia affidabile, veloce, facile da usare e capace di essere migliorato nel tempo. Un software di buona qualità è quindi utile, stabile e adatto a evolversi insieme alle esigenze degli utenti.
-\subsubsection{Adeguatezza Funzionale\textsubscript{G}}
+\subsubsection{\gls{Adeguatezza Funzionale}}
 Indica quanto il software realizza correttamente tutte le funzioni richieste per soddisfare gli obiettivi dell’utente.
 \begin{table}[H]
 \centering
@@ -545,7 +546,7 @@ Indica quanto il software realizza correttamente tutte le funzioni richieste per
 \hline
 \textbf{Metrica} & \textbf{Scopo della metrica} & \textbf{Soglia Accettabile} & \textbf{Soglia Ottimale} \\
 \hline
-Requirement Coverage & Verifica che tutte le funzionalità principali dell’editor siano implementate & 90\% & 98\% \\ \hline
+Requirement Coverage & \gls{Verifica} che tutte le funzionalità principali dell’editor siano implementate & 90\% & 98\% \\ \hline
 Acceptance Test Pass Rate & Controlla che le funzionalità principali funzionino correttamente & 95\% & 99\% \\ \hline
 Functional Defect Density & Misura quanti bug ci sono per funzione principale & 0.5 bug/funzione & 0.1 bug/funzione \\
 \hline
@@ -553,7 +554,7 @@ Functional Defect Density & Misura quanti bug ci sono per funzione principale & 
 \caption{Soglie metriche funzionalità del prodotto}
 \end{table}
 
-\subsubsection{Qualità dell'Output Generativo\textsubscript{G}}
+\subsubsection{\gls{Qualità dell'Output Generativo}}
 Misura quanto le risposte prodotte dal sistema sono corrette, coerenti e utili per l’utente.
 \begin{table}[H]
 \centering
@@ -638,12 +639,12 @@ Change Failure Rate & Percentuale di modifiche che introducono problemi o bug & 
 \end{table}
 
 \newpage
-\section{Strategia di Verifica (Testing)}
-\subsection{Analisi Statica\textsubscript{G}}
+\section{Strategia di \gls{Verifica} (Testing)}
+\subsection{\gls{Analisi Statica}}
 
-\subsubsection{Checklist per la Verifica (Analisi Statica tramite Inspection\textsubscript{G})}
+\subsubsection{\gls{Checklist} per la \gls{Verifica} (\gls{Analisi Statica} tramite Inspection\textsubscript{G})}
 Questa sezione contiene le liste di controllo che i Verificatori devono utilizzare obbligatoriamente prima di approvare un documento o un pezzo di codice. L'obiettivo è standardizzare il controllo qualità ed evitare errori ricorrenti.
-Questa checklist\textsubscript{G} viene aggiornata progressivamente dai verificatori e permette di evitare gli errori più comuni e semplici da individuare.
+Questa \gls{checklist} viene aggiornata progressivamente dai verificatori e permette di evitare gli errori più comuni e semplici da individuare.
 
 % tabella checklist documenti
 \begin{table}[H]
@@ -657,18 +658,18 @@ Questa checklist\textsubscript{G} viene aggiornata progressivamente dai verifica
         \hline
         Struttura & Sezioni vuote o orfane & Rimuovere o riempire le sezioni che contengono solo il titolo senza testo. \\
         \hline
-        Glossario & Termine non marcato o errato & Verificare che i termini del glossario siano segnati con la "G" a pedice e rispettino il case sensitivity. \\
+        \gls{Glossario} & Termine non marcato o errato & Verificare che i termini del \gls{glossario} siano segnati con la "G" a pedice e rispettino il case sensitivity. \\
         \hline
         Ortografia & Errori di battitura o sintassi & Utilizzare il correttore automatico, verificare personalmente i testi, rimuovere refusi e doppi spazi. \\
         \hline
         Percorsi File & Path immagini errato & Verificare che i percorsi siano relativi e corretti (es: \texttt{../UCimg/diagramma.jpg} per i diagrammi, \texttt{../logo.jpg} per i loghi) per evitare errori di compilazione.\\
         \hline
-        Versionamento & Disallineamento versione & Controllare che la versione indicata nel frontespizio coincida con l'ultima voce del registro delle modifiche. \\
+        \gls{Versionamento} & Disallineamento versione & Controllare che la versione indicata nel frontespizio coincida con l'ultima voce del registro delle modifiche. \\
         \hline
-        Versionamento & Nome file senza versione & Il nome del documento deve contenere il numero di versione corrente (es. \texttt{Nome\_doc\_v1.0.0}). \\
+        \gls{Versionamento} & Nome file senza versione & Il nome del documento deve contenere il numero di versione corrente (es. \texttt{Nome\_doc\_v1.0.0}). \\
         \hline
     \end{tabular}
-    \caption{Checklist Documentazione (LaTeX)}
+    \caption{\gls{Checklist} Documentazione (LaTeX)}
 \end{table}
 
 % tabella checklist Codice e Push 
@@ -679,12 +680,12 @@ Questa checklist\textsubscript{G} viene aggiornata progressivamente dai verifica
         \hline
         \textbf{Oggetto} & \textbf{Errore} & \textbf{Azione Correttiva} \\
         \hline
-        Sincronizzazione & Push senza Pull & Eseguire sempre \texttt{git pull} prima di \texttt{git push} per risolvere conflitti locali ed evitare merge complessi. \\
+        Sincronizzazione & Push senza Pull & Eseguire sempre \texttt{\gls{git} pull} prima di \texttt{\gls{git} push} per risolvere conflitti locali ed evitare \gls{merge} complessi. \\
         \hline
         Pulizia & Codice commentato o morto & Rimuovere blocchi di codice commentato inutile o funzioni non utilizzate prima del push. \\
         \hline
     \end{tabular}
-    \caption{Checklist Codice e Push (Git)}
+    \caption{\gls{Checklist} Codice e Push (\gls{Git})}
 \end{table}
 
 % tabella checklist analisi dei requisiti
@@ -703,23 +704,23 @@ Questa checklist\textsubscript{G} viene aggiornata progressivamente dai verifica
         \hline
         UML & Inconsistenza diagrammi & La numerazione e i nomi negli schemi UML devono corrispondere esattamente al testo descrittivo. \\
         \hline
-        Attori & Attori non definiti & Verificare che tutti gli attori (es. Utente, Sistema AI) siano descritti nella sezione introduttiva degli UC. \\
+        Attori & Attori non definiti & Verificare che tutti gli attori (es. Utente, \gls{Sistema AI}) siano descritti nella sezione introduttiva degli UC. \\
         \hline
         Nomenclatura & Codice identificativo errato & Ogni requisito deve avere un codice univoco che segue la nomenclatura standard definita. \\
         \hline
     \end{tabular}
-    \caption{Checklist Analisi Dei Requisiti}
+    \caption{\gls{Checklist} \gls{Analisi Dei Requisiti}}
 \end{table}
 
 % SEZIONE PER ANALISI DINAMICA: test implementati sul codice
 \newpage
-\subsection{Analisi Dinamica\textsubscript{G}}
-L'analisi dinamica del software \textit{Second Brain} viene condotta attraverso l'esecuzione di test strutturati su diversi livelli di granularità, secondo il modello a V del ciclo di vita del software. L'obiettivo è verificare che il sistema soddisfi i requisiti funzionali e non funzionali, garantendo affidabilità, correttezza e usabilità del prodotto finale.
+\subsection{\gls{Analisi Dinamica}}
+L'\gls{analisi dinamica} del software \textit{Second Brain} viene condotta attraverso l'esecuzione di test strutturati su diversi livelli di granularità, secondo il modello a V del ciclo di vita del software. L'obiettivo è verificare che il sistema soddisfi i \gls{requisiti funzionali} e non funzionali, garantendo affidabilità, correttezza e usabilità del prodotto finale.
 
 \paragraph{Priorità di Testing (per la fase RTB)}
-Durante lo sviluppo del Proof of Concept (PoC), l'analisi dinamica si concentra sulla verifica della fattibilità tecnologica e sull'integrazione tra i componenti. Le priorità sono così definite:
+Durante lo sviluppo del Proof of Concept (PoC), l'\gls{analisi dinamica} si concentra sulla \gls{verifica} della fattibilità tecnologica e sull'integrazione tra i componenti. Le priorità sono così definite:
 \begin{itemize}
-    \item \textbf{Alta}: Test di Sistema (funzionalità AI core) e Test di Integrazione (API Auth + AI, Backend-Database).
+    \item \textbf{Alta}: \gls{Test di Sistema} (funzionalità AI core) e \gls{Test di Integrazione} (\gls{API} Auth + AI, Backend-\gls{Database}).
     \item \textbf{Media}: Test di Unità (logiche isolate come \texttt{auth.py} o formattazione dei prompt).
 \end{itemize}
 L'obiettivo attuale non è raggiungere una \textit{Code Coverage} esaustiva (che sarà centrale nella fase PB), ma validare che i rischi tecnologici siano stati mitigati.
@@ -737,13 +738,13 @@ L'obiettivo attuale non è raggiungere una \textit{Code Coverage} esaustiva (che
         \hline
         \textbf{Test ID} & \textbf{Funzione Testata} & \textbf{Descrizione} & \textbf{Input} & \textbf{Output Atteso} \\
         \hline
-        TU-1 & \texttt{genera\_hash()} & Verifica generazione hash PBKDF2 con salt casuale. & pwd: "test123" & Stringa formato \texttt{salt\$hash} \\
+        TU-1 & \texttt{genera\_hash()} & \gls{Verifica} generazione hash PBKDF2 con salt casuale. & pwd: "test123" & Stringa formato \texttt{salt\$hash} \\
         \hline
-        TU-2 & \texttt{verifica\_pwd()} & Verifica confronto con una password corretta. & pwd: "test123", hash valido & \texttt{True} \\
+        TU-2 & \texttt{\gls{verifica}\_pwd()} & \gls{Verifica} confronto con una password corretta. & pwd: "test123", hash valido & \texttt{True} \\
         \hline
-        TU-3 & \texttt{verifica\_pwd()} & Verifica rifiuto con una password errata. & pwd: "wrong", hash valido & \texttt{False} \\
+        TU-3 & \texttt{\gls{verifica}\_pwd()} & \gls{Verifica} rifiuto con una password errata. & pwd: "wrong", hash valido & \texttt{False} \\
         \hline
-        TU-4 & \texttt{verifica\_pwd()} & Gestione delle eccezioni per hash malformati o nulli. & hash malformato & \texttt{False} \\
+        TU-4 & \texttt{\gls{verifica}\_pwd()} & Gestione delle eccezioni per hash malformati o nulli. & hash malformato & \texttt{False} \\
         \hline
     \end{tabularx}
     \caption{Test di Unità}
@@ -752,8 +753,8 @@ L'obiettivo attuale non è raggiungere una \textit{Code Coverage} esaustiva (che
 % ----------------------------------------------------
 % TEST DI INTEGRAZIONE
 % ----------------------------------------------------
-\subsubsection{Test di Integrazione\textsubscript{G}}
-\textbf{Obiettivo}: Verificare che i diversi moduli del sistema (Frontend, Backend, Database e LLM esterni) comunichino correttamente tra loro attraverso le rispettive interfacce e API.
+\subsubsection{\gls{Test di Integrazione}}
+\textbf{Obiettivo}: Verificare che i diversi moduli del sistema (Frontend, Backend, \gls{Database} e LLM esterni) comunichino correttamente tra loro attraverso le rispettive interfacce e \gls{API}.
 
 \begin{table}[H]
     \centering
@@ -762,24 +763,24 @@ L'obiettivo attuale non è raggiungere una \textit{Code Coverage} esaustiva (che
         \hline
         \textbf{Test ID} & \textbf{Descrizione} & \textbf{Requisito} \\
         \hline
-        TI-1 & \textbf{Health Check Database}: Verifica che il backend riesca a stabilire una connessione stabile con il database PostgreSQL interrogando l'endpoint dedicato (\texttt{/api/test-db-connection}) ed eseguendo una query di test. & ROP-F-22 \\
+        TI-1 & \textbf{Health Check Database}: \gls{Verifica} che il backend riesca a stabilire una connessione stabile con il \gls{database} PostgreSQL interrogando l'endpoint dedicato (\texttt{/\gls{api}/test-db-connection}) ed eseguendo una query di test. & ROP-F-22 \\
         \hline
-        TI-2 & \textbf{Health Check LLM}: Verifica in fase di avvio dell'applicazione che le variabili d'ambiente (API Key e Base URL) siano correttamente caricate e che il client verso il provider esterno venga inizializzato con successo. & RO-V-13 \\
+        TI-2 & \textbf{Health Check LLM}: \gls{Verifica} in fase di avvio dell'applicazione che le variabili d'ambiente (\gls{API} Key e Base URL) siano correttamente caricate e che il client verso il provider esterno venga inizializzato con successo. & RO-V-13 \\
         \hline
-        TI-3 & Verifica che la chiamata di registrazione dal backend salvi correttamente e persistentemente il record del nuovo utente all'interno del database PostgreSQL. & ROP-F-11 \\
+        TI-3 & \gls{Verifica} che la chiamata di registrazione dal backend salvi correttamente e persistentemente il record del nuovo utente all'interno del \gls{database} PostgreSQL. & ROP-F-11 \\
         \hline
-        TI-4 & Verifica che l'endpoint del backend formatti correttamente il prompt richiesto e lo inoltri con successo alle API del provider LLM, ricevendo una risposta valida. & RO-V-13 \\
+        TI-4 & \gls{Verifica} che l'endpoint del backend formatti correttamente il prompt richiesto e lo inoltri con successo alle \gls{API} del provider LLM, ricevendo una risposta valida. & RO-V-13 \\
         \hline
-        TI-5 & Verifica che la funzione frontend \texttt{loginUtente()} componga correttamente il body JSON della richiesta HTTP POST e gestisca adeguatamente la risposta del backend (es. token di sessione o errore). & ROP-F-9 \\
+        TI-5 & \gls{Verifica} che la funzione frontend \texttt{loginUtente()} componga correttamente il body JSON della richiesta HTTP POST e gestisca adeguatamente la risposta del backend (es. token di sessione o errore). & ROP-F-9 \\
         \hline
     \end{tabularx}
-    \caption{Test di Integrazione}
+    \caption{\gls{Test di Integrazione}}
 \end{table}
 
 % ----------------------------------------------------
 % TEST DI SISTEMA
 % ----------------------------------------------------
-\subsubsection{Test di Sistema\textsubscript{G}}
+\subsubsection{\gls{Test di Sistema}}
 \textbf{Obiettivo}: Validare il comportamento del software nel suo complesso, simulando i percorsi d'uso (End-to-End) dell'utente finale tramite l'interfaccia grafica per garantire la copertura dei casi d'uso.
 
 \begin{table}[H]
@@ -793,10 +794,10 @@ L'obiettivo attuale non è raggiungere una \textit{Code Coverage} esaustiva (che
         \hline
         TS-2 & \textbf{Flusso AI Core}: L'utente carica un file locale, ne seleziona una porzione, richiede un'operazione all'AI (es. "Riassumi"). Il sistema elabora la richiesta e inietta il risultato nel pannello "Storico Generazioni". & UC-2.* \\
         \hline
-        TS-3 & \textbf{Flusso Editor e I/O}: L'utente scrive testo formattato in Markdown nell'editor, verifica che la sintassi venga riconosciuta, ed esegue il salvataggio (download) del file in formato .md sul proprio dispositivo. & UC-1.0, UC-4.0 \\
+        TS-3 & \textbf{Flusso Editor e I/O}: L'utente scrive testo formattato in \gls{Markdown} nell'editor, \gls{verifica} che la sintassi venga riconosciuta, ed esegue il salvataggio (download) del file in formato .md sul proprio dispositivo. & UC-1.0, UC-4.0 \\
         \hline
     \end{tabularx}
-    \caption{Test di Sistema}
+    \caption{\gls{Test di Sistema}}
 \end{table}
 
 % \subsubsection{Test di Accettazione\textsubscript{G}}
@@ -815,7 +816,7 @@ In questa sezione vengono presentati gli indicatori di qualità relativi al proc
     \caption{Andamento del valore di Estimated at Completion (EAC) nella fase RTB}
 \end{figure}
 
-\textbf{RTB:} L'analisi dell'Estimated at Completion (EAC) mostra un andamento che si è mantenuto costantemente al di sotto del preventivo totale iniziale (Budget at Completion, pari a 11.395 euro) per tutta la durata della fase. Nonostante alcune fluttuazioni iniziali e i rallentamenti temporali registrati negli Sprint 3 e 5, l'ottima efficienza sui costi mantenuta dal team (CPI sempre $\ge$ 1) ha permesso di stabilizzare la stima finale verso il basso. Il gruppo chiude quindi la fase RTB con una proiezione economica solida, confermando l'assenza di rischi legati allo sforamento del budget assegnato.
+\textbf{RTB:} L'analisi dell'Estimated at Completion (EAC) mostra un andamento che si è mantenuto costantemente al di sotto del preventivo totale iniziale (Budget at Completion, pari a 11.395 euro) per tutta la durata della fase. Nonostante alcune fluttuazioni iniziali e i rallentamenti temporali registrati negli \gls{Sprint} 3 e 5, l'ottima efficienza sui costi mantenuta dal team (CPI sempre $\ge$ 1) ha permesso di stabilizzare la stima finale verso il basso. Il gruppo chiude quindi la fase RTB con una proiezione economica solida, confermando l'assenza di rischi legati allo sforamento del budget assegnato.
 
 \newpage
 \subsubsection{Planned Value (PV) e Earned Value (EV)}
@@ -826,9 +827,9 @@ In questa sezione vengono presentati gli indicatori di qualità relativi al proc
     \caption{Andamento e confronto di PV e EV nella fase RTB}
 \end{figure}
 
-\textbf{RTB:} Dal confronto tra le curve di Planned Value (costo pianificato) ed Earned Value (valore prodotto), emerge una flessione dell'EV durante lo Sprint 3 e lo Sprint 5 a causa della ridotta disponibilità oraria durante il periodo natalizio e per gli esami invernali.
+\textbf{RTB:} Dal confronto tra le curve di Planned Value (costo pianificato) ed Earned Value (valore prodotto), emerge una flessione dell'EV durante lo \gls{Sprint} 3 e lo \gls{Sprint} 5 a causa della ridotta disponibilità oraria durante il periodo natalizio e per gli esami invernali.
 
-Tuttavia, analizzando anche l'Actual Cost (AC, non rappresentato in figura ma rendicontato nei consuntivi), emerge che i costi effettivi si sono mantenuti sempre allineati o inferiori all'EV: questo dimostra che le spese sono state costantemente sotto controllo e proporzionate al lavoro realmente svolto, senza alcuno spreco. Durante gli Sprint 6 e 7 il team ha incrementato la produttività, riportando l'EV ad allinearsi al PV e chiudendo la fase senza debiti temporali e con un risparmio effettivo (AC $<$ PV).
+Tuttavia, analizzando anche l'Actual Cost (AC, non rappresentato in figura ma rendicontato nei consuntivi), emerge che i costi effettivi si sono mantenuti sempre allineati o inferiori all'EV: questo dimostra che le spese sono state costantemente sotto controllo e proporzionate al lavoro realmente svolto, senza alcuno spreco. Durante gli \gls{Sprint} 6 e 7 il team ha incrementato la produttività, riportando l'EV ad allinearsi al PV e chiudendo la fase senza debiti temporali e con un risparmio effettivo (AC $<$ PV).
 
 \newpage
 \subsubsection{Schedule Performance Index (SPI)}
@@ -839,9 +840,9 @@ Tuttavia, analizzando anche l'Actual Cost (AC, non rappresentato in figura ma re
     \caption{Andamento dello Schedule Performance Index (SPI) nella fase RTB}
 \end{figure}
 
-\textbf{RTB:} L'indice di efficienza della schedulazione (SPI) evidenzia visibilmente l'impatto della sessione d'esami, toccando un picco negativo di 0.83 nello Sprint 3 e di 0.80 nello Sprint 5. Questo scostamento si è tradotto in una Schedule Variance (SV) negativa, che ha toccato un picco di -125 € nello Sprint 3.
+\textbf{RTB:} L'indice di efficienza della schedulazione (SPI) evidenzia visibilmente l'impatto della sessione d'esami, toccando un picco negativo di 0.83 nello \gls{Sprint} 3 e di 0.80 nello \gls{Sprint} 5. Questo scostamento si è tradotto in una Schedule Variance (SV) negativa, che ha toccato un picco di -125 € nello \gls{Sprint} 3.
 
-Tuttavia, la ridistribuzione dei carichi di lavoro ha permesso di recuperare il gap già negli Sprint successivi (4 e 6) e di chiudere lo Sprint 7 in perfetto orario (SPI a 1.65) e con un saldo temporale tornato in positivo. L'andamento a "V" del grafico dimostra un'ottima capacità di reazione del team agli imprevisti temporali. L'obiettivo del team è rendere l'indice più stabile nella prossima fase di PB attraverso una migliore pianificazione delle attività.
+Tuttavia, la ridistribuzione dei carichi di lavoro ha permesso di recuperare il gap già negli \gls{Sprint} successivi (4 e 6) e di chiudere lo \gls{Sprint} 7 in perfetto orario (SPI a 1.65) e con un saldo temporale tornato in positivo. L'andamento a "V" del grafico dimostra un'ottima capacità di reazione del team agli imprevisti temporali. L'obiettivo del team è rendere l'indice più stabile nella prossima fase di PB attraverso una migliore pianificazione delle attività.
 
 \newpage
 \subsubsection{Cost Performance Index (CPI)}
@@ -852,7 +853,7 @@ Tuttavia, la ridistribuzione dei carichi di lavoro ha permesso di recuperare il 
     \caption{Andamento del Cost Performance Index (CPI) nella fase RTB}
 \end{figure}
 
-\textbf{RTB:} L'indice di efficienza dei costi (CPI) mostra un andamento eccellente, mantenendosi costantemente attorno al valore 1.0 o superiore. Ciò significa che per ogni euro speso dal progetto, il valore prodotto è stato pari o superiore a un euro. Nonostante il ritardo temporale (SPI $<$ 1) negli Sprint 3 e 5, il gruppo è stato molto efficiente economicamente: le ore lavorate sono state produttive e non ci sono stati sprechi di risorse o rilavorazioni costose che avrebbero abbassato il CPI.
+\textbf{RTB:} L'indice di efficienza dei costi (CPI) mostra un andamento eccellente, mantenendosi costantemente attorno al valore 1.0 o superiore. Ciò significa che per ogni euro speso dal progetto, il valore prodotto è stato pari o superiore a un euro. Nonostante il ritardo temporale (SPI $<$ 1) negli \gls{Sprint} 3 e 5, il gruppo è stato molto efficiente economicamente: le ore lavorate sono state produttive e non ci sono stati sprechi di risorse o rilavorazioni costose che avrebbero abbassato il CPI.
 
 \newpage
 \subsubsection{Cost Variance (CV)}
@@ -874,7 +875,7 @@ Tuttavia, la ridistribuzione dei carichi di lavoro ha permesso di recuperare il 
     \caption{Andamento del Requirements Stability Index (RSI) nella fase RTB}
 \end{figure}
 
-\textbf{RTB:} L'indice di stabilità dei requisiti ha subito alcune variazioni in particolare durante lo Sprint 4 e 5. A seguito del colloquio di verifica con il prof. Cardin, il gruppo ha dovuto apportare correzioni e raffinamenti ai casi d'uso e ai requisiti precedentemente individuati. Negli ultimi sprint (Sprint 6), con il consolidamento dell'architettura per il PoC, l'indice si è stabilizzato, indicando che il perimetro del progetto è ora ben definito.
+\textbf{RTB:} L'indice di stabilità dei requisiti ha subito alcune variazioni in particolare durante lo \gls{Sprint} 4 e 5. A seguito del colloquio di \gls{verifica} con il prof. Cardin, il gruppo ha dovuto apportare correzioni e raffinamenti ai casi d'uso e ai requisiti precedentemente individuati. Negli ultimi \gls{sprint} (\gls{Sprint} 6), con il consolidamento dell'architettura per il PoC, l'indice si è stabilizzato, indicando che il perimetro del progetto è ora ben definito.
 
 \newpage
 \subsubsection{Rischi Non Calcolati (RNC)}
@@ -896,6 +897,6 @@ Tuttavia, la ridistribuzione dei carichi di lavoro ha permesso di recuperare il 
     \caption{Percentuale delle metriche soddisfatte (MS) nella fase RTB}
 \end{figure}
 
-\textbf{RTB:} La percentuale complessiva di metriche soddisfatte ha registrato due flessioni (attorno all'80\%) in corrispondenza degli Sprint 3 e 5, principalmente a causa degli sforamenti temporali (SPI < 0.90). Tuttavia, la tenuta impeccabile delle metriche economiche (CPI, CV sempre ottimali) e il recupero finale hanno permesso di chiudere la fase con il 100\% degli indicatori in stato accettabile o ottimale. Il processo adottato è pertanto ritenuto maturo e validato.
+\textbf{RTB:} La percentuale complessiva di metriche soddisfatte ha registrato due flessioni (attorno all'80\%) in corrispondenza degli \gls{Sprint} 3 e 5, principalmente a causa degli sforamenti temporali (SPI < 0.90). Tuttavia, la tenuta impeccabile delle metriche economiche (CPI, CV sempre ottimali) e il recupero finale hanno permesso di chiudere la fase con il 100\% degli indicatori in stato accettabile o ottimale. Il processo adottato è pertanto ritenuto maturo e validato.
 
 \end{document}

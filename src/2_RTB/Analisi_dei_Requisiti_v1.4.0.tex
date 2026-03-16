@@ -1,4 +1,5 @@
 \documentclass[11pt,a4paper]{article}
+\newcommand{\gls}[1]{#1\textsubscript{G}}
 \usepackage[utf8]{inputenc}
 \usepackage[italian]{babel}
 \usepackage{geometry}
@@ -171,7 +172,7 @@
         \hline
         0.1.6 & 27/12/2025 & Elisa Marchioro & Aggiunto sottocaso 4.3.1 & Matteo Cuogo\\ 
         \hline
-        0.1.5 & 27/12/2025 & Joseph Grant & Aggiunta sezione 'verifica' al versionamento & Elisa Marchioro\\ 
+        0.1.5 & 27/12/2025 & Joseph Grant & Aggiunta sezione '\gls{verifica}' al \gls{versionamento} & Elisa Marchioro\\ 
         \hline
         0.1.4 & 27/12/2025 & Matteo Cuogo & Correzione e ampliamento dei casi d'uso rivisti & Elisa Marchioro\\
         \hline
@@ -197,19 +198,19 @@
 
 \section{Introduzione}
 \subsection{Scopo del documento}
-Questo documento descrive l'analisi dei requisiti per il progetto \textbf{"Second Brain"}. Il documento definisce in modo dettagliato i casi d'uso e i requisiti del sistema, che combina un editor di testo Markdown con funzionalità AI avanzate per assistere gli utenti nella creazione, revisione e miglioramento dei contenuti testuali.
+Questo documento descrive l'\gls{analisi dei requisiti} per il progetto \textbf{"Second Brain"}. Il documento definisce in modo dettagliato i casi d'uso e i requisiti del sistema, che combina un \gls{editor di testo} \gls{Markdown} con funzionalità AI avanzate per assistere gli utenti nella creazione, revisione e miglioramento dei contenuti testuali.
 
 L'obiettivo principale è fornire una specifica completa delle funzionalità che il sistema deve implementare, classificando i requisiti in obbligatori, desiderabili e opzionali, in linea con le richieste della proponente Zucchetti.
 
-\subsection{Glossario}
-Per evitare ambiguità, i termini tecnici usati nel documento vengono definiti in modo più approfondito nel documento "Glossario v.1.0.0" che si trova nella repository del gruppo nella cartella "Documenti\textunderscore interni".
+\subsection{\gls{Glossario}}
+Per evitare ambiguità, i termini tecnici usati nel documento vengono definiti in modo più approfondito nel documento "\gls{Glossario} v.1.0.0" che si trova nella \gls{repository} del gruppo nella cartella "Documenti\textunderscore interni".
 
 I termini che vengono considerati meritevoli di approfondimenti sono indicati con una G a pedice.
 
 \subsection{Riferimenti}
 \subsubsection{Riferimenti normativi}
 \begin{itemize}
-    \item Norme di Progetto v1.0.0 - Documento interno del gruppo ByteMe
+    \item \gls{Norme di Progetto} v1.0.0 - Documento interno del gruppo ByteMe
     \item Regolamento del progetto didattico
 \end{itemize}
 
@@ -224,13 +225,13 @@ I termini che vengono considerati meritevoli di approfondimenti sono indicati co
 
 \section{Descrizione del progetto}
 \subsection{Obiettivi del prodotto}
-Il progetto \textbf{Second Brain} si propone di rivoluzionare il processo di scrittura e organizzazione delle idee attraverso l'integrazione di Large Language Models\textsubscript{G} in un editor di testo moderno. Gli obiettivi principali sono:
+Il progetto \textbf{Second Brain} si propone di rivoluzionare il processo di scrittura e organizzazione delle idee attraverso l'integrazione di Large Language Models\textsubscript{G} in un \gls{editor di testo} moderno. Gli obiettivi principali sono:
 
 \begin{itemize}
-    \item Fornire uno strumento di \textit{note-taking} avanzato che combini la semplicità del Markdown\textsubscript{G} con la potenza dell'IA generativa.
+    \item Fornire uno strumento di \textit{note-taking} avanzato che combini la semplicità del \gls{Markdown} con la potenza dell'IA generativa.
     \item Implementare un sistema di \textit{critica intelligente} del testo basato sulla metodologia dei "Sei Cappelli per Pensare" di Edward De Bono.
     \item Semplificare il processo di scrittura attraverso funzionalità di correzione, rielaborazione, traduzione e ottimizzazione automatica del testo.
-    \item Implementare un sistema di \textit{distant writing} che permette di generare un testo completo a partire da un breve prompt dell'utente.
+    \item Implementare un sistema di \textit{\gls{distant writing}} che permette di generare un testo completo a partire da un breve prompt dell'utente.
 \end{itemize}
 
 
@@ -238,11 +239,11 @@ Il progetto \textbf{Second Brain} si propone di rivoluzionare il processo di scr
 Il sistema offre le seguenti funzionalità principali:
 
 \begin{itemize}
-    \item \textbf{Editor Markdown\textsubscript{G}} avanzato con anteprima in tempo reale
+    \item \textbf{Editor \gls{Markdown}} avanzato con anteprima in tempo reale
     \item \textbf{Integrazione LLM\textsubscript{G}} per operazioni su testo selezionato o completo
     \item \textbf{Comandi base di elaborazione}: riassunto, riscrittura, traduzione, correzione grammaticale
     \item \textbf{Sistema di critica testuale} basato sui 6 cappelli per pensare
-    \item \textbf{Distant Writing\textsubscript{G}} per generazione guidata di contenuti
+    \item \textbf{\gls{Distant Writing}} per generazione guidata di contenuti
     \item \textbf{Persistenza dati} con salvataggio locale e opzionale su cloud
 \end{itemize}
 
@@ -291,21 +292,21 @@ I casi d'uso sono organizzati per macroaree funzionali per facilitare la lettura
 Il sistema prevede i seguenti attori:
 
 \begin{itemize}
-    \item \textbf{Utente Non Autenticato\textsubscript{G}}: utente che accede alle funzionalità base senza registrazione
-    \item \textbf{Utente Autenticato\textsubscript{G}}: utente registrato che accede alle funzionalità avanzate e alla persistenza cloud
-    \item \textbf{Sistema AI\textsubscript{G}}: componente di intelligenza artificiale che elabora le richieste testuali
-    \item \textbf{Sistema di Persistenza\textsubscript{G}}: componente responsabile del salvataggio e recupero dei dati
+    \item \textbf{\gls{Utente Non Autenticato}}: utente che accede alle funzionalità base senza registrazione
+    \item \textbf{\gls{Utente Autenticato}}: utente registrato che accede alle funzionalità avanzate e alla persistenza cloud
+    \item \textbf{\gls{Sistema AI}}: componente di intelligenza artificiale che elabora le richieste testuali
+    \item \textbf{\gls{Sistema di Persistenza}}: componente responsabile del salvataggio e recupero dei dati
 \end{itemize}
 
 L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli altri attori sono considerati secondari e interagiscono con il sistema in modo trasparente all'utente finale.
 
 \newpage
 
-\subsection{Macroarea 1 - Editor di testo}
+\subsection{Macroarea 1 - \gls{Editor di testo}}
 \subsubsection{UC-1.0 - Scrittura nell'editor}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
-    \item \textbf{Descrizione}: L'utente scrive testo nell'area di editing dell'editor. Il sistema supporta la sintassi Markdown standard (CommonMark), interpretando il testo inserito e visualizzandolo formattato nell'anteprima in tempo reale
+    \item \textbf{Descrizione}: L'utente scrive testo nell'area di editing dell'editor. Il sistema supporta la sintassi \gls{Markdown} standard (CommonMark), interpretando il testo inserito e visualizzandolo formattato nell'anteprima in tempo reale
     \item \textbf{Precondizioni}: L'editor è aperto e accessibile all'utente
     \item \textbf{Postcondizioni}: L’area di editing contiene il testo e le modifiche fatte dall’utente
     \item \textbf{Scenario principale}:
@@ -361,12 +362,12 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: Visualizzazione in tempo reale del testo formattato
-    \item \textbf{Precondizioni}: L'editor contiene testo con sintassi Markdown
+    \item \textbf{Precondizioni}: L'editor contiene testo con sintassi \gls{Markdown}
     \item \textbf{Postcondizioni}: Viene visualizzata l'anteprima formattata del testo in un'area apposita
     \item \textbf{Scenario principale}:
         \begin{itemize}
             \item L'utente sta digitando testo nell'editor
-            \item Il sistema elabora la sintassi Markdown
+            \item Il sistema elabora la sintassi \gls{Markdown}
             \item Il sistema aggiorna il pannello di preview mostrando l’anteprima formattata del documento
             \item L'utente può confrontare editing e risultato finale
         \end{itemize}
@@ -428,7 +429,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
                 \begin{enumerate}
                     \item Tasto di scelta rapida (Ctrl+C)
                     \item Menu contestuale (tasto destro)
-                    \item Toolbar dell'editor
+                    \item \gls{Toolbar} dell'editor
                 \end{enumerate}
             \item Il testo selezionato viene copiato negli appunti di sistema
             \item Il sistema manda un messaggio di successo
@@ -448,7 +449,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
                 \begin{enumerate}
                     \item Tasto di scelta rapida (Ctrl+V)
                     \item Menu contestuale (tasto destro)
-                    \item Toolbar dell'editor (opzionale)
+                    \item \gls{Toolbar} dell'editor (opzionale)
                 \end{enumerate}
             \item Il testo dagli appunti viene inserito nella posizione del cursore
         \end{itemize}
@@ -466,7 +467,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
                 \begin{enumerate}
                     \item Tasto di scelta rapida (Ctrl+X)
                     \item Menu contestuale (tasto destro)
-                    \item Toolbar dell'editor (opzionale)
+                    \item \gls{Toolbar} dell'editor (opzionale)
                 \end{enumerate}
             \item Il sistema rimuove il testo selezionato dall'editor
             \item Il testo rimosso viene salvato negli appunti di sistema
@@ -493,7 +494,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
             \item L'utente seleziona l'opzione "Annulla" tramite:
                 \begin{enumerate}
                     \item Tasto di scelta rapida (Ctrl+Z)
-                    \item Pulsante nella toolbar dell'editor (freccia verso sinistra)
+                    \item Pulsante nella \gls{toolbar} dell'editor (freccia verso sinistra)
                 \end{enumerate}
             \item Il sistema ripristina il testo allo stato precedente la modifica
             \item L'operazione annullata viene spostata nella coda redo
@@ -531,7 +532,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
             \item L'utente seleziona l'opzione "Ripristina" tramite:
                 \begin{enumerate}
                     \item Tasto di scelta rapida (Ctrl+Y o Ctrl+Shift+Z)
-                    \item Pulsante nella toolbar dell'editor
+                    \item Pulsante nella \gls{toolbar} dell'editor
                 \end{enumerate}
             \item Il sistema riapplica l'ultima operazione annullata
             \item L'operazione viene rimossa dalla coda redo
@@ -568,12 +569,12 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: Formattazione del testo selezionato tramite la barra degli strumenti dell'editor
     \item \textbf{Precondizioni}: È presente testo nell'editor
-    \item \textbf{Postcondizioni}: Il testo selezionato viene formattato secondo la sintassi Markdown
+    \item \textbf{Postcondizioni}: Il testo selezionato viene formattato secondo la sintassi \gls{Markdown}
     \item \textbf{Scenario principale}:
         \begin{itemize}
             \item L'utente seleziona il testo da formattare
             \item L'utente clicca sul pulsante desiderato nella barra degli strumenti
-            \item Il sistema applica automaticamente la sintassi Markdown corrispondente al testo selezionato
+            \item Il sistema applica automaticamente la sintassi \gls{Markdown} corrispondente al testo selezionato
             \item Il testo formattato viene visualizzato nell'area di anteprima
         \end{itemize}
 \end{itemize}
@@ -587,13 +588,13 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \item \textbf{Scenario principale}:
         \begin{itemize}
             \item L'utente seleziona una porzione di testo parzialmente formattata
-            \item L'utente clicca sul pulsante della formattazione desiderata nella toolbar
+            \item L'utente clicca sul pulsante della formattazione desiderata nella \gls{toolbar}
             \item Il sistema rileva che la selezione contiene solo parzialmente quella formattazione
             \item Il sistema applica la formattazione all'intera selezione
         \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-1.8.1 - Rimozione formattazione tramite toolbar}
+\subsubsection{UC-1.8.1 - Rimozione formattazione tramite \gls{toolbar}}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: L'utente riapplica la stessa formattazione a una porzione di testo
@@ -602,7 +603,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \item \textbf{Scenario principale}:
         \begin{itemize}
             \item L'utente seleziona il testo formattato
-            \item L'utente clicca sul pulsante della stessa formattazione nella toolbar
+            \item L'utente clicca sul pulsante della stessa formattazione nella \gls{toolbar}
             \item Il sistema rimuove la formattazione dal testo selezionato
         \end{itemize}
 \end{itemize}
@@ -623,8 +624,8 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \item \textbf{Scenario principale}:
         \begin{itemize}
             \item L'utente seleziona il testo da rendere in grassetto
-            \item L'utente clicca sul pulsante "Grassetto" nella toolbar
-            \item Il sistema applica la sintassi Markdown per il grassetto
+            \item L'utente clicca sul pulsante "Grassetto" nella \gls{toolbar}
+            \item Il sistema applica la sintassi \gls{Markdown} per il grassetto
             \item Il testo viene visualizzato in grassetto nell'anteprima
         \end{itemize}
 \end{itemize}
@@ -638,8 +639,8 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \item \textbf{Scenario principale}:
         \begin{itemize}
             \item L'utente seleziona il testo da rendere in corsivo
-            \item L'utente clicca sul pulsante "Corsivo" nella toolbar
-            \item Il sistema applica la sintassi Markdown per il corsivo
+            \item L'utente clicca sul pulsante "Corsivo" nella \gls{toolbar}
+            \item Il sistema applica la sintassi \gls{Markdown} per il corsivo
             \item Il testo viene visualizzato in corsivo nell'anteprima
         \end{itemize}
 \end{itemize}
@@ -653,8 +654,8 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \item \textbf{Scenario principale}:
         \begin{itemize}
             \item L'utente seleziona il testo da rendere sottolineato
-            \item L'utente clicca sul pulsante "Sottolineato" nella toolbar
-            \item Il sistema applica la sintassi Markdown per sottolineare il testo
+            \item L'utente clicca sul pulsante "Sottolineato" nella \gls{toolbar}
+            \item Il sistema applica la sintassi \gls{Markdown} per sottolineare il testo
             \item Il testo viene visualizzato sottolineato nell'anteprima
         \end{itemize}
 \end{itemize}
@@ -670,8 +671,8 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
             \item L'utente posiziona il cursore dove inserire l'intestazione
             \item L'utente scrive un'intestazione tramite:
                 \begin{enumerate}
-                    \item Toolbar (H1, H2, H3, ecc.)
-                    \item Sintassi Markdown (\#, \#\#, \#\#\#)
+                    \item \gls{Toolbar} (H1, H2, H3, ecc.)
+                    \item Sintassi \gls{Markdown} (\#, \#\#, \#\#\#)
                 \end{enumerate}
             \item Il sistema formatta il testo come intestazione
             \item Le intestazioni vengono visualizzate nell'anteprima
@@ -738,7 +739,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
             \item L'utente seleziona il testo da trasformare in link
             \item L'utente clicca sul comando "Inserisci link"
             \item L'utente inserisce l'URL di destinazione
-            \item Il sistema applica la sintassi Markdown per il link
+            \item Il sistema applica la sintassi \gls{Markdown} per il link
             \item Il link viene visualizzato con la formattazione corretta nell'anteprima
         \end{itemize}
 \end{itemize}
@@ -759,7 +760,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \item \textbf{Scenario principale}:
         \begin{itemize}
             \item L’utente seleziona la formattazione per il testo futuro
-            \item Il sistema applica la sintassi Markdown corrispondente, anche in caso di multiple formattazioni
+            \item Il sistema applica la sintassi \gls{Markdown} corrispondente, anche in caso di multiple formattazioni
             \item Il testo scritto dall'utente prende la formattazione applicata
         \end{itemize}
 \end{itemize}
@@ -772,8 +773,8 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \item \textbf{Postcondizioni}: Il testo scritto è in grassetto
     \item \textbf{Scenario principale}:
         \begin{itemize}
-            \item L’utente clicca sul pulsante "Grassetto" nella toolbar
-            \item Il sistema applica la sintassi Markdown per il grassetto
+            \item L’utente clicca sul pulsante "Grassetto" nella \gls{toolbar}
+            \item Il sistema applica la sintassi \gls{Markdown} per il grassetto
             \item Il testo scritto successivamente dall'utente prende automaticamente la formattazione in grassetto
             \item Il testo in grassetto viene visualizzato correttamente nell'anteprima
         \end{itemize}
@@ -787,8 +788,8 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \item \textbf{Postcondizioni}: Il testo scritto è in corsivo
     \item \textbf{Scenario principale}:
         \begin{itemize}
-            \item L’utente clicca sul pulsante "Corsivo" nella toolbar
-            \item Il sistema applica la sintassi Markdown per il corsivo
+            \item L’utente clicca sul pulsante "Corsivo" nella \gls{toolbar}
+            \item Il sistema applica la sintassi \gls{Markdown} per il corsivo
             \item Il testo scritto successivamente dall'utente prende automaticamente la formattazione in corsivo
             \item Il testo in corsivo viene visualizzato correttamente nell'anteprima
         \end{itemize}
@@ -803,8 +804,8 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \item \textbf{Postcondizioni}: Il testo scritto è sottolineato
     \item \textbf{Scenario principale}:
         \begin{itemize}
-            \item L’utente clicca sul pulsante "Sottolineato" nella toolbar
-            \item Il sistema applica la sintassi Markdown per la sottolineatura
+            \item L’utente clicca sul pulsante "Sottolineato" nella \gls{toolbar}
+            \item Il sistema applica la sintassi \gls{Markdown} per la sottolineatura
             \item Il testo scritto successivamente dall'utente prende automaticamente la sottolineatura
             \item Il testo sottolineato viene visualizzato correttamente nell'anteprima
         \end{itemize}
@@ -818,11 +819,11 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \item \textbf{Postcondizioni}: Il testo scritto presenta le intestazioni
     \item \textbf{Scenario principale}:
         \begin{itemize}
-            \item L’utente clicca sul pulsante "Intestazioni" nella toolbar
+            \item L’utente clicca sul pulsante "Intestazioni" nella \gls{toolbar}
             \item L’utente applica un’intestazione tramite:
                 \begin{enumerate}
-                    \item Toolbar (H1, H2, H3, ecc.)
-                    \item Sintassi Markdown (\#, \#\#, \#\#\#)
+                    \item \gls{Toolbar} (H1, H2, H3, ecc.)
+                    \item Sintassi \gls{Markdown} (\#, \#\#, \#\#\#)
                 \end{enumerate}
             \item Il testo scritto successivamente dall'utente prende automaticamente la formattazione dell'intestazione
             \item L'intestazione viene visualizzata correttamente nell'anteprima
@@ -837,7 +838,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \item \textbf{Postcondizioni}: Il testo scritto rispetta la struttura selezionata dall’utente
     \item \textbf{Scenario principale}:
         \begin{itemize}
-            \item L’utente clicca sul pulsante "Struttura" nella toolbar
+            \item L’utente clicca sul pulsante "Struttura" nella \gls{toolbar}
             \item L’utente sceglie il tipo di struttura da applicare:
                 \begin{enumerate}
                     \item Tabella
@@ -855,7 +856,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \item \textbf{Postcondizioni}: Il testo scritto è in formato lista/elenco
     \item \textbf{Scenario principale}:
         \begin{itemize}
-            \item L’utente clicca sul pulsante "Liste ed elenchi" nella toolbar
+            \item L’utente clicca sul pulsante "Liste ed elenchi" nella \gls{toolbar}
             \item L’utente sceglie il tipo di elenco da applicare:
                 \begin{itemize}
                     \item ordinato/non ordinato
@@ -875,7 +876,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \begin{itemize}
             \item L’utente clicca sul comando ”Inserisci link o riferimento”
             \item L’utente inserisce l’URL di destinazione
-            \item Il sistema applica la sintassi Markdown per il link o riferimenti
+            \item Il sistema applica la sintassi \gls{Markdown} per il link o riferimenti
             \item Il link viene visualizzato correttamente nell'anteprima
         \end{itemize}
 \end{itemize}
@@ -909,7 +910,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \item \textbf{Postcondizioni}: Visualizzazione esclusiva dell'area di testo dell'editor
     \item \textbf{Scenario principale}:
         \begin{itemize}
-            \item L'utente seleziona la modalità di visualizzazione "Solo editor" (sintassi Markdown visibile)
+            \item L'utente seleziona la modalità di visualizzazione "Solo editor" (sintassi \gls{Markdown} visibile)
             \item Il sistema adatta l'interfaccia alla modalità scelta
         \end{itemize}
 \end{itemize}
@@ -1617,7 +1618,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \label{fig:uc2.6.3}
 \end{figure}
 
-\subsubsection{UC-2.7 - Generazione di testo (Distant Writing)}
+\subsubsection{UC-2.7 - Generazione di testo (\gls{Distant Writing})}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: Creazione di nuovo testo inedito a partire da un prompt descrittivo fornito dall’utente
@@ -1641,7 +1642,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
     \item \textbf{Descrizione}: Il sistema rileva una richiesta poco chiara o incompleta e guida l'utente nel miglioramento del prompt prima di invocare l'AI
-    \item \textbf{Precondizioni}: L'utente ha avviato una richiesta di generazione testo (Distant Writing)
+    \item \textbf{Precondizioni}: L'utente ha avviato una richiesta di generazione testo (\gls{Distant Writing})
     \item \textbf{Postcondizioni}: La generazione viene sospesa e all'utente vengono forniti suggerimenti operativi per affinare la richiesta
     \item \textbf{Scenario principale}:
     \begin{itemize}
@@ -1823,15 +1824,15 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-3.0.1 - Caricamento file Markdown}
+\subsubsection{UC-3.0.1 - Caricamento file \gls{Markdown}}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
-    \item \textbf{Descrizione}: L'utente carica un file in formato Markdown (\texttt{.md}, \texttt{.markdown}) nell'editor
-    \item \textbf{Precondizioni}: L'utente dispone di un file in formato Markdown
-    \item \textbf{Postcondizioni}: Il contenuto del file Markdown viene caricato nell'editor
+    \item \textbf{Descrizione}: L'utente carica un file in formato \gls{Markdown} (\texttt{.md}, \texttt{.\gls{markdown}}) nell'editor
+    \item \textbf{Precondizioni}: L'utente dispone di un file in formato \gls{Markdown}
+    \item \textbf{Postcondizioni}: Il contenuto del file \gls{Markdown} viene caricato nell'editor
     \item \textbf{Scenario principale}:
         \begin{itemize}
-            \item L'utente seleziona un file con estensione \texttt{.md} o \texttt{.markdown}
+            \item L'utente seleziona un file con estensione \texttt{.md} o \texttt{.\gls{markdown}}
             \item Il sistema carica il contenuto del file nell'editor
         \end{itemize}
 \end{itemize}
@@ -1867,7 +1868,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
         \begin{itemize}
             \item L'utente trascina un file dal proprio filesystem nell'area dell'editor
             \item Il sistema intercetta l'evento di rilascio del file (drop)
-            \item Il sistema verifica il formato e le dimensioni del file
+            \item Il sistema \gls{verifica} il formato e le dimensioni del file
             \item Il sistema carica il contenuto del file nell'editor
         \end{itemize}
 \end{itemize}
@@ -2018,9 +2019,9 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
 \subsubsection{UC-4.0.3 - Esportare un file in formato HTML}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
-    \item \textbf{Descrizione}: Genera del codice HTML dal testo Markdown
+    \item \textbf{Descrizione}: Genera del codice HTML dal testo \gls{Markdown}
     \item \textbf{Precondizioni}: L'utente ha un documento non vuoto
-    \item \textbf{Postcondizioni}: L'utente ottiene un file .HTML in cui viene convertito il testo Markdown in codice HTML
+    \item \textbf{Postcondizioni}: L'utente ottiene un file .HTML in cui viene convertito il testo \gls{Markdown} in codice HTML
     \item \textbf{Scenario principale}:
         \begin{itemize}
             \item Utente seleziona opzione "HTML" tra le opzioni di esportazione
@@ -2127,15 +2128,15 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
 
 \subsubsection{UC-4.2 - Apertura di un file salvato}
 \begin{itemize}
-    \item \textbf{Attore principale}: Utente autenticato
-    \item \textbf{Descrizione}: L'utente autenticato può aprire un documento precedentemente salvato nel proprio account
+    \item \textbf{Attore principale}: \gls{Utente autenticato}
+    \item \textbf{Descrizione}: L'\gls{utente autenticato} può aprire un documento precedentemente salvato nel proprio account
     \item \textbf{Precondizioni}: L'utente è autenticato nel sistema e ha almeno un documento salvato nel proprio account
     \item \textbf{Postcondizioni}: Il documento selezionato viene caricato 
     nell'editor e l'utente può riprendere a modificarlo
     \item \textbf{Scenario principale}:
         \begin{itemize}
             \item L'utente accede all'area personale, dove può visualizzare i documenti salvati
-            \item Il sistema mostra i documenti salvati dall'utente autenticato
+            \item Il sistema mostra i documenti salvati dall'\gls{utente autenticato}
             \item L'utente seleziona il file da aprire
             \item Il sistema carica il contenuto del documento nell'editor
             \item L'utente può riprendere la modifica del documento
@@ -2148,7 +2149,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
 
 \subsubsection{UC-4.2.1 - Gestione annullamento apertura}
 \begin{itemize}
-    \item \textbf{Attore principale}: Utente autenticato
+    \item \textbf{Attore principale}: \gls{Utente autenticato}
     \item \textbf{Descrizione}: Il sistema gestisce l'interruzione della procedura di apertura file senza effettuare caricamenti
     \item \textbf{Precondizioni}: La finestra di selezione dei file è aperta
     \item \textbf{Postcondizioni}: La finestra viene chiusa e l'editor mantiene lo stato precedente (nessun file caricato o file precedente mantenuto)
@@ -2156,7 +2157,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \begin{itemize}
         \item L’utente, all'interno della finestra di selezione, clicca sul pulsante ”Annulla” (o chiude il popup)
         \item Il sistema chiude la finestra di dialogo
-        \item Il sistema abortisce l'operazione di recupero dati dal database
+        \item Il sistema abortisce l'operazione di recupero dati dal \gls{database}
         \item L'interfaccia dell'editor rimane invariata rispetto allo stato precedente l'apertura della finestra
     \end{itemize}
 \end{itemize}
@@ -2168,12 +2169,12 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \label{fig:uc4.2}
 \end{figure}
 
-\subsubsection{UC-4.3 - Salvataggio file nel DataBase}
+\subsubsection{UC-4.3 - Salvataggio file nel \gls{DataBase}}
 \begin{itemize}
-    \item \textbf{Attore principale}: Utente autenticato
-    \item \textbf{Descrizione}: L'utente vuole salvare la nota scritta nel database, senza scaricarla nel suo dispositivo corrente
+    \item \textbf{Attore principale}: \gls{Utente autenticato}
+    \item \textbf{Descrizione}: L'utente vuole salvare la nota scritta nel \gls{database}, senza scaricarla nel suo dispositivo corrente
     \item \textbf{Precondizioni}: L'utente ha scritto una nota ed ha eseguito l'accesso al sistema con il suo account
-    \item \textbf{Postcondizioni}: Il sistema mantiene nel Database una copia della nota scritta, legandola all'account dell'utente
+    \item \textbf{Postcondizioni}: Il sistema mantiene nel \gls{Database} una copia della nota scritta, legandola all'account dell'utente
     \item \textbf{Scenario principale}:
         \begin{itemize}
             \item L'utente accede al sistema
@@ -2190,15 +2191,15 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
 
 \subsubsection{UC-4.3.1 - Gestione tentativo salvataggio nota vuota}
 \begin{itemize}
-    \item \textbf{Attore principale}: Utente autenticato
-    \item \textbf{Descrizione}: Il sistema impedisce il salvataggio di documenti privi di contenuto nel database per evitare record inutili
+    \item \textbf{Attore principale}: \gls{Utente autenticato}
+    \item \textbf{Descrizione}: Il sistema impedisce il salvataggio di documenti privi di contenuto nel \gls{database} per evitare record inutili
     \item \textbf{Precondizioni}: L’editor è vuoto e l'utente attiva il comando di salvataggio
     \item \textbf{Postcondizioni}: Il salvataggio viene abortito e l'utente viene avvisato
     \item \textbf{Scenario principale}:
     \begin{itemize}
         \item Il sistema analizza il contenuto dell'editor prima di procedere al salvataggio
         \item Il sistema rileva che non vi è testo o contenuto generato (lunghezza zero o solo spazi bianchi)
-        \item Il sistema blocca la procedura di invio al database
+        \item Il sistema blocca la procedura di invio al \gls{database}
         \item Il sistema visualizza un messaggio di avviso
         \item Il documento non viene salvato
     \end{itemize}
@@ -2206,14 +2207,14 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
 
 \subsubsection{UC-4.3.2 - Gestione salvataggio senza autenticazione}
 \begin{itemize}
-    \item \textbf{Attore principale}: Utente non autenticato (Utente generico)
+    \item \textbf{Attore principale}: \gls{Utente non autenticato} (Utente generico)
     \item \textbf{Descrizione}: Il sistema gestisce il tentativo di utilizzare la funzionalità di salvataggio in cloud da parte di un utente non loggato
     \item \textbf{Precondizioni}: L’utente non ha effettuato il login e tenta di salvare su DB
     \item \textbf{Postcondizioni}: Il salvataggio su DB viene negato e vengono proposte alternative
     \item \textbf{Scenario principale}:
     \begin{itemize}
-        \item L’utente seleziona l’opzione "Salva nel Database"
-        \item Il sistema verifica lo stato della sessione utente
+        \item L’utente seleziona l’opzione "Salva nel \gls{Database}"
+        \item Il sistema \gls{verifica} lo stato della sessione utente
         \item Il sistema rileva che l'utente non è autenticato
         \item Il sistema blocca l'operazione di salvataggio remoto
         \item Il sistema mostra un avviso indicando la necessità di eseguire l'accesso
@@ -2233,7 +2234,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
 \subsection{Macroarea 5 - Autenticazione}
 \subsubsection{UC-5.0 - Login}
 \begin{itemize}
-    \item \textbf{Attore principale}: Utente non autenticato
+    \item \textbf{Attore principale}: \gls{Utente non autenticato}
     \item \textbf{Descrizione}: Permette all'utente di accedere al proprio account, rendendo così disponibili funzionalità di salvataggio, modifica e cancellazione di documenti nel db, salvati a nome dell'utente
     \item \textbf{Precondizioni}: L'utente è già registrato presso il sistema
     \item \textbf{Postcondizioni}: All'utente è permesso accedere al suo account nel sistema
@@ -2253,13 +2254,13 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
 
 \subsubsection{UC-5.0.1 - Gestione username inesistente}
 \begin{itemize}
-    \item \textbf{Attore principale}: Utente non autenticato
-    \item \textbf{Descrizione}: Il sistema gestisce il tentativo di accesso con un identificativo utente non presente nel database
+    \item \textbf{Attore principale}: \gls{Utente non autenticato}
+    \item \textbf{Descrizione}: Il sistema gestisce il tentativo di accesso con un identificativo utente non presente nel \gls{database}
     \item \textbf{Precondizioni}: L’utente ha inviato una richiesta di login
     \item \textbf{Postcondizioni}: L’accesso viene negato e viene mostrato un messaggio di errore generico
     \item \textbf{Scenario principale}:
     \begin{itemize}
-        \item Il sistema interroga il database alla ricerca dell'username fornito
+        \item Il sistema interroga il \gls{database} alla ricerca dell'username fornito
         \item Il sistema non rileva alcuna corrispondenza (account inesistente)
         \item Il sistema nega l'accesso
         \item Il sistema mostra all’utente un messaggio di avviso generico
@@ -2269,14 +2270,14 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
 
 \subsubsection{UC-5.0.2 - Gestione password errata}
 \begin{itemize}
-    \item \textbf{Attore principale}: Utente non autenticato
+    \item \textbf{Attore principale}: \gls{Utente non autenticato}
     \item \textbf{Descrizione}: Il sistema gestisce il tentativo di accesso con un username valido ma associato a una password non corrispondente
     \item \textbf{Precondizioni}: L’utente ha inviato una richiesta di login con un username esistente
     \item \textbf{Postcondizioni}: L’accesso viene negato e viene mostrato un messaggio di errore generico
     \item \textbf{Scenario principale}:
     \begin{itemize}
         \item Il sistema rileva che l'username esiste
-        \item Il sistema verifica la corrispondenza crittografica della password inserita con quella memorizzata
+        \item Il sistema \gls{verifica} la corrispondenza crittografica della password inserita con quella memorizzata
         \item Il sistema rileva una incongruenza
         \item Il sistema nega l'accesso
         \item Il sistema mostra all’utente un messaggio di avviso generico
@@ -2286,7 +2287,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
 
 \subsubsection{UC-5.1 - Registrazione}
 \begin{itemize}
-    \item \textbf{Attore principale}: Utente non autenticato
+    \item \textbf{Attore principale}: \gls{Utente non autenticato}
     \item \textbf{Descrizione}: L'utente potrà creare un nuovo account nel sistema accedendo così alle funzionalità di salvataggio, modifica e cancellazione di documenti nel db, salvati a nome dell'utente
     \item \textbf{Precondizioni}: L'utente non è ancora autenticato nel sistema
     \item \textbf{Postcondizioni}: L'utente possiede un account nel sistema individuato da un username ed una password
@@ -2305,13 +2306,13 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
 
 \subsubsection{UC-5.1.1 - Gestione username già esistente}
 \begin{itemize}
-\item \textbf{Attore principale}: Utente non autenticato
-\item \textbf{Descrizione}: Il sistema impedisce la creazione di un account duplicato se l'identificativo scelto è già presente nel database
+\item \textbf{Attore principale}: \gls{Utente non autenticato}
+\item \textbf{Descrizione}: Il sistema impedisce la creazione di un account duplicato se l'identificativo scelto è già presente nel \gls{database}
 \item \textbf{Precondizioni}: L’utente ha inviato i dati per la registrazione
 \item \textbf{Postcondizioni}: La registrazione viene bloccata e l'utente viene avvisato
 \item \textbf{Scenario principale}:
 \begin{itemize}
-\item Il sistema controlla la disponibilità dell'username (o email) nel database
+\item Il sistema controlla la disponibilità dell'username (o email) nel \gls{database}
 \item Il sistema rileva che l'username è già associato a un account esistente
 \item Il sistema blocca la creazione del nuovo record
 \item Il sistema visualizza un messaggio di errore
@@ -2329,7 +2330,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
 
 \subsubsection{UC-5.2 - Eliminazione dell'account}
 \begin{itemize}
-    \item \textbf{Attore principale}: Utente autenticato
+    \item \textbf{Attore principale}: \gls{Utente autenticato}
     \item \textbf{Descrizione}: L'utente decide di eliminare il proprio account dal sistema
     \item \textbf{Precondizioni}: L'utente è autenticato nel sistema
     \item \textbf{Postcondizioni}: L'account dell'utente viene eliminato dal sistema e l'utente non potrà più accedere alle funzionalità relative alle sue note
@@ -2349,7 +2350,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
 
 \subsubsection{UC-5.2.1 - Annullamento della procedura di eliminazione account}
 \begin{itemize}
-    \item \textbf{Attore principale}: Utente autenticato
+    \item \textbf{Attore principale}: \gls{Utente autenticato}
     \item \textbf{Descrizione}: Il sistema gestisce l'interruzione della procedura di eliminazione su richiesta dell'utente
     \item \textbf{Precondizioni}: È visualizzata la richiesta di conferma per l'eliminazione dell'account
     \item \textbf{Postcondizioni}: La procedura viene interrotta, l'account rimane attivo e i dati intatti
@@ -2357,7 +2358,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
     \begin{itemize}
         \item L’utente, di fronte alla richiesta di conferma, seleziona l’opzione ”Annulla” (o chiude il popup)
         \item Il sistema chiude la finestra di dialogo
-        \item Il sistema abortisce l'operazione di cancellazione sul database
+        \item Il sistema abortisce l'operazione di cancellazione sul \gls{database}
         \item L'utente viene riportato alla schermata delle impostazioni del profilo nello stato precedente
     \end{itemize}
 \end{itemize}
@@ -2372,7 +2373,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
 
 \subsubsection{UC-5.3 - Logout}
 \begin{itemize}
-    \item \textbf{Attore principale}: Utente autenticato
+    \item \textbf{Attore principale}: \gls{Utente autenticato}
     \item \textbf{Descrizione}: L'utente desidera terminare la propria sessione
     \item \textbf{Precondizioni}: L'utente è autenticato nel sistema
     \item \textbf{Postcondizioni}: L'utente viene disconnesso dal sistema
@@ -2398,7 +2399,7 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
 
 \section{Requisiti}
 \subsection{Classificazione dei requisiti}
-Il gruppo ByteMe durante l'analisi dei requisiti e dei casi d'uso ha individuato i requisiti esposti di seguito.
+Il gruppo ByteMe durante l'\gls{analisi dei requisiti} e dei casi d'uso ha individuato i requisiti esposti di seguito.
 I requisiti sono stati classificati secondo una notazione standardizzata per garantirne la tracciabilità e una chiara comprensione.
 Ogni requisito è identificato da un codice univoco che ne esplicita l'importanza e la tipologia.
 
@@ -2433,9 +2434,9 @@ Dove le voci assumono i seguenti significati:
 \subsection{Categorie dei Requisiti}
 Per una maggiore chiarezza espositiva, i requisiti sono stati suddivisi in tre macro-categorie distinte.
 
-\subsubsection{Requisiti Funzionali}
-I requisiti funzionali\textsubscript{G} definiscono i comportamenti specifici del sistema, descrivendo le interazioni tra gli attori e il software.
-Rappresentano le funzionalità tangibili che l'utente utilizza per raggiungere i propri obiettivi (es. scrittura del testo, selezione per analisi AI, esportazione documenti). La verifica di tali requisiti determina l'aderenza del prodotto alle funzioni richieste dal capitolato.
+\subsubsection{\gls{Requisiti Funzionali}}
+I \gls{requisiti funzionali} definiscono i comportamenti specifici del sistema, descrivendo le interazioni tra gli attori e il software.
+Rappresentano le funzionalità tangibili che l'utente utilizza per raggiungere i propri obiettivi (es. scrittura del testo, selezione per analisi AI, esportazione documenti). La \gls{verifica} di tali requisiti determina l'aderenza del prodotto alle funzioni richieste dal capitolato.
 
 \begin{longtable}{|p{0.2\textwidth}|>{\raggedright\arraybackslash}p{0.5\textwidth}|p{0.2\textwidth}|}
 \hline
@@ -2443,15 +2444,15 @@ Rappresentano le funzionalità tangibili che l'utente utilizza per raggiungere i
 \hline
 \endhead
 % OBBLIGATORI
-RO-F-1 & Il sistema deve fornire un'area di testo per l'inserimento e la modifica del testo con supporto alla sintassi Markdown standard (CommonMark). & UC-1.0 \\
+RO-F-1 & Il sistema deve fornire un'area di testo per l'inserimento e la modifica del testo con supporto alla sintassi \gls{Markdown} standard (CommonMark). & UC-1.0 \\
 \hline
 RO-F-2 & Il sistema deve informare l'utente con un messaggio in caso di perdita della connessione Internet durante l'utilizzo dell'editor. & UC-1.0.1 \\
 \hline
 RO-F-3 & Il sistema deve informare l'utente con un messaggio se l'editor non risponde ai comandi. & UC-1.0.2 \\
 \hline
-RO-F-4 & L'editor deve compilare la sintassi Markdown in tempo reale. & UC-1.1 \\
+RO-F-4 & L'editor deve compilare la sintassi \gls{Markdown} in tempo reale. & UC-1.1 \\
 \hline
-RO-F-5 & Deve essere presente un'area di visualizzazione del documento formattato rispetto alla sintassi Markdown. & UC-1.1 \\
+RO-F-5 & Deve essere presente un'area di visualizzazione del documento formattato rispetto alla sintassi \gls{Markdown}. & UC-1.1 \\
 \hline
 RO-F-6 & Il sistema deve informare l'utente con un messaggio se il pannello di anteprima non si aggiorna correttamente. & UC-1.1.1 \\
 \hline
@@ -2473,33 +2474,33 @@ RO-F-14 & Il sistema deve permettere all'utente di ripristinare le modifiche pre
 \hline
 RO-F-15 & Se non sono presenti operazioni ripristinabili, il sistema non esegue alcuna azione al comando Redo. & UC-1.7.1 \\
 \hline
-RO-F-16 & Nell'editor deve essere presente una barra degli strumenti (toolbar) per applicare formattazioni Markdown senza scrivere manualmente la sintassi. & UC-1.8.0, UC-1.8.* \\
+RO-F-16 & Nell'editor deve essere presente una barra degli strumenti (\gls{toolbar}) per applicare formattazioni \gls{Markdown} senza scrivere manualmente la sintassi. & UC-1.8.0, UC-1.8.* \\
 \hline
-RO-F-17 & Il sistema deve permettere l'applicazione del grassetto al testo tramite toolbar. & UC-1.8.2 \\
+RO-F-17 & Il sistema deve permettere l'applicazione del grassetto al testo tramite \gls{toolbar}. & UC-1.8.2 \\
 \hline
-RO-F-18 & Il sistema deve permettere l'applicazione del corsivo al testo tramite toolbar. & UC-1.8.3 \\
+RO-F-18 & Il sistema deve permettere l'applicazione del corsivo al testo tramite \gls{toolbar}. & UC-1.8.3 \\
 \hline
-RO-F-19 & Il sistema deve permettere l'applicazione della sottolineatura al testo tramite toolbar. & UC-1.8.4 \\
+RO-F-19 & Il sistema deve permettere l'applicazione della sottolineatura al testo tramite \gls{toolbar}. & UC-1.8.4 \\
 \hline
-RO-F-20 & Il sistema deve permettere di creare intestazioni tramite toolbar. & UC-1.8.5 \\
+RO-F-20 & Il sistema deve permettere di creare intestazioni tramite \gls{toolbar}. & UC-1.8.5 \\
 \hline
-RO-F-21 & Il sistema deve permettere l'inserimento di elementi di struttura (tabelle, separatori orizzontali) tramite toolbar. & UC-1.8.6 \\
+RO-F-21 & Il sistema deve permettere l'inserimento di elementi di struttura (tabelle, separatori orizzontali) tramite \gls{toolbar}. & UC-1.8.6 \\
 \hline
-RO-F-22 & Il sistema deve permettere l'inserimento di liste numerate tramite toolbar. & UC-1.8.7 \\
+RO-F-22 & Il sistema deve permettere l'inserimento di liste numerate tramite \gls{toolbar}. & UC-1.8.7 \\
 \hline
-RO-F-23 & Il sistema deve permettere l'inserimento di elenchi puntati tramite toolbar. & UC-1.8.7 \\
+RO-F-23 & Il sistema deve permettere l'inserimento di elenchi puntati tramite \gls{toolbar}. & UC-1.8.7 \\
 \hline
-RO-F-24 & Il sistema deve permettere l'inserimento di link e riferimenti tramite toolbar. & UC-1.8.8 \\
+RO-F-24 & Il sistema deve permettere l'inserimento di link e riferimenti tramite \gls{toolbar}. & UC-1.8.8 \\
 \hline
 RO-F-25 & L'utente può applicare più stili contemporaneamente (es. grassetto, corsivo, sottolineatura) alla stessa sezione di testo. & UC-1.8.* \\
 \hline
-RO-F-26 & L'utente può annullare una formattazione di una porzione di testo selezionato riapplicandola dalla toolbar. & UC-1.8.1 \\
+RO-F-26 & L'utente può annullare una formattazione di una porzione di testo selezionato riapplicandola dalla \gls{toolbar}. & UC-1.8.1 \\
 \hline
-RO-F-27 & L'utente può estendere la formattazione a una porzione di testo parzialmente formattato riapplicandola dalla toolbar. & UC-1.8.0.1 \\
+RO-F-27 & L'utente può estendere la formattazione a una porzione di testo parzialmente formattato riapplicandola dalla \gls{toolbar}. & UC-1.8.0.1 \\
 \hline
-RO-F-28 & L'utente può creare sottoliste attivando la creazione di una lista dalla toolbar quando il cursore è già all'interno di una lista. & UC-1.8.7.1 \\
+RO-F-28 & L'utente può creare sottoliste attivando la creazione di una lista dalla \gls{toolbar} quando il cursore è già all'interno di una lista. & UC-1.8.7.1 \\
 \hline
-RO-F-29 & L'utente può scegliere una combinazione di formattazioni dalla toolbar quando non è presente testo selezionato, per applicarle al testo che scriverà successivamente. & UC-1.9.* \\
+RO-F-29 & L'utente può scegliere una combinazione di formattazioni dalla \gls{toolbar} quando non è presente testo selezionato, per applicarle al testo che scriverà successivamente. & UC-1.9.* \\
 \hline
 RO-F-30 & Il sistema deve permettere all'utente di selezionare porzioni di testo da inviare all'agente esterno. & UC-1.2, UC-2.* \\
 \hline
@@ -2569,7 +2570,7 @@ RO-F-62 & Se il prompt fornito dall'utente è vuoto o incompleto, il sistema not
 \hline
 RO-F-63 & L'utente può caricare un file dal proprio dispositivo all'interno dell'editor. & UC-3.* \\
 \hline
-RO-F-64 & Il sistema deve supportare il caricamento di file in formato Markdown (\texttt{.md}, \texttt{.markdown}) e testo semplice (\texttt{.txt}). & UC-3.0, UC-3.0.1, UC-3.0.2 \\
+RO-F-64 & Il sistema deve supportare il caricamento di file in formato \gls{Markdown} (\texttt{.md}, \texttt{.\gls{markdown}}) e testo semplice (\texttt{.txt}). & UC-3.0, UC-3.0.1, UC-3.0.2 \\
 \hline
 RO-F-65 & Il sistema deve supportare il caricamento tramite dialogo di esplorazione file (file picker). & UC-3.0.4 \\
 \hline
@@ -2587,7 +2588,7 @@ RO-F-71 & Il sistema deve permettere all'utente di rimuovere il file che ha cari
 \hline
 RO-F-72 & L'utente può annullare l'operazione di rimozione del file caricato, lasciando l'editor nel suo stato precedente. & UC-3.3.1 \\
 \hline
-RO-F-73 & Il sistema deve essere in grado di convertire il documento da Markdown al formato selezionato dall'utente. & UC-4.0 \\
+RO-F-73 & Il sistema deve essere in grado di convertire il documento da \gls{Markdown} al formato selezionato dall'utente. & UC-4.0 \\
 \hline
 RO-F-74 & Il sistema deve permettere di scaricare il file nel dispositivo dell'utente. & UC-4.0 \\
 \hline
@@ -2595,7 +2596,7 @@ RO-F-75 & L'operazione di esportazione o stampa non deve alterare né chiudere i
 \hline
 RO-F-76 & Il sistema deve informare l'utente con un messaggio di esito al termine di ogni operazione di esportazione. & UC-4.0 \\
 \hline
-RO-F-77 & Il sistema deve consentire l'esportazione del documento in formato Markdown (\texttt{.md}). & UC-4.0.2 \\
+RO-F-77 & Il sistema deve consentire l'esportazione del documento in formato \gls{Markdown} (\texttt{.md}). & UC-4.0.2 \\
 \hline
 RO-F-78 & Il sistema deve controllare che il range di pagine inserito dall'utente sia valido (non superiore al numero di pagine del documento e non negativo). & UC-4.0.6, UC-4.0.7 \\
 \hline
@@ -2683,13 +2684,13 @@ ROP-F-22 & In caso di username già esistente durante la registrazione, il siste
 \hline
 ROP-F-23 & Il sistema deve permettere all'utente di potersi registrare tramite uno username e una password & UC-5.1 \\
 \hline
-ROP-F-24 & Il sistema deve impedire la registrazione in caso ci sia uno username uguale nel database & UC-5.1 \\
+ROP-F-24 & Il sistema deve impedire la registrazione in caso ci sia uno username uguale nel \gls{database} & UC-5.1 \\
 \hline
-ROP-F-25 & Il sistema deve salvare nel database le password criptate in fase di registrazione & UC-5.1 \\
+ROP-F-25 & Il sistema deve salvare nel \gls{database} le password criptate in fase di registrazione & UC-5.1 \\
 \hline
-ROP-F-26 & Il sistema deve permettere ad un utente autenticato di poter eliminare il proprio account & UC-5.2 \\
+ROP-F-26 & Il sistema deve permettere ad un \gls{utente autenticato} di poter eliminare il proprio account & UC-5.2 \\
 \hline
-ROP-F-27 & Il sistema in caso di eliminazione account deve eliminare i dati dal database & UC-5.2 \\
+ROP-F-27 & Il sistema in caso di eliminazione account deve eliminare i dati dal \gls{database} & UC-5.2 \\
 \hline
 ROP-F-28 & Le operazioni di eliminazione dell'account devono richiedere una conferma esplicita da parte dell'utente & UC-5.2 \\
 \hline
@@ -2699,35 +2700,35 @@ ROP-F-30 & L'utente può annullare la procedura di eliminazione del proprio acco
 \hline
 ROP-F-31 & Il sistema deve permettere ad un utente di vedere i file che ha salvato & UC-4.2 \\
 \hline
-ROP-F-32 & Il sistema deve permettere ad un utente autenticato di selezionare un file dall'elenco di quelli salvati e aprirlo & UC-4.2 \\
+ROP-F-32 & Il sistema deve permettere ad un \gls{utente autenticato} di selezionare un file dall'elenco di quelli salvati e aprirlo & UC-4.2 \\
 \hline
 ROP-F-33 & Il sistema deve permettere all'utente di annullare l'operazione di apertura file, lasciando l'editor nel suo stato precedente. & UC-4.2.1 \\
 \hline
 ROP-F-34 & Il sistema deve mostrare i file salvati in ordine cronologico per data di ultima modifica. & UC-4.2 \\
 \hline
-ROP-F-35 & L'accesso ai file salvati nel database è consentito solo ad utenti autenticati. & UC-4.2 \\
+ROP-F-35 & L'accesso ai file salvati nel \gls{database} è consentito solo ad utenti autenticati. & UC-4.2 \\
 \hline
-ROP-F-36 & Il sistema deve permettere il salvataggio di un file in un sistema di persistenza non locale & UC-4.3 \\
+ROP-F-36 & Il sistema deve permettere il salvataggio di un file in un \gls{sistema di persistenza} non locale & UC-4.3 \\
 \hline
-ROP-F-37 & Il sistema deve notificare l'utente in caso di fallimento del salvataggio nel database. & UC-4.3 \\
+ROP-F-37 & Il sistema deve notificare l'utente in caso di fallimento del salvataggio nel \gls{database}. & UC-4.3 \\
 \hline
 ROP-F-38 & Il sistema deve associare ogni file al suo creatore & UC-4.3 \\
 \hline
-ROP-F-39 & Il sistema deve impedire il salvataggio di file nel database da parte di utenti non autenticati. & UC-4.3, UC-4.3.2 \\
+ROP-F-39 & Il sistema deve impedire il salvataggio di file nel \gls{database} da parte di utenti non autenticati. & UC-4.3, UC-4.3.2 \\
 \hline
-ROP-F-40 & Il sistema deve impedire il salvataggio di un documento vuoto nel database. & UC-4.3.1 \\
+ROP-F-40 & Il sistema deve impedire il salvataggio di un documento vuoto nel \gls{database}. & UC-4.3.1 \\
 \hline
-ROP-F-41 & Un utente non autenticato che prova a salvare un file viene riportato alla pagina di login & UC-4.3.2 \\
+ROP-F-41 & Un \gls{utente non autenticato} che prova a salvare un file viene riportato alla pagina di login & UC-4.3.2 \\
 \hline
 ROP-F-42 & L'utente può effettuare il logout in ogni momento e terminare la propria sessione & UC-5.3 \\
 \hline
 \addlinespace[1em]
-\caption{Tabella dei requisiti funzionali}
+\caption{Tabella dei \gls{requisiti funzionali}}
 \end{longtable}
 
 \newpage
-\subsubsection{Requisiti di Vincolo}
-I requisiti di vincolo\textsubscript{G} rappresentano le limitazioni entro le quali il progetto deve essere sviluppato. A differenza dei requisiti funzionali, questi non derivano da scelte progettuali del team, ma sono imposizioni esterne dettate dal committente, da normative o da limiti tecnologici. Questi comprendono i vincoli tecnologici, architetturali e organizzativi.
+\subsubsection{\gls{Requisiti di Vincolo}}
+I \gls{requisiti di vincolo} rappresentano le limitazioni entro le quali il progetto deve essere sviluppato. A differenza dei \gls{requisiti funzionali}, questi non derivano da scelte progettuali del team, ma sono imposizioni esterne dettate dal committente, da normative o da limiti tecnologici. Questi comprendono i vincoli tecnologici, architetturali e organizzativi.
 
 \begin{longtable}{|p{0.15\textwidth}|>{
   \raggedright\arraybackslash}p{0.55\textwidth}|p{0.2\textwidth}|}
@@ -2740,18 +2741,18 @@ I browser supportati sono: Google Chrome ($\geq$ v110), Mozilla Firefox
 \hline
 RO-V-2 & Il sistema deve utilizzare la codifica Unicode (UTF-8) per la rappresentazione interna e lo storage del testo. & Capitolato \\
 \hline
-RO-V-3 & Il formato di input e di storage del testo deve essere Markdown, in conformità allo standard CommonMark. & Capitolato \\
+RO-V-3 & Il formato di input e di storage del testo deve essere \gls{Markdown}, in conformità allo standard CommonMark. & Capitolato \\
 \hline
-RO-V-4 & Il sistema deve integrarsi con un servizio LLM tramite API REST compatibili con lo standard OpenAI. & Capitolato \\
+RO-V-4 & Il sistema deve integrarsi con un servizio LLM tramite \gls{API} REST compatibili con lo standard OpenAI. & Capitolato \\
 \hline
 \addlinespace[1em]
-\caption{Tabella dei requisiti di vincolo}
+\caption{Tabella dei \gls{requisiti di vincolo}}
 \end{longtable}
 
 \newpage
 
-\subsubsection{Requisiti di Qualità}
-I requisiti di qualità\textsubscript{G} specificano le caratteristiche 
+\subsubsection{\gls{Requisiti di Qualità}}
+I \gls{requisiti di qualità} specificano le caratteristiche 
 misurabili del software e della documentazione. Non descrivono nuove 
 funzionalità, ma stabiliscono soglie quantitative che il sistema deve 
 rispettare, verificabili tramite le metriche definite nel 
@@ -2775,7 +2776,7 @@ RO-Q-5 & La complessità ciclomatica (McCabe) di ogni funzione/metodo del codice
 RO-Q-6 & La documentazione prodotta deve ottenere un Indice di Gulpease (IG) maggiore o uguale a 40. & PdQ – Indice di Gulpease, soglia accettabile \\
 \hline
 RO-Q-7 & Il sistema deve essere sviluppato rispettando le Norme 
-di Progetto del gruppo ByteMe. & Norme di Progetto v1.0.0 \\
+di Progetto del gruppo ByteMe. & \gls{Norme di Progetto} v1.0.0 \\
 \hline
 RO-Q-8 & Il sistema deve essere verificato secondo il Piano di Qualifica prima di ogni rilascio. & Piano di Qualifica v1.0.0 \\
 \hline
@@ -2784,7 +2785,7 @@ RO-Q-9 & Il manuale utente deve documentare tutte le funzionalità obbligatorie 
 RO-Q-10 & Il manuale di installazione e deployment del sistema deve ottenere un Indice di Gulpease (IG) maggiore o uguale a 40. & PdQ – Indice di Gulpease, soglia accettabile \\
 \hline
 \addlinespace[1em]
-\caption{Tabella dei requisiti di qualità}
+\caption{Tabella dei \gls{requisiti di qualità}}
 \end{longtable}
 
 \newpage
@@ -2822,11 +2823,11 @@ UC-1.7 & Ripristino modifica (Redo) & RO-F-14 \\
 \hline
 UC-1.7.1 & Errore per modifiche non ripristinabili & RO-F-15 \\
 \hline
-UC-1.8.0 & Modifica testo selezionato tramite toolbar & RO-F-16 \\
+UC-1.8.0 & Modifica testo selezionato tramite \gls{toolbar} & RO-F-16 \\
 \hline
 UC-1.8.0.1 & Testo già parzialmente formattato & RO-F-27 \\
 \hline
-UC-1.8.1 & Rimozione formattazione tramite toolbar & RO-F-26 \\
+UC-1.8.1 & Rimozione formattazione tramite \gls{toolbar} & RO-F-26 \\
 \hline
 UC-1.8.2 & Applicazione grassetto & RO-F-17 \\
 \hline
@@ -2938,7 +2939,7 @@ UC-2.6.7 & Critica con Cappello Verde & RO-F-56 \\
 \hline
 UC-2.6.8 & Critica con Cappello Blu & RO-F-56 \\
 \hline
-UC-2.7 & Generazione di testo (Distant Writing) & RO-F-59, RO-F-60, RO-F-61, ROP-F-11 \\
+UC-2.7 & Generazione di testo (\gls{Distant Writing}) & RO-F-59, RO-F-60, RO-F-61, ROP-F-11 \\
 \hline
 UC-2.7.1 & Gestione prompt incompleto & RO-F-62 \\
 \hline
@@ -2956,7 +2957,7 @@ UC-2.10.1 & Gestione simboli non supportati & ROP-F-18 \\
 \hline
 UC-3.0 & Caricamento file & RO-F-63, RO-F-64, RO-F-66, RD-F-4, RD-F-7 \\
 \hline
-UC-3.0.1 & Caricamento file Markdown & RO-F-64 \\
+UC-3.0.1 & Caricamento file \gls{Markdown} & RO-F-64 \\
 \hline
 UC-3.0.2 & Caricamento file di testo & RO-F-64 \\
 \hline
@@ -2994,7 +2995,7 @@ UC-4.2 & Apertura di un file salvato & ROP-F-31, ROP-F-32, ROP-F-34, ROP-F-35 \\
 \hline
 UC-4.2.1 & Gestione annullamento apertura & ROP-F-33 \\
 \hline
-UC-4.3 & Salvataggio file nel database & ROP-F-36, ROP-F-37, ROP-F-38, ROP-F-39 \\
+UC-4.3 & Salvataggio file nel \gls{database} & ROP-F-36, ROP-F-37, ROP-F-38, ROP-F-39 \\
 \hline
 UC-4.3.1 & Gestione salvataggio nota vuota & ROP-F-40 \\
 \hline
@@ -3017,7 +3018,7 @@ UC-5.2.1 & Annullamento eliminazione account & ROP-F-30 \\
 UC-5.3 & Logout & ROP-F-42 \\
 \hline
 \addlinespace[1em]
-\caption{Tracciamento casi d'uso - requisiti funzionali}
+\caption{Tracciamento casi d'uso - \gls{requisiti funzionali}}
 \end{longtable}
 
 \newpage
