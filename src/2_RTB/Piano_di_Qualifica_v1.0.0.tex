@@ -763,13 +763,13 @@ L'obiettivo attuale non è raggiungere una \textit{Code Coverage} esaustiva (che
         \hline
         \textbf{Test ID} & \textbf{Descrizione} & \textbf{Requisito} \\
         \hline
-        TI-1 & \textbf{Health Check \gls{Database}}: \gls{Verifica} che il backend riesca a stabilire una connessione stabile con il \gls{database} PostgreSQL interrogando l'endpoint dedicato (\texttt{/\gls{api}/test-db-connection}) ed eseguendo una query di test. & ROP-F-22 \\
+        TI-1 & \textbf{Health Check \gls{Database}}: \gls{Verifica} che il backend riesca a stabilire una connessione stabile con il \gls{database} \gls{PostgreSQL} interrogando l'\gls{endpoint} dedicato (\texttt{/\gls{api}/test-db-connection}) ed eseguendo una query di test. & ROP-F-22 \\
         \hline
         TI-2 & \textbf{Health Check LLM}: \gls{Verifica} in fase di avvio dell'applicazione che le variabili d'ambiente (\gls{API} Key e Base URL) siano correttamente caricate e che il client verso il provider esterno venga inizializzato con successo. & RO-V-13 \\
         \hline
-        TI-3 & \gls{Verifica} che la chiamata di registrazione dal backend salvi correttamente e persistentemente il record del nuovo utente all'interno del \gls{database} PostgreSQL. & ROP-F-11 \\
+        TI-3 & \gls{Verifica} che la chiamata di registrazione dal backend salvi correttamente e persistentemente il record del nuovo utente all'interno del \gls{database} \gls{PostgreSQL}. & ROP-F-11 \\
         \hline
-        TI-4 & \gls{Verifica} che l'endpoint del backend formatti correttamente il prompt richiesto e lo inoltri con successo alle \gls{API} del provider LLM, ricevendo una risposta valida. & RO-V-13 \\
+        TI-4 & \gls{Verifica} che l'\gls{endpoint} del backend formatti correttamente il prompt richiesto e lo inoltri con successo alle \gls{API} del provider LLM, ricevendo una risposta valida. & RO-V-13 \\
         \hline
         TI-5 & \gls{Verifica} che la funzione frontend \texttt{loginUtente()} componga correttamente il body JSON della richiesta HTTP POST e gestisca adeguatamente la risposta del backend (es. token di sessione o errore). & ROP-F-9 \\
         \hline

@@ -180,7 +180,7 @@ Il gruppo adotta una strategia multi-\gls{repository} su \textit{\gls{GitHub}} p
 \begin{itemize}
     \item \textbf{ByteMe}: \gls{Repository} dedicata esclusivamente alla documentazione ufficiale del progetto (Norme, Piano di Progetto, Analisi, ecc.) in formato LaTex.
     \item \textbf{POC\_ByteMe}: \gls{Repository} utilizzata durante la fase RTB per lo sviluppo del Proof of Concept, finalizzata alla \gls{validazione} tecnologica e all'integrazione con i modelli LLM.
-    \item \textbf{Second\_Brain}: \gls{Repository} dedicata allo sviluppo del prodotto finale (MVP) durante la fase di PB. Qui verrà implementata l'architettura definitiva basata su React.
+    \item \textbf{Second\_Brain}: \gls{Repository} dedicata allo sviluppo del prodotto finale (MVP) durante la fase di PB. Qui verrà implementata l'architettura definitiva basata su \gls{React}.
 \end{itemize}
 
 \subsubsection{\gls{Repository} per la documentazione}
@@ -302,7 +302,7 @@ La pubblicazione avviene tramite \gls{GitHub} Pages, assicurando che la document
 \section{Documenti}
 All’interno della \gls{repository} di progetto è presente una serie di cartelle e documenti strutturati con l’obiettivo di organizzare in modo ordinato i materiali prodotti dal gruppo. Di seguito si riporta una descrizione delle principali sezioni e del loro contenuto.
 
-\subsection{\texttt{.github/workflows}}
+\subsection{\texttt{.\gls{github}/workflows}}
 Questa cartella contiene gli script di automazione utilizzati per la compilazione automatica dei documenti LaTeX tramite \gls{GitHub} Actions. 
 Contiene il file \texttt{compileLatex.yml}.
 
@@ -323,8 +323,8 @@ Questa cartella contiene tutti i documenti pdf relativi alla RTB (Requirements a
 \subsection{PB}
 Questa cartella contiene tutti i documenti pdf relativi alla PB (Product Baseline), ovvero raccoglie tutto ciò che costituisce la seconda baseline del progetto. Sono presenti:
 \begin{itemize}
-    \item \textbf{Specifica Tecnica}: Documento ad uso interno del team di sviluppo che dettaglia l'architettura software del prodotto. Descrive i design pattern adottati, la scomposizione dei componenti basati sul framework React, la struttura del \gls{database} per la persistenza delle informazioni e le logiche di integrazione con le \gls{API} degli LLM (Large Language Models).
-    \item \textbf{Manuale utente}: Documento destinato agli utilizzatori finali che illustra le procedure di installazione, configurazione e utilizzo dell'applicazione. Fornisce istruzioni operative per l'editing dei file, la gestione del sistema "Second Brain" e l'interazione con le funzionalità di assistenza generativa offerte dall'Intelligenza Artificiale.
+    \item \textbf{\gls{Specifica Tecnica}}: Documento ad uso interno del team di sviluppo che dettaglia l'architettura software del prodotto. Descrive i design pattern adottati, la scomposizione dei componenti basati sul framework \gls{React}, la struttura del \gls{database} per la persistenza delle informazioni e le logiche di integrazione con le \gls{API} degli LLM (Large Language Models).
+    \item \textbf{\gls{Manuale utente}}: Documento destinato agli utilizzatori finali che illustra le procedure di installazione, configurazione e utilizzo dell'applicazione. Fornisce istruzioni operative per l'editing dei file, la gestione del sistema "Second Brain" e l'interazione con le funzionalità di assistenza generativa offerte dall'Intelligenza Artificiale.
 \end{itemize}
 
 
@@ -625,16 +625,16 @@ Il \textbf{Proof of Concept (POC)} è stato sviluppato durante la fase RTB con l
 \subsection{Stack tecnologico}
 Lo stack tecnologico adottato per il POC è il seguente:
 \begin{itemize}
-    \item \textbf{Frontend}: React 19 con Vite, CSS Modules, EasyMDE per l'editor Markdown;
-    \item \textbf{Backend}: Flask (Python), con SQLAlchemy come ORM e \texttt{psycopg2} come driver PostgreSQL;
-    \item \textbf{Database}: PostgreSQL, inizializzato tramite script SQL al primo avvio del container;
-    \item \textbf{LLM}: API OpenAI-compatibile fornita da Zucchetti;
-    \item \textbf{Deployment}: Docker e Docker Compose per la containerizzazione dell'intera applicazione.
+    \item \textbf{Frontend}: \gls{React} 19 con \gls{Vite}, \gls{CSS Modules}, \gls{EasyMDE} per l'editor \gls{Markdown};
+    \item \textbf{Backend}: \gls{Flask} (Python), con \gls{SQLAlchemy} come ORM e \texttt{psycopg2} come driver \gls{PostgreSQL};
+    \item \textbf{\gls{Database}}: \gls{PostgreSQL}, inizializzato tramite script SQL al primo avvio del container;
+    \item \textbf{LLM}: \gls{API} OpenAI-compatibile fornita da Zucchetti;
+    \item \textbf{Deployment}: \gls{Docker} e \gls{Docker Compose} per la containerizzazione dell'intera applicazione.
 \end{itemize}
  
 
-\subsection{Struttura della repository per il PoC}
-Il codice del POC è versionato nella repository \texttt{POC\_ByteMe}. La struttura delle cartelle è la seguente:
+\subsection{Struttura della \gls{repository} per il PoC}
+Il codice del POC è versionato nella \gls{repository} \texttt{POC\_ByteMe}. La struttura delle cartelle è la seguente:
 
 \begin{verbatim}
 POC_ByteMe/
@@ -668,7 +668,7 @@ POC_ByteMe/
 \subsection{Norme per il frontend}
 \subsubsection{Architettura}
  
-Il frontend adotta la struttura \textbf{feature-based} ispirata al progetto \textit{bulletproof-react}. Ogni funzionalità dell'applicazione è organizzata in una cartella dedicata all'interno di \texttt{features/}, con la seguente struttura interna:
+Il frontend adotta la struttura \textbf{feature-based} ispirata al progetto \textit{bulletproof-\gls{react}}. Ogni funzionalità dell'applicazione è organizzata in una cartella dedicata all'interno di \texttt{features/}, con la seguente struttura interna:
  
 \begin{verbatim}
 features/<nome-feature>/
@@ -679,31 +679,31 @@ features/<nome-feature>/
 `-- components/             # Componenti presentazionali della feature
 \end{verbatim}
  
-Questa struttura garantisce la \textit{separation of concerns}: le chiamate HTTP risiedono nel livello \texttt{api/}, la logica applicativa nei custom hook in \texttt{hooks/}, e la presentazione nei componenti in \texttt{components/}.
+Questa struttura garantisce la \textit{\gls{separation of concerns}}: le chiamate HTTP risiedono nel livello \texttt{\gls{api}/}, la logica applicativa nei custom hook in \texttt{hooks/}, e la presentazione nei componenti in \texttt{components/}.
 
 \subsubsection{Convenzioni di nomenclatura}
 \begin{itemize}
-    \item \textbf{Componenti React}: PascalCase (es. \texttt{EditorPage}, \texttt{HistoryPanel}). Questa convenzione è obbligatoria: React distingue i componenti dai tag HTML in base alla maiuscola iniziale, e una funzione con nome minuscolo non viene trattata come componente, causando violazioni delle Rules of Hooks.
+    \item \textbf{Componenti \gls{React}}: \gls{PascalCase} (es. \texttt{EditorPage}, \texttt{HistoryPanel}). Questa convenzione è obbligatoria: \gls{React} distingue i componenti dai tag HTML in base alla maiuscola iniziale, e una funzione con nome minuscolo non viene trattata come componente, causando violazioni delle Rules of Hooks.
     \item \textbf{Custom hook}: camelCase con prefisso \texttt{use} (es. \texttt{useEditor}, \texttt{useAiHistory}).
-    \item \textbf{File API}: camelCase con suffisso \texttt{Call} o \texttt{ApiCall} (es. \texttt{loginCall.jsx}, \texttt{historyApiCall.js}).
-    \item \textbf{File CSS Modules}: stesso nome del componente con suffisso \texttt{.module.css} \\ (es. \texttt{EditorPage.module.css}).
-    \item \textbf{Context}: PascalCase con suffisso \texttt{Context} per il context, e prefisso \texttt{use} per l'hook di accesso (es. \texttt{AuthContext}, \texttt{useAuth}).
+    \item \textbf{File \gls{API}}: camelCase con suffisso \texttt{Call} o \texttt{ApiCall} (es. \texttt{loginCall.\gls{jsx}}, \texttt{historyApiCall.js}).
+    \item \textbf{File \gls{CSS Modules}}: stesso nome del componente con suffisso \texttt{.module.css} \\ (es. \texttt{EditorPage.module.css}).
+    \item \textbf{Context}: \gls{PascalCase} con suffisso \texttt{Context} per il context, e prefisso \texttt{use} per l'hook di accesso (es. \texttt{AuthContext}, \texttt{useAuth}).
 \end{itemize}
 
 \subsubsection{Regole sui componenti}
 \begin{itemize}
-    \item Ogni componente deve essere una \textbf{funzione con nome che inizia per maiuscola} ed essere usato come JSX (\texttt{<NomeComponente />}), mai chiamato come funzione (\texttt{nomeComponente()}).
+    \item Ogni componente deve essere una \textbf{funzione con nome che inizia per maiuscola} ed essere usato come \gls{JSX} (\texttt{<NomeComponente />}), mai chiamato come funzione (\texttt{nomeComponente()}).
     \item I componenti devono essere \textbf{presentazionali}: non devono contenere logica di business o chiamate HTTP dirette. La logica va delegata ai custom hook.
-    \item Lo stato globale condiviso tra più feature va gestito tramite \textbf{React Context}, definito in \texttt{src/context/} e iniettato in \texttt{app/main.jsx}.
-    \item La navigazione tra pagine avviene tramite \textbf{React Router v6}: per leggere lo state del router si usa l'hook \texttt{useLocation()}, mai \texttt{window.history.state} direttamente.
-    \item Gli URL delle chiamate HTTP devono essere sempre \textbf{relativi} (es. \texttt{/api/login}), mai con host e porta espliciti (es. \texttt{http://localhost:8000/api/login}), per garantire il corretto funzionamento sia in locale che all'interno dei container Docker.
+    \item Lo stato globale condiviso tra più feature va gestito tramite \textbf{\gls{React} Context}, definito in \texttt{src/context/} e iniettato in \texttt{app/main.\gls{jsx}}.
+    \item La navigazione tra pagine avviene tramite \textbf{\gls{React Router} v6}: per leggere lo state del router si usa l'hook \texttt{useLocation()}, mai \texttt{window.history.state} direttamente.
+    \item Gli URL delle chiamate HTTP devono essere sempre \textbf{relativi} (es. \texttt{/\gls{api}/login}), mai con host e porta espliciti (es. \texttt{http://localhost:8000/\gls{api}/login}), per garantire il corretto funzionamento sia in locale che all'interno dei container \gls{Docker}.
 \end{itemize}
  
 \subsubsection{Regole sui custom hook}
  
 \begin{itemize}
     \item Ogni hook deve avere una responsabilità singola: gestisce lo stato e la logica di una sola operazione o funzionalità.
-    \item Gli hook non devono essere usati condizionalmente né all'interno di cicli: le Rules of Hooks di React devono essere sempre rispettate.
+    \item Gli hook non devono essere usati condizionalmente né all'interno di cicli: le Rules of Hooks di \gls{React} devono essere sempre rispettate.
     \item Gli hook ricevono le dipendenze esterne (es. \texttt{getEditorText}, \texttt{nomeDocumento}) come parametri, mai lette direttamente da scope globale, per favorire la testabilità e il riuso.
 \end{itemize}
  
@@ -711,14 +711,14 @@ Questa struttura garantisce la \textit{separation of concerns}: le chiamate HTTP
  
 \begin{itemize}
     \item Lo \textbf{stato locale} (es. flag di caricamento, valori di un form) viene gestito con \texttt{useState} nel componente o hook di competenza.
-    \item Lo \textbf{stato globale} condiviso tra feature diverse (es. utente autenticato, documento aperto, storico generazioni) viene gestito con \textbf{React Context}, seguendo il pattern \textit{lifting state up}.
-    \item Non è utilizzata alcuna libreria di state management esterna (es. Redux, Zustand): per la complessità del POC, React Context è sufficiente.
+    \item Lo \textbf{stato globale} condiviso tra feature diverse (es. \gls{utente autenticato}, documento aperto, storico generazioni) viene gestito con \textbf{\gls{React} Context}, seguendo il pattern \textit{lifting state up}.
+    \item Non è utilizzata alcuna libreria di state management esterna (es. Redux, Zustand): per la complessità del POC, \gls{React} Context è sufficiente.
 \end{itemize}
  
 \subsubsection{Stile}
  
 \begin{itemize}
-    \item Lo stile è gestito con \textbf{CSS Modules}: ogni componente ha il proprio file \texttt{.module.css}, importato come oggetto \texttt{styles}. Le classi si applicano con \texttt{className=\{styles.nomeClasse\}}.
+    \item Lo stile è gestito con \textbf{\gls{CSS Modules}}: ogni componente ha il proprio file \texttt{.module.css}, importato come oggetto \texttt{styles}. Le classi si applicano con \texttt{className=\{styles.nomeClasse\}}.
     \item Non è consentito l'uso di stile inline (\texttt{style=\{\{\}\}}) salvo casi eccezionali documentati.
     \item Non è consentito l'uso di classi CSS globali non scoped, per evitare conflitti tra componenti.
 \end{itemize}
@@ -729,13 +729,13 @@ Questa struttura garantisce la \textit{separation of concerns}: le chiamate HTTP
  
 \subsubsection{Architettura}
  
-Il backend Flask adotta una \textbf{architettura piatta} intenzionalmente semplificata, appropriata per la natura esplorativa del POC. I file principali sono:
+Il backend \gls{Flask} adotta una \textbf{architettura piatta} intenzionalmente semplificata, appropriata per la natura esplorativa del POC. I file principali sono:
  
 \begin{itemize}
-    \item \texttt{app.py}: definisce tutti gli endpoint Flask e gestisce le sessioni utente;
+    \item \texttt{app.py}: definisce tutti gli \gls{endpoint} \gls{Flask} e gestisce le sessioni utente;
     \item \texttt{auth.py}: contiene la logica di registrazione e autenticazione (hashing PBKDF2);
     \item \texttt{document.py}: contiene la logica di gestione dei documenti, dello storico e delle generazioni AI;
-    \item \texttt{db/db.py}: gestisce la connessione al database tramite SQLAlchemy e il context manager \texttt{get\_db\_session};
+    \item \texttt{db/db.py}: gestisce la connessione al \gls{database} tramite \gls{SQLAlchemy} e il context manager \texttt{get\_db\_session};
     \item \texttt{db/models.py}: definisce i modelli ORM (Utente, Documento, StoricoAI, GenerazioneAI, AgenteEsterno).
 \end{itemize}
  
@@ -743,31 +743,31 @@ Il backend Flask adotta una \textbf{architettura piatta} intenzionalmente sempli
  
 \begin{itemize}
     \item \textbf{Funzioni}: snake\_case (es. \texttt{salva\_nuovo\_documento}, \texttt{get\_generazioni\_per\_storico}).
-    \item \textbf{Endpoint Flask}: prefisso \texttt{/api/} per tutte le route, con nomi descrittivi in kebab-case (es. \texttt{/api/save-document}, \texttt{/api/load-storico}).
-    \item \textbf{Modelli ORM}: PascalCase (es. \texttt{Utente}, \texttt{GenerazioneAI}).
+    \item \textbf{\gls{Endpoint} \gls{Flask}}: prefisso \texttt{/\gls{api}/} per tutte le route, con nomi descrittivi in kebab-case (es. \texttt{/\gls{api}/save-document}, \texttt{/\gls{api}/load-storico}).
+    \item \textbf{Modelli ORM}: \gls{PascalCase} (es. \texttt{Utente}, \texttt{GenerazioneAI}).
     \item \textbf{Variabili locali}: snake\_case.
 \end{itemize}
  
-\subsubsection{Gestione del database}
+\subsubsection{Gestione del \gls{database}}
  
 \begin{itemize}
-    \item Tutte le operazioni sul database avvengono tramite il context manager \texttt{get\_db\_session()}, che garantisce commit automatico in caso di successo e rollback in caso di eccezione.
-    \item Lo schema del database è definito in \texttt{db/db.sql}. \textbf{L'ordine di definizione delle tabelle deve rispettare le dipendenze}: una tabella referenziata da una foreign key deve essere definita prima della tabella che la referenzia.
+    \item Tutte le operazioni sul \gls{database} avvengono tramite il context manager \texttt{get\_db\_session()}, che garantisce \gls{commit} automatico in caso di successo e rollback in caso di eccezione.
+    \item Lo schema del \gls{database} è definito in \texttt{db/db.sql}. \textbf{L'ordine di definizione delle tabelle deve rispettare le dipendenze}: una tabella referenziata da una foreign key deve essere definita prima della tabella che la referenzia.
     \item I modelli ORM in \texttt{models.py} devono essere coerenti con lo schema SQL: i nomi delle colonne e delle tabelle devono corrispondere esattamente.
 \end{itemize}
  
 \subsubsection{Gestione delle sessioni e sicurezza}
  
 \begin{itemize}
-    \item L'autenticazione è gestita tramite \textbf{sessioni Flask} lato server, con cookie \texttt{HttpOnly}. La \texttt{FLASK\_SECRET\_KEY} è caricata da variabile d'ambiente e non deve mai essere hardcoded nel codice.
-    \item Le password vengono salvate nel database esclusivamente come hash generato con \textbf{PBKDF2-HMAC-SHA256} con salt casuale, mai in chiaro.
-    \item I messaggi di errore restituiti dagli endpoint di autenticazione devono essere \textbf{generici}, per non rivelare informazioni sull'esistenza o meno di un utente.
-    \item Le variabili d'ambiente sensibili (chiavi API, secret key, credenziali database) sono definite nel file \texttt{.env} posizionato alla radice del progetto, allo stesso livello di \texttt{docker-compose.yml}. Il file \texttt{.env} è escluso dal versionamento tramite \texttt{.gitignore}.
+    \item L'autenticazione è gestita tramite \textbf{sessioni \gls{Flask}} lato server, con cookie \texttt{HttpOnly}. La \texttt{\gls{FLASK}\_SECRET\_KEY} è caricata da variabile d'ambiente e non deve mai essere hardcoded nel codice.
+    \item Le password vengono salvate nel \gls{database} esclusivamente come hash generato con \textbf{PBKDF2-HMAC-SHA256} con salt casuale, mai in chiaro.
+    \item I messaggi di errore restituiti dagli \gls{endpoint} di autenticazione devono essere \textbf{generici}, per non rivelare informazioni sull'esistenza o meno di un utente.
+    \item Le variabili d'ambiente sensibili (chiavi \gls{API}, secret key, credenziali \gls{database}) sono definite nel file \texttt{.env} posizionato alla radice del progetto, allo stesso livello di \texttt{\gls{docker}-compose.yml}. Il file \texttt{.env} è escluso dal \gls{versionamento} tramite \texttt{.gitignore}.
 \end{itemize}
  
-\subsubsection{Endpoint REST}
+\subsubsection{\gls{Endpoint} REST}
  
-Ogni endpoint deve:
+Ogni \gls{endpoint} deve:
 \begin{itemize}
     \item verificare la sessione utente prima di eseguire qualsiasi operazione che richieda autenticazione, restituendo \texttt{401} in caso di sessione assente o non valida;
     \item validare i dati in ingresso, restituendo \texttt{400} in caso di dati mancanti o malformati;
@@ -776,37 +776,37 @@ Ogni endpoint deve:
 \end{itemize}
  
 % ============================================================
-\subsection{Norme per Docker e deployment}
+\subsection{Norme per \gls{Docker} e deployment}
 % ============================================================
  
-\subsubsection{Struttura di docker-compose.yml}
+\subsubsection{Struttura di \gls{docker}-compose.yml}
  
 L'applicazione è composta da tre servizi:
 \begin{itemize}
-    \item \textbf{db}: container PostgreSQL. Espone la porta \texttt{5433} sull'host. Lo schema viene inizializzato automaticamente al primo avvio tramite il file montato in \texttt{/docker-entrypoint-initdb.d/}.
-    \item \textbf{backend}: container Flask. Dipende dal servizio \texttt{db} con \texttt{condition: service\_healthy}, per garantire che il database sia pronto ad accettare connessioni prima che il backend tenti di connettersi.
-    \item \textbf{frontend}: container nginx che serve il bundle React. Dipende dal servizio \texttt{backend}.
+    \item \textbf{db}: container \gls{PostgreSQL}. Espone la porta \texttt{5433} sull'host. Lo schema viene inizializzato automaticamente al primo avvio tramite il file montato in \texttt{/\gls{docker}-entrypoint-initdb.d/}.
+    \item \textbf{backend}: container \gls{Flask}. Dipende dal servizio \texttt{db} con \texttt{condition: service\_healthy}, per garantire che il \gls{database} sia pronto ad accettare connessioni prima che il backend tenti di connettersi.
+    \item \textbf{frontend}: container \gls{nginx} che serve il bundle \gls{React}. Dipende dal servizio \texttt{backend}.
 \end{itemize}
  
 \subsubsection{Healthcheck}
  
-Il servizio \texttt{db} deve essere configurato con un healthcheck basato su \texttt{pg\_isready}, in modo che Docker attenda la disponibilità effettiva di PostgreSQL prima di avviare il backend. Il mancato utilizzo dell'healthcheck causa errori di connessione al database al primo avvio.
+Il servizio \texttt{db} deve essere configurato con un healthcheck basato su \texttt{pg\_isready}, in modo che \gls{Docker} attenda la disponibilità effettiva di \gls{PostgreSQL} prima di avviare il backend. Il mancato utilizzo dell'healthcheck causa errori di connessione al \gls{database} al primo avvio.
  
 \subsubsection{Variabili d'ambiente}
  
-Le variabili d'ambiente sono passate al container \texttt{backend} tramite il file \texttt{.env} letto da Docker Compose. Le variabili necessarie sono:
+Le variabili d'ambiente sono passate al container \texttt{backend} tramite il file \texttt{.env} letto da \gls{Docker Compose}. Le variabili necessarie sono:
 \begin{itemize}
-    \item \texttt{OPENAI\_API\_KEY}: chiave per l'API LLM di Zucchetti;
-    \item \texttt{OPENAI\_BASE\_URL}: URL base dell'API LLM;
-    \item \texttt{FLASK\_SECRET\_KEY}: chiave segreta per le sessioni Flask.
+    \item \texttt{OPENAI\_API\_KEY}: chiave per l'\gls{API} LLM di Zucchetti;
+    \item \texttt{OPENAI\_BASE\_URL}: URL base dell'\gls{API} LLM;
+    \item \texttt{\gls{FLASK}\_SECRET\_KEY}: chiave segreta per le sessioni \gls{Flask}.
 \end{itemize}
  
 \subsubsection{Comandi}
  
 \begin{itemize}
-    \item \textbf{Primo avvio o dopo modifiche}: \texttt{docker compose down -v \&\& docker compose up --build}. Il flag \texttt{-v} elimina i volumi e forza la reinizializzazione del database.
-    \item \textbf{Avvio normale}: \texttt{docker compose up --build}.
-    \item \textbf{Arresto}: \texttt{docker compose down}.
+    \item \textbf{Primo avvio o dopo modifiche}: \texttt{\gls{docker compose} down -v \&\& \gls{docker compose} up --build}. Il flag \texttt{-v} elimina i volumi e forza la reinizializzazione del \gls{database}.
+    \item \textbf{Avvio normale}: \texttt{\gls{docker compose} up --build}.
+    \item \textbf{Arresto}: \texttt{\gls{docker compose} down}.
 \end{itemize}
 
 \end{document}
