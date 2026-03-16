@@ -68,13 +68,13 @@
         \centering
         \begin{tabular}{|l|p{5cm}|}            
             \hline
-            \textbf{Versione} & 1.0.0 \\
+            \textbf{Versione} & 1.1.0 \\
             \hline
-            \textbf{Stato} & Da Approvare \\
+            \textbf{Stato} & Da approvare \\
             \hline
-            \textbf{Redazione} & Tutto il gruppo \\
+            \textbf{Redazione} & Giulia Barzon, Elisa Marchioro \\
             \hline
-            \textbf{Verifica} & Tutto il gruppo \\
+            \textbf{Verifica} & Matteo Cuogo, Elisa Marchioro \\
             \hline
             \textbf{Approvazione} & Matteo Cuogo \\
             \hline
@@ -96,6 +96,10 @@
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verifica} \\
         \hline
+        1.1.0 & 16/03/2026 & Giulia Barzon & Aggiunti termini relativi alle tecnologie del POC & \\
+        \hline
+        1.0.0 & 20/02/2026 & Matteo Cuogo & Approvazione documento & \\
+        \hline
         0.3.0 & 11/01/2026 & Elisa Marchioro & Aggiunti termini relativi alle metriche del PdQ & Matteo Cuogo \\
         \hline
         0.2.0 & 11/01/2026 & Giulia Barzon & Aggiunti termini relativi alle metriche del PdQ &  Matteo Cuogo\\
@@ -104,19 +108,19 @@
         \hline
         0.1.7 & 15/12/2025 & Giulia Barzon & Aggiunte parole relative a Piano di qualifica e testing & Elisa Marchioro\\
         \hline
-        0.1.6 & 14/12/2025 & Giulia Barzon & Aggiunte parole requisiti funzionali, non funzionali, di qualità, di vincolo e Piano di qualifica & \\
+        0.1.6 & 14/12/2025 & Giulia Barzon & Aggiunte parole requisiti funzionali, non funzionali, di qualità, di vincolo e Piano di qualifica & Elisa Marchioro\\
         \hline
-        0.1.5 & 8/12/2025 & Elisa Marchioro & Aggiunte parole toolbar, user story, milestone, issue, commit, merge & \\
+        0.1.5 & 8/12/2025 & Elisa Marchioro & Aggiunte parole toolbar, user story, milestone, issue, commit, merge & Matteo Cuogo\\
         \hline
-        0.1.4 & 5/12/2025 & Giulia Barzon & Verifica documento e aggiunte parole relative al Piano di Progetto e ai casi d'uso & \\
+        0.1.4 & 5/12/2025 & Giulia Barzon & Verifica documento e aggiunte parole relative al Piano di Progetto e ai casi d'uso & Elisa Marchioro\\
         \hline
-        0.1.3 & 4/12/2025 & Elisa Marchioro & Aggiunta parole agile, scrum, varie fasi dello sprint, RTB, PB, CA, verifica, validazione & \\
+        0.1.3 & 4/12/2025 & Elisa Marchioro & Aggiunta parole agile, scrum, varie fasi dello sprint, RTB, PB, CA, verifica, validazione & Matteo Cuogo\\
         \hline
-        0.1.2 & 28/11/2025 & Elisa Marchioro & Piccoli fix al documento & \\
+        0.1.2 & 28/11/2025 & Elisa Marchioro & Piccoli fix al documento & Matteo Cuogo\\
         \hline
-        0.1.1 & 26/11/2025 & Elisa Marchioro & Aggiunta parole analisi requisiti, API, backlog, database, distant writing, efficienza, efficacia, git, github, LLM, markdown, MVP, PoC, repository, six thinking hats, sprint & \\
+        0.1.1 & 26/11/2025 & Elisa Marchioro & Aggiunta parole analisi requisiti, API, backlog, database, distant writing, efficienza, efficacia, git, github, LLM, markdown, MVP, PoC, repository, six thinking hats, sprint & Matteo Cuogo\\
         \hline
-        0.1.0 & 18/11/2025 & Chiara Grossele & Stesura iniziale del documento & \\
+        0.1.0 & 18/11/2025 & Chiara Grossele & Stesura iniziale del documento & Elisa Marchioro\\
         \hline
     \end{tabular}
     \caption{Registro delle versioni del documento}
@@ -190,6 +194,9 @@ Serve a valutare l'efficacia dei test: più è alta, minore è il rischio di dif
 
 \item \textbf{Complessità Ciclomatica (McCabe)}: Metrica software che misura la complessità del flusso di controllo di un programma contandone il numero di percorsi linearmente indipendenti. Si calcola con la formula $v(G)=e-n+2p$ (dove $e$ sono gli archi, $n$ i nodi, $p$ le componenti connesse). Un valore alto indica un codice difficile da testare e mantenere, poiché cresce con la presenza di branch, salti e iterazioni. Metrica definita nel Piano di Qualifica.
 
+\item \textbf{Context (React Context)}: Meccanismo nativo di React per 
+condividere stato e funzionalità tra componenti senza dover passare  esplicitamente le props attraverso ogni livello della gerarchia (prop drilling). Nel POC è utilizzato per gestire lo stato globale  di autenticazione (\texttt{AuthContext}), del documento aperto  (\texttt{DocNameContext}) e dello storico delle generazioni AI  (\texttt{HistoryContext}).
+
 \item \textbf{Copertura dei Requisiti (CR)}: Metrica che indica la percentuale di requisiti definiti nell'Analisi dei Requisiti che sono stati effettivamente implementati nel software e verificati tramite test. Metrica definita nel Piano di Qualifica.
 
 \item \textbf{Cost Performance Index (CPI)}: Indice di efficienza dei costi che misura il valore del lavoro completato rispetto al costo effettivo sostenuto. Un valore pari a 1 indica efficienza perfetta; inferiore a 1 indica inefficienza (costi superiori al previsto). Metrica definita nel Piano di Qualifica.
@@ -197,6 +204,12 @@ Serve a valutare l'efficacia dei test: più è alta, minore è il rischio di dif
 \item \textbf{Cost Variance (CV)}: Differenza tra il valore guadagnato (Earned Value) e il costo effettivo (Actual Cost). Indica se il lavoro svolto è costato più o meno di quanto pianificato. Metrica definita nel Piano di Qualifica.
 
 \item \textbf{Cruscotto di Qualità}: sezione del Piano di Qualifica (o uno strumento software) che visualizza in modo sintetico lo stato corrente del progetto rispetto agli obiettivi prefissati. Utilizza grafici e tabelle per confrontare i valori misurati (es. costi, tempi, errori) con i valori attesi (ottimali o accettabili). Serve a monitorare l'andamento nel tempo di metriche definite nel Piano di Qualifica.
+
+\item \textbf{CSS Modules}: Sistema di scope locale per i fogli di stile 
+CSS in cui ogni file \texttt{.module.css} genera nomi di classe univoci 
+a tempo di build, evitando conflitti di stile tra componenti diversi. 
+Le classi vengono importate come oggetto JavaScript e applicate tramite 
+\texttt{className=\{styles.nomeClasse\}}.
 
 \end{itemize}
 \newpage
@@ -212,22 +225,36 @@ Se non si "ripaga" il debito (es. facendo refactoring), il costo degli errori re
 \item \textbf{Definition of Done (DoD)}: Insieme di criteri rigorosi che una funzionalità o un incremento di software deve soddisfare per essere considerati "completati" dal team. Garantisce che il lavoro consegnato sia di alta qualità.
 
 \item \textbf{Distant Writing}: Modalità di scrittura in cui l'utente fornisce le specifiche e l'LLM genera il testo completo.
+
+\item \textbf{Docker}: Piattaforma software che permette di eseguire 
+applicazioni in ambienti isolati e riproducibili chiamati container. 
+Ogni container include tutto il necessario per eseguire l'applicazione 
+(codice, dipendenze, configurazione), garantendo coerenza tra ambienti 
+di sviluppo e produzione.
+
+\item \textbf{Docker Compose}: Strumento che permette di definire e 
+orchestrare applicazioni composte da più container Docker tramite un unico file di configurazione YAML (\texttt{docker-compose.yml}). Nel POC gestisce i servizi \texttt{frontend}, \texttt{backend} e \texttt{db} e le loro dipendenze.
 \end{itemize}
+
 \newpage
 
 \section*{E}
 \addcontentsline{toc}{section}{E}
 \begin{itemize}
-
 \item \textbf{Earned Value (EV)}: Valore del lavoro effettivamente eseguito espresso in termini di budget approvato per tale lavoro. Rappresenta quanto "valore" è stato prodotto dal progetto fino a un certo istante. Metrica definita nel Piano di Qualifica.
 
 \item \textbf{Earned Value Analysis (EVA)}: Metodologia di gestione del progetto che integra scopo, tempi e costi per misurare le prestazioni del progetto e prevedere i risultati futuri. Permette di identificare precocemente scostamenti rispetto al piano. Riguarda i processi primari di fornitura, definiti nel Piano di QUalifica.
+
+\item \textbf{EasyMDE}: Libreria JavaScript che fornisce un editor Markdown con interfaccia grafica, barra degli strumenti e anteprima in tempo reale. Nel POC è utilizzata come componente principale dell'interfaccia di editing testuale.
 
 \item \textbf{Editor di Testo}: Componente principale dell'interfaccia utente del sistema "Second Brain". Si tratta di un editor online avanzato che supporta la sintassi Markdown, fornendo all'utente un'area di scrittura con anteprima in tempo reale del testo formattato. È l'ambiente in cui l'utente crea, modifica e visualizza i contenuti, nonché il punto di interazione per invocare le funzionalità del Sistema AI sul testo selezionato o completo.
 
 \item \textbf{Efficacia}: Misura della capacità di raggiungere l'obiettivo prefissato.
 
 \item \textbf{Efficienza (Efficiency)}: L’efficienza riguarda la velocità del software e il modo in cui utilizza le risorse del computer. Un sistema efficiente risponde in tempi brevi, riesce a gestire molti utenti o richieste e non spreca memoria, potenza di calcolo o banda di rete. Nei sistemi di intelligenza artificiale si considera anche il costo necessario per generare ogni risposta.
+
+\item \textbf{Endpoint}: Punto di accesso specifico di un'API REST, identificato da un URL e da un metodo HTTP (GET, POST, PUT, DELETE). 
+Ogni endpoint espone un'operazione ben definita che il client può invocare per interagire con il server.
 
 \item \textbf{Estimated at Completion (EAC)}: Previsione del costo totale del progetto al momento del suo completamento, basata sulle prestazioni misurate fino alla data corrente. Metrica definita nel Piano di Qualifica.
 
@@ -236,7 +263,18 @@ Se non si "ripaga" il debito (es. facendo refactoring), il costo degli errori re
 
 \section*{F}
 \addcontentsline{toc}{section}{F}
+\begin{itemize}
+\item \textbf{Feature-based architecture}: Approccio architetturale che 
+organizza il codice sorgente per dominio applicativo anziché per tipo 
+di file. Ogni funzionalità dell'applicazione risiede in una cartella 
+dedicata contenente i propri componenti, hook, chiamate API e stili, 
+favorendo la coesione e riducendo l'accoppiamento tra moduli distinti.
 
+\item \textbf{Flask}: Micro-framework Python per lo sviluppo di 
+applicazioni web e API REST. Adotta un approccio minimalista che 
+lascia ampia libertà nella scelta dei componenti, risultando 
+adatto a progetti di dimensioni contenute come il POC.
+\end{itemize}
 \newpage
 
 \section*{G}
@@ -252,7 +290,13 @@ Se non si "ripaga" il debito (es. facendo refactoring), il costo degli errori re
 
 \section*{H}
 \addcontentsline{toc}{section}{H}
-
+\begin{itemize}
+\item \textbf{Hook (React Hook)}: Funzione speciale di React che 
+permette di utilizzare stato, ciclo di vita e altri meccanismi 
+di React all'interno di componenti funzionali. I custom hook, 
+per convenzione prefissati con \texttt{use}, incapsulano logica 
+riutilizzabile separandola dalla presentazione.
+\end{itemize}
 \newpage
 
 \section*{I}
@@ -270,6 +314,12 @@ Se non si "ripaga" il debito (es. facendo refactoring), il costo degli errori re
 
 \section*{J}
 \addcontentsline{toc}{section}{J}
+\begin{itemize}
+\item \textbf{JSX}: Estensione della sintassi JavaScript che permette 
+di scrivere strutture simili all'HTML direttamente nel codice 
+JavaScript. Viene transpilato in chiamate React prima dell'esecuzione 
+ed è utilizzato per definire la struttura visuale dei componenti.
+\end{itemize}
 
 \newpage
 
@@ -290,6 +340,10 @@ Se non si "ripaga" il debito (es. facendo refactoring), il costo degli errori re
 \section*{M}
 \addcontentsline{toc}{section}{M}
 \begin{itemize}
+\item \textbf{Manuale Utente}: Documento redatto con l'obiettivo di 
+guidare l'utilizzatore finale nell'interazione con il prodotto software. Fornisce istruzioni operative chiare e accessibili, coprendo le fasi di installazione, configurazione iniziale e l'utilizzo ordinario di tutte le funzionalità implementate. Include inoltre procedure di risoluzione per le problematiche più comuni e sezioni di supporto per facilitare l'autonomia 
+dell'utente durante l'intera esperienza d'uso.
+
 \item \textbf{Manutenibilità (Maintainability)}: La manutenibilità indica quanto è semplice correggere, modificare e migliorare il software nel tempo. Un sistema manutenibile ha un codice ben organizzato, facile da capire e supportato da test, in modo che gli sviluppatori possano aggiungere nuove funzionalità o risolvere problemi senza creare nuovi errori.
 
 \item \textbf{Markdown}: Linguaggio di markup leggero per la formattazione di testo semplice.
@@ -306,6 +360,8 @@ Se non si "ripaga" il debito (es. facendo refactoring), il costo degli errori re
 \section*{N}
 \addcontentsline{toc}{section}{N}
 \begin{itemize}
+\item \textbf{nginx}: Server web ad alte prestazioni utilizzato nel POC come server statico per servire il bundle React compilato e come reverse proxy per instradare le richieste verso il backend Flask. Viene eseguito all'interno del container \texttt{frontend}.
+
 \item \textbf{Norme di Progetto}: Documento formale che definisce e descrive il Way of Working adottato dal gruppo. Contiene le regole, le convenzioni, i processi e le linee guida che il team si impegna a seguire per l’organizzazione del lavoro, la comunicazione, la gestione della repository, la redazione e verifica della documentazione, l’assegnazione dei ruoli e la pianificazione delle attività. Le Norme di Progetto costituiscono un riferimento condiviso per garantire coerenza, qualità e controllo durante lo svolgimento del progetto, e sono soggette a versionamento e aggiornamento in base all’evoluzione delle esigenze del team e del progetto stesso.
 
 \end{itemize}
@@ -314,12 +370,17 @@ Se non si "ripaga" il debito (es. facendo refactoring), il costo degli errori re
 
 \section*{O}
 \addcontentsline{toc}{section}{O}
+\begin{itemize}
+\item \textbf{ORM (Object-Relational Mapping)}: Tecnica che permette di interagire con un database relazionale utilizzando oggetti del linguaggio di programmazione al posto di query SQL dirette. Nel POC si utilizza SQLAlchemy come ORM per mappare le tabelle del database PostgreSQL in classi Python.
+\end{itemize}
 
 \newpage
 
 \section*{P}
 \addcontentsline{toc}{section}{P}
 \begin{itemize}
+\item \textbf{PascalCase}: Convenzione di nomenclatura in cui ogni parola inizia con la lettera maiuscola, senza separatori (es. \texttt{EditorPage}, \texttt{AuthContext}). In React è obbligatoria per i nomi dei componenti: una funzione con iniziale minuscola non viene riconosciuta come componente e causa violazioni delle Rules of Hooks.
+
 \item \textbf{PB (Product Baseline)}: È la definizione completa del prodotto dal punto di vista funzionale e progettuale, usata come base per sviluppo, test e verifica. Include anche l’MVP (Minimum Viable Product), cioè la versione minima del prodotto che contiene solo le funzionalità essenziali per essere testata dagli utenti e ricevere feedback.
 
 \item \textbf{PDCA (Plan-Do-Check-Act)}: metodo di gestione iterativo utilizzato per il controllo e il miglioramento continuo dei processi e dei prodotti. Nel Piano di Qualifica rappresenta la strategia di gestione della qualità: Plan (pianificare obiettivi e metriche), Do (eseguire le attività), Check (verificare i risultati tramite il Cruscotto), Act (applicare correzioni se i risultati non sono accettabili).
@@ -330,6 +391,10 @@ Se non si "ripaga" il debito (es. facendo refactoring), il costo degli errori re
 
 \item \textbf{Planned Value (PV)}: Valore del lavoro pianificato per essere completato entro una certa data. Rappresenta il budget autorizzato assegnato al lavoro che deve essere svolto. Metrica definita nel Piano di Qualifica.
 
+\item \textbf{PostgreSQL}: Sistema di gestione di database relazionale 
+open source, noto per la sua conformità agli standard SQL, 
+l'affidabilità e il supporto a tipi di dati avanzati. Nel POC è utilizzato per la persistenza di utenti, documenti, storici e generazioni AI.
+
 \item \textbf{Processi di Supporto}: Insieme di processi che supportano e garantiscono la qualità del prodotto e dei processi primari lungo tutto il ciclo di vita del software (es. Documentazione, Gestione della Qualità, Gestione della Configurazione).
 
 \item \textbf{Processi Primari di Fornitura}: Processi che riguardano le attività e i compiti del fornitore (il gruppo di progetto) necessari per preparare e consegnare il prodotto software al committente, inclusa la gestione manageriale ed economica.
@@ -337,6 +402,10 @@ Se non si "ripaga" il debito (es. facendo refactoring), il costo degli errori re
 \item \textbf{Processi Primari di Sviluppo}: Processi che includono le attività di realizzazione tecnica del prodotto software, dall'analisi dei requisiti alla progettazione, codifica e integrazione.
 
 \item \textbf{Proof of Concept (PoC)}: Prototipo iniziale e limitato del software, sviluppato per dimostrare la fattibilità delle funzionalità core e dell'idea del progetto in generale.
+
+\item \textbf{Prop drilling}: Problema che si verifica nelle applicazioni 
+React quando i dati devono essere passati come props attraverso 
+più livelli di componenti intermedi che non li utilizzano direttamente. Viene risolto tramite React Context, che rende i dati accessibili a qualsiasi componente della gerarchia senza passaggi intermedi.
 
 \end{itemize}
 \newpage
@@ -355,6 +424,13 @@ Se non si "ripaga" il debito (es. facendo refactoring), il costo degli errori re
 \section*{R}
 \addcontentsline{toc}{section}{R}
 \begin{itemize}
+\item \textbf{React}: Libreria JavaScript open source sviluppata da 
+Meta per la costruzione di interfacce utente basate su componenti 
+riutilizzabili. Adotta un modello dichiarativo in cui l'interfaccia è descritta in funzione dello stato, e aggiorna automaticamente il DOM al variare di quest'ultimo.
+
+\item \textbf{React Router}: Libreria standard per la gestione della 
+navigazione client-side nelle applicazioni React. Permette di definire route associate a componenti e di navigare tra pagine senza ricaricare l'intera applicazione. Nel POC è utilizzata nella versione 6.
+
 \item \textbf{Repository}: Spazio in cui viene salvato il codice del progetto insieme a tutte le versioni e i file utili. Permette al team di lavorare insieme senza perdere il lavoro svolto.
 
 \item \textbf{Requirements Stability Index (RSI)}: Metrica che quantifica la volatilità dei requisiti del progetto. Misura la percentuale di requisiti che non hanno subito modifiche in un determinato periodo rispetto al totale dei requisiti. Metrica definita nel Piano di Qualifica.
@@ -375,6 +451,8 @@ Esempio requisiti di vincolo:
 Licenza/Consegna: il codice deve essere pubblicato su un repository pubblico (es. GitHub) con licenza open-source (non so se considerarlo un requisito).
 \end{itemize}
 
+\item \textbf{REST (Representational State Transfer)}: Stile architetturale per la progettazione di API web basato su risorse identificate da URL e su operazioni espresse tramite metodi HTTP standard (GET, POST, PUT, DELETE). Le API REST sono stateless: ogni richiesta contiene tutte le informazioni necessarie per essere elaborata indipendentemente.
+
 \item \textbf{RTB (Requirements and Technology Baseline)}: Punto di riferimento formale e congelato del progetto, rappresentato da un documento approvato che stabilisce in modo definitivo l’insieme dei requisiti funzionali e non funzionali del sistema, insieme alle scelte architetturali e tecnologiche fondamentali su cui si baserà lo sviluppo. 
 \end{itemize}
 \newpage
@@ -382,6 +460,19 @@ Licenza/Consegna: il codice deve essere pubblicato su un repository pubblico (es
 \section*{S}
 \addcontentsline{toc}{section}{S}
 \begin{itemize}
+\item \textbf{Separation of Concerns}: Principio di progettazione 
+software secondo cui ogni modulo o componente deve avere una 
+responsabilità ben definita e separata dalle altre. Nel POC 
+si applica separando le chiamate HTTP (livello \texttt{api/}), 
+la logica applicativa (livello \texttt{hooks/}) e la presentazione 
+(livello \texttt{components/}).
+
+\item \textbf{Sessione (Flask Session)}: Meccanismo lato server per 
+mantenere lo stato di autenticazione dell'utente tra richieste 
+HTTP successive. Nel POC Flask utilizza cookie firmati con la 
+\texttt{FLASK\_SECRET\_KEY} per associare ogni richiesta alla 
+sessione dell'utente autenticato.
+
 \item \textbf{Schedule Performance Index (SPI)}: Indice di efficienza della schedulazione che misura la velocità di avanzamento del progetto rispetto a quanto pianificato. Un valore inferiore a 1 indica ritardo sulla tabella di marcia. Metrica definita nel Piano di Qualifica.
 
 \item \textbf{Schedule Variance (SV)}: Differenza tra il valore guadagnato (Earned Value) e il valore pianificato (Planned Value). Indica se il progetto è in anticipo o in ritardo rispetto alla schedulazione. Metrica definita nel Piano di Qualifica.
@@ -394,11 +485,22 @@ Licenza/Consegna: il codice deve essere pubblicato su un repository pubblico (es
 
 \item \textbf{Six Thinking Hats (Sei Cappelli per Pensare)}: Metodologia di Edward De Bono per l'analisi critica da diverse prospettive.
 \item \textbf{Sprint}: Periodo di lavoro breve e programmato (2 settimane nel nostro caso) in cui il team realizza un insieme di attività. Durante lo sprint i membri del gruppo cambiano ruolo per favorire collaborazione e crescita delle competenze.
+
+\item \textbf{Specifica Tecnica}: Documento di carattere tecnico-progettuale rivolto ai membri del team di sviluppo e ai revisori, volto a descrivere l'architettura di alto e basso livello del sistema. Formalizza le scelte relative ai design pattern, alla scomposizione dei componenti software, alla modellazione dei dati per la persistenza e alle logiche di 
+integrazione con servizi o API esterne. La sua finalità è fornire una base conoscitiva rigorosa per garantire la manutenibilità, la scalabilità e la corretta implementazione tecnica del software.
+
 \item \textbf{Sprint Planning}: Riunione che apre lo Sprint, in cui il team decide quali attività svolgere e come affrontarle.
 \item \textbf{Sprint Execution}: La fase dello Sprint in cui il team lavora concretamente sulle attività pianificate, sviluppando e testando le funzionalità.
 \item \textbf{Sprint Review}: Incontro alla fine dello Sprint dove il team mostra il lavoro completato e raccoglie feedback da Product Owner e stakeholder.
 \item \textbf{Sprint Retrospective}: Riunione conclusiva dello Sprint in cui il team riflette sul proprio modo di lavorare e propone miglioramenti per lo Sprint successivo.
+
+\item \textbf{SQLAlchemy}: Libreria Python che fornisce strumenti ORM 
+e un livello di astrazione per l'accesso al database. Permette 
+di definire modelli come classi Python e di eseguire operazioni 
+sul database tramite un'API orientata agli oggetti, gestendo 
+automaticamente connessioni e transazioni.
 \end{itemize}
+
 \newpage
 
 \section*{T}
@@ -446,6 +548,12 @@ Licenza/Consegna: il codice deve essere pubblicato su un repository pubblico (es
 \item \textbf{Verifica}: Processo che controlla se il prodotto è stato realizzato correttamente, cioè secondo specifiche e progettazione.
 
 \item \textbf{Versionamento}: Pratica sistematica di assegnare identificativi univoci e incrementali alle diverse versioni di un documento o di un componente software, al fine di tracciarne l'evoluzione nel tempo; garantisce tracciabilità, consente il controllo delle modifiche e facilita il ripristino di versioni precedenti.
+
+\item \textbf{Vite}: Strumento di build moderno per applicazioni 
+JavaScript che offre un server di sviluppo con ricaricamento 
+istantaneo e una pipeline di compilazione ottimizzata basata 
+su Rollup. Nel POC è utilizzato come bundler e dev server per 
+il frontend React.
 
 \item \textbf{V-Model (Modello a V)}: modello di sviluppo software sequenziale che evidenzia la relazione diretta "uno a uno" tra le fasi di sviluppo (lato sinistro della V) e le corrispondenti fasi di test (lato destro della V). Serve a capire che non si testa "alla fine", ma ogni fase di test verifica una specifica fase di progettazione.
 
