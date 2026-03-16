@@ -68,13 +68,13 @@
         \centering
         \begin{tabular}{|l|p{5cm}|}
             \hline
-            \textbf{Versione} & 1.0.0 \\
+            \textbf{Versione} & 1.0.1 \\
             \hline
-            \textbf{Stato} & Approvato \\
+            \textbf{Stato} & Da approvare \\
             \hline
-            \textbf{Redazione} & Tutto il gruppo \\
+            \textbf{Redazione} & Giulia Barzon, Joseph Grant, Elisa Marchioro \\
             \hline
-            \textbf{\gls{Verifica}} & Tutto il gruppo \\
+            \textbf{\gls{Verifica}} & Elisa Marchioro, Matteo Cuogo \\
             \hline
             \textbf{Approvazione} & Matteo Cuogo \\
             \hline
@@ -99,6 +99,10 @@
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{\gls{Verifica}} \\
         \hline
+        1.0.1 & 16/03/2026 & Giulia Barzon & Aggiunta modifica gestione sprint e info POC & \\
+        \hline
+        1.0.0 & 20/02/2026 & Matteo Cuogo & Approvazione documento & \\
+        \hline
         0.2.2 & 15/01/2026 & Giulia Barzon & Aggiunta sezione su test automatici per qualità documentazione & Matteo Cuogo\\
         \hline
         0.2.1 & 11/01/2026 & Giulia Barzon & Aggiunta sezione sul Piano di Qualifica & Matteo Cuogo\\
@@ -109,19 +113,19 @@
         \hline
         0.1.7 & 16/12/2025 & Giulia Barzon & Gestione comunicazione durante i periodi di vacanza & Elisa Marchioro\\
         \hline
-        0.1.6 & 5/12/2025 & Elisa Marchioro & Sistemata l'introduzione & \\
+        0.1.6 & 5/12/2025 & Elisa Marchioro & Sistemata l'introduzione & Matteo Cuogo\\
         \hline
-        0.1.5 & 5/12/2025 & Elisa Marchioro & Aggiunta sezione documenti, modifica sezione pianificazione del lavoro, aggiunta sezione piano di progetto & \\
+        0.1.5 & 5/12/2025 & Elisa Marchioro & Aggiunta sezione documenti, modifica sezione pianificazione del lavoro, aggiunta sezione piano di progetto & Matteo Cuogo\\
         \hline
-        0.1.4 & 5/12/2025 & Elisa Marchioro & Aggiunta \gls{analisi dei requisiti} & \\
+        0.1.4 & 5/12/2025 & Elisa Marchioro & Aggiunta \gls{analisi dei requisiti} & Matteo Cuogo\\
         \hline
-        0.1.3 & 19/11/2025 & Giulia Barzon & Aggiornamento regole \gls{GitHub} issues e dashboard & \\
+        0.1.3 & 19/11/2025 & Giulia Barzon & Aggiornamento regole \gls{GitHub} issues e dashboard & Elisa Marchioro\\
         \hline
-        0.1.2 & 16/11/2025 & Elisa Marchioro & Aggiunta descrizione dei ruoli & \\
+        0.1.2 & 16/11/2025 & Elisa Marchioro & Aggiunta descrizione dei ruoli & Matteo Cuogo\\
         \hline
-        0.1.1 & 14/11/2025 & Giulia Barzon & Modifica struttura documento e aggiunta organizzazione e comunicazione & \\
+        0.1.1 & 14/11/2025 & Giulia Barzon & Modifica struttura documento e aggiunta organizzazione e comunicazione & Elisa Marchioro\\
         \hline
-        0.1.0 & 5/11/2025 & Elisa Marchioro & Stesura iniziale documento & \\
+        0.1.0 & 5/11/2025 & Elisa Marchioro & Stesura iniziale documento & Matteo Cuogo \\
         \hline
     \end{tabular}
     \caption{Registro delle versioni del documento}
@@ -171,7 +175,13 @@ Il team si impegna a rimanere operativo durante i periodi di vacanza ed esami, p
 
 \section{Gestione del codice e documentazione}
 
-\subsection{Organizzazione della \gls{repository} \gls{GitHub}}
+\subsection{Organizzazione delle \gls{repository} \gls{GitHub}}
+Il gruppo adotta una strategia multi-repository su \textit{GitHub} per separare la gestione documentale dallo sviluppo tecnico:
+\begin{itemize}
+    \item \textbf{ByteMe}: Repository dedicata esclusivamente alla documentazione ufficiale del progetto (Norme, Piano di Progetto, Analisi, ecc.) in formato LaTex.
+    \item \textbf{POC\_ByteMe}: Repository utilizzata durante la fase RTB per lo sviluppo del Proof of Concept, finalizzata alla validazione tecnologica e all'integrazione con i modelli LLM.
+    \item \textbf{Second\_Brain}: Repository dedicata allo sviluppo del prodotto finale (MVP) durante la fase di PB. Qui verrà implementata l'architettura definitiva basata su React.
+\end{itemize}
 
 \subsubsection{\gls{Repository} per la documentazione}
 Per la documentazione del progetto abbiamo strutturato come segue la \gls{repository} \gls{Github}:
@@ -301,9 +311,21 @@ Questa cartella racchiude tutti i file pdf relativi alla fase di candidatura del
 \subsection{RTB}
 Questa cartella contiene tutti i documenti pdf relativi alla RTB (Requirements and Technology Baseline), ovvero raccoglie tutto ciò che costituisce la prima baseline del progetto. Sono presenti:
 \begin{itemize}
-\item \textbf{\gls{Analisi dei requisiti}}: questo documento descrive l'\gls{analisi dei requisiti} per il progetto "Second Brain". Vengono quindi descritti i casi d'uso, e per ciascuno, i rispettivi \gls{requisiti funzionali} o non funzionali.
-\item \textbf{Piano di progetto}: questo documento ha lo scopo di definire la pianificazione, l’organizzazione e il controllo delle attività del progetto Second Brain. Viene quindi fornita una sintesi delle attività, dei risultati e dei progressi conseguiti in ogni \gls{Sprint}.
+    \item \textbf{\gls{Analisi dei requisiti}}: Questo documento descrive l'\gls{analisi dei requisiti} per il progetto "Second Brain". Vengono quindi descritti i casi d'uso, e per ciascuno, i rispettivi \gls{requisiti funzionali} o non funzionali.
+    
+    \item \textbf{Piano di progetto}: Questo documento ha lo scopo di definire la pianificazione, l’organizzazione e il controllo delle attività del progetto Second Brain. Viene quindi fornita una sintesi delle attività, dei risultati e dei progressi conseguiti in ogni \gls{Sprint}.
+    
+    \item \textbf{Piano di Qualifica}: Questo documento ha lo scopo di definire gli standard di qualità, le metriche di processo e di prodotto e le procedure di verifica che il gruppo deve rispettare. Contiene il "cruscotto di valutazione" per monitorare l'andamento del progetto rispetto agli obiettivi prefissati.
 \end{itemize}
+
+
+\subsection{PB}
+Questa cartella contiene tutti i documenti pdf relativi alla PB (Product Baseline), ovvero raccoglie tutto ciò che costituisce la seconda baseline del progetto. Sono presenti:
+\begin{itemize}
+    \item \textbf{Specifica Tecnica}: Documento ad uso interno del team di sviluppo che dettaglia l'architettura software del prodotto. Descrive i design pattern adottati, la scomposizione dei componenti basati sul framework React, la struttura del database per la persistenza delle informazioni e le logiche di integrazione con le API degli LLM (Large Language Models).
+    \item \textbf{Manuale utente}: Documento destinato agli utilizzatori finali che illustra le procedure di installazione, configurazione e utilizzo dell'applicazione. Fornisce istruzioni operative per l'editing dei file, la gestione del sistema "Second Brain" e l'interazione con le funzionalità di assistenza generativa offerte dall'Intelligenza Artificiale.
+\end{itemize}
+
 
 \subsection{Documenti interni}
 Questa cartella contiene i documenti pdf redatti dal gruppo per l’organizzazione interna delle attività. Sono presenti:
@@ -396,6 +418,16 @@ Di seguito viene fornita una descrizione dettagliata dei diversi ruoli, illustra
     \item Planning meeting all'inizio di ogni \gls{sprint}
     \item Review meeting alla fine di ogni \gls{sprint}
     \item Retrospettiva per il miglioramento continuo
+\end{itemize}
+
+\subsection{Gestione della Pianificazione nella Fase PB}
+A partire dalla fase di Product Baseline (PB), il gruppo ByteMe adotta un modello di sviluppo agile basato su \textbf{sprint settimanali}. Tale accelerazione della cadenza è necessaria per garantire un monitoraggio costante dell'avanzamento dell'MVP e una risposta rapida alle criticità tecniche.
+
+\subsubsection{Cadenza delle Riunioni}
+La gestione dello sprint si articola in due momenti di coordinamento principali:
+\begin{itemize}
+    \item \textbf{Riunione di Inizio Sprint (Lunedì o martedì):} Incontro obbligatorio per la pianificazione delle attività. Durante la riunione vengono definite le \textit{issue} sulla Project Board di GitHub e assegnati i task ai membri del team.
+    \item \textbf{Riunione di Revisione (Fine settimana):} Incontro opzionale finalizzato alla verifica degli obiettivi raggiunti. Si analizzano eventuali task non completati (da spostare nel \textit{backlog} o nello sprint successivo) e si redige collettivamente la retrospettiva.
 \end{itemize}
 
 \newpage
