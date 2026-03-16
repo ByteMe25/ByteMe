@@ -129,17 +129,17 @@ jobs:
           # Entra nella cartella e compila
           cd "$dir"
           
-          # Compila
-          latexmk -pdf -interaction=nonstopmode "$filename.tex"
+          # Compila con file temporanei in una cartella separata
+          latexmk -pdf -interaction=nonstopmode -output-directory="../../build_tmp" "$filename.tex"
           
-          # Copia il PDF
-          if [ -f "$filename.pdf" ]; then
+          # Copia il PDF dalla cartella temporanea
+          if [ -f "../../build_tmp/$filename.pdf" ]; then
             echo "📋 Copiando $filename.pdf in ../../$dest/"
-            cp -v "$filename.pdf" "../../$dest/"
+            cp -v "../../build_tmp/$filename.pdf" "../../$dest/"
             echo "✅ PDF copiato con successo"
           else
             echo "❌ ERRORE: $filename.pdf non esiste dopo la compilazione"
-            ls -la
+            ls -la "../../build_tmp/" 2>/dev/null || echo "Cartella build_tmp non trovata"
           fi
           
           cd ../..
@@ -158,6 +158,9 @@ jobs:
         ls -la Verbali_esterni/ 2>/dev/null || echo "Vuota"
         echo "Documenti_interni/:"
         ls -la Documenti_interni/ 2>/dev/null || echo "Vuota"
+        
+        echo "🧹 Pulizia file temporanei di compilazione..."
+        rm -rf build_tmp/
 
     - name: Commit PDFs e .tex modificati
       env:

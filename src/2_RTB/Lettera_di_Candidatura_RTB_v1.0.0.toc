@@ -1,7 +1,0 @@
-\babel@toc {italian}{}\relax 
-\babel@toc {italian}{}\relax 
-\contentsline {section}{\numberline {1}Presentazione}{1}{section.1}%
-\contentsline {subsection}{\numberline {1.1}Proof of Concept}{1}{subsection.1.1}%
-\contentsline {section}{\numberline {2}Costi e impegni orari}{2}{section.2}%
-\contentsline {section}{\numberline {3}Costi e impegni orari}{2}{section.3}%
-\contentsline {section}{\numberline {4}Conclusione}{3}{section.4}%
