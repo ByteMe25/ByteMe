@@ -1,7 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1773682203.45341 "PreventivoCosti_ImpegniOrari.tex" "PreventivoCosti_ImpegniOrari.pdf" "PreventivoCosti_ImpegniOrari" 1773682204.19532 0
-  "../LogoByteMe.jpg" 1773682093.74412 68837 d7369632f59a9e5b9ca405093e1dac11 ""
-  "../logoUnipd.jpg" 1773682093.76512 845605 e6b244e8b4adc46b3a7896ee4b1fcf9c ""
+["pdflatex"] 1773685358.06338 "PreventivoCosti_ImpegniOrari.tex" "PreventivoCosti_ImpegniOrari.pdf" "PreventivoCosti_ImpegniOrari" 1773685358.79553 0
+  "../LogoByteMe.jpg" 1773685262.77238 68837 d7369632f59a9e5b9ca405093e1dac11 ""
+  "../logoUnipd.jpg" 1773685262.79238 845605 e6b244e8b4adc46b3a7896ee4b1fcf9c ""
   "/etc/texmf/web2c/texmf.cnf" 1773090822.48077 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm" 1136768653 1328 c834bbb027764024c09d3d2bf908b5f0 ""
@@ -195,12 +195,12 @@
   "/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty" 1700082560 55487 80a65caedd3722f4c20a14a69e785d8f ""
   "/usr/share/texlive/texmf-dist/web2c/texmf.cnf" 1707919699 40399 f2c302f7d2af602abb742093540a5834 ""
   "/usr/share/texmf/web2c/texmf.cnf" 1707919699 40399 f2c302f7d2af602abb742093540a5834 ""
-  "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1773682144.16525 128028 f533b797fba58d231669ea19e894e23e ""
-  "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1773682162 6802372 26a3e023c27ac7a64bfc50fdcbee6721 ""
-  "PreventivoCosti_ImpegniOrari.aux" 1773682204.10834 2728 c4491ad2d578042f8ad8beb1fd6efefb "pdflatex"
-  "PreventivoCosti_ImpegniOrari.out" 1773682204.10933 1225 a86e622f71f13827be8c658e296cc0f8 "pdflatex"
-  "PreventivoCosti_ImpegniOrari.tex" 1773682096.52658 10982 f41f9143cd83de08538abeac0241e2b4 ""
-  "PreventivoCosti_ImpegniOrari.toc" 1773682204.10933 689 9ad36bc4eac6851c73d0ffc1d39a6710 "pdflatex"
+  "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1773685300.48863 128028 f533b797fba58d231669ea19e894e23e ""
+  "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1773685343 6802373 d88415739a7ab421a37783e545054a89 ""
+  "PreventivoCosti_ImpegniOrari.aux" 1773685358.711 2728 c4491ad2d578042f8ad8beb1fd6efefb "pdflatex"
+  "PreventivoCosti_ImpegniOrari.out" 1773685358.712 1225 a86e622f71f13827be8c658e296cc0f8 "pdflatex"
+  "PreventivoCosti_ImpegniOrari.tex" 1773685262.75438 10982 f41f9143cd83de08538abeac0241e2b4 ""
+  "PreventivoCosti_ImpegniOrari.toc" 1773685358.712 689 9ad36bc4eac6851c73d0ffc1d39a6710 "pdflatex"
   (generated)
   "PreventivoCosti_ImpegniOrari.aux"
   "PreventivoCosti_ImpegniOrari.log"

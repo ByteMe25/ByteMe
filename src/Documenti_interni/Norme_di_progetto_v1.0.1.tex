@@ -99,7 +99,7 @@
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{\gls{Verifica}} \\
         \hline
-        1.0.1 & 16/03/2026 & Giulia Barzon & Aggiunta modifica gestione sprint e info POC & \\
+        1.0.1 & 16/03/2026 & Giulia Barzon & Aggiunta modifica gestione \gls{sprint} e info POC & \\
         \hline
         1.0.0 & 20/02/2026 & Matteo Cuogo & Approvazione documento & \\
         \hline
@@ -176,11 +176,11 @@ Il team si impegna a rimanere operativo durante i periodi di vacanza ed esami, p
 \section{Gestione del codice e documentazione}
 
 \subsection{Organizzazione delle \gls{repository} \gls{GitHub}}
-Il gruppo adotta una strategia multi-repository su \textit{GitHub} per separare la gestione documentale dallo sviluppo tecnico:
+Il gruppo adotta una strategia multi-\gls{repository} su \textit{\gls{GitHub}} per separare la gestione documentale dallo sviluppo tecnico:
 \begin{itemize}
-    \item \textbf{ByteMe}: Repository dedicata esclusivamente alla documentazione ufficiale del progetto (Norme, Piano di Progetto, Analisi, ecc.) in formato LaTex.
-    \item \textbf{POC\_ByteMe}: Repository utilizzata durante la fase RTB per lo sviluppo del Proof of Concept, finalizzata alla validazione tecnologica e all'integrazione con i modelli LLM.
-    \item \textbf{Second\_Brain}: Repository dedicata allo sviluppo del prodotto finale (MVP) durante la fase di PB. Qui verrà implementata l'architettura definitiva basata su React.
+    \item \textbf{ByteMe}: \gls{Repository} dedicata esclusivamente alla documentazione ufficiale del progetto (Norme, Piano di Progetto, Analisi, ecc.) in formato LaTex.
+    \item \textbf{POC\_ByteMe}: \gls{Repository} utilizzata durante la fase RTB per lo sviluppo del Proof of Concept, finalizzata alla \gls{validazione} tecnologica e all'integrazione con i modelli LLM.
+    \item \textbf{Second\_Brain}: \gls{Repository} dedicata allo sviluppo del prodotto finale (MVP) durante la fase di PB. Qui verrà implementata l'architettura definitiva basata su React.
 \end{itemize}
 
 \subsubsection{\gls{Repository} per la documentazione}
@@ -315,14 +315,14 @@ Questa cartella contiene tutti i documenti pdf relativi alla RTB (Requirements a
     
     \item \textbf{Piano di progetto}: Questo documento ha lo scopo di definire la pianificazione, l’organizzazione e il controllo delle attività del progetto Second Brain. Viene quindi fornita una sintesi delle attività, dei risultati e dei progressi conseguiti in ogni \gls{Sprint}.
     
-    \item \textbf{Piano di Qualifica}: Questo documento ha lo scopo di definire gli standard di qualità, le metriche di processo e di prodotto e le procedure di verifica che il gruppo deve rispettare. Contiene il "cruscotto di valutazione" per monitorare l'andamento del progetto rispetto agli obiettivi prefissati.
+    \item \textbf{Piano di Qualifica}: Questo documento ha lo scopo di definire gli standard di qualità, le metriche di processo e di prodotto e le procedure di \gls{verifica} che il gruppo deve rispettare. Contiene il "cruscotto di valutazione" per monitorare l'andamento del progetto rispetto agli obiettivi prefissati.
 \end{itemize}
 
 
 \subsection{PB}
 Questa cartella contiene tutti i documenti pdf relativi alla PB (Product Baseline), ovvero raccoglie tutto ciò che costituisce la seconda baseline del progetto. Sono presenti:
 \begin{itemize}
-    \item \textbf{Specifica Tecnica}: Documento ad uso interno del team di sviluppo che dettaglia l'architettura software del prodotto. Descrive i design pattern adottati, la scomposizione dei componenti basati sul framework React, la struttura del database per la persistenza delle informazioni e le logiche di integrazione con le API degli LLM (Large Language Models).
+    \item \textbf{Specifica Tecnica}: Documento ad uso interno del team di sviluppo che dettaglia l'architettura software del prodotto. Descrive i design pattern adottati, la scomposizione dei componenti basati sul framework React, la struttura del \gls{database} per la persistenza delle informazioni e le logiche di integrazione con le \gls{API} degli LLM (Large Language Models).
     \item \textbf{Manuale utente}: Documento destinato agli utilizzatori finali che illustra le procedure di installazione, configurazione e utilizzo dell'applicazione. Fornisce istruzioni operative per l'editing dei file, la gestione del sistema "Second Brain" e l'interazione con le funzionalità di assistenza generativa offerte dall'Intelligenza Artificiale.
 \end{itemize}
 
@@ -421,13 +421,13 @@ Di seguito viene fornita una descrizione dettagliata dei diversi ruoli, illustra
 \end{itemize}
 
 \subsection{Gestione della Pianificazione nella Fase PB}
-A partire dalla fase di Product Baseline (PB), il gruppo ByteMe adotta un modello di sviluppo agile basato su \textbf{sprint settimanali}. Tale accelerazione della cadenza è necessaria per garantire un monitoraggio costante dell'avanzamento dell'MVP e una risposta rapida alle criticità tecniche.
+A partire dalla fase di Product Baseline (PB), il gruppo ByteMe adotta un modello di sviluppo \gls{agile} basato su \textbf{\gls{sprint} settimanali}. Tale accelerazione della cadenza è necessaria per garantire un monitoraggio costante dell'avanzamento dell'MVP e una risposta rapida alle criticità tecniche.
 
 \subsubsection{Cadenza delle Riunioni}
-La gestione dello sprint si articola in due momenti di coordinamento principali:
+La gestione dello \gls{sprint} si articola in due momenti di coordinamento principali:
 \begin{itemize}
-    \item \textbf{Riunione di Inizio Sprint (Lunedì o martedì):} Incontro obbligatorio per la pianificazione delle attività. Durante la riunione vengono definite le \textit{issue} sulla Project Board di GitHub e assegnati i task ai membri del team.
-    \item \textbf{Riunione di Revisione (Fine settimana):} Incontro opzionale finalizzato alla verifica degli obiettivi raggiunti. Si analizzano eventuali task non completati (da spostare nel \textit{backlog} o nello sprint successivo) e si redige collettivamente la retrospettiva.
+    \item \textbf{Riunione di Inizio \gls{Sprint} (Lunedì o martedì):} Incontro obbligatorio per la pianificazione delle attività. Durante la riunione vengono definite le \textit{\gls{issue}} sulla Project Board di \gls{GitHub} e assegnati i task ai membri del team.
+    \item \textbf{Riunione di Revisione (Fine settimana):} Incontro opzionale finalizzato alla \gls{verifica} degli obiettivi raggiunti. Si analizzano eventuali task non completati (da spostare nel \textit{\gls{backlog}} o nello \gls{sprint} successivo) e si redige collettivamente la retrospettiva.
 \end{itemize}
 
 \newpage
