@@ -81,17 +81,29 @@ def estrai_parole_glossario(path: Path) -> list[str]:
 
 def normalizza_marcature_manuali(testo: str, parole: list[str]) -> tuple[str, int]:
     """
-    Converte le marcature manuali già presenti nel formato:
-        parola\\textsubscript{G}
-    nel formato usato dallo script:
-        \\gls{parola}
+    Converte le marcature manuali già presenti nei formati:
+        parola\\textsubscript{G}              → \\gls{parola}
+        \\textbf{parola}\\textsubscript{G}    → \\textbf{\\gls{parola}}
 
     Questo evita doppie marcature come \\gls{parola}\\textsubscript{G}.
     """
     totale = 0
     for parola in parole:
         escaped = re.escape(parola)
-        # Matcha la parola (case-insensitive) seguita da \textsubscript{G}
+
+        # Caso 1: \textbf{parola}\textsubscript{G} → \textbf{\gls{parola}}
+        pat_bold = re.compile(
+            r"\\textbf\{(" + escaped + r")\}\\textsubscript\{G\}",
+            re.IGNORECASE
+        )
+        def rimpiazza_bold(m, _cmd=COMANDO):
+            return f"\\textbf{{{_cmd}{{{m.group(1)}}}}}"
+        nuovo, n = pat_bold.subn(rimpiazza_bold, testo)
+        if n:
+            totale += n
+            testo = nuovo
+
+        # Caso 2: parola\textsubscript{G} → \gls{parola}
         pat = re.compile(
             r"\b(" + escaped + r")\\textsubscript\{G\}",
             re.IGNORECASE
@@ -102,6 +114,7 @@ def normalizza_marcature_manuali(testo: str, parole: list[str]) -> tuple[str, in
         if n:
             totale += n
             testo = nuovo
+
     return testo, totale
 
 
@@ -150,7 +163,6 @@ COMANDI_ESCLUSI = [
     r"\\label", r"\\ref", r"\\cite", r"\\url", r"\\href",
     r"\\includegraphics", r"\\bibliographystyle", r"\\bibliography",
     r"\\newcommand", r"\\renewcommand", r"\\def",
-    r"\\textbf",   # non toccare le voci del glossario stesso
     r"\\gls",      # già marcata
 ]
 
@@ -159,7 +171,6 @@ def _costruisci_regex_parola(parola: str) -> re.Pattern:
     escaped = re.escape(parola)
     pattern = (
         r"(?<!\\gls\{)"
-        r"(?<!\\textbf\{)"
         r"\b(" + escaped + r")\b"
     )
     return re.compile(pattern, re.IGNORECASE)
