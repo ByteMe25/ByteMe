@@ -1,0 +1,68 @@
+\babel@toc {italian}{}\relax 
+\babel@toc {italian}{}\relax 
+\contentsline {section}{\numberline {1}Introduzione}{4}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Scopo del documento}{4}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Cosa sono per noi le norme di progetto\textsubscript {G}?}{4}{subsection.1.2}%
+\contentsline {section}{\numberline {2}Organizzazione e comunicazione}{5}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Comunicazione interna}{5}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Comunicazione esterna}{5}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Comunicazione nei periodi di vacanza/sessione}{5}{subsection.2.3}%
+\contentsline {section}{\numberline {3}Gestione del codice e documentazione}{6}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Organizzazione della repository\textsubscript {G} GitHub\textsubscript {G}}{6}{subsection.3.1}%
+\contentsline {subsubsection}{\numberline {3.1.1}Repository\textsubscript {G} per la documentazione}{6}{subsubsection.3.1.1}%
+\contentsline {subsubsection}{\numberline {3.1.2}Versionamento\textsubscript {G} della documentazione}{6}{subsubsection.3.1.2}%
+\contentsline {subsubsection}{\numberline {3.1.3}Verifica\textsubscript {G} della documentazione}{6}{subsubsection.3.1.3}%
+\contentsline {subsection}{\numberline {3.2}Utilizzo di Git\textsubscript {G} e GitHub\textsubscript {G}}{6}{subsection.3.2}%
+\contentsline {subsubsection}{\numberline {3.2.1}Workflow di sviluppo}{6}{subsubsection.3.2.1}%
+\contentsline {subsubsection}{\numberline {3.2.2}Convenzioni per i documenti}{7}{subsubsection.3.2.2}%
+\contentsline {subsubsection}{\numberline {3.2.3}GitHub\textsubscript {G} Actions per LaTeX}{7}{subsubsection.3.2.3}%
+\contentsline {subsubsection}{\numberline {3.2.4}Gestione dei compiti tramite GitHub\textsubscript {G} Issues}{7}{subsubsection.3.2.4}%
+\contentsline {subsubsection}{\numberline {3.2.5}Dashboard per il tracking delle Issues}{8}{subsubsection.3.2.5}%
+\contentsline {subsection}{\numberline {3.3}Sito Web della documentazione}{8}{subsection.3.3}%
+\contentsline {section}{\numberline {4}Documenti}{9}{section.4}%
+\contentsline {subsection}{\numberline {4.1}.github\textsubscript {G}/workflows}{9}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Candidatura}{9}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}RTB}{9}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}Documenti interni}{9}{subsection.4.4}%
+\contentsline {subsection}{\numberline {4.5}Verbali esterni}{9}{subsection.4.5}%
+\contentsline {subsection}{\numberline {4.6}Verbali interni}{9}{subsection.4.6}%
+\contentsline {subsection}{\numberline {4.7}docs}{10}{subsection.4.7}%
+\contentsline {subsection}{\numberline {4.8}scripts}{10}{subsection.4.8}%
+\contentsline {subsection}{\numberline {4.9}src}{10}{subsection.4.9}%
+\contentsline {subsection}{\numberline {4.10}README.md}{10}{subsection.4.10}%
+\contentsline {section}{\numberline {5}Pianificazione del lavoro}{11}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Divisione dei ruoli}{11}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Descrizione dei ruoli}{11}{subsection.5.2}%
+\contentsline {subsubsection}{\numberline {5.2.1}Responsabile}{11}{subsubsection.5.2.1}%
+\contentsline {subsubsection}{\numberline {5.2.2}Amministratore}{11}{subsubsection.5.2.2}%
+\contentsline {subsubsection}{\numberline {5.2.3}Analista}{11}{subsubsection.5.2.3}%
+\contentsline {subsubsection}{\numberline {5.2.4}Progettista}{11}{subsubsection.5.2.4}%
+\contentsline {subsubsection}{\numberline {5.2.5}Programmatore}{11}{subsubsection.5.2.5}%
+\contentsline {subsubsection}{\numberline {5.2.6}Verificatore}{12}{subsubsection.5.2.6}%
+\contentsline {subsection}{\numberline {5.3}Sprint planning\textsubscript {G}}{12}{subsection.5.3}%
+\contentsline {section}{\numberline {6}Analisi dei Requisiti\textsubscript {G} (AdR)}{13}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Identificazione iniziale dei requisiti}{13}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Analisi individuale dei casi d'uso}{13}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Revisione dei casi d'uso}{13}{subsection.6.3}%
+\contentsline {subsection}{\numberline {6.4}Discussione dei casi d’uso con l’azienda}{13}{subsection.6.4}%
+\contentsline {subsection}{\numberline {6.5}Analisi individuale dei requisiti}{14}{subsection.6.5}%
+\contentsline {subsection}{\numberline {6.6}Revisione dei requisiti}{14}{subsection.6.6}%
+\contentsline {subsection}{\numberline {6.7}Scrittura del documento definitivo}{14}{subsection.6.7}%
+\contentsline {subsection}{\numberline {6.8}Giudizio sull'approccio adottato}{14}{subsection.6.8}%
+\contentsline {section}{\numberline {7}Piano di Progetto (PdP)}{15}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Analisi dei rischi}{15}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Approccio adottato, identificazione dei ruoli e pianificazione delle attività}{15}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}Riassunto di ciascuno Sprint\textsubscript {G}}{15}{subsection.7.3}%
+\contentsline {section}{\numberline {8}Piano di Qualifica (PdQ)}{16}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Scopo del documento}{16}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}Contenuto e Struttura}{16}{subsection.8.2}%
+\contentsline {subsection}{\numberline {8.3}Metodologia di calcolo dell'Earned Value (EV)}{16}{subsection.8.3}%
+\contentsline {subsection}{\numberline {8.4}Definition of Done (DoD)}{17}{subsection.8.4}%
+\contentsline {subsection}{\numberline {8.5}Strumenti e Metriche di Qualità Automatizzate}{17}{subsection.8.5}%
+\contentsline {subsubsection}{\numberline {8.5.1}Qualità della Documentazione}{17}{subsubsection.8.5.1}%
+\contentsline {paragraph}{Correttezza Ortografica (CO)}{17}{section*.3}%
+\contentsline {paragraph}{Indice di Gulpease (IG)}{17}{section*.4}%
+\contentsline {subsubsection}{\numberline {8.5.2}Qualità del Codice}{18}{subsubsection.8.5.2}%
+\contentsline {paragraph}{Lines of Code (LOC)}{18}{section*.5}%
+\contentsline {paragraph}{Complessità Ciclomatica (McCabe)}{18}{section*.6}%
+\contentsline {subsubsection}{\numberline {8.5.3}Visualizzazione dei Risultati}{18}{subsubsection.8.5.3}%

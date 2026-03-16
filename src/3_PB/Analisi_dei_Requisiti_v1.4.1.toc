@@ -1,0 +1,141 @@
+\babel@toc {italian}{}\relax 
+\babel@toc {italian}{}\relax 
+\contentsline {section}{\numberline {1}Introduzione}{1}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Scopo del documento}{1}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Glossario\textsubscript {G}}{1}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Riferimenti}{1}{subsection.1.3}%
+\contentsline {subsubsection}{\numberline {1.3.1}Riferimenti normativi}{1}{subsubsection.1.3.1}%
+\contentsline {subsubsection}{\numberline {1.3.2}Riferimenti informativi}{1}{subsubsection.1.3.2}%
+\contentsline {section}{\numberline {2}Descrizione del progetto}{2}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Obiettivi del prodotto}{2}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Funzionalità del prodotto}{2}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Caratteristiche del prodotto}{2}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Utenti}{2}{subsection.2.4}%
+\contentsline {section}{\numberline {3}Casi d'uso}{4}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Introduzione}{4}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Attori}{4}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Macroarea 1 - Editor di testo\textsubscript {G}}{5}{subsection.3.3}%
+\contentsline {subsubsection}{\numberline {3.3.1}UC-1.0 - Scrittura nell'editor}{5}{subsubsection.3.3.1}%
+\contentsline {subsubsection}{\numberline {3.3.2}UC-1.0.1 - Gestione perdita della connessione Internet}{5}{subsubsection.3.3.2}%
+\contentsline {subsubsection}{\numberline {3.3.3}UC-1.0.2 - Gestione errore di risposta dell'editor}{5}{subsubsection.3.3.3}%
+\contentsline {subsubsection}{\numberline {3.3.4}UC-1.1 - Visualizzazione anteprima in tempo reale}{6}{subsubsection.3.3.4}%
+\contentsline {subsubsection}{\numberline {3.3.5}UC-1.1.1 - Gestione errore nell'anteprima}{6}{subsubsection.3.3.5}%
+\contentsline {subsubsection}{\numberline {3.3.6}UC-1.2 - Selezione del testo}{7}{subsubsection.3.3.6}%
+\contentsline {subsubsection}{\numberline {3.3.7}UC-1.3 - Copiare il testo}{7}{subsubsection.3.3.7}%
+\contentsline {subsubsection}{\numberline {3.3.8}UC-1.4 - Incollare il testo}{8}{subsubsection.3.3.8}%
+\contentsline {subsubsection}{\numberline {3.3.9}UC-1.5 - Tagliare il testo}{8}{subsubsection.3.3.9}%
+\contentsline {subsubsection}{\numberline {3.3.10}UC-1.6 - Annullamento modifica (Undo)}{9}{subsubsection.3.3.10}%
+\contentsline {subsubsection}{\numberline {3.3.11}UC-1.6.1 - Gestione assenza di modifiche annullabili}{10}{subsubsection.3.3.11}%
+\contentsline {subsubsection}{\numberline {3.3.12}UC-1.7 - Ripristino modifica (Redo)}{10}{subsubsection.3.3.12}%
+\contentsline {subsubsection}{\numberline {3.3.13}UC-1.7.1 - Errore per modifiche non ripristinabili}{10}{subsubsection.3.3.13}%
+\contentsline {subsubsection}{\numberline {3.3.14}UC-1.8.0 - Modifica del testo selezionato tramite barra degli strumenti}{11}{subsubsection.3.3.14}%
+\contentsline {subsubsection}{\numberline {3.3.15}UC-1.8.0.1 - Estensione formattazione a testo parzialmente formattato}{11}{subsubsection.3.3.15}%
+\contentsline {subsubsection}{\numberline {3.3.16}UC-1.8.1 - Rimozione formattazione tramite toolbar\textsubscript {G}}{12}{subsubsection.3.3.16}%
+\contentsline {subsubsection}{\numberline {3.3.17}UC-1.8.2 - Applicazione grassetto al testo selezionato}{12}{subsubsection.3.3.17}%
+\contentsline {subsubsection}{\numberline {3.3.18}UC-1.8.3 - Applicazione corsivo al testo selezionato}{13}{subsubsection.3.3.18}%
+\contentsline {subsubsection}{\numberline {3.3.19}UC-1.8.4 - Applicazione sottolineatura al testo selezionato}{13}{subsubsection.3.3.19}%
+\contentsline {subsubsection}{\numberline {3.3.20}UC-1.8.5 - Applicazione intestazioni al testo selezionato}{13}{subsubsection.3.3.20}%
+\contentsline {subsubsection}{\numberline {3.3.21}UC-1.8.6 - Inserimento elementi di struttura}{14}{subsubsection.3.3.21}%
+\contentsline {subsubsection}{\numberline {3.3.22}UC-1.8.7 - Inserimento di liste ed elenchi}{14}{subsubsection.3.3.22}%
+\contentsline {subsubsection}{\numberline {3.3.23}UC-1.8.7.1 - Gestione di sotto-liste}{14}{subsubsection.3.3.23}%
+\contentsline {subsubsection}{\numberline {3.3.24}UC-1.8.8 - Inserimento di link e riferimenti}{15}{subsubsection.3.3.24}%
+\contentsline {subsubsection}{\numberline {3.3.25}UC-1.9 - Impostare formattazioni senza testo presente nell'editor}{15}{subsubsection.3.3.25}%
+\contentsline {subsubsection}{\numberline {3.3.26}UC-1.9.1 - Impostare grassetto al testo futuro}{16}{subsubsection.3.3.26}%
+\contentsline {subsubsection}{\numberline {3.3.27}UC-1.9.2 - Impostare corsivo al testo futuro}{16}{subsubsection.3.3.27}%
+\contentsline {subsubsection}{\numberline {3.3.28}UC-1.9.3 - Impostare sottolineatura al testo futuro}{16}{subsubsection.3.3.28}%
+\contentsline {subsubsection}{\numberline {3.3.29}UC-1.9.4 - Impostare intestazioni}{17}{subsubsection.3.3.29}%
+\contentsline {subsubsection}{\numberline {3.3.30}UC-1.9.5 - Impostare struttura al documento}{17}{subsubsection.3.3.30}%
+\contentsline {subsubsection}{\numberline {3.3.31}UC-1.9.6 - Impostare liste ed elenchi}{17}{subsubsection.3.3.31}%
+\contentsline {subsubsection}{\numberline {3.3.32}UC-1.9.7 - Impostare link e riferimenti}{18}{subsubsection.3.3.32}%
+\contentsline {subsubsection}{\numberline {3.3.33}UC-1.10 - Gestione modalità di visualizzazione}{18}{subsubsection.3.3.33}%
+\contentsline {subsubsection}{\numberline {3.3.34}UC-1.10.1 - Modalità di visualizzazione solo editor}{19}{subsubsection.3.3.34}%
+\contentsline {subsubsection}{\numberline {3.3.35}UC-1.10.2 - Modalità di visualizzazione solo documento formattato}{19}{subsubsection.3.3.35}%
+\contentsline {subsubsection}{\numberline {3.3.36}UC-1.10.3 - Modalità di visualizzazione split view}{19}{subsubsection.3.3.36}%
+\contentsline {subsubsection}{\numberline {3.3.37}UC-1.11 - Ricerca di caratteri nel testo}{20}{subsubsection.3.3.37}%
+\contentsline {subsubsection}{\numberline {3.3.38}UC-1.11.1 - Gestione assenza di occorrenze}{20}{subsubsection.3.3.38}%
+\contentsline {subsection}{\numberline {3.4}Macroarea 2 - Funzionalità AI}{22}{subsection.3.4}%
+\contentsline {subsubsection}{\numberline {3.4.1}UC-2.0 - Visualizzazione storico generazioni AI}{22}{subsubsection.3.4.1}%
+\contentsline {subsubsection}{\numberline {3.4.2}UC-2.0.1 - Visualizzazione storico generazioni vuoto}{22}{subsubsection.3.4.2}%
+\contentsline {subsubsection}{\numberline {3.4.3}UC-2.0.2 - Visualizzazione titolo generazione}{22}{subsubsection.3.4.3}%
+\contentsline {subsubsection}{\numberline {3.4.4}UC-2.0.3 - Visualizzazione testo generato}{23}{subsubsection.3.4.4}%
+\contentsline {subsubsection}{\numberline {3.4.5}UC-2.0.4 - Eliminazione di una generazione dallo storico generazioni AI}{23}{subsubsection.3.4.5}%
+\contentsline {subsubsection}{\numberline {3.4.6}UC-2.0.5 - Visualizzazione storico generazioni AI per utente registrato}{23}{subsubsection.3.4.6}%
+\contentsline {subsubsection}{\numberline {3.4.7}UC-2.1 - Interazione con i testi generati dall’AI}{24}{subsubsection.3.4.7}%
+\contentsline {subsubsection}{\numberline {3.4.8}UC-2.1.1 - Conferma del testo generato dall'AI}{25}{subsubsection.3.4.8}%
+\contentsline {subsubsection}{\numberline {3.4.9}UC-2.1.2 - Eliminazione del testo generato}{25}{subsubsection.3.4.9}%
+\contentsline {subsubsection}{\numberline {3.4.10}UC-2.1.3 - Rigenerazione testo generato}{26}{subsubsection.3.4.10}%
+\contentsline {subsubsection}{\numberline {3.4.11}UC-2.1.4 - Errore dal LLM}{26}{subsubsection.3.4.11}%
+\contentsline {subsubsection}{\numberline {3.4.12}UC-2.1.5 - Annullamento dell’operazione AI}{26}{subsubsection.3.4.12}%
+\contentsline {subsubsection}{\numberline {3.4.13}UC-2.2 - Riassunto del testo}{27}{subsubsection.3.4.13}%
+\contentsline {subsubsection}{\numberline {3.4.14}UC-2.3 - Riscrittura del testo}{27}{subsubsection.3.4.14}%
+\contentsline {subsubsection}{\numberline {3.4.15}UC-2.4 - Traduzione del testo}{28}{subsubsection.3.4.15}%
+\contentsline {subsubsection}{\numberline {3.4.16}UC-2.4.1 - Gestione mancata selezione della lingua di destinazione}{29}{subsubsection.3.4.16}%
+\contentsline {subsubsection}{\numberline {3.4.17}UC-2.4.2 - Traduzione del testo in inglese}{29}{subsubsection.3.4.17}%
+\contentsline {subsubsection}{\numberline {3.4.18}UC-2.4.3 - Traduzione del testo in Spagnolo}{30}{subsubsection.3.4.18}%
+\contentsline {subsubsection}{\numberline {3.4.19}UC-2.4.4 - Traduzione del testo in Francese}{30}{subsubsection.3.4.19}%
+\contentsline {subsubsection}{\numberline {3.4.20}UC-2.4.5 - Traduzione del testo in Tedesco}{31}{subsubsection.3.4.20}%
+\contentsline {subsubsection}{\numberline {3.4.21}UC-2.4.6 - Traduzione del testo in Cinese Mandarino}{31}{subsubsection.3.4.21}%
+\contentsline {subsubsection}{\numberline {3.4.22}UC-2.4.7 - Traduzione del testo in Italiano}{31}{subsubsection.3.4.22}%
+\contentsline {subsubsection}{\numberline {3.4.23}UC-2.5 - Correzione grammaticale}{32}{subsubsection.3.4.23}%
+\contentsline {subsubsection}{\numberline {3.4.24}UC-2.5.1 - Nessun errore grammaticale rilevato}{32}{subsubsection.3.4.24}%
+\contentsline {subsubsection}{\numberline {3.4.25}UC-2.6 - Critica testuale con i 6 Cappelli di De Bono}{33}{subsubsection.3.4.25}%
+\contentsline {subsubsection}{\numberline {3.4.26}UC-2.6.1 - Gestione testo insufficiente per analisi critica}{33}{subsubsection.3.4.26}%
+\contentsline {subsubsection}{\numberline {3.4.27}UC-2.6.2 - Gestione mancata selezione della modalità di analisi}{34}{subsubsection.3.4.27}%
+\contentsline {subsubsection}{\numberline {3.4.28}UC-2.6.3 - Critica testuale con il Cappello Bianco}{35}{subsubsection.3.4.28}%
+\contentsline {subsubsection}{\numberline {3.4.29}UC-2.6.4 - Critica testuale con il Cappello Rosso}{35}{subsubsection.3.4.29}%
+\contentsline {subsubsection}{\numberline {3.4.30}UC-2.6.5 - Critica testuale con il Cappello Nero}{35}{subsubsection.3.4.30}%
+\contentsline {subsubsection}{\numberline {3.4.31}UC-2.6.6 - Critica testuale con il Cappello Giallo}{36}{subsubsection.3.4.31}%
+\contentsline {subsubsection}{\numberline {3.4.32}UC-2.6.7 - Critica testuale con il Cappello Verde}{36}{subsubsection.3.4.32}%
+\contentsline {subsubsection}{\numberline {3.4.33}UC-2.6.8 - Critica testuale con il Cappello Blu}{37}{subsubsection.3.4.33}%
+\contentsline {subsubsection}{\numberline {3.4.34}UC-2.7 - Generazione di testo (Distant Writing\textsubscript {G})}{37}{subsubsection.3.4.34}%
+\contentsline {subsubsection}{\numberline {3.4.35}UC-2.7.1 - Gestione prompt incompleto}{38}{subsubsection.3.4.35}%
+\contentsline {subsubsection}{\numberline {3.4.36}UC-2.8 - Generazione di grafici e tabelle}{39}{subsubsection.3.4.36}%
+\contentsline {subsubsection}{\numberline {3.4.37}UC-2.8.1 - Gestire dati insufficienti per la visualizzazione di grafici e tabelle}{39}{subsubsection.3.4.37}%
+\contentsline {subsubsection}{\numberline {3.4.38}UC-2.9 - Generazione di mappe concettuali}{40}{subsubsection.3.4.38}%
+\contentsline {subsubsection}{\numberline {3.4.39}UC-2.9.1 - Gestione errori di visualizzazione delle mappe concettuali generate}{40}{subsubsection.3.4.39}%
+\contentsline {subsubsection}{\numberline {3.4.40}UC-2.10 - Generazione di formule matematiche}{41}{subsubsection.3.4.40}%
+\contentsline {subsubsection}{\numberline {3.4.41}UC-2.10.1 - Gestire simboli non supportati}{42}{subsubsection.3.4.41}%
+\contentsline {subsection}{\numberline {3.5}Macroarea 3 - Persistenza: Caricamento}{43}{subsection.3.5}%
+\contentsline {subsubsection}{\numberline {3.5.1}UC-3.0 - Caricamento file}{43}{subsubsection.3.5.1}%
+\contentsline {subsubsection}{\numberline {3.5.2}UC-3.0.1 - Caricamento file Markdown\textsubscript {G}}{43}{subsubsection.3.5.2}%
+\contentsline {subsubsection}{\numberline {3.5.3}UC-3.0.2 - Caricamento file di testo}{43}{subsubsection.3.5.3}%
+\contentsline {subsubsection}{\numberline {3.5.4}UC-3.0.3 - Caricamento tramite trascinamento (drag-and-drop)}{44}{subsubsection.3.5.4}%
+\contentsline {subsubsection}{\numberline {3.5.5}UC-3.0.4 - Caricamento tramite dialogo di esplorazione file (file picker)}{44}{subsubsection.3.5.5}%
+\contentsline {subsubsection}{\numberline {3.5.6}UC-3.1 - Gestione formati file non supportati}{45}{subsubsection.3.5.6}%
+\contentsline {subsubsection}{\numberline {3.5.7}UC-3.2 - Gestione file troppo grandi}{45}{subsubsection.3.5.7}%
+\contentsline {subsubsection}{\numberline {3.5.8}UC-3.3 - Rimozione file caricato}{46}{subsubsection.3.5.8}%
+\contentsline {subsubsection}{\numberline {3.5.9}UC-3.3.1 - Annullamento rimozione file caricato}{46}{subsubsection.3.5.9}%
+\contentsline {subsection}{\numberline {3.6}Macroarea 4 - Persistenza: Salvataggio}{47}{subsection.3.6}%
+\contentsline {subsubsection}{\numberline {3.6.1}UC-4.0 - Esportazione di un file}{47}{subsubsection.3.6.1}%
+\contentsline {subsubsection}{\numberline {3.6.2}UC-4.0.1 - Esportare un file in PDF}{47}{subsubsection.3.6.2}%
+\contentsline {subsubsection}{\numberline {3.6.3}UC-4.0.2 - Esportare un file in MD}{47}{subsubsection.3.6.3}%
+\contentsline {subsubsection}{\numberline {3.6.4}UC-4.0.3 - Esportare un file in formato HTML}{48}{subsubsection.3.6.4}%
+\contentsline {subsubsection}{\numberline {3.6.5}UC-4.0.4 - Esportare un file in formato ODT}{48}{subsubsection.3.6.5}%
+\contentsline {subsubsection}{\numberline {3.6.6}UC-4.0.5 - Esportare un file in formato DOCX}{48}{subsubsection.3.6.6}%
+\contentsline {subsubsection}{\numberline {3.6.7}UC-4.0.6 - Esportare selezionate pagine del documento}{49}{subsubsection.3.6.7}%
+\contentsline {subsubsection}{\numberline {3.6.8}UC-4.0.7 - Esportare un range di pagine del documento}{49}{subsubsection.3.6.8}%
+\contentsline {subsubsection}{\numberline {3.6.9}UC-4.1 - Stampare il documento}{50}{subsubsection.3.6.9}%
+\contentsline {subsubsection}{\numberline {3.6.10}UC-4.2 - Apertura di un file salvato}{50}{subsubsection.3.6.10}%
+\contentsline {subsubsection}{\numberline {3.6.11}UC-4.2.1 - Gestione annullamento apertura}{51}{subsubsection.3.6.11}%
+\contentsline {subsubsection}{\numberline {3.6.12}UC-4.3 - Salvataggio file nel DataBase\textsubscript {G}}{52}{subsubsection.3.6.12}%
+\contentsline {subsubsection}{\numberline {3.6.13}UC-4.3.1 - Gestione tentativo salvataggio nota vuota}{52}{subsubsection.3.6.13}%
+\contentsline {subsubsection}{\numberline {3.6.14}UC-4.3.2 - Gestione salvataggio senza autenticazione}{53}{subsubsection.3.6.14}%
+\contentsline {subsection}{\numberline {3.7}Macroarea 5 - Autenticazione}{54}{subsection.3.7}%
+\contentsline {subsubsection}{\numberline {3.7.1}UC-5.0 - Login}{54}{subsubsection.3.7.1}%
+\contentsline {subsubsection}{\numberline {3.7.2}UC-5.0.1 - Gestione username inesistente}{54}{subsubsection.3.7.2}%
+\contentsline {subsubsection}{\numberline {3.7.3}UC-5.0.2 - Gestione password errata}{54}{subsubsection.3.7.3}%
+\contentsline {subsubsection}{\numberline {3.7.4}UC-5.1 - Registrazione}{55}{subsubsection.3.7.4}%
+\contentsline {subsubsection}{\numberline {3.7.5}UC-5.1.1 - Gestione username già esistente}{55}{subsubsection.3.7.5}%
+\contentsline {subsubsection}{\numberline {3.7.6}UC-5.2 - Eliminazione dell'account}{56}{subsubsection.3.7.6}%
+\contentsline {subsubsection}{\numberline {3.7.7}UC-5.2.1 - Annullamento della procedura di eliminazione account}{56}{subsubsection.3.7.7}%
+\contentsline {subsubsection}{\numberline {3.7.8}UC-5.3 - Logout}{57}{subsubsection.3.7.8}%
+\contentsline {section}{\numberline {4}Requisiti}{59}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Classificazione dei requisiti}{59}{subsection.4.1}%
+\contentsline {subsubsection}{\numberline {4.1.1}Notazione standardizzata dei requisiti}{59}{subsubsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.2}Categorie dei Requisiti}{59}{subsection.4.2}%
+\contentsline {subsubsection}{\numberline {4.2.1}Requisiti Funzionali\textsubscript {G}}{59}{subsubsection.4.2.1}%
+\contentsline {subsubsection}{\numberline {4.2.2}Requisiti di Vincolo\textsubscript {G}}{68}{subsubsection.4.2.2}%
+\contentsline {subsubsection}{\numberline {4.2.3}Requisiti di Qualità\textsubscript {G}}{69}{subsubsection.4.2.3}%
+\contentsline {subsection}{\numberline {4.3}Tracciamento}{70}{subsection.4.3}%
+\contentsline {subsubsection}{\numberline {4.3.1}Fonte - Requisiti}{70}{subsubsection.4.3.1}%
+\contentsline {section}{\numberline {5}Riepilogo}{73}{section.5}%

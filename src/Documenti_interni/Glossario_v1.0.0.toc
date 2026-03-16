@@ -1,0 +1,30 @@
+\babel@toc {italian}{}\relax 
+\babel@toc {italian}{}\relax 
+\contentsline {section}{\numberline {1}Introduzione}{1}{section.1}%
+\contentsline {section}{\numberline {2}Struttura del documento}{1}{section.2}%
+\contentsline {section}{A}{2}{section*.3}%
+\contentsline {section}{B}{3}{section*.4}%
+\contentsline {section}{C}{4}{section*.5}%
+\contentsline {section}{D}{5}{section*.6}%
+\contentsline {section}{E}{6}{section*.7}%
+\contentsline {section}{F}{7}{section*.8}%
+\contentsline {section}{G}{8}{section*.9}%
+\contentsline {section}{H}{9}{section*.10}%
+\contentsline {section}{I}{10}{section*.11}%
+\contentsline {section}{J}{11}{section*.12}%
+\contentsline {section}{K}{12}{section*.13}%
+\contentsline {section}{L}{13}{section*.14}%
+\contentsline {section}{M}{14}{section*.15}%
+\contentsline {section}{N}{15}{section*.16}%
+\contentsline {section}{O}{16}{section*.17}%
+\contentsline {section}{P}{17}{section*.18}%
+\contentsline {section}{Q}{18}{section*.19}%
+\contentsline {section}{R}{19}{section*.20}%
+\contentsline {section}{S}{20}{section*.21}%
+\contentsline {section}{T}{21}{section*.22}%
+\contentsline {section}{U}{22}{section*.23}%
+\contentsline {section}{V}{23}{section*.24}%
+\contentsline {section}{W}{24}{section*.25}%
+\contentsline {section}{X}{25}{section*.26}%
+\contentsline {section}{Y}{26}{section*.27}%
+\contentsline {section}{Z}{27}{section*.28}%
