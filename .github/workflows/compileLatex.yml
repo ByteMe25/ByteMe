@@ -6,9 +6,9 @@ on:
       - 'src/**/*.tex'
       - 'src/**/*.jpg'
       - 'src/**/*.png'
-      - 'scripts/**/*.py'   # Aggiunto: esegue se modifichi gli script
-      - 'scripts/**/*.txt'  # Aggiunto: esegue se aggiorni la whitelist
-      - 'requirements.txt'  # Aggiunto: esegue se cambi le dipendenze
+      - 'scripts/**/*.py'
+      - 'scripts/**/*.txt'
+      - 'requirements.txt'
   workflow_dispatch:
 
 jobs:
@@ -38,6 +38,15 @@ jobs:
           pip install -r requirements.txt
         else
           echo "⚠️ Nessun file requirements.txt trovato."
+        fi
+
+    - name: 📖 Applica pedice Glossario
+      run: |
+        if [ -f "scripts/glossario.py" ]; then
+          echo "🔤 Applicazione pedice G alle parole del glossario..."
+          python scripts/glossario.py
+        else
+          echo "⚠️ Script scripts/glossario.py non trovato, salto."
         fi
 
     - name: 🔎 Check Spelling (Ortografia)
@@ -123,17 +132,14 @@ jobs:
           # Compila
           latexmk -pdf -interaction=nonstopmode "$filename.tex"
           
-          # DEBUG: Cosa c'è nella cartella dopo la compilazione?
-          # ls -la *.pdf 2>/dev/null || echo "Nessun PDF trovato"
-          
           # Copia il PDF
           if [ -f "$filename.pdf" ]; then
             echo "📋 Copiando $filename.pdf in ../../$dest/"
-            cp -v "$filename.pdf" "../../$dest/"  # -v per vedere se funziona
+            cp -v "$filename.pdf" "../../$dest/"
             echo "✅ PDF copiato con successo"
           else
             echo "❌ ERRORE: $filename.pdf non esiste dopo la compilazione"
-            ls -la  # Mostra tutti i file per debug
+            ls -la
           fi
           
           cd ../..
@@ -153,7 +159,7 @@ jobs:
         echo "Documenti_interni/:"
         ls -la Documenti_interni/ 2>/dev/null || echo "Vuota"
 
-    - name: Commit PDFs
+    - name: Commit PDFs e .tex modificati
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
@@ -163,12 +169,13 @@ jobs:
         echo "📝 Verifica file da committare..."
         git status --porcelain
         
-        git add 1_Candidatura/ 2_RTB/ 3_PB/ Verbali_interni/ Verbali_esterni/ Documenti_interni
+        # Aggiunge sia i PDF generati che i .tex modificati dallo script glossario
+        git add 1_Candidatura/ 2_RTB/ 3_PB/ Verbali_interni/ Verbali_esterni/ Documenti_interni/ src/
         
         if git diff --staged --quiet; then
-          echo "Nessun PDF nuovo da committare"
+          echo "Nessun file nuovo da committare"
         else
-          git commit -m "Auto-generate PDFs [skip actions]"
+          git commit -m "Auto-generate PDFs + applica glossario [skip actions]"
           git push
-          echo "PDFs committati e push completato"
+          echo "✅ Commit e push completati"
         fi
