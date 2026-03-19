@@ -76,10 +76,17 @@ async function loadPdfFiles({
   try {
     const res = await fetch(apiUrl, { headers });
     const items = await res.json();
+    const excludeList = Array.isArray(exclude) ? exclude : [exclude];
+
+    if (!res.ok || !Array.isArray(items)) {
+      const msg = items?.message || `Errore HTTP ${res.status}`;
+      container.innerHTML = `<div style="color:crimson">Errore API GitHub: ${msg}</div>`;
+      return;
+    }
 
     let pdfs = items
       .filter(f => f.type === 'file' && /\.pdf$/i.test(f.name))
-      .filter(f => ![exclude].flat().includes(f.name));
+      .filter(f => !excludeList.some(e => f.name.toLowerCase().includes(e.toLowerCase())));
 
     pdfs.sort((a, b) => {
       const cmp = a.name.localeCompare(b.name, undefined, { numeric: true });

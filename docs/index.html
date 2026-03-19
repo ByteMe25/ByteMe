@@ -55,6 +55,36 @@
             <div id="wow" class="special_link">
             </div>
         </div>
+        <div id="latest_files" class="block">
+            <h2 class="subtitle">File recenti</h2>
+            <p>Qui sotto è possibile visualizzare gli ultimi documenti prodotti durante lo sviluppo del progetto da
+                parte del
+                team
+                ByteMe.</p>
+            <h3 class="files_title">Verbali</h3>
+            <div id="verbali_files" class="files_list">
+                <h4 class="files_title">Interni</h4>
+                <div id="verbali_interni"></div>
+                <h4 class="files_title">Esterni</h4>
+                <div id="verbali_esterni"></div>
+            </div>
+        </div>
+        <div id="candidatura" class="block">
+            <h2 class="subtitle">Documenti per candidatura</h2>
+            <p>I file seguenti spiegano le ragioni e l’impegno con cui il gruppo ByteMe porterà avanti il progetto</p>
+            <div id="letter" class="special_link">
+            </div>
+            <h3 class="files_title">Altri file</h4>
+                <div id="candidatura_files"></div>
+        </div>
+        <div id="rtb" class="block">
+            <h2 class="subtitle">Prima Fase RTB</h2>
+            <p>I seguenti documenti riguardano la prima fase di valutazione del progetto.</p>
+            <div id="rtb_letter" class="special_link">
+            </div>
+            <h3 class="files_title">Altri file</h4>
+                <div id="rtb_files"></div>
+        </div>
         <div id="about" class="block">
             <h2 class="subtitle">Chi siamo</h2>
             <div>
@@ -84,33 +114,10 @@
                 </div>
             </div>
         </div>
-        <div id="candidatura" class="block">
-            <h2 class="subtitle">Documenti per candidatura</h2>
-            <p>I file seguenti spiegano le ragioni e l’impegno con cui il gruppo ByteMe porterà avanti il progetto</p>
-            <div id="letter" class="special_link">
-            </div>
-            <h3 class="files_title">Altri file</h4>
-                <div id="candidatura_files"></div>
-        </div>
-        <div id="latest_files" class="block">
-            <h2 class="subtitle">File recenti</h2>
-            <p>Qui sotto è possibile visualizzare gli ultimi documenti prodotti durante lo sviluppo del progetto da
-                parte del
-                team
-                ByteMe.</p>
-            <h3 class="files_title">Verbali</h3>
-            <div id="verbali_files" class="files_list">
-                <h4 class="files_title">Interni</h4>
-                <div id="verbali_interni"></div>
-                <h4 class="files_title">Esterni</h4>
-                <div id="verbali_esterni"></div>
-            </div>
-        </div>
         <footer>
-            <p>© 2025 ByteMe. All rights reserved.</p>
+            <p>© 2026 ByteMe. All rights reserved.</p>
         </footer>
     </div>
-    <!--<script src="js/script.js"></script>-->
     <script src="js/load_pdfs.js"></script>
     <script src="js/menu.js"></script>
     <script>
@@ -146,6 +153,18 @@
                 divId: 'verbali_esterni',
                 maxFiles: 3,
                 sortOrder: 'DESC'
+            });
+
+            loadSinglePdfLink({
+                path: '2_RTB',
+                fileName: 'Lettera_di_Candidatura',
+                divId: 'rtb_letter'
+            });
+
+            loadPdfFiles({
+                path: '2_RTB',
+                divId: 'rtb_files',
+                exclude: 'Lettera_di_Candidatura'
             });
 
         });
