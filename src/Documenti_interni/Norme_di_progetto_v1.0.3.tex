@@ -68,7 +68,7 @@
         \centering
         \begin{tabular}{|l|p{5cm}|}
             \hline
-            \textbf{Versione} & 1.0.1 \\
+            \textbf{Versione} & 1.0.3 \\
             \hline
             \textbf{Stato} & Da approvare \\
             \hline
@@ -98,6 +98,8 @@
     \begin{tabular}{|c|c|c|>{\raggedright\arraybackslash}p{0.4\textwidth}|c|}
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{\gls{Verifica}} \\
+        \hline
+        1.0.3 & 24/03/2026 & Giulia Barzon & Miglioramento sezione 2 & \\
         \hline
         1.0.2 & 21/03/2026 & Elisa Marchioro & Mini fix & \\
         \hline
@@ -152,26 +154,123 @@ Le \gls{Norme di Progetto} rappresentano il nostro modo di organizzare il lavoro
 
 \newpage
 
-\section{Organizzazione e comunicazione}
+\section{Processi organizzativi}
+Questa sezione descrive i processi che regolano l'organizzazione interna del gruppo, la gestione delle attività e la comunicazione, sia interna che esterna. Ogni processo è descritto nelle sue attività, procedure operative e strumenti adottati.
 
-\subsection{Comunicazione interna}
-Ogni membro del gruppo si impegna a mantenere un atteggiamento aperto e disponibile, offrendo aiuto e supporto quando necessario. Per facilitare la collaborazione utilizzeremo le seguenti modalità di comunicazione:
+\subsection{Processo di gestione}
+Il processo di gestione ha lo scopo di pianificare, coordinare e controllare
+le attività del gruppo per tutta la durata del progetto.
+
+\subsubsection{Attività: organizzazione dei ruoli}
+Il gruppo adotta una rotazione dei ruoli per garantire l'apprendimento completo di tutti i membri, una distribuzione equa delle responsabilità e lo sviluppo di competenze trasversali. I ruoli previsti sono:
 \begin{itemize}
-    \item \textbf{WhatsApp}: per comunicazioni rapide e organizzative
-    \item \textbf{Discord}: per riunioni sincrone e sessioni di lavoro collaborativo
-    \item \textbf{Google Meet}: per riunioni formali e presentazioni
+    \item \textbf{Responsabile}: comunica con professori e azienda (tramite email), si occupa dell'approvazione finale di tutti i documenti e file, redige i verbali e si occupa dei diari di bordo;
+    \item \textbf{Amministratore}: gestisce la \gls{repository} (crea e assegna le issue, crea le \gls{milestone}); aggiorna il sito web del gruppo; si occupa della redazione dei documenti.
+    \item \textbf{Analista}: svolge l'\gls{analisi dei requisiti} e dei casi d'uso.
+    \item \textbf{Progettista}: progetta l'architettura del software; sceglie le tecnologie da utilizzare; scrive la documentazione di progetto (es. diagrammi UML); supporta i programmatori nell'implementazione.
+    \item \textbf{Programmatore}: scrive il codice sorgente.
+    \item \textbf{Verificatore}: controlla codice e documenti.
 \end{itemize}
 
-\subsection{Comunicazione esterna}
-Per le comunicazioni con proponenti e committenti:
+\subsubsection{Attività: pianificazione degli sprint}
+Il lavoro è organizzato in \gls{sprint} secondo il framework \gls{Scrum}.
+
+\paragraph{Procedure}
 \begin{itemize}
-    \item \textbf{Email}: per comunicazioni formali
-    \item \textbf{Google Meet}: per incontri online con la proponente
-    \item \textbf{Incontri in presenza}: per riunioni formali con la proponente
+    \item \textbf{Sprint Planning (inizio sprint)}: il gruppo si riunisce per definire gli obiettivi dello sprint, assegnare i ruoli e stimare le ore preventivate per ciascuna attività. Le attività vengono registrate come \gls{GitHub} Issues nella Project Board.
+    \item \textbf{Sprint Review (fine sprint)}: il gruppo verifica il grado di raggiungimento degli obiettivi, confronta consuntivo e preventivo orario, identifica le attività non completate e le sposta nel backlog o nello sprint successivo.
+    \item \textbf{Retrospettiva}: il gruppo analizza il processo adottato,
+    individua le cause degli scostamenti rilevati, aggiorna l'analisi dei
+    rischi con eventuali nuovi rischi emersi e definisce misure correttive
+    per migliorare la pianificazione futura.
 \end{itemize}
 
-\subsection{Comunicazione nei periodi di vacanza/sessione}
-Il team si impegna a rimanere operativo durante i periodi di vacanza ed esami, privilegiando la comunicazione asincrona per gli aggiornamenti. Pur consapevoli di un potenziale rallentamento, i membri concorderanno obiettivi \gls{sprint} realistici e manterranno un dialogo costante. Questa evenienza è stata già considerata nell'analisi dei rischi in fase di candidatura, e sono state definite specifiche contromisure per mitigarne l'impatto.
+\paragraph{Durata degli sprint}
+\begin{itemize}
+    \item \textbf{Fase RTB}: sprint di 2 settimane.
+    \item \textbf{Fase PB}: sprint settimanali, per garantire un monitoraggio più frequente dell'avanzamento del prodotto.
+\end{itemize}
+
+\paragraph{Strumenti}
+\begin{itemize}
+    \item \textbf{\gls{GitHub} Projects}: gestione delle issue e monitoraggio dell'avanzamento tramite dashboard separate per fase RTB e PB.
+    \item \textbf{Discord / Google Meet}: riunioni di planning e review.
+\end{itemize}
+
+% ============================================================
+\subsection{Processo di comunicazione}
+Il processo di comunicazione definisce le modalità e gli strumenti adottati
+per garantire un flusso informativo efficace tra i membri del gruppo e con
+i soggetti esterni (proponente, committenti).
+
+\subsubsection{Attività: comunicazione interna}
+Ogni membro del gruppo si impegna a mantenere un atteggiamento aperto e
+disponibile, offrendo aiuto e supporto quando necessario.
+
+\paragraph{Procedure}
+Le comunicazioni interne si distinguono per urgenza e natura:
+\begin{itemize}
+    \item Comunicazioni rapide e organizzative: messaggio su \textbf{WhatsApp}.
+    \item Riunioni sincrone e sessioni di lavoro collaborativo: canale
+    \textbf{Discord}.
+    \item Riunioni formali e presentazioni: \textbf{Google Meet}.
+\end{itemize}
+
+\paragraph{Strumenti}
+\begin{itemize}
+    \item \textbf{WhatsApp}: messaggistica rapida.
+    \item \textbf{Discord}: videoconferenze interne e lavoro collaborativo.
+    \item \textbf{Google Meet}: riunioni formali.
+\end{itemize}
+
+\subsubsection{Attività: comunicazione esterna}
+Le comunicazioni con proponenti e committenti seguono canali formali.
+
+\paragraph{Procedure}
+\begin{itemize}
+    \item Comunicazioni formali scritte: \textbf{email}.
+    \item Incontri periodici online con la proponente: \textbf{Google Meet}.
+    \item Riunioni formali in presenza con la proponente: \textbf{incontri
+    in presenza}, verbalizzati secondo le procedure definite nella sezione
+    dedicata alla documentazione.
+\end{itemize}
+
+\paragraph{Strumenti}
+\begin{itemize}
+    \item \textbf{Email}: comunicazioni ufficiali.
+    \item \textbf{Google Meet}: incontri online con la proponente.
+\end{itemize}
+
+\subsubsection{Attività: comunicazione nei periodi di vacanza/sessione}
+Il team si impegna a rimanere operativo durante i periodi di vacanza ed esami, privilegiando la comunicazione asincrona per gli aggiornamenti. I membri concorderanno obiettivi \gls{sprint} realistici e manterranno un dialogo costante.
+Questa evenienza è stata già considerata nell'analisi dei rischi in fase di
+candidatura, e sono state definite specifiche contromisure per mitigarne l'impatto.
+
+
+\subsection{Processo di Formazione}
+Il processo di formazione ha lo scopo di garantire che tutti i membri del gruppo acquisiscano le competenze tecniche e metodologiche necessarie allo svolgimento del progetto.
+
+\subsubsection{Attività: autoformazione individuale}
+Ciascun membro è responsabile dello studio autonomo delle tecnologie e degli
+strumenti adottati dal gruppo.
+
+\paragraph{Procedure}
+\begin{itemize}
+    \item Ogni membro studia in modo autonomo le tecnologie assegnate al proprio ruolo nello sprint corrente, in particolare nei primi sprint delle fasi principali del progetto.
+    \item Le difficoltà incontrate vengono segnalate durante le riunioni di
+    planning o review, attivando eventualmente una sessione di supporto collettivo.
+    \item Le risorse di riferimento (documentazione ufficiale, slide del corso, tutorial) vengono condivise nel canale Discord dedicato o su Google Drive.
+\end{itemize}
+
+\paragraph{Strumenti}
+\begin{itemize}
+    \item \textbf{Discord}: condivisione di risorse e supporto tra pari.
+    \item \textbf{Google Drive}: condivisione di documenti e appunti.
+    \item \textbf{Documentazione ufficiale} degli strumenti adottati
+    (React, Flask, PostgreSQL, ecc.).
+    \item \textbf{Slide del corso} di Ingegneria del Software.
+\end{itemize}
+
 
 \newpage
 
@@ -287,7 +386,7 @@ Per organizzare meglio il flusso di lavoro, sono state create due dashboard dist
 Questa suddivisione permette di monitorare separatamente lo stato di avanzamento delle due fasi principali del progetto, garantendo che tutte le attività vengano completate entro le scadenze stabilite per ciascuna \gls{milestone}.
 
 
-\subsection{Sito Web della documentazione}
+\subsection{Sito web della documentazione}
 Il gruppo ha implementato un sito web per ospitare la documentazione del progetto, accessibile all'indirizzo: \url{https://byteme25.github.io/ByteMe/}
 
 Il sito, generato automaticamente dalla \gls{repository} \gls{GitHub}, offre i seguenti benefici:
@@ -314,9 +413,9 @@ Questa cartella racchiude tutti i file pdf relativi alla fase di candidatura del
 \subsection{RTB}
 Questa cartella contiene tutti i documenti pdf relativi alla RTB (Requirements and Technology Baseline), ovvero raccoglie tutto ciò che costituisce la prima baseline del progetto. Sono presenti:
 \begin{itemize}
-    \item \textbf{\gls{Analisi dei requisiti}}: Questo documento descrive l'\gls{analisi dei requisiti} per il progetto "Second Brain". Vengono quindi descritti i casi d'uso, e per ciascuno, i rispettivi \gls{requisiti funzionali} o non funzionali.
+    \item \textbf{\gls{Analisi dei Requisiti}}: Questo documento descrive l'\gls{analisi dei requisiti} per il progetto "Second Brain". Vengono quindi descritti i casi d'uso, e per ciascuno, i rispettivi \gls{requisiti funzionali} o non funzionali.
     
-    \item \textbf{Piano di progetto}: Questo documento ha lo scopo di definire la pianificazione, l’organizzazione e il controllo delle attività del progetto Second Brain. Viene quindi fornita una sintesi delle attività, dei risultati e dei progressi conseguiti in ogni \gls{Sprint}.
+    \item \textbf{Piano di Progetto}: Questo documento ha lo scopo di definire la pianificazione, l’organizzazione e il controllo delle attività del progetto Second Brain. Viene quindi fornita una sintesi delle attività, dei risultati e dei progressi conseguiti in ogni \gls{Sprint}.
     
     \item \textbf{Piano di Qualifica}: Questo documento ha lo scopo di definire gli standard di qualità, le metriche di processo e di prodotto e le procedure di \gls{verifica} che il gruppo deve rispettare. Contiene il "cruscotto di valutazione" per monitorare l'andamento del progetto rispetto agli obiettivi prefissati.
 \end{itemize}
@@ -326,7 +425,7 @@ Questa cartella contiene tutti i documenti pdf relativi alla RTB (Requirements a
 Questa cartella contiene tutti i documenti pdf relativi alla PB (Product Baseline), ovvero raccoglie tutto ciò che costituisce la seconda baseline del progetto. Sono presenti:
 \begin{itemize}
     \item \textbf{\gls{Specifica Tecnica}}: Documento ad uso interno del team di sviluppo che dettaglia l'architettura software del prodotto. Descrive i design pattern adottati, la scomposizione dei componenti basati sul framework \gls{React}, la struttura del \gls{database} per la persistenza delle informazioni e le logiche di integrazione con le \gls{API} degli LLM (Large Language Models).
-    \item \textbf{\gls{Manuale utente}}: Documento destinato agli utilizzatori finali che illustra le procedure di installazione, configurazione e utilizzo dell'applicazione. Fornisce istruzioni operative per l'editing dei file, la gestione del sistema "Second Brain" e l'interazione con le funzionalità di assistenza generativa offerte dall'Intelligenza Artificiale.
+    \item \textbf{\gls{Manuale Utente}}: Documento destinato agli utilizzatori finali che illustra le procedure di installazione, configurazione e utilizzo dell'applicazione. Fornisce istruzioni operative per l'editing dei file, la gestione del sistema "Second Brain" e l'interazione con le funzionalità di assistenza generativa offerte dall'Intelligenza Artificiale.
 \end{itemize}
 
 
@@ -334,7 +433,7 @@ Questa cartella contiene tutti i documenti pdf relativi alla PB (Product Baselin
 Questa cartella contiene i documenti pdf redatti dal gruppo per l’organizzazione interna delle attività. Sono presenti:
 \begin{itemize}
 \item \textbf{\gls{Glossario}}: questo documento ha lo scopo di raccogliere i termini utilizzati nella documentazione del gruppo ByteMe durante il progetto.
-\item \textbf{\gls{Norme di progetto}}: questo documento stabilisce regole, procedure e strumenti per organizzare il lavoro del gruppo. Include anche il \gls{Way of Working}, descrivendo ruoli, responsabilità, riunioni e modalità di collaborazione per garantire efficienza e qualità.
+\item \textbf{\gls{Norme di Progetto}}: questo documento stabilisce regole, procedure e strumenti per organizzare il lavoro del gruppo. Include anche il \gls{Way of Working}, descrivendo ruoli, responsabilità, riunioni e modalità di collaborazione per garantire efficienza e qualità.
 \end{itemize}
 
 \subsection{Verbali esterni}
@@ -360,78 +459,6 @@ Questa cartella contiene i file sorgenti LaTeX, divisi nelle rispettive cartelle
 
 \subsection{README.md}
 Questo è il file che presenta il gruppo e la \gls{repository}.
-
-\newpage
-
-\section{Pianificazione del lavoro}
-Il lavoro del team è organizzato in \gls{sprint}, al termine dei quali avviene una rotazione dei ruoli. Questa pratica consente a tutti di acquisire esperienza in diverse aree e di migliorare la collaborazione complessiva del gruppo.
-
-\subsection{Divisione dei ruoli}
-Il gruppo adotta una rotazione dei ruoli per garantire:
-\begin{itemize}
-    \item Apprendimento completo di tutti i membri
-    \item Distribuzione equa delle responsabilità
-    \item Sviluppo di competenze trasversali
-\end{itemize}
-
-\subsection{Descrizione dei ruoli}
-Di seguito viene fornita una descrizione dettagliata dei diversi ruoli, illustrando in modo chiaro, completo e ben strutturato le responsabilità, i compiti specifici e le aree di competenza associate a ciascuna posizione. L’obiettivo è fornire una panoramica accurata che permetta di comprendere pienamente le funzioni svolte da ogni ruolo all’interno dell’organizzazione.
-
-\subsubsection{Responsabile}
-\begin{itemize}
-    \item Comunica con i professori e l'azienda (tramite email);
-    \item Si occupa dell'approvazione finale di tutti i documenti e file;
-    \item Redige i verbali;
-    \item Si occupa dei diari di bordo.
-\end{itemize}
-
-\subsubsection{Amministratore}
-\begin{itemize}
-    \item Sistema la \gls{repository}: crea e assegna le issues, crea le \gls{milestone}…;
-    \item Aggiorna il sito web del gruppo;
-    \item Si occupa della redazione dei documenti.
-\end{itemize}
-
-\subsubsection{Analista}
-\begin{itemize}
-    \item \gls{Analisi dei requisiti} e dei casi d'uso.
-\end{itemize}
-
-\subsubsection{Progettista}
-\begin{itemize}
-    \item Progetta l’architettura del software;
-    \item Sceglie le tecnologie da utilizzare;
-    \item Scrive la documentazione di progetto (ad esempio i diagrammi UML);
-    \item Aiuta i programmatori a implementare le scelte fatte.
-\end{itemize}
-
-\subsubsection{Programmatore}
-\begin{itemize}
-    \item Scrive il codice.
-\end{itemize}
-
-\subsubsection{Verificatore}
-\begin{itemize}
-    \item Controlla codice e documenti.
-\end{itemize}
-
-\subsection{\gls{Sprint planning}}
-\begin{itemize}
-    \item Durata \gls{sprint}: 2 settimane (fase RTB); 1 settimana (fase PB, vedi sezione seguente)
-    \item Planning meeting all'inizio di ogni \gls{sprint}
-    \item Review meeting alla fine di ogni \gls{sprint}
-    \item Retrospettiva per il miglioramento continuo
-\end{itemize}
-
-\subsection{Gestione della Pianificazione nella Fase PB}
-A partire dalla fase di Product Baseline (PB), il gruppo ByteMe adotta un modello di sviluppo \gls{agile} basato su \textbf{\gls{sprint} settimanali}. Tale accelerazione della cadenza è necessaria per garantire un monitoraggio costante dell'avanzamento dell'MVP e una risposta rapida alle criticità tecniche.
-
-\subsubsection{Cadenza delle Riunioni}
-La gestione dello \gls{sprint} si articola in due momenti di coordinamento principali:
-\begin{itemize}
-    \item \textbf{Riunione di Inizio \gls{Sprint} (Lunedì o martedì):} Incontro obbligatorio per la pianificazione delle attività. Durante la riunione vengono definite le \textit{\gls{issue}} sulla Project Board di \gls{GitHub} e assegnati i task ai membri del team.
-    \item \textbf{Riunione di Revisione (Fine settimana):} Incontro opzionale finalizzato alla \gls{verifica} degli obiettivi raggiunti. Si analizzano eventuali task non completati (da spostare nel \textit{\gls{backlog}} o nello \gls{sprint} successivo) e si redige collettivamente la retrospettiva.
-\end{itemize}
 
 \newpage
 
@@ -526,7 +553,7 @@ Il nostro approccio usa la metodologia \gls{Agile}, in particolare il framework 
 Fin dall’inizio sono stati definiti i ruoli di progetto, assegnati e alternati tra i membri del team nei diversi \gls{Sprint} per garantire una distribuzione equilibrata delle responsabilità e favorire la crescita delle competenze.
 La pianificazione delle attività è stata gestita \gls{Sprint} per \gls{Sprint}, adattandosi ai progressi del team e ai risultati ottenuti. 
 
-\subsection{Riassunto di ciascuno \gls{Sprint}}
+\subsection{Riassunto di ciascuno \gls{sprint}}
 A conclusione di ogni \gls{Sprint}, il gruppo ha redatto un resoconto delle attività svolte, documentando le sue fasi:
 \begin{itemize}
 \item Pianificazione: con obiettivi, ruoli, rischi e ore occupate previsti;
@@ -545,13 +572,13 @@ Il \textbf{Piano di Qualifica} è il documento che definisce la strategia del gr
     \item \textbf{Consuntivo (Cruscotto):} Riportare \textit{ex-post} i risultati delle misurazioni effettuate durante le varie fasi di progetto, permettendo di valutare oggettivamente lo stato di salute del progetto e la conformità del prodotto rispetto ai requisiti.
 \end{itemize}
 
-\subsection{Contenuto e Struttura}
+\subsection{Contenuto e struttura}
 Il documento è strutturato per rispondere alle norme di qualità ISO/IEC 9126 e ISO/IEC 25010 ed è suddiviso nelle seguenti macro-aree:
 \begin{itemize}
-    \item \textbf{Qualità di Processo:} Definisce le metriche per monitorare l'andamento dei lavori, inclusi la gestione del budget, la pianificazione temporale e la stabilità dei requisiti.
-    \item \textbf{Qualità di Prodotto:} Definisce le metriche per valutare il software prodotto, coprendo aspetti quali l'\gls{adeguatezza funzionale}, l'efficienza, l'usabilità, l'affidabilità e la manutenibilità.
-    \item \textbf{Strategia di \gls{Verifica} e Testing:} Descrive le procedure operative per l'\gls{Analisi Statica} e l'\gls{Analisi Dinamica} (livelli di test: Unit, Integration, System, Acceptance).
-    \item \textbf{\gls{Cruscotto di Qualità}:} Una sezione dinamica che viene aggiornata ad ogni revisione di progetto, contenente i grafici e le tabelle con i valori effettivi misurati per ogni metrica, evidenziando eventuali non conformità e le relative azioni correttive intraprese.
+    \item \textbf{Qualità di processo:} Definisce le metriche per monitorare l'andamento dei lavori, inclusi la gestione del budget, la pianificazione temporale e la stabilità dei requisiti.
+    \item \textbf{Qualità di prodotto:} Definisce le metriche per valutare il software prodotto, coprendo aspetti quali l'\gls{adeguatezza funzionale}, l'efficienza, l'usabilità, l'affidabilità e la manutenibilità.
+    \item \textbf{Strategia di \gls{verifica} e testing:} Descrive le procedure operative per l'\gls{Analisi Statica} e l'\gls{Analisi Dinamica} (livelli di test: Unit, Integration, System, Acceptance).
+    \item \textbf{\gls{Cruscotto di qualità}:} Una sezione dinamica che viene aggiornata ad ogni revisione di progetto, contenente i grafici e le tabelle con i valori effettivi misurati per ogni metrica, evidenziando eventuali non conformità e le relative azioni correttive intraprese.
 \end{itemize}
 
 \subsection{Metodologia di calcolo dell'Earned Value (EV)}
@@ -572,27 +599,27 @@ Affinché un'unità di lavoro (Task/\gls{Issue}) possa essere considerata "Fatta
     \item Revisione: Il lavoro svolto è stato revisionato e verificato da uno o più membri del gruppo.
 \end{itemize}
 
-\subsection{Strumenti e Metriche di Qualità Automatizzate}
+\subsection{Strumenti e metriche di qualità automatizzate}
 Al fine di garantire un monitoraggio continuo e oggettivo della qualità, il gruppo ha integrato nel processo di sviluppo una serie di script automatici eseguiti tramite \gls{GitHub} Actions. Di seguito vengono descritte le metriche monitorate e il funzionamento degli strumenti adottati.
 
-\subsubsection{Qualità della Documentazione}
+\subsubsection{Qualità della documentazione}
 
 \paragraph{Correttezza Ortografica (CO)}
 \begin{itemize}
-    \item \textbf{Descrizione e Scopo}: Misura il numero di errori ortografici di battitura presenti nei documenti. L'obiettivo è garantire professionalità e assenza di refusi che potrebbero compromettere la comprensione del testo.
+    \item \textbf{Descrizione e scopo}: Misura il numero di errori ortografici di battitura presenti nei documenti. L'obiettivo è garantire professionalità e assenza di refusi che potrebbero compromettere la comprensione del testo.
     \item \textbf{Calcolo}: Conteggio ed esposizione delle parole non presenti nel dizionario italiano standard e non incluse nella \texttt{whitelist} di progetto (che contiene acronimi, nomi propri e termini tecnici accettati).
     \item \textbf{Automazione}: Uno script Python (\texttt{scripts/spellcheck.py}) analizza ricorsivamente tutti i file \texttt{.tex}. Lo script rimuove i comandi LaTeX (es. \texttt{\textbackslash section}, \texttt{\textbackslash textbf}) per analizzare solo il testo puro. Le parole sconosciute vengono confrontate con la libreria \texttt{pyspellchecker} e, se non presenti nella whitelist, vengono segnalate come errori. Le parole individuate vanno controllate e corrette nei documenti per evitare errori ortografici.
 \end{itemize}
 
 \paragraph{Indice di Gulpease (IG)}
 \begin{itemize}
-    \item \textbf{Descrizione e Scopo}: È un indice di leggibilità calibrato sulla lingua italiana. Valuta quanto un testo sia comprensibile in base alla lunghezza delle parole e delle frasi.
+    \item \textbf{Descrizione e scopo}: È un indice di leggibilità calibrato sulla lingua italiana. Valuta quanto un testo sia comprensibile in base alla lunghezza delle parole e delle frasi.
     \item \textbf{Calcolo}: La formula utilizzata è:
     \[ 89 + \frac{300 \times (\text{numero frasi}) - 10 \times (\text{numero lettere})}{\text{numero parole}} \]
     \item \textbf{Automazione}: Uno script Python (\texttt{scripts/gulpease.py}) analizza i file sorgente, calcolando i totali di lettere, parole e frasi (riconoscendo la punteggiatura di fine periodo). Restituisce un valore medio per documento, che deve essere superiore a 40. Se tutti i documenti hanno un IG adeguato, il badge presente nel README della repo della documentazione diventa verde; in caso contrario diventa rosso e i file vanno rivisitati.
 \end{itemize}
 
-\subsubsection{Qualità del Codice}
+\subsubsection{Qualità del codice}
 \paragraph{Lines of Code (LOC)}
 \begin{itemize}
     \item \textbf{Descrizione e Scopo}: Rappresenta la dimensione fisica del software misurata in righe di codice. Serve a monitorare la crescita del progetto e a stimare lo sforzo di manutenzione.
@@ -602,12 +629,12 @@ Al fine di garantire un monitoraggio continuo e oggettivo della qualità, il gru
 
 \paragraph{Complessità Ciclomatica (McCabe)}
 \begin{itemize}
-    \item \textbf{Descrizione e Scopo}: Misura la complessità logica di una funzione o metodo contando il numero di cammini linearmente indipendenti attraverso il codice sorgente. Una complessità elevata indica codice difficile da testare e manutenere.
+    \item \textbf{Descrizione e scopo}: Misura la complessità logica di una funzione o metodo contando il numero di cammini linearmente indipendenti attraverso il codice sorgente. Una complessità elevata indica codice difficile da testare e manutenere.
     \item \textbf{Calcolo}: Basato sul grafo di flusso di controllo del programma. Semplificando, incrementa il conteggio per ogni struttura di controllo (if, while, for, case).
     \item \textbf{Automazione}: Viene utilizzato il tool \texttt{lizard}. La pipeline analizza i file di logica (JavaScript, PHP, Python) ignorando i file puramente strutturali o di stile (HTML, CSS, LaTeX). Il tool segnala la complessità media (CCN) e avvisa se specifiche funzioni superano la soglia di guardia stabilita nel Piano di Qualifica.
 \end{itemize}
 
-\subsubsection{Visualizzazione dei Risultati}
+\subsubsection{Visualizzazione dei risultati}
 L'esecuzione di questi controlli avviene automaticamente ad ogni \texttt{push} sulla \gls{repository} remota. Per consultare i risultati:
 \begin{enumerate}
     \item Accedere alla scheda \textbf{Actions} della \gls{repository} \gls{GitHub}.
