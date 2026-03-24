@@ -1,0 +1,124 @@
+\documentclass[a4paper,12pt]{article}
+
+% ===== Pacchetti utili =====
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[italian]{babel}
+\usepackage{geometry}
+\usepackage{array}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+
+% ===== Impostazioni di pagina =====
+\geometry{margin=2.5cm}
+\setlength{\parskip}{6pt}
+\setlength{\parindent}{0pt}
+
+% ===== Intestazione e piè di pagina =====
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Verbale 24/03/2026}
+\rhead{ByteMe}
+\cfoot{\thepage}
+
+% ===== Documento =====
+\begin{document}
+
+\vspace*{\fill}
+\begin{center}
+    \includegraphics[width=0.5\textwidth]{../LogoByteMe.jpg}\\[1cm]
+    {\Huge \textbf{Verbale Riunione}}\\[0.5cm]
+    {\Large ByteMe}\\[0.5cm]
+    \rule{0.6\textwidth}{0.6pt}\\[0.5cm]
+    \textit{Data: 24 marzo 2026}
+\end{center}
+\vspace*{\fill}
+
+\pagebreak
+   \rule{1\textwidth}{0.4pt}\\[4pt]
+
+
+\textbf{Data:} 24/03/2026 \\
+\textbf{Ora di inizio:} 14:30 \\
+\textbf{Ora di fine:} 16:30 \\
+\textbf{Luogo / Piattaforma:} Discord
+\begin{center}
+   \rule{1\textwidth}{0.4pt}\\
+\end{center}
+
+\section*{ Partecipanti}
+
+\begin{longtable}{|p{0.45\textwidth}|p{0.45\textwidth}|}
+\hline
+\textbf{Nome e Cognome} & \textbf{Ruolo} \\ \hline
+ Giulia Barzon & Responsabile e progettista \\ \hline
+ Matteo Cuogo & Progettista e Verificatore \\ \hline
+ Elisa Marchioro & Amministratore e Progettista \\ \hline
+ Joseph Grant & Progettista \\ \hline
+ Tommaso Tombacco & Progettista e Verificatore \\ \hline
+ Chiara Grossele & Progettista \\ \hline
+ \end{longtable}
+
+
+\section*{Ordine del giorno}
+\begin{enumerate}
+    \item Definizione ruoli e pianificazione delle attività per lo \textbf{Sprint 10}.
+    \item Revisione e discussione dei diagrammi delle classi relativi ai pattern architetturali.
+    \item Analisi delle criticità tecnologiche e formalizzazione dei dubbi per il proponente.
+    \item Monitoraggio e avanzamento della documentazione di progetto (PdP, NdP).
+\end{enumerate}
+
+\section*{Sintesi della discussione}
+
+\subsection*{1. Organizzazione interna (Sprint 10)}
+Il gruppo ha stabilito la rotazione dei ruoli per il decimo sprint. In questa fase, caratterizzata da un forte carico di progettazione e integrazione, tutti i componenti agiranno come \textbf{Progettisti}. La responsabilità è affidata a Giulia Barzon, mentre la verifica dei documenti è delegato a Tommaso Tombacco e Matteo Cuogo; le modifiche e le migliorie ai documenti, segnalate dal prof. Vardanega, saranno effettuate da Elisa Marchioro.
+
+\subsection*{2. Analisi tecnica: pattern architetturali}
+La sessione centrale è stata dedicata alla \textit{peer-review} del lavoro svolto a coppie nella sessione precedente. Ogni sotto-gruppo ha presentato i diagrammi delle classi prodotti e spiegato ai compagni come sono stati strutturati i diagrammi. Ognuno ha esposto la sua parte e chiarito i dubbi dei colleghi per quanto possibile. Sono stati individuati alcuni quesiti da porre al prof. Cardin.
+
+\subsection*{3. Criticità e rapporti esterni}
+È emersa la necessità di un confronto immediato con il Prof. Cardin per validare le scelte architetturali prima dell'inizio della fase di codifica e testing. Parallelamente, è stata deliberata la richiesta di un incontro con \textbf{Zucchetti} per mostrare il lavoro fatto per il \textit{Proof of Concept} (POC) e confermare la validità delle tecnologie adottate (con particolare focus sul passaggio definitivo a TypeScript).
+
+\section*{Decisioni prese}
+\begin{itemize}
+    \item Conferma definitiva dell'uso di \textbf{TypeScript} per la definizione delle interfacce, elemento cardine per l'implementazione dei pattern Adapter e Proxy.
+    \item  Programmazione di una sessione di \textit{Integrazione Architetturale} per venerdì 27/03, volta a unificare i diagrammi prodotti dai singoli sotto-gruppi e terminare la fase di progettazione.
+    \item Eventuale modifica tecnologica nel POC: il gruppo concorda che, qualora necessario, il cambio tecnologico verrà segnalato formalmente ma è considerato sostenibile nell'attuale fase.
+\end{itemize}
+
+\section*{Quesiti per il ricevimento (dettaglio)}
+Al fine di rendere il verbale uno strumento di supporto alla revisione tecnica, si riportano i dubbi tecnici sollevati:
+\begin{enumerate}
+    \item \textbf{Integrazione pattern:} È corretta la coesistenza di \textit{Adapter} e \textit{Facade} per gestire la complessità dell'hook \texttt{useEditor}?
+    \item \textbf{Pattern:} Per i pulsanti di formattazione presenti nella toolbar va bene usare il pattern \textit{Command} o è più appropriato usare \textit{Strategy}?
+    \item \textbf{UML:} nei diagrammi UML dobbiamo rappresentare classi o componenti che effettivamente vengono implementate nel codice (con stesso nome e stesse funzioni), o si possono usare classi generiche che esprimono solo il concetto logico? 
+    \item \textbf{Responsabilità:} Il cambio di stato deve risiedere all'interno di \texttt{AiWidget} o in un \textit{Provider} esterno?
+\end{enumerate}
+
+\section*{Azioni da intraprendere}
+\begin{longtable}{|p{0.4\textwidth}|p{0.25\textwidth}|p{0.15\textwidth}|p{0.15\textwidth}|}
+\hline
+\textbf{Attività} & \textbf{Responsabile} & \textbf{Scadenza} & \textbf{Stato} \\ \hline
+Decidere data e scrivere mail per incontro con Prof. Cardin & Giulia Barzon & 27/03 & In corso \\ \hline
+Richiesta incontro con Zucchetti & Giulia Barzon & 30/03 & In corso \\ \hline
+Aggiornamento Norme di Progetto (\#9) & Elisa Marchioro & 30/03 & In corso \\ \hline
+Aggiornamento Piano di Progetto (\#10) & Elisa Marchioro & 30/03 & In corso \\ \hline
+Verifica documenti revisionati & Tommaso/Matteo & 30/03 & Pianificato \\ \hline
+Stesura descrizioni testuali pattern e ultimazione diagrammi (\#1, \#2, \#3) & Progettisti & 27/03 & In corso \\ \hline
+\end{longtable}
+
+
+\section*{Prossima riunione}
+\textbf{Data prevista:} 27/03/2026 \\
+\textbf{Luogo / Piattaforma:} Discord \\
+\textbf{Obiettivo principale:} Confronto finale sui pattern usati nel progetto, fine della fase di progettazione e inizio fase di codifica e testing. \\
+
+
+\textbf{Redatto da:} Giulia Barzon \\
+\textbf{Data di redazione:} 24/03/2026
+
+\end{document}
