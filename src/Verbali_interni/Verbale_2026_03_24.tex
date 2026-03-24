@@ -1,4 +1,5 @@
 \documentclass[a4paper,12pt]{article}
+\newcommand{\gls}[1]{#1\textsubscript{G}}
 
 % ===== Pacchetti utili =====
 \usepackage[utf8]{inputenc}
@@ -66,7 +67,7 @@
 
 \section*{Ordine del giorno}
 \begin{enumerate}
-    \item Definizione ruoli e pianificazione delle attività per lo \textbf{Sprint 10}.
+    \item Definizione ruoli e pianificazione delle attività per lo \textbf{\gls{Sprint} 10}.
     \item Revisione e discussione dei diagrammi delle classi relativi ai pattern architetturali.
     \item Analisi delle criticità tecnologiche e formalizzazione dei dubbi per il proponente.
     \item Monitoraggio e avanzamento della documentazione di progetto (PdP, NdP).
@@ -74,8 +75,8 @@
 
 \section*{Sintesi della discussione}
 
-\subsection*{1. Organizzazione interna (Sprint 10)}
-Il gruppo ha stabilito la rotazione dei ruoli per il decimo sprint. In questa fase, caratterizzata da un forte carico di progettazione e integrazione, tutti i componenti agiranno come \textbf{Progettisti}. La responsabilità è affidata a Giulia Barzon, mentre la verifica dei documenti è delegato a Tommaso Tombacco e Matteo Cuogo; le modifiche e le migliorie ai documenti, segnalate dal prof. Vardanega, saranno effettuate da Elisa Marchioro.
+\subsection*{1. Organizzazione interna (\gls{Sprint} 10)}
+Il gruppo ha stabilito la rotazione dei ruoli per il decimo \gls{sprint}. In questa fase, caratterizzata da un forte carico di progettazione e integrazione, tutti i componenti agiranno come \textbf{Progettisti}. La responsabilità è affidata a Giulia Barzon, mentre la \gls{verifica} dei documenti è delegato a Tommaso Tombacco e Matteo Cuogo; le modifiche e le migliorie ai documenti, segnalate dal prof. Vardanega, saranno effettuate da Elisa Marchioro.
 
 \subsection*{2. Analisi tecnica: pattern architetturali}
 La sessione centrale è stata dedicata alla \textit{peer-review} del lavoro svolto a coppie nella sessione precedente. Ogni sotto-gruppo ha presentato i diagrammi delle classi prodotti e spiegato ai compagni come sono stati strutturati i diagrammi. Ognuno ha esposto la sua parte e chiarito i dubbi dei colleghi per quanto possibile. Sono stati individuati alcuni quesiti da porre al prof. Cardin.
@@ -94,7 +95,7 @@ La sessione centrale è stata dedicata alla \textit{peer-review} del lavoro svol
 Al fine di rendere il verbale uno strumento di supporto alla revisione tecnica, si riportano i dubbi tecnici sollevati:
 \begin{enumerate}
     \item \textbf{Integrazione pattern:} È corretta la coesistenza di \textit{Adapter} e \textit{Facade} per gestire la complessità dell'hook \texttt{useEditor}?
-    \item \textbf{Pattern:} Per i pulsanti di formattazione presenti nella toolbar va bene usare il pattern \textit{Command} o è più appropriato usare \textit{Strategy}?
+    \item \textbf{Pattern:} Per i pulsanti di formattazione presenti nella \gls{toolbar} va bene usare il pattern \textit{Command} o è più appropriato usare \textit{Strategy}?
     \item \textbf{UML:} nei diagrammi UML dobbiamo rappresentare classi o componenti che effettivamente vengono implementate nel codice (con stesso nome e stesse funzioni), o si possono usare classi generiche che esprimono solo il concetto logico? 
     \item \textbf{Responsabilità:} Il cambio di stato deve risiedere all'interno di \texttt{AiWidget} o in un \textit{Provider} esterno?
 \end{enumerate}
@@ -105,9 +106,9 @@ Al fine di rendere il verbale uno strumento di supporto alla revisione tecnica, 
 \textbf{Attività} & \textbf{Responsabile} & \textbf{Scadenza} & \textbf{Stato} \\ \hline
 Decidere data e scrivere mail per incontro con Prof. Cardin & Giulia Barzon & 27/03 & In corso \\ \hline
 Richiesta incontro con Zucchetti & Giulia Barzon & 30/03 & In corso \\ \hline
-Aggiornamento Norme di Progetto (\#9) & Elisa Marchioro & 30/03 & In corso \\ \hline
+Aggiornamento \gls{Norme di Progetto} (\#9) & Elisa Marchioro & 30/03 & In corso \\ \hline
 Aggiornamento Piano di Progetto (\#10) & Elisa Marchioro & 30/03 & In corso \\ \hline
-Verifica documenti revisionati & Tommaso/Matteo & 30/03 & Pianificato \\ \hline
+\gls{Verifica} documenti revisionati & Tommaso/Matteo & 30/03 & Pianificato \\ \hline
 Stesura descrizioni testuali pattern e ultimazione diagrammi (\#1, \#2, \#3) & Progettisti & 27/03 & In corso \\ \hline
 \end{longtable}
 
