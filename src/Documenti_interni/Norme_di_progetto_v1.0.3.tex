@@ -68,7 +68,7 @@
         \centering
         \begin{tabular}{|l|p{5cm}|}
             \hline
-            \textbf{Versione} & 1.0.3 \\
+            \textbf{Versione} & 1.0.4 \\
             \hline
             \textbf{Stato} & Da approvare \\
             \hline
@@ -98,6 +98,8 @@
     \begin{tabular}{|c|c|c|>{\raggedright\arraybackslash}p{0.4\textwidth}|c|}
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{\gls{Verifica}} \\
+        \hline
+        1.0.4 & 25/03/2026 & Elisa Marchioro & Miglioramento sezione 3 & \\
         \hline
         1.0.3 & 24/03/2026 & Giulia Barzon & Miglioramento sezione 2 & \\
         \hline
@@ -275,8 +277,8 @@ strumenti adottati dal gruppo.
 \newpage
 
 \section{Gestione del codice e documentazione}
+aggiungi intro
 
-\subsection{Organizzazione delle \gls{repository} \gls{GitHub}}
 Il gruppo adotta una strategia multi-\gls{repository} su \textit{\gls{GitHub}} per separare la gestione documentale dallo sviluppo tecnico:
 \begin{itemize}
     \item \textbf{ByteMe}: \gls{Repository} dedicata esclusivamente alla documentazione ufficiale del progetto (Norme, Piano di Progetto, Analisi, ecc.) in formato LaTex.
@@ -284,8 +286,22 @@ Il gruppo adotta una strategia multi-\gls{repository} su \textit{\gls{GitHub}} p
     \item \textbf{Second\_Brain}: \gls{Repository} dedicata allo sviluppo del prodotto finale (MVP) durante la fase di PB. Qui verrà implementata l'architettura definitiva basata su \gls{React}.
 \end{itemize}
 
-\subsubsection{\gls{Repository} per la documentazione}
-Per la documentazione del progetto abbiamo strutturato come segue la \gls{repository} \gls{Github}:
+\subsection{Processo di gestione della documentazione}
+
+\subsubsection{Attività: organizzazione della documentazione}
+L’attività di organizzazione della documentazione ha lo scopo di strutturare in modo chiaro e coerente tutti i documenti prodotti dal gruppo durante il progetto.
+Una corretta organizzazione consente di garantire ordine e separazione logica tra i diversi materiali, facilitando il lavoro del gruppo e anche la consultazione di persone esterne.
+
+\paragraph{Procedure}
+\begin{itemize}
+    \item La documentazione viene divisa in base alle fasi del progetto, cioè vogliamo distinguere i documenti per la Candidatura, per la RTB e per la PB.
+    \item Vogliamo inoltre classificare i documenti in base alla loro destinazione distinguendo quindi tra documenti ufficiali destinati a revisione e consegna esterna e documenti interni di supporto al lavoro del gruppo.
+    \item I verbali delle riunioni verranno divisi in interni (riunioni interne al gruppo) ed esterni (riunioni con l'azienda proponente).
+    \item Infine vogliamo mantenere separati i file sorgenti dei documenti (in formato LaTex) dai file compilati (in formato PDF), per garantire una gestione ordinata delle modifiche.
+\end{itemize}
+
+\paragraph{Strumenti}
+In seguito ai ragionamenti sopra citati, abbiamo strutturato come segue la \gls{repository} \gls{Github}:
 \begin{verbatim}
 ByteMe/
 |-- .gitignore
@@ -300,62 +316,43 @@ ByteMe/
 |-- Verbali_interni/
 \end{verbatim}
 
-Ogni cartella contiene tutti i documenti relativi alle rispettive fasi del progetto.
+Ogni cartella contiene quindi tutti i documenti relativi alle rispettive fasi del progetto.
 La cartella dei Documenti interni contiene le \gls{Norme di Progetto} (ovvero il documento \gls{Way of working}) e il \gls{Glossario}.
 La cartella docs contiene i file relativi al sito web del gruppo, dove sono esposti i documenti in pdf.
 La cartella src contiene i file .tex di tutti i documenti del gruppo, che vengono convertiti in .pdf nelle cartelle corrette al momento del push sulla \gls{repository}. Per rendere automatico questo processo si usa il file compileLatex.yml che si trova nella cartella .gitignore.
 Le cartelle relative ai verbali contengono tutti i verbali in pdf relativi alle riunioni interne del gruppo o agli incontri con la proponente.
 
-\subsubsection{\gls{Versionamento} della documentazione}
-Per ogni documento, eccetto i verbali, vengono registrate le modifiche apportate nella tabella "Registro dei Cambiamenti". 
-Come convenzione per il \gls{versionamento} è stato adottato il formato \textbf{SEMVER} (Semantic Versioning). Ad ogni modifica, la versione del documento viene aggiornata secondo il formato \texttt{x.y.z}, dove:
+\subsubsection{Attività: sviluppo della documentazione}
+L’attività di sviluppo della documentazione comprende tutte le operazioni necessarie alla creazione, modifica e aggiornamento dei documenti di progetto.
+Si vuole garantire tracciabilità delle modifiche, coerenza tra i contenuti e allineamento tra i membri del gruppo.
+
+\paragraph{Procedure}
 \begin{itemize}
-    \item \texttt{x} (major): indica modifiche sostanziali
-    \item \texttt{y} (minor): indica aggiunte di funzionalità
-    \item \texttt{z} (patch): indica correzioni di errori
+\item Sincronizzazione iniziale: prima di iniziare qualsiasi modifica, ogni membro aggiorna la propria copia locale della repository per lavorare sull’ultima versione disponibile.
+\item Modifica dei documenti: i documenti vengono modificati localmente seguendo le convenzioni stabilite (nel dettaglio in strumenti).
+\item Descrizione delle modifiche: ogni modifica viene registrata tramite commit, accompagnato da un messaggio descrittivo che ne riassume il contenuto.
+\item Condivisione delle modifiche: le modifiche vengono caricate sulla repository remota, rendendole disponibili agli altri membri del gruppo.
+
+\item Automazione della compilazione: ad ogni aggiornamento della repository, viene eseguita automaticamente la compilazione dei documenti per garantire la correttezza del formato finale.
 \end{itemize}
 
-\subsubsection{\gls{Verifica} della documentazione}
-Ogni documento viene verificato da uno o più membri del gruppo secondo il principio della ``\gls{verifica} incrociata'', dove i verificatori sono diversi dagli autori originali.
-Il documento viene considerato approvato quando:
+\paragraph{Strumenti}
 \begin{itemize}
-    \item Tutte le verifiche sono state superate
-    \item Il responsabile di progetto dà l'approvazione finale
-\end{itemize}
-
-\subsection{Utilizzo di \gls{Git} e \gls{GitHub}}
-
-\subsubsection{Workflow di sviluppo}
-Il gruppo adotta il seguente flusso di lavoro per la gestione dei documenti:
-\begin{itemize}
-    \item \textbf{Sincronizzazione iniziale}: Prima di iniziare a lavorare, aggiornare sempre la \gls{repository} locale con il comando:
+\item Sincronizzazione iniziale: Prima di iniziare a lavorare, aggiornare sempre la \gls{repository} locale con il comando:
     \begin{verbatim}
     git pull origin main
     \end{verbatim}
-    
-    \item \textbf{Modifica dei documenti}: Lavorare sui file locali seguendo le convenzioni stabilite
-    
-    \item \textbf{Caricamento delle modifiche}: Utilizzare la seguente sequenza di comandi per pubblicare le modifiche:
+\item Modifica dei documenti: i documenti devono essere modificati dal corrispondente file .tex nella cartella src/. Per i file multimediali (loghi, immagini) ricordarsi di utilizzare percorsi relativi:
+    \begin{verbatim}
+    \includegraphics{../logo.png}
+    \end{verbatim}
+\item Descrizione e condivisione delle modifiche: utilizzare la seguente sequenza di comandi per pubblicare le modifiche:
     \begin{verbatim}
     git add .
     git commit -m "Descrizione chiara delle modifiche effettuate"
     git push origin main
     \end{verbatim}
-\end{itemize}
-
-\subsubsection{Convenzioni per i documenti}
-\begin{itemize}
-    \item Tutti i documenti devono essere salvati in formato \texttt{.tex}
-    \item I file devono essere posizionati nella cartella \texttt{src/} all'interno della sottocartella appropriata
-    \item Per i file multimediali (loghi, immagini) utilizzare percorsi relativi:
-    \begin{verbatim}
-    \includegraphics{../logo.png}
-    \end{verbatim}
-    \item I messaggi di \gls{commit} devono essere descrittivi
-\end{itemize}
-
-\subsubsection{\gls{GitHub} Actions per LaTeX}
-Il \gls{repository} è configurato con un sistema di automazione che gestisce la compilazione dei documenti:
+\item Automazione della compilazione: il \gls{repository} è configurato con un sistema di automazione che gestisce la compilazione dei documenti:
 
 \begin{itemize}
     \item \textbf{File di configurazione}: \texttt{compileLatex.yml}
@@ -368,25 +365,27 @@ Il \gls{repository} è configurato con un sistema di automazione che gestisce la
         \item Tracciabilità delle versioni PDF
     \end{itemize}
 \end{itemize}
-
-\subsubsection{Gestione dei compiti tramite \gls{GitHub} Issues}
-Per una gestione efficiente e tracciabile delle attività di progetto, il gruppo utilizza le \textbf{\gls{GitHub} Issues} come strumento principale. Ogni attività viene registrata come \gls{Issue} nella \gls{repository} e assegnata un \textbf{numero identificativo univoco} generato automaticamente da \gls{GitHub}. Le \gls{Issue} vengono categorizzate tramite label specifiche e assegnate ai membri del team responsabili.
-
-Nei verbali interni, nella sezione "Azioni da Intraprendere", viene fatto esplicito riferimento alle \gls{Issue} correlate tramite il loro numero identificativo (\#numero). Questo approccio garantisce un tracciamento completo dalle decisioni dei verbali alle attività concrete da svolgere.
-
-
-\subsubsection{Dashboard per il tracking delle Issues}
-Per organizzare meglio il flusso di lavoro, sono state create due dashboard distinte per le \gls{Issue}:
-\begin{itemize}
-    \item \textbf{Dashboard RTB}: dedicata alla prima fase del progetto, comprendente \gls{analisi dei requisiti}, definizione dei casi d'uso, definizione architettura e scelta tecnologie
-    
-    \item \textbf{Dashboard PB}: riservata alla seconda fase, focalizzata sullo sviluppo del prodotto
 \end{itemize}
 
-Questa suddivisione permette di monitorare separatamente lo stato di avanzamento delle due fasi principali del progetto, garantendo che tutte le attività vengano completate entro le scadenze stabilite per ciascuna \gls{milestone}.
+\subsubsection{Attività: \gls{versionamento} della documentazione}
 
+Per ogni documento, eccetto i verbali, vengono registrate le modifiche apportate nella tabella "Registro dei Cambiamenti". 
+Come convenzione per il \gls{versionamento} è stato adottato il formato \textbf{SEMVER} (Semantic Versioning). Ad ogni modifica, la versione del documento viene aggiornata secondo il formato \texttt{x.y.z}, dove:
+\begin{itemize}
+    \item \texttt{x} (major): indica modifiche sostanziali
+    \item \texttt{y} (minor): indica aggiunte di funzionalità
+    \item \texttt{z} (patch): indica correzioni di errori
+\end{itemize}
 
-\subsection{Sito web della documentazione}
+\subsubsection{Attività: \gls{verifica} della documentazione}
+Ogni documento viene verificato da uno o più membri del gruppo secondo il principio della ``\gls{verifica} incrociata'', dove i verificatori sono diversi dagli autori originali.
+Il documento viene considerato approvato quando:
+\begin{itemize}
+    \item Tutte le verifiche sono state superate
+    \item Il responsabile di progetto dà l'approvazione finale
+\end{itemize}
+
+\subsubsection{Sito web della documentazione}
 Il gruppo ha implementato un sito web per ospitare la documentazione del progetto, accessibile all'indirizzo: \url{https://byteme25.github.io/ByteMe/}
 
 Il sito, generato automaticamente dalla \gls{repository} \gls{GitHub}, offre i seguenti benefici:
@@ -397,6 +396,36 @@ Il sito, generato automaticamente dalla \gls{repository} \gls{GitHub}, offre i s
 \end{itemize}
 
 La pubblicazione avviene tramite \gls{GitHub} Pages, assicurando che la documentazione online sia sempre aggiornata all'ultima versione approvata.
+
+
+\subsection{Processo di gestione del codice}
+Il processo di gestione del codice definisce le modalità con cui il gruppo sviluppa, aggiorna e monitora il codice sorgente del progetto.
+L’obiettivo è garantire tracciabilità delle modifiche, collaborazione tra i membri del team e controllo dell’avanzamento delle attività di sviluppo.
+
+\subsubsection{Attività: gestione delle attività di sviluppo}
+L’attività di gestione delle attività di sviluppo ha lo scopo di organizzare, tracciare e monitorare i compiti relativi allo sviluppo del codice, garantendo una distribuzione chiara delle responsabilità e un controllo costante dell’avanzamento del lavoro.
+\paragraph{Procedure}
+\begin{itemize}
+\item Definizione delle attività: ogni attività di sviluppo viene formalizzata come unità di lavoro, descritta in modo chiaro e assegnata a uno o più membri del team.
+\item Tracciamento delle attività: le attività vengono identificate tramite un riferimento univoco (ad esempio un numero), che ne permette il monitoraggio durante tutto il ciclo di sviluppo.
+\item Collegamento con i verbali: le decisioni prese durante le riunioni vengono collegate alle attività operative, garantendo coerenza tra pianificazione e sviluppo effettivo.
+\item Monitoraggio dello stato di avanzamento: le attività vengono aggiornate in base al loro stato (da fare, in corso, completate), permettendo al team di avere una visione chiara dell’avanzamento complessivo.
+\end{itemize}
+\paragraph{Strumenti}
+Per una gestione efficiente e tracciabile delle attività di progetto, il gruppo utilizza le \textbf{\gls{GitHub} Issues} come strumento principale. Ogni attività viene registrata come \gls{Issue} nella \gls{repository} e assegnata un \textbf{numero identificativo univoco} generato automaticamente da \gls{GitHub}. Le \gls{Issue} vengono categorizzate tramite label specifiche e assegnate ai membri del team responsabili.
+
+Nei verbali interni, nella sezione "Azioni da Intraprendere", viene fatto esplicito riferimento alle \gls{Issue} correlate tramite il loro numero identificativo (\#numero). Questo approccio garantisce un tracciamento completo dalle decisioni dei verbali alle attività concrete da svolgere.
+
+Inoltre per organizzare meglio il flusso di lavoro, sono state create due dashboard distinte per le \gls{Issue}:
+\begin{itemize}
+    \item \textbf{Dashboard RTB}: dedicata alla prima fase del progetto, comprendente \gls{analisi dei requisiti}, definizione dei casi d'uso, definizione architettura e scelta tecnologie
+    
+    \item \textbf{Dashboard PB}: riservata alla seconda fase, focalizzata sullo sviluppo del prodotto
+\end{itemize}
+
+Questa suddivisione permette di monitorare separatamente lo stato di avanzamento delle due fasi principali del progetto, garantendo che tutte le attività vengano completate entro le scadenze stabilite per ciascuna \gls{milestone}.
+
+
 
 \newpage
 
