@@ -68,7 +68,7 @@
         \centering
         \begin{tabular}{|l|p{5cm}|}
             \hline
-            \textbf{Versione} & 1.0.5 \\
+            \textbf{Versione} & 1.0.7 \\
             \hline
             \textbf{Stato} & Da approvare \\
             \hline
@@ -98,6 +98,8 @@
     \begin{tabular}{|c|c|c|>{\raggedright\arraybackslash}p{0.4\textwidth}|c|}
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{\gls{Verifica}} \\
+        \hline
+        1.0.7 & 26/03/2026 & Elisa Marchioro & Miglioramento sezione 5 e 6 & \\
         \hline
         1.0.6 & 26/03/2026 & Elisa Marchioro & Fix sezione 5 & \\
         \hline
@@ -489,7 +491,7 @@ Essa viene svolta in modo collaborativo, assicurando che ogni modifica sia tracc
 \newpage
 
 \section{Documenti}
-All’interno della \gls{repository} di progetto è presente una serie di cartelle e documenti strutturati con l’obiettivo di organizzare in modo ordinato i materiali prodotti dal gruppo. Di seguito si riporta una descrizione delle principali sezioni e del loro contenuto.
+All’interno della \gls{repository} di progetto sulla documentazione è presente una serie di cartelle e documenti strutturati con l’obiettivo di organizzare in modo ordinato i materiali prodotti dal gruppo. Di seguito si riporta una descrizione delle principali sezioni e del loro contenuto.
 
 \subsection{\texttt{.\gls{github}/workflows}}
 Questa cartella contiene gli script di automazione utilizzati per la compilazione automatica dei documenti LaTeX tramite \gls{GitHub} Actions. 
@@ -556,8 +558,11 @@ Il gruppo ha adottato un approccio collaborativo finalizzato a garantire una def
 
 \subsection{Studio dei casi d'uso}
 
-\subsubsection{Identificazione iniziale dei casi d'uso}
-La prima fase dell’analisi ha previsto un insieme di riunioni dedicate alla raccolta di tutti i possibili use case, utilizzando la tecnica del brainstorming. Durante questi incontri il team ha:
+\subsubsection{Attività: identificazione iniziale dei casi d'uso}
+L’attività di identificazione iniziale dei casi d’uso ha lo scopo di individuare le principali funzionalità del sistema e costruire una visione condivisa del progetto.
+
+\paragraph{Procedure}
+Questa prima fase dell’analisi ha previsto un insieme di riunioni dedicate alla raccolta di tutti i possibili use case, utilizzando la tecnica del brainstorming. Durante questi incontri il team ha:
 \begin{itemize}
 \item discusso le esigenze principali del sistema;
 \item ipotizzato diversi casi d’uso e potenziali funzionalità;
@@ -565,7 +570,17 @@ La prima fase dell’analisi ha previsto un insieme di riunioni dedicate alla ra
 \end{itemize}
 Questa fase ha permesso di costruire una visione comune del dominio applicativo e di delineare una prima struttura dei casi d’uso principali.
 
-\subsubsection{Analisi individuale dei casi d'uso}
+\paragraph{Strumenti}
+I principali strumenti utilizzati in questa fase sono stati:
+\begin{itemize}
+\item Discord: piattaforma scelta per le riunioni di gruppo.
+\item Github: per la raccolta delle informazioni.
+\end{itemize}
+
+\subsubsection{Attività: analisi individuale dei casi d'uso}
+Ogni caso d’uso viene analizzato in dettaglio da un membro del gruppo per garantire una descrizione completa e accurata.
+
+\paragraph{Procedure}
 Una volta definita la lista di tutti i casi d’uso possibili, ogni membro del gruppo ha assunto la responsabilità di analizzarne uno in maniera approfondita. In particolare, ognuno ha:
 \begin{itemize}
 \item studiato nel dettaglio il caso d’uso assegnato;
@@ -574,7 +589,16 @@ Una volta definita la lista di tutti i casi d’uso possibili, ogni membro del g
 \end{itemize}
 Questa suddivisione del lavoro ha permesso di svolgere un’analisi più accurata e di sfruttare in modo efficiente le competenze di ogni membro del gruppo.
 
-\subsubsection{Revisione dei casi d'uso}
+\paragraph{Strumenti}
+\begin{itemize}
+\item Github: per la raccolta delle informazioni.
+\item LaTex: per la scrittura dei casi d'uso.
+\end{itemize}
+
+\subsubsection{Attività: revisione dei casi d'uso}
+I casi d’uso vengono sottoposti a verifica incrociata per garantirne coerenza e qualità.
+
+\paragraph{Procedure}
 Una fase essenziale del processo è stata la revisione incrociata dei contenuti prodotti individualmente.
 Ogni membro ha esaminato il lavoro degli altri al fine di:
 \begin{itemize}
@@ -585,12 +609,29 @@ Ogni membro ha esaminato il lavoro degli altri al fine di:
 \end{itemize}
 Il confronto tra i membri del gruppo ha contribuito a uniformare lo stile, a garantire la qualità complessiva dell’analisi e a minimizzare il rischio di errori o interpretazioni divergenti.
 
-\subsubsection{Discussione dei casi d’uso con l’azienda}
+\paragraph{Strumenti}
+\begin{itemize}
+\item Github: per la raccolta delle informazioni.
+\item LaTex: per la scrittura dei casi d'uso.
+\end{itemize}
+
+\subsubsection{Attività: discussione dei casi d’uso con l’azienda}
+I casi d’uso vengono presentati all’azienda per validare le scelte effettuate.
+
+\paragraph{Procedure}
 Il 2 dicembre 2025 il gruppo ha svolto anche una riunione dedicata all'analisi dei casi d'uso con l’azienda committente. Durante l’incontro sono stati presentati gli scenari elaborati dal team, con l’obiettivo di confrontare i casi d’uso individuati internamente e verificarne la correttezza rispetto alle reali esigenze del cliente. Questo confronto ha permesso di validare le ipotesi iniziali, correggere eventuali interpretazioni errate e allineare le aspettative del progetto tra gruppo e azienda.
+
+\paragraph{Strumenti}
+\begin{itemize}
+\item Riunione in presenza con l'azienda proponente.
+\end{itemize}
 
 \subsection{Studio dei requisiti}
 
-\subsubsection{Analisi individuale dei requisiti}
+\subsubsection{Attività: analisi individuale dei requisiti}
+I requisiti vengono definiti a partire dai casi d’uso validati, garantendo chiarezza e tracciabilità.
+
+\paragraph{Procedure}
 Una volta definiti e validati i casi d’uso, il gruppo ha proceduto alla definizione dei requisiti, assegnando a ciascun membro la responsabilità di redigerne una parte. In particolare, ogni membro ha:
 \begin{itemize}
 \item scritto i requisiti partendo dai casi d’uso analizzati;
@@ -600,8 +641,17 @@ Una volta definiti e validati i casi d’uso, il gruppo ha proceduto alla defini
 \end{itemize}
 Questa organizzazione del lavoro e l’adozione di una notazione comune hanno permesso di ottenere un insieme di requisiti coerente, uniforme e facilmente comprensibile, permettendo inoltre la \gls{verifica} e eventuale correzione ulteriore dei casi d’uso precedentemente scritti.
 
-\subsubsection{Revisione dei requisiti}
-Una fase essenziale del processo è stata la \gls{verifica} incrociata dei requisiti redatti. I membri del gruppo si sono impegnati ad esaminare tutti i requisiti al fine di:
+\paragraph{Strumenti}
+\begin{itemize}
+\item Github: per la raccolta delle informazioni.
+\item LaTex: per la scrittura dei casi d'uso.
+\end{itemize}
+
+\subsubsection{Attività: revisione dei requisiti}
+L’attività di revisione dei requisiti garantisce la qualità dei requisiti attraverso verifica incrociata, assicurando coerenza con i casi d’uso, completezza e chiarezza delle specifiche.
+
+\paragraph{Procedure}
+I membri del gruppo si sono impegnati ad esaminare tutti i requisiti al fine di:
 \begin{itemize}
 \item verificare la coerenza con i casi d’uso precedentemente definiti;
 \item controllare la completezza dei requisiti rispetto alle funzionalità previste;
@@ -609,6 +659,12 @@ Una fase essenziale del processo è stata la \gls{verifica} incrociata dei requi
 \item migliorare la chiarezza e la precisione delle formulazioni dei requisiti.
 \end{itemize}
 Il confronto tra i membri del gruppo ha contribuito a rafforzare la qualità complessiva del documento dei requisiti e a ridurre il rischio di errori, mancanze o ridondanze.
+
+\paragraph{Strumenti}
+\begin{itemize}
+\item Github: per la raccolta delle informazioni.
+\item LaTex: per la scrittura dei casi d'uso.
+\end{itemize}
 
 \subsection{Scrittura del documento definitivo}
 Al termine delle fasi precedenti, il team ha proceduto alla redazione del documento “\gls{Analisi dei Requisiti}”, nel quale tutti i casi d’uso e requisiti sono stati integrati e uniformati in un’unica struttura coerente. Il risultato è un documento chiaro, consistente e verificabile.
@@ -627,8 +683,10 @@ L’approccio adottato durante l’\gls{analisi dei requisiti} ha contribuito in
 \section{Piano di Progetto (PdP)}
 Il \textbf{Piano di Progetto} costituisce uno strumento fondamentale per organizzare, monitorare e coordinare le attività del team durante l’intero ciclo di sviluppo. Esso definisce la pianificazione temporale, la distribuzione dei ruoli, il carico di lavoro dei membri tramite un riassunto di ogni \gls{sprint} e l’analisi dei potenziali rischi, garantendo una gestione strutturata e consapevole del progetto.
 
-\subsection{Analisi dei rischi}
-Un elemento centrale del Piano di Progetto è stata l’analisi dei rischi, svolta con l’obiettivo di identificare gli eventi critici che avrebbero potuto compromettere tempi, qualità o continuità del lavoro.
+\subsection{Attività: analisi dei rischi}
+Un elemento centrale del Piano di Progetto è l’analisi dei rischi, svolta con l’obiettivo di identificare gli eventi critici che avrebbero potuto compromettere tempi, qualità o continuità del lavoro.
+
+\paragraph{Procedure}
 L’analisi è stata condotta esaminando individualmente ciascun potenziale problema, classificandolo all’interno di tre categorie principali: rischi organizzativi, rischi tecnologici e rischi legati al prodotto.
 Per ogni rischio sono stati definiti gli elementi essenziali per una valutazione completa:
 \begin{itemize}
@@ -638,19 +696,54 @@ Per ogni rischio sono stati definiti gli elementi essenziali per una valutazione
 \item le misure di prevenzione;
 \item le misure di mitigazione.
 \end{itemize}
-In questo modo abbiamo potuto capire meglio i possibili problemi e prepararci a gestirli.
+In questo modo abbiamo potuto capire meglio i possibili problemi e prepararci a gestirli in ogni sprint.
 
-\subsection{Approccio adottato, identificazione dei ruoli e pianificazione delle attività}
-Il nostro approccio usa la metodologia \gls{Agile}, in particolare il framework \gls{Scrum}, che prevede una pianificazione continua e iterativa del lavoro. 
+\paragraph{Strumenti}
+\begin{itemize}
+\item Discord: piattaforma scelta per le riunioni di gruppo.
+\item Github: per la raccolta delle informazioni.
+\item LaTex: per la scrittura dei casi d'uso.
+\end{itemize}
+
+\subsection{Metodo adottato}
+Il gruppo ha deciso di utilizzare la metodologia \gls{Agile}, in particolare il framework \gls{Scrum}, che prevede una pianificazione continua e iterativa del lavoro. 
 Fin dall’inizio sono stati definiti i ruoli di progetto, assegnati e alternati tra i membri del team nei diversi \gls{Sprint} per garantire una distribuzione equilibrata delle responsabilità e favorire la crescita delle competenze.
 La pianificazione delle attività è stata gestita \gls{Sprint} per \gls{Sprint}, adattandosi ai progressi del team e ai risultati ottenuti. 
 
-\subsection{Riassunto di ciascuno \gls{sprint}}
+\subsection{Attività: pianificazione e gestione degli sprint}
+L’attività di pianificazione e gestione degli sprint consente di organizzare il lavoro definendo obiettivi, ruoli e attività e monitorandone l’avanzamento.
+
+\paragraph{Procedure}
+\begin{itemize}
+\item Definizione degli obiettivi all’inizio di ogni sprint.
+\item Assegnazione dei ruoli di progetto tra i membri del team con rotazione dei ruoli ad ogni sprint.
+\item Pianificazione e assegnazione delle attività e stima delle ore necessarie.
+\item Identificazione dei rischi associati alle attività pianificate.
+\item Aggiornamento della pianificazione in base all’andamento del progetto.
+\end{itemize}
+
+\paragraph{Strumenti}
+\begin{itemize}
+\item Discord: piattaforma scelta per le riunioni di gruppo.
+\item Github Issues: per l'assegnazione delle attività.
+\item Github Projects: per l'organizzazione delle issues (fasi RTB e PB).
+\end{itemize}
+
+\subsection{Attività: consuntivazione degli sprint}
+Al termine di ogni sprint, il gruppo analizza le attività svolte per valutare i risultati ottenuti, individuare eventuali criticità e migliorare il processo nei cicli successivi.
+
+\paragraph{Procedure}
 A conclusione di ogni \gls{Sprint}, il gruppo ha redatto un resoconto delle attività svolte, documentando le sue fasi:
 \begin{itemize}
 \item Pianificazione: con obiettivi, ruoli, rischi e ore occupate previsti;
 \item Review: con attività e ore svolte e eventuali problemi riscontrati;
 \item Retrospettiva: con eventuali dubbi o problemi e la soluzione trovata, e eventuali attività programmate per lo \gls{sprint} successivo. 
+\end{itemize}
+
+\paragraph{Strumenti}
+\begin{itemize}
+\item Discord: piattaforma scelta per le riunioni di gruppo.
+\item Github: per la raccolta delle informazioni.
 \end{itemize}
 
 \newpage
