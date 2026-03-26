@@ -137,8 +137,8 @@
 Il presente documento ha lo scopo di definire la strategia, le metodologie e le risorse pianificate per garantire la qualità del prodotto software \textbf{"Second Brain"} e l'efficienza dei processi di sviluppo adottati dal gruppo. Esso funge da riferimento principale per le attività di \textbf{\gls{verifica}} (accertamento che il prodotto sia costruito correttamente) e \textbf{\gls{validazione}} (accertamento che il prodotto giusto sia stato costruito), stabilendo gli standard qualitativi che ogni artefatto deve soddisfare prima di essere approvato.
 In questo contesto, il termine \textbf{"Qualità"} viene inteso secondo due prospettive complementari:
 \begin{itemize}
-    \item \textbf{Qualità di Processo:} L'aderenza del team al metodo di lavoro definito nelle \textit{\gls{Norme di Progetto}}, basato sul miglioramento continuo e sull'efficienza delle procedure di sviluppo e test.
-    \item \textbf{Qualità di Prodotto:} La capacità del software di soddisfare i \gls{requisiti funzionali} e non funzionali esplicitati nell'\textit{\gls{Analisi dei Requisiti}}.
+    \item \textbf{Qualità di processo:} L'aderenza del team al metodo di lavoro definito nelle \textit{\gls{Norme di Progetto}}, basato sul miglioramento continuo e sull'efficienza delle procedure di sviluppo e test.
+    \item \textbf{Qualità di prodotto:} La capacità del software di soddisfare i \gls{requisiti funzionali} e non funzionali esplicitati nell'\textit{\gls{Analisi dei Requisiti}}.
 \end{itemize}
 Il documento è destinato al committente Prof. Vardanega e Prof. Cardin, all'azienda proponente Zucchetti S.p.A. e al gruppo di sviluppo ByteMe.
 
@@ -158,14 +158,14 @@ L'obiettivo è creare uno strumento di supporto alla scrittura creativa e al not
 Per evitare ambiguità e garantire un linguaggio comune all'interno del gruppo e con i committenti, i termini tecnici utilizzati in questo documento sono definiti in modo approfondito nel documento \textit{\gls{Glossario}}, situato nella \gls{repository} del gruppo alla sezione \textit{Documenti interni}. Per facilitare la lettura, i termini che presentano una definizione specifica nel \gls{glossario} sono contrassegnati con una G a pedice.
 
 \subsection{Riferimenti}
-\subsubsection{Riferimenti Normativi}
+\subsubsection{Riferimenti normativi}
 \begin{itemize}
     \item \textbf{Capitolato d'appalto C6:} Second Brain - \textit{Zucchetti}
     \item \textbf{\gls{Norme di Progetto} v1.0.0:} Documento interno del gruppo che definisce regole, strumenti e procedure.
     \item \textbf{Regolamento del progetto didattico:} Corso di Ingegneria del Software, Università degli Studi di Padova.
 \end{itemize}
 
-\subsubsection{Riferimenti Informativi}
+\subsubsection{Riferimenti informativi}
 \begin{itemize}
     \item \textbf{ISO/IEC 12207:} \textit{Systems and software engineering — Software life cycle processes}. (Standard di riferimento per il ciclo di vita del software).
     \item \textbf{ISO/IEC 25010:} \textit{Systems and software engineering — Systems and software Quality Requirements and Evaluation (SQuaRE)}. (Modello di riferimento per la qualità del prodotto software).
@@ -181,10 +181,10 @@ Per evitare ambiguità e garantire un linguaggio comune all'interno del gruppo e
 
 \newpage
 
-\section{Metriche di Qualità}
-\subsection{Qualità di Processo}
+\section{Metriche di qualità}
+\subsection{Qualità di processo}
 
-\subsubsection{\gls{Processi Primari di Fornitura}}
+\subsubsection{\gls{Processi primari di fornitura}}
 In questa sezione vengono definite le metriche relative alla gestione manageriale ed economica del progetto. L'obiettivo è monitorare l'allocazione delle risorse, il rispetto delle scadenze temporali e l'aderenza al preventivo definito in fase di candidatura.
 Per garantire un controllo oggettivo sull'avanzamento dei lavori, il gruppo adotta lo standard \textbf{EVA (Earned Value Analysis)\textsubscript{G}}, che permette di integrare la misurazione di tempi, costi e valore prodotto in un unico framework quantitativo.
 
@@ -194,8 +194,8 @@ Questo valore indica il budget totale massimo a disposizione del gruppo per lo s
 
 Il preventivo iniziale, calcolato in fase di candidatura, ammonta a \textbf{11.395 euro} per un totale di 558 ore di lavoro.
 \begin{itemize}
-    \item \textbf{Soglia Accettabile}: minimizzato.
-    \item \textbf{Soglia Ottimale}: minimizzato.
+    \item \textbf{Soglia accettabile}: minimizzato.
+    \item \textbf{Soglia ottimale}: minimizzato.
 \end{itemize}
 
 
@@ -210,7 +210,7 @@ Valore monetario (o in ore) delle attività pianificate che avrebbero dovuto ess
         \renewcommand{\arraystretch}{1.5} % Aumenta l'altezza delle righe
         \begin{tabular}{|M{0.4\textwidth}|M{0.25\textwidth}|M{0.25\textwidth}|}
             \hline
-            \textbf{Calcolo} & \textbf{Soglia Accettabile} & \textbf{Soglia Ottimale} \\
+            \textbf{Calcolo} & \textbf{Soglia accettabile} & \textbf{Soglia ottimale} \\
             \hline
             $SPV = \sum (OR \times CR)$ & $> 0$ & $> 0$ \\
             \hline
@@ -226,7 +226,7 @@ Valore monetario (o in ore) delle attività pianificate che avrebbero dovuto ess
         \renewcommand{\arraystretch}{1.5} % Aumenta l'altezza delle righe
         \begin{tabular}{|M{0.4\textwidth}|M{0.25\textwidth}|M{0.25\textwidth}|}
             \hline
-            \textbf{Calcolo} & \textbf{Soglia Accettabile} & \textbf{Soglia Ottimale} \\
+            \textbf{Calcolo} & \textbf{Soglia accettabile} & \textbf{Soglia ottimale} \\
             \hline
             $PPV = \sum SPV_{passati}$ & $> 0$ & $> 0$ \newline $\le BAC$ \\
             \hline
@@ -248,7 +248,7 @@ Costo effettivo sostenuto (ore lavorate $\times$ costo orario) per il lavoro svo
         \renewcommand{\arraystretch}{1.5} % Aumenta l'altezza delle righe
         \begin{tabular}{|M{0.4\textwidth}|M{0.25\textwidth}|M{0.25\textwidth}|}
             \hline
-            \textbf{Calcolo} & \textbf{Soglia Accettabile} & \textbf{Soglia Ottimale} \\
+            \textbf{Calcolo} & \textbf{Soglia accettabile} & \textbf{Soglia ottimale} \\
             \hline
             $SAC = \sum \textrm{costi sostenuti nello \gls{Sprint}}$ & $\le SPV + 10\%$ & $\le SPV$ \\
             \hline
@@ -264,7 +264,7 @@ Costo effettivo sostenuto (ore lavorate $\times$ costo orario) per il lavoro svo
         \renewcommand{\arraystretch}{1.5} % Aumenta l'altezza delle righe
         \begin{tabular}{|M{0.4\textwidth}|M{0.25\textwidth}|M{0.25\textwidth}|}
             \hline
-            \textbf{Calcolo} & \textbf{Soglia Accettabile} & \textbf{Soglia Ottimale} \\
+            \textbf{Calcolo} & \textbf{Soglia accettabile} & \textbf{Soglia ottimale} \\
             \hline
             $PAC = \sum_{s \in S} SAC_s$ & $\le BAC$ & $\le BAC$ \\
             \hline
@@ -286,7 +286,7 @@ Rappresenta il valore del lavoro effettivamente completato e verificato alla dat
         \renewcommand{\arraystretch}{1.5}
         \begin{tabular}{|M{0.4\textwidth}|M{0.25\textwidth}|M{0.25\textwidth}|}
             \hline
-            \textbf{Calcolo} & \textbf{Soglia Accettabile} & \textbf{Soglia Ottimale} \\
+            \textbf{Calcolo} & \textbf{Soglia accettabile} & \textbf{Soglia ottimale} \\
             \hline
             $SEV = \sum PV_{completati}$ & $\ge 90\%$ del SPV & $= SPV$ \\
             \hline
@@ -302,7 +302,7 @@ Rappresenta il valore del lavoro effettivamente completato e verificato alla dat
         \renewcommand{\arraystretch}{1.5}
         \begin{tabular}{|M{0.4\textwidth}|M{0.25\textwidth}|M{0.25\textwidth}|}
             \hline
-            \textbf{Calcolo} & \textbf{Soglia Accettabile} & \textbf{Soglia Ottimale} \\
+            \textbf{Calcolo} & \textbf{Soglia accettabile} & \textbf{Soglia ottimale} \\
             \hline
             $PEV = \sum SEV_{passati}$ & $\ge 90\%$ del PPV & $= PPV$ \\
             \hline
@@ -321,7 +321,7 @@ Misura lo scostamento temporale del progetto rispetto alla pianificazione inizia
     \renewcommand{\arraystretch}{1.5} % Spaziatura aumentata
     \begin{tabular}{|M{0.4\textwidth}|M{0.25\textwidth}|M{0.25\textwidth}|}
         \hline
-        \textbf{Calcolo} & \textbf{Soglia Accettabile} & \textbf{Soglia Ottimale} \\
+        \textbf{Calcolo} & \textbf{Soglia accettabile} & \textbf{Soglia ottimale} \\
         \hline
         $SV = EV - PV$ & $SV \ge -10\%$ del PV & $SV \ge 0$ \\
         \hline
@@ -337,7 +337,7 @@ Misura l'efficienza economica del progetto, confrontando il valore prodotto (gua
     \renewcommand{\arraystretch}{1.5} % Spaziatura aumentata
     \begin{tabular}{|M{0.4\textwidth}|M{0.25\textwidth}|M{0.25\textwidth}|}
         \hline
-        \textbf{Calcolo} & \textbf{Soglia Accettabile} & \textbf{Soglia Ottimale} \\
+        \textbf{Calcolo} & \textbf{Soglia accettabile} & \textbf{Soglia ottimale} \\
         \hline
         $CV = EV - AC$ & $CV \ge -8\%$ del EV & $CV \ge 0$ \\
         \hline
@@ -353,7 +353,7 @@ Indice di efficienza dei costi. Rapporto tra il valore guadagnato e il costo eff
     \renewcommand{\arraystretch}{1.5}
     \begin{tabular}{|M{0.4\textwidth}|M{0.25\textwidth}|M{0.25\textwidth}|}
         \hline
-        \textbf{Calcolo} & \textbf{Soglia Accettabile} & \textbf{Soglia Ottimale} \\
+        \textbf{Calcolo} & \textbf{Soglia accettabile} & \textbf{Soglia ottimale} \\
         \hline
         $CPI = \frac{PEV}{PAC}$ & $CPI \ge 0.95$ & $CPI \ge 1.00$ \\
         \hline
@@ -369,7 +369,7 @@ Indice di efficienza temporale; è il rapporto tra il valore guadagnato e il val
     \renewcommand{\arraystretch}{1.5}
     \begin{tabular}{|M{0.4\textwidth}|M{0.25\textwidth}|M{0.25\textwidth}|}
         \hline
-        \textbf{Calcolo} & \textbf{Soglia Accettabile} & \textbf{Soglia Ottimale} \\
+        \textbf{Calcolo} & \textbf{Soglia accettabile} & \textbf{Soglia ottimale} \\
         \hline
         $SPI = \frac{EV}{PV}$ & $SPI \ge 0.90$ & $SPI \ge 1.00$ \\
         \hline
@@ -385,7 +385,7 @@ Stima aggiornata del costo totale finale del progetto, calcolata proiettando l'e
     \renewcommand{\arraystretch}{1.5}
     \begin{tabular}{|M{0.4\textwidth}|M{0.25\textwidth}|M{0.25\textwidth}|}
         \hline
-        \textbf{Calcolo} & \textbf{Soglia Accettabile} & \textbf{Soglia Ottimale} \\
+        \textbf{Calcolo} & \textbf{Soglia accettabile} & \textbf{Soglia ottimale} \\
         \hline
         $EAC = \frac{BAC}{CPI}$ & $EAC \le BAC$ & $EAC \le BAC$ \\
         \hline
@@ -394,7 +394,7 @@ Stima aggiornata del costo totale finale del progetto, calcolata proiettando l'e
 \end{table}
 
 \newpage
-\subsubsection{\gls{Processi Primari di Sviluppo}}
+\subsubsection{\gls{Processi primari di sviluppo}}
 Questa sezione raggruppa le metriche utilizzate per valutare la qualità delle attività di realizzazione tecnica del prodotto.
 Il monitoraggio si focalizza sulla \textbf{stabilità dei requisiti}, per controllare l'evoluzione dello scopo del progetto ed evitare cambiamenti incontrollati, e sulla \textbf{qualità strutturale del codice}, analizzando la complessità e la dimensione del software prodotto per garantirne la manutenibilità futura.
 
@@ -406,7 +406,7 @@ Misura la stabilità dei requisiti nel corso del tempo, indicando la percentuale
     \renewcommand{\arraystretch}{1.5}
     \begin{tabular}{|M{0.4\textwidth}|M{0.25\textwidth}|M{0.25\textwidth}|}
         \hline
-        \textbf{Calcolo} & \textbf{Soglia Accettabile} & \textbf{Soglia Ottimale} \\
+        \textbf{Calcolo} & \textbf{Soglia accettabile} & \textbf{Soglia ottimale} \\
         \hline
         $RSI = (1 - \frac{N_{modifiche}}{N_{totali}}) \times 100$ & $RSI \ge 80\%$ & $RSI = 100\%$ \\
         \hline
@@ -422,7 +422,7 @@ Percentuale di requisiti implementati e verificati (soddisfatti) rispetto al tot
     \renewcommand{\arraystretch}{1.5}
     \begin{tabular}{|M{0.4\textwidth}|M{0.25\textwidth}|M{0.25\textwidth}|}
         \hline
-        \textbf{Calcolo} & \textbf{Soglia Accettabile} & \textbf{Soglia Ottimale} \\
+        \textbf{Calcolo} & \textbf{Soglia accettabile} & \textbf{Soglia ottimale} \\
         \hline
         $C = \frac{N_{soddisfatti}}{N_{totali}} \times 100$ & 
         Obbl: $100\%$ \newline Desid: $\ge 40\%$ \newline Opz: $\ge 0\%$ & 
@@ -440,7 +440,7 @@ Misura la dimensione fisica del software tramite il conteggio delle righe di cod
     \renewcommand{\arraystretch}{1.5}
     \begin{tabular}{|M{0.4\textwidth}|M{0.25\textwidth}|M{0.25\textwidth}|}
         \hline
-        \textbf{Calcolo} & \textbf{Soglia Accettabile} & \textbf{Soglia Ottimale} \\
+        \textbf{Calcolo} & \textbf{Soglia accettabile} & \textbf{Soglia ottimale} \\
         \hline
         Somma righe logiche nei file sorgente & N/A & N/A \\
         \hline
@@ -456,7 +456,7 @@ Misura la complessità del flusso di controllo di un metodo o funzione calcoland
     \renewcommand{\arraystretch}{1.5}
     \begin{tabular}{|M{0.4\textwidth}|M{0.25\textwidth}|M{0.25\textwidth}|}
         \hline
-        \textbf{Calcolo} & \textbf{Soglia Accettabile} & \textbf{Soglia Ottimale} \\
+        \textbf{Calcolo} & \textbf{Soglia accettabile} & \textbf{Soglia ottimale} \\
         \hline
         $v(G) = E - N + 2P$ & $\le 8$ & $\le 6$ \\
         \hline
@@ -465,7 +465,7 @@ Misura la complessità del flusso di controllo di un metodo o funzione calcoland
 \end{table}
 
 \newpage
-\subsubsection{\gls{Processi di Supporto}: Documentazione e Qualità}
+\subsubsection{\gls{Processi di supporto}: documentazione e qualità}
 Le metriche esposte in questa sezione valutano l'\gls{efficacia} delle attività trasversali che supportano il ciclo di vita del software.
 L'attenzione è posta sulla \textbf{qualità della documentazione}, assicurando che sia leggibile, corretta e priva di ambiguità, e sull'\gls{efficacia} del \textbf{processo di \gls{verifica}}, misurando la capacità del gruppo di identificare e risolvere rischi e difetti in modo proattivo.
 
@@ -477,7 +477,7 @@ Valuta la leggibilità di un testo redatto in lingua italiana per garantire che 
     \renewcommand{\arraystretch}{1.5}
     \begin{tabular}{|M{0.4\textwidth}|M{0.25\textwidth}|M{0.25\textwidth}|}
         \hline
-        \textbf{Calcolo} & \textbf{Soglia Accettabile} & \textbf{Soglia Ottimale} \\
+        \textbf{Calcolo} & \textbf{Soglia accettabile} & \textbf{Soglia ottimale} \\
         \hline
         $IG = 89 + \frac{300 \times N_{frasi} - 10 \times N_{lettere}}{N_{parole}}$ & $G \ge 40$ & $G \ge 60$ \\
         \hline
@@ -493,7 +493,7 @@ Misura il numero di errori ortografici o grammaticali residui nei documenti indi
     \renewcommand{\arraystretch}{1.5}
     \begin{tabular}{|M{0.4\textwidth}|M{0.25\textwidth}|M{0.25\textwidth}|}
         \hline
-        \textbf{Calcolo} & \textbf{Soglia Accettabile} & \textbf{Soglia Ottimale} \\
+        \textbf{Calcolo} & \textbf{Soglia accettabile} & \textbf{Soglia ottimale} \\
         \hline
         Conteggio errori manuale/tool & 0 & 0 \\
         \hline
@@ -509,7 +509,7 @@ Quantità di rischi che si verificano durante il progetto ma che non erano stati
     \renewcommand{\arraystretch}{1.5}
     \begin{tabular}{|M{0.4\textwidth}|M{0.25\textwidth}|M{0.25\textwidth}|}
         \hline
-        \textbf{Calcolo} & \textbf{Soglia Accettabile} & \textbf{Soglia Ottimale} \\
+        \textbf{Calcolo} & \textbf{Soglia accettabile} & \textbf{Soglia ottimale} \\
         \hline
         Conteggio rischi imprevisti & $\le 2$ & $0$ \\
         \hline
@@ -525,7 +525,7 @@ Percentuale di metriche (tra tutte quelle definite nel presente documento) che r
     \renewcommand{\arraystretch}{1.5}
     \begin{tabular}{|M{0.4\textwidth}|M{0.25\textwidth}|M{0.25\textwidth}|}
         \hline
-        \textbf{Calcolo} & \textbf{Soglia Accettabile} & \textbf{Soglia Ottimale} \\
+        \textbf{Calcolo} & \textbf{Soglia accettabile} & \textbf{Soglia ottimale} \\
         \hline
         $MS = \frac{metricheOK}{TOTmetriche} \times 100$ & $\ge 75\%$ & $100\%$ \\
         \hline
@@ -535,7 +535,7 @@ Percentuale di metriche (tra tutte quelle definite nel presente documento) che r
 
 
 \newpage
-\subsection{Qualità di Prodotto}
+\subsection{Qualità di prodotto}
 La qualità di prodotto nel software indica quanto bene un sistema riesce a soddisfare i bisogni degli utenti e gli obiettivi per cui è stato creato. Non significa solo che il programma funzioni, ma anche che sia affidabile, veloce, facile da usare e capace di essere migliorato nel tempo. Un software di buona qualità è quindi utile, stabile e adatto a evolversi insieme alle esigenze degli utenti.
 \subsubsection{\gls{Adeguatezza Funzionale}}
 Indica quanto il software realizza correttamente tutte le funzioni richieste per soddisfare gli obiettivi dell’utente.
@@ -544,7 +544,7 @@ Indica quanto il software realizza correttamente tutte le funzioni richieste per
 \renewcommand{\arraystretch}{1.5}
 \begin{tabular}{|M{0.25\textwidth}|M{0.35\textwidth}|M{0.15\textwidth}|M{0.15\textwidth}|}
 \hline
-\textbf{Metrica} & \textbf{Scopo della metrica} & \textbf{Soglia Accettabile} & \textbf{Soglia Ottimale} \\
+\textbf{Metrica} & \textbf{Scopo della metrica} & \textbf{Soglia accettabile} & \textbf{Soglia ottimale} \\
 \hline
 Requirement Coverage & \gls{Verifica} che tutte le funzionalità principali dell’editor siano implementate & 90\% & 98\% \\ \hline
 Acceptance Test Pass Rate & Controlla che le funzionalità principali funzionino correttamente & 95\% & 99\% \\ \hline
@@ -554,14 +554,14 @@ Functional Defect Density & Misura quanti bug ci sono per funzione principale & 
 \caption{Soglie metriche funzionalità del prodotto}
 \end{table}
 
-\subsubsection{\gls{Qualità dell'Output Generativo}}
+\subsubsection{\gls{Qualità dell'output generativo}}
 Misura quanto le risposte prodotte dal sistema sono corrette, coerenti e utili per l’utente.
 \begin{table}[H]
 \centering
 \renewcommand{\arraystretch}{1.5}
 \begin{tabular}{|M{0.25\textwidth}|M{0.35\textwidth}|M{0.15\textwidth}|M{0.15\textwidth}|}
 \hline
-\textbf{Metrica} & \textbf{Scopo della metrica} & \textbf{Soglia Accettabile} & \textbf{Soglia Ottimale} \\
+\textbf{Metrica} & \textbf{Scopo della metrica} & \textbf{Soglia accettabile} & \textbf{Soglia ottimale} \\
 \hline
 Accuracy & Misura quanto i suggerimenti o correzioni AI sono corretti & 85\% & 95\% \\ \hline
 Hallucination Rate & Misura quanto l’AI suggerisce contenuti errati o inventati & 10\% & 2\% \\ \hline
@@ -579,7 +579,7 @@ Rappresenta la capacità del software di funzionare in modo stabile e continuo s
 \renewcommand{\arraystretch}{1.5}
 \begin{tabular}{|M{0.25\textwidth}|M{0.35\textwidth}|M{0.15\textwidth}|M{0.15\textwidth}|}
 \hline
-\textbf{Metrica} & \textbf{Scopo della metrica} & \textbf{Soglia Accettabile} & \textbf{Soglia Ottimale} \\
+\textbf{Metrica} & \textbf{Scopo della metrica} & \textbf{Soglia accettabile} & \textbf{Soglia ottimale} \\
 \hline
 Availability & Percentuale di tempo in cui il software è operativo e stabile & 99\% & 99.9\% \\ \hline
 Error Rate & Percentuale di operazioni che falliscono (salvataggio, apertura file, AI) & 1\% & 0.1\% \\ \hline
@@ -596,9 +596,9 @@ Indica quanto il sistema è veloce e quanto bene utilizza le risorse disponibili
 \renewcommand{\arraystretch}{1.5}
 \begin{tabular}{|M{0.25\textwidth}|M{0.35\textwidth}|M{0.15\textwidth}|M{0.15\textwidth}|}
 \hline
-\textbf{Metrica} & \textbf{Scopo della metrica} & \textbf{Soglia Accettabile} & \textbf{Soglia Ottimale} \\
+\textbf{Metrica} & \textbf{Scopo della metrica} & \textbf{Soglia accettabile} & \textbf{Soglia ottimale} \\
 \hline
-Response Time (Latenza Interfaccia) & Tempo medio che l'interfaccia impiega per aggiornarsi correttamente & 500 ms & 100 ms \\ \hline
+Response Time (Latenza interfaccia) & Tempo medio che l'interfaccia impiega per aggiornarsi correttamente & 500 ms & 100 ms \\ \hline
 AI Processing Time & Tempo medio necessario all’AI per generare un testo & 10 sec & 3 sec \\
 \hline
 \end{tabular}
@@ -612,7 +612,7 @@ Descrive quanto il software è facile da imparare e da usare per gli utenti.
 \renewcommand{\arraystretch}{1.5}
 \begin{tabular}{|M{0.25\textwidth}|M{0.35\textwidth}|M{0.15\textwidth}|M{0.15\textwidth}|}
 \hline
-\textbf{Metrica} & \textbf{Scopo della metrica} & \textbf{Soglia Accettabile} & \textbf{Soglia Ottimale} \\
+\textbf{Metrica} & \textbf{Scopo della metrica} & \textbf{Soglia accettabile} & \textbf{Soglia ottimale} \\
 \hline
 Task Success Rate & Percentuale di utenti che completano correttamente un compito (scrittura, salvataggio, uso AI) & 80\% & 95\% \\ \hline
 SUS Score & Valutazione dell’usabilità tramite questionario standard & 68 & 85 \\ \hline
@@ -629,7 +629,7 @@ Indica quanto è semplice correggere, modificare ed evolvere il software nel tem
 \renewcommand{\arraystretch}{1.5}
 \begin{tabular}{|M{0.25\textwidth}|M{0.35\textwidth}|M{0.15\textwidth}|M{0.15\textwidth}|}
 \hline
-\textbf{Metrica} & \textbf{Scopo della metrica} & \textbf{Soglia Accettabile} & \textbf{Soglia Ottimale} \\
+\textbf{Metrica} & \textbf{Scopo della metrica} & \textbf{Soglia accettabile} & \textbf{Soglia ottimale} \\
 \hline
 Test Coverage & Percentuale di codice coperto dai test (funzioni base + AI) & 70\% & 90\% \\ \hline
 Change Failure Rate & Percentuale di modifiche che introducono problemi o bug & 15\% & 5\% \\
@@ -639,10 +639,10 @@ Change Failure Rate & Percentuale di modifiche che introducono problemi o bug & 
 \end{table}
 
 \newpage
-\section{Strategia di \gls{Verifica} (Testing)}
-\subsection{\gls{Analisi Statica}}
+\section{Strategia di \gls{verifica} (Testing)}
+\subsection{\gls{Analisi statica}}
 
-\subsubsection{\gls{Checklist} per la \gls{Verifica} (\gls{Analisi Statica} tramite Inspection\textsubscript{G})}
+\subsubsection{\gls{Checklist} per la \gls{verifica} (\gls{Analisi statica} tramite inspection\textsubscript{G})}
 Questa sezione contiene le liste di controllo che i Verificatori devono utilizzare obbligatoriamente prima di approvare un documento o un pezzo di codice. L'obiettivo è standardizzare il controllo qualità ed evitare errori ricorrenti.
 Questa \gls{checklist} viene aggiornata progressivamente dai verificatori e permette di evitare gli errori più comuni e semplici da individuare.
 
@@ -652,9 +652,9 @@ Questa \gls{checklist} viene aggiornata progressivamente dai verificatori e perm
     \renewcommand{\arraystretch}{1.4}
     \begin{tabular}{|l|>{\raggedright\arraybackslash}p{0.35\textwidth}|>{\raggedright\arraybackslash}p{0.4\textwidth}|}
         \hline
-        \textbf{Oggetto} & \textbf{Errore} & \textbf{Azione Correttiva} \\
+        \textbf{Oggetto} & \textbf{Errore} & \textbf{Azione correttiva} \\
         \hline
-        Immagini e Tabelle & Mancanza di didascalia (caption) & Ogni tabella o immagine deve avere una didascalia esplicativa numerata. \\
+        Immagini e tabelle & Mancanza di didascalia (caption) & Ogni tabella o immagine deve avere una didascalia esplicativa numerata. \\
         \hline
         Struttura & Sezioni vuote o orfane & Rimuovere o riempire le sezioni che contengono solo il titolo senza testo. \\
         \hline
@@ -669,7 +669,7 @@ Questa \gls{checklist} viene aggiornata progressivamente dai verificatori e perm
         \gls{Versionamento} & Nome file senza versione & Il nome del documento deve contenere il numero di versione corrente (es. \texttt{Nome\_doc\_v1.0.0}). \\
         \hline
     \end{tabular}
-    \caption{\gls{Checklist} Documentazione (LaTeX)}
+    \caption{\gls{Checklist} documentazione (LaTeX)}
 \end{table}
 
 % tabella checklist Codice e Push 
@@ -678,14 +678,14 @@ Questa \gls{checklist} viene aggiornata progressivamente dai verificatori e perm
     \renewcommand{\arraystretch}{1.4}
     \begin{tabular}{|l|>{\raggedright\arraybackslash}p{0.35\textwidth}|>{\raggedright\arraybackslash}p{0.4\textwidth}|}
         \hline
-        \textbf{Oggetto} & \textbf{Errore} & \textbf{Azione Correttiva} \\
+        \textbf{Oggetto} & \textbf{Errore} & \textbf{Azione correttiva} \\
         \hline
-        Sincronizzazione & Push senza Pull & Eseguire sempre \texttt{\gls{git} pull} prima di \texttt{\gls{git} push} per risolvere conflitti locali ed evitare \gls{merge} complessi. \\
+        Sincronizzazione & Push senza pull & Eseguire sempre \texttt{\gls{git} pull} prima di \texttt{\gls{git} push} per risolvere conflitti locali ed evitare \gls{merge} complessi. \\
         \hline
         Pulizia & Codice commentato o morto & Rimuovere blocchi di codice commentato inutile o funzioni non utilizzate prima del push. \\
         \hline
     \end{tabular}
-    \caption{\gls{Checklist} Codice e Push (\gls{Git})}
+    \caption{\gls{Checklist} codice e push (\gls{Git})}
 \end{table}
 
 % tabella checklist analisi dei requisiti
@@ -694,7 +694,7 @@ Questa \gls{checklist} viene aggiornata progressivamente dai verificatori e perm
     \renewcommand{\arraystretch}{1.4}
     \begin{tabular}{|l|>{\raggedright\arraybackslash}p{0.35\textwidth}|>{\raggedright\arraybackslash}p{0.4\textwidth}|}
         \hline
-        \textbf{Oggetto} & \textbf{Errore} & \textbf{Azione Correttiva} \\
+        \textbf{Oggetto} & \textbf{Errore} & \textbf{Azione correttiva} \\
         \hline
         Tracciamento & Requisiti per un caso d'uso assenti & Ad ogni caso d'uso deve corrispondere almeno un requisito. \\
         \hline
@@ -714,21 +714,21 @@ Questa \gls{checklist} viene aggiornata progressivamente dai verificatori e perm
 
 % SEZIONE PER ANALISI DINAMICA: test implementati sul codice
 \newpage
-\subsection{\gls{Analisi Dinamica}}
+\subsection{\gls{Analisi dinamica}}
 L'\gls{analisi dinamica} del software \textit{Second Brain} viene condotta attraverso l'esecuzione di test strutturati su diversi livelli di granularità, secondo il modello a V del ciclo di vita del software. L'obiettivo è verificare che il sistema soddisfi i \gls{requisiti funzionali} e non funzionali, garantendo affidabilità, correttezza e usabilità del prodotto finale.
 
-\paragraph{Priorità di Testing (per la fase RTB)}
+\paragraph{Priorità di testing (per la fase RTB)}
 Durante lo sviluppo del Proof of Concept (PoC), l'\gls{analisi dinamica} si concentra sulla \gls{verifica} della fattibilità tecnologica e sull'integrazione tra i componenti. Le priorità sono così definite:
 \begin{itemize}
-    \item \textbf{Alta}: \gls{Test di Sistema} (funzionalità AI core) e \gls{Test di Integrazione} (\gls{API} Auth + AI, Backend-\gls{Database}).
-    \item \textbf{Media}: Test di Unità (logiche isolate come \texttt{auth.py} o formattazione dei prompt).
+    \item \textbf{Alta}: \gls{Test di sistema} (funzionalità AI core) e \gls{test di integrazione} (\gls{API} Auth + AI, Backend-\gls{Database}).
+    \item \textbf{Media}: Test di unità (logiche isolate come \texttt{auth.py} o formattazione dei prompt).
 \end{itemize}
 L'obiettivo attuale non è raggiungere una \textit{Code Coverage} esaustiva (che sarà centrale nella fase PB), ma validare che i rischi tecnologici siano stati mitigati.
 
 % ----------------------------------------------------
 % TEST DI UNITA'
 % ----------------------------------------------------
-\subsubsection{Test di Unità\textsubscript{G}}
+\subsubsection{Test di unità\textsubscript{G}}
 \textbf{Obiettivo}: Verificare il corretto funzionamento delle singole unità software in isolamento (funzioni, metodi, moduli), assicurando che producano l'output atteso per ogni input fornito.
 
 \begin{table}[H]
@@ -736,7 +736,7 @@ L'obiettivo attuale non è raggiungere una \textit{Code Coverage} esaustiva (che
     \small % Carattere leggermente ridotto per far stare tutte le colonne
     \begin{tabularx}{\textwidth}{|c|c|X|p{2.5cm}|p{2.5cm}|}
         \hline
-        \textbf{Test ID} & \textbf{Funzione Testata} & \textbf{Descrizione} & \textbf{Input} & \textbf{Output Atteso} \\
+        \textbf{Test ID} & \textbf{Funzione testata} & \textbf{Descrizione} & \textbf{Input} & \textbf{Output atteso} \\
         \hline
         TU-1 & \texttt{genera\_hash()} & \gls{Verifica} generazione hash PBKDF2 con salt casuale. & pwd: "test123" & Stringa formato \texttt{salt\$hash} \\
         \hline
@@ -747,13 +747,13 @@ L'obiettivo attuale non è raggiungere una \textit{Code Coverage} esaustiva (che
         TU-4 & \texttt{\gls{verifica}\_pwd()} & Gestione delle eccezioni per hash malformati o nulli. & hash malformato & \texttt{False} \\
         \hline
     \end{tabularx}
-    \caption{Test di Unità}
+    \caption{Test di unità}
 \end{table}
 
 % ----------------------------------------------------
 % TEST DI INTEGRAZIONE
 % ----------------------------------------------------
-\subsubsection{\gls{Test di Integrazione}}
+\subsubsection{\gls{Test di integrazione}}
 \textbf{Obiettivo}: Verificare che i diversi moduli del sistema (Frontend, Backend, \gls{Database} e LLM esterni) comunichino correttamente tra loro attraverso le rispettive interfacce e \gls{API}.
 
 \begin{table}[H]
@@ -774,13 +774,13 @@ L'obiettivo attuale non è raggiungere una \textit{Code Coverage} esaustiva (che
         TI-5 & \gls{Verifica} che la funzione frontend \texttt{loginUtente()} componga correttamente il body JSON della richiesta HTTP POST e gestisca adeguatamente la risposta del backend (es. token di sessione o errore). & ROP-F-9 \\
         \hline
     \end{tabularx}
-    \caption{\gls{Test di Integrazione}}
+    \caption{\gls{Test di integrazione}}
 \end{table}
 
 % ----------------------------------------------------
 % TEST DI SISTEMA
 % ----------------------------------------------------
-\subsubsection{\gls{Test di Sistema}}
+\subsubsection{\gls{Test di sistema}}
 \textbf{Obiettivo}: Validare il comportamento del software nel suo complesso, simulando i percorsi d'uso (End-to-End) dell'utente finale tramite l'interfaccia grafica per garantire la copertura dei casi d'uso.
 
 \begin{table}[H]
@@ -790,23 +790,23 @@ L'obiettivo attuale non è raggiungere una \textit{Code Coverage} esaustiva (che
         \hline
         \textbf{Test ID} & \textbf{Descrizione} & \textbf{Caso d'Uso (UC)} \\
         \hline
-        TS-1 & \textbf{Flusso Autenticazione}: L'utente accede alla pagina di login, inserisce credenziali valide e preme "Accedi". Il sistema lo reindirizza all'editor, nasconde i bottoni di login/registrazione e l'area utente. & UC-5.0, UC-5.5 \\
+        TS-1 & \textbf{Flusso autenticazione}: L'utente accede alla pagina di login, inserisce credenziali valide e preme "Accedi". Il sistema lo reindirizza all'editor, nasconde i bottoni di login/registrazione e l'area utente. & UC-5.0, UC-5.5 \\
         \hline
-        TS-2 & \textbf{Flusso AI Core}: L'utente carica un file locale, ne seleziona una porzione, richiede un'operazione all'AI (es. "Riassumi"). Il sistema elabora la richiesta e inietta il risultato nel pannello "Storico Generazioni". & UC-2.* \\
+        TS-2 & \textbf{Flusso AI core}: L'utente carica un file locale, ne seleziona una porzione, richiede un'operazione all'AI (es. "Riassumi"). Il sistema elabora la richiesta e inietta il risultato nel pannello "Storico Generazioni". & UC-2.* \\
         \hline
-        TS-3 & \textbf{Flusso Editor e I/O}: L'utente scrive testo formattato in \gls{Markdown} nell'editor, \gls{verifica} che la sintassi venga riconosciuta, ed esegue il salvataggio (download) del file in formato .md sul proprio dispositivo. & UC-1.0, UC-4.0 \\
+        TS-3 & \textbf{Flusso editor e I/O}: L'utente scrive testo formattato in \gls{Markdown} nell'editor, \gls{verifica} che la sintassi venga riconosciuta, ed esegue il salvataggio (download) del file in formato .md sul proprio dispositivo. & UC-1.0, UC-4.0 \\
         \hline
     \end{tabularx}
-    \caption{\gls{Test di Sistema}}
+    \caption{\gls{Test di sistema}}
 \end{table}
 
 % \subsubsection{Test di Accettazione\textsubscript{G}}
 
 \newpage
-\section{Cruscotto di Valutazione della Qualità\textsubscript{G}}
+\section{Cruscotto di valutazione della qualità}
 In questa sezione vengono presentati gli indicatori di qualità relativi al processo produttivo, al fine di valutarne l'andamento durante le due fasi di progetto: RTB (Requirements and Technology Baseline) e PB (Product Baseline).
 
-\subsection{Qualità di Processo}
+\subsection{Qualità di processo}
 
 \subsubsection{Estimated at Completion (EAC)}
 % [GRAFICO DELL'ANDAMENTO EAC]
