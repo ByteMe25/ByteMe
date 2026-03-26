@@ -55,6 +55,35 @@
             <div id="wow" class="special_link">
             </div>
         </div>
+        <div id="about" class="block">
+            <h2 class="subtitle">Chi siamo</h2>
+            <div>
+                <div class="member_contact">
+                    <p>Matteo Cuogo - <span>2111013</span></p>
+                    <a href="mailto:matteo.cuogo.1@studenti.unipd.it">matteo.cuogo.1@studenti.unipd.it</a>
+                </div>
+                <div class="member_contact">
+                    <p>Joseph Grant - <span>1224441</span></p>
+                    <a href="mailto:joseph.grant@studenti.unipd.it">joseph.grant@studenti.unipd.it</a>
+                </div>
+                <div class="member_contact">
+                    <p>Chiara Grossele - <span>2101063</span></p>
+                    <a href="mailto:chiara.grossele@studenti.unipd.it">chiara.grossele@studenti.unipd.it</a>
+                </div>
+                <div class="member_contact">
+                    <p>Elisa Marchioro - <span>2111941</span></p>
+                    <a href="mailto:elisa.marchioro.2@studenti.unipd.it">elisa.marchioro.2@studenti.unipd.it</a>
+                </div>
+                <div class="member_contact">
+                    <p>Giulia Barzon - <span>2101074</span></p>
+                    <a href="mailto:giulia.barzon.1@studenti.unipd.it">giulia.barzon.1@studenti.unipd.it</a>
+                </div>
+                <div class="member_contact">
+                    <p>Tommaso Tombacco - <span>2076447</span></p>
+                    <a href="mailto:tommaso.tombacco@studenti.unipd.it">tommaso.tombacco@studenti.unipd.it</a>
+                </div>
+            </div>
+        </div>
         <div id="latest_files" class="block">
             <h2 class="subtitle">File recenti</h2>
             <p>Qui sotto è possibile visualizzare gli ultimi documenti prodotti durante lo sviluppo del progetto da
@@ -85,34 +114,11 @@
             <h3 class="files_title">Altri file</h4>
                 <div id="rtb_files"></div>
         </div>
-        <div id="about" class="block">
-            <h2 class="subtitle">Chi siamo</h2>
-            <div>
-                <div class="member_contact">
-                    <p>Matteo Cuogo - <span>2111013</span></p>
-                    <a href="mailto:matteo.cuogo.1@studenti.unipd.it">matteo.cuogo.1@studenti.unipd.it</a>
-                </div>
-                <div class="member_contact">
-                    <p>Joseph Grant - <span>1224441</span></p>
-                    <a href="mailto:joseph.grant@studenti.unipd.it">joseph.grant@studenti.unipd.it</a>
-                </div>
-                <div class="member_contact">
-                    <p>Chiara Grossele - <span>2101063</span></p>
-                    <a href="mailto:chiara.grossele@studenti.unipd.it">chiara.grossele@studenti.unipd.it</a>
-                </div>
-                <div class="member_contact">
-                    <p>Elisa Marchioro - <span>2111941</span></p>
-                    <a href="mailto:elisa.marchioro.2@studenti.unipd.it">elisa.marchioro.2@studenti.unipd.it</a>
-                </div>
-                <div class="member_contact">
-                    <p>Giulia Barzon - <span>2101074</span></p>
-                    <a href="mailto:giulia.barzon.1@studenti.unipd.it">giulia.barzon.1@studenti.unipd.it</a>
-                </div>
-                <div class="member_contact">
-                    <p>Tommaso Tombacco - <span>2076447</span></p>
-                    <a href="mailto:tommaso.tombacco@studenti.unipd.it">tommaso.tombacco@studenti.unipd.it</a>
-                </div>
-            </div>
+        <div id="pb" class="block">
+            <h2 class="subtitle">Seconda Fase PB</h2>
+            <p>I seguenti documenti riguardano la seconda fase di valutazione del progetto.</p>
+            <h3 class="files_title">Documentazione</h4>
+                <div id="pb_files"></div>
         </div>
         <footer>
             <p>© 2026 ByteMe. All rights reserved.</p>
@@ -165,6 +171,11 @@
                 path: '2_RTB',
                 divId: 'rtb_files',
                 exclude: 'Lettera_di_Candidatura'
+            });
+
+            loadPdfFiles({
+                path: '3_PB',
+                divId: 'pb_files',
             });
 
         });

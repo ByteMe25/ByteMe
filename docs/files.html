@@ -86,6 +86,14 @@
                     </div>
                 </div>
 
+                <div id="internal_docs_block" class="inside_block">
+                    <h3 class="files_title">PB</h3>
+                    <div class="inside_block">
+                        <div id="pb_files">
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
         <footer>
@@ -123,6 +131,11 @@
             loadPdfFiles({
                 path: '2_RTB',
                 divId: 'rtb_files',
+            });
+
+            loadPdfFiles({
+                path: '3_PB',
+                divId: 'pb_files',
             });
 
         });
