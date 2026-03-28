@@ -61,7 +61,7 @@
     
     \vspace{1cm}
     
-    \textbf{\Huge Specifica Tecnica} \\
+    \textbf{\Huge \gls{Specifica Tecnica}} \\
     
     \vspace{1.5cm}
     
@@ -75,7 +75,7 @@
             \hline
             \textbf{Redazione} & Giulia Barzon \\
             \hline
-            \textbf{Verifica} & Da verificare \\
+            \textbf{\gls{Verifica}} & Da verificare \\
             \hline
             \textbf{Approvazione} & Da approvare\\
             \hline
@@ -99,7 +99,7 @@
     \centering
     \begin{tabular}{|c|c|c|>{\raggedright\arraybackslash}p{0.35\textwidth}|p{0.18\textwidth}|}
         \hline
-        \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verifica} \\
+        \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{\gls{Verifica}} \\
         \hline
         0.0.2 &  &  &  & \\
         \hline
@@ -121,7 +121,7 @@
 
 \section{Introduzione}
 \subsection{Scopo del documento}
-Il presente documento costituisce la \textbf{Specifica Tecnica} del prodotto
+Il presente documento costituisce la \textbf{\gls{Specifica Tecnica}} del prodotto
 \textit{Second Brain}, proposto dall'azienda \textit{Zucchetti} al
 gruppo ByteMe.
  
@@ -130,28 +130,28 @@ Il documento descrive in dettaglio:
   \item le \textbf{tecnologie} adottate (linguaggi, framework, librerie, strumenti);
   \item l'\textbf{architettura} logica e fisica del sistema, con i pattern architetturali scelti;
   \item i \textbf{design pattern} applicati a livello di componenti, con motivazione delle scelte;
-  \item la \textbf{documentazione API} tra frontend e backend;
-  \item i \textbf{requisiti soddisfatti} con riferimento al documento \textit{Analisi dei Requisiti} v1.4.1.
+  \item la \textbf{documentazione \gls{API}} tra frontend e backend;
+  \item i \textbf{requisiti soddisfatti} con riferimento al documento \textit{\gls{Analisi dei Requisiti}} v1.4.1.
 \end{itemize}
  
 Il documento è rivolto al team di sviluppo come guida implementativa e a
-committente e proponente come verifica della coerenza tra scelte progettuali e requisiti concordati.
+committente e proponente come \gls{verifica} della coerenza tra scelte progettuali e requisiti concordati.
  
 \subsection{Approccio alla redazione}
 Il documento viene redatto in modo \textbf{incrementale}, assicurando coerenza con gli sviluppi in corso. Non puo essere considerato completo fino al rilascio della versione 1.0.0.
 
 \subsection{Scopo del prodotto}
-Il progetto \textit{Second Brain} mira a sviluppare un editor di testo avanzato basato sul linguaggio Markdown e potenziato dall'integrazione di Large Language Model (LLM).
+Il progetto \textit{Second Brain} mira a sviluppare un \gls{editor di testo} avanzato basato sul linguaggio \gls{Markdown} e potenziato dall'integrazione di Large Language Model (LLM).
 L'applicazione web consentira all'utente di:
 \begin{itemize}
-  \item scrivere e visualizzare in tempo reale testi formattati in Markdown;
+  \item scrivere e visualizzare in tempo reale testi formattati in \gls{Markdown};
   \item interagire con un LLM per riassumere, correggere, riscrivere e tradurre testi;
   \item ottenere analisi critiche multi-prospettiche secondo il metodo dei \textit{Sei Cappelli per Pensare} di Edward De Bono;
-  \item delegare all'AI la stesura completa di un testo tramite Distant Writing.
+  \item delegare all'AI la stesura completa di un testo tramite \gls{Distant Writing}.
 \end{itemize}
  
-\subsection{Glossario}
-Per evitare ambiguità, i termini tecnici usati nel documento vengono definiti in modo più approfondito nel documento "Glossario v.1.0.0" che si trova nella repository del gruppo nella cartella "Documenti\textunderscore interni" o consultabile nel sito web del gruppo, al seguente link:\\
+\subsection{\gls{Glossario}}
+Per evitare ambiguità, i termini tecnici usati nel documento vengono definiti in modo più approfondito nel documento "\gls{Glossario} v.1.0.0" che si trova nella \gls{repository} del gruppo nella cartella "Documenti\textunderscore interni" o consultabile nel sito web del gruppo, al seguente link:\\
 \url{https://byteme25.github.io/ByteMe/}
 
 I termini che vengono considerati meritevoli di approfondimenti sono indicati con una G a pedice.
@@ -161,22 +161,22 @@ I termini che vengono considerati meritevoli di approfondimenti sono indicati co
 \subsubsection{Riferimenti normativi}
 \begin{itemize}
   \item Capitolato d'appalto C6: \textit{Second Brain} (Zucchetti S.p.A.)\\
-  \item \textit{Norme di Progetto} versione 1.0.0
+  \item \textit{\gls{Norme di Progetto}} versione 1.0.0
   \item Regolamento del progetto didattico:\\
         \url{https://www.math.unipd.it/~tullio/IS-1/2023/Dispense/PD2.pdf}
 \end{itemize}
  
 \subsubsection{Riferimenti informativi}
 \begin{itemize}
-    \item \textit{Analisi dei Requisiti} versione 1.4.1
+    \item \textit{\gls{Analisi dei Requisiti}} versione 1.4.1
     \item \textit{Piano di Qualifica} versione 1.0.0
     \item Verbali interni ed esterni
-    \item Repository ufficiale di EasyMDE: \url{https://github.com/Ionaru/easy-markdown-editor}\\ Ultimo accesso: 24/03/2026
-     \item Documentazione linguaggio markdown - CommonMark: \url{https://commonmark.org/}\\ Ultimo accesso: 20/02/2026
-    \item Documentazione React 19: \url{https://react.dev}\\ Ultimo accesso: 27/03/2026
-    \item Principi del Bulletproof React (repository ufficiale): \url{https://github.com/alan2207/bulletproof-react}\\ Ultimo accesso: 27/03/2026
-    \item Documentazione Flask: \url{https://flask.palletsprojects.com}\\ Ultimo accesso: 10/03/2026
-    \item Documentazione Docker: \url{https://docs.docker.com}\\ Ultimo accesso: 27/02/2026
+    \item \gls{Repository} ufficiale di \gls{EasyMDE}: \url{https://github.com/Ionaru/easy-markdown-editor}\\ Ultimo accesso: 24/03/2026
+     \item Documentazione linguaggio \gls{markdown} - CommonMark: \url{https://commonmark.org/}\\ Ultimo accesso: 20/02/2026
+    \item Documentazione \gls{React} 19: \url{https://react.dev}\\ Ultimo accesso: 27/03/2026
+    \item Principi del Bulletproof \gls{React} (\gls{repository} ufficiale): \url{https://github.com/alan2207/bulletproof-react}\\ Ultimo accesso: 27/03/2026
+    \item Documentazione \gls{Flask}: \url{https://flask.palletsprojects.com}\\ Ultimo accesso: 10/03/2026
+    \item Documentazione \gls{Docker}: \url{https://docs.docker.com}\\ Ultimo accesso: 27/02/2026
     \item Documentazione TypeScript: \url{https://www.typescriptlang.org/docs/}\\ Ultimo accesso: 27/03/2026
 
     \item Slide del corso di Ingegneria del Software\\ Ultimo accesso: 27/03/2026
