@@ -99,6 +99,8 @@
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{\gls{Verifica}} \\
         \hline
+        1.0.7 & 26/03/2026 & Elisa Marchioro & Review e retrospettiva \gls{sprint} 10, obiettivi e consultivo sprint 11 & \\
+        \hline
         1.0.6 & 25/03/2026 & Elisa Marchioro & Piccoli fix allo \gls{sprint} 10 & Matteo Cuogo e Tommaso Tombacco\\
         \hline
         1.0.5 & 23/03/2026 & Giulia Barzon & Consuntivo \gls{sprint} 9 e preventivo \gls{sprint} 10 & Matteo Cuogo e Tommaso Tombacco\\
@@ -1804,21 +1806,21 @@ Il costo cumulato del progetto (PAC) aggiornato, sommando il consuntivo della fa
         \hline
         \textbf{Membro} & \textbf{Re} & \textbf{Am} & \textbf{An} & \textbf{Pj} & \textbf{Pg} & \textbf{Ve} & \textbf{Totale} \\
         \hline
-        Joseph Grant & & & & & & & \\
+        Joseph Grant & 0 & 0 & 0 & 4 & 0 & 1 & 5\\
         \hline
-        Chiara Grossele & & & & & & & \\
+        Chiara Grossele & 0 & 0 & 0 & 4 & 0 & 1 & 5\\
         \hline
-        Tommaso Tombacco & & & & & & & \\
+        Tommaso Tombacco & 0 & 0 & 0 & 5 & 0 & 1 & 6\\
         \hline
-        Elisa Marchioro & & & & & & & \\
+        Elisa Marchioro & 0 & 6 & 0 & 1 & 1 & 0 & 8\\
         \hline
-        Giulia Barzon & & & & & & & \\
+        Giulia Barzon & 1 & 0 & 0 & 5 & 0 & 0 & 6\\
         \hline
-        Matteo Cuogo & & & & & & & \\
+        Matteo Cuogo & 0 & 0 & 0 & 4 & 0 & 1 & 5\\
         \hline
-        \textbf{Ore totali} & & & & & & & \\
+        \textbf{Ore totali} & 1 & 6 & 0 & 23 & 1 & 4 & 35\\
         \hline
-        \textbf{Costo totale} & & & & & & & \\
+        \textbf{Costo totale} & 30 & 150 & 0 & 575 & 15 & 60 & 830\\
         \hline
     \end{tabular}
 \end{center}
@@ -1826,7 +1828,89 @@ Il costo cumulato del progetto (PAC) aggiornato, sommando il consuntivo della fa
 \noindent \textbf{Legenda}: Re = Responsabile, Am = Amministratore, An = Analista, Pj = Progettista, Pg = Programmatore, Ve = Verificatore.
 
 \subsubsection{Retrospettiva}
+\paragraph{Grado di raggiungimento degli obiettivi}
+Gli obiettivi principali dello \gls{sprint} sono stati raggiunti parzialmente. Per quanto riguarda la progettazione, sono stati individuati tutti i possibili pattern del prodotto e si è proceduto al confronto e all’integrazione dei diagrammi delle classi elaborati dai vari membri del gruppo. Inoltre, è stato sviluppato del codice con l’obiettivo di testare concretamente i pattern individuati. E' stato anche creato il documento della specifica tecnica.
+Sul fronte backend ogni membro del gruppo sta conducendo una ricerca su una funzionalità AI del progetto per scegliere il modello LLM migliore per quella funzionalità.
+Sul fronte frontend, è stata presa la decisione definitiva di adottare TypeScript, ritenuto più adeguato alle esigenze e alle funzionalità del progetto. A seguito del feedback del professor Vardanega, sono state inoltre apportate le necessarie correzioni alle Norme di Progetto e al Piano di Progetto ed è stato sistemato il sito web.
+Infine, è stato fissato un incontro con la proponente Zucchetti, previsto per il giorno 1 aprile 2026.
 
+\paragraph{Misure correttive pianificate}
+Nel prossimo sprint si proseguirà con la fase di progettazione, con l’obiettivo di consolidare e finalizzare i diagrammi delle classi, così da poter aggiornare in modo coerente il documento di Specifica Tecnica. Parallelamente, verrà portata avanti l’implementazione del codice e lo sviluppo dei relativi test, al fine di validare progressivamente le scelte progettuali adottate.
+Per quanto riguarda la documentazione, sono previste attività di revisione e correzione dei documenti di Analisi dei Requisiti e Piano di Qualifica, in modo da garantirne coerenza, completezza e allineamento con lo stato attuale del progetto.
+
+\paragraph{Valutazione dei rischi}
+\begin{itemize}
+\item Il rischio RO-6 (problemi di comunicazione esterna) viene aggiornato: la sua probabilità è ritenuta in diminuzione grazie all’incontro programmato con la proponente Zucchetti.
+\item Il rischio RT-1 e RT-3 (in relazione all'adozione di Typescript) viene aggiornato: a seguito di una sperimentazione concreta sul codice, è stato possibile valutarne in modo più accurato l’impatto. I risultati ottenuti indicano che i benefici, in termini di maggiore robustezza e manutenibilità del codice, superano i potenziali rischi inizialmente individuati. Inoltre, la complessità dello strumento si è rivelata inferiore rispetto alle aspettative, rendendone l’adozione sostenibile per il team.
+\end{itemize}
+ 
+\paragraph{Miglioramento della pianificazione futura}
+Nel prossimo \gls{sprint} prevediamo di concludere definitivamente la fase di progettazione e di continuare con la scrittura del codice e dei test. Prevediamo inoltre di organizzare un incontro con il Prof. Cardin per chiarire alcuni dubbi architetturali sorti, da pianificare entro lo \gls{sprint} 11.
+ 
+\paragraph{Preventivo a finire (EAC aggiornato)}
+Il consuntivo dello \gls{sprint} 10 ammonta a \textbf{815 euro}.
+Il costo cumulato del progetto (PAC) aggiornato, sommando il consuntivo della fase RTB (4.107,5 euro) e quello degli \gls{sprint} successivi, risulta pari a \textbf{6.572,5 euro} a fronte di un Budget at Completion (BAC) di 11.395 euro.
+Il margine residuo disponibile per la fase PB è pertanto di \textbf{4.822,5 euro}, in linea con la pianificazione iniziale che prevedeva l’allocazione della maggior parte del budget alla fase di sviluppo del prodotto, nonostante un lieve ritardo accumulato.
 \newpage
+
+% --------------------------------------------
+% SPRINT 11 (PB)
+% --------------------------------------------
+\subsection{\gls{Sprint} 11: PB - Fase di progettazione e scrittura codice}
+{\textbf{Periodo: 31 marzo 2026 - 7 aprile 2026}\par}
+
+\subsubsection{Pianificazione}
+\begin{itemize}
+    \item \textbf{Data inizio}: 31 marzo 2026
+    \item \textbf{Data fine}: 7 aprile 2026
+        \item \textbf{Obiettivi}:
+    \begin{itemize}
+        \item Sessione di allineamento interno: ogni membro del gruppo presenta agli altri i risultati della ricerca condotta sui modelli LLM della propria funzionalità AI;
+        \item Completamento della fase di progettazione e convergenza sull'architettura definitiva dell'MVP;
+        \item Continuazione della scrittura del codice dell'MVP e dei test unitari;
+        \item Correzione dei documenti segnalati nella valutazione RTB: \gls{Analisi dei Requisiti} e Piano di Qualità;
+        \item Riunione con la proponente Zucchetti (da effettuarsi mercoledì 1 aprile 2026);
+        \item Richiesta di incontro con il Prof. Cardin per chiarimenti architetturali.
+    \end{itemize}
+    
+    \item \textbf{Ruoli assegnati}:
+    \begin{itemize}
+        \item Matteo Cuogo: Progettista e Programmatore
+        \item Giulia Barzon: Progettista e Verificatore
+        \item Elisa Marchioro: Progettista e Programmatore
+        \item Joseph Grant: Progettista e Amministratore
+        \item Chiara Grossele: Responsabile e Progettista
+        \item Tommaso Tombacco: Progettista e Verificatore
+    \end{itemize}
+    \item \textbf{Rischi attesi}: RO-1, RO-3, RT-1, RT-2, RT-3
+\end{itemize}
+
+\subsubsection{Preventivo orario}
+\begin{center}
+    \begin{tabular}{|l|c|c|c|c|c|c|c|}
+        \hline
+        \textbf{Membro} & \textbf{Re} & \textbf{Am} & \textbf{An} & \textbf{Pj} & \textbf{Pg} & \textbf{Ve} & \textbf{Totale} \\
+        \hline
+        Joseph Grant & 0 & 2 & 0 & 4 & 0 & 0 & 6 \\
+        \hline
+        Chiara Grossele & 1 & 0 & 0 & 5 & 0 & 0 & 6 \\
+        \hline
+        Tommaso Tombacco & 0 & 0 & 0 & 4 & 0 & 3 & 7 \\
+        \hline
+        Elisa Marchioro & 0 & 0 & 0 & 4 & 3 & 0 & 7 \\
+        \hline
+        Giulia Barzon & 0 & 0 & 0 & 5 & 0 & 2 & 7 \\
+        \hline
+        Matteo Cuogo & 0 & 0 & 0 & 4 & 3 & 0 & 7 \\
+        \hline
+        \textbf{Ore totali} & 1 & 2 & 0 & 26 & 6 & 5 & 39 \\
+        \hline
+        \textbf{Costo totale} & 30 & 50 & 0 & 650 & 90 & 75 & 895 \\
+        \hline
+    \end{tabular}
+\end{center}
+
+\noindent \textbf{Legenda}: Re = Responsabile, Am = Amministratore, An = Analista, Pj = Progettista, Pg = Programmatore, Ve = Verificatore.
+
 
 \end{document}
