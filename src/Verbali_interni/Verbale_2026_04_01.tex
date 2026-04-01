@@ -1,0 +1,109 @@
+\documentclass[a4paper,12pt]{article}
+\newcommand{\gls}[1]{#1\textsubscript{G}}
+
+% ===== Pacchetti utili =====
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[italian]{babel}
+\usepackage{geometry}
+\usepackage{array}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+
+% ===== Impostazioni di pagina =====
+\geometry{margin=2.5cm}
+\setlength{\parskip}{6pt}
+\setlength{\parindent}{0pt}
+
+% ===== Intestazione e piè di pagina =====
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Verbale 01/04/2026}
+\rhead{ByteMe}
+\cfoot{\thepage}
+
+% ===== Documento =====
+\begin{document}
+
+\vspace*{\fill}
+\begin{center}
+    \includegraphics[width=0.5\textwidth]{../LogoByteMe.jpg}\\[1cm]
+    {\Huge \textbf{Verbale Riunione}}\\[0.5cm]
+    {\Large ByteMe}\\[0.5cm]
+    \rule{0.6\textwidth}{0.6pt}\\[0.5cm]
+    \textit{Data: 1 aprile 2026}
+\end{center}
+\vspace*{\fill}
+
+\pagebreak
+   \rule{1\textwidth}{0.4pt}\\[4pt]
+
+
+\textbf{Data:} 01/04/2026 \\
+\textbf{Ora di inizio:} 10:00 \\
+\textbf{Ora di fine:} 10:30 \\
+\textbf{Luogo / Piattaforma:} Discord
+\begin{center}
+   \rule{1\textwidth}{0.4pt}\\
+\end{center}
+
+\section*{ Partecipanti}
+
+\begin{longtable}{|p{0.45\textwidth}|p{0.45\textwidth}|}
+\hline
+\textbf{Nome e Cognome} & \textbf{Ruolo} \\ \hline
+ Giulia Barzon & Progettista e Verificatore \\ \hline
+ Matteo Cuogo & Progettista e Programmatore \\ \hline
+ Elisa Marchioro & Progettista e Programmatore \\ \hline
+ Joseph Grant & Progettista e Amministratore\\ \hline
+ Tommaso Tombacco & Progettista e Verificatore \\ \hline
+ Chiara Grossele & Progettista e Responsabile\\ \hline
+ \end{longtable}
+
+\section*{Ordine del giorno}
+\begin{enumerate}
+    \item Discussione in seguito alla riunione con l'azienda proponente.
+    \item Confronto sui test effettuati per la valutazione dei modelli LLM forniti.
+    \item Confronto sulle metriche da utilizzare per i test degli LLM.
+\end{enumerate}
+
+\subsection*{1. Confronto dei test sugli LLM}
+Il gruppo ha confrontato i risultati ottenuti nei test svolti per verificare l'efficienza dei modelli LLM. Ci sono stati risultati diversi in base alla funzionalità testata e non è ancora stato definito il modello più performante.
+
+\subsection*{2. Confronto sulle metriche}
+In seguito alla riunione con la proponente, durante la quale il gruppo ha potuto ascoltare l'esperienza di una stagista dell'azienda, abbiamo concordato che per valutare al meglio gli LLM sia importante considerare il tempo di generazione della risposta, la qualità della risposta e inoltre abbiamo concordato il vantaggio di utilizzare Opik.
+
+\section*{Decisioni prese}
+\begin{itemize}
+    \item Iniziare a implementare il backend.
+    \item Studiare Opik e come applicarlo allo studio dei modelli LLM.
+    \item Continuare a sistemare i documenti e verificare quanto già fatto.
+    \item Contattare il prof. Cardin per fissare una riunione.
+\end{itemize}
+
+\section*{Azioni da intraprendere}
+\begin{longtable}{|p{0.42\textwidth}|p{0.25\textwidth}|p{0.12\textwidth}|p{0.15\textwidth}|}
+\hline
+\textbf{Attività} & \textbf{Responsabile} & \textbf{Scadenza} & \textbf{Stato} \\ \hline
+Sistemare diagrammi delle classi (\#22)& Giulia, Matteo, Chiara & 07/04/26 & In corso \\ \hline
+Iniziare lo sviluppo del backend (\#23) & Tommaso, Elisa & 07/04/26 & In corso \\ \hline
+Sistemare e verificare documentazione (AdR, PdP) (\#24)& Giulia, Joseph & 07/04/26 & In corso \\ \hline
+Contattare prof. Cardin e fissare una riunione & Chiara & 03/04/26 & In corso\\ \hline
+\end{longtable}
+
+
+\section*{Prossima riunione}
+\textbf{Data prevista:} settimana 06 - 10 aprile 2026\\
+\textbf{Luogo / Piattaforma:} Discord \\
+\textbf{Obiettivo principale:} Discutere come iniziare l'MVP\\
+
+
+
+\textbf{Redatto da:} Chiara Grossele \\
+\textbf{Data di redazione:} 01/04/2026
+
+\end{document}
