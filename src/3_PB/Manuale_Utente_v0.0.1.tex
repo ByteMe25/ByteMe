@@ -1,0 +1,272 @@
+\documentclass[11pt,a4paper]{article}
+\newcommand{\gls}[1]{#1\textsubscript{G}}
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{tikz}
+\usepackage{pgf-pie}
+
+\geometry{margin=2.5cm}
+
+% Intestazione e piè di pagina
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[C]{\thepage\ di \pageref{LastPage}}
+
+\begin{document}
+
+% Prima pagina - Intestazione
+\begin{titlepage}
+    \centering
+    
+    % Logo Università
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.3\textwidth]{../logoUnipd.jpg}
+    \end{figure}
+    
+    \vspace{0.5cm}
+    
+    \textbf{\Large Università degli Studi di Padova} \\
+    \vspace{0.2cm}
+    \textbf{Laurea in Informatica} \\
+    \vspace{0.2cm}
+    \textbf{Corso di Ingegneria del Software} \\
+    \vspace{0.2cm}
+    \textbf{Anno Accademico 2025/2026} \\
+    
+    \vspace{1cm}
+    
+    % Logo gruppo
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.2\textwidth]{../LogoByteMe.jpg}
+    \end{figure}
+    
+    \vspace{0.5cm}
+    
+    \textbf{\Large Gruppo ByteMe} \\
+    \vspace{0.2cm}
+    \texttt{byteme2025swe@gmail.com} \\
+    
+    \vspace{1cm}
+    
+    \textbf{\Huge Manuale Utente} \\
+    
+\vspace{1.5cm}
+    
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{|l|p{5cm}|}
+            \hline
+            \textbf{Versione} & 0.0.1 \\
+            \hline
+            \textbf{Stato} & In corso\\
+            \hline
+            \textbf{Redazione} & Giulia Barzon\\
+            \hline
+            \textbf{\gls{Verifica}} &  \\
+            \hline
+            \textbf{Approvazione} & \\
+            \hline
+            \textbf{Proprietario} & ByteMe \\
+            \hline
+            \textbf{Uso} & Esterno \\
+            \hline
+            \textbf{Destinatari} & Prof. Tullio Vardanega \\ & Prof. Riccardo Cardin \\
+            \hline
+        \end{tabular}
+    \end{table}
+    
+    \vfill
+\end{titlepage}
+
+% Seconda pagina - Versionamento
+\thispagestyle{empty}
+\section*{Registro dei Cambiamenti}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|c|>{\raggedright\arraybackslash}p{0.35\textwidth}|p{0.18\textwidth}|}
+        \hline
+        \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{\gls{Verifica}} \\
+        \hline
+        0.0.1 & 01/04/2026 & Giulia Barzon & Creazione del documento, scrittura introduzione & \\
+        \hline
+    \end{tabular}
+    \caption{Registro delle versioni del documento}
+    \label{tab:versionamento}
+\end{table}
+
+\newpage
+
+% Terza pagina - Indice
+\tableofcontents
+\thispagestyle{empty}
+\newpage
+
+% Dalla quarta pagina - Contenuto principale
+\setcounter{page}{1}
+
+\section{Introduzione}
+\subsection{Scopo del documento}
+Lo scopo del presente documento è fornire all'utente finale tutte le istruzioni necessarie per l'installazione, la configurazione e l'utilizzo corretto del software \textbf{"Second Brain"}.  Il manuale include i requisiti di sistema, una guida all'avvio tramite Docker e una descrizione dettagliata di tutte le funzionalità offerte dall'interfaccia web, supportata da screenshot esplicativi.
+
+\subsection{Scopo del prodotto}
+Il progetto "Second Brain" si propone di rivoluzionare il processo di scrittura e organizzazione delle idee integrando modelli linguistici di grandi dimensioni (LLM) in un editor di testo Markdown moderno. 
+Il sistema offre funzionalità avanzate tra cui:
+\begin{itemize}
+    \item \textbf{Editor Markdown:} Scrittura con anteprima in tempo reale.
+    \item \textbf{Analisi critica:} Sistema di revisione del testo basato sulla metodologia dei "Sei Cappelli per Pensare" di Edward De Bono.
+    \item \textbf{Distant writing:} Generazione di testi completi a partire da brevi prompt.
+    \item \textbf{Elaborazione AI:} Funzioni di riassunto, riscrittura, traduzione e correzione grammaticale automatica.
+\end{itemize}
+
+L’obiettivo è creare uno strumento di supporto alla scrittura creativa, esplorando le potenzialità degli LLM nel contesto del note-taking avanzato.
+
+\subsection{Target di utenti}
+Il prodotto è progettato per essere accessibile anche senza competenze tecniche avanzate ed è rivolto a:
+\begin{itemize}
+    \item \textbf{Studenti}: per la stesura di appunti, riassunti e materiale di studio
+    \item \textbf{Professionisti}: per la creazione di documenti aziendali, report e presentazioni
+    \item \textbf{Scrittori e content creator}: per l'ideazione, stesura e revisione di contenuti
+    \item \textbf{Ricercatori}: per l'organizzazione di appunti di ricerca e letteratura
+    \item \textbf{Utenti generici}: chiunque abbia bisogno di un editor per esigenze di scrittura assistita
+\end{itemize}
+
+
+\subsection{Glossario}
+Per evitare ambiguità, i termini tecnici usati nel documento vengono definiti in modo più approfondito nel documento \gls{Glossario} v2.0.0 che si può trovare nel sito web del gruppo ByteMe alla sezione Documenti Interni e raggiungibile dal seguente link:\\
+\href{https://byteme25.github.io/ByteMe/files.html}{ByteMe/Glossario v2.0.0}
+
+I termini che vengono considerati meritevoli di approfondimenti sono indicati con una G a pedice.
+
+
+\subsection{Riferimenti}
+\subsubsection{Riferimenti normativi}
+\begin{itemize}
+  \item \textit{\gls{Norme di Progetto}} versione 2.0.0\\
+  \href{https://byteme25.github.io/ByteMe/files.html}{ByteMe/Norme di Progetto v2.0.0}
+  \item Capitolato d'appalto C6: \textit{Second Brain} (Zucchetti S.p.A.)\\ \url{https://www.math.unipd.it/~tullio/IS-1/2025/Progetto/C6.pdf}
+  \item Regolamento del progetto didattico:\\
+        \url{https://www.math.unipd.it/~tullio/IS-1/2023/Dispense/PD2.pdf}
+\end{itemize}
+
+\subsubsection{Riferimenti informativi}
+\begin{itemize}
+    \item Glossario v2.0.0 (Ultimo accesso: 01/04/2026)\\
+    \href{https://byteme25.github.io/ByteMe/files.html}{ByteMe/Glossario v2.0.0}
+\end{itemize}
+
+\newpage
+
+\section{Requisiti di sistema}
+Per garantire un'esperienza d'uso ottimale e il corretto funzionamento di tutte le funzionalità basate sull'intelligenza artificiale, è necessario che l'ambiente di esecuzione rispetti i requisiti minimi descritti di seguito.
+
+\subsection{Browser supportati}
+L'applicazione è una Web App accessibile tramite browser. Per una corretta visualizzazione dell'interfaccia e la gestione delle chiamate asincrone, si consiglia l'utilizzo delle versioni più recenti dei seguenti browser:
+\begin{itemize}
+    \item \textbf{Google Chrome:} Versione 110 o superiore;
+    \item \textbf{Mozilla Firefox:} Versione 115 o superiore;
+    \item \textbf{Microsoft Edge:} Versione 110 o superiore;
+    \item \textbf{Safari:} Versione 16 o superiore.
+\end{itemize}
+
+\subsection{Requisiti Hardware}
+Sebbene l'elaborazione dei modelli linguistici ($LLM_G$) avvenga su server remoti, la gestione locale dei container Docker e dell'interfaccia richiede le seguenti specifiche minime, considerate sufficienti per l'utilizzo scorrevole dell'applicazione:
+\begin{itemize}
+    \item \textbf{Processore (CPU):} Architettura x86-64 o ARM64, minimo 2 core;
+    \item \textbf{Memoria RAM:} Almeno 8 GB (consigliati 16 GB per l'esecuzione fluida di Docker Desktop e del browser contemporaneamente);
+    \item \textbf{Spazio su disco:} Circa 2 GB di spazio libero per le immagini Docker e i volumi del database PostgreSQL.
+\end{itemize}
+
+\subsection{Connessione Internet}
+È necessaria una \textbf{connessione Internet stabile} per permettere al sistema di comunicare con i servizi di intelligenza artificiale. Una connessione lenta potrebbe aumentare i tempi di attesa per la generazione dei testi e per le funzionalità di AI sul testo.
+
+\newpage
+
+%  =================================================================
+% Installare Docker e preparare l'ambiente per eseguire Second Brain
+%  =================================================================
+\section{Guida all'installazione}
+In questa parte del manuale viene illustrato come installare e avviare \textbf{"Second Brain"} sul proprio computer per scopi valutativi. Sebbene la destinazione finale del prodotto sia l'esecuzione su server dedicati dell'azienda proponente, la configurazione in locale è il modo più rapido per esplorarne le funzionalità.
+
+Per utilizzare \textbf{Second Brain} sul proprio computer, il metodo più semplice è l'utilizzo di \textbf{Docker}. Questa tecnologia permette di "impacchettare" tutto il software necessario in contenitori pronti all'uso, evitando di dover installare manualmente database o linguaggi di programmazione specifici.
+
+\subsection{Installazione di Docker Desktop}
+Prima di tutto, è necessario installare il programma principale sul proprio computer:
+\begin{enumerate}
+    \item Visita il sito ufficiale: \href{https://www.docker.com/products/docker-desktop/}{docker.com/products/docker-desktop};
+    \item Scarica la versione adatta al tuo sistema operativo (Windows, Mac o Linux);
+    \item Avvia l'installatore e segui le istruzioni a schermo;
+    \item Al termine dell'installazione, riavvia il computer se richiesto e apri l'applicazione \textbf{Docker Desktop}.
+\end{enumerate}
+
+\subsection{Scaricare il progetto}
+Una volta installato Docker, apri il terminale (o il prompt dei comandi) e posizionati nella cartella dove desideri salvare il progetto. Digita il seguente comando per scaricare i file:
+\begin{center}
+    \texttt{git clone https://github.com/ByteMe25/PB\_ByteMe}
+\end{center}
+Successivamente, entra nella cartella del progetto:
+\begin{center}
+    \texttt{cd PB\_ByteMe}
+\end{center}
+
+\subsection{Configurazione chiavi}
+Per le funzionalità AI, devi creare un file di configurazione. 
+Nella cartella principale del progetto, crea un nuovo file chiamato esattamente \texttt{.env} e incolla al suo interno queste righe, inserendo la tue credenziali:
+\begin{verbatim}
+# Chiave fornita per l'accesso al servizio AI
+OPENAI_API_KEY=la_tua_chiave
+
+# URL del server
+OPENAI_BASE_URL=http://indirizzo-del-server/v1
+
+# Una parola chiave a tua scelta per proteggere le sessioni
+FLASK_SECRET_KEY=una_parola_segreta
+\end{verbatim}
+
+\subsection{Avvio dell'applicazione}
+Segui questi passaggi per accedere a Second Brain:
+\begin{enumerate}
+    \item Apri il terminale o il prompt dei comandi / PowerShell;
+    \item Usa il comando \texttt{cd} per spostarti nella cartella del progetto. Esempio:
+    \begin{center}
+        \texttt{cd Percorso/Della/Cartella/SecondBrain}
+    \end{center}
+    \item Digita il seguente comando e premi Invio:
+    \begin{center}
+        \texttt{docker-compose up --build}
+    \end{center}
+    \item Docker inizierà a scaricare i componenti necessari e a configurare il sistema. Questo processo può richiedere alcuni minuti la prima volta. Quando vedrai scorrere dei messaggi che indicano l'avvio del "backend" e del "frontend", il sistema è pronto.
+\end{enumerate}
+
+\subsection{Accesso al software}
+A installazione completata, non chiudere la finestra del terminale. Apri il tuo browser preferito e digita nella barra degli indirizzi:
+\begin{center}
+    \textbf{http://localhost:8080}
+\end{center}
+Verrai reindirizzato immediatamente all'interfaccia di Second Brain e potrai iniziare a scrivere i tuoi documenti.
+
+\subsection{Spegnimento}
+Per chiudere l'applicazione e liberare risorse sul computer, torna nella finestra del terminale e premi contemporaneamente i tasti \textbf{Ctrl + C}. Una volta che il testo smette di scorrere, puoi chiudere la finestra.
+
+\newpage
+
+% ========================================
+% Istruzioni su come funziona Second Brain
+% ========================================
+\section{Istruzioni per l'uso}
+
+
+\newpage
+
+\end{document}

@@ -66,7 +66,7 @@
         \centering
         \begin{tabular}{|l|p{5cm}|}
             \hline
-            \textbf{Versione} & 1.4.1 \\
+            \textbf{Versione} & 1.4.2 \\
             \hline
             \textbf{Stato} & Da approvare \\
             \hline
@@ -98,7 +98,9 @@
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{\gls{Verifica}} \\
         \hline
-        1.4.1 & 11/03/2026 & Elisa Marchioroo & Mini fix & Tommaso Tombacco \\
+        1.4.2 & 01/04/2026 & Giulia Barzon & Aggiornamento fonti e riferimenti & \\
+        \hline
+        1.4.1 & 11/03/2026 & Elisa Marchioro & Mini fix & Tommaso Tombacco \\
         \hline
         1.4.0 & 11/03/2026 & Matteo Cuogo & Approvazione documento & \\
         \hline
@@ -204,23 +206,49 @@ Questo documento descrive l'\gls{analisi dei requisiti} per il progetto \textbf{
 
 L'obiettivo principale è fornire una specifica completa delle funzionalità che il sistema deve implementare, classificando i requisiti in obbligatori, desiderabili e opzionali, in linea con le richieste della proponente Zucchetti.
 
+\subsection{Scopo del prodotto}
+Il progetto \textbf{Second Brain}, proposto dall'azienda Zucchetti, mira a sviluppare un \gls{editor di testo} avanzato basato sul linguaggio \gls{MarkDown} e potenziato dall'integrazione di Large Language Models (LLM).
+L'applicazione web consentirà all'utente di:
+\begin{itemize}
+    \item Scrivere e visualizzare in tempo reale testi formattati in \gls{MarkDown};
+    \item Interagire con un LLM per generare, riassumere, riscrivere, tradurre e analizzare testi;
+    \item Sfruttare il metodo dei "Sei cappelli per pensare" di Edward De Bono per ottenere analisi critiche multi-prospettiche;
+    \item Fornire prompt testuali per delegare all'AI la stesura completa del contenuto (\textit{\gls{Distant Writing}}).
+\end{itemize}
+L'obiettivo è creare uno strumento di supporto alla scrittura creativa e al note-taking avanzato, esplorando le potenzialità pratiche degli LLM nel flusso di lavoro quotidiano.
+
 \subsection{\gls{Glossario}}
-Per evitare ambiguità, i termini tecnici usati nel documento vengono definiti in modo più approfondito nel documento "\gls{Glossario} v.1.0.0" che si trova nella \gls{repository} del gruppo nella cartella "Documenti\textunderscore interni".
+Per evitare ambiguità, i termini tecnici usati nel documento vengono definiti in modo più approfondito nel documento \gls{Glossario} v2.0.0 che si può trovare nel sito web del gruppo ByteMe alla sezione Documenti Interni e raggiungibile dal seguente link:\\
+\href{https://byteme25.github.io/ByteMe/files.html}{ByteMe/Glossario v2.0.0}
 
 I termini che vengono considerati meritevoli di approfondimenti sono indicati con una G a pedice.
 
 \subsection{Riferimenti}
 \subsubsection{Riferimenti normativi}
 \begin{itemize}
-    \item \gls{Norme di Progetto} v1.0.0 - Documento interno del gruppo ByteMe
-    \item Regolamento del progetto didattico
+  \item \textit{\gls{Norme di Progetto}} versione 2.0.0\\
+  \href{https://byteme25.github.io/ByteMe/files.html}{ByteMe/Norme di Progetto v2.0.0}
+  \item Capitolato d'appalto C6: \textit{Second Brain} (Zucchetti S.p.A.)\\ \url{https://www.math.unipd.it/~tullio/IS-1/2025/Progetto/C6.pdf}
+  \item Regolamento del progetto didattico:\\
+        \url{https://www.math.unipd.it/~tullio/IS-1/2023/Dispense/PD2.pdf}
 \end{itemize}
 
 \subsubsection{Riferimenti informativi}
 \begin{itemize}
-    \item Capitolato C6 "Second Brain", Zucchetti
-    \item Slide del corso di Ingegneria del Software
+    \item \textit{\gls{Analisi dei Requisiti}} versione 2.0.0 (Ultimo accesso: 01/04/2026)\\
+    \href{https://byteme25.github.io/ByteMe/}{PB - Analisi dei Requisiti v2.0.0}
+    \item \textit{Piano di Qualifica} versione 1.0.0 (Ultimo accesso: 01/04/2026) \\
+    \href{https://byteme25.github.io/ByteMe/}{PB - Piano di Qualifica v2.0.0}
     \item Verbali interni ed esterni
+    \item Glossario v2.0.0 (Ultimo accesso: 01/04/2026)\\
+    \href{https://byteme25.github.io/ByteMe/files.html}{Documenti interni - Glossario v2.0.0}
+    
+    \item Slide del corso di Ingegneria del Software (Ultimo accesso: 27/03/2026)
+    \item Principi SOLID (slide prof. Cardin)
+    \item Pattern architetturali (slide prof. Cardin)
+
+    \item Documentazione linguaggio \gls{markdown} - CommonMark: \url{https://commonmark.org/}\\ (Ultimo accesso: 20/02/2026)
+    \item \gls{Repository} ufficiale di \gls{EasyMDE}: \url{https://github.com/Ionaru/easy-markdown-editor}\\ (Ultimo accesso: 24/03/2026)
 \end{itemize}
 
 \newpage
