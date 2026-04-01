@@ -59,7 +59,7 @@
     
     \vspace{1cm}
     
-    \textbf{\Huge Manuale Utente} \\
+    \textbf{\Huge \gls{Manuale Utente}} \\
     
 \vspace{1.5cm}
     
@@ -118,15 +118,15 @@
 
 \section{Introduzione}
 \subsection{Scopo del documento}
-Lo scopo del presente documento è fornire all'utente finale tutte le istruzioni necessarie per l'installazione, la configurazione e l'utilizzo corretto del software \textbf{"Second Brain"}.  Il manuale include i requisiti di sistema, una guida all'avvio tramite Docker e una descrizione dettagliata di tutte le funzionalità offerte dall'interfaccia web, supportata da screenshot esplicativi.
+Lo scopo del presente documento è fornire all'utente finale tutte le istruzioni necessarie per l'installazione, la configurazione e l'utilizzo corretto del software \textbf{"Second Brain"}.  Il manuale include i requisiti di sistema, una guida all'avvio tramite \gls{Docker} e una descrizione dettagliata di tutte le funzionalità offerte dall'interfaccia web, supportata da screenshot esplicativi.
 
 \subsection{Scopo del prodotto}
-Il progetto "Second Brain" si propone di rivoluzionare il processo di scrittura e organizzazione delle idee integrando modelli linguistici di grandi dimensioni (LLM) in un editor di testo Markdown moderno. 
+Il progetto "Second Brain" si propone di rivoluzionare il processo di scrittura e organizzazione delle idee integrando modelli linguistici di grandi dimensioni (LLM) in un \gls{editor di testo} \gls{Markdown} moderno. 
 Il sistema offre funzionalità avanzate tra cui:
 \begin{itemize}
-    \item \textbf{Editor Markdown:} Scrittura con anteprima in tempo reale.
+    \item \textbf{Editor \gls{Markdown}:} Scrittura con anteprima in tempo reale.
     \item \textbf{Analisi critica:} Sistema di revisione del testo basato sulla metodologia dei "Sei Cappelli per Pensare" di Edward De Bono.
-    \item \textbf{Distant writing:} Generazione di testi completi a partire da brevi prompt.
+    \item \textbf{\gls{Distant writing}:} Generazione di testi completi a partire da brevi prompt.
     \item \textbf{Elaborazione AI:} Funzioni di riassunto, riscrittura, traduzione e correzione grammaticale automatica.
 \end{itemize}
 
@@ -143,9 +143,9 @@ Il prodotto è progettato per essere accessibile anche senza competenze tecniche
 \end{itemize}
 
 
-\subsection{Glossario}
+\subsection{\gls{Glossario}}
 Per evitare ambiguità, i termini tecnici usati nel documento vengono definiti in modo più approfondito nel documento \gls{Glossario} v2.0.0 che si può trovare nel sito web del gruppo ByteMe alla sezione Documenti Interni e raggiungibile dal seguente link:\\
-\href{https://byteme25.github.io/ByteMe/files.html}{ByteMe/Glossario v2.0.0}
+\href{https://byteme25.github.io/ByteMe/files.html}{ByteMe/\gls{Glossario} v2.0.0}
 
 I termini che vengono considerati meritevoli di approfondimenti sono indicati con una G a pedice.
 
@@ -154,7 +154,7 @@ I termini che vengono considerati meritevoli di approfondimenti sono indicati co
 \subsubsection{Riferimenti normativi}
 \begin{itemize}
   \item \textit{\gls{Norme di Progetto}} versione 2.0.0\\
-  \href{https://byteme25.github.io/ByteMe/files.html}{ByteMe/Norme di Progetto v2.0.0}
+  \href{https://byteme25.github.io/ByteMe/files.html}{ByteMe/\gls{Norme di Progetto} v2.0.0}
   \item Capitolato d'appalto C6: \textit{Second Brain} (Zucchetti S.p.A.)\\ \url{https://www.math.unipd.it/~tullio/IS-1/2025/Progetto/C6.pdf}
   \item Regolamento del progetto didattico:\\
         \url{https://www.math.unipd.it/~tullio/IS-1/2023/Dispense/PD2.pdf}
@@ -162,8 +162,8 @@ I termini che vengono considerati meritevoli di approfondimenti sono indicati co
 
 \subsubsection{Riferimenti informativi}
 \begin{itemize}
-    \item Glossario v2.0.0 (Ultimo accesso: 01/04/2026)\\
-    \href{https://byteme25.github.io/ByteMe/files.html}{ByteMe/Glossario v2.0.0}
+    \item \gls{Glossario} v2.0.0 (Ultimo accesso: 01/04/2026)\\
+    \href{https://byteme25.github.io/ByteMe/files.html}{ByteMe/\gls{Glossario} v2.0.0}
 \end{itemize}
 
 \newpage
@@ -181,11 +181,11 @@ L'applicazione è una Web App accessibile tramite browser. Per una corretta visu
 \end{itemize}
 
 \subsection{Requisiti Hardware}
-Sebbene l'elaborazione dei modelli linguistici ($LLM_G$) avvenga su server remoti, la gestione locale dei container Docker e dell'interfaccia richiede le seguenti specifiche minime, considerate sufficienti per l'utilizzo scorrevole dell'applicazione:
+Sebbene l'elaborazione dei modelli linguistici ($LLM_G$) avvenga su server remoti, la gestione locale dei container \gls{Docker} e dell'interfaccia richiede le seguenti specifiche minime, considerate sufficienti per l'utilizzo scorrevole dell'applicazione:
 \begin{itemize}
     \item \textbf{Processore (CPU):} Architettura x86-64 o ARM64, minimo 2 core;
-    \item \textbf{Memoria RAM:} Almeno 8 GB (consigliati 16 GB per l'esecuzione fluida di Docker Desktop e del browser contemporaneamente);
-    \item \textbf{Spazio su disco:} Circa 2 GB di spazio libero per le immagini Docker e i volumi del database PostgreSQL.
+    \item \textbf{Memoria RAM:} Almeno 8 GB (consigliati 16 GB per l'esecuzione fluida di \gls{Docker} Desktop e del browser contemporaneamente);
+    \item \textbf{Spazio su disco:} Circa 2 GB di spazio libero per le immagini \gls{Docker} e i volumi del \gls{database} \gls{PostgreSQL}.
 \end{itemize}
 
 \subsection{Connessione Internet}
@@ -199,21 +199,21 @@ Sebbene l'elaborazione dei modelli linguistici ($LLM_G$) avvenga su server remot
 \section{Guida all'installazione}
 In questa parte del manuale viene illustrato come installare e avviare \textbf{"Second Brain"} sul proprio computer per scopi valutativi. Sebbene la destinazione finale del prodotto sia l'esecuzione su server dedicati dell'azienda proponente, la configurazione in locale è il modo più rapido per esplorarne le funzionalità.
 
-Per utilizzare \textbf{Second Brain} sul proprio computer, il metodo più semplice è l'utilizzo di \textbf{Docker}. Questa tecnologia permette di "impacchettare" tutto il software necessario in contenitori pronti all'uso, evitando di dover installare manualmente database o linguaggi di programmazione specifici.
+Per utilizzare \textbf{Second Brain} sul proprio computer, il metodo più semplice è l'utilizzo di \textbf{\gls{Docker}}. Questa tecnologia permette di "impacchettare" tutto il software necessario in contenitori pronti all'uso, evitando di dover installare manualmente \gls{database} o linguaggi di programmazione specifici.
 
-\subsection{Installazione di Docker Desktop}
+\subsection{Installazione di \gls{Docker} Desktop}
 Prima di tutto, è necessario installare il programma principale sul proprio computer:
 \begin{enumerate}
-    \item Visita il sito ufficiale: \href{https://www.docker.com/products/docker-desktop/}{docker.com/products/docker-desktop};
+    \item Visita il sito ufficiale: \href{https://www.docker.com/products/docker-desktop/}{\gls{docker}.com/products/\gls{docker}-desktop};
     \item Scarica la versione adatta al tuo sistema operativo (Windows, Mac o Linux);
     \item Avvia l'installatore e segui le istruzioni a schermo;
-    \item Al termine dell'installazione, riavvia il computer se richiesto e apri l'applicazione \textbf{Docker Desktop}.
+    \item Al termine dell'installazione, riavvia il computer se richiesto e apri l'applicazione \textbf{\gls{Docker} Desktop}.
 \end{enumerate}
 
 \subsection{Scaricare il progetto}
-Una volta installato Docker, apri il terminale (o il prompt dei comandi) e posizionati nella cartella dove desideri salvare il progetto. Digita il seguente comando per scaricare i file:
+Una volta installato \gls{Docker}, apri il terminale (o il prompt dei comandi) e posizionati nella cartella dove desideri salvare il progetto. Digita il seguente comando per scaricare i file:
 \begin{center}
-    \texttt{git clone https://github.com/ByteMe25/PB\_ByteMe}
+    \texttt{\gls{git} clone https://\gls{github}.com/ByteMe25/PB\_ByteMe}
 \end{center}
 Successivamente, entra nella cartella del progetto:
 \begin{center}
@@ -244,9 +244,9 @@ Segui questi passaggi per accedere a Second Brain:
     \end{center}
     \item Digita il seguente comando e premi Invio:
     \begin{center}
-        \texttt{docker-compose up --build}
+        \texttt{\gls{docker}-compose up --build}
     \end{center}
-    \item Docker inizierà a scaricare i componenti necessari e a configurare il sistema. Questo processo può richiedere alcuni minuti la prima volta. Quando vedrai scorrere dei messaggi che indicano l'avvio del "backend" e del "frontend", il sistema è pronto.
+    \item \gls{Docker} inizierà a scaricare i componenti necessari e a configurare il sistema. Questo processo può richiedere alcuni minuti la prima volta. Quando vedrai scorrere dei messaggi che indicano l'avvio del "backend" e del "frontend", il sistema è pronto.
 \end{enumerate}
 
 \subsection{Accesso al software}
