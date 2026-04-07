@@ -67,7 +67,7 @@
         \centering
         \begin{tabular}{|l|p{5cm}|}
             \hline
-            \textbf{Versione} & 1.0.7 \\
+            \textbf{Versione} & 1.0.8 \\
             \hline
             \textbf{Stato} & Da approvare\\
             \hline
@@ -98,6 +98,8 @@
     \begin{tabular}{|c|c|c|>{\raggedright\arraybackslash}p{0.35\textwidth}|p{0.18\textwidth}|}
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{\gls{Verifica}} \\
+        \hline
+        1.0.8 & 07/04/2026 & Giulia Barzon & Review e retrospettiva \gls{sprint} 11, preventivo \gls{sprint} 12 & \\
         \hline
         1.0.7 & 26/03/2026 & Elisa Marchioro & Review e retrospettiva \gls{sprint} 10, obiettivi e consultivo \gls{sprint} 11 & Giulia Barzon e Tommaso Tombacco\\
         \hline
@@ -1814,7 +1816,6 @@ Il costo cumulato del progetto (PAC) aggiornato, sommando il consuntivo della fa
 
 \subsubsection{Review}
 
-
 \subsubsection{Consuntivo orario}
 \begin{center}
     \begin{tabular}{|l|c|c|c|c|c|c|c|}
@@ -1927,6 +1928,129 @@ Il margine residuo disponibile per completare la fase PB e l'intero progetto è 
 \end{center}
 
 \noindent \textbf{Legenda}: Re = Responsabile, Am = Amministratore, An = Analista, Pj = Progettista, Pg = Programmatore, Ve = Verificatore.
+
+
+\subsubsection{Review}
+Durante lo sprint 11 il gruppo ha completato le seguenti attività:
+\begin{itemize}
+    \item \textbf{Progettazione}: Terminata la stesura dei diagrammi delle classi. Il gruppo è in attesa del riscontro da parte del Prof. Cardin (fissata per l'8/04);
+    \item \textbf{Backend}: Implementazione quasi ultimata. Sono stati scritti i test unitari e le strategie di gestione prompt. La riduzione del carico è dovuta all'abbandono delle funzionalità opzionali (database/autenticazione);
+    \item \textbf{Ricerca LLM}: Conclusa l'analisi comparativa dei modelli e il raffinamento dei prompt per le funzionalità core;
+    \item \textbf{Incontro Zucchetti}: Riunione tecnica focalizzata sulla valutazione delle risposte dei modelli (metriche di qualità e strumenti di monitoraggio) e sulla dimostrazione del POC;
+    \item \textbf{Documentazione}: Impostati i documenti \gls{Specifica Tecnica} e Manuale Utente (Introduzione e Riferimenti). Redatta una bozza della Spcifica Tecnica basata sulla progettazione fatta.
+\end{itemize}
+
+\subsubsection{Consuntivo orario}
+\begin{center}
+    \begin{tabular}{|l|c|c|c|c|c|c|c|}
+        \hline
+        \textbf{Membro} & \textbf{Re} & \textbf{Am} & \textbf{An} & \textbf{Pj} & \textbf{Pg} & \textbf{Ve} & \textbf{Totale} \\
+        \hline
+        Joseph Grant & 0 & 2 & 0 & 4 & 0 & 0 & 6 \\
+        \hline
+        Chiara Grossele & 3 & 0 & 0 & 3 & 0 & 0 & 6 \\
+        \hline
+        Tommaso Tombacco & 0 & 0 & 0 & 4 & 0 & 3 & 7 \\
+        \hline
+        Elisa Marchioro & 0 & 0 & 0 & 3 & 4 & 0 & 7 \\
+        \hline
+        Giulia Barzon & 0 & 0 & 0 & 7 & 0 & 2 & 9 \\
+        \hline
+        Matteo Cuogo & 0 & 0 & 0 & 2 & 3 & 0 & 5 \\
+        \hline
+        \textbf{Ore totali} & 3 & 2 & 0 & 23 & 7 & 5 & 40 \\
+        \hline
+        \textbf{Costo totale} & 90 & 40 & 0 & 575 & 105 & 75 & 885 \\
+        \hline
+    \end{tabular}
+\end{center}
+
+\noindent \textbf{Legenda}: Re = Responsabile, Am = Amministratore, An = Analista, Pj = Progettista, Pg = Programmatore, Ve = Verificatore.
+
+\subsubsection{Retrospettiva}
+\paragraph{Grado di raggiungimento degli obiettivi}
+Gli obiettivi sono stati raggiunti quasi interamente. La fase di progettazione è "congelata" in attesa del feedback del Prof. Cardin, ma si può comunque considerare terminata.
+Il backend è in stato avanzato, permettendo di liberare risorse per il frontend nel prossimo sprint: sono stati implementati con successo i pattern strategy e registry nel backend, sono stati configurati correttamente i Dockerfile e importate tutte le librerie e le dipendenze individuate; sono stati svolti con successo i test unitari per le funzioni del backend.
+La ricerca dei prompt e dei modelli AI migliori si è conclusa con successo e il gruppo ha avuto modo di confrontarsi su quali LLM usare nel MVP. Manca da stabilire e documentare ufficialmente i criteri con cui abbiamo valutato le risposte degli LLM, anche considerando i consigli e gli strumenti che l'azienda Zucchetti ci ha mostrato durante la riunione.
+
+\paragraph{Misure correttive pianificate e valutazione dei rischi}
+\begin{itemize}
+    \item \textbf{Rischio RO-1 (Impegni personali)}: Le festività di Pasqua e Pasquetta hanno causato una sospensione delle attività in questi due giorni. Il team ha recuperato il carico di lavoro intensificando le ore nei giorni precedenti.
+    \item \textbf{Rischio RO-6 (Comunicazione)}: L'incontro con Zucchetti ha chiarito i dubbi sulla valutazione dei prompt, mitigando incertezze sulla qualità delle risposte.
+\end{itemize}
+
+\paragraph{Preventivo a finire (EAC aggiornato)}
+Il consuntivo dello \gls{sprint} 11 ammonta a \textbf{885 euro}, come preventivato.
+Il costo cumulato del progetto (PAC) aggiornato risulta pari a \textbf{6.927,50 euro} (6.042,50 dallo sprint 10 + 885). 
+Il margine residuo disponibile per completare la fase PB e l'intero progetto è di \textbf{4.467,50 euro}.
+
+\newpage
+
+
+% --------------------------------------------
+% SPRINT 12 (PB)
+% --------------------------------------------
+\subsection{\gls{Sprint} 12: PB - Codice e testing MVP}
+{\textbf{Periodo: 7 aprile 2026 - 13 aprile 2026}\par}
+
+\subsubsection{Pianificazione}
+\begin{itemize}
+    \item \textbf{Data inizio}: 7 aprile 2026
+    \item \textbf{Data fine}: 13 aprile 2026
+        \item \textbf{Obiettivi}:
+    \begin{itemize}
+        \item Riunione con il prof. Cardin per validare e chiarire dubbi riguardo l'architettura del MVP e i diagrammi fatti;
+        \item Completamento della fase di progettazione;
+        \item Buon avanzamento della fase di codice del MVP, affiancato dalla scrittura dei test unitari;
+        \item Completamento codice e test backend;
+        \item Scrittura della Specifica Tecnica;
+        \item Aggiornamento dei documenti di progetto.
+    \end{itemize}
+    
+    \item \textbf{Ruoli assegnati}:
+    \begin{itemize}
+        \item Matteo Cuogo: Programmatore e Amministratore
+        \item Giulia Barzon: Programmatore e Amministratore
+        \item Elisa Marchioro: Responsabile e Programmatore
+        \item Joseph Grant: Programmatore e Progettista
+        \item Chiara Grossele: Programmatore e Verificatore
+        \item Tommaso Tombacco: Programmatore e Progettista
+    \end{itemize}
+    \item \textbf{Rischi attesi}: RO-1, RO-3, RT-1, RT-2, RT-3
+\end{itemize}
+
+\subsubsection{Preventivo orario}
+\begin{center}
+    \begin{tabular}{|l|c|c|c|c|c|c|c|}
+        \hline
+        \textbf{Membro} & \textbf{Re} & \textbf{Am} & \textbf{An} & \textbf{Pj} & \textbf{Pg} & \textbf{Ve} & \textbf{Totale} \\
+        \hline
+        Joseph Grant & 0 & 0 & 0 & 2 & 5 & 0 & 7 \\
+        \hline
+        Chiara Grossele & 0 & 0 & 0 & 0 & 5 & 2 & 7 \\
+        \hline
+        Tommaso Tombacco & 0 & 0 & 0 & 2 & 5 & 0 & 7 \\
+        \hline
+        Elisa Marchioro & 2 & 0 & 0 & 0 & 4 & 0 & 6 \\
+        \hline
+        Giulia Barzon & 0 & 0 & 3 & 0 & 5 & 0 & 8 \\
+        \hline
+        Matteo Cuogo & 0 & 0 & 3 & 0 & 5 & 0 & 8 \\
+        \hline
+        \textbf{Ore totali} & 2 & 0 & 6 & 4 & 29 & 2 & 43 \\
+        \hline
+        \textbf{Costo totale} & 60 & 0 & 150 & 100 & 435 & 30 & 775 \\
+        \hline
+    \end{tabular}
+\end{center}
+
+\noindent \textbf{Legenda}: Re = Responsabile, Am = Amministratore, An = Analista, Pj = Progettista, Pg = Programmatore, Ve = Verificatore.
+
+
+\subsubsection{Review}
+
+
+\newpage
 
 
 \end{document}
