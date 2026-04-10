@@ -1011,7 +1011,7 @@ In questa sottosezione vengono testati i costruttori delle diverse strategie con
 \end{table}
 
 \subsection{TestGenerateInputValidation}
-Questa sezione descrive i test volti a verificare la corretta validazione degli input forniti all’endpoint di generazione. L’obiettivo è garantire che il sistema gestisca in modo appropriato richieste incomplete, malformate o non conformi alle specifiche, restituendo codici di errore adeguati e messaggi informativi.
+Questa sezione descrive i test volti a verificare la corretta \gls{validazione} degli input forniti all’\gls{endpoint} di generazione. L’obiettivo è garantire che il sistema gestisca in modo appropriato richieste incomplete, malformate o non conformi alle specifiche, restituendo codici di errore adeguati e messaggi informativi.
 
 \begin{table}[H]
 \centering
@@ -1021,7 +1021,7 @@ Questa sezione descrive i test volti a verificare la corretta validazione degli 
 \textbf{Codice} & \textbf{Descrizione} & \textbf{Stato} \\ \hline
 \prossimoUT & \gls{Verifica} che l'assenza del campo obbligatorio text produca un errore HTTP 400 e un messaggio di errore nel campo 'generated\_text'. & Pass \\ \hline
 \prossimoUT & \gls{Verifica} che una stringa vuota '' restituisca 400 come il caso precedente. & Pass \\ \hline
-\prossimoUT & Verifica la resilienza del sistema: se l'operazione è sconosciuta, deve eseguire il fallback sul default (summary). & Pass \\ \hline
+\prossimoUT & \gls{Verifica} la resilienza del sistema: se l'operazione è sconosciuta, deve eseguire il fallback sul default (summary). & Pass \\ \hline
  
 \end{tabular}
 
@@ -1038,7 +1038,7 @@ In questa sezione vengono presentati i test relativi al corretto funzionamento d
 \hline
 \textbf{Codice} & \textbf{Descrizione} & \textbf{Stato} \\ \hline
 \prossimoUT & \gls{Verifica} il corretto funzionamento di ogni operazione presente nel registry (summary, fix\_grammar, rewrite, distant\_writing) (parametrizzato). & Pass \\ \hline
-\prossimoUT & Verifica che la richiesta vada a buon fine anche se il campo operation viene totalmente omesso dal payload. & Pass \\ \hline
+\prossimoUT & \gls{Verifica} che la richiesta vada a buon fine anche se il campo operation viene totalmente omesso dal payload. & Pass \\ \hline
  
 \end{tabular}
 
@@ -1046,7 +1046,7 @@ In questa sezione vengono presentati i test relativi al corretto funzionamento d
 \end{table}
 
 \subsection{TestCleanAiResponse}
-Questa sezione si concentra sulla verifica del processo di pulizia delle risposte generate dal modello AI. In particolare, i test assicurano la rimozione di elementi superflui o prefissi tipici, al fine di restituire output chiari, coerenti e pronti per l’utilizzo lato frontend.
+Questa sezione si concentra sulla \gls{verifica} del processo di pulizia delle risposte generate dal modello AI. In particolare, i test assicurano la rimozione di elementi superflui o prefissi tipici, al fine di restituire output chiari, coerenti e pronti per l’utilizzo lato frontend.
 
 \begin{table}[H]
 \centering
@@ -1054,7 +1054,7 @@ Questa sezione si concentra sulla verifica del processo di pulizia delle rispost
 \begin{tabular}{|l|p{12cm}|c|}
 \hline
 \textbf{Codice} & \textbf{Descrizione} & \textbf{Stato} \\ \hline
-\prossimoUT & Verifica la rimozione di prefissi introduttivi tipici dei modelli AI (es. "Ecco il riassunto:", ecc.). & Pass \\ \hline
+\prossimoUT & \gls{Verifica} la rimozione di prefissi introduttivi tipici dei modelli AI (es. "Ecco il riassunto:", ecc.). & Pass \\ \hline
  
 \end{tabular}
 
@@ -1070,8 +1070,8 @@ I test descritti in questa sezione hanno l’obiettivo di valutare la robustezza
 \begin{tabular}{|l|p{12cm}|c|}
 \hline
 \textbf{Codice} & \textbf{Descrizione} & \textbf{Stato} \\ \hline
-\prossimoUT & Verifica che un crash del modello AI non causi un downtime del server, ma venga catturato e restituito come HTTP 500. & Pass \\ \hline
-\prossimoUT & Verifica che il messaggio d'errore inviato al frontend contenga dettagli tecnici utili al debugging (testo dell'eccezione). & Pass \\ \hline
+\prossimoUT & \gls{Verifica} che un crash del modello AI non causi un downtime del server, ma venga catturato e restituito come HTTP 500. & Pass \\ \hline
+\prossimoUT & \gls{Verifica} che il messaggio d'errore inviato al frontend contenga dettagli tecnici utili al debugging (testo dell'eccezione). & Pass \\ \hline
  
 \end{tabular}
 
@@ -1087,9 +1087,9 @@ Questa sezione analizza la struttura e la coerenza del formato delle risposte re
 \begin{tabular}{|l|p{12cm}|c|}
 \hline
 \textbf{Codice} & \textbf{Descrizione} & \textbf{Stato} \\ \hline
-\prossimoUT & Verifica che la risposta di successo deve sempre contenere la chiave generated\_text. & Pass \\ \hline
-\prossimoUT & Verifica che anche in caso di errore (400) il frontend riceva la chiave generated\_text per mostrare il messaggio a video. & Pass \\ \hline
-\prossimoUT & Verifica che l'header di risposta sia rigorosamente application/json, garantendo la compatibilità con i parser client. & Pass \\ \hline
+\prossimoUT & \gls{Verifica} che la risposta di successo deve sempre contenere la chiave generated\_text. & Pass \\ \hline
+\prossimoUT & \gls{Verifica} che anche in caso di errore (400) il frontend riceva la chiave generated\_text per mostrare il messaggio a video. & Pass \\ \hline
+\prossimoUT & \gls{Verifica} che l'header di risposta sia rigorosamente application/json, garantendo la compatibilità con i parser client. & Pass \\ \hline
  
 \end{tabular}
 
