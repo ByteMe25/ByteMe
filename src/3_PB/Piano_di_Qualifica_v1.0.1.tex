@@ -102,6 +102,8 @@
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{\gls{Verifica}} \\
         \hline
+        1.0.3 & 10/04/2026 & Elisa Marchioro & Aggiunta unit test test_app.py & \\
+        \hline
         1.0.2 & 07/04/2026 & Elisa Marchioro & Aggiunta sezione unit testing & \\
         \hline
         1.0.1 & 01/04/2026 & Giulia Barzon & Aggiornamento fonti e riferimenti & Tommaso Tombacco \\
@@ -1009,6 +1011,93 @@ In questa sottosezione vengono testati i costruttori delle diverse strategie con
 
 \caption{Elenco unit test con codici autogenerati}
 \end{table}
+
+\subsection{TestGenerateInputValidation}
+Questa sezione descrive i test volti a verificare la corretta validazione degli input forniti all’endpoint di generazione. L’obiettivo è garantire che il sistema gestisca in modo appropriato richieste incomplete, malformate o non conformi alle specifiche, restituendo codici di errore adeguati e messaggi informativi.
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.5} % Più respiro alle righe
+\begin{tabular}{|l|p{12cm}|c|}
+\hline
+\textbf{Codice} & \textbf{Descrizione} & \textbf{Stato} \\ \hline
+\prossimoUT & \gls{Verifica} che l'assenza del campo obbligatorio text produca un errore HTTP 400 e un messaggio di errore nel campo 'generated\_text'. & Pass \\ \hline
+\prossimoUT & \gls{Verifica} che una stringa vuota '' restituisca 400 come il caso precedente. & Pass \\ \hline
+\prossimoUT & Verifica la resilienza del sistema: se l'operazione è sconosciuta, deve eseguire il fallback sul default (summary). & Pass \\ \hline
+ 
+\end{tabular}
+
+\caption{Elenco unit test con codici autogenerati}
+\end{table}
+
+\subsection{TestGenerateOperations}
+In questa sezione vengono presentati i test relativi al corretto funzionamento delle operazioni supportate dal sistema. Viene verificato che ogni operazione definita nel registry venga eseguita correttamente e che il sistema adotti comportamenti di default robusti in assenza di parametri espliciti.
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.5} % Più respiro alle righe
+\begin{tabular}{|l|p{12cm}|c|}
+\hline
+\textbf{Codice} & \textbf{Descrizione} & \textbf{Stato} \\ \hline
+\prossimoUT & \gls{Verifica} il corretto funzionamento di ogni operazione presente nel registry (summary, fix\_grammar, rewrite, distant\_writing) (parametrizzato). & Pass \\ \hline
+\prossimoUT & Verifica che la richiesta vada a buon fine anche se il campo operation viene totalmente omesso dal payload. & Pass \\ \hline
+ 
+\end{tabular}
+
+\caption{Elenco unit test con codici autogenerati}
+\end{table}
+
+\subsection{TestCleanAiResponse}
+Questa sezione si concentra sulla verifica del processo di pulizia delle risposte generate dal modello AI. In particolare, i test assicurano la rimozione di elementi superflui o prefissi tipici, al fine di restituire output chiari, coerenti e pronti per l’utilizzo lato frontend.
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.5} % Più respiro alle righe
+\begin{tabular}{|l|p{12cm}|c|}
+\hline
+\textbf{Codice} & \textbf{Descrizione} & \textbf{Stato} \\ \hline
+\prossimoUT & Verifica la rimozione di prefissi introduttivi tipici dei modelli AI (es. "Ecco il riassunto:", ecc.). & Pass \\ \hline
+ 
+\end{tabular}
+
+\caption{Elenco unit test con codici autogenerati}
+\end{table}
+
+\subsection{TestGenerateErrorHandling}
+I test descritti in questa sezione hanno l’obiettivo di valutare la robustezza del sistema nella gestione degli errori. Viene verificato che eventuali malfunzionamenti del modello AI siano correttamente intercettati, evitando impatti sulla disponibilità del servizio e garantendo una comunicazione chiara degli errori al client.
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.5} % Più respiro alle righe
+\begin{tabular}{|l|p{12cm}|c|}
+\hline
+\textbf{Codice} & \textbf{Descrizione} & \textbf{Stato} \\ \hline
+\prossimoUT & Verifica che un crash del modello AI non causi un downtime del server, ma venga catturato e restituito come HTTP 500. & Pass \\ \hline
+\prossimoUT & Verifica che il messaggio d'errore inviato al frontend contenga dettagli tecnici utili al debugging (testo dell'eccezione). & Pass \\ \hline
+ 
+\end{tabular}
+
+\caption{Elenco unit test con codici autogenerati}
+\end{table}
+
+\subsection{TestResponseFormat}
+Questa sezione analizza la struttura e la coerenza del formato delle risposte restituite dal sistema. I test garantiscono che tutte le risposte, sia in caso di successo che di errore, rispettino un formato standardizzato, facilitando l’integrazione e l’elaborazione da parte dei client.
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.5} % Più respiro alle righe
+\begin{tabular}{|l|p{12cm}|c|}
+\hline
+\textbf{Codice} & \textbf{Descrizione} & \textbf{Stato} \\ \hline
+\prossimoUT & Verifica che la risposta di successo deve sempre contenere la chiave generated\_text. & Pass \\ \hline
+\prossimoUT & Verifica che anche in caso di errore (400) il frontend riceva la chiave generated\_text per mostrare il messaggio a video. & Pass \\ \hline
+\prossimoUT & Verifica che l'header di risposta sia rigorosamente application/json, garantendo la compatibilità con i parser client. & Pass \\ \hline
+ 
+\end{tabular}
+
+\caption{Elenco unit test con codici autogenerati}
+\end{table}
+
 
 
 \newpage
