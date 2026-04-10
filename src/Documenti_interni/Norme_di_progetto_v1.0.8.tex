@@ -68,7 +68,7 @@
         \centering
         \begin{tabular}{|l|p{5cm}|}
             \hline
-            \textbf{Versione} & 1.0.7 \\
+            \textbf{Versione} & 1.0.8 \\
             \hline
             \textbf{Stato} & Da approvare \\
             \hline
@@ -95,28 +95,25 @@
 
 \begin{table}[H]
     \centering
-    \begin{tabular}{|c|c|c|>{\raggedright\arraybackslash}p{0.4\textwidth}|c|}
+    \begin{tabular}{|c|c|c|>{\raggedright\arraybackslash}p{0.35\textwidth}|p{0.18\textwidth}|}
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{\gls{Verifica}} \\
         \hline
-        1.0.7 & 26/03/2026 & Elisa Marchioro & Miglioramento sezione 5 e 6 & Chiara Grossele\\
+        1.0.8 & 10/04/2026 & Giulia Barzon & Sezioni setup test in locale e Git Flow & \\
+        \hline
+        1.0.7 & 26/03/2026 & Elisa Marchioro & Miglioramento sezione 5 e 6 & Chiara Grossele, Giulia Barzon\\
         \hline
         1.0.6 & 26/03/2026 & Elisa Marchioro & Fix sezione 5 & Chiara Grossele\\
         \hline
-        1.0.5 & 25/03/2026 & Elisa Marchioro & Fix sezione 3 e aggiunta subsection "\gls{Metriche nel cruscotto di qualità}" & 
-        \begin{tabular}[c]{@{}c@{}} Matteo Cuogo \\ Tommaso Tombacco\end{tabular} \\
+        1.0.5 & 25/03/2026 & Elisa Marchioro & Fix sezione 3 e aggiunta subsection "\gls{Metriche nel cruscotto di qualità}" & Matteo Cuogo, Tommaso Tombacco \\
         \hline
-        1.0.4 & 25/03/2026 & Elisa Marchioro & Miglioramento sezione 3 & 
-        \begin{tabular}[c]{@{}c@{}} Matteo Cuogo \\ Tommaso Tombacco \end{tabular} \\
+        1.0.4 & 25/03/2026 & Elisa Marchioro & Miglioramento sezione 3 & Matteo Cuogo, Tommaso Tombacco \\
         \hline
-        1.0.3 & 24/03/2026 & Giulia Barzon & Miglioramento sezione 2 & 
-        \begin{tabular}[c]{@{}c@{}} Matteo Cuogo \\ Tommaso Tombacco \end{tabular} \\
+        1.0.3 & 24/03/2026 & Giulia Barzon & Miglioramento sezione 2 &  Matteo Cuogo, Tommaso Tombacco \\
         \hline
-        1.0.2 & 21/03/2026 & Elisa Marchioro & Mini fix & 
-        \begin{tabular}[c]{@{}c@{}} Matteo Cuogo \\ Tommaso Tombacco \end{tabular} \\
+        1.0.2 & 21/03/2026 & Elisa Marchioro & Mini fix & Matteo Cuogo, Tommaso Tombacco \\
         \hline
-        1.0.1 & 16/03/2026 & Giulia Barzon & Aggiunta modifica gestione \gls{sprint} & 
-        \begin{tabular}[c]{@{}c@{}} Matteo Cuogo \\ Tommaso Tombacco \end{tabular} \\
+        1.0.1 & 16/03/2026 & Giulia Barzon & Aggiunta modifica gestione \gls{sprint} & Matteo Cuogo, Tommaso Tombacco \\
         \hline
         1.0.0 & 20/02/2026 & Matteo Cuogo & Approvazione documento & \\
         \hline
@@ -441,13 +438,15 @@ L’obiettivo è garantire tracciabilità delle modifiche, collaborazione tra i 
 
 \subsubsection{Attività: gestione delle attività di sviluppo}
 L’attività di gestione delle attività di sviluppo ha lo scopo di organizzare, tracciare e monitorare i compiti relativi allo sviluppo del codice, garantendo una distribuzione chiara delle responsabilità e un controllo costante dell’avanzamento del lavoro.
+
 \paragraph{Procedure}
 \begin{itemize}
-\item Definizione delle attività: ogni attività di sviluppo viene formalizzata come unità di lavoro, descritta in modo chiaro e assegnata a uno o più membri del team.
-\item Tracciamento delle attività: le attività vengono identificate tramite un riferimento univoco (ad esempio un numero), che ne permette il monitoraggio durante tutto il ciclo di sviluppo.
-\item Collegamento con i verbali: le decisioni prese durante le riunioni vengono collegate alle attività operative, garantendo coerenza tra pianificazione e sviluppo effettivo.
-\item Monitoraggio dello stato di avanzamento: le attività vengono aggiornate in base al loro stato (da fare, in corso, completate), permettendo al team di avere una visione chiara dell’avanzamento complessivo.
+    \item Definizione delle attività: ogni attività di sviluppo viene formalizzata come unità di lavoro, descritta in modo chiaro e assegnata a uno o più membri del team.
+    \item Tracciamento delle attività: le attività vengono identificate tramite un riferimento univoco (ad esempio un numero), che ne permette il monitoraggio durante tutto il ciclo di sviluppo.
+    \item Collegamento con i verbali: le decisioni prese durante le riunioni vengono collegate alle attività operative, garantendo coerenza tra pianificazione e sviluppo effettivo.
+    \item Monitoraggio dello stato di avanzamento: le attività vengono aggiornate in base al loro stato (da fare, in corso, completate), permettendo al team di avere una visione chiara dell’avanzamento complessivo.
 \end{itemize}
+
 \paragraph{Strumenti}
 Per una gestione efficiente e tracciabile delle attività di progetto, il gruppo utilizza le \textbf{\gls{GitHub} Issues} come strumento principale. Ogni attività viene registrata come \gls{Issue} nella \gls{repository} e assegnata un \textbf{numero identificativo univoco} generato automaticamente da \gls{GitHub}. Le \gls{Issue} vengono categorizzate tramite label specifiche e assegnate ai membri del team responsabili.
 
@@ -462,31 +461,54 @@ Inoltre per organizzare meglio il flusso di lavoro, sono state create due dashbo
 
 Questa suddivisione permette di monitorare separatamente lo stato di avanzamento delle due fasi principali del progetto, garantendo che tutte le attività vengano completate entro le scadenze stabilite per ciascuna \gls{milestone}.
 
-\subsubsection{Attività: sviluppo del codice}
-L’attività di sviluppo del codice comprende la creazione, modifica e manutenzione del codice sorgente del progetto.
-Essa viene svolta in modo collaborativo, assicurando che ogni modifica sia tracciata e condivisa con il resto del team.
+
+\subsubsection{Attività: metodologia Git Flow}
+Per la gestione dei rami (branching strategy), il gruppo adotta il modello \textbf{Git Flow}. Questa metodologia permette di isolare lo sviluppo di nuove funzionalità, gestire i rilasci e correggere bug critici in modo ordinato.
+
+\paragraph{Rami principali}
+\begin{itemize}
+    \item \textbf{main}: contiene esclusivamente codice stabile e pronto per la produzione. Ogni push su questo ramo corrisponde a una release ufficiale.
+    \item \textbf{develop}: è il ramo principale di sviluppo. Raccoglie tutte le funzionalità completate in attesa del prossimo rilascio.
+\end{itemize}
+
+\paragraph{Rami di supporto}
+\begin{itemize}
+    \item \textbf{feature/}: utilizzati per lo sviluppo di nuove funzionalità o refactoring. Nascono da \texttt{develop} e tornano in \texttt{develop} una volta terminati.
+    \item \textbf{release/}: rami temporanei per la preparazione di una nuova versione (es. \texttt{release/1.0.0}). Servono per bugfix dell'ultimo minuto e aggiornamento metadati.
+    \item \textbf{hotfix/}: rami per correzioni urgenti da applicare direttamente alla produzione. Nascono da \texttt{main} e vengono uniti sia a \texttt{main} che a \texttt{develop}.
+\end{itemize}
+
+\paragraph{Procedure operative}
+Il gruppo utilizza l'estensione \texttt{git-flow} per automatizzare i passaggi. La sequenza standard per una nuova funzionalità è:
+\begin{enumerate}
+    \item \textbf{Inizio}: \texttt{git flow feature start nome\_feature}
+    \item \textbf{Sviluppo}: commit regolari sul ramo isolato
+    \item \textbf{Conclusione}: \texttt{git flow feature finish nome\_feature} (esegue il merge su develop e pulisce il ramo locale)
+\end{enumerate}
+
+\subsubsection{Attività: automazione dei test pre-push}
+Al fine di garantire che il ramo \texttt{develop} rimanga sempre in uno stato integro e funzionante, il gruppo adotta una politica di \textbf{blocco del push} in caso di test falliti.
+
 \paragraph{Procedure}
+Viene utilizzato un \textbf{Git Hook} di tipo \texttt{pre-push}. Si tratta di uno script locale che intercetta il comando di caricamento sul server e avvia la suite di test.
 \begin{itemize}
-\item Sincronizzazione iniziale: prima di iniziare qualsiasi modifica, ogni membro aggiorna la propria copia locale della \gls{repository} per lavorare sull’ultima versione disponibile.
-\item Modifica del codice: ogni membro del gruppo lavora localmente seguendo le convenzioni stabilite (nel dettaglio in strumenti).
-\item Descrizione delle modifiche: ogni modifica viene registrata tramite \gls{commit}, accompagnato da un messaggio descrittivo che ne riassume il contenuto.
-\item Condivisione delle modifiche: le modifiche vengono caricate sulla \gls{repository} remota, rendendole disponibili agli altri membri del gruppo.
+    \item \textbf{Esecuzione in Docker}: Per garantire la parità tra gli ambienti di sviluppo (parità tra il PC locale e il container), lo script esegue i test tramite \texttt{docker compose run}.
+    \item \textbf{Vincolo di successo}: Se anche un solo test fallisce, il push viene interrotto forzatamente da Git.
 \end{itemize}
 
-\paragraph{Strumenti}
-\begin{itemize}
-\item Sincronizzazione iniziale: Prima di iniziare a lavorare, aggiornare sempre la \gls{repository} locale con il comando:
-    \begin{verbatim}
-    git pull origin main
-    \end{verbatim}
-\item Descrizione e condivisione delle modifiche: utilizzare la seguente sequenza di comandi per pubblicare le modifiche:
-    \begin{verbatim}
-    git add .
-    git commit -m "Descrizione chiara delle modifiche effettuate"
-    git push origin main
-    \end{verbatim}
-\end{itemize}
+\paragraph{Strumenti e configurazione locale}
+Ogni membro del team è tenuto a configurare il proprio ambiente seguendo queste istruzioni:
+\begin{enumerate}
+    \item Rendere eseguibile lo script di controllo: \texttt{chmod +x scripts/run\_tests.sh}.
+    \item Collegare l'hook locale: Creare il file \texttt{.git/hooks/pre-push} contenente la chiamata allo script e renderlo eseguibile (\texttt{chmod +x}).
+\end{enumerate}
 
+\subsubsection{Attività: gestione delle dipendenze (requirements.txt)}
+Per il backend, il gruppo mantiene un file \texttt{requirements.txt} snello, limitato alle librerie strettamente necessarie per un'architettura \textit{stateless}. Durante la fase PB, sono obbligatorie le seguenti dipendenze per il corretto funzionamento dei test:
+\begin{itemize}
+    \item \texttt{pytest} e \texttt{pytest-flask} per l'automazione.
+    \item \texttt{flask}, \texttt{flask-cors}, \texttt{openai}, \texttt{pydantic}, \texttt{python-dotenv} per la logica applicativa.
+\end{itemize}  
 
 \newpage
 
