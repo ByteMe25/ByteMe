@@ -99,7 +99,7 @@
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{\gls{Verifica}} \\
         \hline
-        1.0.8 & 10/04/2026 & Giulia Barzon & Sezioni setup test in locale e Git Flow & \\
+        1.0.8 & 10/04/2026 & Giulia Barzon & Sezioni setup test in locale e \gls{Git} Flow & \\
         \hline
         1.0.7 & 26/03/2026 & Elisa Marchioro & Miglioramento sezione 5 e 6 & Chiara Grossele, Giulia Barzon\\
         \hline
@@ -462,8 +462,8 @@ Inoltre per organizzare meglio il flusso di lavoro, sono state create due dashbo
 Questa suddivisione permette di monitorare separatamente lo stato di avanzamento delle due fasi principali del progetto, garantendo che tutte le attività vengano completate entro le scadenze stabilite per ciascuna \gls{milestone}.
 
 
-\subsubsection{Attività: metodologia Git Flow}
-Per la gestione dei rami (branching strategy), il gruppo adotta il modello \textbf{Git Flow}. Questa metodologia permette di isolare lo sviluppo di nuove funzionalità, gestire i rilasci e correggere bug critici in modo ordinato.
+\subsubsection{Attività: metodologia \gls{Git} Flow}
+Per la gestione dei rami (branching strategy), il gruppo adotta il modello \textbf{\gls{Git} Flow}. Questa metodologia permette di isolare lo sviluppo di nuove funzionalità, gestire i rilasci e correggere bug critici in modo ordinato.
 
 \paragraph{Rami principali}
 \begin{itemize}
@@ -479,35 +479,35 @@ Per la gestione dei rami (branching strategy), il gruppo adotta il modello \text
 \end{itemize}
 
 \paragraph{Procedure operative}
-Il gruppo utilizza l'estensione \texttt{git-flow} per automatizzare i passaggi. La sequenza standard per una nuova funzionalità è:
+Il gruppo utilizza l'estensione \texttt{\gls{git}-flow} per automatizzare i passaggi. La sequenza standard per una nuova funzionalità è:
 \begin{enumerate}
-    \item \textbf{Inizio}: \texttt{git flow feature start nome\_feature}
-    \item \textbf{Sviluppo}: commit regolari sul ramo isolato
-    \item \textbf{Conclusione}: \texttt{git flow feature finish nome\_feature} (esegue il merge su develop e pulisce il ramo locale)
+    \item \textbf{Inizio}: \texttt{\gls{git} flow feature start nome\_feature}
+    \item \textbf{Sviluppo}: \gls{commit} regolari sul ramo isolato
+    \item \textbf{Conclusione}: \texttt{\gls{git} flow feature finish nome\_feature} (esegue il \gls{merge} su develop e pulisce il ramo locale)
 \end{enumerate}
 
 \subsubsection{Attività: automazione dei test pre-push}
 Al fine di garantire che il ramo \texttt{develop} rimanga sempre in uno stato integro e funzionante, il gruppo adotta una politica di \textbf{blocco del push} in caso di test falliti.
 
 \paragraph{Procedure}
-Viene utilizzato un \textbf{Git Hook} di tipo \texttt{pre-push}. Si tratta di uno script locale che intercetta il comando di caricamento sul server e avvia la suite di test.
+Viene utilizzato un \textbf{\gls{Git} Hook} di tipo \texttt{pre-push}. Si tratta di uno script locale che intercetta il comando di caricamento sul server e avvia la suite di test.
 \begin{itemize}
-    \item \textbf{Esecuzione in Docker}: Per garantire la parità tra gli ambienti di sviluppo (parità tra il PC locale e il container), lo script esegue i test tramite \texttt{docker compose run}.
-    \item \textbf{Vincolo di successo}: Se anche un solo test fallisce, il push viene interrotto forzatamente da Git.
+    \item \textbf{Esecuzione in \gls{Docker}}: Per garantire la parità tra gli ambienti di sviluppo (parità tra il PC locale e il container), lo script esegue i test tramite \texttt{\gls{docker compose} run}.
+    \item \textbf{Vincolo di successo}: Se anche un solo test fallisce, il push viene interrotto forzatamente da \gls{Git}.
 \end{itemize}
 
 \paragraph{Strumenti e configurazione locale}
 Ogni membro del team è tenuto a configurare il proprio ambiente seguendo queste istruzioni:
 \begin{enumerate}
     \item Rendere eseguibile lo script di controllo: \texttt{chmod +x scripts/run\_tests.sh}.
-    \item Collegare l'hook locale: Creare il file \texttt{.git/hooks/pre-push} contenente la chiamata allo script e renderlo eseguibile (\texttt{chmod +x}).
+    \item Collegare l'hook locale: Creare il file \texttt{.\gls{git}/hooks/pre-push} contenente la chiamata allo script e renderlo eseguibile (\texttt{chmod +x}).
 \end{enumerate}
 
 \subsubsection{Attività: gestione delle dipendenze (requirements.txt)}
 Per il backend, il gruppo mantiene un file \texttt{requirements.txt} snello, limitato alle librerie strettamente necessarie per un'architettura \textit{stateless}. Durante la fase PB, sono obbligatorie le seguenti dipendenze per il corretto funzionamento dei test:
 \begin{itemize}
-    \item \texttt{pytest} e \texttt{pytest-flask} per l'automazione.
-    \item \texttt{flask}, \texttt{flask-cors}, \texttt{openai}, \texttt{pydantic}, \texttt{python-dotenv} per la logica applicativa.
+    \item \texttt{pytest} e \texttt{pytest-\gls{flask}} per l'automazione.
+    \item \texttt{\gls{flask}}, \texttt{\gls{flask}-cors}, \texttt{openai}, \texttt{pydantic}, \texttt{python-dotenv} per la logica applicativa.
 \end{itemize}  
 
 \newpage
