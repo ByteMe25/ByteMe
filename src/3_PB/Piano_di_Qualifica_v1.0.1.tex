@@ -662,9 +662,9 @@ Change Failure Rate & Percentuale di modifiche che introducono problemi o bug & 
 \newpage
 \section{Strategia di \gls{verifica} (Testing)}
 \subsection{\gls{Analisi statica}}
-L’analisi statica consiste nella verifica dei documenti e del codice senza esecuzione del software, con l’obiettivo di individuare errori sintattici, incongruenze, violazioni degli standard e problemi strutturali.
+L’\gls{analisi statica} consiste nella \gls{verifica} dei documenti e del codice senza esecuzione del software, con l’obiettivo di individuare errori sintattici, incongruenze, violazioni degli standard e problemi strutturali.
 
-Nel progetto Second Brain, l’analisi statica viene effettuata principalmente tramite attività di inspection, supportate da checklist condivise, che guidano i verificatori nel controllo sistematico della qualità della documentazione e del codice.
+Nel progetto Second Brain, l’\gls{analisi statica} viene effettuata principalmente tramite attività di inspection, supportate da \gls{checklist} condivise, che guidano i verificatori nel controllo sistematico della qualità della documentazione e del codice.
 \subsubsection{\gls{Checklist} per la \gls{verifica} (\gls{Analisi statica} tramite inspection\textsubscript{G})}
 Questa sezione contiene le liste di controllo che i Verificatori devono utilizzare obbligatoriamente prima di approvare un documento o un pezzo di codice. L'obiettivo è standardizzare il controllo qualità ed evitare errori ricorrenti.
 Questa \gls{checklist} viene aggiornata progressivamente dai verificatori e permette di evitare gli errori più comuni e semplici da individuare.
@@ -745,12 +745,12 @@ L'\gls{analisi dinamica} del software \textit{Second Brain} viene condotta attra
 
 Le attività di testing sono organizzate nei seguenti livelli:
 \begin{itemize}
-\item \textbf{Unit Testing}: verifica il corretto funzionamento delle singole unità software (funzioni o classi) in isolamento. L’obiettivo è individuare errori logici e garantire che ogni unità si comporti come previsto.
-\item \textbf{Test di Integrazione}: verifica l’interazione tra più componenti del sistema. In questa fase si controlla che i moduli collaborino correttamente tra loro e che lo scambio di dati avvenga senza errori.
-\item \textbf{Component Testing}: si concentra sulla validazione di componenti funzionali completi, considerati come unità logiche più ampie rispetto alle singole classi. Permette di verificare il comportamento di parti significative del sistema in condizioni realistiche.
-\item \textbf{End-to-End Testing (E2E)}: verifica il comportamento dell’intero sistema simulando scenari d’uso reali. L’obiettivo è assicurare che il flusso completo, dalla richiesta dell’utente fino alla risposta finale, funzioni correttamente in un ambiente il più possibile simile a quello di produzione.
+\item \textbf{Unit Testing}: \gls{verifica} il corretto funzionamento delle singole unità software (funzioni o classi) in isolamento. L’obiettivo è individuare errori logici e garantire che ogni unità si comporti come previsto.
+\item \textbf{\gls{Test di Integrazione}}: \gls{verifica} l’interazione tra più componenti del sistema. In questa fase si controlla che i moduli collaborino correttamente tra loro e che lo scambio di dati avvenga senza errori.
+\item \textbf{Component Testing}: si concentra sulla \gls{validazione} di componenti funzionali completi, considerati come unità logiche più ampie rispetto alle singole classi. Permette di verificare il comportamento di parti significative del sistema in condizioni realistiche.
+\item \textbf{End-to-End Testing (E2E)}: \gls{verifica} il comportamento dell’intero sistema simulando scenari d’uso reali. L’obiettivo è assicurare che il flusso completo, dalla richiesta dell’utente fino alla risposta finale, funzioni correttamente in un ambiente il più possibile simile a quello di produzione.
 \end{itemize}
-Questa struttura consente di individuare errori in modo progressivo, partendo dai singoli componenti fino ad arrivare alla validazione dell’intero sistema.
+Questa struttura consente di individuare errori in modo progressivo, partendo dai singoli componenti fino ad arrivare alla \gls{validazione} dell’intero sistema.
 
 
 \newpage
@@ -1060,11 +1060,11 @@ In questa sottosezione vengono testati i costruttori delle diverse strategie con
 \end{table}
 
 \subsubsection{test\_app.py}
-Questo documento descrive i test relativi al modulo app, che rappresenta il backend dell’applicazione basato su Flask.
+Questo documento descrive i test relativi al modulo app, che rappresenta il backend dell’applicazione basato su \gls{Flask}.
 
-Il modulo espone un endpoint API per la generazione di contenuti tramite modelli di intelligenza artificiale. La richiesta viene elaborata selezionando l’operazione desiderata, costruendo i prompt tramite le strategie configurate e invocando il modello appropriato.
+Il modulo espone un \gls{endpoint} \gls{API} per la generazione di contenuti tramite modelli di intelligenza artificiale. La richiesta viene elaborata selezionando l’operazione desiderata, costruendo i prompt tramite le strategie configurate e invocando il modello appropriato.
 
-I test verificano il corretto funzionamento dell’endpoint, la validazione degli input, la gestione degli errori e la coerenza del formato delle risposte. Viene inoltre testata la funzione di pulizia dell’output, che rimuove eventuali frasi introduttive generate dal modello.
+I test verificano il corretto funzionamento dell’\gls{endpoint}, la \gls{validazione} degli input, la gestione degli errori e la coerenza del formato delle risposte. Viene inoltre testata la funzione di pulizia dell’output, che rimuove eventuali frasi introduttive generate dal modello.
 \paragraph{TestGenerateInputValidation}
 Questa sezione descrive i test volti a verificare la corretta \gls{validazione} degli input forniti all’\gls{endpoint} di generazione. L’obiettivo è garantire che il sistema gestisca in modo appropriato richieste incomplete, malformate o non conformi alle specifiche, restituendo codici di errore adeguati e messaggi informativi.
 
@@ -1163,16 +1163,16 @@ I test hanno lo scopo di verificare il corretto funzionamento delle strategie, i
 \begin{tabular}{|l|p{12cm}|c|}
 \hline
 \textbf{Codice} & \textbf{Descrizione} & \textbf{Stato} \\ \hline
-\prossimoUT & Verifica che la classe base non possa essere usata direttamente. & Pass \\ \hline
-\prossimoUT & Verifica che get\_model restituisca sempre la stessa istanza (Singleton). & Pass \\ \hline
-\prossimoUT & Verifica che la strategia Llama chiami correttamente il client OpenAI. & Pass \\ \hline
-\prossimoUT & Verifica che la strategia Gemma utilizzi il modello corretto e accetti la temperatura. & Pass \\ \hline
-\prossimoUT & Verifica che la strategia Llama gestisca (o sollevi) errori dall'API. & Pass \\ \hline
-\prossimoUT & Verifica che get\_model distingua correttamente tra tipi diversi di modelli. & Pass \\ \hline
-\prossimoUT & Verifica che le istanze create siano del tipo corretto e non si sovrappongano. & Pass \\ \hline
-\prossimoUT & Verifica che venga lanciato un errore se mancano le variabili d'ambiente. & Pass \\ \hline
-\prossimoUT & Verifica che la strategia gestisca una risposta vuota o mancante. & Pass \\ \hline
-\prossimoUT & Verifica il corretto ripopolamento del registro interno se svuotato manualmente. & Pass \\ \hline
+\prossimoUT & \gls{Verifica} che la classe base non possa essere usata direttamente. & Pass \\ \hline
+\prossimoUT & \gls{Verifica} che get\_model restituisca sempre la stessa istanza (Singleton). & Pass \\ \hline
+\prossimoUT & \gls{Verifica} che la strategia Llama chiami correttamente il client OpenAI. & Pass \\ \hline
+\prossimoUT & \gls{Verifica} che la strategia Gemma utilizzi il modello corretto e accetti la temperatura. & Pass \\ \hline
+\prossimoUT & \gls{Verifica} che la strategia Llama gestisca (o sollevi) errori dall'\gls{API}. & Pass \\ \hline
+\prossimoUT & \gls{Verifica} che get\_model distingua correttamente tra tipi diversi di modelli. & Pass \\ \hline
+\prossimoUT & \gls{Verifica} che le istanze create siano del tipo corretto e non si sovrappongano. & Pass \\ \hline
+\prossimoUT & \gls{Verifica} che venga lanciato un errore se mancano le variabili d'ambiente. & Pass \\ \hline
+\prossimoUT & \gls{Verifica} che la strategia gestisca una risposta vuota o mancante. & Pass \\ \hline
+\prossimoUT & \gls{Verifica} il corretto ripopolamento del registro interno se svuotato manualmente. & Pass \\ \hline
 
  
 \end{tabular}
@@ -1198,16 +1198,16 @@ I test verificano la correttezza del registro delle operazioni, la validità del
 \begin{tabular}{|l|p{12cm}|c|}
 \hline
 \textbf{Codice} & \textbf{Descrizione} & \textbf{Stato} \\ \hline
-\prossimoUT & Verifica che il registro delle operazioni sia correttamente strutturato come un dizionario. & Pass \\ \hline
+\prossimoUT & \gls{Verifica} che il registro delle operazioni sia correttamente strutturato come un dizionario. & Pass \\ \hline
 \prossimoUT & Accerta la presenza delle operazioni fondamentali (summary, fix\_grammar, ecc.) nel registro. & Pass \\ \hline
-\prossimoUT & Verifica che l'operazione di default esista nel registro. & Pass \\ \hline
-\prossimoUT & Verifica che ogni operazione abbia una classe modello valida e una strategia di prompt corretta. & Pass \\ \hline
-\prossimoUT & Verifica specifica che 'summary' usi la strategia di riassunto. & Pass \\ \hline
-\prossimoUT & Verifica che nessuna operazione sia configurata a None. & Pass \\ \hline
-\prossimoUT & Verifica che ogni operazione usi un'istanza di strategia diversa. & Pass \\ \hline
+\prossimoUT & \gls{Verifica} che l'operazione di default esista nel registro. & Pass \\ \hline
+\prossimoUT & \gls{Verifica} che ogni operazione abbia una classe modello valida e una strategia di prompt corretta. & Pass \\ \hline
+\prossimoUT & \gls{Verifica} specifica che 'summary' usi la strategia di riassunto. & Pass \\ \hline
+\prossimoUT & \gls{Verifica} che nessuna operazione sia configurata a None. & Pass \\ \hline
+\prossimoUT & \gls{Verifica} che ogni operazione usi un'istanza di strategia diversa. & Pass \\ \hline
 \prossimoUT & Valida che tutte le chiavi del registro usino lo standard snake\_case (minuscole e underscore). & Pass \\ \hline
-\prossimoUT & Con una simulazione di un input reale verifica che ogni strategia nel registro sia in grado di generare prompt validi. & Pass \\ \hline
-\prossimoUT & Verifica che l'operazione di default abbia una config completa. & Pass \\ \hline
+\prossimoUT & Con una simulazione di un input reale \gls{verifica} che ogni strategia nel registro sia in grado di generare prompt validi. & Pass \\ \hline
+\prossimoUT & \gls{Verifica} che l'operazione di default abbia una config completa. & Pass \\ \hline
 
  
 \end{tabular}
