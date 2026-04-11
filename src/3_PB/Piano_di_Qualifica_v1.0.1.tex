@@ -70,7 +70,7 @@
         \centering
         \begin{tabular}{|l|p{5cm}|}
             \hline
-            \textbf{Versione} & 1.0.1 \\
+            \textbf{Versione} & 1.1.0 \\
             \hline
             \textbf{Stato} & Da approvare \\
             \hline
@@ -101,6 +101,8 @@
     \begin{tabular}{|c|c|c|>{\raggedright\arraybackslash}p{0.35\textwidth}|p{0.18\textwidth}|}
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{\gls{Verifica}} \\
+        \hline
+        1.1.0 & 11/04/2026 & Elisa Marchioro & Aggiunti nuovi test a unit testing e miglioramento della struttura del documento & \\
         \hline
         1.0.2 & 07/04/2026 & Elisa Marchioro & Aggiunta sezione unit testing & \\
         \hline
@@ -550,6 +552,7 @@ Percentuale di metriche (tra tutte quelle definite nel presente documento) che r
 \end{table}
 
 
+
 \newpage
 \subsection{Qualità di prodotto}
 La qualità di prodotto nel software indica quanto bene un sistema riesce a soddisfare i bisogni degli utenti e gli obiettivi per cui è stato creato. Non significa solo che il programma funzioni, ma anche che sia affidabile, veloce, facile da usare e capace di essere migliorato nel tempo. Un software di buona qualità è quindi utile, stabile e adatto a evolversi insieme alle esigenze degli utenti.
@@ -654,10 +657,14 @@ Change Failure Rate & Percentuale di modifiche che introducono problemi o bug & 
 \caption{Soglie metriche manutenibilità del prodotto}
 \end{table}
 
+
+
 \newpage
 \section{Strategia di \gls{verifica} (Testing)}
 \subsection{\gls{Analisi statica}}
+L’analisi statica consiste nella verifica dei documenti e del codice senza esecuzione del software, con l’obiettivo di individuare errori sintattici, incongruenze, violazioni degli standard e problemi strutturali.
 
+Nel progetto Second Brain, l’analisi statica viene effettuata principalmente tramite attività di inspection, supportate da checklist condivise, che guidano i verificatori nel controllo sistematico della qualità della documentazione e del codice.
 \subsubsection{\gls{Checklist} per la \gls{verifica} (\gls{Analisi statica} tramite inspection\textsubscript{G})}
 Questa sezione contiene le liste di controllo che i Verificatori devono utilizzare obbligatoriamente prima di approvare un documento o un pezzo di codice. L'obiettivo è standardizzare il controllo qualità ed evitare errori ricorrenti.
 Questa \gls{checklist} viene aggiornata progressivamente dai verificatori e permette di evitare gli errori più comuni e semplici da individuare.
@@ -728,12 +735,28 @@ Questa \gls{checklist} viene aggiornata progressivamente dai verificatori e perm
     \caption{\gls{Checklist} \gls{Analisi Dei Requisiti}}
 \end{table}
 
+
+
+
 % SEZIONE PER ANALISI DINAMICA: test implementati sul codice
 \newpage
 \subsection{\gls{Analisi dinamica}}
 L'\gls{analisi dinamica} del software \textit{Second Brain} viene condotta attraverso l'esecuzione di test strutturati su diversi livelli di granularità, secondo il modello a V del ciclo di vita del software. L'obiettivo è verificare che il sistema soddisfi i \gls{requisiti funzionali} e non funzionali, garantendo affidabilità, correttezza e usabilità del prodotto finale.
 
-\paragraph{Priorità di testing (per la fase RTB)}
+Le attività di testing sono organizzate nei seguenti livelli:
+\begin{itemize}
+\item \textbf{Unit Testing}: verifica il corretto funzionamento delle singole unità software (funzioni o classi) in isolamento. L’obiettivo è individuare errori logici e garantire che ogni unità si comporti come previsto.
+\item \textbf{Test di Integrazione}: verifica l’interazione tra più componenti del sistema. In questa fase si controlla che i moduli collaborino correttamente tra loro e che lo scambio di dati avvenga senza errori.
+\item \textbf{Component Testing}: si concentra sulla validazione di componenti funzionali completi, considerati come unità logiche più ampie rispetto alle singole classi. Permette di verificare il comportamento di parti significative del sistema in condizioni realistiche.
+\item \textbf{End-to-End Testing (E2E)}: verifica il comportamento dell’intero sistema simulando scenari d’uso reali. L’obiettivo è assicurare che il flusso completo, dalla richiesta dell’utente fino alla risposta finale, funzioni correttamente in un ambiente il più possibile simile a quello di produzione.
+\end{itemize}
+Questa struttura consente di individuare errori in modo progressivo, partendo dai singoli componenti fino ad arrivare alla validazione dell’intero sistema.
+
+
+\newpage
+\section{Testing - Fase RTB}
+
+\paragraph{Priorità di testing}
 Durante lo sviluppo del Proof of Concept (PoC), l'\gls{analisi dinamica} si concentra sulla \gls{verifica} della fattibilità tecnologica e sull'integrazione tra i componenti. Le priorità sono così definite:
 \begin{itemize}
     \item \textbf{Alta}: \gls{Test di sistema} (funzionalità AI core) e \gls{test di integrazione} (\gls{API} Auth + AI, Backend-\gls{Database}).
@@ -816,9 +839,29 @@ L'obiettivo attuale non è raggiungere una \textit{Code Coverage} esaustiva (che
     \caption{\gls{Test di sistema}}
 \end{table}
 
+\newpage
+\section{Selezione dei modelli AI - Fase PB}
+Il sistema è progettato per utilizzare modelli di intelligenza artificiale differenti in base alla funzionalità richiesta dall’utente (ad esempio riassunto, riscrittura, traduzione o analisi). Questa scelta consente di ottimizzare le prestazioni, sfruttando modelli più adatti a specifici compiti: modelli più deterministici per operazioni analitiche e modelli più creativi per attività di generazione o espansione del testo.
+Per valutare quale modello fosse migliore abbiamo preso in considerazione diverse metriche, in seguito elencate nella tabella.
+
+
+\begin{table}[h]
+\centering
+\renewcommand{\arraystretch}{1.5} % Più respiro alle righe
+\begin{tabular}{|l|p{4.5cm}|p{4.5cm}|c|}
+\hline
+\textbf{Metrica} & \textbf{Descrizione} & \textbf{Metodo di valutazione} & \textbf{Valore atteso} \\ \hline
+Tempo di risposta & Tempo necessario per generare l’output & x & x\\ \hline
+
+ 
+\end{tabular}
+
+\caption{Elenco metriche per selezione modelli AI}
+\end{table}
+
 % \subsubsection{Test di Accettazione\textsubscript{G}}
 \newpage
-\section{Unit testing}
+\section{Unit testing - Fase PB}
 
 \subsection{Backend}
 Per l’implementazione dei test unitari del backend è stato utilizzato \textbf{pytest}, uno dei framework di testing più diffusi nell’ecosistema Python. pytest consente di scrivere test in modo semplice, leggibile e scalabile, riducendo al minimo il codice boilerplate rispetto ad approcci più tradizionali.
@@ -832,7 +875,13 @@ La scelta di utilizzare pytest è quindi motivata dalla sua flessibilità, dalla
 \newcounter{codiceUT}
 \newcommand{\prossimoUT}{UT-\arabic{codiceUT}\stepcounter{codiceUT}}
 
-\subsubsection{BaseAIStrategy}
+\subsubsection{test\_ai\_strategies.py}
+Questo documento descrive i test relativi al modulo ai\_strategies, che definisce le strategie di costruzione dei prompt utilizzati per interagire con i modelli di intelligenza artificiale.
+
+Il modulo fornisce diverse strategie, ciascuna progettata per uno specifico tipo di operazione (ad esempio riassunto, traduzione o analisi secondo i Sei Cappelli di De Bono). Ogni strategia è responsabile della generazione dei prompt di sistema e utente, oltre alla definizione di una temperatura adeguata al tipo di elaborazione.
+
+I test verificano la corretta costruzione dei prompt, la coerenza delle configurazioni, la validità delle strategie registrate e il comportamento del sistema in presenza di input non validi o casi limite.
+\paragraph{BaseAIStrategy}
 Questa sezione descrive i test relativi alla classe base BaseAIStrategy. Essendo una classe astratta, non è pensata per un utilizzo diretto, ma come fondamento per le strategie concrete. I test verificano che il comportamento previsto venga rispettato, garantendo così l’integrità dell’architettura.
 \begin{table}[H]
 \centering
@@ -847,7 +896,7 @@ Questa sezione descrive i test relativi alla classe base BaseAIStrategy. Essendo
 \end{table}
 
 
-\subsubsection{SimplePromtStrategy}
+\paragraph{SimplePromtStrategy}
 In questa sezione vengono testate le funzionalità della classe SimplePromptStrategy, utilizzata per generare prompt di tipo semplice. I test si concentrano sulla correttezza della struttura dell’output e sulla presenza delle informazioni fondamentali (ruolo, task e testo), assicurando che il prompt venga costruito in modo coerente e conforme alle specifiche.
 \begin{table}[H]
 \centering
@@ -867,7 +916,7 @@ In questa sezione vengono testate le funzionalità della classe SimplePromptStra
 \caption{Elenco unit test con codici autogenerati}
 \end{table}
 
-\subsubsection{TestTranslationStrategy}
+\paragraph{TestTranslationStrategy}
 Questa sezione raccoglie i test per la strategia di traduzione. L’obiettivo è verificare che il sistema generi prompt corretti per diverse lingue, mantenendo una struttura uniforme e includendo correttamente sia il testo di input sia la lingua di destinazione.
 \begin{table}[H]
 \centering
@@ -886,7 +935,7 @@ Questa sezione raccoglie i test per la strategia di traduzione. L’obiettivo è
 \caption{Elenco unit test con codici autogenerati}
 \end{table}
 
-\subsubsection{TestDeBonoHatStrategy}
+\paragraph{TestDeBonoHatStrategy}
 Qui vengono descritti i test relativi alla strategia basata sui “Sei Cappelli per Pensare”. I test verificano che ogni configurazione produca un prompt coerente, includendo correttamente il cappello selezionato, il focus e il testo fornito, oltre a garantire il funzionamento per tutte le varianti previste.
 \begin{table}[H]
 \centering
@@ -905,7 +954,7 @@ Qui vengono descritti i test relativi alla strategia basata sui “Sei Cappelli 
 \caption{Elenco unit test con codici autogenerati}
 \end{table}
 
-\subsubsection{TestStrategiesDict}
+\paragraph{TestStrategiesDict}
 Questa sezione valida la correttezza del dizionario che raccoglie tutte le strategie disponibili. I test controllano sia la completezza delle strategie registrate sia la loro tipologia, assicurando che ogni voce sia associata alla classe corretta e produca output validi.
 \begin{table}[H]
 \centering
@@ -923,10 +972,10 @@ Questa sezione valida la correttezza del dizionario che raccoglie tutte le strat
 \caption{Elenco unit test con codici autogenerati}
 \end{table}
 
-\subsubsection{Casi Limite}
+\paragraph{Casi Limite}
 In questa sezione vengono analizzati i comportamenti del sistema in condizioni estreme o non standard. L’obiettivo è verificare la robustezza delle strategie rispetto a input insoliti, garantendo stabilità e prevedibilità anche in situazioni limite.
 
-\paragraph{Stringa vuota}
+\subparagraph{Stringa vuota}
 Questa sottosezione \gls{verifica} il comportamento delle strategie quando ricevono una stringa vuota in input. I test assicurano che il sistema non generi errori e continui a produrre output validi.
 \begin{table}[H]
 \centering
@@ -943,7 +992,7 @@ Questa sottosezione \gls{verifica} il comportamento delle strategie quando ricev
 \caption{Elenco unit test con codici autogenerati}
 \end{table}
 
-\paragraph{Solo spazi e testo molto lungo}
+\subparagraph{Solo spazi e testo molto lungo}
 In questa sottosezione vengono testati input particolari come stringhe composte solo da spazi e testi molto lunghi. L’obiettivo è garantire che il sistema gestisca correttamente sia casi minimali sia input di grandi dimensioni.
 \begin{table}[H]
 \centering
@@ -959,7 +1008,7 @@ In questa sottosezione vengono testati input particolari come stringhe composte 
 \caption{Elenco unit test con codici autogenerati}
 \end{table}
 
-\paragraph{Caratteri speciali e unicode}
+\subparagraph{Caratteri speciali e unicode}
 Questa sottosezione \gls{verifica} la capacità del sistema di gestire caratteri non standard, come emoji, simboli speciali e caratteri non latini. I test assicurano la compatibilità con input internazionali e complessi.
 \begin{table}[H]
 \centering
@@ -976,7 +1025,7 @@ Questa sottosezione \gls{verifica} la capacità del sistema di gestire caratteri
 \caption{Elenco unit test con codici autogenerati}
 \end{table}
 
-\paragraph{None come input}
+\subparagraph{None come input}
 Questa sottosezione analizza il comportamento del sistema quando viene passato un valore None. I test sono progettati per verificare che venga sollevato un errore appropriato, evidenziando eventuali mancanze nella gestione degli input non validi.
 \begin{table}[H]
 \centering
@@ -993,7 +1042,7 @@ Questa sottosezione analizza il comportamento del sistema quando viene passato u
 \caption{Elenco unit test con codici autogenerati}
 \end{table}
 
-\paragraph{Costruttore con valori vuoti}
+\subparagraph{Costruttore con valori vuoti}
 In questa sottosezione vengono testati i costruttori delle diverse strategie con parametri vuoti. L’obiettivo è verificare che il sistema sia sufficientemente flessibile da accettare configurazioni minime senza generare errori.
 \begin{table}[H]
 \centering
@@ -1010,7 +1059,13 @@ In questa sottosezione vengono testati i costruttori delle diverse strategie con
 \caption{Elenco unit test con codici autogenerati}
 \end{table}
 
-\subsection{TestGenerateInputValidation}
+\subsubsection{test\_app.py}
+Questo documento descrive i test relativi al modulo app, che rappresenta il backend dell’applicazione basato su Flask.
+
+Il modulo espone un endpoint API per la generazione di contenuti tramite modelli di intelligenza artificiale. La richiesta viene elaborata selezionando l’operazione desiderata, costruendo i prompt tramite le strategie configurate e invocando il modello appropriato.
+
+I test verificano il corretto funzionamento dell’endpoint, la validazione degli input, la gestione degli errori e la coerenza del formato delle risposte. Viene inoltre testata la funzione di pulizia dell’output, che rimuove eventuali frasi introduttive generate dal modello.
+\paragraph{TestGenerateInputValidation}
 Questa sezione descrive i test volti a verificare la corretta \gls{validazione} degli input forniti all’\gls{endpoint} di generazione. L’obiettivo è garantire che il sistema gestisca in modo appropriato richieste incomplete, malformate o non conformi alle specifiche, restituendo codici di errore adeguati e messaggi informativi.
 
 \begin{table}[H]
@@ -1028,7 +1083,7 @@ Questa sezione descrive i test volti a verificare la corretta \gls{validazione} 
 \caption{Elenco unit test con codici autogenerati}
 \end{table}
 
-\subsection{TestGenerateOperations}
+\paragraph{TestGenerateOperations}
 In questa sezione vengono presentati i test relativi al corretto funzionamento delle operazioni supportate dal sistema. Viene verificato che ogni operazione definita nel registry venga eseguita correttamente e che il sistema adotti comportamenti di default robusti in assenza di parametri espliciti.
 
 \begin{table}[H]
@@ -1045,7 +1100,7 @@ In questa sezione vengono presentati i test relativi al corretto funzionamento d
 \caption{Elenco unit test con codici autogenerati}
 \end{table}
 
-\subsection{TestCleanAiResponse}
+\paragraph{TestCleanAiResponse}
 Questa sezione si concentra sulla \gls{verifica} del processo di pulizia delle risposte generate dal modello AI. In particolare, i test assicurano la rimozione di elementi superflui o prefissi tipici, al fine di restituire output chiari, coerenti e pronti per l’utilizzo lato frontend.
 
 \begin{table}[H]
@@ -1061,7 +1116,7 @@ Questa sezione si concentra sulla \gls{verifica} del processo di pulizia delle r
 \caption{Elenco unit test con codici autogenerati}
 \end{table}
 
-\subsection{TestGenerateErrorHandling}
+\paragraph{TestGenerateErrorHandling}
 I test descritti in questa sezione hanno l’obiettivo di valutare la robustezza del sistema nella gestione degli errori. Viene verificato che eventuali malfunzionamenti del modello AI siano correttamente intercettati, evitando impatti sulla disponibilità del servizio e garantendo una comunicazione chiara degli errori al client.
 
 \begin{table}[H]
@@ -1078,7 +1133,7 @@ I test descritti in questa sezione hanno l’obiettivo di valutare la robustezza
 \caption{Elenco unit test con codici autogenerati}
 \end{table}
 
-\subsection{TestResponseFormat}
+\paragraph{TestResponseFormat}
 Questa sezione analizza la struttura e la coerenza del formato delle risposte restituite dal sistema. I test garantiscono che tutte le risposte, sia in caso di successo che di errore, rispettino un formato standardizzato, facilitando l’integrazione e l’elaborazione da parte dei client.
 
 \begin{table}[H]
@@ -1095,6 +1150,87 @@ Questa sezione analizza la struttura e la coerenza del formato delle risposte re
 
 \caption{Elenco unit test con codici autogenerati}
 \end{table}
+
+\subsection{test\_model\_strategies.py}
+Questo documento descrive i test relativi al modulo model\_strategies, che gestisce l’utilizzo di diversi modelli di intelligenza artificiale attraverso un’interfaccia comune.
+
+Il modulo è progettato per permettere l’uso di più modelli in modo uniforme, nascondendo i dettagli tecnici delle singole implementazioni. Inoltre, include un meccanismo di gestione delle istanze che evita la creazione duplicata degli stessi modelli.
+
+I test hanno lo scopo di verificare il corretto funzionamento delle strategie, il comportamento del sistema di gestione delle istanze e la corretta gestione di errori e casi particolari.
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.5} % Più respiro alle righe
+\begin{tabular}{|l|p{12cm}|c|}
+\hline
+\textbf{Codice} & \textbf{Descrizione} & \textbf{Stato} \\ \hline
+\prossimoUT & Verifica che la classe base non possa essere usata direttamente. & Pass \\ \hline
+\prossimoUT & Verifica che get\_model restituisca sempre la stessa istanza (Singleton). & Pass \\ \hline
+\prossimoUT & Verifica che la strategia Llama chiami correttamente il client OpenAI. & Pass \\ \hline
+\prossimoUT & Verifica che la strategia Gemma utilizzi il modello corretto e accetti la temperatura. & Pass \\ \hline
+\prossimoUT & Verifica che la strategia Llama gestisca (o sollevi) errori dall'API. & Pass \\ \hline
+\prossimoUT & Verifica che get\_model distingua correttamente tra tipi diversi di modelli. & Pass \\ \hline
+\prossimoUT & Verifica che le istanze create siano del tipo corretto e non si sovrappongano. & Pass \\ \hline
+\prossimoUT & Verifica che venga lanciato un errore se mancano le variabili d'ambiente. & Pass \\ \hline
+\prossimoUT & Verifica che la strategia gestisca una risposta vuota o mancante. & Pass \\ \hline
+\prossimoUT & Verifica il corretto ripopolamento del registro interno se svuotato manualmente. & Pass \\ \hline
+
+ 
+\end{tabular}
+
+\caption{Elenco unit test con codici autogenerati}
+\end{table}
+
+\subsection{test\_operation\_registry.py}
+Questo documento descrive i test relativi al modulo operation\_registry, che definisce la configurazione delle operazioni disponibili nel sistema.
+
+Il modulo associa a ciascuna operazione una coppia composta da:
+\begin{itemize}
+\item una strategia di modello AI, responsabile della generazione del testo;
+\item una strategia di prompt, responsabile della costruzione delle istruzioni da fornire al modello.
+\end{itemize}
+Questa struttura consente di gestire in modo centralizzato e coerente le diverse funzionalità (ad esempio riassunto, traduzione o analisi), garantendo flessibilità nella scelta del modello e della logica di generazione.
+
+I test verificano la correttezza del registro delle operazioni, la validità delle configurazioni associate e il comportamento del sistema in condizioni normali e in casi limite.
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.5} % Più respiro alle righe
+\begin{tabular}{|l|p{12cm}|c|}
+\hline
+\textbf{Codice} & \textbf{Descrizione} & \textbf{Stato} \\ \hline
+\prossimoUT & Verifica che il registro delle operazioni sia correttamente strutturato come un dizionario. & Pass \\ \hline
+\prossimoUT & Accerta la presenza delle operazioni fondamentali (summary, fix\_grammar, ecc.) nel registro. & Pass \\ \hline
+\prossimoUT & Verifica che l'operazione di default esista nel registro. & Pass \\ \hline
+\prossimoUT & Verifica che ogni operazione abbia una classe modello valida e una strategia di prompt corretta. & Pass \\ \hline
+\prossimoUT & Verifica specifica che 'summary' usi la strategia di riassunto. & Pass \\ \hline
+\prossimoUT & Verifica che nessuna operazione sia configurata a None. & Pass \\ \hline
+\prossimoUT & Verifica che ogni operazione usi un'istanza di strategia diversa. & Pass \\ \hline
+\prossimoUT & Valida che tutte le chiavi del registro usino lo standard snake\_case (minuscole e underscore). & Pass \\ \hline
+\prossimoUT & Con una simulazione di un input reale verifica che ogni strategia nel registro sia in grado di generare prompt validi. & Pass \\ \hline
+\prossimoUT & Verifica che l'operazione di default abbia una config completa. & Pass \\ \hline
+
+ 
+\end{tabular}
+
+\caption{Elenco unit test con codici autogenerati}
+\end{table}
+\newpage
+
+\section{Test d'integrazione - Fase PB}
+
+\newpage
+
+\section{Component Testing - Fase PB}
+
+\newpage
+
+\section{End-to-End Testing (E2E) - Fase PB}
+
+\newpage
+
+
+
+
 
 
 \newpage
