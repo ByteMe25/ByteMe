@@ -149,7 +149,7 @@ L'applicazione web consentirà all'utente di:
     \item Scrivere e visualizzare in tempo reale testi formattati in \gls{MarkDown};
     \item Interagire con un LLM per generare, riassumere, riscrivere, tradurre e analizzare testi;
     \item Sfruttare il metodo dei "Sei cappelli per pensare" di Edward De Bono per ottenere analisi critiche multi-prospettiche;
-    \item Fornire prompt testuali per delegare all'AI la stesura completa del contenuto (\textit{\gls{Distant Writing}}).
+    \item Fornire \gls{prompt} testuali per delegare all'AI la stesura completa del contenuto (\textit{\gls{Distant Writing}}).
 \end{itemize}
 L'obiettivo è creare uno strumento di supporto alla scrittura creativa e al note-taking avanzato, esplorando le potenzialità pratiche degli LLM nel flusso di lavoro quotidiano.
 
@@ -721,7 +721,7 @@ L'\gls{analisi dinamica} del software \textit{Second Brain} viene condotta attra
 Durante lo sviluppo del Proof of Concept (PoC), l'\gls{analisi dinamica} si concentra sulla \gls{verifica} della fattibilità tecnologica e sull'integrazione tra i componenti. Le priorità sono così definite:
 \begin{itemize}
     \item \textbf{Alta}: \gls{Test di Sistema} (funzionalità AI core) e \gls{Test di Integrazione} (\gls{API} Auth + AI, Backend-\gls{Database}).
-    \item \textbf{Media}: Test di Unità (logiche isolate come \texttt{auth.py} o formattazione dei prompt).
+    \item \textbf{Media}: Test di Unità (logiche isolate come \texttt{auth.py} o formattazione dei \gls{prompt}).
 \end{itemize}
 L'obiettivo attuale non è raggiungere una \textit{Code Coverage} esaustiva (che sarà centrale nella fase PB), ma validare che i rischi tecnologici siano stati mitigati.
 
@@ -769,7 +769,7 @@ L'obiettivo attuale non è raggiungere una \textit{Code Coverage} esaustiva (che
         \hline
         TI-3 & \gls{Verifica} che la chiamata di registrazione dal backend salvi correttamente e persistentemente il record del nuovo utente all'interno del \gls{database} \gls{PostgreSQL}. & ROP-F-11 \\
         \hline
-        TI-4 & \gls{Verifica} che l'\gls{endpoint} del backend formatti correttamente il prompt richiesto e lo inoltri con successo alle \gls{API} del provider LLM, ricevendo una risposta valida. & RO-V-13 \\
+        TI-4 & \gls{Verifica} che l'\gls{endpoint} del backend formatti correttamente il \gls{prompt} richiesto e lo inoltri con successo alle \gls{API} del provider LLM, ricevendo una risposta valida. & RO-V-13 \\
         \hline
         TI-5 & \gls{Verifica} che la funzione frontend \texttt{loginUtente()} componga correttamente il body JSON della richiesta HTTP POST e gestisca adeguatamente la risposta del backend (es. token di sessione o errore). & ROP-F-9 \\
         \hline

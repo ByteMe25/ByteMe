@@ -103,7 +103,7 @@
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{\gls{Verifica}} \\
         \hline
-        1.1.2 & 12/04/2026 & Giulia Barzon & Aggiunta spiegazione metriche di qualità dell'output generativo & \\
+        1.1.2 & 12/04/2026 & Giulia Barzon & Aggiunta spiegazione metriche di \gls{qualità dell'output generativo} & \\
         \hline
         1.1.1 & 11/04/2026 & Elisa Marchioro & Mini fix & Giulia Barzon \\
         \hline
@@ -161,7 +161,7 @@ L'applicazione web consentirà all'utente di:
     \item Scrivere e visualizzare in tempo reale testi formattati in \gls{MarkDown};
     \item Interagire con un LLM per generare, riassumere, riscrivere, tradurre e analizzare testi;
     \item Sfruttare il metodo dei "Sei cappelli per pensare" di Edward De Bono per ottenere analisi critiche multi-prospettiche;
-    \item Fornire prompt testuali per delegare all'AI la stesura completa del contenuto (\textit{\gls{Distant Writing}}).
+    \item Fornire \gls{prompt} testuali per delegare all'AI la stesura completa del contenuto (\textit{\gls{Distant Writing}}).
 \end{itemize}
 L'obiettivo è creare uno strumento di supporto alla scrittura creativa e al note-taking avanzato, esplorando le potenzialità pratiche degli LLM nel flusso di lavoro quotidiano.
 
@@ -589,9 +589,9 @@ Misura quanto le risposte prodotte dal sistema sono corrette, coerenti con le is
 \hline
 \textbf{Metrica} & \textbf{Scopo della metrica} & \textbf{Soglia accettabile} & \textbf{Soglia ottimale} \\
     \hline
-    Aderenza al ruolo (System prompt) & Valuta la capacità dell'IA di mantenere lo stile, il tono e il comportamento definiti nelle istruzioni di sistema. & $\ge 80\%$ (Punteggio 2) & $\ge 95\%$ (Punteggio 2) \\
+    Aderenza al ruolo (\gls{System \gls{prompt}}) & Valuta la capacità dell'IA di mantenere lo stile, il tono e il comportamento definiti nelle istruzioni di sistema. & $\ge 80\%$ (Punteggio 2) & $\ge 95\%$ (Punteggio 2) \\
     \hline
-    Conformità strutturale (User prompt) & Misura il rispetto dei vincoli e dei task specifici richiesti dall'utente nel prompt operativo. & $\ge 80\%$ & $\ge 95\%$ \\
+    Conformità strutturale (\gls{User \gls{prompt}}) & Misura il rispetto dei vincoli e dei task specifici richiesti dall'utente nel \gls{prompt} operativo. & $\ge 80\%$ & $\ge 95\%$ \\
     \hline
     Hallucination rate (Assenza di allucinazioni) & Misura la frequenza di contenuti inventati o non deducibili dal testo di input fornito dall'utente. & $\le 5\%$ & $< 1\%$ \\
     \hline
@@ -610,7 +610,7 @@ Per garantire l'oggettività delle misurazioni su output non deterministici, il 
         AR = \frac{\text{N. generazioni con punteggio 2}}{N} \times 100
     \end{displaymath}
 
-    \item \textbf{Conformità strutturale (CS):} Rapporto tra il numero di istruzioni atomiche rispettate ($I_{ok}$) e il numero totale di istruzioni fornite ($I_{tot}$) nei prompt del campione.
+    \item \textbf{Conformità strutturale (CS):} Rapporto tra il numero di istruzioni atomiche rispettate ($I_{ok}$) e il numero totale di istruzioni fornite ($I_{tot}$) nei \gls{prompt} del campione.
     \begin{displaymath}
         CS = \frac{\sum I_{ok}}{\sum I_{tot}} \times 100
     \end{displaymath}
@@ -622,7 +622,7 @@ Per garantire l'oggettività delle misurazioni su output non deterministici, il 
 \end{itemize}
 
 
-\noindent\textit{\textbf{Nota:} Per non appesantire la stesura di questo documento, le procedure operative, le modalità di campionamento e le tecniche di valutazione manuale utilizzate per il calcolo empirico di queste metriche sono state scorporate e sono approfondite all'interno del documento \textbf{Norme di Progetto}.}
+\noindent\textit{\textbf{Nota:} Per non appesantire la stesura di questo documento, le procedure operative, le modalità di campionamento e le tecniche di valutazione manuale utilizzate per il calcolo empirico di queste metriche sono state scorporate e sono approfondite all'interno del documento \textbf{\gls{Norme di Progetto}}.}
 
 \subsubsection{Affidabilità\textsubscript{G}}
 Rappresenta la capacità del software di funzionare in modo stabile e continuo senza guasti frequenti.
@@ -651,7 +651,7 @@ Indica quanto il sistema è veloce e quanto bene utilizza le risorse disponibili
 \textbf{Metrica} & \textbf{Scopo della metrica} & \textbf{Soglia accettabile} & \textbf{Soglia ottimale} \\
 \hline
 Response time (Latenza interfaccia) & Tempo medio che l'interfaccia impiega per aggiornarsi correttamente & 500 ms & 100 ms \\ \hline
-AI processing time & Tempo intercorso tra l'invio del prompt e la ricezione completa della risposta dall'API (per il 95\% delle richieste) & 60 sec  & 30 sec \\
+AI processing time & Tempo intercorso tra l'invio del \gls{prompt} e la ricezione completa della risposta dall'\gls{API} (per il 95\% delle richieste) & 60 sec  & 30 sec \\
 \hline
 \end{tabular}
 \caption{Soglie metriche efficienza del prodotto}
@@ -792,7 +792,7 @@ Questa struttura consente di individuare errori in modo progressivo, partendo da
 Durante lo sviluppo del Proof of Concept (PoC), l'\gls{analisi dinamica} si concentra sulla \gls{verifica} della fattibilità tecnologica e sull'integrazione tra i componenti. Le priorità sono così definite:
 \begin{itemize}
     \item \textbf{Alta}: \gls{Test di sistema} (funzionalità AI core) e \gls{test di integrazione} (\gls{API} Auth + AI, Backend-\gls{Database}).
-    \item \textbf{Media}: Test di unità (logiche isolate come \texttt{auth.py} o formattazione dei prompt).
+    \item \textbf{Media}: Test di unità (logiche isolate come \texttt{auth.py} o formattazione dei \gls{prompt}).
 \end{itemize}
 L'obiettivo attuale non è raggiungere una \textit{Code Coverage} esaustiva (che sarà centrale nella fase PB), ma validare che i rischi tecnologici siano stati mitigati.
 
@@ -840,7 +840,7 @@ L'obiettivo attuale non è raggiungere una \textit{Code Coverage} esaustiva (che
         \hline
         TI-3 & \gls{Verifica} che la chiamata di registrazione dal backend salvi correttamente e persistentemente il record del nuovo utente all'interno del \gls{database} \gls{PostgreSQL}. & ROP-F-11 \\
         \hline
-        TI-4 & \gls{Verifica} che l'\gls{endpoint} del backend formatti correttamente il prompt richiesto e lo inoltri con successo alle \gls{API} del provider LLM, ricevendo una risposta valida. & RO-V-13 \\
+        TI-4 & \gls{Verifica} che l'\gls{endpoint} del backend formatti correttamente il \gls{prompt} richiesto e lo inoltri con successo alle \gls{API} del provider LLM, ricevendo una risposta valida. & RO-V-13 \\
         \hline
         TI-5 & \gls{Verifica} che la funzione frontend \texttt{loginUtente()} componga correttamente il body JSON della richiesta HTTP POST e gestisca adeguatamente la risposta del backend (es. token di sessione o errore). & ROP-F-9 \\
         \hline
@@ -884,13 +884,13 @@ Per valutare quale modello fosse migliore abbiamo preso in considerazione divers
 \hline
 \textbf{Metrica} & \textbf{Descrizione} & \textbf{Metodo di valutazione} & \textbf{Valore atteso} \\
 \hline
-    Tempo di risposta & Latenza totale per la generazione dell'output. & Misurazione automatica del tempo tra invio \textit{prompt} e ricezione risposta. & $\le 60$ s \\
+    Tempo di risposta & Latenza totale per la generazione dell'output. & Misurazione automatica del tempo tra invio \textit{\gls{prompt}} e ricezione risposta. & $\le 60$ s \\
     \hline
-    Aderenza al ruolo (AR) & Capacità di rispettare il tono e il comportamento del \textit{system prompt}. & Valutazione manuale su scala discreta (0, 1, 2) su un campione di test. & $\ge 80\%$ (Punteggio 2) \\
+    Aderenza al ruolo (AR) & Capacità di rispettare il tono e il comportamento del \textit{\gls{system \gls{prompt}}}. & Valutazione manuale su scala discreta (0, 1, 2) su un campione di test. & $\ge 80\%$ (Punteggio 2) \\
     \hline
-    Conformità strutturale (CS) & Rispetto dei vincoli atomici definiti nello \textit{user prompt}. & Analisi binaria del rapporto tra istruzioni rispettate e istruzioni totali. & $\ge 80\%$ \\
+    Conformità strutturale (CS) & Rispetto dei vincoli atomici definiti nello \textit{\gls{user \gls{prompt}}}. & Analisi binaria del rapporto tra istruzioni rispettate e istruzioni totali. & $\ge 80\%$ \\
     \hline
-    Tasso di allucinazione (HR) & Frequenza di informazioni inventate o non deducibili dall'input. & Verifica manuale di corrispondenza con il testo sorgente (\textit{ground truth}). & $\le 5\%$ \\
+    Tasso di allucinazione (HR) & Frequenza di informazioni inventate o non deducibili dall'input. & \gls{Verifica} manuale di corrispondenza con il testo sorgente (\textit{\gls{ground truth}}). & $\le 5\%$ \\
     \hline
 \end{tabular}
 \caption{Elenco metriche per selezione modelli AI}
@@ -903,26 +903,26 @@ Di seguito si riporta la sintesi dei risultati emersi dai test collettivi.
 \subsubsection{Analisi del testo con i Sei Cappelli per pensare di De Bono}
 A titolo esemplificativo, si riporta il resoconto decisionale relativo all'implementazione della funzionalità \textit{Sei Cappelli di De Bono}, con focus sul \textbf{Cappello Bianco}.
 
-Il \textit{system prompt} del Cappello Bianco richiede al modello di agire in modo puramente oggettivo e imparziale. Il task impone di estrarre fatti e dati ignorando qualsiasi opinione o emozione, restituendo il risultato strettamente in formato Markdown. Per garantire la massima analiticità, la temperatura di generazione è stata fissata a 0.1.
+Il \textit{\gls{system \gls{prompt}}} del Cappello Bianco richiede al modello di agire in modo puramente oggettivo e imparziale. Il task impone di estrarre fatti e dati ignorando qualsiasi opinione o emozione, restituendo il risultato strettamente in formato \gls{Markdown}. Per garantire la massima analiticità, la \gls{temperatura} di generazione è stata fissata a 0.1.
 
 \paragraph{Confronto modelli e risultati}
-I test si sono concentrati principalmente sul confronto tra \textbf{Llama 3.2 (3B)} e \textbf{Gemma 3 (4B / 27B)}, mentre altri modelli sono stati scartati per tempo di risposta troppo alto. Lo studio ha prodotto i seguenti esiti:
+I test si sono concentrati principalmente sul confronto tra \textbf{\gls{Llama 3.2} (3B)} e \textbf{\gls{Gemma 3} (4B / 27B)}, mentre altri modelli sono stati scartati per tempo di risposta troppo alto. Lo studio ha prodotto i seguenti esiti:
 \begin{itemize}
-    \item \textbf{Aderenza al ruolo:} Il modello Llama 3.2 ha mostrato una tendenza a "uscire dal personaggio", inserendo occasionalmente un tono discorsivo o frasi di circostanza (es. \textit{"Ecco l'analisi richiesta..."}) non compatibili con la freddezza richiesta dal ruolo (punteggio AR prevalentemente pari a 1). Al contrario, Gemma 3 ha dimostrato un'aderenza al ruolo eccellente (punteggio 2), limitandosi a eseguire un'anatomia del testo con totale freddezza e distacco emotivo.
+    \item \textbf{Aderenza al ruolo:} Il modello \gls{Llama 3.2} ha mostrato una tendenza a "uscire dal personaggio", inserendo occasionalmente un tono discorsivo o frasi di circostanza (es. \textit{"Ecco l'analisi richiesta..."}) non compatibili con la freddezza richiesta dal ruolo (punteggio AR prevalentemente pari a 1). Al contrario, \gls{Gemma 3} ha dimostrato un'aderenza al ruolo eccellente (punteggio 2), limitandosi a eseguire un'anatomia del testo con totale freddezza e distacco emotivo.
     
-    \item \textbf{Conformità strutturale:} Entrambi i modelli hanno rispettato rigorosamente le istruzioni dello user prompt.
+    \item \textbf{Conformità strutturale:} Entrambi i modelli hanno rispettato rigorosamente le istruzioni dello \gls{user \gls{prompt}}.
     
-    \item \textbf{Tasso di allucinazione:} Entrambi i modelli hanno registrato tassi ampiamente sotto la soglia critica del 5\%, basandosi quasi esclusivamente sul testo fornito (basso \textit{Groundedness error}), confermando la bontà del parametro di temperatura basso (0.1).
+    \item \textbf{Tasso di allucinazione:} Entrambi i modelli hanno registrato tassi ampiamente sotto la soglia critica del 5\%, basandosi quasi esclusivamente sul testo fornito (basso \textit{Groundedness error}), confermando la bontà del parametro di \gls{temperatura} basso (0.1).
 \end{itemize}
 
 \paragraph{Modello scelto}
-Sulla base dei dati raccolti, il modello \textbf{Gemma 3} ha superato ampiamente le soglie ottimali per le metriche AR e CS in compiti di profilazione psicologica complessa. Di conseguenza, il gruppo ha deciso di assegnare l'intera suite dei Sei Cappelli al modello Gemma 3, riservando Llama 3.2 a operazioni editoriali più standard (riassunti, correzioni grammaticali) dove il tono discorsivo risulta meno penalizzante. Sono stati testati anche gli altri cinque Cappelli di De Bono e i risultati sono coerenti con quanto riportato per il Cappello Bianco.
+Sulla base dei dati raccolti, il modello \textbf{\gls{Gemma 3}} ha superato ampiamente le soglie ottimali per le metriche AR e CS in compiti di profilazione psicologica complessa. Di conseguenza, il gruppo ha deciso di assegnare l'intera suite dei Sei Cappelli al modello \gls{Gemma 3}, riservando \gls{Llama 3.2} a operazioni editoriali più standard (riassunti, correzioni grammaticali) dove il tono discorsivo risulta meno penalizzante. Sono stati testati anche gli altri cinque Cappelli di De Bono e i risultati sono coerenti con quanto riportato per il Cappello Bianco.
 
 \subsubsection{Traduzione del testo}
 \subsubsection{Correzione grammaticale del testo}
 \subsubsection{Riassunto del testo}
 \subsubsection{Riscrittura del testo}
-\subsubsection{Distant writing}
+\subsubsection{\gls{Distant writing}}
 
 \newpage
 
@@ -941,11 +941,11 @@ La scelta di utilizzare Pytest è quindi motivata dalla sua flessibilità, dalla
 \newcommand{\prossimoUT}{UT-\arabic{codiceUT}\stepcounter{codiceUT}}
 
 \subsubsection{test\_ai\_strategies.py}
-Questa sezione descrive i test relativi al modulo ai\_strategies, che definisce le strategie di costruzione dei prompt utilizzati per interagire con i modelli di intelligenza artificiale.
+Questa sezione descrive i test relativi al modulo ai\_strategies, che definisce le strategie di costruzione dei \gls{prompt} utilizzati per interagire con i modelli di intelligenza artificiale.
 
-Il modulo fornisce diverse strategie, ciascuna progettata per uno specifico tipo di operazione (ad esempio riassunto, traduzione o analisi secondo i Sei Cappelli di De Bono). Ogni strategia è responsabile della generazione dei prompt di sistema e utente, oltre alla definizione di una temperatura adeguata al tipo di elaborazione.
+Il modulo fornisce diverse strategie, ciascuna progettata per uno specifico tipo di operazione (ad esempio riassunto, traduzione o analisi secondo i Sei Cappelli di De Bono). Ogni strategia è responsabile della generazione dei \gls{prompt} di sistema e utente, oltre alla definizione di una \gls{temperatura} adeguata al tipo di elaborazione.
 
-I test verificano la corretta costruzione dei prompt, la coerenza delle configurazioni, la validità delle strategie registrate e il comportamento del sistema in presenza di input non validi o casi limite.
+I test verificano la corretta costruzione dei \gls{prompt}, la coerenza delle configurazioni, la validità delle strategie registrate e il comportamento del sistema in presenza di input non validi o casi limite.
 
 \paragraph{BaseAIStrategy}
 Questa sezione descrive i test relativi alla classe base BaseAIStrategy. Essendo una classe astratta, non è pensata per un utilizzo diretto, ma come fondamento per le strategie concrete. I test verificano che il comportamento previsto venga rispettato, garantendo così l’integrità dell’architettura.
@@ -959,7 +959,7 @@ Questa sezione descrive i test relativi alla classe base BaseAIStrategy. Essendo
     \hline
     \prossimoUT & Il build() di BaseAIStrategy lancia NotImplementedError apposta, per obbligare le sottoclassi a reimplementarlo. Il test \gls{verifica} che questo meccanismo funzioni: se qualcuno chiama build() sulla classe base, deve ottenere quell'errore. & Pass \\
     \hline
-    \prossimoUT & Verifica che la classe base definisca una variabile di classe \texttt{temperature} di default (float), necessaria per le configurazioni di base. & Pass \\
+    \prossimoUT & \gls{Verifica} che la classe base definisca una variabile di classe \texttt{temperature} di default (float), necessaria per le configurazioni di base. & Pass \\
     \hline
 \end{tabular}
 
@@ -968,7 +968,7 @@ Questa sezione descrive i test relativi alla classe base BaseAIStrategy. Essendo
 
 
 \paragraph{SimplePromptStrategy}
-In questa sezione vengono testate le funzionalità della classe SimplePromptStrategy, utilizzata per generare prompt di tipo semplice. I test si concentrano sulla correttezza della struttura dell’output e sulla presenza delle informazioni fondamentali (ruolo, task e testo), assicurando che il prompt venga costruito in modo coerente e conforme alle specifiche.
+In questa sezione vengono testate le funzionalità della classe SimplePromptStrategy, utilizzata per generare \gls{prompt} di tipo semplice. I test si concentrano sulla correttezza della struttura dell’output e sulla presenza delle informazioni fondamentali (ruolo, task e testo), assicurando che il \gls{prompt} venga costruito in modo coerente e conforme alle specifiche.
 
 \begin{table}[H]
 \centering
@@ -977,10 +977,10 @@ In questa sezione vengono testate le funzionalità della classe SimplePromptStra
 \hline
 \textbf{Codice} & \textbf{Descrizione} & \textbf{Stato} \\ \hline
 \prossimoUT & \gls{Verifica} la forma dell'output: build() deve restituire esattamente una tupla/lista di 2 elementi, entrambi stringhe. & Pass \\ \hline
-\prossimoUT & \gls{Verifica} che il role appaia effettivamente nel system prompt. & Pass \\ \hline
-\prossimoUT & \gls{Verifica} che la frase fissa di comportamento, quella che dice all'AI di non fare preamboli, sia sempre presente nel system prompt, indipendentemente dal ruolo scelto. & Pass \\ \hline
+\prossimoUT & \gls{Verifica} che il role appaia effettivamente nel \gls{system \gls{prompt}}. & Pass \\ \hline
+\prossimoUT & \gls{Verifica} che la frase fissa di comportamento, quella che dice all'AI di non fare preamboli, sia sempre presente nel \gls{system \gls{prompt}}, indipendentemente dal ruolo scelto. & Pass \\ \hline
 \prossimoUT & \gls{Verifica} che il task appaia nello user promt. & Pass \\ \hline
-\prossimoUT & \gls{Verifica} che il testo passato a build() finisca nello user prompt. & Pass \\ \hline
+\prossimoUT & \gls{Verifica} che il testo passato a build() finisca nello \gls{user \gls{prompt}}. & Pass \\ \hline
 \prossimoUT & \gls{Verifica} che tutte le funzionalità di scrittura hanno role e task corretti. & Pass \\ \hline
  
 \end{tabular}
@@ -989,7 +989,7 @@ In questa sezione vengono testate le funzionalità della classe SimplePromptStra
 \end{table}
 
 \paragraph{TestTranslationStrategy}
-Questa sezione raccoglie i test per la strategia di traduzione. L’obiettivo è verificare che il sistema generi prompt corretti per diverse lingue, mantenendo una struttura uniforme e includendo correttamente sia il testo di input sia la lingua di destinazione.
+Questa sezione raccoglie i test per la strategia di traduzione. L’obiettivo è verificare che il sistema generi \gls{prompt} corretti per diverse lingue, mantenendo una struttura uniforme e includendo correttamente sia il testo di input sia la lingua di destinazione.
 \begin{table}[H]
 \centering
 \renewcommand{\arraystretch}{1.5} % Più respiro alle righe
@@ -997,9 +997,9 @@ Questa sezione raccoglie i test per la strategia di traduzione. L’obiettivo è
 \hline
 \textbf{Codice} & \textbf{Descrizione} & \textbf{Stato} \\ \hline
 \prossimoUT & \gls{Verifica} la forma dell'output: build() deve restituire esattamente una tupla/lista di 2 elementi, entrambi stringhe. & Pass \\ \hline
-\prossimoUT & \gls{Verifica} che la lingua appaia effettivamente nello user prompt. & Pass \\ \hline
-\prossimoUT & \gls{Verifica} che il testo passato a build() finisca nello user prompt. & Pass \\ \hline
-\prossimoUT & \gls{Verifica} che il system prompt sia uguale per tutte le lingue. & Pass \\ \hline
+\prossimoUT & \gls{Verifica} che la lingua appaia effettivamente nello \gls{user \gls{prompt}}. & Pass \\ \hline
+\prossimoUT & \gls{Verifica} che il testo passato a build() finisca nello \gls{user \gls{prompt}}. & Pass \\ \hline
+\prossimoUT & \gls{Verifica} che il \gls{system \gls{prompt}} sia uguale per tutte le lingue. & Pass \\ \hline
 \prossimoUT & \gls{Verifica} che tutte le lingue supportate funzionino correttamente. & Pass \\ \hline
  
 \end{tabular}
@@ -1008,7 +1008,7 @@ Questa sezione raccoglie i test per la strategia di traduzione. L’obiettivo è
 \end{table}
 
 \paragraph{TestDeBonoHatStrategy}
-Qui vengono descritti i test relativi alla strategia basata sui “Sei Cappelli per Pensare”. I test verificano che ogni configurazione produca un prompt coerente, includendo correttamente la tempertura specifica per ogni cappello, lo user prompt e il system prompt e il testo fornito, oltre a garantire il funzionamento per tutte le varianti previste.
+Qui vengono descritti i test relativi alla strategia basata sui “Sei Cappelli per Pensare”. I test verificano che ogni configurazione produca un \gls{prompt} coerente, includendo correttamente la tempertura specifica per ogni cappello, lo \gls{user \gls{prompt}} e il \gls{system \gls{prompt}} e il testo fornito, oltre a garantire il funzionamento per tutte le varianti previste.
 
 \begin{table}[H]
 \centering
@@ -1017,9 +1017,9 @@ Qui vengono descritti i test relativi alla strategia basata sui “Sei Cappelli 
 \hline
 \textbf{Codice} & \textbf{Descrizione} & \textbf{Stato} \\ \hline
 \prossimoUT & \gls{Verifica} la forma dell'output: build() deve restituire esattamente una tupla/lista di 2 elementi, entrambi stringhe. & Pass \\ \hline
-\prossimoUT & \gls{Verifica} che il cappello selezionato appaia effettivamente nel system prompt. & Pass \\ \hline
-\prossimoUT & \gls{Verifica} che il focus appaia effettivamente nello user prompt. & Pass \\ \hline
-\prossimoUT & \gls{Verifica} che il testo passato a build() finisca nello user prompt. & Pass \\ \hline
+\prossimoUT & \gls{Verifica} che il cappello selezionato appaia effettivamente nel \gls{system \gls{prompt}}. & Pass \\ \hline
+\prossimoUT & \gls{Verifica} che il focus appaia effettivamente nello \gls{user \gls{prompt}}. & Pass \\ \hline
+\prossimoUT & \gls{Verifica} che il testo passato a build() finisca nello \gls{user \gls{prompt}}. & Pass \\ \hline
 \prossimoUT & \gls{Verifica} che tutti i 6 cappelli funzionino correttamente. & Pass \\ \hline
  
 \end{tabular}
@@ -1131,7 +1131,7 @@ In questa sottosezione vengono testati i costruttori delle diverse strategie con
 \subsubsection{test\_app.py}
 Questa sezione descrive i test relativi al modulo app, che rappresenta il backend dell’applicazione basato su \gls{Flask}.
 
-Il modulo espone un \gls{endpoint} \gls{API} per la generazione di contenuti tramite modelli di intelligenza artificiale. La richiesta viene elaborata selezionando l’operazione desiderata, costruendo i prompt tramite le strategie configurate e invocando il modello appropriato.
+Il modulo espone un \gls{endpoint} \gls{API} per la generazione di contenuti tramite modelli di intelligenza artificiale. La richiesta viene elaborata selezionando l’operazione desiderata, costruendo i \gls{prompt} tramite le strategie configurate e invocando il modello appropriato.
 
 I test verificano il corretto funzionamento dell’\gls{endpoint}, la \gls{validazione} degli input, la gestione degli errori e la coerenza del formato delle risposte.
 
@@ -1212,11 +1212,11 @@ Questa sezione descrive i test relativi al modulo di utilità text\_cleaning, re
 \begin{tabular}{|l|p{12cm}|c|}
     \hline
     \textbf{Codice} & \textbf{Descrizione} & \textbf{Stato} \\ \hline
-    \prossimoUT & Verifica la rimozione di prefissi introduttivi tipici dei modelli AI (es. "Ecco un riassunto:", "La traduzione è:", ecc.). & Pass \\
+    \prossimoUT & \gls{Verifica} la rimozione di prefissi introduttivi tipici dei modelli AI (es. "Ecco un riassunto:", "La traduzione è:", ecc.). & Pass \\
     \hline
-    \prossimoUT & Verifica che la funzione rimuova correttamente eventuali andate a capo (newlines) o spaziature vuote all'inizio del testo restituito. & Pass \\
+    \prossimoUT & \gls{Verifica} che la funzione rimuova correttamente eventuali andate a capo (newlines) o spaziature vuote all'inizio del testo restituito. & Pass \\
     \hline
-    \prossimoUT & Verifica che la pulizia sia case-insensitive, intercettando correttamente i preamboli scritti in tutto maiuscolo o minuscolo. & Pass \\
+    \prossimoUT & \gls{Verifica} che la pulizia sia case-insensitive, intercettando correttamente i preamboli scritti in tutto maiuscolo o minuscolo. & Pass \\
     \hline
 \end{tabular}
 \caption{Tabella unit tests per test\_text\_cleaning.py}
@@ -1238,7 +1238,7 @@ I test hanno lo scopo di verificare il corretto funzionamento delle strategie, i
 \prossimoUT & \gls{Verifica} che la classe base non possa essere usata direttamente. & Pass \\ \hline
 \prossimoUT & \gls{Verifica} che get\_model restituisca sempre la stessa istanza (Singleton). & Pass \\ \hline
 \prossimoUT & \gls{Verifica} che la strategia Llama chiami correttamente il client OpenAI. & Pass \\ \hline
-\prossimoUT & \gls{Verifica} che la strategia Gemma utilizzi il modello corretto e accetti la temperatura. & Pass \\ \hline
+\prossimoUT & \gls{Verifica} che la strategia Gemma utilizzi il modello corretto e accetti la \gls{temperatura}. & Pass \\ \hline
 \prossimoUT & \gls{Verifica} che la strategia Llama gestisca (o sollevi) errori dall'\gls{API}. & Pass \\ \hline
 \prossimoUT & \gls{Verifica} che get\_model distingua correttamente tra tipi diversi di modelli. & Pass \\ \hline
 \prossimoUT & \gls{Verifica} che le istanze create siano del tipo corretto e non si sovrappongano. & Pass \\ \hline
@@ -1254,7 +1254,7 @@ I test hanno lo scopo di verificare il corretto funzionamento delle strategie, i
 Questa sezione descrive i test relativi al modulo operation\_registry, che definisce la configurazione delle operazioni disponibili nel sistema. Il modulo associa a ciascuna operazione una coppia composta da:
 \begin{itemize}
     \item una strategia di modello AI, responsabile della generazione del testo;
-    \item una strategia di prompt, responsabile della costruzione delle istruzioni da fornire al modello.
+    \item una strategia di \gls{prompt}, responsabile della costruzione delle istruzioni da fornire al modello.
 \end{itemize}
 Questa struttura consente di gestire in modo centralizzato e coerente le diverse funzionalità (ad esempio riassunto, traduzione o analisi), garantendo flessibilità nella scelta del modello e della logica di generazione.
 
@@ -1269,12 +1269,12 @@ I test verificano la correttezza del registro delle operazioni, la validità del
 \prossimoUT & \gls{Verifica} che il registro delle operazioni sia correttamente strutturato come un dizionario. & Pass \\ \hline
 \prossimoUT & Accerta la presenza delle operazioni fondamentali (summary, fix\_grammar, ecc.) nel registro. & Pass \\ \hline
 \prossimoUT & \gls{Verifica} che l'operazione di default esista nel registro. & Pass \\ \hline
-\prossimoUT & \gls{Verifica} che ogni operazione abbia una classe modello valida e una strategia di prompt corretta. & Pass \\ \hline
+\prossimoUT & \gls{Verifica} che ogni operazione abbia una classe modello valida e una strategia di \gls{prompt} corretta. & Pass \\ \hline
 \prossimoUT & \gls{Verifica} specifica che 'summary' usi la strategia di riassunto. & Pass \\ \hline
 \prossimoUT & \gls{Verifica} che nessuna operazione sia configurata a None. & Pass \\ \hline
 \prossimoUT & \gls{Verifica} che ogni operazione usi un'istanza di strategia diversa. & Pass \\ \hline
 \prossimoUT & Valida che tutte le chiavi del registro usino lo standard snake\_case (minuscole e underscore). & Pass \\ \hline
-\prossimoUT & Con una simulazione di un input reale \gls{verifica} che ogni strategia nel registro sia in grado di generare prompt validi. & Pass \\ \hline
+\prossimoUT & Con una simulazione di un input reale \gls{verifica} che ogni strategia nel registro sia in grado di generare \gls{prompt} validi. & Pass \\ \hline
 \prossimoUT & \gls{Verifica} che l'operazione di default abbia una config completa. & Pass \\ \hline
 
 \end{tabular}

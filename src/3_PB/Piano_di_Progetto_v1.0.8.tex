@@ -174,7 +174,7 @@ Il progetto \textbf{Second Brain}, proposto da Zucchetti, mira a sviluppare un \
     \item Scrivere e visualizzare in tempo reale testi in \gls{MarkDown};
     \item Interagire con un LLM per generare, riassumere, riscrivere, tradurre e criticare testi;
     \item Sfruttare il metodo dei “Sei cappelli per pensare” di Edward De Bono per analisi critiche;
-    \item Fornire prompt testuali per generare testo (\gls{Distant Writing}).
+    \item Fornire \gls{prompt} testuali per generare testo (\gls{Distant Writing}).
 \end{itemize}
 L’obiettivo è creare uno strumento di supporto alla scrittura creativa, esplorando le potenzialità degli LLM nel contesto del note-taking avanzato.
 
@@ -1493,7 +1493,7 @@ La fase PB (Product Baseline) rappresenta il cuore dello sviluppo del progetto e
 \begin{itemize}
     \item \textbf{Sviluppare il Minimum Viable Product}\textsubscript{G} (MVP), implementando le funzionalità core concordate con la proponente Zucchetti;
     \item \textbf{Consolidare l'architettura del sistema}, trasformando il prototipo (PoC) in un prodotto software stabile e manutenibile;
-    \item \textbf{Implementare l'integrazione completa con i Large Language Models} (LLM), raffinando i prompt e la gestione delle risposte per garantire un supporto efficace alla scrittura;
+    \item \textbf{Implementare l'integrazione completa con i Large Language Models} (LLM), raffinando i \gls{prompt} e la gestione delle risposte per garantire un supporto efficace alla scrittura;
     \item \textbf{Verificare e validare il sistema} tramite l'esecuzione dei test definiti, garantendo il soddisfacimento dei requisiti e la qualità del codice.
 \end{itemize}
 
@@ -1846,7 +1846,7 @@ Il costo cumulato del progetto (PAC) aggiornato, sommando il consuntivo della fa
 \subsubsection{Retrospettiva}
 \paragraph{Grado di raggiungimento degli obiettivi}
 Gli obiettivi principali dello \gls{sprint} sono stati raggiunti parzialmente. Per quanto riguarda la progettazione, sono stati individuati tutti i possibili pattern del prodotto e si è proceduto al confronto e all’integrazione dei diagrammi delle classi elaborati dai vari membri del gruppo. Inoltre, è stato sviluppato del codice con l’obiettivo di testare concretamente i pattern individuati. È stato anche creato il documento \gls{Specifica Tecnica}.
-Sul fronte backend ogni membro del gruppo sta conducendo una ricerca su una funzionalità AI del progetto per scegliere il modello LLM e il prompt migliore per quella funzionalità.
+Sul fronte backend ogni membro del gruppo sta conducendo una ricerca su una funzionalità AI del progetto per scegliere il modello LLM e il \gls{prompt} migliore per quella funzionalità.
 Sul fronte frontend, è stata presa la decisione definitiva di adottare TypeScript, ritenuto più adeguato alle esigenze e alle funzionalità del progetto. A seguito del feedback del professor Vardanega, sono state inoltre apportate le necessarie correzioni alle \gls{Norme di Progetto} e al Piano di Progetto ed è stato sistemato il sito web.
 Infine, è stato fissato un incontro con la proponente Zucchetti, previsto per il giorno 1 aprile 2026.
 
@@ -1934,8 +1934,8 @@ Il margine residuo disponibile per completare la fase PB e l'intero progetto è 
 Durante lo \gls{sprint} 11 il gruppo ha completato le seguenti attività:
 \begin{itemize}
     \item \textbf{Progettazione}: Terminata la stesura dei diagrammi delle classi. Il gruppo è in attesa del riscontro da parte del Prof. Cardin (fissata per l'8/04);
-    \item \textbf{Backend}: Implementazione quasi ultimata. Sono stati scritti i test unitari e le strategie di gestione prompt. La riduzione del carico è dovuta all'abbandono delle funzionalità opzionali (\gls{database}/autenticazione);
-    \item \textbf{Ricerca LLM}: Conclusa l'analisi comparativa dei modelli e il raffinamento dei prompt per le funzionalità core;
+    \item \textbf{Backend}: Implementazione quasi ultimata. Sono stati scritti i test unitari e le strategie di gestione \gls{prompt}. La riduzione del carico è dovuta all'abbandono delle funzionalità opzionali (\gls{database}/autenticazione);
+    \item \textbf{Ricerca LLM}: Conclusa l'analisi comparativa dei modelli e il raffinamento dei \gls{prompt} per le funzionalità core;
     \item \textbf{Incontro Zucchetti}: Riunione tecnica focalizzata sulla valutazione delle risposte dei modelli (metriche di qualità e strumenti di monitoraggio) e sulla dimostrazione del POC;
     \item \textbf{Documentazione}: Impostati i documenti \gls{Specifica Tecnica} e \gls{Manuale Utente} (Introduzione e Riferimenti). Redatta una bozza della Spcifica Tecnica basata sulla progettazione fatta.
 \end{itemize}
@@ -1971,12 +1971,12 @@ Durante lo \gls{sprint} 11 il gruppo ha completato le seguenti attività:
 \paragraph{Grado di raggiungimento degli obiettivi}
 Gli obiettivi sono stati raggiunti quasi interamente. La fase di progettazione è "congelata" in attesa del feedback del Prof. Cardin, ma si può comunque considerare terminata.
 Il backend è in stato avanzato, permettendo di liberare risorse per il frontend nel prossimo \gls{sprint}: sono stati implementati con successo i pattern strategy e registry nel backend, sono stati configurati correttamente i Dockerfile e importate tutte le librerie e le dipendenze individuate; sono stati svolti con successo i test unitari per le funzioni del backend.
-La ricerca dei prompt e dei modelli AI migliori si è conclusa con successo e il gruppo ha avuto modo di confrontarsi su quali LLM usare nel MVP. Manca da stabilire e documentare ufficialmente i criteri con cui abbiamo valutato le risposte degli LLM, anche considerando i consigli e gli strumenti che l'azienda Zucchetti ci ha mostrato durante la riunione.
+La ricerca dei \gls{prompt} e dei modelli AI migliori si è conclusa con successo e il gruppo ha avuto modo di confrontarsi su quali LLM usare nel MVP. Manca da stabilire e documentare ufficialmente i criteri con cui abbiamo valutato le risposte degli LLM, anche considerando i consigli e gli strumenti che l'azienda Zucchetti ci ha mostrato durante la riunione.
 
 \paragraph{Misure correttive pianificate e valutazione dei rischi}
 \begin{itemize}
     \item \textbf{Rischio RO-1 (Impegni personali)}: Le festività di Pasqua e Pasquetta hanno causato una sospensione delle attività in questi due giorni. Il team ha recuperato il carico di lavoro intensificando le ore nei giorni precedenti.
-    \item \textbf{Rischio RO-6 (Comunicazione)}: L'incontro con Zucchetti ha chiarito i dubbi sulla valutazione dei prompt, mitigando incertezze sulla qualità delle risposte.
+    \item \textbf{Rischio RO-6 (Comunicazione)}: L'incontro con Zucchetti ha chiarito i dubbi sulla valutazione dei \gls{prompt}, mitigando incertezze sulla qualità delle risposte.
 \end{itemize}
 
 \paragraph{Preventivo a finire (EAC aggiornato)}

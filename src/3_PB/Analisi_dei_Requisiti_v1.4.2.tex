@@ -213,7 +213,7 @@ L'applicazione web consentirà all'utente di:
     \item Scrivere e visualizzare in tempo reale testi formattati in \gls{MarkDown};
     \item Interagire con un LLM per generare, riassumere, riscrivere, tradurre e analizzare testi;
     \item Sfruttare il metodo dei "Sei cappelli per pensare" di Edward De Bono per ottenere analisi critiche multi-prospettiche;
-    \item Fornire prompt testuali per delegare all'AI la stesura completa del contenuto (\textit{\gls{Distant Writing}}).
+    \item Fornire \gls{prompt} testuali per delegare all'AI la stesura completa del contenuto (\textit{\gls{Distant Writing}}).
 \end{itemize}
 L'obiettivo è creare uno strumento di supporto alla scrittura creativa e al note-taking avanzato, esplorando le potenzialità pratiche degli LLM nel flusso di lavoro quotidiano.
 
@@ -261,7 +261,7 @@ Il progetto \textbf{Second Brain} si propone di rivoluzionare il processo di scr
     \item Fornire uno strumento di \textit{note-taking} avanzato che combini la semplicità del \gls{Markdown} con la potenza dell'IA generativa.
     \item Implementare un sistema di \textit{critica intelligente} del testo basato sulla metodologia dei "Sei Cappelli per Pensare" di Edward De Bono.
     \item Semplificare il processo di scrittura attraverso funzionalità di correzione, rielaborazione, traduzione e ottimizzazione automatica del testo.
-    \item Implementare un sistema di \textit{\gls{distant writing}} che permette di generare un testo completo a partire da un breve prompt dell'utente.
+    \item Implementare un sistema di \textit{\gls{distant writing}} che permette di generare un testo completo a partire da un breve \gls{prompt} dell'utente.
 \end{itemize}
 
 
@@ -1651,36 +1651,36 @@ L'attore principale è l'\textbf{Utente} (nelle sue due varianti), mentre gli al
 \subsubsection{UC-2.7 - Generazione di testo (\gls{Distant Writing})}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
-    \item \textbf{Descrizione}: Creazione di nuovo testo inedito a partire da un prompt descrittivo fornito dall’utente
+    \item \textbf{Descrizione}: Creazione di nuovo testo inedito a partire da un \gls{prompt} descrittivo fornito dall’utente
     \item \textbf{Precondizioni}: L’editor è aperto e pronto per la scrittura
-    \item \textbf{Postcondizioni}: Viene generato un nuovo testo basato sul prompt e inserito nell’editor in seguito alla conferma dell'utente
+    \item \textbf{Postcondizioni}: Viene generato un nuovo testo basato sul \gls{prompt} e inserito nell’editor in seguito alla conferma dell'utente
     \item \textbf{Scenario principale}:
     \begin{itemize}
         \item L’utente si posiziona nel punto del documento dove vuole inserire il testo generato
-        \item L’utente inserisce un prompt descrivendo il contenuto desiderato (tramite chatbox o comando rapido)
-        \item Il sistema invia il prompt al LLM
+        \item L’utente inserisce un \gls{prompt} descrivendo il contenuto desiderato (tramite chatbox o comando rapido)
+        \item Il sistema invia il \gls{prompt} al LLM
         \item L'utente conferma la proposta
         \item Il sistema inserisce nell'editor il testo generato nel punto indicato
     \end{itemize}
     \item \textbf{Estensioni}:
     \begin{itemize}
-        \item L’utente fornisce un prompt troppo vago o incompleto
+        \item L’utente fornisce un \gls{prompt} troppo vago o incompleto
     \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-2.7.1 - Gestione prompt incompleto}
+\subsubsection{UC-2.7.1 - Gestione \gls{prompt} incompleto}
 \begin{itemize}
     \item \textbf{Attore principale}: Utente generico
-    \item \textbf{Descrizione}: Il sistema rileva una richiesta poco chiara o incompleta e guida l'utente nel miglioramento del prompt prima di invocare l'AI
+    \item \textbf{Descrizione}: Il sistema rileva una richiesta poco chiara o incompleta e guida l'utente nel miglioramento del \gls{prompt} prima di invocare l'AI
     \item \textbf{Precondizioni}: L'utente ha avviato una richiesta di generazione testo (\gls{Distant Writing})
     \item \textbf{Postcondizioni}: La generazione viene sospesa e all'utente vengono forniti suggerimenti operativi per affinare la richiesta
     \item \textbf{Scenario principale}:
     \begin{itemize}
         \item L’utente si posiziona nel punto del documento dove vuole inserire il testo generato
-        \item L’utente inserisce un prompt descrivendo il contenuto desiderato (tramite chatbox o comando rapido)
-        \item LLM analizza il prompt e lo valuta come troppo vago, breve o privo di contesto sufficiente
+        \item L’utente inserisce un \gls{prompt} descrivendo il contenuto desiderato (tramite chatbox o comando rapido)
+        \item LLM analizza il \gls{prompt} e lo valuta come troppo vago, breve o privo di contesto sufficiente
         \item Il sistema interrompe la richiesta e mostra un messaggio di avviso chiedendo chiarimenti
-        \item Il sistema propone esempi di prompt efficaci o template basati sul contesto corrente (opzionale)
+        \item Il sistema propone esempi di \gls{prompt} efficaci o template basati sul contesto corrente (opzionale)
         \item Il sistema rimane in attesa di un nuovo input migliorativo da parte dell'utente
     \end{itemize}
 \end{itemize}
@@ -2590,13 +2590,13 @@ RO-F-57 & Se il testo è insufficiente per l'analisi critica, il sistema notific
 \hline
 RO-F-58 & Se l'utente avvia l'analisi critica senza selezionare un cappello di De Bono, il sistema lo notifica e blocca l'operazione. & UC-2.6.2 \\
 \hline
-RO-F-59 & Il sistema permette l'invio di un prompt scritto dall'utente per la generazione di testo tramite agente esterno. & UC-2.7 \\
+RO-F-59 & Il sistema permette l'invio di un \gls{prompt} scritto dall'utente per la generazione di testo tramite agente esterno. & UC-2.7 \\
 \hline
-RO-F-60 & Il sistema permette la modifica del prompt da inviare all'agente esterno prima dell'invio. & UC-2.7 \\
+RO-F-60 & Il sistema permette la modifica del \gls{prompt} da inviare all'agente esterno prima dell'invio. & UC-2.7 \\
 \hline
-RO-F-61 & L'agente esterno può generare testo basandosi su un prompt fornitogli dall'utente. & UC-2.7.* \\
+RO-F-61 & L'agente esterno può generare testo basandosi su un \gls{prompt} fornitogli dall'utente. & UC-2.7.* \\
 \hline
-RO-F-62 & Se il prompt fornito dall'utente è vuoto o incompleto, il sistema notifica l'utente e impedisce l'invio. & UC-2.7.1 \\
+RO-F-62 & Se il \gls{prompt} fornito dall'utente è vuoto o incompleto, il sistema notifica l'utente e impedisce l'invio. & UC-2.7.1 \\
 \hline
 RO-F-63 & L'utente può caricare un file dal proprio dispositivo all'interno dell'editor. & UC-3.* \\
 \hline
@@ -2971,7 +2971,7 @@ UC-2.6.8 & Critica con Cappello Blu & RO-F-56 \\
 \hline
 UC-2.7 & Generazione di testo (\gls{Distant Writing}) & RO-F-59, RO-F-60, RO-F-61, ROP-F-11 \\
 \hline
-UC-2.7.1 & Gestione prompt incompleto & RO-F-62 \\
+UC-2.7.1 & Gestione \gls{prompt} incompleto & RO-F-62 \\
 \hline
 UC-2.8 & Generazione di grafici e tabelle & ROP-F-12, ROP-F-13 \\
 \hline
