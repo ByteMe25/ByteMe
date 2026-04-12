@@ -12,6 +12,7 @@
 \usepackage{hyperref}
 \usepackage{fancyhdr}
 \usepackage{lastpage}
+\usepackage{amsmath}
 
 \usepackage{array}
 \newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
@@ -70,7 +71,7 @@
         \centering
         \begin{tabular}{|l|p{5cm}|}
             \hline
-            \textbf{Versione} & 1.1.1 \\
+            \textbf{Versione} & 1.1.2 \\
             \hline
             \textbf{Stato} & Da approvare \\
             \hline
@@ -102,11 +103,13 @@
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{\gls{Verifica}} \\
         \hline
-        1.1.1 & 11/04/2026 & Elisa Marchioro & Mini fix & \\
+        1.1.2 & 12/04/2026 & Giulia Barzon & Aggiunta spiegazione metriche di qualità dell'output generativo & \\
         \hline
-        1.1.0 & 11/04/2026 & Elisa Marchioro & Aggiunti nuovi test a unit testing e miglioramento della struttura del documento & \\
+        1.1.1 & 11/04/2026 & Elisa Marchioro & Mini fix & Giulia Barzon \\
         \hline
-        1.0.2 & 07/04/2026 & Elisa Marchioro & Aggiunta sezione unit testing & \\
+        1.1.0 & 11/04/2026 & Elisa Marchioro & Aggiunti nuovi test a unit testing e miglioramento della struttura del documento & Giulia Barzon\\
+        \hline
+        1.0.2 & 07/04/2026 & Elisa Marchioro & Aggiunta sezione unit testing & Giulia Barzon\\
         \hline
         1.0.1 & 01/04/2026 & Giulia Barzon & Aggiornamento fonti e riferimenti & Tommaso Tombacco \\
         \hline
@@ -553,11 +556,11 @@ Percentuale di metriche (tra tutte quelle definite nel presente documento) che r
     \caption{Metrica Metriche Soddisfatte (MS)}
 \end{table}
 
-
-
 \newpage
+
 \subsection{Qualità di prodotto}
 La qualità di prodotto nel software indica quanto bene un sistema riesce a soddisfare i bisogni degli utenti e gli obiettivi per cui è stato creato. Non significa solo che il programma funzioni, ma anche che sia affidabile, veloce, facile da usare e capace di essere migliorato nel tempo. Un software di buona qualità è quindi utile, stabile e adatto a evolversi insieme alle esigenze degli utenti.
+
 \subsubsection{\gls{Adeguatezza funzionale}}
 Indica quanto il software realizza correttamente tutte le funzioni richieste per soddisfare gli obiettivi dell’utente.
 \begin{table}[H]
@@ -567,31 +570,59 @@ Indica quanto il software realizza correttamente tutte le funzioni richieste per
 \hline
 \textbf{Metrica} & \textbf{Scopo della metrica} & \textbf{Soglia accettabile} & \textbf{Soglia ottimale} \\
 \hline
-Requirement Coverage & \gls{Verifica} che tutte le funzionalità principali dell’editor siano implementate & 90\% & 98\% \\ \hline
-Acceptance Test Pass Rate & Controlla che le funzionalità principali funzionino correttamente & 95\% & 99\% \\ \hline
-Functional Defect Density & Misura quanti bug ci sono per funzione principale & 0.5 bug/funzione & 0.1 bug/funzione \\
+Requirement coverage & \gls{Verifica} che tutte le funzionalità principali dell’editor siano implementate & 90\% & 98\% \\ \hline
+Acceptance test pass rate & Controlla che le funzionalità principali funzionino correttamente & 95\% & 99\% \\
+\hline
+Functional defect density & Misura quanti bug ci sono per funzione principale & 0.5 bug/funzione & 0.1 bug/funzione \\
 \hline
 \end{tabular}
 \caption{Soglie metriche funzionalità del prodotto}
 \end{table}
 
 \subsubsection{\gls{Qualità dell'output generativo}}
-Misura quanto le risposte prodotte dal sistema sono corrette, coerenti e utili per l’utente.
+Misura quanto le risposte prodotte dal sistema sono corrette, coerenti con le istruzioni fornite e prive di contenuti inventati, garantendo l'affidabilità del supporto alla scrittura.
+
 \begin{table}[H]
 \centering
 \renewcommand{\arraystretch}{1.5}
 \begin{tabular}{|M{0.25\textwidth}|M{0.35\textwidth}|M{0.15\textwidth}|M{0.15\textwidth}|}
 \hline
 \textbf{Metrica} & \textbf{Scopo della metrica} & \textbf{Soglia accettabile} & \textbf{Soglia ottimale} \\
-\hline
-Accuracy & Misura quanto i suggerimenti o correzioni AI sono corretti & 85\% & 95\% \\ \hline
-Hallucination Rate & Misura quanto l’AI suggerisce contenuti errati o inventati & 10\% & 2\% \\ \hline
-Human Rating & Valutazione soggettiva della qualità dei suggerimenti AI da parte degli utenti & 3.5 / 5 & 4.5 / 5 \\ \hline
-Completion Success Rate & Percentuale di suggerimenti AI accettati dall’utente & 75\% & 90\% \\
-\hline
+    \hline
+    Aderenza al ruolo (System prompt) & Valuta la capacità dell'IA di mantenere lo stile, il tono e il comportamento definiti nelle istruzioni di sistema. & $\ge 80\%$ (Punteggio 2) & $\ge 95\%$ (Punteggio 2) \\
+    \hline
+    Conformità strutturale (User prompt) & Misura il rispetto dei vincoli e dei task specifici richiesti dall'utente nel prompt operativo. & $\ge 80\%$ & $\ge 95\%$ \\
+    \hline
+    Hallucination rate (Assenza di allucinazioni) & Misura la frequenza di contenuti inventati o non deducibili dal testo di input fornito dall'utente. & $\le 5\%$ & $< 1\%$ \\
+    \hline
+    Completion success rate & Percentuale di suggerimenti AI accettati dall’utente & 75\% & 90\% \\
+    \hline
 \end{tabular}
 \caption{Soglie metriche qualità output AI}
 \end{table}
+
+\paragraph{Metodologia di calcolo}
+Per garantire l'oggettività delle misurazioni su output non deterministici, il calcolo delle metriche sopra riportate avviene secondo le seguenti formule:
+
+\begin{itemize}
+    \item \textbf{Aderenza al ruolo (AR):} Rapporto percentuale tra il numero di generazioni che hanno ottenuto il punteggio massimo di aderenza (2) su un campione $N$ di test.
+    \begin{displaymath}
+        AR = \frac{\text{N. generazioni con punteggio 2}}{N} \times 100
+    \end{displaymath}
+
+    \item \textbf{Conformità strutturale (CS):} Rapporto tra il numero di istruzioni atomiche rispettate ($I_{ok}$) e il numero totale di istruzioni fornite ($I_{tot}$) nei prompt del campione.
+    \begin{displaymath}
+        CS = \frac{\sum I_{ok}}{\sum I_{tot}} \times 100
+    \end{displaymath}
+
+    \item \textbf{Tasso di allucinazione (HR):} Percentuale di risposte che presentano almeno un dato inventato rispetto al totale delle generazioni campionate ($N$).
+    \begin{displaymath}
+        HR = \frac{\text{N. generazioni con allucinazioni}}{N} \times 100
+    \end{displaymath}
+\end{itemize}
+
+
+\noindent\textit{\textbf{Nota:} Per non appesantire la stesura di questo documento, le procedure operative, le modalità di campionamento e le tecniche di valutazione manuale utilizzate per il calcolo empirico di queste metriche sono state scorporate e sono approfondite all'interno del documento \textbf{Norme di Progetto}.}
 
 \subsubsection{Affidabilità\textsubscript{G}}
 Rappresenta la capacità del software di funzionare in modo stabile e continuo senza guasti frequenti.
@@ -610,7 +641,7 @@ MTTR & Tempo medio per ripristinare il software dopo un crash & 60 minuti & 10 m
 \caption{Soglie metriche affidabilità del prodotto}
 \end{table}
 
-\subsubsection{Efficienza\textsubscript{G}}
+\subsubsection{Efficienza}
 Indica quanto il sistema è veloce e quanto bene utilizza le risorse disponibili.
 \begin{table}[H]
 \centering
@@ -619,8 +650,8 @@ Indica quanto il sistema è veloce e quanto bene utilizza le risorse disponibili
 \hline
 \textbf{Metrica} & \textbf{Scopo della metrica} & \textbf{Soglia accettabile} & \textbf{Soglia ottimale} \\
 \hline
-Response Time (Latenza interfaccia) & Tempo medio che l'interfaccia impiega per aggiornarsi correttamente & 500 ms & 100 ms \\ \hline
-AI Processing Time & Tempo medio necessario all’AI per generare un testo & 10 sec & 3 sec \\
+Response time (Latenza interfaccia) & Tempo medio che l'interfaccia impiega per aggiornarsi correttamente & 500 ms & 100 ms \\ \hline
+AI processing time & Tempo intercorso tra l'invio del prompt e la ricezione completa della risposta dall'API (per il 95\% delle richieste) & 60 sec  & 30 sec \\
 \hline
 \end{tabular}
 \caption{Soglie metriche efficienza del prodotto}
@@ -635,9 +666,9 @@ Descrive quanto il software è facile da imparare e da usare per gli utenti.
 \hline
 \textbf{Metrica} & \textbf{Scopo della metrica} & \textbf{Soglia accettabile} & \textbf{Soglia ottimale} \\
 \hline
-Task Success Rate & Percentuale di utenti che completano correttamente un compito (scrittura, salvataggio, uso AI) & 80\% & 95\% \\ \hline
+Task success rate & Percentuale di utenti che completano correttamente un compito (scrittura, salvataggio, uso AI) & 80\% & 95\% \\ \hline
 SUS Score & Valutazione dell’usabilità tramite questionario standard & 68 & 85 \\ \hline
-User Satisfaction Rate & Percentuale di utenti soddisfatti delle funzioni AI & 75\% & 90\% \\
+User satisfaction rate & Percentuale di utenti soddisfatti delle funzioni AI & 75\% & 90\% \\
 \hline
 \end{tabular}
 \caption{Soglie metriche usabilità del prodotto}
@@ -652,16 +683,15 @@ Indica quanto è semplice correggere, modificare ed evolvere il software nel tem
 \hline
 \textbf{Metrica} & \textbf{Scopo della metrica} & \textbf{Soglia accettabile} & \textbf{Soglia ottimale} \\
 \hline
-Test Coverage & Percentuale di codice coperto dai test (funzioni base + AI) & 70\% & 90\% \\ \hline
-Change Failure Rate & Percentuale di modifiche che introducono problemi o bug & 15\% & 5\% \\
+Test coverage & Percentuale di codice coperto dai test (funzioni base + AI) & 70\% & 90\% \\ \hline
+Change failure rate & Percentuale di modifiche che introducono problemi o bug & 15\% & 5\% \\
 \hline
 \end{tabular}
 \caption{Soglie metriche manutenibilità del prodotto}
 \end{table}
 
-
-
 \newpage
+
 \section{Strategia di \gls{verifica} (Testing)}
 \subsection{\gls{Analisi statica}}
 L’\gls{analisi statica} consiste nella \gls{verifica} dei documenti e del codice senza esecuzione del software, con l’obiettivo di individuare errori sintattici, incongruenze, violazioni degli standard e problemi strutturali.
@@ -842,67 +872,107 @@ L'obiettivo attuale non è raggiungere una \textit{Code Coverage} esaustiva (che
 \end{table}
 
 \newpage
+
 \section{Selezione dei modelli AI - Fase PB}
 Il sistema è progettato per utilizzare modelli di intelligenza artificiale differenti in base alla funzionalità richiesta dall’utente (ad esempio riassunto, riscrittura, traduzione o analisi). Questa scelta consente di ottimizzare le prestazioni, sfruttando modelli più adatti a specifici compiti: modelli più deterministici per operazioni analitiche e modelli più creativi per attività di generazione o espansione del testo.
 Per valutare quale modello fosse migliore abbiamo preso in considerazione diverse metriche, in seguito elencate nella tabella.
 
-
-\begin{table}[h]
+\begin{table}[H]
 \centering
-\renewcommand{\arraystretch}{1.5} % Più respiro alle righe
-\begin{tabular}{|l|p{4.5cm}|p{4.5cm}|c|}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|M{0.22\textwidth}|M{0.28\textwidth}|M{0.28\textwidth}|M{0.18\textwidth}|}
 \hline
-\textbf{Metrica} & \textbf{Descrizione} & \textbf{Metodo di valutazione} & \textbf{Valore atteso} \\ \hline
-Tempo di risposta & Tempo necessario per generare l’output & x & x\\ \hline
-
- 
+\textbf{Metrica} & \textbf{Descrizione} & \textbf{Metodo di valutazione} & \textbf{Valore atteso} \\
+\hline
+    Tempo di risposta & Latenza totale per la generazione dell'output. & Misurazione automatica del tempo tra invio \textit{prompt} e ricezione risposta. & $\le 60$ s \\
+    \hline
+    Aderenza al ruolo (AR) & Capacità di rispettare il tono e il comportamento del \textit{system prompt}. & Valutazione manuale su scala discreta (0, 1, 2) su un campione di test. & $\ge 80\%$ (Punteggio 2) \\
+    \hline
+    Conformità strutturale (CS) & Rispetto dei vincoli atomici definiti nello \textit{user prompt}. & Analisi binaria del rapporto tra istruzioni rispettate e istruzioni totali. & $\ge 80\%$ \\
+    \hline
+    Tasso di allucinazione (HR) & Frequenza di informazioni inventate o non deducibili dall'input. & Verifica manuale di corrispondenza con il testo sorgente (\textit{ground truth}). & $\le 5\%$ \\
+    \hline
 \end{tabular}
-
 \caption{Elenco metriche per selezione modelli AI}
 \end{table}
 
-% \subsubsection{Test di Accettazione\textsubscript{G}}
+\subsection{Applicazione delle metriche}
+Al fine di garantire una valutazione esaustiva, ogni membro del gruppo ha condotto sessioni di test comparativi individuali, redigendo appositi resoconti tecnici sulle prestazioni dei modelli linguistici.
+Di seguito si riporta la sintesi dei risultati emersi dai test collettivi.
+
+\subsubsection{Analisi del testo con i Sei Cappelli per pensare di De Bono}
+A titolo esemplificativo, si riporta il resoconto decisionale relativo all'implementazione della funzionalità \textit{Sei Cappelli di De Bono}, con focus sul \textbf{Cappello Bianco}.
+
+Il \textit{system prompt} del Cappello Bianco richiede al modello di agire in modo puramente oggettivo e imparziale. Il task impone di estrarre fatti e dati ignorando qualsiasi opinione o emozione, restituendo il risultato strettamente in formato Markdown. Per garantire la massima analiticità, la temperatura di generazione è stata fissata a 0.1.
+
+\paragraph{Confronto modelli e risultati}
+I test si sono concentrati principalmente sul confronto tra \textbf{Llama 3.2 (3B)} e \textbf{Gemma 3 (4B / 27B)}, mentre altri modelli sono stati scartati per tempo di risposta troppo alto. Lo studio ha prodotto i seguenti esiti:
+\begin{itemize}
+    \item \textbf{Aderenza al ruolo:} Il modello Llama 3.2 ha mostrato una tendenza a "uscire dal personaggio", inserendo occasionalmente un tono discorsivo o frasi di circostanza (es. \textit{"Ecco l'analisi richiesta..."}) non compatibili con la freddezza richiesta dal ruolo (punteggio AR prevalentemente pari a 1). Al contrario, Gemma 3 ha dimostrato un'aderenza al ruolo eccellente (punteggio 2), limitandosi a eseguire un'anatomia del testo con totale freddezza e distacco emotivo.
+    
+    \item \textbf{Conformità strutturale:} Entrambi i modelli hanno rispettato rigorosamente le istruzioni dello user prompt.
+    
+    \item \textbf{Tasso di allucinazione:} Entrambi i modelli hanno registrato tassi ampiamente sotto la soglia critica del 5\%, basandosi quasi esclusivamente sul testo fornito (basso \textit{Groundedness error}), confermando la bontà del parametro di temperatura basso (0.1).
+\end{itemize}
+
+\paragraph{Modello scelto}
+Sulla base dei dati raccolti, il modello \textbf{Gemma 3} ha superato ampiamente le soglie ottimali per le metriche AR e CS in compiti di profilazione psicologica complessa. Di conseguenza, il gruppo ha deciso di assegnare l'intera suite dei Sei Cappelli al modello Gemma 3, riservando Llama 3.2 a operazioni editoriali più standard (riassunti, correzioni grammaticali) dove il tono discorsivo risulta meno penalizzante. Sono stati testati anche gli altri cinque Cappelli di De Bono e i risultati sono coerenti con quanto riportato per il Cappello Bianco.
+
+\subsubsection{Traduzione del testo}
+\subsubsection{Correzione grammaticale del testo}
+\subsubsection{Riassunto del testo}
+\subsubsection{Riscrittura del testo}
+\subsubsection{Distant writing}
+
 \newpage
+
 \section{Unit testing - Fase PB}
 
 \subsection{Backend}
-Per l’implementazione dei test unitari del backend è stato utilizzato \textbf{pytest}, uno dei framework di testing più diffusi nell’ecosistema Python. pytest consente di scrivere test in modo semplice, leggibile e scalabile, riducendo al minimo il codice boilerplate rispetto ad approcci più tradizionali.
+Per l’implementazione dei test unitari del backend è stato utilizzato \textbf{Pytest}, uno dei framework di testing più diffusi nell’ecosistema Python. Pytest consente di scrivere test in modo semplice, leggibile e scalabile, riducendo al minimo il codice boilerplate rispetto ad approcci più tradizionali.
 
-Uno dei principali vantaggi di pytest è la sua sintassi intuitiva: i test possono essere scritti come semplici funzioni Python, senza la necessità di creare classi o utilizzare strutture complesse. Inoltre, grazie al sistema di assert rewriting, gli errori nei test risultano particolarmente chiari e dettagliati, facilitando il debugging.
+Uno dei principali vantaggi di Pytest è la sua sintassi intuitiva: i test possono essere scritti come semplici funzioni Python, senza la necessità di creare classi o utilizzare strutture complesse. Inoltre, grazie al sistema di assert rewriting, gli errori nei test risultano particolarmente chiari e dettagliati, facilitando il debugging.
 
-pytest offre anche funzionalità avanzate molto utili come la parametrizzazione, utile per eseguire lo stesso test su più casi di input.
+Pytest offre anche funzionalità avanzate come la parametrizzazione, utile per eseguire lo stesso test su più casi di input.
 
-La scelta di utilizzare pytest è quindi motivata dalla sua flessibilità, dalla leggibilità dei test prodotti e dall’ampio supporto della comunità.
+La scelta di utilizzare Pytest è quindi motivata dalla sua flessibilità, dalla leggibilità dei test prodotti e dall’ampio supporto della comunità.
 
 \newcounter{codiceUT}
 \newcommand{\prossimoUT}{UT-\arabic{codiceUT}\stepcounter{codiceUT}}
 
 \subsubsection{test\_ai\_strategies.py}
-Questo documento descrive i test relativi al modulo ai\_strategies, che definisce le strategie di costruzione dei prompt utilizzati per interagire con i modelli di intelligenza artificiale.
+Questa sezione descrive i test relativi al modulo ai\_strategies, che definisce le strategie di costruzione dei prompt utilizzati per interagire con i modelli di intelligenza artificiale.
 
 Il modulo fornisce diverse strategie, ciascuna progettata per uno specifico tipo di operazione (ad esempio riassunto, traduzione o analisi secondo i Sei Cappelli di De Bono). Ogni strategia è responsabile della generazione dei prompt di sistema e utente, oltre alla definizione di una temperatura adeguata al tipo di elaborazione.
 
 I test verificano la corretta costruzione dei prompt, la coerenza delle configurazioni, la validità delle strategie registrate e il comportamento del sistema in presenza di input non validi o casi limite.
+
 \paragraph{BaseAIStrategy}
 Questa sezione descrive i test relativi alla classe base BaseAIStrategy. Essendo una classe astratta, non è pensata per un utilizzo diretto, ma come fondamento per le strategie concrete. I test verificano che il comportamento previsto venga rispettato, garantendo così l’integrità dell’architettura.
+
 \begin{table}[H]
 \centering
-\renewcommand{\arraystretch}{1.5} % Più respiro alle righe
+\renewcommand{\arraystretch}{1.5}
 \begin{tabular}{|l|p{12cm}|c|}
 \hline
-\textbf{Codice} & \textbf{Descrizione} & \textbf{Stato} \\ \hline
-\prossimoUT & Il build() di BaseAIStrategy lancia NotImplementedError apposta, per obbligare le sottoclassi a reimplementarlo. Il test \gls{verifica} che questo meccanismo funzioni: se qualcuno chiama build() sulla classe base, deve ottenere quell'errore. & Pass \\ \hline
+\textbf{Codice} & \textbf{Descrizione} & \textbf{Stato} \\
+    \hline
+    \prossimoUT & Il build() di BaseAIStrategy lancia NotImplementedError apposta, per obbligare le sottoclassi a reimplementarlo. Il test \gls{verifica} che questo meccanismo funzioni: se qualcuno chiama build() sulla classe base, deve ottenere quell'errore. & Pass \\
+    \hline
+    \prossimoUT & Verifica che la classe base definisca una variabile di classe \texttt{temperature} di default (float), necessaria per le configurazioni di base. & Pass \\
+    \hline
 \end{tabular}
 
-\caption{Elenco unit test con codici autogenerati}
+\caption{Tabella unit test di BaseAIStrategy}
 \end{table}
 
 
-\paragraph{SimplePromtStrategy}
+\paragraph{SimplePromptStrategy}
 In questa sezione vengono testate le funzionalità della classe SimplePromptStrategy, utilizzata per generare prompt di tipo semplice. I test si concentrano sulla correttezza della struttura dell’output e sulla presenza delle informazioni fondamentali (ruolo, task e testo), assicurando che il prompt venga costruito in modo coerente e conforme alle specifiche.
+
 \begin{table}[H]
 \centering
-\renewcommand{\arraystretch}{1.5} % Più respiro alle righe
+\renewcommand{\arraystretch}{1.5}
 \begin{tabular}{|l|p{12cm}|c|}
 \hline
 \textbf{Codice} & \textbf{Descrizione} & \textbf{Stato} \\ \hline
@@ -915,7 +985,7 @@ In questa sezione vengono testate le funzionalità della classe SimplePromptStra
  
 \end{tabular}
 
-\caption{Elenco unit test con codici autogenerati}
+\caption{Tabella unit tests di SimplePromptStrategy}
 \end{table}
 
 \paragraph{TestTranslationStrategy}
@@ -934,14 +1004,15 @@ Questa sezione raccoglie i test per la strategia di traduzione. L’obiettivo è
  
 \end{tabular}
 
-\caption{Elenco unit test con codici autogenerati}
+\caption{Tabella unit tests per la traduzione del testo}
 \end{table}
 
 \paragraph{TestDeBonoHatStrategy}
-Qui vengono descritti i test relativi alla strategia basata sui “Sei Cappelli per Pensare”. I test verificano che ogni configurazione produca un prompt coerente, includendo correttamente il cappello selezionato, il focus e il testo fornito, oltre a garantire il funzionamento per tutte le varianti previste.
+Qui vengono descritti i test relativi alla strategia basata sui “Sei Cappelli per Pensare”. I test verificano che ogni configurazione produca un prompt coerente, includendo correttamente la tempertura specifica per ogni cappello, lo user prompt e il system prompt e il testo fornito, oltre a garantire il funzionamento per tutte le varianti previste.
+
 \begin{table}[H]
 \centering
-\renewcommand{\arraystretch}{1.5} % Più respiro alle righe
+\renewcommand{\arraystretch}{1.5}
 \begin{tabular}{|l|p{12cm}|c|}
 \hline
 \textbf{Codice} & \textbf{Descrizione} & \textbf{Stato} \\ \hline
@@ -952,15 +1023,15 @@ Qui vengono descritti i test relativi alla strategia basata sui “Sei Cappelli 
 \prossimoUT & \gls{Verifica} che tutti i 6 cappelli funzionino correttamente. & Pass \\ \hline
  
 \end{tabular}
-
-\caption{Elenco unit test con codici autogenerati}
+\caption{Tabella unit tests per i 6 Cappelli di De Bono}
 \end{table}
 
 \paragraph{TestStrategiesDict}
 Questa sezione valida la correttezza del dizionario che raccoglie tutte le strategie disponibili. I test controllano sia la completezza delle strategie registrate sia la loro tipologia, assicurando che ogni voce sia associata alla classe corretta e produca output validi.
+
 \begin{table}[H]
 \centering
-\renewcommand{\arraystretch}{1.5} % Più respiro alle righe
+\renewcommand{\arraystretch}{1.5}
 \begin{tabular}{|l|p{12cm}|c|}
 \hline
 \textbf{Codice} & \textbf{Descrizione} & \textbf{Stato} \\ \hline
@@ -971,14 +1042,15 @@ Questa sezione valida la correttezza del dizionario che raccoglie tutte le strat
 \prossimoUT & Le traduzioni sono istanze di TranslationStrategy & Pass \\ \hline
 \prossimoUT & I cappelli sono istanze di DeBonoHatStrategy & Pass \\ \hline
 \end{tabular}
-\caption{Elenco unit test con codici autogenerati}
+\caption{Tabella unit tests di TestStrategiesDict}
 \end{table}
 
-\paragraph{Casi Limite}
+\subsubsection{Casi limite}
 In questa sezione vengono analizzati i comportamenti del sistema in condizioni estreme o non standard. L’obiettivo è verificare la robustezza delle strategie rispetto a input insoliti, garantendo stabilità e prevedibilità anche in situazioni limite.
 
-\subparagraph{Stringa vuota}
+\paragraph{Stringa vuota}
 Questa sottosezione \gls{verifica} il comportamento delle strategie quando ricevono una stringa vuota in input. I test assicurano che il sistema non generi errori e continui a produrre output validi.
+
 \begin{table}[H]
 \centering
 \renewcommand{\arraystretch}{1.5} % Più respiro alle righe
@@ -988,29 +1060,27 @@ Questa sottosezione \gls{verifica} il comportamento delle strategie quando ricev
 \prossimoUT & \gls{Verifica} SimplePromptStrategy accetti la stringa vuota senza errori. & Pass \\ \hline
 \prossimoUT & \gls{Verifica} TranslationStrategy accetti la stringa vuota senza errori. & Pass \\ \hline
 \prossimoUT & \gls{Verifica} DeBonoHatStrategy accetti la stringa vuota senza errori. & Pass \\ \hline
- 
 \end{tabular}
-
-\caption{Elenco unit test con codici autogenerati}
+\caption{Tabella unit tests per casi limite (stringa vuota)}
 \end{table}
 
-\subparagraph{Solo spazi e testo molto lungo}
+\paragraph{Solo spazi o testo molto lungo}
 In questa sottosezione vengono testati input particolari come stringhe composte solo da spazi e testi molto lunghi. L’obiettivo è garantire che il sistema gestisca correttamente sia casi minimali sia input di grandi dimensioni.
+
 \begin{table}[H]
 \centering
-\renewcommand{\arraystretch}{1.5} % Più respiro alle righe
+\renewcommand{\arraystretch}{1.5}
 \begin{tabular}{|l|p{12cm}|c|}
 \hline
 \textbf{Codice} & \textbf{Descrizione} & \textbf{Stato} \\ \hline
 \prossimoUT & \gls{Verifica} che SimplePromptStrategy accetti input con solo spazi. & Pass \\ \hline
 \prossimoUT & \gls{Verifica} che SimplePromptStrategy accetti testi molto lunghi (>10000). & Pass \\ \hline
- 
-\end{tabular}
 
-\caption{Elenco unit test con codici autogenerati}
+\end{tabular}
+\caption{Tabella unit tests per casi limite (solo spazi o testo lungo)}
 \end{table}
 
-\subparagraph{Caratteri speciali e unicode}
+\paragraph{Caratteri speciali e unicode}
 Questa sottosezione \gls{verifica} la capacità del sistema di gestire caratteri non standard, come emoji, simboli speciali e caratteri non latini. I test assicurano la compatibilità con input internazionali e complessi.
 \begin{table}[H]
 \centering
@@ -1023,8 +1093,7 @@ Questa sottosezione \gls{verifica} la capacità del sistema di gestire caratteri
 \prossimoUT & \gls{Verifica} che DeBonoHatStrategy gestisca newline e tab nell'input. & Pass \\ \hline
  
 \end{tabular}
-
-\caption{Elenco unit test con codici autogenerati}
+\caption{Tabella unit tests per casi limite (caratteri speciali)}
 \end{table}
 
 \subparagraph{None come input}
@@ -1035,17 +1104,17 @@ Questa sottosezione analizza il comportamento del sistema quando viene passato u
 \begin{tabular}{|l|p{12cm}|c|}
 \hline
 \textbf{Codice} & \textbf{Descrizione} & \textbf{Stato} \\ \hline
-\prossimoUT & \gls{Verifica} che SimplePromptStrategy lanci TypeError se l'input è None. & Fail \\ \hline
-\prossimoUT & \gls{Verifica} che TranslationStrategy lanci TypeError se l'input è None. & Fail \\ \hline
-\prossimoUT & \gls{Verifica} che DeBonoHatStrategy lanci TypeError se l'input è None. & Fail \\ \hline
+\prossimoUT & \gls{Verifica} che SimplePromptStrategy lanci TypeError se l'input è None. & Pass \\ \hline
+\prossimoUT & \gls{Verifica} che TranslationStrategy lanci TypeError se l'input è None. & Pass \\ \hline
+\prossimoUT & \gls{Verifica} che DeBonoHatStrategy lanci TypeError se l'input è None. & Pass \\ \hline
  
 \end{tabular}
-
-\caption{Elenco unit test con codici autogenerati}
+\caption{Tabella unit tests per casi limite (None come input)}
 \end{table}
 
-\subparagraph{Costruttore con valori vuoti}
+\paragraph{Costruttore con valori vuoti}
 In questa sottosezione vengono testati i costruttori delle diverse strategie con parametri vuoti. L’obiettivo è verificare che il sistema sia sufficientemente flessibile da accettare configurazioni minime senza generare errori.
+
 \begin{table}[H]
 \centering
 \renewcommand{\arraystretch}{1.5} % Più respiro alle righe
@@ -1055,18 +1124,17 @@ In questa sottosezione vengono testati i costruttori delle diverse strategie con
 \prossimoUT & \gls{Verifica} che SimplePromptStrategy accetti role e task vuoti. & Pass \\ \hline
 \prossimoUT & \gls{Verifica} che TranslationStrategy accetti la lingua vuota. & Pass \\ \hline
 \prossimoUT & \gls{Verifica} che DeBonoHatStrategy accetti hat\_name e focus vuoti. & Pass \\ \hline
- 
 \end{tabular}
-
-\caption{Elenco unit test con codici autogenerati}
+\caption{Tabella unit tests per casi limite (costruttore con valori vuoti)}
 \end{table}
 
 \subsubsection{test\_app.py}
-Questo documento descrive i test relativi al modulo app, che rappresenta il backend dell’applicazione basato su \gls{Flask}.
+Questa sezione descrive i test relativi al modulo app, che rappresenta il backend dell’applicazione basato su \gls{Flask}.
 
 Il modulo espone un \gls{endpoint} \gls{API} per la generazione di contenuti tramite modelli di intelligenza artificiale. La richiesta viene elaborata selezionando l’operazione desiderata, costruendo i prompt tramite le strategie configurate e invocando il modello appropriato.
 
-I test verificano il corretto funzionamento dell’\gls{endpoint}, la \gls{validazione} degli input, la gestione degli errori e la coerenza del formato delle risposte. Viene inoltre testata la funzione di pulizia dell’output, che rimuove eventuali frasi introduttive generate dal modello.
+I test verificano il corretto funzionamento dell’\gls{endpoint}, la \gls{validazione} degli input, la gestione degli errori e la coerenza del formato delle risposte.
+
 \paragraph{TestGenerateInputValidation}
 Questa sezione descrive i test volti a verificare la corretta \gls{validazione} degli input forniti all’\gls{endpoint} di generazione. L’obiettivo è garantire che il sistema gestisca in modo appropriato richieste incomplete, malformate o non conformi alle specifiche, restituendo codici di errore adeguati e messaggi informativi.
 
@@ -1082,7 +1150,7 @@ Questa sezione descrive i test volti a verificare la corretta \gls{validazione} 
  
 \end{tabular}
 
-\caption{Elenco unit test con codici autogenerati}
+\caption{Tabella unit tests per test\_app.py}
 \end{table}
 
 \paragraph{TestGenerateOperations}
@@ -1098,24 +1166,7 @@ In questa sezione vengono presentati i test relativi al corretto funzionamento d
 \prossimoUT & \gls{Verifica} che la richiesta vada a buon fine anche se il campo operation viene totalmente omesso dal payload. & Pass \\ \hline
  
 \end{tabular}
-
-\caption{Elenco unit test con codici autogenerati}
-\end{table}
-
-\paragraph{TestCleanAiResponse}
-Questa sezione si concentra sulla \gls{verifica} del processo di pulizia delle risposte generate dal modello AI. In particolare, i test assicurano la rimozione di elementi superflui o prefissi tipici, al fine di restituire output chiari, coerenti e pronti per l’utilizzo lato frontend.
-
-\begin{table}[H]
-\centering
-\renewcommand{\arraystretch}{1.5} % Più respiro alle righe
-\begin{tabular}{|l|p{12cm}|c|}
-\hline
-\textbf{Codice} & \textbf{Descrizione} & \textbf{Stato} \\ \hline
-\prossimoUT & \gls{Verifica} la rimozione di prefissi introduttivi tipici dei modelli AI (es. "Ecco il riassunto:", ecc.). & Pass \\ \hline
- 
-\end{tabular}
-
-\caption{Elenco unit test con codici autogenerati}
+\caption{Tabella unit tests per test\_app.py}
 \end{table}
 
 \paragraph{TestGenerateErrorHandling}
@@ -1131,8 +1182,7 @@ I test descritti in questa sezione hanno l’obiettivo di valutare la robustezza
 \prossimoUT & \gls{Verifica} che il messaggio d'errore inviato al frontend contenga dettagli tecnici utili al debugging (testo dell'eccezione). & Pass \\ \hline
  
 \end{tabular}
-
-\caption{Elenco unit test con codici autogenerati}
+\caption{Tabella unit tests per test\_app.py}
 \end{table}
 
 \paragraph{TestResponseFormat}
@@ -1150,15 +1200,35 @@ Questa sezione analizza la struttura e la coerenza del formato delle risposte re
  
 \end{tabular}
 
-\caption{Elenco unit test con codici autogenerati}
+\caption{Tabella unit tests per test\_app.py}
+\end{table}
+
+\subsubsection{test\_text\_cleaning.py}
+Questa sezione descrive i test relativi al modulo di utilità text\_cleaning, responsabile della normalizzazione dell'output generato dall'intelligenza artificiale. I test assicurano che le funzioni basate su espressioni regolari puliscano correttamente il testo, rimuovendo prefissi colloquiali, spaziature errate e garantendo l'assenza di case-sensitivity.
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|l|p{12cm}|c|}
+    \hline
+    \textbf{Codice} & \textbf{Descrizione} & \textbf{Stato} \\ \hline
+    \prossimoUT & Verifica la rimozione di prefissi introduttivi tipici dei modelli AI (es. "Ecco un riassunto:", "La traduzione è:", ecc.). & Pass \\
+    \hline
+    \prossimoUT & Verifica che la funzione rimuova correttamente eventuali andate a capo (newlines) o spaziature vuote all'inizio del testo restituito. & Pass \\
+    \hline
+    \prossimoUT & Verifica che la pulizia sia case-insensitive, intercettando correttamente i preamboli scritti in tutto maiuscolo o minuscolo. & Pass \\
+    \hline
+\end{tabular}
+\caption{Tabella unit tests per test\_text\_cleaning.py}
 \end{table}
 
 \subsubsection{test\_model\_strategies.py}
-Questo documento descrive i test relativi al modulo model\_strategies, che gestisce l’utilizzo di diversi modelli di intelligenza artificiale attraverso un’interfaccia comune.
+Questa sezione descrive i test relativi al modulo model\_strategies, che gestisce l’utilizzo di diversi modelli di intelligenza artificiale attraverso un’interfaccia comune.
 
 Il modulo è progettato per permettere l’uso di più modelli in modo uniforme, nascondendo i dettagli tecnici delle singole implementazioni. Inoltre, include un meccanismo di gestione delle istanze che evita la creazione duplicata degli stessi modelli.
 
 I test hanno lo scopo di verificare il corretto funzionamento delle strategie, il comportamento del sistema di gestione delle istanze e la corretta gestione di errori e casi particolari.
+
 \begin{table}[H]
 \centering
 \renewcommand{\arraystretch}{1.5} % Più respiro alle righe
@@ -1176,19 +1246,15 @@ I test hanno lo scopo di verificare il corretto funzionamento delle strategie, i
 \prossimoUT & \gls{Verifica} che la strategia gestisca una risposta vuota o mancante. & Pass \\ \hline
 \prossimoUT & \gls{Verifica} il corretto ripopolamento del registro interno se svuotato manualmente. & Pass \\ \hline
 
- 
 \end{tabular}
-
-\caption{Elenco unit test con codici autogenerati}
+\caption{Tabella unit tests per test\_model\_strategies.py}
 \end{table}
 
 \subsubsection{test\_operation\_registry.py}
-Questo documento descrive i test relativi al modulo operation\_registry, che definisce la configurazione delle operazioni disponibili nel sistema.
-
-Il modulo associa a ciascuna operazione una coppia composta da:
+Questa sezione descrive i test relativi al modulo operation\_registry, che definisce la configurazione delle operazioni disponibili nel sistema. Il modulo associa a ciascuna operazione una coppia composta da:
 \begin{itemize}
-\item una strategia di modello AI, responsabile della generazione del testo;
-\item una strategia di prompt, responsabile della costruzione delle istruzioni da fornire al modello.
+    \item una strategia di modello AI, responsabile della generazione del testo;
+    \item una strategia di prompt, responsabile della costruzione delle istruzioni da fornire al modello.
 \end{itemize}
 Questa struttura consente di gestire in modo centralizzato e coerente le diverse funzionalità (ad esempio riassunto, traduzione o analisi), garantendo flessibilità nella scelta del modello e della logica di generazione.
 
@@ -1211,11 +1277,10 @@ I test verificano la correttezza del registro delle operazioni, la validità del
 \prossimoUT & Con una simulazione di un input reale \gls{verifica} che ogni strategia nel registro sia in grado di generare prompt validi. & Pass \\ \hline
 \prossimoUT & \gls{Verifica} che l'operazione di default abbia una config completa. & Pass \\ \hline
 
- 
 \end{tabular}
-
-\caption{Elenco unit test con codici autogenerati}
+\caption{Tabella unit tests per test\_operation\_registry.py}
 \end{table}
+
 \newpage
 
 \section{Test d'integrazione - Fase PB}
@@ -1233,9 +1298,8 @@ I test verificano la correttezza del registro delle operazioni, la validità del
 
 
 
-
-
 \newpage
+
 \section{Cruscotto di valutazione della qualità}
 In questa sezione vengono presentati gli indicatori di qualità relativi al processo produttivo, al fine di valutarne l'andamento durante le due fasi di progetto: RTB (Requirements and Technology Baseline) e PB (Product Baseline).
 

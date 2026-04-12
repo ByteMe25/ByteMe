@@ -68,7 +68,7 @@
         \centering
         \begin{tabular}{|l|p{5cm}|}            
             \hline
-            \textbf{Versione} & 1.1.0 \\
+            \textbf{Versione} & 1.1.2 \\
             \hline
             \textbf{Stato} & Da approvare \\
             \hline
@@ -92,11 +92,13 @@
 
 \begin{table}[H]
     \centering
-    \begin{tabular}{|c|c|c|>{\raggedright\arraybackslash}p{0.4\textwidth}|c|}
+    \begin{tabular}{|c|c|c|>{\raggedright\arraybackslash}p{0.35\textwidth}|p{0.18\textwidth}|}
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verifica} \\
         \hline
-        1.1.1 & 21/03/2026 & Elisa Marchioro & Aggiunta sezione "Script: glossario.py" & \begin{tabular}[c]{@{}c@{}} Matteo Cuogo \\ Tommaso Tombacco                      \end{tabular} \\
+        1.1.2 & 12/04/2026 & Giulia Barzon & Aggiunti termini relativi a prompt e LLM & \\
+        \hline
+        1.1.1 & 21/03/2026 & Elisa Marchioro & Aggiunta sezione "Script: glossario.py" & Matteo Cuogo, Tommaso Tombacco\\
         \hline
         1.1.0 & 16/03/2026 & Giulia Barzon & Aggiunti termini relativi alle tecnologie del POC & Elisa Marchioro\\
         \hline
@@ -153,10 +155,14 @@ Lo script glossario.py consente di aggiungere automaticamente la “G” in pedi
 \begin{itemize}
 \item \textbf{Actual Cost (AC)}: Costo reale sostenuto per il lavoro eseguito su un'attività durante un determinato periodo. Include i costi diretti (es. ore lavorate per il costo orario) necessari per realizzare il pacchetto di lavoro. Metrica definita nel Piano di Qualifica.
 
+\item \textbf{Aderenza al Ruolo (AR)}: Metrica di qualità che valuta quanto l'output di un \gls{LLM} sia coerente con il tono, lo stile e il comportamento definiti nel \textit{System Prompt}. Viene misurata attraverso una valutazione manuale su scala discreta (0, 1, 2) per verificare la capacità del modello di "rimanere nel personaggio" assegnato.
+
 \item \textbf{Affidabilità (Reliability)}: È la capacità del prodotto software di svolgere le proprie funzioni specificate sotto determinate condizioni e per un determinato periodo di tempo, mantenendo un livello di prestazioni corretto.
 Metrica tipica: Failure Density (densità di fallimenti nei test).
 
 \item \textbf{Agile}: È un modo di sviluppare software basato su cicli di lavoro brevi, collaborazione continua e adattamento ai cambiamenti, così da poter migliorare il prodotto passo dopo passo e consegnare rapidamente valore all’utente.
+
+\item \textbf{Allucinazione (AI)}: Fenomeno tipico dei modelli linguistici generativi in cui il sistema produce informazioni fattualmente errate, inventate o non deducibili dal testo di input fornito. La riduzione di tale fenomeno è un obiettivo primario dell'assicurazione della qualità nel progetto Second Brain.
 
 \item \textbf{Analisi dei requisiti}: Fase in cui si raccolgono e si comprendono i bisogni del cliente e cosa deve fare il software.
 
@@ -198,6 +204,8 @@ Serve a valutare l'efficacia dei test: più è alta, minore è il rischio di dif
 \item \textbf{Commit}: Registrazione di un insieme di modifiche nella repository, accompagnata da un messaggio che descrive cosa è stato modificato.
 
 \item \textbf{Complessità Ciclomatica (McCabe)}: Metrica software che misura la complessità del flusso di controllo di un programma contandone il numero di percorsi linearmente indipendenti. Si calcola con la formula $v(G)=e-n+2p$ (dove $e$ sono gli archi, $n$ i nodi, $p$ le componenti connesse). Un valore alto indica un codice difficile da testare e mantenere, poiché cresce con la presenza di branch, salti e iterazioni. Metrica definita nel Piano di Qualifica.
+
+\item \textbf{Conformità Strutturale (CS)}: Metrica di qualità che misura la capacità del modello di rispettare rigorosamente i vincoli atomici e le istruzioni operative fornite nello \textit{User Prompt} (es. richiesta di formato Markdown, assenza di preamboli, lunghezza massima).
 
 \item \textbf{Context (React Context)}: Meccanismo nativo di React per 
 condividere stato e funzionalità tra componenti senza dover passare  esplicitamente le props attraverso ogni livello della gerarchia (prop drilling). Nel POC è utilizzato per gestire lo stato globale  di autenticazione (\texttt{AuthContext}), del documento aperto  (\texttt{DocNameContext}) e dello storico delle generazioni AI  (\texttt{HistoryContext}).
@@ -285,11 +293,15 @@ adatto a progetti di dimensioni contenute come il POC.
 \section*{G}
 \addcontentsline{toc}{section}{G}
 \begin{itemize}
+\item \textbf{Gemma 3}: Famiglia di modelli linguistici open-weights all'avanguardia sviluppati da Google. Nel progetto, la versione Gemma 3:4B viene impiegata per task che richiedono alta precisione analitica e rigore comportamentale, come il metodo dei Sei Cappelli di De Bono.
+
 \item \textbf{Git}: Sistema di controllo versione che permette di tenere traccia delle modifiche al codice sorgente e di collaborare in modo efficiente.
 
 \item \textbf{Github}: Piattaforma online basata su Git che consente di ospitare repository, collaborare al progetto e gestire versioni e richieste di modifica.
 
 \item \textbf{Glossario}: Raccolta di vocaboli meno comuni in quanto limitati a un ambiente o propri di una determinata disciplina, accompagnati ognuno dalla spiegazione del significato o da altre osservazioni. Nel nostro caso raccoglierà tutte le parole relative al nostro progetto che meritano di ulteriori precisazioni o che vengono applicate in un particlare contesto.
+
+\item \textbf{Ground Truth}: Nel contesto della validazione delloutput dell'IA, rappresenta l'informazione di riferimento "vera" e verificata (il testo originale fornito dall'utente) rispetto alla quale viene misurata l'accuratezza e l'assenza di allucinazioni dell'output generato.
 \end{itemize}
 \newpage
 
@@ -336,7 +348,9 @@ ed è utilizzato per definire la struttura visuale dei componenti.
 \section*{L}
 \addcontentsline{toc}{section}{L}
 \begin{itemize}
-\item \textbf{LLM (Large Language Model)}: Modello di intelligenza artificiale addestrato sulla comprensione e generazione di linguaggio naturale.
+\item \textbf{Llama 3.2}: Famiglia di modelli linguistici open-weights sviluppati da Meta. Nel sistema Second Brain, il modello Llama 3.2:3B è utilizzato per operazioni editoriali standard e traduzioni, offrendo un ottimo compromesso tra velocità e capacità espressiva.
+
+\item \textbf{LLM (Large Language Model)}: Modello di intelligenza artificiale addestrato su vasti dataset testuali per comprendere e generare linguaggio naturale. Costituisce il motore computazionale del backend per tutte le operazioni di elaborazione del testo.
 
 \item \textbf{Lines of Code (LOC)}: Metrica che misura la dimensione di un programma software contando il numero di righe di testo nel codice sorgente. Si considerano solo le righe logiche di codice, escludendo commenti e righe vuote. Metrica definita nel Piano di Qualifica, tuttavia non vincolante.
 \end{itemize}
@@ -405,6 +419,8 @@ l'affidabilità e il supporto a tipi di dati avanzati. Nel POC è utilizzato per
 \item \textbf{Processi Primari di Fornitura}: Processi che riguardano le attività e i compiti del fornitore (il gruppo di progetto) necessari per preparare e consegnare il prodotto software al committente, inclusa la gestione manageriale ed economica.
 
 \item \textbf{Processi Primari di Sviluppo}: Processi che includono le attività di realizzazione tecnica del prodotto software, dall'analisi dei requisiti alla progettazione, codifica e integrazione.
+
+\item \textbf{Prompt}: Insieme di istruzioni testuali inviate a un modello generativo per guidarne la risposta. Un prompt ben progettato (Prompt Engineering) è essenziale per ottenere output di alta qualità e minimizzare le risposte errate.
 
 \item \textbf{Proof of Concept (PoC)}: Prototipo iniziale e limitato del software, sviluppato per dimostrare la fattibilità delle funzionalità core e dell'idea del progetto in generale.
 
@@ -504,6 +520,8 @@ e un livello di astrazione per l'accesso al database. Permette
 di definire modelli come classi Python e di eseguire operazioni 
 sul database tramite un'API orientata agli oggetti, gestendo 
 automaticamente connessioni e transazioni.
+
+\item \textbf{System Prompt}: Parte si un prompt che definisce l'identità, il ruolo, i vincoli etici e il tono di voce che l'intelligenza artificiale deve assumere durante l'interazione. Non è visibile direttamente dall'utente finale ma ne condiziona profondamente il comportamento.
 \end{itemize}
 
 \newpage
@@ -511,10 +529,13 @@ automaticamente connessioni e transazioni.
 \section*{T}
 \addcontentsline{toc}{section}{T}
 \begin{itemize}
+\item \textbf{Tasso di Allucinazione (HR)}: Indice statistico che esprime la frequenza relativa di generazioni contenenti allucinazioni rispetto al numero totale di campioni analizzati durante le sessioni di test.
 
 \item \textbf{Toolbar}: Elemento dell’interfaccia grafica che raccoglie pulsanti e funzioni di uso frequente, permettendo un accesso rapido alle operazioni principali.
 
 \item \textbf{Tecnica 0/100}: Tecnica di misurazione dell'avanzamento fisico di un'attività. Prevede che il valore guadagnato (Earned Value) venga assegnato solo al completamento totale dell'attività (100\%), mentre un'attività iniziata ma non finita ha valore nullo (0\%). Serve a evitare stime soggettive parziali.
+
+\item \textbf{Temperatura}: Parametro di configurazione degli LLM che controlla il grado di casualità e creatività dell'output. Valori bassi (es. 0.1) rendono il modello deterministico e analitico, mentre valori alti (es. 0.8) ne aumentano la varietà creativa.
 
 \item \textbf{Test di Accettazione (Acceptance Testing / Collaudo)}: Validazione finale per accertare il soddisfacimento dei requisiti utente, svolta nella fase finale prima del rilascio.
 
@@ -534,6 +555,8 @@ automaticamente connessioni e transazioni.
 \addcontentsline{toc}{section}{U}
 \begin{itemize}
 \item \textbf{Usabilità (Usability)}: L’usabilità descrive quanto il software è facile da imparare e da usare. Un buon sistema è intuitivo, permette agli utenti di svolgere i propri compiti senza difficoltà e riduce la possibilità di commettere errori. Questa qualità si misura osservando come le persone reali utilizzano il software e raccogliendo le loro opinioni.
+
+\item \textbf{User Prompt}: La componente di un prompt che contiene il comando specifico, i task operativi e il testo di input inserito dall'utente per una specifica elaborazione.
 
 \item \textbf{User story}: Descrizione sintetica di una funzionalità dal punto di vista dell’utente, utilizzata nei metodi Agile per chiarire cosa il sistema deve permettere di fare.
 
