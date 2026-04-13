@@ -105,9 +105,9 @@
         \hline
         1.1.2 & 12/04/2026 & Giulia Barzon & Aggiunta spiegazione metriche di \gls{qualità dell'output generativo} & \\
         \hline
-        1.1.1 & 11/04/2026 & Elisa Marchioro & Mini fix & Giulia Barzon \\
+        1.1.1 & 11/04/2026 & Elisa Marchioro & Mini fix & Giulia Barzon e Chiara Grossele\\
         \hline
-        1.1.0 & 11/04/2026 & Elisa Marchioro & Aggiunti nuovi test a unit testing e miglioramento della struttura del documento & Giulia Barzon\\
+        1.1.0 & 11/04/2026 & Elisa Marchioro & Aggiunti nuovi test a unit testing e miglioramento della struttura del documento & Giulia Barzon e Chiara Grossele\\
         \hline
         1.0.2 & 07/04/2026 & Elisa Marchioro & Aggiunta sezione unit testing & Giulia Barzon\\
         \hline
@@ -931,7 +931,10 @@ Sulla base dei dati raccolti, il modello \textbf{\gls{Gemma 3}} ha superato ampi
 \subsection{Backend}
 Per l’implementazione dei test unitari del backend è stato utilizzato \textbf{Pytest}, uno dei framework di testing più diffusi nell’ecosistema Python. Pytest consente di scrivere test in modo semplice, leggibile e scalabile, riducendo al minimo il codice boilerplate rispetto ad approcci più tradizionali.
 
-Uno dei principali vantaggi di Pytest è la sua sintassi intuitiva: i test possono essere scritti come semplici funzioni Python, senza la necessità di creare classi o utilizzare strutture complesse. Inoltre, grazie al sistema di assert rewriting, gli errori nei test risultano particolarmente chiari e dettagliati, facilitando il debugging.
+Uno dei principali vantaggi di Pytest è la sua sintassi intuitiva: i test possono essere scritti come semplici funzioni Python, senza la necessità di creare classi o utilizzare strutture complesse.
+%%%%%%%%%%%%%%%%%%%%%%
+%Inoltre, grazie al sistema di assert rewriting, gli errori nei test risultano particolarmente chiari e dettagliati, %facilitando il debugging.
+%%%%%%%%%%%%%%%%%%%%%%
 
 Pytest offre anche funzionalità avanzate come la parametrizzazione, utile per eseguire lo stesso test su più casi di input.
 
@@ -957,9 +960,9 @@ Questa sezione descrive i test relativi alla classe base BaseAIStrategy. Essendo
 \hline
 \textbf{Codice} & \textbf{Descrizione} & \textbf{Stato} \\
     \hline
-    \prossimoUT & Il build() di BaseAIStrategy lancia NotImplementedError apposta, per obbligare le sottoclassi a reimplementarlo. Il test \gls{verifica} che questo meccanismo funzioni: se qualcuno chiama build() sulla classe base, deve ottenere quell'errore. & Pass \\
+    \prossimoUT & Il metodo \texttt{build()} di BaseAIStrategy lancia NotImplementedError apposta, per obbligare le sottoclassi a reimplementarlo. Il test \gls{verifica} che questo meccanismo funzioni: se qualcuno chiama  \texttt{build()} sulla classe base, deve ottenere quell'errore. & Pass \\
     \hline
-    \prossimoUT & \gls{Verifica} che la classe base definisca una variabile di classe \texttt{temperature} di default (float), necessaria per le configurazioni di base. & Pass \\
+    \prossimoUT & \gls{Verifica} che la classe base definisca una variabile di classe \texttt{temperature} di default (\texttt{float}), necessaria per le configurazioni di base. & Pass \\
     \hline
 \end{tabular}
 
@@ -976,11 +979,11 @@ In questa sezione vengono testate le funzionalità della classe SimplePromptStra
 \begin{tabular}{|l|p{12cm}|c|}
 \hline
 \textbf{Codice} & \textbf{Descrizione} & \textbf{Stato} \\ \hline
-\prossimoUT & \gls{Verifica} la forma dell'output: build() deve restituire esattamente una tupla/lista di 2 elementi, entrambi stringhe. & Pass \\ \hline
+\prossimoUT & \gls{Verifica} la forma dell'output: \texttt{build()} deve restituire esattamente una tupla/lista di 2 elementi, entrambi stringhe. & Pass \\ \hline
 \prossimoUT & \gls{Verifica} che il role appaia effettivamente nel \gls{system \gls{prompt}}. & Pass \\ \hline
 \prossimoUT & \gls{Verifica} che la frase fissa di comportamento, quella che dice all'AI di non fare preamboli, sia sempre presente nel \gls{system \gls{prompt}}, indipendentemente dal ruolo scelto. & Pass \\ \hline
 \prossimoUT & \gls{Verifica} che il task appaia nello user promt. & Pass \\ \hline
-\prossimoUT & \gls{Verifica} che il testo passato a build() finisca nello \gls{user \gls{prompt}}. & Pass \\ \hline
+\prossimoUT & \gls{Verifica} che il testo passato a \texttt{build()} finisca nello \gls{user \gls{prompt}}. & Pass \\ \hline
 \prossimoUT & \gls{Verifica} che tutte le funzionalità di scrittura hanno role e task corretti. & Pass \\ \hline
  
 \end{tabular}
@@ -1023,7 +1026,7 @@ Qui vengono descritti i test relativi alla strategia basata sui “Sei Cappelli 
 \prossimoUT & \gls{Verifica} che tutti i 6 cappelli funzionino correttamente. & Pass \\ \hline
  
 \end{tabular}
-\caption{Tabella unit tests per i 6 Cappelli di De Bono}
+\caption{Tabella unit tests per i Sei Cappelli di De Bono}
 \end{table}
 
 \paragraph{TestStrategiesDict}
@@ -1037,16 +1040,16 @@ Questa sezione valida la correttezza del dizionario che raccoglie tutte le strat
 \textbf{Codice} & \textbf{Descrizione} & \textbf{Stato} \\ \hline
 \prossimoUT & \gls{Verifica} che tutte le strategies attese siano presenti & Pass \\ \hline
 \prossimoUT & \gls{Verifica} che tutti i valori siano istanze di BaseAIStrategy & Pass \\ \hline
-\prossimoUT & Tutte le strategies producano due stringhe non vuote. & Pass \\ \hline
-\prossimoUT & Le funzionalità di scrittura sono istanze di SimplePromptStrategy & Pass \\ \hline
-\prossimoUT & Le traduzioni sono istanze di TranslationStrategy & Pass \\ \hline
-\prossimoUT & I cappelli sono istanze di DeBonoHatStrategy & Pass \\ \hline
+\prossimoUT & Verifica che tutte le strategies producano due stringhe non vuote. & Pass \\ \hline
+\prossimoUT & Verifica che le funzionalità di scrittura sono istanze di SimplePromptStrategy & Pass \\ \hline
+\prossimoUT & Verifica che le traduzioni sono istanze di TranslationStrategy & Pass \\ \hline
+\prossimoUT & Verifica che i cappelli sono istanze di DeBonoHatStrategy & Pass \\ \hline
 \end{tabular}
 \caption{Tabella unit tests di TestStrategiesDict}
 \end{table}
 
 \subsubsection{Casi limite}
-In questa sezione vengono analizzati i comportamenti del sistema in condizioni estreme o non standard. L’obiettivo è verificare la robustezza delle strategie rispetto a input insoliti, garantendo stabilità e prevedibilità anche in situazioni limite.
+In questa sezione vengono analizzati i comportamenti del sistema in condizioni limite o non standard. L’obiettivo è verificare la robustezza delle strategie rispetto a input insoliti, garantendo stabilità e prevedibilità anche in situazioni limite.
 
 \paragraph{Stringa vuota}
 Questa sottosezione \gls{verifica} il comportamento delle strategie quando ricevono una stringa vuota in input. I test assicurano che il sistema non generi errori e continui a produrre output validi.
@@ -1074,7 +1077,8 @@ In questa sottosezione vengono testati input particolari come stringhe composte 
 \hline
 \textbf{Codice} & \textbf{Descrizione} & \textbf{Stato} \\ \hline
 \prossimoUT & \gls{Verifica} che SimplePromptStrategy accetti input con solo spazi. & Pass \\ \hline
-\prossimoUT & \gls{Verifica} che SimplePromptStrategy accetti testi molto lunghi (>10000). & Pass \\ \hline
+\prossimoUT & \gls{Verifica} che SimplePromptStrategy accetti testi molto lunghi $(>10000)$. & Pass \\ \hline
+\prossimoUT & \gls{Verifica} che DeBonoHatStrategy gestisca newline e tab nell'input. & Pass \\ \hline
 
 \end{tabular}
 \caption{Tabella unit tests per casi limite (solo spazi o testo lungo)}
@@ -1090,7 +1094,6 @@ Questa sottosezione \gls{verifica} la capacità del sistema di gestire caratteri
 \textbf{Codice} & \textbf{Descrizione} & \textbf{Stato} \\ \hline
 \prossimoUT & \gls{Verifica} che TranslationStrategy gestisca emoji e simboli speciali nell'input. & Pass \\ \hline
 \prossimoUT & \gls{Verifica} che TranslationStrategy gestisca caratteri non latini nell'input. & Pass \\ \hline
-\prossimoUT & \gls{Verifica} che DeBonoHatStrategy gestisca newline e tab nell'input. & Pass \\ \hline
  
 \end{tabular}
 \caption{Tabella unit tests per casi limite (caratteri speciali)}
