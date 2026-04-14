@@ -1,0 +1,352 @@
+\documentclass[11pt,a4paper]{article}
+\newcommand{\gls}[1]{#1\textsubscript{G}}
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+
+\usepackage{array}
+\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
+
+\geometry{margin=2.5cm}
+
+% Intestazione e piè di pagina
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[C]{\thepage\ di \pageref{LastPage}}
+
+\begin{document}
+
+% Prima pagina - Intestazione
+\begin{titlepage}
+    \centering
+    
+    % Logo Università
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.3\textwidth]{../logoUnipd.jpg}
+    \end{figure}
+    
+    \vspace{0.5cm}
+    
+    \textbf{\Large Università degli Studi di Padova} \\
+    \vspace{0.2cm}
+    \textbf{Laurea in Informatica} \\
+    \vspace{0.2cm}
+    \textbf{Corso di Ingegneria del Software} \\
+    \vspace{0.2cm}
+    \textbf{Anno Accademico 2025/2026} \\
+    
+    \vspace{1cm}
+    
+    % Logo gruppo
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.2\textwidth]{../LogoByteMe.jpg}
+    \end{figure}
+    
+    \vspace{0.5cm}
+    
+    \textbf{\Large Gruppo ByteMe} \\
+    \vspace{0.2cm}
+    \texttt{byteme2025swe@gmail.com} \\
+    
+    \vspace{1cm}
+    
+    \textbf{\Huge \gls{Specifica Tecnica}} \\
+    
+    \vspace{1.5cm}
+    
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{|l|p{5cm}|}
+            \hline
+            \textbf{Versione} & 0.0.2 \\
+            \hline
+            \textbf{Stato} & In corso \\
+            \hline
+            \textbf{Redazione} & Giulia Barzon \\
+            \hline
+            \textbf{\gls{Verifica}} & Verificato \\
+            \hline
+            \textbf{Approvazione} & Da approvare\\
+            \hline
+            \textbf{Proprietario} & ByteMe \\
+            \hline
+            \textbf{Uso} & Esterno \\
+            \hline
+            \textbf{Destinatari} & Prof. Tullio Vardanega \\ & Prof. Riccardo Cardin \\
+            \hline
+        \end{tabular}
+    \end{table}
+    
+    \vfill
+\end{titlepage}
+
+% Seconda pagina - Versionamento
+\thispagestyle{empty}
+\section*{Registro dei Cambiamenti}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|c|>{\raggedright\arraybackslash}p{0.35\textwidth}|p{0.18\textwidth}|}
+        \hline
+        \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{\gls{Verifica}} \\
+        \hline
+        0.0.2 & 14/04/2026 & Joseph Grant & Aggiunta tecnologie e architettura & \\
+        \hline
+        0.0.1 & 28/03/2026 & Giulia Barzon & Creazione del documento, scrittura introduzione & Tommaso Tombacco \\
+        \hline
+    \end{tabular}
+    \caption{Registro delle versioni del documento}
+    \label{tab:versionamento}
+\end{table}
+\newpage
+
+% Terza pagina - Indice
+\tableofcontents
+\thispagestyle{empty}
+\newpage
+
+% Dalla quarta pagina - Contenuto principale
+\setcounter{page}{1}
+
+\section{Introduzione}
+\subsection{Scopo del documento}
+Il presente documento costituisce la \textbf{\gls{Specifica Tecnica}} del prodotto
+\textit{Second Brain}, proposto dall'azienda \textit{Zucchetti} al
+gruppo ByteMe.
+ 
+Il documento descrive in dettaglio:
+\begin{itemize}
+  \item le \textbf{tecnologie} adottate (linguaggi, framework, librerie, strumenti);
+  \item l'\textbf{architettura} logica e fisica del sistema, con i pattern architetturali scelti;
+  \item i \textbf{design pattern} applicati a livello di componenti, con motivazione delle scelte;
+  \item la \textbf{documentazione \gls{API}} tra frontend e backend;
+  \item i \textbf{requisiti soddisfatti} con riferimento al documento \textit{\gls{Analisi dei Requisiti}} v1.4.1.
+\end{itemize}
+ 
+Il documento è rivolto al team di sviluppo come guida implementativa e a
+committente e proponente come \gls{verifica} della coerenza tra scelte progettuali e requisiti concordati.
+ 
+\subsection{Approccio alla redazione}
+Il documento viene redatto in modo \textbf{incrementale}, assicurando coerenza con gli sviluppi in corso. Non puo essere considerato completo fino al rilascio della versione 1.0.0.
+
+\subsection{Scopo del prodotto}
+Il progetto \textit{Second Brain} mira a sviluppare un \gls{editor di testo} avanzato basato sul linguaggio \gls{Markdown} e potenziato dall'integrazione di Large Language Model (LLM).
+L'applicazione web consentira all'utente di:
+\begin{itemize}
+  \item scrivere e visualizzare in tempo reale testi formattati in \gls{Markdown};
+  \item interagire con un LLM per riassumere, correggere, riscrivere e tradurre testi;
+  \item ottenere analisi critiche multi-prospettiche secondo il metodo dei \textit{Sei Cappelli per Pensare} di Edward De Bono;
+  \item delegare all'AI la stesura completa di un testo tramite \gls{Distant Writing}.
+\end{itemize}
+ 
+\subsection{\gls{Glossario}}
+Per evitare ambiguità, i termini tecnici usati nel documento vengono definiti in modo più approfondito nel documento \gls{Glossario} v2.0.0 che si può trovare nel sito web del gruppo ByteMe alla sezione Documenti Interni e raggiungibile dal seguente link:\\
+\href{https://byteme25.github.io/ByteMe/files.html}{ByteMe/\gls{Glossario} v2.0.0}
+
+I termini che vengono considerati meritevoli di approfondimenti sono indicati con una G a pedice.
+
+
+\subsection{Riferimenti}
+\begin{itemize}
+  \item \textit{\gls{Norme di Progetto}} versione 2.0.0\\
+  \href{https://byteme25.github.io/ByteMe/files.html}{ByteMe/\gls{Norme di Progetto} v2.0.0}
+  \item Capitolato d'appalto C6: \textit{Second Brain} (Zucchetti S.p.A.)\\ \url{https://www.math.unipd.it/~tullio/IS-1/2025/Progetto/C6.pdf}
+  \item Regolamento del progetto didattico:\\
+        \url{https://www.math.unipd.it/~tullio/IS-1/2023/Dispense/PD2.pdf}
+\end{itemize}
+ 
+\subsubsection{Riferimenti informativi}
+\begin{itemize}
+    \item \textit{\gls{Analisi dei Requisiti}} versione 2.0.0 (Ultimo accesso: 01/04/2026)\\
+    \href{https://byteme25.github.io/ByteMe/}{PB - \gls{Analisi dei Requisiti} v2.0.0}
+    \item \textit{Piano di Qualifica} versione 1.0.0 (Ultimo accesso: 01/04/2026) \\
+    \href{https://byteme25.github.io/ByteMe/}{PB - Piano di Qualifica v2.0.0}
+    \item Verbali interni ed esterni
+    \item \gls{Glossario} v2.0.0 (Ultimo accesso: 01/04/2026)\\
+    \href{https://byteme25.github.io/ByteMe/files.html}{Documenti interni - \gls{Glossario} v2.0.0}
+    \item \gls{Repository} ufficiale di \gls{EasyMDE}: \url{https://github.com/Ionaru/easy-markdown-editor}\\ (Ultimo accesso: 24/03/2026)
+     \item Documentazione linguaggio \gls{markdown} - CommonMark: \url{https://commonmark.org/}\\ (Ultimo accesso: 20/02/2026)
+    \item Documentazione \gls{React} 19: \url{https://react.dev}\\ Ultimo accesso: 27/03/2026
+    \item Principi del Bulletproof \gls{React} (\gls{repository} ufficiale): \url{https://github.com/alan2207/bulletproof-react}\\ (Ultimo accesso: 27/03/2026)
+    \item Documentazione \gls{Flask}: \url{https://flask.palletsprojects.com}\\ (Ultimo accesso: 10/03/2026)
+    \item Documentazione \gls{Docker}: \url{https://docs.docker.com}\\ (Ultimo accesso: 27/02/2026)
+    \item Documentazione TypeScript: \url{https://www.typescriptlang.org/docs/}\\ (Ultimo accesso: 27/03/2026)
+
+    \item Slide del corso di Ingegneria del Software\\ (Ultimo accesso: 27/03/2026)
+    \item Principi SOLID (slide prof. Cardin)
+    \item Pattern architetturali (slide prof. Cardin)
+\end{itemize}
+
+\subsection{Tecnologie}
+\subsubsection{Framework frontend}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|l|c|>{\raggedright\arraybackslash}p{0.35\textwidth}|p{0.18\textwidth}|}
+        \hline
+        \textbf{Nome} & \textbf{versione} & \textbf{Descrizione} \\
+        \hline
+        React & 19.2.0 & Libreria JavaScript per la costruzione di interfacce utente basate su componenti riutilizzabili. \\
+        \hline
+    \end{tabular}
+    \caption{Descrizione del framework frontend}
+    \label{tab:framework_frontend}
+\end{table}
+\subsubsection{Librerie frontend}
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{|l|c|>{\raggedright\arraybackslash}p{0.35\textwidth}|p{0.18\textwidth}|}
+            \hline
+            \textbf{Nome} & \textbf{versione} & \textbf{Descrizione} \\
+            \hline
+            EasyMDE & 2.20.0 & Editor Markdown con anteprima in tempo reale, basato su CodeMirror. \\
+            \hline
+            Axios & 1.7.9 & Client HTTP basato su Promise per effettuare richieste REST dal browser e da Node.js. \\
+            \hline
+            TanStack Query & - & Libreria per la gestione del fetching, caching e sincronizzazione dello stato server in React. \\
+            \hline
+            CSS Modules & - & Sistema di scope locale per i fogli di stile CSS, che evita conflitti tra classi in componenti diversi. \\
+            \hline
+            React Hot Toast & - & Libreria leggera per la visualizzazione di notifiche toast personalizzabili in React. \\
+            \hline
+            eslint & 9.31.1 & Strumento di linting per JavaScript e TypeScript, che aiuta a mantenere uno stile di codice coerente e a individuare errori. \\
+            \hline
+        \end{tabular}
+        \caption{Descrizione delle librerie frontend}
+        \label{tab:librerie_frontend}
+    \end{table}
+\subsubsection{Linguaggio frontend}
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{|l|c|>{\raggedright\arraybackslash}p{0.35\textwidth}|p{0.18\textwidth}|}
+            \hline
+            \textbf{Nome} & \textbf{versione} & \textbf{Descrizione} \\
+            \hline
+            TypeScript & - & Superset tipizzato di JavaScript che aggiunge tipizzazione statica e migliora la manutenibilità del codice. \\
+            \hline
+            TSX & - & Estensione di TypeScript che consente di scrivere markup JSX all'interno di file tipizzati, usata per i componenti React. \\
+            \hline
+        \end{tabular}
+        \caption{Descrizione dei linguaggi frontend}
+        \label{tab:linguaggi_frontend}
+    \end{table}
+\subsubsection{Tecnologie di build}
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{|l|c|>{\raggedright\arraybackslash}p{0.35\textwidth}|p{0.18\textwidth}|}
+            \hline
+            \textbf{Nome} & \textbf{versione} & \textbf{Descrizione} \\
+            \hline
+            Vite & 7.3.1 & Build tool moderno e veloce per applicazioni web, con supporto nativo a ES modules e Hot Module Replacement. \\
+            \hline
+        \end{tabular}
+        \caption{Descrizione delle tecnologie di build}
+        \label{tab:tecnologie_build}
+    \end{table}
+\subsubsection{Tecnologie di test}
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{|l|c|>{\raggedright\arraybackslash}p{0.35\textwidth}|p{0.18\textwidth}|}
+            \hline
+            \textbf{Nome} & \textbf{versione} & \textbf{Descrizione} \\
+            \hline
+            Vitest & 4.1.4 & Framework di testing per applicazioni Vite, compatibile con l'API di Jest e ottimizzato per TypeScript. \\
+            \hline
+            Pytest & 7.0.0 & Framework di testing per Python, con sintassi semplice e supporto a fixture, parametrizzazione e plugin. \\
+            \hline
+            testing library React & 16.3.2 & Libreria per il testing di componenti React, che fornisce utilities per interagire con i componenti in modo simile a come un utente reale lo farebbe. \\
+            \hline
+        \end{tabular}
+        \caption{Descrizione delle tecnologie di test}
+        \label{tab:tecnologie_test}
+    \end{table}
+\subsubsection{Framework api backend}
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{|l|c|>{\raggedright\arraybackslash}p{0.35\textwidth}|p{0.18\textwidth}|}
+            \hline
+            \textbf{Nome} & \textbf{versione} & \textbf{Descrizione} \\
+            \hline
+            Flask & - & Microframework Python per lo sviluppo di API REST, leggero ed estensibile tramite plugin. \\
+            \hline
+        \end{tabular}
+        \caption{Descrizione del framework api backend}
+        \label{tab:api_backend}
+    \end{table}
+\subsubsection{Linguaggio backend}
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{|l|c|>{\raggedright\arraybackslash}p{0.35\textwidth}|p{0.18\textwidth}|}
+            \hline
+            \textbf{Nome} & \textbf{versione} & \textbf{Descrizione} \\
+            \hline
+            Python & 3.12-slim & Linguaggio di programmazione ad alto livello, utilizzato per la logica di business e l'implementazione delle API. \\
+            \hline
+        \end{tabular}
+        \caption{Descrizione del linguaggio backend}
+        \label{tab:linguaggio_backend}
+    \end{table}
+\subsubsection{Server backend}
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{|l|c|>{\raggedright\arraybackslash}p{0.35\textwidth}|p{0.18\textwidth}|}
+            \hline
+            \textbf{Nome} & \textbf{versione} & \textbf{Descrizione} \\
+            \hline
+            - & - & - \\
+            \hline
+        \end{tabular}
+        \caption{Descrizione del server backend}
+        \label{tab:server_backend}
+    \end{table}
+\subsubsection{Tecnologie deployment}
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{|l|c|>{\raggedright\arraybackslash}p{0.35\textwidth}|p{0.18\textwidth}|}
+            \hline
+            \textbf{Nome} & \textbf{versione} & \textbf{Descrizione} \\
+            \hline
+            Docker & - & Piattaforma per la containerizzazione delle applicazioni, che garantisce ambienti riproducibili e portabili. \\
+            \hline
+        \end{tabular}
+        \caption{Descrizione delle tecnologie di deployment}
+        \label{tab:tecnologie_deployment}
+    \end{table}
+
+\subsection{Architettura}
+\subsubsection{Architettura backend}
+\subsubsection{UML backend}
+Per lo sviluppo del backend, abbiamo deciso di utilizzare un'architettura a monolite, che comunica in modalità REST con il frontend. 
+Abbiamo usato una struttura layered a tre livelli per il monolite:
+\begin{itemize}
+    \item \textbf{Presentation Layer}: ricezione delle richieste HTTP, controlli sulla validità dei dati. \\
+    \item \textbf{Business Layer}: Costruzione del prompt, selezione del modello IA. \\
+    \item \textbf{Data Layer}: Gestione delle chiamate ai modelli IA. \\
+\end{itemize}
+
+\subsection{Deployment}
+Per il deployment abbiamo scelto di usare Docker, che ci permette di creare container isolati per il frontend e il backend, 
+garantendo coerenza tra gli ambienti di sviluppo e produzione. Ogni componente ha un proprio Dockerfile che definisce 
+le dipendenze e la configurazione necessaria per l'esecuzione. \\
+
+\subsection{Architettura frontend}
+\subsubsection{UML frontend}
+Per il frontend, abbiamo adottato un'architettura MVVM (Model-View-ViewModel) che si adatta bene al paradigma dei componenti di React.
+
+\subsection{}
+
+
+
+
+
+\end{document}
