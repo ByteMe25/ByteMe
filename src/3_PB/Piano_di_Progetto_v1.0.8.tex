@@ -67,7 +67,7 @@
         \centering
         \begin{tabular}{|l|p{5cm}|}
             \hline
-            \textbf{Versione} & 1.0.8 \\
+            \textbf{Versione} & 1.0.9 \\
             \hline
             \textbf{Stato} & Da approvare\\
             \hline
@@ -98,6 +98,7 @@
     \begin{tabular}{|c|c|c|>{\raggedright\arraybackslash}p{0.35\textwidth}|p{0.18\textwidth}|}
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{\gls{Verifica}} \\
+        1.0.9 & 14/04/2026 & Joseph Grant & Review e retrospettiva \gls{sprint} 13, preventivo \gls{sprint} 14 & \\
         \hline
         1.0.8 & 07/04/2026 & Giulia Barzon & Review e retrospettiva \gls{sprint} 11, preventivo \gls{sprint} 12 & \\
         \hline
@@ -2048,9 +2049,120 @@ Il margine residuo disponibile per completare la fase PB e l'intero progetto è 
 
 
 \subsubsection{Review}
+Durante lo \gls{sprint} 12 il gruppo ha completato le seguenti attività:
+\begin{itemize}
+    \item \textbf{Progettazione}: Modificati i diagrammi delle classi. Il gruppo è in attesa di un ulteriore riscontro da parte del Prof. Cardin (fissata per il 15/04);
+    \item \textbf{Backend}: In fase di completamento. Mancano alcune rifattorizzazioni secondo l'architettura scelta.
+\end{itemize}
+
+\subsubsection{Consuntivo orario}
+\begin{center}
+    \begin{tabular}{|l|c|c|c|c|c|c|c|}
+        \hline
+        \textbf{Membro} & \textbf{Re} & \textbf{Am} & \textbf{An} & \textbf{Pj} & \textbf{Pg} & \textbf{Ve} & \textbf{Totale} \\
+        \hline
+        Joseph Grant & 0 & 0 & 0 & 6 & 0 & 0 & 6 \\
+        \hline
+        Chiara Grossele & 0 & 0 & 0 & 0 & 0 & 6 & 6 \\
+        \hline
+        Tommaso Tombacco & 0 & 0 & 0 & 3 & 4 & 0 & 7 \\
+        \hline
+        Elisa Marchioro & 1 & 0 & 0 & 0 & 5 & 0 & 6 \\
+        \hline
+        Giulia Barzon & 0 & 2 & 0 & 0 & 6 & 0 & 8 \\
+        \hline
+        Matteo Cuogo & 0 & 0 & 0 & 0 & 5 & 0 & 5 \\
+        \hline
+        \textbf{Ore totali} & 1 & 2 & 0 & 9 & 20 & 6 & 38 \\
+        \hline
+        \textbf{Costo totale} & 30 & 40 & 0 & 225 & 300 & 90 & 685 \\
+        \hline
+    \end{tabular}
+\end{center}
+
+\noindent \textbf{Legenda}: Re = Responsabile, Am = Amministratore, An = Analista, Pj = Progettista, Pg = Programmatore, Ve = Verificatore.
+
+\subsubsection{Retrospettiva}
+\paragraph{Grado di raggiungimento degli obiettivi}
+Gli obiettivi sono stati raggiunti quasi interamente. Durante la fase di progettazione è nata l'esigenza di un'ulteriore confronto con il prof. Cardin.
+Il backend è quasi finito, tutte le funzionalità e relativi test sono stati implementati.
+La documentazione della specifica tecnica è in fase di stesura, e verrà terminata quando sono vengono definiti tutti i dettagli progettuali.
+Per via dei dubbit in fase progettuale, legati al lato frontend, il gruppo ha usato molte più ore da programmatore per terminare il backend e meno di progettista, rispetto a quanto preventivato.
+
+\paragraph{Misure correttive pianificate e valutazione dei rischi}
+\begin{itemize}
+    \item \textbf{Rischio RO-2 (Disaccordi)}: Organizzazione di incontri con prof. Cardin e proponente Zucchetti per chiarire dubbi progettuali.
+\end{itemize}
+
+\paragraph{Preventivo a finire (EAC aggiornato)}
+Il consuntivo dello \gls{sprint} 11 ammonta a \textbf{685 euro}, meno di quanto preventivato.
+Il costo cumulato del progetto (PAC) aggiornato risulta pari a \textbf{7.612,50 euro} (6.927,50 dallo \gls{sprint} 11 + 685). 
+Il margine residuo disponibile per completare la fase PB e l'intero progetto è di \textbf{3.782,50 euro}.
+
 
 
 \newpage
 
+
+% --------------------------------------------
+% SPRINT 13 (PB)
+% --------------------------------------------
+\subsection{\gls{Sprint} 13: PB - Progettazione, Codice e testing MVP}
+{\textbf{Periodo: 7 aprile 2026 - 13 aprile 2026}\par}
+
+\subsubsection{Pianificazione}
+\begin{itemize}
+    \item \textbf{Data inizio}: 14 aprile 2026
+    \item \textbf{Data fine}: 20 aprile 2026
+        \item \textbf{Obiettivi}:
+    \begin{itemize}
+        \item Riunione con il prof. Cardin per validare e chiarire dubbi riguardo l'architettura del MVP e i diagrammi fatti;
+        \item Completamento della fase di progettazione;
+        \item Completamento codice e test backend;
+        \item Scrittura della \gls{Specifica Tecnica};
+        \item Aggiornamento dei documenti di progetto.
+    \end{itemize}
+    
+    \item \textbf{Ruoli assegnati}:
+    \begin{itemize}
+        \item Matteo Cuogo: Programmatore e Verificatore
+        \item Giulia Barzon: Programmatore 
+        \item Elisa Marchioro: Programmatore
+        \item Joseph Grant: Amministratore e Responsabile
+        \item Chiara Grossele: Verificatore e Amministratore
+        \item Tommaso Tombacco: Programmatore e Progettista
+    \end{itemize}
+    \item \textbf{Rischi attesi}: RO-1, RO-3, RT-1, RT-2, RT-3
+\end{itemize}
+
+\subsubsection{Preventivo orario}
+\begin{center}
+    \begin{tabular}{|l|c|c|c|c|c|c|c|}
+        \hline
+        \textbf{Membro} & \textbf{Re} & \textbf{Am} & \textbf{An} & \textbf{Pj} & \textbf{Pg} & \textbf{Ve} & \textbf{Totale} \\
+        \hline
+        Joseph Grant & 2 & 5 & 0 & 0 & 0 & 0 & 7 \\
+        \hline
+        Chiara Grossele & 0 & 5 & 0 & 0 & 0 & 2 & 7 \\
+        \hline
+        Tommaso Tombacco & 0 & 0 & 0 & 4 & 3 & 0 & 7 \\
+        \hline
+        Elisa Marchioro & 0 & 0 & 0 & 0 & 8 & 0 & 8 \\
+        \hline
+        Giulia Barzon & 0 & 0 & 0 & 0 & 8 & 0 & 8 \\
+        \hline
+        Matteo Cuogo & 0 & 0 & 0 & 0 & 6 & 2 & 8 \\
+        \hline
+        \textbf{Ore totali} & 2 & 10 & 0 & 4 & 25 & 4 & 45 \\
+        \hline
+        \textbf{Costo totale} & 60 & 200 & 0 & 100 & 375 & 60 & 795 \\
+        \hline
+    \end{tabular}
+\end{center}
+
+\noindent \textbf{Legenda}: Re = Responsabile, Am = Amministratore, An = Analista, Pj = Progettista, Pg = Programmatore, Ve = Verificatore.
+
+
+\subsubsection{Review}
 
 \end{document}
