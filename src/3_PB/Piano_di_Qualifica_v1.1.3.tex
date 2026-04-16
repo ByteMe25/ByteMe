@@ -103,6 +103,8 @@
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{\gls{Verifica}} \\
         \hline
+        1.1.3 & 16/04/2026 & Matteo Cuogo & Aggiunte descrizioni ad ulteriori test & \\
+        \hline
         1.1.2 & 12/04/2026 & Giulia Barzon & Aggiunta spiegazione metriche di \gls{qualità dell'output generativo} & \\
         \hline
         1.1.1 & 11/04/2026 & Elisa Marchioro & Mini fix & Giulia Barzon e Chiara Grossele\\
@@ -1241,7 +1243,6 @@ I test hanno lo scopo di verificare il corretto funzionamento delle strategie, i
 \prossimoUT & \gls{Verifica} che la classe base non possa essere usata direttamente. & Pass \\ \hline
 \prossimoUT & \gls{Verifica} che get\_model restituisca sempre la stessa istanza (Singleton). & Pass \\ \hline
 \prossimoUT & \gls{Verifica} che la strategia Llama chiami correttamente il client OpenAI. & Pass \\ \hline
-\prossimoUT & \gls{Verifica} che la strategia Gemma utilizzi il modello corretto e accetti la \gls{temperatura}. & Pass \\ \hline
 \prossimoUT & \gls{Verifica} che la strategia Llama gestisca (o sollevi) errori dall'\gls{API}. & Pass \\ \hline
 \prossimoUT & \gls{Verifica} che get\_model distingua correttamente tra tipi diversi di modelli. & Pass \\ \hline
 \prossimoUT & \gls{Verifica} che le istanze create siano del tipo corretto e non si sovrappongano. & Pass \\ \hline
@@ -1274,6 +1275,9 @@ I test verificano la correttezza del registro delle operazioni, la validità del
 \prossimoUT & \gls{Verifica} che l'operazione di default esista nel registro. & Pass \\ \hline
 \prossimoUT & \gls{Verifica} che ogni operazione abbia una classe modello valida e una strategia di \gls{prompt} corretta. & Pass \\ \hline
 \prossimoUT & \gls{Verifica} specifica che 'summary' usi la strategia di riassunto. & Pass \\ \hline
+\prossimoUT & \gls{Verifica} specifica che 'fix grammar' usi la strategia di correzione grammaticale. & Pass \\ \hline
+\prossimoUT & \gls{Verifica} specifica che 'rewrite' usi la strategia di riscrittura. & Pass \\ \hline
+\prossimoUT & \gls{Verifica} specifica che 'distant writing' generi un prompt coerente. & Pass \\ \hline
 \prossimoUT & \gls{Verifica} che nessuna operazione sia configurata a None. & Pass \\ \hline
 \prossimoUT & \gls{Verifica} che ogni operazione usi un'istanza di strategia diversa. & Pass \\ \hline
 \prossimoUT & Valida che tutte le chiavi del registro usino lo standard snake\_case (minuscole e underscore). & Pass \\ \hline
