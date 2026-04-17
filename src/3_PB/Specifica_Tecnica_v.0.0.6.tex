@@ -518,29 +518,29 @@ Il componente HistoryCard è il componente che rappresenta la scheda di una inte
 Il design pattern comportamentale Strategy definisce una famiglia di algoritmi, li incapsula in classi separate e li rende intercambiabili in modo dinamico.
 \subsubsection{Problema}
 L’architettura iniziale del backend presentava un'eccessiva complessità logica dovuta alla gestione di molteplici modelli LLM e diverse logiche di prompting. La presenza di numerosi blocchi condizionali (if/else o switch) all'interno dell'entry point (app.py) rendeva il codice rigido, difficile da scalare e violava il principio di singola responsabilità (Single Responsibility Principle).
-\subsubsection{Applicazione Prompt Strategies (ai\_strategies.py)}
+\subsubsection{Applicazione \gls{Prompt} Strategies (ai\_strategies.py)}
 Questa prima applicazione del pattern gestisce la trasformazione del testo grezzo fornito dall'utente in un input strutturato e ottimizzato per l'IA.
 
-\paragraph{BaseAIStrategy} definisce il contratto comune per tutte le strategie di generazione dei prompt.
+\paragraph{BaseAIStrategy} definisce il contratto comune per tutte le strategie di generazione dei \gls{prompt}.
 Metodi:
 \begin{itemize}
-    \item build(text: str) impone a ogni sottoclasse di restituire una tupla contenente due stringhe: il System Prompt (il ruolo dell'IA) e lo User Prompt (il task specifico).
+    \item build(text: str) impone a ogni sottoclasse di restituire una tupla contenente due stringhe: il \gls{System \gls{Prompt}} (il ruolo dell'IA) e lo \gls{User \gls{Prompt}} (il task specifico).
 \end{itemize}
-\paragraph{SimplePromptStrategy} utilizzata per le operazioni editoriali standard (riassunto, correzione grammaticale, riscrittura, distant writing). Costruisce prompt diretti impostando un ruolo e istruzioni ferree per evitare preamboli discorsivi nella risposta dell'IA.\\
+\paragraph{SimplePromptStrategy} utilizzata per le operazioni editoriali standard (riassunto, correzione grammaticale, riscrittura, \gls{distant writing}). Costruisce \gls{prompt} diretti impostando un ruolo e istruzioni ferree per evitare preamboli discorsivi nella risposta dell'IA.\\
 Attributi:
 \begin{itemize}
     \item role: definisce l'identità dell'assistente (es. "Sei un correttore di bozze").
     \item task: definisce l'istruzione specifica da eseguire.
 \end{itemize}
 \paragraph{TranslationStrategy} 
-sottoclasse concreta specializzata nella gestione delle attività di traduzione multilingua. A differenza della strategia semplice, questa classe ottimizza il prompt per garantire che l'LLM operi esclusivamente come traduttore professionale, mantenendo la fedeltà linguistica senza aggiungere metatesto.
+sottoclasse concreta specializzata nella gestione delle attività di traduzione multilingua. A differenza della strategia semplice, questa classe ottimizza il \gls{prompt} per garantire che l'LLM operi esclusivamente come traduttore professionale, mantenendo la fedeltà linguistica senza aggiungere metatesto.
 \\Attributi:
 \begin{itemize}
     \item language: stringa che definisce la lingua di destinazione (es. "inglese", "cinese mandarino"). Questo attributo viene utilizzato per parametrizzare dinamicamente la richiesta al modello.
 \end{itemize}
 Metodi:
 \begin{itemize}
-    \item build(text): Implementa la logica di costruzione del prompt impostando un System Prompt rigido che definisce il ruolo (traduttore professionista) e i vincoli di output (nessuna frase introduttiva). Lo User Prompt include l'istruzione di traduzione specifica verso la lingua memorizzata nell'attributo language.
+    \item build(text): Implementa la logica di costruzione del \gls{prompt} impostando un \gls{System \gls{Prompt}} rigido che definisce il ruolo (traduttore professionista) e i vincoli di output (nessuna frase introduttiva). Lo \gls{User \gls{Prompt}} include l'istruzione di traduzione specifica verso la lingua memorizzata nell'attributo language.
 \end{itemize}
 
 \paragraph{DeBonoHatStrategy}
@@ -552,25 +552,25 @@ La classe DeBonoHatStrategy è una sottoclasse concreta progettata per implement
 \end{itemize}
 Metodi: \\
 \begin{itemize}
-    \item build(self, text): Utilizza le f-string per iniettare i valori di hat\_name e focus all'interno dei prompt.
+    \item build(self, text): Utilizza le f-string per iniettare i valori di hat\_name e focus all'interno dei \gls{prompt}.
 \end{itemize}
 
 \subsubsection{Applicazione Model Strategies
 (model\_strategies.py)}
-Questa seconda applicazione del pattern isola completamente i dettagli tecnici (Endpoint, API Keys, formattazione JSON della richiesta) necessari per comunicare con i diversi provider di Intelligenza Artificiale.
+Questa seconda applicazione del pattern isola completamente i dettagli tecnici (\gls{Endpoint}, \gls{API} Keys, formattazione JSON della richiesta) necessari per comunicare con i diversi provider di Intelligenza Artificiale.
 \paragraph{AIModelStrategy} interfaccia comune per tutti i modelli linguistici IA.
 \\Metodi:
 \begin{itemize}
-    \item generate(self, system\_prompt, user\_prompt): Definisce il contratto per l'invocazione del modello. Ogni classe concreta deve implementare la logica specifica per inviare i prompt al fornitore e restituire la risposta come stringa pulita.
+    \item generate(self, system\_prompt, user\_prompt): Definisce il contratto per l'invocazione del modello. Ogni classe concreta deve implementare la logica specifica per inviare i \gls{prompt} al fornitore e restituire la risposta come stringa pulita.
 \end{itemize}
 \paragraph{get\_model(model\_class: Type[AIModelStrategy]) $\rightarrow$ AIModelStrategy} La funzione get\_model() gestisce un dizionario globale privato (\_model\_instances) che funge da cache.
-Quando il controller richiede una specifica strategia di modello (es. ZucchettiLlamaStrategy), la funzione verifica se ne esiste già un'istanza nel dizionario. Se non esiste, la crea, la salva e la restituisce. Alle chiamate successive per la medesima classe, restituirà sempre l'istanza già memorizzata.
-Questa soluzione ottimizza drasticamente l'uso delle risorse, garantendo che per ogni tipo di modello LLM venga inizializzata e riutilizzata un'unica istanza del client API, prevenendo l'apertura di connessioni multiple non necessarie.
+Quando il controller richiede una specifica strategia di modello (es. ZucchettiLlamaStrategy), la funzione \gls{verifica} se ne esiste già un'istanza nel dizionario. Se non esiste, la crea, la salva e la restituisce. Alle chiamate successive per la medesima classe, restituirà sempre l'istanza già memorizzata.
+Questa soluzione ottimizza drasticamente l'uso delle risorse, garantendo che per ogni tipo di modello LLM venga inizializzata e riutilizzata un'unica istanza del client \gls{API}, prevenendo l'apertura di connessioni multiple non necessarie.
 
-\paragraph{ZucchettiLlamaStrategy} La classe ZucchettiLlamaStrategy è un'implementazione concreta dell'interfaccia AIModelStrategy. Rappresenta il connettore specifico per l'integrazione del modello Llama 3.2 ospitato sull'infrastruttura Zucchetti.
+\paragraph{ZucchettiLlamaStrategy} La classe ZucchettiLlamaStrategy è un'implementazione concreta dell'interfaccia AIModelStrategy. Rappresenta il connettore specifico per l'integrazione del modello \gls{Llama 3.2} ospitato sull'infrastruttura Zucchetti.
 \\ Metodi:
 \begin{itemize}
-    \item generate(system\_prompt, user\_prompt) Implementa la logica di chiamata API tramite il modulo OpenAI, gestisce la struttura della richiesta inviando i due messaggi (System e User) nel formato richiesto dal protocollo ChatCompletion ed estrae e restituisce esclusivamente il contenuto testuale della risposta, isolandolo dai metadati della chiamata (come i token consumati o gli ID di richiesta).
+    \item generate(system\_prompt, user\_prompt) Implementa la logica di chiamata \gls{API} tramite il modulo OpenAI, gestisce la struttura della richiesta inviando i due messaggi (System e User) nel formato richiesto dal protocollo ChatCompletion ed estrae e restituisce esclusivamente il contenuto testuale della risposta, isolandolo dai metadati della chiamata (come i token consumati o gli ID di richiesta).
 \end{itemize}
 
 \subsection{Registry}
