@@ -379,7 +379,7 @@ Astrae e confina le complessità tecniche di rete per la comunicazione con i pro
 \subsubsection{Servizi di Supporto al Dominio (text\_cleaning.py)}
 Un sottomodulo funzionale contenente un algoritmo basato su espressioni regolari (regex) atto a post-processare e "pulire" l'output fornito dai modelli linguistici. 
 
-\section{Pattern backend}
+\section{UML backend}
 
 
 \section{Deployment}
@@ -400,107 +400,113 @@ Componenti dumb che si occupano esclusivamente della presentazione dei dati e de
 \subsection{ViewModel}
 Si occupa della gestione dello stato delle componenti tramite hook realizzati mediante Zustand.
 
-\subsubsection{TopBar}
+\subsection{TopBar}
 Il componente TopBar contiene dei pulsanti che consentono di formattare il testo secondo la sintassi \gls{Markdown}.\\
-\textbf{attributi}:
+
+\textbf{Attributi}:
 \begin{itemize}
-    \item documentName: string - nome del documento
-\end{itemize}
-\textbf{metodi}:
-\begin{itemize}
-    \item onDocumentNameChange: (newName: string) => void - callback per aggiornare il nome del documento
-    \item onCloseDocument: () => void - callback per chiudere il documento
+    \item \texttt{documentName:string} - nome del documento
 \end{itemize}
 
-\subsubsection{SideBar}
+\textbf{Metodi}:
+\begin{itemize}
+    \item \texttt{onDocumentNameChange:(newName:string) => void} - callback per aggiornare il nome del documento
+    \item \texttt{onCloseDocument:() => void} - callback per chiudere il documento
+\end{itemize}
+
+\subsection{SideBar}
 Il componente SideBar contiene i pulsanti con le varie funzionalità AI.\\
-\textbf{attributi}:
+
+\textbf{Attributi}:
 \begin{itemize}
-    \item documentName: string - nome del documento
-\end{itemize}
-\textbf{metodi}:
-\begin{itemize}
-    \item activePage: 'editor' | 'history' - tipologiia di view visualizzata nel corpo principale della pagina
-    \item onNavigate: (page: 'editor' | 'history') => void - callback per aggiornare la view visualizzata
-    \item onUpload: () => void - callback per caricare un documento
-    \item onSave: () => void - callback per salvare un documento
-    \item onPrint: () => void - callback per stampare un documento
-    \item onAiAction: () => void - callback per attivare un'azione AI
+    \item \texttt{documentName:string} - nome del documento
 \end{itemize}
 
-\subsubsection{EditorButton}
+\textbf{Metodi}:
+\begin{itemize}
+    \item \texttt{activePage:'editor'|'history'} - tipologiia di view visualizzata nel corpo principale della pagina
+    \item \texttt{onNavigate:(page:'editor'|'history') => void} - callback per aggiornare la view visualizzata
+    \item \texttt{onUpload:() => void} - callback per caricare un documento
+    \item \texttt{onSave:() => void} - callback per salvare un documento
+    \item \texttt{onPrint:() => void} - callback per stampare un documento
+    \item \texttt{onAiAction:() => void} - callback per attivare un'azione AI
+\end{itemize}
+
+\subsection{EditorButton}
 Il componente EditorButton è un bottone che viene utilizzato nella sideBar per i bottoni IA.\\
-\textbf{attributi}:
+
+\textbf{Attributi}:
 \begin{itemize}
-    \item icon: ReactNode - icona del bottone
-    \item label: string - testo del bottone
-    \item isActive?: boolean - 
-    \item disabled?: boolean - true se il bottone non è cliccabile dall'utente
-\end{itemize}
-\textbf{metodi}:
-\begin{itemize}
-    \item onClick: () => void - callback per gestire il click sul bottone
+    \item \texttt{icon:ReactNode} - icona del bottone
+    \item \texttt{label:string} - testo del bottone
+    \item \texttt{isActive?:boolean} - 
+    \item \texttt{disabled?:boolean} - true se il bottone non è cliccabile dall'utente
 \end{itemize}
 
-\subsubsection{SaveDocumentModal}
+\textbf{Metodi}:
+\begin{itemize}
+    \item \texttt{onClick:() => void} - callback per gestire il click sul bottone
+\end{itemize}
+
+\subsection{SaveDocumentModal}
 Il componente SaveDocumentModal è il componente che rappresenta il modal per il salvataggio del documento.\\
-\textbf{attributi}:
+
+\textbf{Attributi}:
 \begin{itemize}
-    \item isOpen: boolean - true se il modal è aperto
-    \item currentDocumentName: string - nome attuale del documento, da mostrare come placeholder nell'input del nome del documento
-    \item isExporting?: boolean - true se il documento è in fase di esportazione, per disabilitare i bottoni
-\end{itemize}
-\textbf{metodi}:
-\begin{itemize}
-    \item onClose: () => void - callback per chiudere il modal
-    \item onExport: (format: ExportFormat, filename: string) => void - callback per esportare il documento in un formato specifico
+    \item \texttt{isOpen:boolean} - true se il modal è aperto
+    \item \texttt{currentDocumentName:string} - nome attuale del documento, da mostrare come placeholder nell'input del nome del documento
+    \item \texttt{isExporting?:boolean} - true se il documento è in fase di esportazione, per disabilitare i bottoni
 \end{itemize}
 
-\subsubsection{MarkDownEditor}
-Il componente MarkDownEditor è il componente che rappresenta il corpo principle della pagina e dove viene istanziato \gls{EasyMDE}.\\
-\textbf{attributi}:
+\textbf{Metodi}:
 \begin{itemize}
-    \item textAreaRef: \gls{React}.RefObject<HTMLTextAreaElement | null> - riferimento alla textarea su cui istanziare \gls{EasyMDE}
+    \item \texttt{onClose:() => void} - callback per chiudere il modal
+    \item \texttt{onExport:(format:ExportFormat, filename:string) => void} - callback per esportare il documento in un formato specifico
+\end{itemize}
+
+\subsection{MarkDownEditor}
+Il componente MarkDownEditor è il componente che rappresenta il corpo principle della pagina e dove viene istanziato \gls{EasyMDE}.\\
+
+\textbf{Attributi}:
+\begin{itemize}
+    \item textAreaRef: \gls{React}.RefObject<HTMLTextAreaElement | null$>$ - riferimento alla textarea su cui istanziare \gls{EasyMDE}
     
 \end{itemize}
-\textbf{metodi}:
+
+\textbf{Metodi}:
 \begin{itemize}
-    \item onFileDrop?: (file: File) => void - callback per gestire il drop di un file sulla textarea
+    \item onFileDrop?: (file: File) =$>$ void - callback per gestire il drop di un file sulla textarea
 \end{itemize}
 
-\subsubsection{HistoryCard}
-Il componente HistoryCard è il componente che rappresenta la scheda di una interazione con l'IA.\\
-\textbf{attributi}:
-\begin{itemize}
-    \item item: HistoryItem
-\end{itemize}
-\textbf{metodi}:
-\begin{itemize}
-    \item onDelete: (id: string) => void - callback per gestire la cancellazione di una interazione dalla cronologia
-\end{itemize}
-
-\subsubsection{HistoryList}
+\subsection{HistoryList}
 Il componente HistoryList è il componente che rappresenta la lista delle interazioni con l'IA.\\
-\textbf{attributi}:
+
+\textbf{Attributi}:
 \begin{itemize}
-    \item items: HistoryItem[] - lista delle interazioni con l'IA da mostrare nella cronologia
+    \item items: HistoryItem[ ] - lista delle interazioni con l'IA da mostrare nella cronologia
     \item isLoading: boolean - true se la cronologia è in fase di caricamento, per mostrare un indicatore di caricamento
     \item error: string | null - messaggio di errore da mostrare se c'è stato un errore nel caricamento della cronologia
 \end{itemize}
-\textbf{metodi}:
+
+\textbf{Metodi}:
 \begin{itemize}
-    \item onDelete: (id: string) => void - callback per gestire la cancellazione di una interazione dalla cronologia
+    \item onDelete: (id: string) =$>$ void - callback per gestire la cancellazione di una interazione dalla cronologia
 \end{itemize}
 
+\subsection{HistoryCard}
+Il componente HistoryCard è il componente che rappresenta la scheda di una interazione con l'IA.\\
 
+\textbf{Attributi}:
+\begin{itemize}
+    \item item: HistoryItem
+\end{itemize}
 
+\textbf{Metodi}:
+\begin{itemize}
+    \item onDelete: (id: string) =$>$ void - callback per gestire la cancellazione di una interazione dalla cronologia
+\end{itemize}
 
-
-
-
-
-
-
+\section{UML frontend}
 
 
 \end{document}
