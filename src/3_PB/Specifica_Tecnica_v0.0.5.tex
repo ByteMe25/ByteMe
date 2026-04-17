@@ -11,6 +11,7 @@
 \usepackage{hyperref}
 \usepackage{fancyhdr}
 \usepackage{lastpage}
+\usepackage{longtable}
 
 \usepackage{array}
 \newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
@@ -101,11 +102,13 @@
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{\gls{Verifica}} \\
         \hline
-        0.0.4 & 17/04/2026 & Joseph Grant & Aggiunta descrizione delle componenti frontend & \\
+        0.0.5 & 17/04/2026 & Chiara Grossele & Aggiunta sezione Tracciamento dei requisiti & \\
+        \hline
+        0.0.4 & 17/04/2026 & Joseph Grant & Aggiunta descrizione delle componenti frontend & Chiara Grossele\\
         \hline
         0.0.3 & 15/04/2026 & Chiara Grossele & Modifica struttura e aggiunte alla sezione Architettura backend& Joseph Grant\\
         \hline
-        0.0.2 & 14/04/2026 & Joseph Grant & Aggiunta tecnologie e architettura & \\
+        0.0.2 & 14/04/2026 & Joseph Grant & Aggiunta tecnologie e architettura & Chiara Grossele\\
         \hline
         0.0.1 & 28/03/2026 & Giulia Barzon & Creazione del documento, scrittura introduzione & Tommaso Tombacco \\
         \hline
@@ -469,13 +472,13 @@ Il componente MarkDownEditor è il componente che rappresenta il corpo principle
 
 \textbf{Attributi}:
 \begin{itemize}
-    \item textAreaRef: \gls{React}.RefObject<HTMLTextAreaElement | null$>$ - riferimento alla textarea su cui istanziare \gls{EasyMDE}
+    \item \texttt{textAreaRef:\gls{React}.RefObject<HTMLTextAreaElement | null>} - riferimento alla textarea su cui istanziare \gls{EasyMDE}
     
 \end{itemize}
 
 \textbf{Metodi}:
 \begin{itemize}
-    \item onFileDrop?: (file: File) =$>$ void - callback per gestire il drop di un file sulla textarea
+    \item \texttt{onFileDrop?:(file:File) => void} - callback per gestire il drop di un file sulla textarea
 \end{itemize}
 
 \subsection{HistoryList}
@@ -483,14 +486,14 @@ Il componente HistoryList è il componente che rappresenta la lista delle intera
 
 \textbf{Attributi}:
 \begin{itemize}
-    \item items: HistoryItem[ ] - lista delle interazioni con l'IA da mostrare nella cronologia
-    \item isLoading: boolean - true se la cronologia è in fase di caricamento, per mostrare un indicatore di caricamento
-    \item error: string | null - messaggio di errore da mostrare se c'è stato un errore nel caricamento della cronologia
+    \item \texttt{items:HistoryItem[ ]} - lista delle interazioni con l'IA da mostrare nella cronologia
+    \item \texttt{isLoading:boolean} - true se la cronologia è in fase di caricamento, per mostrare un indicatore di caricamento
+    \item \texttt{error:string | null} - messaggio di errore da mostrare se c'è stato un errore nel caricamento della cronologia
 \end{itemize}
 
 \textbf{Metodi}:
 \begin{itemize}
-    \item onDelete: (id: string) =$>$ void - callback per gestire la cancellazione di una interazione dalla cronologia
+    \item \texttt{onDelete:(id:string) => void} - callback per gestire la cancellazione di una interazione dalla cronologia
 \end{itemize}
 
 \subsection{HistoryCard}
@@ -498,15 +501,269 @@ Il componente HistoryCard è il componente che rappresenta la scheda di una inte
 
 \textbf{Attributi}:
 \begin{itemize}
-    \item item: HistoryItem
+    \item \texttt{item:HistoryItem}
 \end{itemize}
 
 \textbf{Metodi}:
 \begin{itemize}
-    \item onDelete: (id: string) =$>$ void - callback per gestire la cancellazione di una interazione dalla cronologia
+    \item \texttt{onDelete:(id:string) => void} - callback per gestire la cancellazione di una interazione dalla cronologia
 \end{itemize}
 
 \section{UML frontend}
 
+\section{Tracciamento dei requisti}
+In questa sezione è stato riportato il tracciamento dei requisiti del progetto "Second Brain" con lo scopo di avere una panoramica completa sui requisiti stabiliti nel documento dell'Analisi dei Requisiti v.2.0.0 e sul loro conseguimento.
+
+\subsection{Notazione dei requisiti}
+Il codice identificativo segue il formato:
+\[
+R[Importanza]-[Tipo]-[Numero]
+\]
+Dove le voci assumono i seguenti significati:
+
+\begin{description}
+    \item[Importanza] \hfill \\
+    Indica il grado di priorità del requisito:
+    \begin{itemize}
+        \item \textbf{O (Obbligatorio):} Requisito esplicitamente richiesto dall'azienda Zucchetti. La sua mancata implementazione implica il fallimento degli obiettivi primari del progetto.
+        \item \textbf{D (Desiderabile):} Requisito non strettamente vincolante ma che il gruppo si impegna ad implementare per migliorare il prodotto.
+        \item \textbf{OP (Opzionale):} Requisito di priorità minore, la cui implementazione può essere rimandata.
+    \end{itemize}
+    
+    \item[Tipo] \hfill \\
+    Indica la natura del requisito:
+    \begin{itemize}
+        \item \textbf{F (Funzionale):} Descrive le funzionalità e i servizi che il sistema deve fornire.
+        \item \textbf{V (Vincolo):} Descrive limitazioni tecnologiche, normative o implementative imposte esternamente.
+        \item \textbf{Q (Qualità):} Descrive le caratteristiche qualitative del sistema (es. performance, sicurezza, manutenibilità).
+    \end{itemize}
+    
+    \item[Numero] \hfill \\
+    Un numero intero progressivo univoco per tipologia di requisito.
+\end{description}
+
+\subsection{Tracciamento dei requisti funzionali}
+\begin{longtable}{|c|p{11cm}|c|}
+\hline
+\textbf{Codice} & \textbf{Descrizione} & \textbf{Stato}\\
+\hline
+\endhead
+RO-F-1 & Il sistema deve fornire un’area di testo per l’inserimento e la modifica del testo con supporto alla sintassi Markdown standard (CommonMark).& Conseguito\\
+\hline
+RO-F-2 & Il sistema deve informare l’utente con un messaggio in caso di perdita della connessione Internet durante l’utilizzo dell’editor. & ...\\
+\hline
+RO-F-3 & Il sistema deve informare l’utente con un messaggio se l’editor non risponde ai comandi.& ...\\
+\hline
+RO-F-4 & L'editor deve compilare la sintassi \gls{Markdown} in tempo reale. & ... \\
+\hline
+RO-F-5 & Deve essere presente un'area di visualizzazione del documento formattato rispetto alla sintassi \gls{Markdown}. & ... \\
+\hline
+RO-F-6 & Il sistema deve informare l'utente con un messaggio se il pannello di anteprima non si aggiorna correttamente. & ... \\
+\hline
+RO-F-7 & Il sistema deve permettere all'utente di selezionare porzioni di testo tramite mouse o tastiera. & ... \\
+\hline
+RO-F-8 & Il sistema deve permettere all'utente di modificare porzioni di testo selezionate. & ... \\
+\hline
+RO-F-9 & Il sistema deve permettere all'utente di copiare una parte di testo selezionato. & ... \\
+\hline
+RO-F-10 & Il sistema deve permettere all'utente di incollare un testo nell'area di testo. & ... \\
+\hline
+RO-F-11 & Il sistema deve permettere all'utente di tagliare il testo selezionato. & ... \\
+\hline
+RO-F-12 & Il sistema deve permettere all'utente di annullare l'ultima modifica effettuata. & ... \\
+\hline
+RO-F-13 & Se non sono presenti operazioni annullabili, il sistema non esegue alcuna azione al comando Undo. & ... \\
+\hline
+RO-F-14 & Il sistema deve permettere all'utente di ripristinare le modifiche precedentemente annullate. & ... \\
+\hline
+RO-F-15 & Se non sono presenti operazioni ripristinabili, il sistema non esegue alcuna azione al comando Redo. & ... \\
+\hline
+RO-F-16 & Nell'editor deve essere presente una barra degli strumenti (\gls{toolbar}) per applicare formattazioni \gls{Markdown} senza scrivere manualmente la sintassi. & ... \\
+\hline
+RO-F-17 & Il sistema deve permettere l'applicazione del grassetto al testo tramite \gls{toolbar}. & ... \\
+\hline
+RO-F-18 & Il sistema deve permettere l'applicazione del corsivo al testo tramite \gls{toolbar}. & ... \\
+\hline
+RO-F-19 & Il sistema deve permettere l'applicazione della sottolineatura al testo tramite \gls{toolbar}. & ... \\
+\hline
+RO-F-20 & Il sistema deve permettere di creare intestazioni tramite \gls{toolbar}. & ... \\
+\hline
+RO-F-21 & Il sistema deve permettere l'inserimento di elementi di struttura (tabelle, separatori orizzontali) tramite \gls{toolbar}. & ... \\
+\hline
+RO-F-22 & Il sistema deve permettere l'inserimento di liste numerate tramite \gls{toolbar}. & ... \\
+\hline
+RO-F-23 & Il sistema deve permettere l'inserimento di elenchi puntati tramite \gls{toolbar}. & ... \\
+\hline
+RO-F-24 & Il sistema deve permettere l'inserimento di link e riferimenti tramite \gls{toolbar}. & ... \\
+\hline
+RO-F-25 & L'utente può applicare più stili contemporaneamente (es. grassetto, corsivo, sottolineatura) alla stessa sezione di testo. & ... \\
+\hline
+RO-F-26 & L'utente può annullare una formattazione di una porzione di testo selezionato riapplicandola dalla \gls{toolbar}. & ... \\
+\hline
+RO-F-27 & L'utente può estendere la formattazione a una porzione di testo parzialmente formattato riapplicandola dalla \gls{toolbar}. & ... \\
+\hline
+RO-F-28 & L'utente può creare sottoliste attivando la creazione di una lista dalla \gls{toolbar} quando il cursore è già all'interno di una lista. & ... \\
+\hline
+RO-F-29 & L'utente può scegliere una combinazione di formattazioni dalla \gls{toolbar} quando non è presente testo selezionato, per applicarle al testo che scriverà successivamente. & ... \\
+\hline
+RO-F-30 & Il sistema deve permettere all'utente di selezionare porzioni di testo da inviare all'agente esterno. & ... \\
+\hline
+RO-F-31 & Il sistema permette di inviare del testo ad un agente esterno. & ... \\
+\hline
+RO-F-32 & L'utente deve poter accedere alle azioni sul testo tramite agente esterno in ogni momento. & ... \\
+\hline
+RO-F-33 & Il testo generato viene prima mostrato come proposta, separata visivamente dal testo dell'utente. & ... \\
+\hline
+RO-F-34 & Il testo in stato di proposta include le opzioni di conferma, annullamento e rigenerazione. & ... \\
+\hline
+RO-F-35 & Il sistema non permette la modifica del testo generato mentre è in stato di proposta. & ... \\
+\hline
+RO-F-36 & Il testo generato dall'agente esterno, una volta confermato, viene inserito nella posizione del cursore se presente, altrimenti in fondo al testo. & ... \\
+\hline
+RO-F-37 & Una proposta che viene confermata viene inserita nel documento nell'editor e la sezione di proposta viene rimossa. & ... \\
+\hline
+RO-F-38 & Una volta generato e confermato, il testo dell'agente esterno è modificabile tramite le stesse funzionalità dell'editor disponibili per il testo utente. & ... \\
+\hline
+RO-F-39 & Una proposta annullata comporta la rimozione del testo generato dalla sezione di proposta e la rimozione della sezione stessa. & ... \\
+\hline
+RO-F-40 & Una proposta che viene rigenerata viene rimandata all'agente esterno con gli stessi parametri e la nuova risposta sovrascrive la proposta corrente. & ... \\
+\hline
+RO-F-41 & Il sistema deve informare l'utente con un messaggio in caso di errore durante la comunicazione con il servizio LLM. & ... \\
+\hline
+RO-F-42 & L'utente può annullare un'operazione AI in corso prima del suo completamento. & ... \\
+\hline
+RO-F-43 & In seguito all'annullamento di un'operazione AI, il documento rimane nello stato precedente alla richiesta. & ... \\
+\hline
+RO-F-44 & Se la generazione di testo si blocca prematuramente, rimane ciò che è già stato generato, in attesa che l'utente confermi, rigeneri o elimini la proposta. & ... \\
+\hline
+RO-F-45 & L'agente esterno applica modifiche esclusivamente al testo selezionato dall'utente. Un contesto aggiuntivo può essere fornito solo a scopo interpretativo e non deve essere alterato. & ... \\
+\hline
+RO-F-46 & L'utente può consultare il registro delle generazioni AI effettuate. & ... \\
+\hline
+RO-F-47 & Il sistema deve gestire il caso in cui lo storico delle generazioni AI sia vuoto, informando l'utente con un messaggio appropriato. & ... \\
+\hline
+RO-F-48 & Ogni generazione di testo dell'agente esterno viene inclusa nel registro delle generazioni, incluse quelle annullate dall'utente. & ... \\
+\hline
+RO-F-49 & Il sistema deve permettere all'utente di visualizzare il testo completo di una generazione dallo storico AI. & ... \\
+\hline
+RO-F-50 & L'utente deve poter riassumere tutto o una parte selezionata del testo usando un agente esterno. & ... \\
+\hline
+RO-F-51 & L'utente deve poter usare un agente esterno per riscrivere tutto o una parte selezionata del testo migliorandolo seguendo determinate specifiche come sintassi, stile e chiarezza. & ... \\
+\hline
+RO-F-52 & L'utente deve poter tradurre il testo usando un agente esterno in: inglese, italiano, tedesco, francese, spagnolo e cinese mandarino. & ... \\
+\hline
+RO-F-53 & Se l'utente avvia una traduzione senza selezionare la lingua di destinazione, il sistema lo notifica e blocca l'operazione. & ... \\
+\hline
+RO-F-54 & Il sistema permette di avviare la correzione grammaticale del testo tramite agente esterno. & ... \\
+\hline
+RO-F-55 & Se non vengono rilevati errori grammaticali, il sistema informa l'utente dell'esito positivo della correzione. & ... \\
+\hline
+RO-F-56 & Il sistema consente all'utente di avviare l'analisi critica del testo selezionato o dell'intero documento utilizzando il cappello di De Bono scelto. & ... \\
+\hline
+RO-F-57 & Se il testo è insufficiente per l'analisi critica, il sistema notifica l'utente e interrompe l'operazione. & ... \\
+\hline
+RO-F-58 & Se l'utente avvia l'analisi critica senza selezionare un cappello di De Bono, il sistema lo notifica e blocca l'operazione. & ... \\
+\hline
+RO-F-59 & Il sistema permette l'invio di un \gls{prompt} scritto dall'utente per la generazione di testo tramite agente esterno. & ... \\
+\hline
+RO-F-60 & Il sistema permette la modifica del \gls{prompt} da inviare all'agente esterno prima dell'invio. & ... \\
+\hline
+RO-F-61 & L'agente esterno può generare testo basandosi su un \gls{prompt} fornitogli dall'utente. & ... \\
+\hline
+RO-F-62 & Se il \gls{prompt} fornito dall'utente è vuoto o incompleto, il sistema notifica l'utente e impedisce l'invio. & ... \\
+\hline
+RO-F-63 & L'utente può caricare un file dal proprio dispositivo all'interno dell'editor. & ... \\
+\hline
+RO-F-64 & Il sistema deve supportare il caricamento di file in formato \gls{Markdown} (\texttt{.md}, \texttt{.\gls{markdown}}) e testo semplice (\texttt{.txt}). & ... \\
+\hline
+RO-F-65 & Il sistema deve supportare il caricamento tramite dialogo di esplorazione file (file picker). & ... \\
+\hline
+RO-F-66 & Prima di procedere con il caricamento di un file, il sistema chiede conferma all'utente. & ... \\
+\hline
+RO-F-67 & Il sistema deve informare l'utente con un messaggio di esito (successo o errore) al termine di ogni tentativo di caricamento file. & ... \\
+\hline
+RO-F-68 & Il sistema deve validare il formato del file selezionato e impedire il caricamento di formati non supportati. & ... \\
+\hline
+RO-F-69 & Il sistema deve validare le dimensioni del file selezionato e impedire il caricamento di file che superano la dimensione massima consentita. & ... \\
+\hline
+RO-F-70 & Il sistema deve impedire il caricamento di file corrotti o illeggibili. & ... \\
+\hline
+RO-F-71 & Il sistema deve permettere all'utente di rimuovere il file che ha caricato. & ... \\
+\hline
+RO-F-72 & L'utente può annullare l'operazione di rimozione del file caricato, lasciando l'editor nel suo stato precedente. & ... \\
+\hline
+RO-F-73 & Il sistema deve essere in grado di convertire il documento da \gls{Markdown} al formato selezionato dall'utente. & ... \\
+\hline
+RO-F-74 & Il sistema deve permettere di scaricare il file nel dispositivo dell'utente. & ... \\
+\hline
+RO-F-75 & L'operazione di esportazione o stampa non deve alterare né chiudere il documento originale nell'editor. & ... \\
+\hline
+RO-F-76 & Il sistema deve informare l'utente con un messaggio di esito al termine di ogni operazione di esportazione. & ... \\
+\hline
+RO-F-77 & Il sistema deve consentire l'esportazione del documento in formato \gls{Markdown} (\texttt{.md}). & ... \\
+\hline
+RO-F-78 & Il sistema deve controllare che il range di pagine inserito dall'utente sia valido (non superiore al numero di pagine del documento e non negativo). & ... \\
+\hline
+RO-F-79 & Il sistema deve permettere di collegare e inviare il documento a un dispositivo di stampa. & ... \\
+\hline
+RO-F-80 & Il sistema deve informare l'utente con un messaggio in caso di errore durante l'invio del documento alla stampante. & ... \\
+\hline
+\addlinespace[1em]
+\caption{Tracciamento dei requisiti funzionali}
+\label{tab:tracciamento_requisiti_funzionali}
+\end{longtable}
+
+\subsection{Tracciamento dei requisti di qualità}
+\begin{longtable}{|c|p{11cm}|c|}
+\hline
+\textbf{Codice} & \textbf{Descrizione} & \textbf{Stato}\\
+\hline
+\endhead
+RO-Q-1 & Il tempo di risposta dell'interfaccia utente (aggiornamento anteprima, applicazione formattazioni) deve essere inferiore a 500 ms nel 95\% dei casi, misurato su una sessione utente attiva di almeno 30 minuti.  & ... \\
+\hline
+RO-Q-2 & Il tempo medio di generazione di una risposta da parte del servizio LLM non deve superare i 10 secondi, misurato su un campione di almeno 20 richieste consecutive in condizioni di utilizzo normale.  & ... \\
+\hline
+RO-Q-3 & Il tasso di errori nelle operazioni principali (salvataggio, apertura file, chiamate AI) non deve superare l'1\%, misurato sul totale delle operazioni eseguite in una sessione utente attiva di almeno 30 minuti. & ... \\
+\hline
+RO-Q-4 & La percentuale di codice coperta dai test automatici (test coverage) deve essere almeno il 70\%, misurata sull'insieme completo dei moduli rilasciati ad ogni versione. & ... \\
+\hline
+RO-Q-5 & La complessità ciclomatica (McCabe) di ogni funzione/metodo del codice prodotto non deve superare il valore 8. & ... \\
+\hline
+RO-Q-6 & La documentazione prodotta deve ottenere un Indice di Gulpease (IG) maggiore o uguale a 40. & ... \\
+\hline
+RO-Q-7 & Il sistema deve essere sviluppato rispettando le Norme 
+di Progetto del gruppo ByteMe. & ... \\
+\hline
+RO-Q-8 & Il sistema deve essere verificato secondo il Piano di Qualifica prima di ogni rilascio. & ... \\
+\hline
+RO-Q-9 & Il \gls{manuale utente} deve documentare tutte le funzionalità obbligatorie del sistema e deve ottenere un Indice di Gulpease (IG) maggiore o uguale a 40. & ... \\
+\hline
+RO-Q-10 & Il manuale di installazione e deployment del sistema deve ottenere un Indice di Gulpease (IG) maggiore o uguale a 40. & ... \\
+\hline
+\addlinespace[1em]
+\caption{Tracciamento dei requisiti di qualità}
+\label{tab:tracciamento_requisiti_qualità}
+\end{longtable}
+
+\subsection{Tracciamento dei requisti di vincolo}
+\begin{longtable}{|c|p{11cm}|c|}
+\hline
+\textbf{Codice} & \textbf{Descrizione} & \textbf{Stato}\\
+\hline
+\endhead
+RO-V-1 & L'applicazione deve essere accessibile tramite browser web. 
+I browser supportati sono: Google Chrome ($\geq$ v110), Mozilla Firefox 
+($\geq$ v110), Microsoft Edge ($\geq$ v110), Safari ($\geq$ v16). & ... \\
+\hline
+RO-V-2 & Il sistema deve utilizzare la codifica Unicode (UTF-8) per la rappresentazione interna e lo storage del testo. & ... \\
+\hline
+RO-V-3 & Il formato di input e di storage del testo deve essere \gls{Markdown}, in conformità allo standard CommonMark. & ... \\
+\hline
+RO-V-4 & Il sistema deve integrarsi con un servizio LLM tramite \gls{API} REST compatibili con lo standard OpenAI. & ... \\
+\hline
+\addlinespace[1em]
+\caption{Tracciamento dei requisiti di vincolo}
+\label{tab:tracciamento_requisiti_vincolo}
+\end{longtable}
 
 \end{document}
