@@ -1,0 +1,104 @@
+\documentclass[a4paper,12pt]{article}
+\newcommand{\gls}[1]{#1\textsubscript{G}}
+
+% ===== Pacchetti utili =====
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[italian]{babel}
+\usepackage{geometry}
+\usepackage{array}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+
+% ===== Impostazioni di pagina =====
+\geometry{margin=2.5cm}
+\setlength{\parskip}{6pt}
+\setlength{\parindent}{0pt}
+
+% ===== Intestazione e piè di pagina =====
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Verbale 14/04/2026}
+\rhead{ByteMe}
+\cfoot{\thepage}
+
+% ===== Documento =====
+\begin{document}
+
+\vspace*{\fill}
+\begin{center}
+    \includegraphics[width=0.5\textwidth]{../LogoByteMe.jpg}\\[1cm]
+    {\Huge \textbf{Verbale Riunione}}\\[0.5cm]
+    {\Large ByteMe}\\[0.5cm]
+    \rule{0.6\textwidth}{0.6pt}\\[0.5cm]
+    \textit{Data: 14 aprile 2026}
+\end{center}
+\vspace*{\fill}
+
+\pagebreak
+   \rule{1\textwidth}{0.4pt}\\[4pt]
+
+
+\textbf{Data:} 14/04/2026 \\
+\textbf{Ora di inizio:} 15:00 \\
+\textbf{Ora di fine:} 17:30 \\
+\textbf{Luogo / Piattaforma:} Discord
+\begin{center}
+   \rule{1\textwidth}{0.4pt}\\
+\end{center}
+
+\section*{ Partecipanti}
+
+\begin{longtable}{|p{0.45\textwidth}|p{0.45\textwidth}|}
+\hline
+\textbf{Nome e Cognome} & \textbf{Ruolo} \\ \hline
+ Giulia Barzon & Programmatore \\ \hline
+ Elisa Marchioro & Programmatore \\ \hline
+ Joseph Grant & Amministratore e Responsabile\\ \hline
+ Tommaso Tombacco & Programmatore \\ \hline
+ \end{longtable}
+
+\section*{Ordine del giorno}
+\begin{enumerate}
+    \item Discussione in seguito alla riunione con il professore Cardin.
+    \item Confronto sui pattern da utilizzare.
+\end{enumerate}
+
+\subsection*{1. Confronto sui pattern da utilizzare}
+Il gruppo ha discusso i diversi pattern utilizzati nell’applicazione. Si è deciso di utilizzzare una libreria esterna anzichè costruire un custom pattern nostro per rendere più predicibile il codice.
+
+
+\section*{Decisioni prese}
+\begin{itemize}
+    \item Fare la specifica tecnica
+    \item Documentare i test nel piano di qualifica.
+    \item Imparare ad utilizzare la libreria Zustand
+    \item Iniziare l'implementazione del frontend
+\end{itemize}
+
+\section*{Azioni da intraprendere}
+\begin{longtable}{|p{0.42\textwidth}|p{0.25\textwidth}|p{0.12\textwidth}|p{0.15\textwidth}|}
+\hline
+\textbf{Attività} & \textbf{Responsabile} & \textbf{Scadenza} & \textbf{Stato} \\ \hline
+Sviluppo frontend (\#30) & Elisa, Giulia, Matteo, Tommaso & 21/04/26 & In corso \\ \hline
+Documentare i test nel piano di qualifica (\#27) & Elisa, Matteo & 21/04/26 & In corso \\ \hline
+Redazione della specifica tecnica (\#28) & Joseph, Chiara & 21/04/26 & In corso \\ \hline
+Verificare il piano di qualifica (\#29) & Chiara & 21/04/26 & In corso \\ \hline
+\end{longtable}
+
+
+\section*{Prossima riunione}
+\textbf{Data prevista:} 21 aprile 2026\\
+\textbf{Luogo / Piattaforma:} Discord \\
+\textbf{Obiettivo principale:} Discussione a conclusione dello \gls{sprint}\\
+
+
+
+\textbf{Redatto da:} Joseph Grant \\
+\textbf{Data di redazione:} 14/04/2026
+
+\end{document}
