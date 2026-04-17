@@ -929,11 +929,11 @@ Sulla base dei dati raccolti, il modello \textbf{\gls{Gemma 3}} ha superato ampi
  L'analisi ha messo in luce una netta distinzione tra le performance dei modelli in base alla loro densità computazionale, con particolare attenzione alla capacità di "comprendere" l'errore all'interno del contesto:
  
  \begin{itemize}
-    \item \textbf{Qwen 3 (30B):} Ha restituito una qualità della correzione definita "perfetta". Il modello identifica con precisione chirurgica ogni anomalia testuale, tuttavia la velocità di caricamento e di elaborazione è risultata molto bassa, rendendolo meno agile nei flussi di lavoro intensivi.
+    \item \textbf{Qwen 3 (30B):} Ha restituito una qualità della correzione definita "perfetta". Il modello identifica con precisione chirurgica ogni anomalia testuale, tuttavia la velocità di caricamento e di elaborazione è risultata molto bassa, rendendolo meno \gls{agile} nei flussi di lavoro intensivi.
     
-    \item \textbf{Gemma 3 (27B):} Si è distinto come il modello più equilibrato. Ha garantito correzioni impeccabili, dimostrando una comprensione del contesto della frase superiore ai modelli più piccoli, mantenendo al contempo una velocità di risposta (latenza) ottimale per l'integrazione operativa.
+    \item \textbf{\gls{Gemma 3} (27B):} Si è distinto come il modello più equilibrato. Ha garantito correzioni impeccabili, dimostrando una comprensione del contesto della frase superiore ai modelli più piccoli, mantenendo al contempo una velocità di risposta (latenza) ottimale per l'integrazione operativa.
     
-    \item \textbf{Gemma 3 (270M):} Nonostante la risposta quasi istantanea dovuta alle ridotte dimensioni, il modello si è rivelato inadeguato per il compito. Tende a tralasciare numerosi errori e non dimostra una comprensione logica della struttura della frase, limitandosi a una revisione superficiale e incompleta.
+    \item \textbf{\gls{Gemma 3} (270M):} Nonostante la risposta quasi istantanea dovuta alle ridotte dimensioni, il modello si è rivelato inadeguato per il compito. Tende a tralasciare numerosi errori e non dimostra una comprensione logica della struttura della frase, limitandosi a una revisione superficiale e incompleta.
 \end{itemize}
 \paragraph{Impatto della scala dei parametri}
 I test hanno confermato che per operazioni di correzione critica, la dimensione del modello è una variabile discriminante:
@@ -942,7 +942,7 @@ I test hanno confermato che per operazioni di correzione critica, la dimensione 
     \item \textbf{Modelli Large (27B - 30B):} Mostrano una sensibilità linguistica elevata. La differenza tra il 27B e il 30B in termini di accuratezza è minima, ma il vantaggio del modello da 27B in termini di velocità operativa è significativo.
 \end{itemize}
 \paragraph{Modello scelto}
-Sulla base delle evidenze raccolte, il gruppo ha selezionato Gemma 3 (27B) come motore principale per le funzioni di correzione. Il modello ha superato la soglia di affidabilità richiesta, garantendo "correzioni perfette" senza i rallentamenti strutturali riscontrati nel modello Qwen da 30B.
+Sulla base delle evidenze raccolte, il gruppo ha selezionato \gls{Gemma 3} (27B) come motore principale per le funzioni di correzione. Il modello ha superato la soglia di affidabilità richiesta, garantendo "correzioni perfette" senza i rallentamenti strutturali riscontrati nel modello Qwen da 30B.
 
 \subsubsection{Riassunto del testo}
 \subsubsection{Riscrittura del testo}
