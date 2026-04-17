@@ -71,7 +71,7 @@
         \centering
         \begin{tabular}{|l|p{5cm}|}
             \hline
-            \textbf{Versione} & 1.1.2 \\
+            \textbf{Versione} & 1.1.4 \\
             \hline
             \textbf{Stato} & Da approvare \\
             \hline
@@ -102,6 +102,8 @@
     \begin{tabular}{|c|c|c|>{\raggedright\arraybackslash}p{0.35\textwidth}|p{0.18\textwidth}|}
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{\gls{Verifica}} \\
+        \hline
+        1.1.4 & 17/04/2026 & Matteo Cuogo & Aggiunta sezione descrizione selezione modello per la correzione grammaticale & \\
         \hline
         1.1.3 & 16/04/2026 & Matteo Cuogo & Aggiunte descrizioni ad ulteriori test & \\
         \hline
@@ -922,6 +924,26 @@ Sulla base dei dati raccolti, il modello \textbf{\gls{Gemma 3}} ha superato ampi
 
 \subsubsection{Traduzione del testo}
 \subsubsection{Correzione grammaticale del testo}
+ Per integrare lo studio sui modelli è stata condotta una sessione di testing dedicata alle capacità di correzione grammaticale, analizzando come la scala dei parametri influenzi la capacità di individuare refusi e incongruenze sintattiche.
+ \paragraph{Confronto modelli e risultati}
+ L'analisi ha messo in luce una netta distinzione tra le performance dei modelli in base alla loro densità computazionale, con particolare attenzione alla capacità di "comprendere" l'errore all'interno del contesto:
+ 
+ \begin{itemize}
+    \item \textbf{Qwen 3 (30B):} Ha restituito una qualità della correzione definita "perfetta". Il modello identifica con precisione chirurgica ogni anomalia testuale, tuttavia la velocità di caricamento e di elaborazione è risultata molto bassa, rendendolo meno agile nei flussi di lavoro intensivi.
+    
+    \item \textbf{Gemma 3 (27B):} Si è distinto come il modello più equilibrato. Ha garantito correzioni impeccabili, dimostrando una comprensione del contesto della frase superiore ai modelli più piccoli, mantenendo al contempo una velocità di risposta (latenza) ottimale per l'integrazione operativa.
+    
+    \item \textbf{Gemma 3 (270M):} Nonostante la risposta quasi istantanea dovuta alle ridotte dimensioni, il modello si è rivelato inadeguato per il compito. Tende a tralasciare numerosi errori e non dimostra una comprensione logica della struttura della frase, limitandosi a una revisione superficiale e incompleta.
+\end{itemize}
+\paragraph{Impatto della scala dei parametri}
+I test hanno confermato che per operazioni di correzione critica, la dimensione del modello è una variabile discriminante:
+\begin{itemize}
+    \item \textbf{Modelli Small (es. 270M):} Risultano troppo scarsi per la produzione, con un alto tasso di errori residui.
+    \item \textbf{Modelli Large (27B - 30B):} Mostrano una sensibilità linguistica elevata. La differenza tra il 27B e il 30B in termini di accuratezza è minima, ma il vantaggio del modello da 27B in termini di velocità operativa è significativo.
+\end{itemize}
+\paragraph{Modello scelto}
+Sulla base delle evidenze raccolte, il gruppo ha selezionato Gemma 3 (27B) come motore principale per le funzioni di correzione. Il modello ha superato la soglia di affidabilità richiesta, garantendo "correzioni perfette" senza i rallentamenti strutturali riscontrati nel modello Qwen da 30B.
+
 \subsubsection{Riassunto del testo}
 \subsubsection{Riscrittura del testo}
 \subsubsection{\gls{Distant writing}}
@@ -1404,3 +1426,4 @@ Tuttavia, la ridistribuzione dei carichi di lavoro ha permesso di recuperare il 
 \textbf{RTB:} La percentuale complessiva di metriche soddisfatte ha registrato due flessioni (attorno all'80\%) in corrispondenza degli \gls{Sprint} 3 e 5, principalmente a causa degli sforamenti temporali (SPI < 0.90). Tuttavia, la tenuta impeccabile delle metriche economiche (CPI, CV sempre ottimali) e il recupero finale hanno permesso di chiudere la fase con il 100\% degli indicatori in stato accettabile o ottimale. Il processo adottato è pertanto ritenuto maturo e validato.
 
 \end{document}
+
