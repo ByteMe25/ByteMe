@@ -70,7 +70,7 @@
         \centering
         \begin{tabular}{|l|p{5cm}|}
             \hline
-            \textbf{Versione} & 0.0.7 \\
+            \textbf{Versione} & 0.0.8 \\
             \hline
             \textbf{Stato} & In corso \\
             \hline
@@ -97,10 +97,12 @@
 \section*{Registro dei Cambiamenti}
 
 \begin{table}[H]
-    \centering
+    \centering          
     \begin{tabular}{|c|c|c|>{\raggedright\arraybackslash}p{0.35\textwidth}|p{0.18\textwidth}|}
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{\gls{Verifica}} \\
+        \hline
+        0.0.8 & 18/04/2026 & Joseph Grant & Aggiunti i hook frontend & \\
         \hline
         0.0.7 & 18/04/2026 & Matteo Cuogo & Aggiunta pattern Registry & \\
         \hline
@@ -512,6 +514,26 @@ Il componente HistoryCard è il componente che rappresenta la scheda di una inte
 \begin{itemize}
     \item \texttt{onDelete:(id:string) => void} - callback per gestire la cancellazione di una interazione dalla cronologia
 \end{itemize}
+
+\subsection{UseEditor}
+Hook per l'editor\\
+
+\textbf{Attributi}:
+\begin{itemize}
+    \item \texttt{textAreareftextareaRef: React.RefObject<HTMLTextAreaElement | null>} - riferimento alla textarea su cui istanziare \gls{EasyMDE}
+    \item \texttt{isReady: boolean} - true quando l'editor è pronto all'utilizzo
+\end{itemize}
+
+\textbf{Metodi}:
+\begin{itemize}
+    \item \texttt{getEditorText: () => string} - restiruisce il testo presente nell'editor
+    \item \texttt{getSelection: () => string} - restituisce il testo attualmente selezionato nell'editor
+    \item \texttt{insertTextAtCursor: (text: string) => void} - inserisce il testo nella posizione del cursore
+    \item \texttt{clearEditor: () => void} - cancella il contenuto dell'editor
+    \item \texttt{reloadFromStorage: () => void} - ricarica il contenuto del'editor
+    \item \texttt{onEntryAdded?: (entry: unknown) => void} - callback per gestire l'aggiunta di una nuova voce all'editor
+\end{itemize}
+
 
 \section{UML frontend}
 
