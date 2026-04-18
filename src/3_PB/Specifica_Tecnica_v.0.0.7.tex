@@ -593,7 +593,7 @@ Il modulo funge da punto di giunzione dell'intera architettura, orchestrando il 
 \\ \textbf{Attributi:}
 \begin{itemize}
     \item model\_class(Type[AIModelStrategy]) è il riferimento al tipo della strategia di modello da istanziare, la cui istanziazione effettiva è delegata alla cache vista in precedenza.
-    \item prompt\_strategy(BaseAIStrategy): un'istanza preconfigurata della strategia di prompt specifica per quell'operazione.
+    \item \gls{prompt}\_strategy(BaseAIStrategy): un'istanza preconfigurata della strategia di \gls{prompt} specifica per quell'operazione.
 \end{itemize}
 \paragraph{OPERATION\_REGISTRY}
 Il nucleo del pattern è implementato come un dizionario globale che associa identificatori univoci testuali a oggetti OperationConfig. Questa architettura garantisce tre proprietà fondamentali:
