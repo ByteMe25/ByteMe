@@ -238,7 +238,7 @@ I termini che vengono considerati meritevoli di approfondimenti sono indicati co
             \hline
             Zustand & 5.0.12 & Libreria di state management leggera, utilizzata per la gestione dello stato globale e la persistenza dei dati nel LocalStorage.\\
             \hline
-            Lucide-React & 1.8.0 & Libreria di icone vettoriali utilizzata per la UI dell'applicazione.\\
+            Lucide-\gls{React} & 1.8.0 & Libreria di icone vettoriali utilizzata per la UI dell'applicazione.\\
             \hline
         \end{tabular}
         \caption{Descrizione delle librerie frontend}
@@ -358,7 +358,7 @@ Nel sistema gli strati sono progettati come "strati chiusi": una richiesta trans
 Rappresenta il livello più esterno dell'architettura, fisicamente disaccoppiato dal backend e implementato nell'applicativo frontend. Ha il compito di gestire l'esperienza utente, raccogliere gli input testuali e le configurazioni scelte, inoltrando il tutto al backend tramite chiamate asincrone. Questo strato è privo di logica di dominio o di elaborazione semantica, delegando interamente il carico computazionale al server.
 
 \subsection{Application logic}
-Costituisce il punto di ingresso dell'applicazione lato server. Nel progetto, questo livello è implementato nel modulo di routing del framework Flask (\texttt{app.py}).
+Costituisce il punto di ingresso dell'applicazione lato server. Nel progetto, questo livello è implementato nel modulo di routing del framework \gls{Flask} (\texttt{app.py}).
 
 Questo strato ricopre le seguenti responsabilità:
 \begin{itemize}
@@ -375,20 +375,20 @@ L'Application logic non possiede conoscenza delle regole di dominio, della strut
 
 I componenti principali si dividono in servizi di dominio e di integrazione:
 \begin{itemize}
-    \item \textbf{Gestione dei Prompt}: Definizione delle istruzioni per l'IA;
+    \item \textbf{Gestione dei \gls{Prompt}}: Definizione delle istruzioni per l'IA;
     \item \textbf{Orchestrazione delle Operazioni}: Mappatura dinamica tra richieste e strategie;
     \item \textbf{Integrazione Modelli LLM}: Astrazione dei client per i provider AI;
     \item \textbf{Servizi di Supporto}: Post-elaborazione dell'output.
 \end{itemize}
 
-\subsubsection{Gestione dei prompt (ai\_strategies.py)}
+\subsubsection{Gestione dei \gls{prompt} (ai\_strategies.py)}
 Incapsula la logica di costruzione dei contesti. Tramite il pattern Strategy, definisce le regole per le operazioni editoriali (\texttt{SimplePromptStrategy}), le traduzioni (\texttt{TranslationStrategy}) e l’analisi critica basata sul metodo dei Sei Cappelli di De Bono (\texttt{DeBonoHatStrategy}).
 
 \subsubsection{Orchestrazione delle operazioni (operation\_registry.py)}
-Implementa il pattern \textbf{Registry}. Contiene le strutture dati (\texttt{OperationConfig}) che associano dinamicamente gli identificatori delle operazioni alle corrette strategie di prompt e ai modelli corrispondenti. Questo componente funge da "collante" tra i livelli, fornendo all'Application Layer oggetti preconfigurati e pronti all'uso.
+Implementa il pattern \textbf{Registry}. Contiene le strutture dati (\texttt{OperationConfig}) che associano dinamicamente gli identificatori delle operazioni alle corrette strategie di \gls{prompt} e ai modelli corrispondenti. Questo componente funge da "collante" tra i livelli, fornendo all'Application Layer oggetti preconfigurati e pronti all'uso.
 
 \subsubsection{Integrazione degli LLM (model\_strategies.py)}
-Astrae le complessità di rete per la comunicazione con i provider esterni (infrastruttura Zucchetti o API compatibili OpenAI). Gestisce l'iniezione delle variabili d'ambiente (\texttt{API key} e \texttt{base URL}) e l'invocazione dei modelli. Grazie all'interfaccia \texttt{AIModelStrategy}, espone modelli come \textbf{Llama 3.2} e \textbf{Gemma 3} in modo polimorfico.
+Astrae le complessità di rete per la comunicazione con i provider esterni (infrastruttura Zucchetti o \gls{API} compatibili OpenAI). Gestisce l'iniezione delle variabili d'ambiente (\texttt{\gls{API} key} e \texttt{base URL}) e l'invocazione dei modelli. Grazie all'interfaccia \texttt{AIModelStrategy}, espone modelli come \textbf{\gls{Llama 3.2}} e \textbf{\gls{Gemma 3}} in modo polimorfico.
 
 \subsubsection{Servizi di supporto al dominio (text\_cleaning.py)}
 Sottomodulo funzionale che implementa algoritmi di post-processing basati su espressioni regolari (regex) per "pulire" le risposte dei modelli da metatesto o preamboli indesiderati.
@@ -399,12 +399,12 @@ Sottomodulo funzionale che implementa algoritmi di post-processing basati su esp
 \newpage
 
 \section{Deployment}
-Il sistema \textit{Second Brain} utilizza la tecnologia di containerizzazione \textbf{Docker} per garantire l'isolamento dei componenti, la portabilità tra diversi ambienti di sviluppo e produzione e la gestione semplificata delle dipendenze.
+Il sistema \textit{Second Brain} utilizza la tecnologia di containerizzazione \textbf{\gls{Docker}} per garantire l'isolamento dei componenti, la portabilità tra diversi ambienti di sviluppo e produzione e la gestione semplificata delle dipendenze.
 
 \subsection{Strategia di Containerizzazione}
-L'architettura è suddivisa in due micro-servizi orchestrati tramite \texttt{docker-compose}, che permette di definire reti virtuali interne e volumi per la persistenza o il \textit{hot-reloading} durante lo sviluppo.
+L'architettura è suddivisa in due micro-servizi orchestrati tramite \texttt{\gls{docker}-compose}, che permette di definire reti virtuali interne e volumi per la persistenza o il \textit{hot-reloading} durante lo sviluppo.
 
-\subsection{Backend (Flask)}
+\subsection{Backend (\gls{Flask})}
 Il container del backend è ottimizzato per l'esecuzione di script Python in un ambiente leggero e sicuro.
 \begin{itemize}
     \item \textbf{Immagine di base}: \texttt{python:3.12-slim}. La scelta della variante \textit{slim} riduce l'ingombro dell'immagine, contenendo solo le librerie essenziali per il runtime Python 3.12.
@@ -413,42 +413,42 @@ Il container del backend è ottimizzato per l'esecuzione di script Python in un 
     \item \textbf{Variabili d'ambiente}: Il backend riceve dinamicamente tramite il file \texttt{.env} le chiavi necessarie per il funzionamento degli LLM.
 \end{itemize}
 
-\subsection{Frontend (React + Nginx)}
+\subsection{Frontend (\gls{React} + \gls{Nginx})}
 Per il frontend è stata adottata una strategia di \textbf{Multi-stage Build}, che separa l'ambiente di compilazione da quello di esecuzione.
 \begin{itemize}
-    \item \textbf{Stage 1 (Build)}: Utilizza \texttt{node:20-alpine} per installare le dipendenze ed eseguire la build di produzione tramite Vite. L'uso di Alpine Linux garantisce velocità e leggerezza nel processo di CI/CD.
-    \item \textbf{Stage 2 (Production)}: Il risultato della build viene copiato in un'immagine \texttt{nginx:alpine}. Nginx funge da web server statico ad alte prestazioni, configurato appositamente per gestire il routing \textit{client-side} tipico delle Single Page Application (SPA).
+    \item \textbf{Stage 1 (Build)}: Utilizza \texttt{node:20-alpine} per installare le dipendenze ed eseguire la build di produzione tramite \gls{Vite}. L'uso di Alpine Linux garantisce velocità e leggerezza nel processo di CI/CD.
+    \item \textbf{Stage 2 (Production)}: Il risultato della build viene copiato in un'immagine \texttt{\gls{nginx}:alpine}. \gls{Nginx} funge da web server statico ad alte prestazioni, configurato appositamente per gestire il routing \textit{client-side} tipico delle Single Page Application (SPA).
 \end{itemize}
 
-\subsection{Orchestrazione: Docker Compose}
-Il file \texttt{docker-compose.yml} coordina l'avvio sincronizzato dei servizi e la gestione delle risorse:
+\subsection{Orchestrazione: \gls{Docker Compose}}
+Il file \texttt{\gls{docker}-compose.yml} coordina l'avvio sincronizzato dei servizi e la gestione delle risorse:
 \begin{itemize}
-    \item \textbf{Mapping delle porte}: Il frontend è reso accessibile all'host sulla porta \texttt{8080}, mappata sulla porta interna \texttt{80} di Nginx.
+    \item \textbf{Mapping delle porte}: Il frontend è reso accessibile all'host sulla porta \texttt{8080}, mappata sulla porta interna \texttt{80} di \gls{Nginx}.
     \item \textbf{Dipendenze}: È definita una clausola \texttt{depends\_on} che assicura che il container del backend sia avviato prima di quello del frontend.
-    \item \textbf{Sviluppo Agile}: Durante la fase di sviluppo, viene utilizzato un \textit{bind mount} per permettere al server Flask di riflettere istantaneamente le modifiche al codice senza dover ricostruire l'immagine.
+    \item \textbf{Sviluppo \gls{Agile}}: Durante la fase di sviluppo, viene utilizzato un \textit{bind mount} per permettere al server \gls{Flask} di riflettere istantaneamente le modifiche al codice senza dover ricostruire l'immagine.
 \end{itemize}
 
 \newpage
 
 \section{Architettura del frontend}
-Il frontend del sistema è stato sviluppato utilizzando \textbf{React 19}, adottando il pattern architetturale \textbf{MVVM} (Model-View-ViewModel). Questa scelta permette di separare nettamente la logica di business dalla logica di presentazione, facilitando il testing dei componenti e la manutenibilità del codice.
+Il frontend del sistema è stato sviluppato utilizzando \textbf{\gls{React} 19}, adottando il pattern architetturale \textbf{MVVM} (Model-View-ViewModel). Questa scelta permette di separare nettamente la logica di business dalla logica di presentazione, facilitando il testing dei componenti e la manutenibilità del codice.
 
-L'organizzazione del progetto segue i principi della \textit{Feature-based Architecture} (ispirata a \textbf{Bulletproof React}), in cui ogni funzionalità del sistema (come l'Editor o lo Storico) è isolata in moduli autocontenuti che includono i propri componenti, hook e store.
+L'organizzazione del progetto segue i principi della \textit{\gls{Feature-based Architecture}} (ispirata a \textbf{Bulletproof \gls{React}}), in cui ogni funzionalità del sistema (come l'Editor o lo Storico) è isolata in moduli autocontenuti che includono i propri componenti, hook e store.
 
 \subsection{Model}
 Il Model rappresenta lo strato dei dati e della persistenza. Nel nostro sistema, il Model non è una struttura passiva, ma è gestito tramite store globali realizzati con \textbf{Zustand}. Questi store (\texttt{useEditorMetaStore}, \texttt{useHistoryStore}) fungono da singola fonte di verità (\textit{Single Source of Truth}) per lo stato dell'applicazione.
-Per garantire la persistenza dei dati senza un database backend, il Model integra il middleware \texttt{persist}, che sincronizza automaticamente lo stato dello store con il \textbf{LocalStorage} del browser, assicurando che i documenti e lo storico siano disponibili anche dopo il riavvio della sessione.
+Per garantire la persistenza dei dati senza un \gls{database} backend, il Model integra il middleware \texttt{persist}, che sincronizza automaticamente lo stato dello store con il \textbf{LocalStorage} del browser, assicurando che i documenti e lo storico siano disponibili anche dopo il riavvio della sessione.
 
 \subsection{View}
-La View è costituita da componenti React dichiarativi e per la maggior parte "dumb" (o \textit{presentational}). Il loro unico compito è il rendering dell'interfaccia utente basandosi sulle \textit{props} ricevute. Le View non contengono logica di business né effettuano chiamate dirette alle API; esse delegano ogni interazione dell'utente al ViewModel sottostante tramite callback, garantendo che lo strato di presentazione rimanga snello e facilmente testabile.
+La View è costituita da componenti \gls{React} dichiarativi e per la maggior parte "dumb" (o \textit{presentational}). Il loro unico compito è il rendering dell'interfaccia utente basandosi sulle \textit{props} ricevute. Le View non contengono logica di business né effettuano chiamate dirette alle \gls{API}; esse delegano ogni interazione dell'utente al ViewModel sottostante tramite callback, garantendo che lo strato di presentazione rimanga snello e facilmente testabile.
 
 \subsection{ViewModel}
 Il ViewModel funge da intermediario tra il Model e la View, ed è implementato attraverso \textbf{Custom Hooks} specializzati.
 Il ViewModel ha la responsabilità di:
 \begin{itemize}
     \item Esporre i dati e lo stato degli store alle View in un formato pronto per la visualizzazione.
-    \item Gestire la logica di interazione complessa (ad esempio, l'orchestrazione delle API AI tramite la Facade \texttt{aiCall}).
-    \item Manipolare direttamente le istanze di librerie esterne, come \textbf{EasyMDE} per l'editor Markdown, isolandone la complessità tecnica all'interno di hook dedicati.
+    \item Gestire la logica di interazione complessa (ad esempio, l'orchestrazione delle \gls{API} AI tramite la Facade \texttt{aiCall}).
+    \item Manipolare direttamente le istanze di librerie esterne, come \textbf{\gls{EasyMDE}} per l'editor \gls{Markdown}, isolandone la complessità tecnica all'interno di hook dedicati.
 \end{itemize}
 
 
@@ -726,20 +726,20 @@ Il pattern Registry funge da catalogo centralizzato e configuratore delle operaz
 L’integrazione tra le diverse strategie di prompting e i diversi LLM poneva un problema di accoppiamento rigido e di complessità gestionale. Senza un punto di coordinamento centrale, il Controller avrebbe dovuto:
 \begin{itemize}
     \item Conoscere l'esistenza di tutte le classi concrete e importarle direttamente.
-    \item Gestire manualmente la logica di accoppiamento tra prompt e modelli.
+    \item Gestire manualmente la logica di accoppiamento tra \gls{prompt} e modelli.
     \item Contenere lunghi blocchi condizionali per istanziare la strategia corretta in base alla stringa ricevuta dal frontend.
 \end{itemize}
 Questa struttura avrebbe violato il principio di Inversione delle Dipendenze, rendendo l'aggiunta di una nuova operazione un processo rischioso e richiedendo la modifica del codice di routing principale ogni volta che viene introdotta una nuova funzionalità.
 
 \subsubsection{Applicazione: operation\_registry.py}
-Il modulo funge da punto di giunzione dell'intera architettura, orchestrando il legame tra le strategie di contenuto (prompt) e le strategie di esecuzione (modelli).
+Il modulo funge da punto di giunzione dell'intera architettura, orchestrando il legame tra le strategie di contenuto (\gls{prompt}) e le strategie di esecuzione (modelli).
 
 \paragraph{OperationConfig} 
 La struttura \texttt{OperationConfig} è definita tramite il decoratore \texttt{@dataclass} ed è progettata per garantire un accoppiamento debole tra i componenti. Agisce come un contenitore che incapsula le dipendenze necessarie a ogni singola operazione.\\
 \textbf{Attributi:}
 \begin{itemize}
     \item \texttt{model\_class} (\texttt{Type[AIModelStrategy]}): è il riferimento al tipo della classe del modello da istanziare, la cui creazione effettiva è delegata al sistema di caching (\texttt{get\_model}) visto in precedenza.
-    \item \texttt{prompt\_strategy} (\texttt{BaseAIStrategy}): è un'istanza preconfigurata della strategia di \gls{prompt} specifica per quell'operazione.
+    \item \texttt{\gls{prompt}\_strategy} (\texttt{BaseAIStrategy}): è un'istanza preconfigurata della strategia di \gls{prompt} specifica per quell'operazione.
 \end{itemize}
 
 \paragraph{OPERATION\_REGISTRY}
