@@ -102,7 +102,9 @@
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{\gls{Verifica}} \\
         \hline
-        0.0.9 & 20/04/2026 & Giulia Barzon & Mappatura requisiti soddisfatti (una parte) & \\
+        0.0.10 & 20/04/2026 & Elisa Marchioro & Fix alle tabelle & \\
+        \hline
+        0.0.9 & 20/04/2026 & Giulia Barzon & Mappatura requisiti soddisfatti (una parte) & Elisa Marchioro\\
         \hline
         0.0.8 & 18/04/2026 & Joseph Grant & Aggiunti i hook frontend & Elisa Marchioro\\
         \hline
@@ -205,13 +207,17 @@ I termini che vengono considerati meritevoli di approfondimenti sono indicati co
 
 \newpage
 
+% Definisci una volta sola le larghezze delle colonne
+% Nome: 0.20, Versione: 0.10, Descrizione: 0.55 (totale ~0.85 per i margini interni)
+
 \section{Tecnologie}
+
 \subsection{Framework frontend}
 \begin{table}[H]
     \centering
-    \begin{tabular}{|l|c|>{\raggedright\arraybackslash}p{0.35\textwidth}|p{0.18\textwidth}|}
+    \begin{tabular}{|p{0.20\textwidth}|p{0.10\textwidth}|p{0.55\textwidth}|}
         \hline
-        \textbf{Nome} & \textbf{versione} & \textbf{Descrizione} \\
+        \textbf{Nome} & \textbf{Versione} & \textbf{Descrizione} \\
         \hline
         \gls{React} & 19.2.0 & Libreria JavaScript per la costruzione di interfacce utente basate su componenti riutilizzabili. \\
         \hline
@@ -219,130 +225,138 @@ I termini che vengono considerati meritevoli di approfondimenti sono indicati co
     \caption{Descrizione del framework frontend}
     \label{tab:framework_frontend}
 \end{table}
+
 \subsection{Librerie frontend}
-    \begin{table}[H]
-        \centering
-        \begin{tabular}{|l|c|>{\raggedright\arraybackslash}p{0.35\textwidth}|p{0.18\textwidth}|}
-            \hline
-            \textbf{Nome} & \textbf{versione} & \textbf{Descrizione} \\
-            \hline
-            \gls{EasyMDE} & 2.20.0 & Editor \gls{Markdown} con anteprima in tempo reale, basato su CodeMirror. \\
-            \hline
-            Axios & 1.7.9 & Client HTTP basato su Promise per effettuare richieste REST dal browser e da Node.js. \\
-            \hline
-            TanStack Query & - & Libreria per la gestione del fetching, caching e sincronizzazione dello stato server in \gls{React}. \\
-            \hline
-            \gls{CSS Modules} & - & Sistema di scope locale per i fogli di stile CSS, che evita conflitti tra classi in componenti diversi. \\
-            \hline
-            \gls{React} Hot Toast & 2.6.0 & Libreria leggera per la visualizzazione di notifiche toast personalizzabili in \gls{React}. \\
-            \hline
-            eslint & 9.31.1 & Strumento di linting per JavaScript e TypeScript, che aiuta a mantenere uno stile di codice coerente e a individuare errori. \\
-            \hline
-            \gls{Zustand} & 5.0.12 & Libreria di state management leggera, utilizzata per la gestione dello stato globale e la persistenza dei dati nel LocalStorage.\\
-            \hline
-            Lucide-\gls{React} & 1.8.0 & Libreria di icone vettoriali utilizzata per la UI dell'applicazione.\\
-            \hline
-        \end{tabular}
-        \caption{Descrizione delle librerie frontend}
-        \label{tab:librerie_frontend}
-    \end{table}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|p{0.20\textwidth}|p{0.10\textwidth}|p{0.55\textwidth}|}
+        \hline
+        \textbf{Nome} & \textbf{Versione} & \textbf{Descrizione} \\
+        \hline
+        \gls{EasyMDE} & 2.20.0 & Editor \gls{Markdown} con anteprima in tempo reale, basato su CodeMirror. \\
+        \hline
+        Axios & 1.7.9 & Client HTTP basato su Promise per effettuare richieste REST dal browser e da Node.js. \\
+        \hline
+        TanStack Query & - & Libreria per la gestione del fetching, caching e sincronizzazione dello stato server in \gls{React}. \\
+        \hline
+        \gls{CSS Modules} & - & Sistema di scope locale per i fogli di stile CSS, che evita conflitti tra classi in componenti diversi. \\
+        \hline
+        \gls{React} Hot Toast & 2.6.0 & Libreria leggera per la visualizzazione di notifiche toast personalizzabili in \gls{React}. \\
+        \hline
+        eslint & 9.31.1 & Strumento di linting per JavaScript e TypeScript, che aiuta a mantenere uno stile di codice coerente e a individuare errori. \\
+        \hline
+        \gls{Zustand} & 5.0.12 & Libreria di state management leggera, utilizzata per la gestione dello stato globale e la persistenza dei dati nel LocalStorage. \\
+        \hline
+        Lucide-\gls{React} & 1.8.0 & Libreria di icone vettoriali utilizzata per la UI dell'applicazione. \\
+        \hline
+    \end{tabular}
+    \caption{Descrizione delle librerie frontend}
+    \label{tab:librerie_frontend}
+\end{table}
+
 \subsection{Linguaggio frontend}
-    \begin{table}[H]
-        \centering
-        \begin{tabular}{|l|c|>{\raggedright\arraybackslash}p{0.35\textwidth}|p{0.18\textwidth}|}
-            \hline
-            \textbf{Nome} & \textbf{versione} & \textbf{Descrizione} \\
-            \hline
-            TypeScript & - & Superset tipizzato di JavaScript che aggiunge tipizzazione statica e migliora la manutenibilità del codice. \\
-            \hline
-            TSX & - & Estensione di TypeScript che consente di scrivere markup \gls{JSX} all'interno di file tipizzati, usata per i componenti \gls{React}. \\
-            \hline
-        \end{tabular}
-        \caption{Descrizione dei linguaggi frontend}
-        \label{tab:linguaggi_frontend}
-    \end{table}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|p{0.20\textwidth}|p{0.10\textwidth}|p{0.55\textwidth}|}
+        \hline
+        \textbf{Nome} & \textbf{Versione} & \textbf{Descrizione} \\
+        \hline
+        TypeScript & - & Superset tipizzato di JavaScript che aggiunge tipizzazione statica e migliora la manutenibilità del codice. \\
+        \hline
+        TSX & - & Estensione di TypeScript che consente di scrivere markup \gls{JSX} all'interno di file tipizzati, usata per i componenti \gls{React}. \\
+        \hline
+    \end{tabular}
+    \caption{Descrizione dei linguaggi frontend}
+    \label{tab:linguaggi_frontend}
+\end{table}
+
 \subsection{Tecnologie di build}
-    \begin{table}[H]
-        \centering
-        \begin{tabular}{|l|c|>{\raggedright\arraybackslash}p{0.35\textwidth}|p{0.18\textwidth}|}
-            \hline
-            \textbf{Nome} & \textbf{versione} & \textbf{Descrizione} \\
-            \hline
-            \gls{Vite} & 7.3.1 & Build tool moderno e veloce per applicazioni web, con supporto nativo a ES modules e Hot Module Replacement. \\
-            \hline
-        \end{tabular}
-        \caption{Descrizione delle tecnologie di build}
-        \label{tab:tecnologie_build}
-    \end{table}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|p{0.20\textwidth}|p{0.10\textwidth}|p{0.55\textwidth}|}
+        \hline
+        \textbf{Nome} & \textbf{Versione} & \textbf{Descrizione} \\
+        \hline
+        \gls{Vite} & 7.3.1 & Build tool moderno e veloce per applicazioni web, con supporto nativo a ES modules e Hot Module Replacement. \\
+        \hline
+    \end{tabular}
+    \caption{Descrizione delle tecnologie di build}
+    \label{tab:tecnologie_build}
+\end{table}
+
 \subsection{Tecnologie di test}
-    \begin{table}[H]
-        \centering
-        \begin{tabular}{|l|c|>{\raggedright\arraybackslash}p{0.35\textwidth}|p{0.18\textwidth}|}
-            \hline
-            \textbf{Nome} & \textbf{versione} & \textbf{Descrizione} \\
-            \hline
-            Vitest & 4.1.4 & Framework di testing per applicazioni \gls{Vite}, compatibile con l'\gls{API} di Jest e ottimizzato per TypeScript. \\
-            \hline
-            Pytest & 7.0.0 & Framework di testing per Python, con sintassi semplice e supporto a fixture, parametrizzazione e plugin. \\
-            \hline
-            testing library \gls{React} & 16.3.2 & Libreria per il testing di componenti \gls{React}, che fornisce utilities per interagire con i componenti in modo simile a come un utente reale lo farebbe. \\
-            \hline
-        \end{tabular}
-        \caption{Descrizione delle tecnologie di test}
-        \label{tab:tecnologie_test}
-    \end{table}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|p{0.20\textwidth}|p{0.10\textwidth}|p{0.55\textwidth}|}
+        \hline
+        \textbf{Nome} & \textbf{Versione} & \textbf{Descrizione} \\
+        \hline
+        Vitest & 4.1.4 & Framework di testing per applicazioni \gls{Vite}, compatibile con l'\gls{API} di Jest e ottimizzato per TypeScript. \\
+        \hline
+        Pytest & 7.0.0 & Framework di testing per Python, con sintassi semplice e supporto a fixture, parametrizzazione e plugin. \\
+        \hline
+        testing library \gls{React} & 16.3.2 & Libreria per il testing di componenti \gls{React}, che fornisce utilities per interagire con i componenti in modo simile a come un utente reale lo farebbe. \\
+        \hline
+    \end{tabular}
+    \caption{Descrizione delle tecnologie di test}
+    \label{tab:tecnologie_test}
+\end{table}
+
 \subsection{Framework \gls{api} backend}
-    \begin{table}[H]
-        \centering
-        \begin{tabular}{|l|c|>{\raggedright\arraybackslash}p{0.35\textwidth}|p{0.18\textwidth}|}
-            \hline
-            \textbf{Nome} & \textbf{versione} & \textbf{Descrizione} \\
-            \hline
-            \gls{Flask} & - & Microframework Python per lo sviluppo di \gls{API} REST, leggero ed estensibile tramite plugin. \\
-            \hline
-        \end{tabular}
-        \caption{Descrizione del framework \gls{api} backend}
-        \label{tab:api_backend}
-    \end{table}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|p{0.20\textwidth}|p{0.10\textwidth}|p{0.55\textwidth}|}
+        \hline
+        \textbf{Nome} & \textbf{Versione} & \textbf{Descrizione} \\
+        \hline
+        \gls{Flask} & - & Microframework Python per lo sviluppo di \gls{API} REST, leggero ed estensibile tramite plugin. \\
+        \hline
+    \end{tabular}
+    \caption{Descrizione del framework \gls{api} backend}
+    \label{tab:api_backend}
+\end{table}
+
 \subsection{Linguaggio backend}
-    \begin{table}[H]
-        \centering
-        \begin{tabular}{|l|c|>{\raggedright\arraybackslash}p{0.35\textwidth}|p{0.18\textwidth}|}
-            \hline
-            \textbf{Nome} & \textbf{versione} & \textbf{Descrizione} \\
-            \hline
-            Python & 3.12-slim & Linguaggio di programmazione ad alto livello, utilizzato per la logica di business e l'implementazione delle \gls{API}. \\
-            \hline
-        \end{tabular}
-        \caption{Descrizione del linguaggio backend}
-        \label{tab:linguaggio_backend}
-    \end{table}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|p{0.20\textwidth}|p{0.10\textwidth}|p{0.55\textwidth}|}
+        \hline
+        \textbf{Nome} & \textbf{Versione} & \textbf{Descrizione} \\
+        \hline
+        Python & 3.12-slim & Linguaggio di programmazione ad alto livello, utilizzato per la logica di business e l'implementazione delle \gls{API}. \\
+        \hline
+    \end{tabular}
+    \caption{Descrizione del linguaggio backend}
+    \label{tab:linguaggio_backend}
+\end{table}
+
 \subsection{Server backend}
-    \begin{table}[H]
-        \centering
-        \begin{tabular}{|l|c|>{\raggedright\arraybackslash}p{0.35\textwidth}|p{0.18\textwidth}|}
-            \hline
-            \textbf{Nome} & \textbf{versione} & \textbf{Descrizione} \\
-            \hline
-            - & - & - \\
-            \hline
-        \end{tabular}
-        \caption{Descrizione del server backend}
-        \label{tab:server_backend}
-    \end{table}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|p{0.20\textwidth}|p{0.10\textwidth}|p{0.55\textwidth}|}
+        \hline
+        \textbf{Nome} & \textbf{Versione} & \textbf{Descrizione} \\
+        \hline
+        - & - & - \\
+        \hline
+    \end{tabular}
+    \caption{Descrizione del server backend}
+    \label{tab:server_backend}
+\end{table}
+
 \subsection{Tecnologie deployment}
-    \begin{table}[H]
-        \centering
-        \begin{tabular}{|l|c|>{\raggedright\arraybackslash}p{0.35\textwidth}|p{0.18\textwidth}|}
-            \hline
-            \textbf{Nome} & \textbf{versione} & \textbf{Descrizione} \\
-            \hline
-            \gls{Docker} & - & Piattaforma per la containerizzazione delle applicazioni, che garantisce ambienti riproducibili e portabili. \\
-            \hline
-        \end{tabular}
-        \caption{Descrizione delle tecnologie di deployment}
-        \label{tab:tecnologie_deployment}
-    \end{table}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|p{0.20\textwidth}|p{0.10\textwidth}|p{0.55\textwidth}|}
+        \hline
+        \textbf{Nome} & \textbf{Versione} & \textbf{Descrizione} \\
+        \hline
+        \gls{Docker} & - & Piattaforma per la containerizzazione delle applicazioni, che garantisce ambienti riproducibili e portabili. \\
+        \hline
+    \end{tabular}
+    \caption{Descrizione delle tecnologie di deployment}
+    \label{tab:tecnologie_deployment}
+\end{table}
 
 \newpage
 
