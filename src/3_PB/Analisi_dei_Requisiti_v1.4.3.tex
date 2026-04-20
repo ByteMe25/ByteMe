@@ -66,7 +66,7 @@
         \centering
         \begin{tabular}{|l|p{5cm}|}
             \hline
-            \textbf{Versione} & 1.4.2 \\
+            \textbf{Versione} & 1.4.3 \\
             \hline
             \textbf{Stato} & Da approvare \\
             \hline
@@ -97,6 +97,8 @@
     \label{tab:versionamento} \\
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{\gls{Verifica}} \\
+        \hline
+        1.4.3 & 20/04/2026 & Giulia Barzon & Aggiunti RO-F-81, RO-F-82, RO-F-83, ROP-F-43, ROP-F-44, ROP-F-45, RO-V-5 & \\
         \hline
         1.4.2 & 01/04/2026 & Giulia Barzon & Aggiornamento fonti e riferimenti & Tommaso Tombacco \\
         \hline
@@ -2634,6 +2636,12 @@ RO-F-79 & Il sistema deve permettere di collegare e inviare il documento a un di
 \hline
 RO-F-80 & Il sistema deve informare l'utente con un messaggio in caso di errore durante l'invio del documento alla stampante. & UC-4.1 \\
 \hline
+RO-F-81 & Il sistema deve garantire la persistenza locale del testo nell'editor tramite browser storage (LocalStorage). & UC-1.* \\
+\hline
+RO-F-82 & Il sistema deve garantire la persistenza locale dello storico delle generazioni AI tramite browser storage (Zustand persist). & UC-2.* \\
+\hline
+RO-F-83 & Il sistema deve impedire il caricamento di file di dimensioni superiori a 5MB. & UC-3.2 \\
+\hline
 
 % DESIDERABILI
 RD-F-1 & Il sistema deve supportare l'uso di scorciatoie da tastiera per le operazioni di formattazione & UC-1.3 - UC-1.8.* \\
@@ -2752,6 +2760,12 @@ ROP-F-41 & Un \gls{utente non autenticato} che prova a salvare un file viene rip
 \hline
 ROP-F-42 & L'utente può effettuare il logout in ogni momento e terminare la propria sessione & UC-5.3 \\
 \hline
+ROP-F-43 & Il sistema deve permettere all'utente di modificare il nome del documento corrente direttamente dall'interfaccia di lavoro. & UC-1.0 \\
+\hline
+ROP-F-44 & Il sistema deve permettere all'utente di cercare testo all'interno del registro delle generazioni AI tramite una barra di ricerca. & UC-2.0 \\
+\hline
+ROP-F-45 & Il sistema deve permettere all'utente di filtrare le voci del registro delle generazioni AI in base al tipo di operazione effettuata. & UC-2.0 \\
+\hline
 \addlinespace[1em]
 \caption{Tabella dei \gls{requisiti funzionali}}
 \end{longtable}
@@ -2774,6 +2788,8 @@ RO-V-2 & Il sistema deve utilizzare la codifica Unicode (UTF-8) per la rappresen
 RO-V-3 & Il formato di input e di storage del testo deve essere \gls{Markdown}, in conformità allo standard CommonMark. & Capitolato \\
 \hline
 RO-V-4 & Il sistema deve integrarsi con un servizio LLM tramite \gls{API} REST compatibili con lo standard OpenAI. & Capitolato \\
+\hline
+RO-V-5 & Il backend dell'applicazione deve essere progettato come un gateway stateless; non deve mantenere sessioni o stati dei documenti sul server, delegando la gestione della persistenza interamente al client. & Capitolato \\
 \hline
 \addlinespace[1em]
 \caption{Tabella dei \gls{requisiti di vincolo}}
@@ -2827,7 +2843,7 @@ RO-Q-10 & Il manuale di installazione e deployment del sistema deve ottenere un 
 \textbf{Caso d'uso} & \textbf{Descrizione} & \textbf{Requisiti} \\
 \hline
 \endhead
-UC-1.0 & Scrittura nell'editor & RO-F-1 \\
+UC-1.0 & Scrittura nell'editor & RO-F-1, RO-F-81, ROP-F-43 \\
 \hline
 UC-1.0.1 & Gestione perdita connessione Internet & RO-F-2 \\
 \hline
@@ -2903,7 +2919,7 @@ UC-1.11 & Ricerca nel testo & ROP-F-1 \\
 \hline
 UC-1.11.1 & Gestione assenza di occorrenze & ROP-F-2 \\
 \hline
-UC-2.0 & Visualizzazione storico generazioni AI & RO-F-46, RO-F-48 \\
+UC-2.0 & Visualizzazione storico generazioni AI & RO-F-46, RO-F-48, RO-F-82, ROP-F-44, ROP-F-45 \\
 \hline
 UC-2.0.1 & Visualizzazione storico generazioni vuoto & RO-F-47 \\
 \hline
@@ -2997,7 +3013,7 @@ UC-3.0.4 & Opzione esplora file & RO-F-65 \\
 \hline
 UC-3.1 & Gestione formati file non supportati & RO-F-67, RO-F-68, RO-F-70, RD-F-6 \\
 \hline
-UC-3.2 & Gestione file troppo grandi & RO-F-67, RO-F-69, RD-F-6 \\
+UC-3.2 & Gestione file troppo grandi & RO-F-67, RO-F-69, RO-F-83, RD-F-6 \\
 \hline
 UC-3.3 & Rimozione file caricato & RO-F-71, RD-F-7 \\
 \hline
@@ -3060,13 +3076,13 @@ UC-5.3 & Logout & ROP-F-42 \\
 \hline
 \textbf{Tipologia} & \textbf{O} & \textbf{D} & \textbf{OP} & \textbf{Totale}\\
 \hline
-Funzionali & 80 & 15 & 42 & 137 \\
+Funzionali & 83 & 15 & 45 & 143 \\
 \hline
-Vincolo & 4 & 0 & 0 & 4 \\
+Vincolo & 5 & 0 & 0 & 5 \\
 \hline
 Qualità & 10 & 0 & 0 & 10 \\
 \hline
-\textbf{Totale} & 94 & 15 & 42 & 151 \\
+\textbf{Totale} & 98 & 15 & 45 & 158 \\
 \hline
 \end{tabular}
 \caption{Riepilogo dei requisiti}

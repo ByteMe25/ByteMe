@@ -70,7 +70,7 @@
         \centering
         \begin{tabular}{|l|p{5cm}|}
             \hline
-            \textbf{Versione} & 0.0.8 \\
+            \textbf{Versione} & 0.0.9 \\
             \hline
             \textbf{Stato} & In corso \\
             \hline
@@ -101,6 +101,8 @@
     \begin{tabular}{|c|c|c|>{\raggedright\arraybackslash}p{0.35\textwidth}|p{0.18\textwidth}|}
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{\gls{Verifica}} \\
+        \hline
+        0.0.9 & 20/04/2026 & Giulia Barzon & Mappatura requisiti soddisfatti (una parte) & \\
         \hline
         0.0.8 & 18/04/2026 & Joseph Grant & Aggiunti i hook frontend & Elisa Marchioro\\
         \hline
@@ -754,7 +756,7 @@ Il nucleo del pattern è implementato come un dizionario globale che associa ide
 
 \newpage
 
-\section{Tracciamento dei requisti}
+\section{Tracciamento dei requisiti}
 In questa sezione è stato riportato il tracciamento dei requisiti del progetto "Second Brain" con lo scopo di avere una panoramica completa sui requisiti stabiliti nel documento dell'\gls{Analisi dei Requisiti} v.2.0.0 e sul loro conseguimento.
 
 \subsection{Notazione dei requisiti}
@@ -791,65 +793,65 @@ Dove le voci assumono i seguenti significati:
 \textbf{Codice} & \textbf{Descrizione} & \textbf{Stato}\\
 \hline
 \endhead
-RO-F-1 & Il sistema deve fornire un’area di testo per l’inserimento e la modifica del testo con supporto alla sintassi \gls{Markdown} standard (CommonMark).& Conseguito\\
+RO-F-1 & Il sistema deve fornire un’area di testo per l’inserimento e la modifica del testo con supporto alla sintassi \gls{Markdown} standard (CommonMark).& Soddisfatto\\
 \hline
 RO-F-2 & Il sistema deve informare l’utente con un messaggio in caso di perdita della connessione Internet durante l’utilizzo dell’editor. & ...\\
 \hline
 RO-F-3 & Il sistema deve informare l’utente con un messaggio se l’editor non risponde ai comandi.& ...\\
 \hline
-RO-F-4 & L'editor deve compilare la sintassi \gls{Markdown} in tempo reale. & ... \\
+RO-F-4 & L'editor deve compilare la sintassi \gls{Markdown} in tempo reale. & Soddisfatto\\
 \hline
-RO-F-5 & Deve essere presente un'area di visualizzazione del documento formattato rispetto alla sintassi \gls{Markdown}. & ... \\
+RO-F-5 & Deve essere presente un'area di visualizzazione del documento formattato rispetto alla sintassi \gls{Markdown}. & Soddisfatto \\
 \hline
 RO-F-6 & Il sistema deve informare l'utente con un messaggio se il pannello di anteprima non si aggiorna correttamente. & ... \\
 \hline
-RO-F-7 & Il sistema deve permettere all'utente di selezionare porzioni di testo tramite mouse o tastiera. & ... \\
+RO-F-7 & Il sistema deve permettere all'utente di selezionare porzioni di testo tramite mouse o tastiera. & Soddisfatto \\
 \hline
-RO-F-8 & Il sistema deve permettere all'utente di modificare porzioni di testo selezionate. & ... \\
+RO-F-8 & Il sistema deve permettere all'utente di modificare porzioni di testo selezionate. & Soddisfatto \\
 \hline
-RO-F-9 & Il sistema deve permettere all'utente di copiare una parte di testo selezionato. & ... \\
+RO-F-9 & Il sistema deve permettere all'utente di copiare una parte di testo selezionato. & Soddisfatto \\
 \hline
-RO-F-10 & Il sistema deve permettere all'utente di incollare un testo nell'area di testo. & ... \\
+RO-F-10 & Il sistema deve permettere all'utente di incollare un testo nell'area di testo. & Soddisfatto \\
 \hline
-RO-F-11 & Il sistema deve permettere all'utente di tagliare il testo selezionato. & ... \\
+RO-F-11 & Il sistema deve permettere all'utente di tagliare il testo selezionato. & Soddisfatto \\
 \hline
-RO-F-12 & Il sistema deve permettere all'utente di annullare l'ultima modifica effettuata. & ... \\
+RO-F-12 & Il sistema deve permettere all'utente di annullare l'ultima modifica effettuata. & Soddisfatto \\
 \hline
-RO-F-13 & Se non sono presenti operazioni annullabili, il sistema non esegue alcuna azione al comando Undo. & ... \\
+RO-F-13 & Se non sono presenti operazioni annullabili, il sistema non esegue alcuna azione al comando Undo. & Soddisfatto \\
 \hline
-RO-F-14 & Il sistema deve permettere all'utente di ripristinare le modifiche precedentemente annullate. & ... \\
+RO-F-14 & Il sistema deve permettere all'utente di ripristinare le modifiche precedentemente annullate. & Soddisfatto \\
 \hline
-RO-F-15 & Se non sono presenti operazioni ripristinabili, il sistema non esegue alcuna azione al comando Redo. & ... \\
+RO-F-15 & Se non sono presenti operazioni ripristinabili, il sistema non esegue alcuna azione al comando Redo. & Soddisfatto \\
 \hline
-RO-F-16 & Nell'editor deve essere presente una barra degli strumenti (\gls{toolbar}) per applicare formattazioni \gls{Markdown} senza scrivere manualmente la sintassi. & ... \\
+RO-F-16 & Nell'editor deve essere presente una barra degli strumenti (\gls{toolbar}) per applicare formattazioni \gls{Markdown} senza scrivere manualmente la sintassi. & Soddisfatto \\
 \hline
-RO-F-17 & Il sistema deve permettere l'applicazione del grassetto al testo tramite \gls{toolbar}. & ... \\
+RO-F-17 & Il sistema deve permettere l'applicazione del grassetto al testo tramite \gls{toolbar}. & Soddisfatto \\
 \hline
-RO-F-18 & Il sistema deve permettere l'applicazione del corsivo al testo tramite \gls{toolbar}. & ... \\
+RO-F-18 & Il sistema deve permettere l'applicazione del corsivo al testo tramite \gls{toolbar}. & Soddisfatto \\
 \hline
-RO-F-19 & Il sistema deve permettere l'applicazione della sottolineatura al testo tramite \gls{toolbar}. & ... \\
+RO-F-19 & Il sistema deve permettere l'applicazione della sottolineatura al testo tramite \gls{toolbar}. & Soddisfatto\\
 \hline
-RO-F-20 & Il sistema deve permettere di creare intestazioni tramite \gls{toolbar}. & ... \\
+RO-F-20 & Il sistema deve permettere di creare intestazioni tramite \gls{toolbar}. & Soddisfatto\\
 \hline
-RO-F-21 & Il sistema deve permettere l'inserimento di elementi di struttura (tabelle, separatori orizzontali) tramite \gls{toolbar}. & ... \\
+RO-F-21 & Il sistema deve permettere l'inserimento di elementi di struttura (tabelle, separatori orizzontali) tramite \gls{toolbar}. & Soddisfatto\\
 \hline
-RO-F-22 & Il sistema deve permettere l'inserimento di liste numerate tramite \gls{toolbar}. & ... \\
+RO-F-22 & Il sistema deve permettere l'inserimento di liste numerate tramite \gls{toolbar}. & Soddisfatto\\
 \hline
-RO-F-23 & Il sistema deve permettere l'inserimento di elenchi puntati tramite \gls{toolbar}. & ... \\
+RO-F-23 & Il sistema deve permettere l'inserimento di elenchi puntati tramite \gls{toolbar}. & Soddisfatto\\
 \hline
-RO-F-24 & Il sistema deve permettere l'inserimento di link e riferimenti tramite \gls{toolbar}. & ... \\
+RO-F-24 & Il sistema deve permettere l'inserimento di link e riferimenti tramite \gls{toolbar}. & Soddisfatto \\
 \hline
-RO-F-25 & L'utente può applicare più stili contemporaneamente (es. grassetto, corsivo, sottolineatura) alla stessa sezione di testo. & ... \\
+RO-F-25 & L'utente può applicare più stili contemporaneamente (es. grassetto, corsivo, sottolineatura) alla stessa sezione di testo. & Soddisfatto \\
 \hline
-RO-F-26 & L'utente può annullare una formattazione di una porzione di testo selezionato riapplicandola dalla \gls{toolbar}. & ... \\
+RO-F-26 & L'utente può annullare una formattazione di una porzione di testo selezionato riapplicandola dalla \gls{toolbar}. & Soddisfatto \\
 \hline
-RO-F-27 & L'utente può estendere la formattazione a una porzione di testo parzialmente formattato riapplicandola dalla \gls{toolbar}. & ... \\
+RO-F-27 & L'utente può estendere la formattazione a una porzione di testo parzialmente formattato riapplicandola dalla \gls{toolbar}. & Soddisfatto \\
 \hline
-RO-F-28 & L'utente può creare sottoliste attivando la creazione di una lista dalla \gls{toolbar} quando il cursore è già all'interno di una lista. & ... \\
+RO-F-28 & L'utente può creare sottoliste attivando la creazione di una lista dalla \gls{toolbar} quando il cursore è già all'interno di una lista. & Soddisfatto \\
 \hline
-RO-F-29 & L'utente può scegliere una combinazione di formattazioni dalla \gls{toolbar} quando non è presente testo selezionato, per applicarle al testo che scriverà successivamente. & ... \\
+RO-F-29 & L'utente può scegliere una combinazione di formattazioni dalla \gls{toolbar} quando non è presente testo selezionato, per applicarle al testo che scriverà successivamente. & Soddisfatto \\
 \hline
-RO-F-30 & Il sistema deve permettere all'utente di selezionare porzioni di testo da inviare all'agente esterno. & ... \\
+RO-F-30 & Il sistema deve permettere all'utente di selezionare porzioni di testo da inviare all'agente esterno. & Soddisfatto \\
 \hline
 RO-F-31 & Il sistema permette di inviare del testo ad un agente esterno. & ... \\
 \hline
@@ -881,13 +883,13 @@ RO-F-44 & Se la generazione di testo si blocca prematuramente, rimane ciò che �
 \hline
 RO-F-45 & L'agente esterno applica modifiche esclusivamente al testo selezionato dall'utente. Un contesto aggiuntivo può essere fornito solo a scopo interpretativo e non deve essere alterato. & ... \\
 \hline
-RO-F-46 & L'utente può consultare il registro delle generazioni AI effettuate. & ... \\
+RO-F-46 & L'utente può consultare il registro delle generazioni AI effettuate. & Soddisfatto \\
 \hline
-RO-F-47 & Il sistema deve gestire il caso in cui lo storico delle generazioni AI sia vuoto, informando l'utente con un messaggio appropriato. & ... \\
+RO-F-47 & Il sistema deve gestire il caso in cui lo storico delle generazioni AI sia vuoto, informando l'utente con un messaggio appropriato. & Soddisfatto \\
 \hline
 RO-F-48 & Ogni generazione di testo dell'agente esterno viene inclusa nel registro delle generazioni, incluse quelle annullate dall'utente. & ... \\
 \hline
-RO-F-49 & Il sistema deve permettere all'utente di visualizzare il testo completo di una generazione dallo storico AI. & ... \\
+RO-F-49 & Il sistema deve permettere all'utente di visualizzare il testo completo di una generazione dallo storico AI. & Soddisfatto \\
 \hline
 RO-F-50 & L'utente deve poter riassumere tutto o una parte selezionata del testo usando un agente esterno. & ... \\
 \hline
@@ -915,15 +917,15 @@ RO-F-61 & L'agente esterno può generare testo basandosi su un \gls{prompt} forn
 \hline
 RO-F-62 & Se il \gls{prompt} fornito dall'utente è vuoto o incompleto, il sistema notifica l'utente e impedisce l'invio. & ... \\
 \hline
-RO-F-63 & L'utente può caricare un file dal proprio dispositivo all'interno dell'editor. & ... \\
+RO-F-63 & L'utente può caricare un file dal proprio dispositivo all'interno dell'editor. & Soddisfatto \\
 \hline
-RO-F-64 & Il sistema deve supportare il caricamento di file in formato \gls{Markdown} (\texttt{.md}, \texttt{.\gls{markdown}}) e testo semplice (\texttt{.txt}). & ... \\
+RO-F-64 & Il sistema deve supportare il caricamento di file in formato \gls{Markdown} (\texttt{.md}, \texttt{.\gls{markdown}}) e testo semplice (\texttt{.txt}). & Soddisfatto \\
 \hline
-RO-F-65 & Il sistema deve supportare il caricamento tramite dialogo di esplorazione file (file picker). & ... \\
+RO-F-65 & Il sistema deve supportare il caricamento tramite dialogo di esplorazione file (file picker). & Soddisfatto \\
 \hline
-RO-F-66 & Prima di procedere con il caricamento di un file, il sistema chiede conferma all'utente. & ... \\
+RO-F-66 & Prima di procedere con il caricamento di un file, il sistema chiede conferma all'utente. & Soddisfatto \\
 \hline
-RO-F-67 & Il sistema deve informare l'utente con un messaggio di esito (successo o errore) al termine di ogni tentativo di caricamento file. & ... \\
+RO-F-67 & Il sistema deve informare l'utente con un messaggio di esito (successo o errore) al termine di ogni tentativo di caricamento file. & Soddisfatto \\
 \hline
 RO-F-68 & Il sistema deve validare il formato del file selezionato e impedire il caricamento di formati non supportati. & ... \\
 \hline
@@ -931,25 +933,155 @@ RO-F-69 & Il sistema deve validare le dimensioni del file selezionato e impedire
 \hline
 RO-F-70 & Il sistema deve impedire il caricamento di file corrotti o illeggibili. & ... \\
 \hline
-RO-F-71 & Il sistema deve permettere all'utente di rimuovere il file che ha caricato. & ... \\
+RO-F-71 & Il sistema deve permettere all'utente di rimuovere il file che ha caricato. & Soddisfatto \\
 \hline
 RO-F-72 & L'utente può annullare l'operazione di rimozione del file caricato, lasciando l'editor nel suo stato precedente. & ... \\
 \hline
-RO-F-73 & Il sistema deve essere in grado di convertire il documento da \gls{Markdown} al formato selezionato dall'utente. & ... \\
+RO-F-73 & Il sistema deve essere in grado di convertire il documento da \gls{Markdown} al formato selezionato dall'utente. & Soddisfatto \\
 \hline
-RO-F-74 & Il sistema deve permettere di scaricare il file nel dispositivo dell'utente. & ... \\
+RO-F-74 & Il sistema deve permettere di scaricare il file nel dispositivo dell'utente. & Soddisfatto\\
 \hline
-RO-F-75 & L'operazione di esportazione o stampa non deve alterare né chiudere il documento originale nell'editor. & ... \\
+RO-F-75 & L'operazione di esportazione o stampa non deve alterare né chiudere il documento originale nell'editor. & Soddisfatto\\
 \hline
-RO-F-76 & Il sistema deve informare l'utente con un messaggio di esito al termine di ogni operazione di esportazione. & ... \\
+RO-F-76 & Il sistema deve informare l'utente con un messaggio di esito al termine di ogni operazione di esportazione. & Soddisfatto \\
 \hline
-RO-F-77 & Il sistema deve consentire l'esportazione del documento in formato \gls{Markdown} (\texttt{.md}). & ... \\
+RO-F-77 & Il sistema deve consentire l'esportazione del documento in formato \gls{Markdown} (\texttt{.md}). & Soddisfatto \\
 \hline
 RO-F-78 & Il sistema deve controllare che il range di pagine inserito dall'utente sia valido (non superiore al numero di pagine del documento e non negativo). & ... \\
 \hline
-RO-F-79 & Il sistema deve permettere di collegare e inviare il documento a un dispositivo di stampa. & ... \\
+RO-F-79 & Il sistema deve permettere di collegare e inviare il documento a un dispositivo di stampa. & Soddisfatto \\
 \hline
-RO-F-80 & Il sistema deve informare l'utente con un messaggio in caso di errore durante l'invio del documento alla stampante. & ... \\
+RO-F-80 & Il sistema deve informare l'utente con un messaggio in caso di errore durante l'invio del documento alla stampante. & Soddisfatto\\
+\hline
+RO-F-81 & Il sistema deve garantire la persistenza locale del testo nell'editor tramite browser storage (LocalStorage). & Soddisfatto\\
+\hline
+RO-F-82 & Il sistema deve garantire la persistenza locale dello storico delle generazioni AI tramite browser storage (Zustand persist). & Soddisfatto \\
+\hline
+RO-F-83 & Il sistema deve impedire il caricamento di file di dimensioni superiori a 5MB. & Soddisfatto \\
+\hline
+
+% DESIDERABILI
+RD-F-1 & Il sistema deve supportare l'uso di scorciatoie da tastiera per le operazioni di formattazione. & Soddisfatto \\
+\hline
+RD-F-2 & Il sistema deve permettere di cambiare modalità di visualizzazione (Solo Editor, Solo Anteprima, Split View). & Soddisfatto \\
+\hline
+RD-F-3 & Il sistema deve supportare il caricamento tramite drag-and-drop (trascinamento file nell'area dell'editor). & ... \\
+\hline
+RD-F-4 & Se sono presenti modifiche non salvate, il sistema chiede conferma all'utente prima di caricare un nuovo file. & Soddisfatto\\
+\hline
+RD-F-5 & Il parsing del contenuto del file caricato deve gestire caratteri non validi senza causare il crash dell'applicazione. & ... \\
+\hline
+RD-F-6 & I messaggi di errore relativi al caricamento file devono essere esplicativi e suggerire come procedere. & ... \\
+\hline
+RD-F-7 & Il sistema deve offrire più opzioni per le operazioni comuni sui file come carica nuovo, stampa, chiudi. & Soddisfatto \\
+\hline
+RD-F-8 & Il sistema deve consentire l'esportazione del documento in formato PDF. & ... \\
+\hline
+RD-F-9 & Il sistema deve consentire l'esportazione del documento in formato HTML. & Soddisfatto \\
+\hline
+RD-F-10 & Il sistema deve consentire l'esportazione del documento in formato ODT. & ... \\
+\hline
+RD-F-11 & Il sistema deve consentire l'esportazione del documento in formato DOCX. & ... \\
+\hline
+RD-F-12 & L'utente deve poter scegliere se esportare l'intero documento o un range di pagine selezionate. & Non soddisfatto \\
+\hline
+RD-F-13 & Il sistema deve consentire all'utente di scegliere il nome del file prima di procedere al download/esportazione. & Soddisfatto \\
+\hline
+RD-F-14 & Il sistema deve fornire un'anteprima del documento nel formato selezionato prima di procedere al download. & Non soddisfatto \\
+\hline
+RD-F-15 & Il sistema deve aprire il dialogo di stampa nativo del browser per configurare le opzioni di stampa. & Soddisfatto \\
+\hline
+
+% OPZIONALI
+ROP-F-1 & L'utente può ricercare parole nel testo attraverso l'editor & ... \\
+\hline
+ROP-F-2 & Il sistema deve informare l'utente se la ricerca non ha prodotto occorrenze nel testo. & ... \\
+\hline
+ROP-F-3 & La sezione di testo generata come proposta è visibilmente diversa dal testo utente & Soddisfatto \\
+\hline
+ROP-F-4 & Per ogni voce del registro delle generazioni AI il sistema deve indicare la data e l'ora della generazione. & Soddisfatto \\
+\hline
+ROP-F-5 & Per ogni voce del registro delle generazioni AI il sistema deve indicare il tipo di operazione che ha prodotto la generazione. & Soddisfatto \\
+\hline
+ROP-F-6 & L'utente può eliminare una voce dal registro delle generazioni AI. & Soddisfatto \\
+\hline
+ROP-F-7 & Per gli utenti autenticati, il registro delle generazioni AI è persistente ed è associato ai documenti salvati nel proprio account. & Non soddisfatto \\
+\hline
+ROP-F-8 & La sezione di testo in stato di proposta viene colorata in base al tipo di operazione che viene fatta & Soddisfatto \\
+\hline
+ROP-F-9 & Il sistema deve visualizzare sia il testo originale che la traduzione generata, permettendo all'utente di confrontarle. & Soddisfatto \\
+\hline
+ROP-F-10 & Se il testo selezionato è già nella lingua di destinazione della traduzione, il sistema avvisa l'utente e interrompe l'operazione. & ... \\
+\hline
+ROP-F-11 & Il sistema offre esempi per la richiesta di generazione di testo a partire da un estratto & ... \\
+\hline
+ROP-F-12 & Il sistema permette di inserire un grafico generato, con dati presenti nel testo, scelto tra diversi tipi disponibili all'utente & Non soddisfatto \\
+\hline
+ROP-F-13 & Il sistema permette di inserire una tabella generata con dati presenti nel testo & Non soddisfatto \\
+\hline
+ROP-F-14 & Se i dati nel testo sono insufficienti per generare grafici o tabelle, il sistema notifica l'utente. & Non soddisfatto \\
+\hline
+ROP-F-15 & Il sistema permette di inserire una mappa concettuale generata con dati presenti nel testo & Non soddisfatto \\
+\hline
+ROP-F-16 & Se si verificano errori nella visualizzazione della mappa concettuale generata, il sistema notifica l'utente. & Non soddisfatto \\
+\hline
+ROP-F-17 & Il sistema permette di inserire una formula matematica generata con dati presenti nel testo & Non soddisfatto \\
+\hline
+ROP-F-18 & Se la formula matematica contiene simboli non supportati, il sistema notifica l'utente. & Non soddisfatto \\
+\hline
+ROP-F-19 & Il sistema deve permettere all'utente di inserire le proprie credenziali (username e password) per il login & Non soddisfatto \\
+\hline
+ROP-F-20 & Se le credenziali sono errate il sistema non permette all'utente di autenticarsi & Non soddisfatto \\
+\hline
+ROP-F-21 & Il sistema deve mostrare un messaggio di errore generico in caso di fallimento del login, senza specificare se l'errore riguarda username o password. & Non soddisfatto \\
+\hline
+ROP-F-22 & In caso di username già esistente durante la registrazione, il sistema deve proporre all'utente di effettuare il login o scegliere un nuovo username. & Non soddisfatto\\
+\hline
+ROP-F-23 & Il sistema deve permettere all'utente di potersi registrare tramite uno username e una password & Non soddisfatto \\
+\hline
+ROP-F-24 & Il sistema deve impedire la registrazione in caso ci sia uno username uguale nel \gls{database} & Non soddisfatto\\
+\hline
+ROP-F-25 & Il sistema deve salvare nel \gls{database} le password criptate in fase di registrazione & Non soddisfatto \\
+\hline
+ROP-F-26 & Il sistema deve permettere ad un \gls{utente autenticato} di poter eliminare il proprio account & Non soddisfatto \\
+\hline
+ROP-F-27 & Il sistema in caso di eliminazione account deve eliminare i dati dal \gls{database} & Non soddisfatto \\
+\hline
+ROP-F-28 & Le operazioni di eliminazione dell'account devono richiedere una conferma esplicita da parte dell'utente & Non soddisfatto \\
+\hline
+ROP-F-29 & Il sistema deve terminare la sessione se un account viene eliminato & Non soddisfatto \\
+\hline
+ROP-F-30 & L'utente può annullare la procedura di eliminazione del proprio account. & Non soddisfatto \\
+\hline
+ROP-F-31 & Il sistema deve permettere ad un utente di vedere i file che ha salvato & Non soddisfatto \\
+\hline
+ROP-F-32 & Il sistema deve permettere ad un \gls{utente autenticato} di selezionare un file dall'elenco di quelli salvati e aprirlo & Non soddisfatto \\
+\hline
+ROP-F-33 & Il sistema deve permettere all'utente di annullare l'operazione di apertura file, lasciando l'editor nel suo stato precedente. & Soddisfatto \\
+\hline
+ROP-F-34 & Il sistema deve mostrare i file salvati in ordine cronologico per data di ultima modifica. & Non soddisfatto \\
+\hline
+ROP-F-35 & L'accesso ai file salvati nel \gls{database} è consentito solo ad utenti autenticati. & Non soddisfatto \\
+\hline
+ROP-F-36 & Il sistema deve permettere il salvataggio di un file in un \gls{sistema di persistenza} non locale & Non soddisfatto \\
+\hline
+ROP-F-37 & Il sistema deve notificare l'utente in caso di fallimento del salvataggio nel \gls{database}. & Non soddisfatto \\
+\hline
+ROP-F-38 & Il sistema deve associare ogni file al suo creatore & Non soddisfatto \\
+\hline
+ROP-F-39 & Il sistema deve impedire il salvataggio di file nel \gls{database} da parte di utenti non autenticati. & Non soddisfatto \\
+\hline
+ROP-F-40 & Il sistema deve impedire il salvataggio di un documento vuoto nel \gls{database}. & Non soddisfatto \\
+\hline
+ROP-F-41 & Un \gls{utente non autenticato} che prova a salvare un file viene riportato alla pagina di login & Non soddisfatto \\
+\hline
+ROP-F-42 & L'utente può effettuare il logout in ogni momento e terminare la propria sessione & Non soddisfatto \\
+\hline
+ROP-F-43 & Il sistema deve permettere all'utente di modificare il nome del documento corrente direttamente dall'interfaccia di lavoro. & Soddisfatto \\
+\hline
+ROP-F-44 & Il sistema deve permettere all'utente di cercare testo all'interno del registro delle generazioni AI tramite una barra di ricerca. & Soddisfatto\\
+\hline
+ROP-F-45 & Il sistema deve permettere all'utente di filtrare le voci del registro delle generazioni AI in base al tipo di operazione effettuata. & Soddisfatto\\
 \hline
 \addlinespace[1em]
 \caption{Tracciamento dei \gls{requisiti funzionali}}
@@ -962,26 +1094,26 @@ RO-F-80 & Il sistema deve informare l'utente con un messaggio in caso di errore 
 \textbf{Codice} & \textbf{Descrizione} & \textbf{Stato}\\
 \hline
 \endhead
-RO-Q-1 & Il tempo di risposta dell'interfaccia utente (aggiornamento anteprima, applicazione formattazioni) deve essere inferiore a 500 ms nel 95\% dei casi, misurato su una sessione utente attiva di almeno 30 minuti.  & ... \\
+RO-Q-1 & Il tempo di risposta dell'interfaccia utente (aggiornamento anteprima, applicazione formattazioni) deve essere inferiore a 500 ms nel 95\% dei casi, misurato su una sessione utente attiva di almeno 30 minuti. & ... \\
 \hline
 RO-Q-2 & Il tempo medio di generazione di una risposta da parte del servizio LLM non deve superare i 10 secondi, misurato su un campione di almeno 20 richieste consecutive in condizioni di utilizzo normale.  & ... \\
 \hline
 RO-Q-3 & Il tasso di errori nelle operazioni principali (salvataggio, apertura file, chiamate AI) non deve superare l'1\%, misurato sul totale delle operazioni eseguite in una sessione utente attiva di almeno 30 minuti. & ... \\
 \hline
-RO-Q-4 & La percentuale di codice coperta dai test automatici (test coverage) deve essere almeno il 70\%, misurata sull'insieme completo dei moduli rilasciati ad ogni versione. & ... \\
+RO-Q-4 & La percentuale di codice coperta dai test automatici (test coverage) deve essere almeno il 70\%, misurata sull'insieme completo dei moduli rilasciati ad ogni versione. & Soddisfatto \\
 \hline
 RO-Q-5 & La complessità ciclomatica (McCabe) di ogni funzione/metodo del codice prodotto non deve superare il valore 8. & ... \\
 \hline
-RO-Q-6 & La documentazione prodotta deve ottenere un Indice di Gulpease (IG) maggiore o uguale a 40. & ... \\
+RO-Q-6 & La documentazione prodotta deve ottenere un Indice di Gulpease (IG) maggiore o uguale a 40. & Soddisfatto \\
 \hline
 RO-Q-7 & Il sistema deve essere sviluppato rispettando le Norme 
-di Progetto del gruppo ByteMe. & ... \\
+di Progetto del gruppo ByteMe. & Soddisfatto \\
 \hline
-RO-Q-8 & Il sistema deve essere verificato secondo il Piano di Qualifica prima di ogni rilascio. & ... \\
+RO-Q-8 & Il sistema deve essere verificato secondo il Piano di Qualifica prima di ogni rilascio. & Soddisfatto\\
 \hline
 RO-Q-9 & Il \gls{manuale utente} deve documentare tutte le funzionalità obbligatorie del sistema e deve ottenere un Indice di Gulpease (IG) maggiore o uguale a 40. & ... \\
 \hline
-RO-Q-10 & Il manuale di installazione e deployment del sistema deve ottenere un Indice di Gulpease (IG) maggiore o uguale a 40. & ... \\
+RO-Q-10 & Il manuale di installazione e deployment del sistema deve ottenere un Indice di Gulpease (IG) maggiore o uguale a 40. & Soddisfatto \\
 \hline
 \addlinespace[1em]
 \caption{Tracciamento dei \gls{requisiti di qualità}}
@@ -998,11 +1130,13 @@ RO-V-1 & L'applicazione deve essere accessibile tramite browser web.
 I browser supportati sono: Google Chrome ($\geq$ v110), Mozilla Firefox 
 ($\geq$ v110), Microsoft Edge ($\geq$ v110), Safari ($\geq$ v16). & ... \\
 \hline
-RO-V-2 & Il sistema deve utilizzare la codifica Unicode (UTF-8) per la rappresentazione interna e lo storage del testo. & ... \\
+RO-V-2 & Il sistema deve utilizzare la codifica Unicode (UTF-8) per la rappresentazione interna e lo storage del testo. & Soddisfatto \\
 \hline
-RO-V-3 & Il formato di input e di storage del testo deve essere \gls{Markdown}, in conformità allo standard CommonMark. & ... \\
+RO-V-3 & Il formato di input e di storage del testo deve essere \gls{Markdown}, in conformità allo standard CommonMark. & Soddisfatto\\
 \hline
-RO-V-4 & Il sistema deve integrarsi con un servizio LLM tramite \gls{API} REST compatibili con lo standard OpenAI. & ... \\
+RO-V-4 & Il sistema deve integrarsi con un servizio LLM tramite \gls{API} REST compatibili con lo standard OpenAI. & Soddisfatto \\
+\hline
+RO-V-5 & Il backend dell'applicazione deve essere progettato come un gateway stateless; non deve mantenere sessioni o stati dei documenti sul server, delegando la gestione della persistenza interamente al client. & Soddisfatto \\
 \hline
 \addlinespace[1em]
 \caption{Tracciamento dei \gls{requisiti di vincolo}}
