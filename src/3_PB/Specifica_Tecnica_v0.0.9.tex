@@ -238,7 +238,7 @@ I termini che vengono considerati meritevoli di approfondimenti sono indicati co
             \hline
             eslint & 9.31.1 & Strumento di linting per JavaScript e TypeScript, che aiuta a mantenere uno stile di codice coerente e a individuare errori. \\
             \hline
-            Zustand & 5.0.12 & Libreria di state management leggera, utilizzata per la gestione dello stato globale e la persistenza dei dati nel LocalStorage.\\
+            \gls{Zustand} & 5.0.12 & Libreria di state management leggera, utilizzata per la gestione dello stato globale e la persistenza dei dati nel LocalStorage.\\
             \hline
             Lucide-\gls{React} & 1.8.0 & Libreria di icone vettoriali utilizzata per la UI dell'applicazione.\\
             \hline
@@ -349,7 +349,7 @@ I termini che vengono considerati meritevoli di approfondimenti sono indicati co
 \section{Architettura del backend}
 Il sistema "Second Brain" adotta il pattern architetturale \textbf{Layered Architecture}. L'adozione di questa struttura garantisce una netta separazione delle responsabilità e riduce l'accoppiamento tra i moduli software. Il flusso di esecuzione è strettamente unidirezionale (top-down): ogni strato funge da astrazione per quello superiore, gestendo esclusivamente la logica di propria competenza.
 
-Nel sistema gli strati sono progettati come "strati chiusi": una richiesta transita solo verso lo strato immediatamente sottostante, garantendo che i dettagli implementativi di un livello rimangano isolati rispetto agli altri. Coerentemente con i requisiti di progetto, il backend è progettato per essere \textbf{stateless}, delegando la persistenza dei dati interamente al client. L'architettura logica si articola nei seguenti livelli:
+Nel sistema gli strati sono progettati come "strati chiusi": una richiesta transita solo verso lo strato immediatamente sottostante, garantendo che i dettagli implementativi di un livello rimangano isolati rispetto agli altri. Coerentemente con i requisiti di progetto, il backend è progettato per essere \textbf{\gls{stateless}}, delegando la persistenza dei dati interamente al client. L'architettura logica si articola nei seguenti livelli:
 \begin{itemize}
     \item \textbf{Presentation layer}: Gestione dell'interfaccia utente (UI/UX) e inoltro delle richieste tramite \gls{API} REST;
     \item \textbf{Application logic}: Orchestrazione del flusso applicativo e instradamento delle richieste;
@@ -438,7 +438,7 @@ Il frontend del sistema è stato sviluppato utilizzando \textbf{\gls{React} 19},
 L'organizzazione del progetto segue i principi della \textit{\gls{Feature-based Architecture}} (ispirata a \textbf{Bulletproof \gls{React}}), in cui ogni funzionalità del sistema (come l'Editor o lo Storico) è isolata in moduli autocontenuti che includono i propri componenti, hook e store.
 
 \subsection{Model}
-Il Model rappresenta lo strato dei dati e della persistenza. Nel nostro sistema, il Model non è una struttura passiva, ma è gestito tramite store globali realizzati con \textbf{Zustand}. Questi store (\texttt{useEditorMetaStore}, \texttt{useHistoryStore}) fungono da singola fonte di verità (\textit{Single Source of Truth}) per lo stato dell'applicazione.
+Il Model rappresenta lo strato dei dati e della persistenza. Nel nostro sistema, il Model non è una struttura passiva, ma è gestito tramite store globali realizzati con \textbf{\gls{Zustand}}. Questi store (\texttt{useEditorMetaStore}, \texttt{useHistoryStore}) fungono da singola fonte di verità (\textit{Single Source of Truth}) per lo stato dell'applicazione.
 Per garantire la persistenza dei dati senza un \gls{database} backend, il Model integra il middleware \texttt{persist}, che sincronizza automaticamente lo stato dello store con il \textbf{LocalStorage} del browser, assicurando che i documenti e lo storico siano disponibili anche dopo il riavvio della sessione.
 
 \subsection{View}
@@ -955,7 +955,7 @@ RO-F-80 & Il sistema deve informare l'utente con un messaggio in caso di errore 
 \hline
 RO-F-81 & Il sistema deve garantire la persistenza locale del testo nell'editor tramite browser storage (LocalStorage). & Soddisfatto\\
 \hline
-RO-F-82 & Il sistema deve garantire la persistenza locale dello storico delle generazioni AI tramite browser storage (Zustand persist). & Soddisfatto \\
+RO-F-82 & Il sistema deve garantire la persistenza locale dello storico delle generazioni AI tramite browser storage (\gls{Zustand} persist). & Soddisfatto \\
 \hline
 RO-F-83 & Il sistema deve impedire il caricamento di file di dimensioni superiori a 5MB. & Soddisfatto \\
 \hline
@@ -1136,7 +1136,7 @@ RO-V-3 & Il formato di input e di storage del testo deve essere \gls{Markdown}, 
 \hline
 RO-V-4 & Il sistema deve integrarsi con un servizio LLM tramite \gls{API} REST compatibili con lo standard OpenAI. & Soddisfatto \\
 \hline
-RO-V-5 & Il backend dell'applicazione deve essere progettato come un gateway stateless; non deve mantenere sessioni o stati dei documenti sul server, delegando la gestione della persistenza interamente al client. & Soddisfatto \\
+RO-V-5 & Il backend dell'applicazione deve essere progettato come un gateway \gls{stateless}; non deve mantenere sessioni o stati dei documenti sul server, delegando la gestione della persistenza interamente al client. & Soddisfatto \\
 \hline
 \addlinespace[1em]
 \caption{Tracciamento dei \gls{requisiti di vincolo}}

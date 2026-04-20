@@ -504,7 +504,7 @@ Ogni membro del team è tenuto a configurare il proprio ambiente seguendo queste
 \end{enumerate}
 
 \subsubsection{Attività: gestione delle dipendenze (requirements.txt)}
-Per il backend, il gruppo mantiene un file \texttt{requirements.txt} snello, limitato alle librerie strettamente necessarie per un'architettura \textit{stateless}. Durante la fase PB, sono obbligatorie le seguenti dipendenze per il corretto funzionamento dei test:
+Per il backend, il gruppo mantiene un file \texttt{requirements.txt} snello, limitato alle librerie strettamente necessarie per un'architettura \textit{\gls{stateless}}. Durante la fase PB, sono obbligatorie le seguenti dipendenze per il corretto funzionamento dei test:
 \begin{itemize}
     \item \texttt{pytest} e \texttt{pytest-\gls{flask}} per l'automazione.
     \item \texttt{\gls{flask}}, \texttt{\gls{flask}-cors}, \texttt{openai}, \texttt{pydantic}, \texttt{python-dotenv} per la logica applicativa.
@@ -962,7 +962,7 @@ Questa struttura garantisce la \textit{\gls{separation of concerns}}: le chiamat
 \begin{itemize}
     \item Lo \textbf{stato locale} (es. flag di caricamento, valori di un form) viene gestito con \texttt{useState} nel componente o hook di competenza.
     \item Lo \textbf{stato globale} condiviso tra feature diverse (es. \gls{utente autenticato}, documento aperto, storico generazioni) viene gestito con \textbf{\gls{React} Context}, seguendo il pattern \textit{lifting state up}.
-    \item Non è utilizzata alcuna libreria di state management esterna (es. Redux, Zustand): per la complessità del POC, \gls{React} Context è sufficiente.
+    \item Non è utilizzata alcuna libreria di state management esterna (es. Redux, \gls{Zustand}): per la complessità del POC, \gls{React} Context è sufficiente.
 \end{itemize}
  
 \subsubsection{Stile}
