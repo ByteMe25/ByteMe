@@ -68,7 +68,7 @@
         \centering
         \begin{tabular}{|l|p{5cm}|}
             \hline
-            \textbf{Versione} & 1.0.8 \\
+            \textbf{Versione} & 1.1.0 \\
             \hline
             \textbf{Stato} & Da approvare \\
             \hline
@@ -98,6 +98,8 @@
     \begin{tabular}{|c|c|c|>{\raggedright\arraybackslash}p{0.35\textwidth}|p{0.18\textwidth}|}
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{\gls{Verifica}} \\
+        \hline
+        1.1.0 & 20/04/2026 & Giulia Barzon & Aggiunte sezioni 9, 10, 11& \\
         \hline
         1.0.8 & 10/04/2026 & Giulia Barzon & Sezioni setup test in locale e \gls{Git} Flow & \\
         \hline
@@ -1058,5 +1060,122 @@ Le variabili d'ambiente sono passate al container \texttt{backend} tramite il fi
     \item \textbf{Avvio normale}: \texttt{\gls{docker compose} up --build}.
     \item \textbf{Arresto}: \texttt{\gls{docker compose} down}.
 \end{itemize}
+
+\newpage
+
+\section{Processo di sviluppo del Minimum Viable Product}
+\subsection{Attività: sviluppo del Minimum Viable Product}
+Questa attività riguarda la realizzazione tecnica del prodotto \textit{Second Brain}, evolvendo il prototipo iniziale in un sistema modulare, scalabile e containerizzato.
+
+\subsection{Procedura: Implementazione dell'architettura frontend (Bulletproof React)}
+Ogni membro del team addetto al frontend deve seguire la struttura \textit{feature-based} per garantire l'isolamento delle funzionalità.
+\begin{enumerate}
+    \item \textbf{Scomposizione in Feature}: Ogni nuova funzionalità deve essere isolata nella directory \texttt{src/features/}.
+    \item \textbf{Standardizzazione dei Sottomoduli}: Ogni cartella di feature deve obbligatoriamente contenere le directory \texttt{api/}, \texttt{components/}, \texttt{hooks/}, \texttt{store/} e \texttt{types/}.
+    \item \textbf{Incapsulamento (Interfaccia Pubblica)}: L'accesso alle risorse interne di una feature è consentito esclusivamente tramite il file \texttt{index.ts}. È vietato l'import diretto di file interni da parte di moduli esterni (Basso Accoppiamento).
+    \item \textbf{Gestione dello Stato}: Per la persistenza locale e la gestione dei metadati deve essere utilizzato lo store \textit{Zustand} con middleware di persistenza su \textit{LocalStorage}.
+\end{enumerate}
+
+\subsection{Procedura: sviluppo del backend stateless}
+Il backend deve agire esclusivamente come gateway di comunicazione.
+\begin{enumerate}
+    \item \textbf{Assenza di Stato}: È vietata l'implementazione di database persistenti lato server. Ogni richiesta deve essere autocontenuta.
+    \texttt{operation\_registry.py} per disaccoppiare il controller dalla logica delle dipendenze.
+    \item \textbf{Strategie di prompt}: L'elaborazione dei testi deve seguire il pattern \textit{Strategy}, isolando la costruzione dei prompt in classi specifiche in \texttt{ai\_strategies.py}.
+\end{enumerate}
+
+\subsection{Strumenti e organizzazione repository}
+L'ambiente di sviluppo e la struttura del codice sorgente sono così organizzati:
+\begin{itemize}
+    \item \textbf{Linguaggi e Framework}: React 19, TypeScript, Python 3.12 (Flask).
+    \item \textbf{Infrastruttura}: Docker e Docker Compose per la gestione dei container.
+\end{itemize}
+
+\begin{verbatim}
+PB_ByteMe/
+|-- docker-compose.yml
+|-- backend/
+|   |-- Dockerfile
+|   |-- requirements.txt
+|   |-- src/
+|   |   |-- app.py                 # Entry point Flask (Routing)
+|   |   |-- operation_registry.py  # Registry pattern per le operazioni AI
+|   |   |-- ai_strategies.py       # Strategie di prompt (es. Summary, De Bono)
+|   |   |-- model_strategies.py    # Logica di comunicazione con API
+|   |   +-- utils/
+|   +-- test/                      # Suite di test unitari (Pytest)
+|
++-- frontend/
+    |-- Dockerfile
+    |-- package.json
+    |-- vite.config.js
+    +-- src/
+        |-- app/                   # Configurazione globale e routing
+        |-- assets/
+        |-- components/            # Componenti UI globali
+        |-- lib/                   # Configurazioni librerie esterne
+        |-- styles/                # CSS globali
+        |-- types/                 # Tipi globali
+        +-- features/              # Moduli Bulletproof React
+            |-- editor/            # Logica e UI dell'editor Markdown
+            |   |-- api/
+            |   |-- components/
+            |   |-- hooks/
+            |   |-- store/         # Gestione stato editor (Zustand)
+            |   |-- utils/
+            |   +-- index.ts       # API pubblica della feature editor
+            +-- history/           # Logica e UI dello storico AI
+                |-- components/
+                |-- hooks/
+                |-- store/         # Persistenza storico (Zustand persist)
+                |-- types/
+                +-- index.ts       # API pubblica della feature history
+\end{verbatim}
+
+\newpage
+
+\section{Processo di Verifica}
+\subsection{Attività: testing e validazione continua}
+L'attività assicura che ogni incremento di codice rispetti i requisiti qualitativi e funzionali prefissati.
+
+\subsection{Procedura: Esecuzione test unitari}
+Tutto il codice prodotto deve essere coperto da test automatici per prevenire regressioni.
+\begin{itemize}
+    \item \textbf{Frontend}: Utilizzo di \textit{Vitest} e \textit{React Testing Library}. I file di test devono risiedere nella stessa cartella del componente o dell'hook verificato.
+    \item \textbf{Backend}: Utilizzo di \textit{Pytest} per la verifica del routing e delle logiche di pulizia testo.
+\end{itemize}
+
+\subsection{Procedura: automazione quality gate (Pre-push)}
+Per garantire che la repository remota contenga solo codice stabile, viene imposto l'uso di \textit{Git Hooks}.
+\begin{enumerate}
+    \item \textbf{Trigger}: Al comando \texttt{git push}, il sistema invoca automaticamente gli script di controllo.
+    \item \textbf{Validazione}: Vengono eseguiti in sequenza \texttt{run\_tests.sh} (Backend) e \texttt{test\_frontend.sh} (Frontend).
+    \item \textbf{Blocco}: Se l'exit code di uno degli script è diverso da zero, l'operazione di caricamento viene interrotta forzatamente.
+\end{enumerate}
+
+\newpage
+
+\section{Processo di supporto (Qualità)}
+\subsection{Attività: valutazione e selezione dei LLM}
+Questa attività definisce il protocollo per la scelta del modello linguistico più idoneo a ogni funzionalità AI. Il gruppo adotta un protocollo rigoroso per la selezione degli LLM (\textit{Large Language Model}) da integrare nell'MVP, al fine di bilanciare capacità creative e rigore analitico.
+
+\subsection{Procedura: protocollo di testing comparativo e metriche}
+Ogni qualvolta sia necessario assegnare un modello a una specifica funzionalità (es. Traduzione, Analisi Critica), i membri del team devono seguire la seguente procedura:
+\begin{enumerate}
+    \item \textbf{Campionamento}: Selezione di un set di dati sorgente (\textit{ground truth}) rappresentativo del task.
+    \item \textbf{Configurazione Parametrica}: Fissazione della \gls{temperatura} (es. 0.1 per task deterministici, maggiore di 0.7 per task creativi) per garantire la riproducibilità.
+    \item \textbf{Esecuzione e reportistica}: Ogni membro esegue test individuali su diversi modelli (es. Llama, Gemma, Qwen) e redige un resoconto tecnico.
+\end{enumerate}
+
+La scelta del modello finale è vincolata al superamento delle seguenti soglie quantitative, misurate manualmente o automaticamente:
+\begin{itemize}
+    \item \textbf{Aderenza al ruolo (AR)}: Valutazione manuale su scala discreta (0, 1, 2). Un modello è accettabile se ottiene un punteggio $\ge 2$ nell'80\% dei campioni.
+    \item \textbf{Conformità strutturale (CS)}: Verifica binaria del rispetto dei vincoli di formato (es. output solo in \gls{Markdown}). Soglia minima: 80\%.
+    \item \textbf{Tasso di allucinazione (HR)}: Controllo manuale della fedeltà al testo sorgente. Non deve superare il 5\%.
+    \item \textbf{Efficienza temporale}: Misurazione automatica della latenza. Il tempo di risposta deve essere $\le 60$ secondi per sessione.
+\end{itemize}
+
+\textit{Nota sull'efficienza temporale}: Si precisa che la latenza registrata non è un valore strettamente dipendente dalla sola complessità computazionale (numero di parametri) del modello scelto. Come indicato dal proponente Zucchetti, il tempo di risposta totale è influenzato in modo significativo da fattori infrastrutturali esterni, quali il carico istantaneo di lavoro sui server condivisi e i tempi tecnici di allocazione delle risorse hardware. Nello specifico, il processo di "attivazione" del modello sulla macchina di esecuzione può generare overhead variabili, rendendo la latenza un parametro non deterministico: un modello nominalmente più leggero potrebbe comunque presentare tempi di risposta superiori in scenari di congestione o in caso di inizializzazione a freddo (\textit{cold start}).
+
 
 \end{document}

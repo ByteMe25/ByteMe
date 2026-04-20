@@ -68,7 +68,7 @@
         \centering
         \begin{tabular}{|l|p{5cm}|}            
             \hline
-            \textbf{Versione} & 1.1.3 \\
+            \textbf{Versione} & 1.2.0 \\
             \hline
             \textbf{Stato} & Da approvare \\
             \hline
@@ -95,6 +95,8 @@
     \begin{tabular}{|c|c|c|>{\raggedright\arraybackslash}p{0.35\textwidth}|p{0.18\textwidth}|}
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verifica} \\
+        \hline
+        1.2.0 & 20/04/2026 & Giulia Barzon & Aggiunti nuovi termini della fase PB & \\
         \hline
         1.1.3 & 20/04/2026 & Giulia Barzon & Aggiunti termini stateless e Zustand & \\
         \hline
@@ -188,6 +190,8 @@ Metrica tipica: Failure Density (densità di fallimenti nei test).
 \item \textbf{Branch Coverage (Copertura dei Rami)}: Metrica specifica di copertura che verifica se ogni singolo ramo (decisione vero/falso) del flusso di controllo è stato attraversato almeno una volta dai test.
 
 \item \textbf{Budget at Completion (BAC)}: Il budget totale preventivato per il completamento dell'intero progetto. Corrisponde alla somma di tutti i budget allocati per i singoli pacchetti di lavoro definiti nel Preventivo. Metrica definita nel Piano di Qualifica.
+
+\item \textbf{Bulletproof React}: Un pattern architetturale (anche noto come \textit{Feature-based Architecture}) per applicazioni frontend che organizza il codice sorgente raggruppando file e componenti per funzionalità (\textit{feature}) anziché per tipologia (es. componenti, hook, servizi). Questo approccio garantisce alto incapsulamento, basso accoppiamento e maggiore scalabilità orizzontale.
 
 \end{itemize}
 \newpage
@@ -300,6 +304,8 @@ adatto a progetti di dimensioni contenute come il POC.
 \item \textbf{Git}: Sistema di controllo versione che permette di tenere traccia delle modifiche al codice sorgente e di collaborare in modo efficiente.
 
 \item \textbf{Github}: Piattaforma online basata su Git che consente di ospitare repository, collaborare al progetto e gestire versioni e richieste di modifica.
+
+\item \textbf{Git Hooks}: Script automatici eseguiti da Git prima o dopo eventi specifici (come commit, push, merge). Nel progetto viene utilizzato in particolare l'hook di \texttt{pre-push} per eseguire automaticamente la suite di test unitari e bloccare il caricamento di codice fallato sulla repository remota (Quality Gate).
 
 \item \textbf{Glossario}: Raccolta di vocaboli meno comuni in quanto limitati a un ambiente o propri di una determinata disciplina, accompagnati ognuno dalla spiegazione del significato o da altre osservazioni. Nel nostro caso raccoglierà tutte le parole relative al nostro progetto che meritano di ulteriori precisazioni o che vengono applicate in un particlare contesto.
 
@@ -430,6 +436,8 @@ l'affidabilità e il supporto a tipi di dati avanzati. Nel POC è utilizzato per
 React quando i dati devono essere passati come props attraverso 
 più livelli di componenti intermedi che non li utilizzano direttamente. Viene risolto tramite React Context, che rende i dati accessibili a qualsiasi componente della gerarchia senza passaggi intermedi.
 
+\item \textbf{Pytest}: Un framework di testing per il linguaggio Python, caratterizzato da una sintassi semplice e dalla scalabilità per suite di test complesse. Viene utilizzato nel progetto per la verifica unitaria dei moduli e delle funzioni del backend.
+
 \end{itemize}
 \newpage
 
@@ -453,6 +461,8 @@ riutilizzabili. Adotta un modello dichiarativo in cui l'interfaccia è descritta
 
 \item \textbf{React Router}: Libreria standard per la gestione della 
 navigazione client-side nelle applicazioni React. Permette di definire route associate a componenti e di navigare tra pagine senza ricaricare l'intera applicazione. Nel POC è utilizzata nella versione 6.
+
+\item \textbf{React Testing Library (RTL)}: Una libreria per il testing di componenti React che si concentra sul testare il comportamento dell'applicazione dal punto di vista dell'utente, interagendo con i nodi del DOM anziché testare i dettagli implementativi interni dei componenti.
 
 \item \textbf{Repository}: Spazio in cui viene salvato il codice del progetto insieme a tutte le versioni e i file utili. Permette al team di lavorare insieme senza perdere il lavoro svolto.
 
@@ -586,6 +596,8 @@ JavaScript che offre un server di sviluppo con ricaricamento
 istantaneo e una pipeline di compilazione ottimizzata basata 
 su Rollup. Nel POC è utilizzato come bundler e dev server per 
 il frontend React.
+
+\item \textbf{Vitest}: Un framework di testing nativo per Vite, progettato per essere estremamente veloce. Nel progetto viene utilizzato per l'esecuzione dei test unitari e di integrazione dell'ambiente frontend (React).
 
 \item \textbf{V-Model (Modello a V)}: modello di sviluppo software sequenziale che evidenzia la relazione diretta "uno a uno" tra le fasi di sviluppo (lato sinistro della V) e le corrispondenti fasi di test (lato destro della V). Serve a capire che non si testa "alla fine", ma ogni fase di test verifica una specifica fase di progettazione.
 
