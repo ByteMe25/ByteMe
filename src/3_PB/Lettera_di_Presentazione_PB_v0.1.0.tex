@@ -1,0 +1,197 @@
+\documentclass[11pt,a4paper]{article}
+\newcommand{\gls}[1]{#1\textsubscript{G}}
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{geometry}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{float}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+
+\geometry{margin=2.5cm}
+
+% Intestazione e piè di pagina
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[C]{\thepage\ di \pageref{LastPage}}
+
+\begin{document}
+
+% Prima pagina - Intestazione
+\begin{titlepage}
+    \centering
+    
+    % Logo Università
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.3\textwidth]{../logoUnipd.jpg}
+    \end{figure}
+    
+    \vspace{0.5cm}
+    
+    \textbf{\Large Università degli Studi di Padova} \\
+    \vspace{0.2cm}
+    \textbf{Laurea in Informatica} \\
+    \vspace{0.2cm}
+    \textbf{Corso di Ingegneria del Software} \\
+    \vspace{0.2cm}
+    \textbf{Anno Accademico 2025/2026} \\
+    
+    \vspace{1cm}
+    
+    % Logo gruppo
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.2\textwidth]{../LogoByteMe.jpg}
+    \end{figure}
+    
+    \vspace{0.5cm}
+    
+    \textbf{\Large Gruppo ByteMe} \\
+    \vspace{0.2cm}
+    \texttt{byteme2025swe@gmail.com} \\
+    
+    \vspace{1cm}
+    
+    \textbf{\Huge Lettera di Presentazione per la fase PB} \\
+    
+    \vspace{1.5cm}
+    
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{|l|p{5cm}|}
+            \hline
+            \textbf{Versione} & 0.1.0 \\
+            \hline
+            \textbf{Stato} & Da approvare \\
+            \hline
+            \textbf{Redazione} & Giulia Barzon \\
+            \hline
+            \textbf{\gls{Verifica}} & Da verificare \\
+            \hline
+            \textbf{Approvazione} & Da approvare \\
+            \hline
+            \textbf{Proprietario} & ByteMe \\
+            \hline
+            \textbf{Uso} & Esterno \\
+            \hline
+            \textbf{Destinatari} & Prof. Tullio Vardanega \\ & Prof. Riccardo Cardin \\
+            \hline
+        \end{tabular}
+    \end{table}
+    
+    \vfill
+\end{titlepage}
+
+\section*{Registro dei cambiamenti}
+
+\begin{table}[H]
+    \centering
+    \begin{tabularx}{\textwidth}{|c|c|c|>{\raggedright\arraybackslash}X|c|}
+        \hline
+        \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{\gls{Verifica}} \\
+        \hline
+        0.1.0 & 20/04/2026 & Giulia Barzon & Iniziale stesura documento & \\
+        \hline
+    \end{tabularx}
+    \caption{Registro delle versioni del documento}
+    \label{tab:versionamento}
+\end{table}
+
+\newpage
+
+% Terza pagina - Indice
+\tableofcontents
+\thispagestyle{empty}
+\newpage
+
+% Quarta pagina - Contenuto principale
+\setcounter{page}{1}
+
+\section{Presentazione}
+Il gruppo \textbf{ByteMe} intende formalmente candidarsi per la revisione \textbf{Product Baseline (PB)} relativa al capitolato C6 "Progetto Second Brain", proposto dall'azienda Zucchetti S.p.A.
+
+In questa fase, il team ha evoluto l'architettura individuata durante la RTB, consolidando le scelte tecnologiche e completando lo sviluppo delle funzionalità core del sistema. Viene riportato di seguito il link al sito web ufficiale del progetto dove è possibile consultare la documentazione del gruppo aggiornata:
+\begin{center}
+    \url{https://byteme25.github.io/ByteMe/}
+\end{center}
+
+\noindent Nel sito troverete tutta la documentazione del gruppo e in particolare:
+\begin{itemize}
+    \item {Specifica Tecnica v1.0.0}
+    \item {Manuale Utente v1.0.0}
+    \item {Analisi dei Requisiti v2.0.0}
+    \item {Piano di Qualifica v2.0.0}
+    \item {Piano di Progetto v2.0.0}
+\end{itemize}
+
+
+\subsection{Minimum Viable Product (MVP)}
+Il prodotto consegnato per la fase PB rappresenta il \textbf{Minimum Viable Product (MVP)} del sistema Second Brain. Rispetto al Proof of Concept della fase precedente, il sistema presenta ora un'architettura definitiva basata su \textbf{React 19} e \textbf{TypeScript} per il frontend, e un gateway \textbf{stateless} in \textbf{Flask} per il backend. 
+
+Sono state implementate con successo le strategie di prompt engineering per tutte le operazioni AI richieste (Riassunto, Correzione, Traduzione e i Sei Cappelli di De Bono), garantendo un'integrazione fluida e sicura con i modelli linguistici tramite protocolli standard. La persistenza dei dati è stata ottimizzata lato client tramite l'utilizzo di \textit{Zustand} e del LocalStorage, assicurando velocità e privacy.
+
+Il codice sorgente del MVP del sistema Second Brain è consultabile alla seguente repository GitHub:
+\begin{center}
+ \url{https://github.com/ByteMe25/PB_ByteMe}
+\end{center}
+
+\newpage
+\section{Costi e impegni orari}
+Di seguito viene presentato il bilancio aggiornato dell'impiego orario e dei costi, considerando la chiusura della fase di sviluppo intensivo dell'MVP (Sprint 13).
+
+\subsection*{Stato del budget e rendicontazione}
+Al termine dello \gls{sprint} 13, il costo cumulato del progetto (PAC) ammonta a \textbf{8.602,50 euro}. 
+
+Sebbene nell'ultimo periodo lo sforzo di codifica abbia richiesto un investimento superiore al preventivato (990,00 euro contro i 795,00 euro stimati), il gruppo mantiene un margine di sicurezza positivo grazie ai risparmi accumulati nella fase RTB. Il monte ore residuo e il budget rimanente risultano pienamente sufficienti per coprire la fase di chiusura e la revisione finale (CA).
+
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.3}
+    \begin{tabular}{|l|c|c|}
+        \hline
+        \textbf{Voce} & \textbf{Ore} & \textbf{Costo (€)} \\
+        \hline
+        Totale ore preventivate (BAC) & 558 & 11.395,00 \\
+        Consuntivo totale a fine Sprint 13 (PAC) & \textbf{424} & \textbf{8.602,50} \\
+        \hline
+        \textbf{Budget Residuo (EAC)} & \textbf{134} & \textbf{2.792,50} \\
+        \hline
+    \end{tabular}
+    \vspace{0.2cm}
+    \caption{Riepilogo ore e costi aggiornato allo Sprint 13.}
+\end{table}
+
+
+\newpage
+\section{Conclusione}
+Confidando in una valutazione positiva della nostra proposta, restiamo a disposizione per ogni eventuale chiarimento e porgiamo distinti saluti.
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|c|}
+        \hline
+        \textbf{Cognome} & \textbf{Nome} & \textbf{Matricola} \\
+        \hline
+        Cuogo & Matteo & 2111013 \\
+        \hline
+        Grant & Joseph & 1224441 \\
+        \hline
+        Grossele & Chiara & 2101063 \\
+        \hline
+        Marchioro & Elisa & 2111941 \\
+        \hline
+        Barzon & Giulia & 2101074 \\
+        \hline
+        Tombacco & Tommaso & 2076447 \\
+        \hline
+    \end{tabular}
+\end{table}
+
+\hfill Il gruppo ByteMe
+
+\end{document}

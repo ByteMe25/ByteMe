@@ -6,6 +6,7 @@
 \usepackage{graphicx}
 \usepackage{float}
 \usepackage{tabularx}
+\usepackage{longtable}
 \usepackage{booktabs}
 \usepackage{hyperref}
 \usepackage{fancyhdr}
@@ -67,13 +68,13 @@
         \centering
         \begin{tabular}{|l|p{5cm}|}
             \hline
-            \textbf{Versione} & 1.0.10 \\
+            \textbf{Versione} & 1.1.1 \\
             \hline
             \textbf{Stato} & Da approvare\\
             \hline
             \textbf{Redazione} & Tutto il gruppo \\
             \hline
-            \textbf{\gls{Verifica}} & Verificato \\
+            \textbf{\gls{Verifica}} & Da verificare \\
             \hline
             \textbf{Approvazione} & \\
             \hline
@@ -93,13 +94,14 @@
 \thispagestyle{empty}
 \section*{Registro dei Cambiamenti}
 
-\begin{table}[H]
-    \centering
-    \begin{tabular}{|c|c|c|>{\raggedright\arraybackslash}p{0.35\textwidth}|p{0.18\textwidth}|}
+\begin{longtable}{|>{\centering\arraybackslash}p{0.10\textwidth}|>{\centering\arraybackslash}p{0.12\textwidth}|>{\centering\arraybackslash}p{0.18\textwidth}|>{\raggedright\arraybackslash}p{0.35\textwidth}|>{\raggedright\arraybackslash}p{0.15\textwidth}|}
+    \hline
+    \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{\gls{Verifica}} \\
+    \hline
+    \endhead
+        1.1.1 & 20/04/2026 & Giulia Barzon & Retrospettiva sprint 13 e preventivo sprint 14 &  \\
         \hline
-        \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{\gls{Verifica}} \\
-        \hline
-        1.0.10 & 17/04/2026 & Chiara Grossele & Correzioni \gls{sprint} 13 &  \\
+        1.1.0 & 17/04/2026 & Chiara Grossele & Correzioni \gls{sprint} 13 & Giulia Barzon \\
         \hline
         1.0.9 & 14/04/2026 & Joseph Grant & Review e retrospettiva \gls{sprint} 12, preventivo \gls{sprint} 13 & Chiara Grossele \\
         \hline
@@ -145,10 +147,9 @@
         \hline
         0.1.0 & 02/12/2025 & Giulia Barzon & Creazione del documento, scrittura prime sezioni e log primo \gls{sprint} & Elisa Marchioro\\
         \hline
-    \end{tabular}
     \caption{Registro delle versioni del documento}
     \label{tab:versionamento}
-\end{table}
+\end{longtable}
 
 \newpage
 
@@ -2102,15 +2103,12 @@ Il consuntivo dello \gls{sprint} 11 ammonta a \textbf{685 euro}, meno di quanto 
 Il costo cumulato del progetto (PAC) aggiornato risulta pari a \textbf{7.612,50 euro} (6.927,50 dallo \gls{sprint} 11 + 685). 
 Il margine residuo disponibile per completare la fase PB e l'intero progetto è di \textbf{3.782,50 euro}.
 
-
-
 \newpage
-
 
 % --------------------------------------------
 % SPRINT 13 (PB)
 % --------------------------------------------
-\subsection{\gls{Sprint} 13: PB - Progettazione, Codice e testing MVP}
+\subsection{\gls{Sprint} 13: PB - Progettazione, codice e testing MVP}
 {\textbf{Periodo: 14 aprile 2026 - 20 aprile 2026}\par}
 
 \subsubsection{Pianificazione}
@@ -2165,8 +2163,15 @@ Il margine residuo disponibile per completare la fase PB e l'intero progetto è 
 
 \noindent \textbf{Legenda}: Re = Responsabile, Am = Amministratore, An = Analista, Pj = Progettista, Pg = Programmatore, Ve = Verificatore.
 
-
 \subsubsection{Review}
+Durante lo \gls{sprint} 13 il gruppo ha portato a termine importanti obiettivi architetturali e di sviluppo, completando le seguenti attività:
+\begin{itemize}
+    \item \textbf{Codifica e testing}: Il lavoro di sviluppo ha subito una forte accelerazione, portando la codifica dell'MVP quasi al suo completamento, sia per il backend che per il frontend. Parallelamente, sono stati redatti e superati i test unitari a copertura delle nuove componenti, con il conseguente aggiornamento del \gls{Piano di Qualifica}.
+    \item \textbf{Ricerca e configurazione LLM}: È terminata la fase di ricerca sui modelli linguistici e sul prompt engineering. I risultati ottenuti (scelta dei modelli ottimali e configurazione dei parametri) sono stati in parte integrati all'interno della \gls{Specifica Tecnica}.
+    \item \textbf{Incontro con la proponente}: Si è tenuto un incontro di allineamento con l'azienda Zucchetti. Il gruppo ha esposto le scelte implementative relative ai modelli AI e all'infrastruttura. L'azienda ha confermato la validità della direzione intrapresa e ha chiarito alcuni dubbi residui sulla configurazione dell'applicativo.
+    \item \textbf{Incontro con il committente}: È stata effettuata una riunione con il Prof. Cardin. Durante l'incontro sono stati esaminati alcuni diagrammi UML e l'architettura generale dell'MVP. I chiarimenti ricevuti dal docente hanno permesso di risolvere definitivamente le ultime incertezze strutturali, decretando la chiusura della fase di progettazione.
+    \item \textbf{Documentazione}: La stesura della \gls{Specifica Tecnica} ha visto un sostanziale avanzamento, incorporando le decisioni architetturali validate durante le riunioni. Di comune accordo, il team ha deciso di posticipare l'inizio della redazione del Manuale Utente a dopo la fine della fase di codifica e testing.
+\end{itemize}
 
 \subsubsection{Consuntivo orario}
 \begin{center}
@@ -2174,21 +2179,21 @@ Il margine residuo disponibile per completare la fase PB e l'intero progetto è 
         \hline
         \textbf{Membro} & \textbf{Re} & \textbf{Am} & \textbf{An} & \textbf{Pj} & \textbf{Pg} & \textbf{Ve} & \textbf{Totale} \\
         \hline
-        Joseph Grant & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+        Joseph Grant & 2 & 6 & 0 & 0 & 0 & 0 & 8 \\
         \hline
-        Chiara Grossele & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+        Chiara Grossele & 0 & 6 & 0 & 0 & 0 & 3 & 9 \\
         \hline
-        Tommaso Tombacco & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+        Tommaso Tombacco & 0 & 0 & 0 & 0 & 10 & 0 & 10 \\
         \hline
-        Elisa Marchioro & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+        Elisa Marchioro & 0 & 0 & 0 & 0 & 12 & 0 & 12 \\
         \hline
-        Giulia Barzon & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+        Giulia Barzon & 0 & 0 & 0 & 0 & 14 & 0 & 14 \\
         \hline
-        Matteo Cuogo & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+        Matteo Cuogo & 0 & 0 & 0 & 0 & 6 & 1 & 7 \\
         \hline
-        \textbf{Ore totali} & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+        \textbf{Ore totali} & 2 & 12 & 0 & 0 & 42 & 4 & 60 \\
         \hline
-        \textbf{Costo totale} & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+        \textbf{Costo totale} & 60 & 240 & 0 & 0 & 630 & 60 & 990 \\
         \hline
     \end{tabular}
 \end{center}
@@ -2196,5 +2201,85 @@ Il margine residuo disponibile per completare la fase PB e l'intero progetto è 
 \noindent \textbf{Legenda}: Re = Responsabile, Am = Amministratore, An = Analista, Pj = Progettista, Pg = Programmatore, Ve = Verificatore.
 
 \subsubsection{Retrospettiva}
+\paragraph{Grado di raggiungimento degli obiettivi}
+Gli obiettivi posti ad inizio periodo sono stati ampiamente raggiunti, con un notevole successo sul fronte della scrittura del codice dell'MVP. L'esigenza di finalizzare il codice dell'MVP ha richiesto un impegno massiccio nel ruolo di Programmatore, evidente dalle ore impiegate da alcuni membri del gruppo (es. 14 e 12 ore). Questo sforzo intensivo è stato necessario per presentare un prodotto maturo in vista delle valutazioni imminenti.
+L'incontro con il Prof. Cardin ha chiarito gli ultimi dubbi relativi ai pattern e ai diagrammi UML, consentendo al gruppo di concludere definitivamente la progettazione e di dedicarsi al codice e ai test, nonchè alla scrittura della documentazione ufficiale.
+L'incontro con Zucchetti invece ha confermato la scelta del gruppo riguardo l'uso del pattern Strategy per la i modelli e i prompt nel backend dell'applicazione. Questo riscontro da parte della proponente è stato molto d'aiuto e di incoraggiamento, mostrando che le scelte progettuali prese sono state efficaci.
+Il gruppo ha inoltre deciso di finire i documenti di progetto entro il prossimo sprint e di occuparsi del Manuale Utente dopo la fine della fase di codifica e testing del codice dell'MVP.
+
+
+\paragraph{Misure correttive pianificate e valutazione dei rischi}
+\begin{itemize}
+    \item \textbf{Rischio RT-1 (Inesperienza tecnologica)}: Le difficoltà e i dubbi legati all'integrazione degli LLM sono stati totalmente mitigati grazie all'intervento risolutivo dell'azienda proponente.
+    \item \textbf{Gestione del carico orario}: Lo sforzo extra richiesto ai programmatori in questo sprint sarà bilanciato nel prossimo, riassegnando queste risorse ad attività di verifica e stesura documentale per evitare il sovraccarico individuale.
+\end{itemize}
+
+\paragraph{Preventivo a finire (EAC aggiornato)}
+Il consuntivo dello \gls{sprint} 13 ammonta a \textbf{990 euro}, superando il preventivo di 795 euro a causa dell'intensificazione delle ore di programmazione necessarie alla chiusura dell'MVP.
+Il costo cumulato del progetto (PAC) aggiornato risulta pari a \textbf{8.602,50 euro} (7.612,50 dallo \gls{sprint} 12 + 990). 
+Il margine residuo disponibile per completare la fase PB e l'intero progetto ammonta a \textbf{2.792,50 euro}, garantendo un margine che risulta sicuro per coprire le attività conclusive.
+
+\newpage
+% --------------------------------------------
+% SPRINT 14 (PB)
+% --------------------------------------------
+\subsection{\gls{Sprint} 14: PB - Consolidamento MVP e documentazione finale}
+{\textbf{Periodo: 20 aprile 2026 - 27 aprile 2026}\par}
+
+\subsubsection{Pianificazione}
+\begin{itemize}
+    \item \textbf{Data inizio}: 20 aprile 2026
+    \item \textbf{Data fine}: 27 aprile 2026
+    \item \textbf{Obiettivi}:
+    \begin{itemize}
+        \item Consolidamento e chiusura definitiva del codice sorgente e dello stile dell'MVP;
+        \item Esecuzione degli ultimi test per garantire una versione stabile del prodotto;
+        \item Avvio della scrittura Manuale Utente;
+        \item Chiusura e approvazione dei documenti chiave: \gls{Specifica Tecnica}, \gls{Analisi dei Requisiti}, \gls{Piano di Qualifica} e redazione della Lettera di Presentazione. Aggiornamento conclusivo del Piano di Progetto;
+        \item Organizzare un incontro con l'azienda Zucchetti per la validazione finale dell'MVP;
+        \item Fissare un incontro con il Prof. Cardin, dopo la validazione aziendale, per ottenere la prima valutazione del prodotto.
+    \end{itemize}
+    
+    \item \textbf{Ruoli assegnati}:
+    \begin{itemize}
+        \item Matteo Cuogo: Responsabile e Programmatore
+        \item Giulia Barzon: Amministratore e Programmatore
+        \item Elisa Marchioro: Amministratore e Verificatore
+        \item Joseph Grant: Programmatore e Verificatore
+        \item Chiara Grossele: Programmatore e Verificatore
+        \item Tommaso Tombacco: Programmatore e Amministratore
+    \end{itemize}
+    \item \textbf{Rischi attesi}: RO-3, RT-2, RO-5
+\end{itemize}
+
+\subsubsection{Preventivo orario}
+\begin{center}
+    \begin{tabular}{|l|c|c|c|c|c|c|c|}
+        \hline
+        \textbf{Membro} & \textbf{Re} & \textbf{Am} & \textbf{An} & \textbf{Pj} & \textbf{Pg} & \textbf{Ve} & \textbf{Totale} \\
+        \hline
+        Joseph Grant & 0 & 0 & 0 & 0 & 6 & 3 & 9 \\
+        \hline
+        Chiara Grossele & 0 & 0 & 0 & 0 & 6 & 3 & 9 \\
+        \hline
+        Tommaso Tombacco & 0 & 4 & 0 & 4 & 0 & 0 & 8 \\
+        \hline
+        Elisa Marchioro & 0 & 5 & 0 & 0 & 0 & 3 & 8 \\
+        \hline
+        Giulia Barzon & 0 & 5 & 0 & 0 & 3 & 0 & 8 \\
+        \hline
+        Matteo Cuogo & 2 & 0 & 0 & 0 & 6 & 0 & 8 \\
+        \hline
+        \textbf{Ore totali} & 2 & 14 & 0 & 4 & 21 & 9 & 50 \\
+        \hline
+        \textbf{Costo totale} & 60 & 280 & 0 & 100 & 315 & 135 & 890 \\
+        \hline
+    \end{tabular}
+\end{center}
+
+\noindent \textbf{Legenda}: Re = Responsabile, Am = Amministratore, An = Analista, Pj = Progettista, Pg = Programmatore, Ve = Verificatore.
+
+\subsubsection{Review}
+
 
 \end{document}
