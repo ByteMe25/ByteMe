@@ -508,7 +508,7 @@ Ogni membro del team è tenuto a configurare il proprio ambiente seguendo queste
 \subsubsection{Attività: gestione delle dipendenze (requirements.txt)}
 Per il backend, il gruppo mantiene un file \texttt{requirements.txt} snello, limitato alle librerie strettamente necessarie per un'architettura \textit{\gls{stateless}}. Durante la fase PB, sono obbligatorie le seguenti dipendenze per il corretto funzionamento dei test:
 \begin{itemize}
-    \item \texttt{pytest} e \texttt{pytest-\gls{flask}} per l'automazione.
+    \item \texttt{\gls{pytest}} e \texttt{\gls{pytest}-\gls{flask}} per l'automazione.
     \item \texttt{\gls{flask}}, \texttt{\gls{flask}-cors}, \texttt{openai}, \texttt{pydantic}, \texttt{python-dotenv} per la logica applicativa.
 \end{itemize}  
 
@@ -1067,28 +1067,28 @@ Le variabili d'ambiente sono passate al container \texttt{backend} tramite il fi
 \subsection{Attività: sviluppo del Minimum Viable Product}
 Questa attività riguarda la realizzazione tecnica del prodotto \textit{Second Brain}, evolvendo il prototipo iniziale in un sistema modulare, scalabile e containerizzato.
 
-\subsection{Procedura: Implementazione dell'architettura frontend (Bulletproof React)}
+\subsection{Procedura: Implementazione dell'architettura frontend (\gls{Bulletproof \gls{React}})}
 Ogni membro del team addetto al frontend deve seguire la struttura \textit{feature-based} per garantire l'isolamento delle funzionalità.
 \begin{enumerate}
     \item \textbf{Scomposizione in Feature}: Ogni nuova funzionalità deve essere isolata nella directory \texttt{src/features/}.
-    \item \textbf{Standardizzazione dei Sottomoduli}: Ogni cartella di feature deve obbligatoriamente contenere le directory \texttt{api/}, \texttt{components/}, \texttt{hooks/}, \texttt{store/} e \texttt{types/}.
+    \item \textbf{Standardizzazione dei Sottomoduli}: Ogni cartella di feature deve obbligatoriamente contenere le directory \texttt{\gls{api}/}, \texttt{components/}, \texttt{hooks/}, \texttt{store/} e \texttt{types/}.
     \item \textbf{Incapsulamento (Interfaccia Pubblica)}: L'accesso alle risorse interne di una feature è consentito esclusivamente tramite il file \texttt{index.ts}. È vietato l'import diretto di file interni da parte di moduli esterni (Basso Accoppiamento).
-    \item \textbf{Gestione dello Stato}: Per la persistenza locale e la gestione dei metadati deve essere utilizzato lo store \textit{Zustand} con middleware di persistenza su \textit{LocalStorage}.
+    \item \textbf{Gestione dello Stato}: Per la persistenza locale e la gestione dei metadati deve essere utilizzato lo store \textit{\gls{Zustand}} con middleware di persistenza su \textit{LocalStorage}.
 \end{enumerate}
 
-\subsection{Procedura: sviluppo del backend stateless}
+\subsection{Procedura: sviluppo del backend \gls{stateless}}
 Il backend deve agire esclusivamente come gateway di comunicazione.
 \begin{enumerate}
-    \item \textbf{Assenza di Stato}: È vietata l'implementazione di database persistenti lato server. Ogni richiesta deve essere autocontenuta.
+    \item \textbf{Assenza di Stato}: È vietata l'implementazione di \gls{database} persistenti lato server. Ogni richiesta deve essere autocontenuta.
     \texttt{operation\_registry.py} per disaccoppiare il controller dalla logica delle dipendenze.
-    \item \textbf{Strategie di prompt}: L'elaborazione dei testi deve seguire il pattern \textit{Strategy}, isolando la costruzione dei prompt in classi specifiche in \texttt{ai\_strategies.py}.
+    \item \textbf{Strategie di \gls{prompt}}: L'elaborazione dei testi deve seguire il pattern \textit{Strategy}, isolando la costruzione dei \gls{prompt} in classi specifiche in \texttt{ai\_strategies.py}.
 \end{enumerate}
 
-\subsection{Strumenti e organizzazione repository}
+\subsection{Strumenti e organizzazione \gls{repository}}
 L'ambiente di sviluppo e la struttura del codice sorgente sono così organizzati:
 \begin{itemize}
-    \item \textbf{Linguaggi e Framework}: React 19, TypeScript, Python 3.12 (Flask).
-    \item \textbf{Infrastruttura}: Docker e Docker Compose per la gestione dei container.
+    \item \textbf{Linguaggi e Framework}: \gls{React} 19, TypeScript, Python 3.12 (\gls{Flask}).
+    \item \textbf{Infrastruttura}: \gls{Docker} e \gls{Docker Compose} per la gestione dei container.
 \end{itemize}
 
 \begin{verbatim}
@@ -1134,22 +1134,22 @@ PB_ByteMe/
 
 \newpage
 
-\section{Processo di Verifica}
-\subsection{Attività: testing e validazione continua}
+\section{Processo di \gls{Verifica}}
+\subsection{Attività: testing e \gls{validazione} continua}
 L'attività assicura che ogni incremento di codice rispetti i requisiti qualitativi e funzionali prefissati.
 
 \subsection{Procedura: Esecuzione test unitari}
 Tutto il codice prodotto deve essere coperto da test automatici per prevenire regressioni.
 \begin{itemize}
-    \item \textbf{Frontend}: Utilizzo di \textit{Vitest} e \textit{React Testing Library}. I file di test devono risiedere nella stessa cartella del componente o dell'hook verificato.
-    \item \textbf{Backend}: Utilizzo di \textit{Pytest} per la verifica del routing e delle logiche di pulizia testo.
+    \item \textbf{Frontend}: Utilizzo di \textit{\gls{Vitest}} e \textit{\gls{React} Testing Library}. I file di test devono risiedere nella stessa cartella del componente o dell'hook verificato.
+    \item \textbf{Backend}: Utilizzo di \textit{\gls{Pytest}} per la \gls{verifica} del routing e delle logiche di pulizia testo.
 \end{itemize}
 
 \subsection{Procedura: automazione quality gate (Pre-push)}
-Per garantire che la repository remota contenga solo codice stabile, viene imposto l'uso di \textit{Git Hooks}.
+Per garantire che la \gls{repository} remota contenga solo codice stabile, viene imposto l'uso di \textit{\gls{Git Hooks}}.
 \begin{enumerate}
-    \item \textbf{Trigger}: Al comando \texttt{git push}, il sistema invoca automaticamente gli script di controllo.
-    \item \textbf{Validazione}: Vengono eseguiti in sequenza \texttt{run\_tests.sh} (Backend) e \texttt{test\_frontend.sh} (Frontend).
+    \item \textbf{Trigger}: Al comando \texttt{\gls{git} push}, il sistema invoca automaticamente gli script di controllo.
+    \item \textbf{\gls{Validazione}}: Vengono eseguiti in sequenza \texttt{run\_tests.sh} (Backend) e \texttt{test\_frontend.sh} (Frontend).
     \item \textbf{Blocco}: Se l'exit code di uno degli script è diverso da zero, l'operazione di caricamento viene interrotta forzatamente.
 \end{enumerate}
 
@@ -1162,7 +1162,7 @@ Questa attività definisce il protocollo per la scelta del modello linguistico p
 \subsection{Procedura: protocollo di testing comparativo e metriche}
 Ogni qualvolta sia necessario assegnare un modello a una specifica funzionalità (es. Traduzione, Analisi Critica), i membri del team devono seguire la seguente procedura:
 \begin{enumerate}
-    \item \textbf{Campionamento}: Selezione di un set di dati sorgente (\textit{ground truth}) rappresentativo del task.
+    \item \textbf{Campionamento}: Selezione di un set di dati sorgente (\textit{\gls{ground truth}}) rappresentativo del task.
     \item \textbf{Configurazione Parametrica}: Fissazione della \gls{temperatura} (es. 0.1 per task deterministici, maggiore di 0.7 per task creativi) per garantire la riproducibilità.
     \item \textbf{Esecuzione e reportistica}: Ogni membro esegue test individuali su diversi modelli (es. Llama, Gemma, Qwen) e redige un resoconto tecnico.
 \end{enumerate}
@@ -1170,7 +1170,7 @@ Ogni qualvolta sia necessario assegnare un modello a una specifica funzionalità
 La scelta del modello finale è vincolata al superamento delle seguenti soglie quantitative, misurate manualmente o automaticamente:
 \begin{itemize}
     \item \textbf{Aderenza al ruolo (AR)}: Valutazione manuale su scala discreta (0, 1, 2). Un modello è accettabile se ottiene un punteggio $\ge 2$ nell'80\% dei campioni.
-    \item \textbf{Conformità strutturale (CS)}: Verifica binaria del rispetto dei vincoli di formato (es. output solo in \gls{Markdown}). Soglia minima: 80\%.
+    \item \textbf{Conformità strutturale (CS)}: \gls{Verifica} binaria del rispetto dei vincoli di formato (es. output solo in \gls{Markdown}). Soglia minima: 80\%.
     \item \textbf{Tasso di allucinazione (HR)}: Controllo manuale della fedeltà al testo sorgente. Non deve superare il 5\%.
     \item \textbf{Efficienza temporale}: Misurazione automatica della latenza. Il tempo di risposta deve essere $\le 60$ secondi per sessione.
 \end{itemize}
