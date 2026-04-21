@@ -70,13 +70,13 @@
         \centering
         \begin{tabular}{|l|p{5cm}|}
             \hline
-            \textbf{Versione} & 0.0.9 \\
+            \textbf{Versione} & 0.1.1 \\
             \hline
             \textbf{Stato} & In corso \\
             \hline
             \textbf{Redazione} & Giulia Barzon, Joseph Grant, Chiara Grossele, Matteo Cuogo \\
             \hline
-            \textbf{\gls{Verifica}} & Verificato \\
+            \textbf{\gls{Verifica}} & Da verificare\\
             \hline
             \textbf{Approvazione} & Da approvare\\
             \hline
@@ -102,7 +102,11 @@
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{\gls{Verifica}} \\
         \hline
-        0.0.10 & 20/04/2026 & Elisa Marchioro & Fix alle tabelle & \\
+        0.1.1 & 21/04/2026 & Giulia Barzon & Struttura documento e sezione MVVM, bozza del Facade & \\
+        \hline
+        0.1.0 & 21/04/2026 & Giulia Barzon & Completate sezione 1, 2 e 3 & \\
+        \hline
+        0.0.10 & 20/04/2026 & Elisa Marchioro & Fix alle tabelle & Giulia Barzon\\
         \hline
         0.0.9 & 20/04/2026 & Giulia Barzon & Mappatura requisiti soddisfatti (una parte) & Elisa Marchioro\\
         \hline
@@ -148,7 +152,7 @@ Il documento descrive in dettaglio:
   \item l'\textbf{architettura} logica e fisica del sistema, con i pattern architetturali scelti;
   \item i \textbf{design pattern} applicati a livello di componenti, con motivazione delle scelte;
   \item la \textbf{documentazione \gls{API}} tra frontend e backend;
-  \item i \textbf{requisiti soddisfatti} con riferimento al documento \textit{\gls{Analisi dei Requisiti}} v1.4.1.
+  \item i \textbf{requisiti soddisfatti} con riferimento al documento \textit{\gls{Analisi dei Requisiti}} v2.0.0.
 \end{itemize}
  
 Il documento è rivolto al team di sviluppo come guida implementativa e a
@@ -185,33 +189,29 @@ I termini che vengono considerati meritevoli di approfondimenti sono indicati co
  
 \subsubsection{Riferimenti informativi}
 \begin{itemize}
-    \item \textit{\gls{Analisi dei Requisiti}} versione 2.0.0 (Ultimo accesso: 01/04/2026)\\
+    \item \textit{\gls{Analisi dei Requisiti}} versione 2.0.0 (Ultimo accesso: 20/04/2026)\\
     \href{https://byteme25.github.io/ByteMe/}{PB - \gls{Analisi dei Requisiti} v2.0.0}
-    \item \textit{Piano di Qualifica} versione 1.0.0 (Ultimo accesso: 01/04/2026) \\
+    \item \textit{Piano di Qualifica} versione 2.0.0 (Ultimo accesso: 20/04/2026) \\
     \href{https://byteme25.github.io/ByteMe/}{PB - Piano di Qualifica v2.0.0}
     \item Verbali interni ed esterni
-    \item \gls{Glossario} v2.0.0 (Ultimo accesso: 01/04/2026)\\
+    \item \gls{Glossario} v2.0.0 (Ultimo accesso: 20/04/2026)\\
     \href{https://byteme25.github.io/ByteMe/files.html}{Documenti interni - \gls{Glossario} v2.0.0}
     \item \gls{Repository} ufficiale di \gls{EasyMDE}: \url{https://github.com/Ionaru/easy-markdown-editor}\\ (Ultimo accesso: 24/03/2026)
      \item Documentazione linguaggio \gls{markdown} - CommonMark: \url{https://commonmark.org/}\\ (Ultimo accesso: 20/02/2026)
-    \item Documentazione \gls{React} 19: \url{https://react.dev}\\ Ultimo accesso: 27/03/2026
-    \item Principi del Bulletproof \gls{React} (\gls{repository} ufficiale): \url{https://github.com/alan2207/bulletproof-react}\\ (Ultimo accesso: 27/03/2026)
+    \item Documentazione \gls{React} 19: \url{https://react.dev}\\ Ultimo accesso: 16/04/2026
+    \item Principi del Bulletproof \gls{React} (\gls{repository} ufficiale): \url{https://github.com/alan2207/bulletproof-react}\\ (Ultimo accesso: 16/04/2026)
     \item Documentazione \gls{Flask}: \url{https://flask.palletsprojects.com}\\ (Ultimo accesso: 10/03/2026)
     \item Documentazione \gls{Docker}: \url{https://docs.docker.com}\\ (Ultimo accesso: 27/02/2026)
     \item Documentazione TypeScript: \url{https://www.typescriptlang.org/docs/}\\ (Ultimo accesso: 27/03/2026)
 
-    \item Slide del corso di Ingegneria del Software\\ (Ultimo accesso: 27/03/2026)
+    \item Slide del corso di Ingegneria del Software\\ (Ultimo accesso: 10/04/2026)
     \item Principi SOLID (slide prof. Cardin)
     \item Pattern architetturali (slide prof. Cardin)
 \end{itemize}
 
 \newpage
 
-% Definisci una volta sola le larghezze delle colonne
-% Nome: 0.20, Versione: 0.10, Descrizione: 0.55 (totale ~0.85 per i margini interni)
-
 \section{Tecnologie}
-
 \subsection{Framework frontend}
 \begin{table}[H]
     \centering
@@ -235,19 +235,19 @@ I termini che vengono considerati meritevoli di approfondimenti sono indicati co
         \hline
         \gls{EasyMDE} & 2.20.0 & Editor \gls{Markdown} con anteprima in tempo reale, basato su CodeMirror. \\
         \hline
-        Axios & 1.7.9 & Client HTTP basato su Promise per effettuare richieste REST dal browser e da Node.js. \\
+        Axios & 1.7.9 & Client HTTP basato su Promise per effettuare richieste REST dal browser. \\
         \hline
-        TanStack Query & - & Libreria per la gestione del fetching, caching e sincronizzazione dello stato server in \gls{React}. \\
-        \hline
-        \gls{CSS Modules} & - & Sistema di scope locale per i fogli di stile CSS, che evita conflitti tra classi in componenti diversi. \\
-        \hline
-        \gls{React} Hot Toast & 2.6.0 & Libreria leggera per la visualizzazione di notifiche toast personalizzabili in \gls{React}. \\
-        \hline
-        eslint & 9.31.1 & Strumento di linting per JavaScript e TypeScript, che aiuta a mantenere uno stile di codice coerente e a individuare errori. \\
+        React Router DOM & 7.13.1 & Libreria standard per il routing dichiarativo in applicazioni \gls{React}, utilizzata per la navigazione tra le viste. \\
         \hline
         \gls{Zustand} & 5.0.12 & Libreria di state management leggera, utilizzata per la gestione dello stato globale e la persistenza dei dati nel LocalStorage. \\
         \hline
         Lucide-\gls{React} & 1.8.0 & Libreria di icone vettoriali utilizzata per la UI dell'applicazione. \\
+        \hline
+        \gls{React} Hot Toast & 2.6.0 & Libreria leggera per la visualizzazione di notifiche toast personalizzabili. \\
+        \hline
+        \gls{CSS Modules} & N/A (Integrato) & Sistema di scope locale per i fogli di stile CSS integrato in Vite, che evita conflitti tra classi. \\
+        \hline
+        ESLint & 9.39.1 & Strumento di linting per TypeScript, che aiuta a mantenere uno stile di codice coerente e a individuare errori. \\
         \hline
     \end{tabular}
     \caption{Descrizione delle librerie frontend}
@@ -261,16 +261,16 @@ I termini che vengono considerati meritevoli di approfondimenti sono indicati co
         \hline
         \textbf{Nome} & \textbf{Versione} & \textbf{Descrizione} \\
         \hline
-        TypeScript & - & Superset tipizzato di JavaScript che aggiunge tipizzazione statica e migliora la manutenibilità del codice. \\
+        TypeScript & 5.9.3 & Superset tipizzato di JavaScript che aggiunge tipizzazione statica e migliora la manutenibilità del codice. \\
         \hline
-        TSX & - & Estensione di TypeScript che consente di scrivere markup \gls{JSX} all'interno di file tipizzati, usata per i componenti \gls{React}. \\
+        TSX & N/A (Sintassi) & Estensione di TypeScript che consente di scrivere markup \gls{JSX} all'interno di file tipizzati, usata per i componenti \gls{React}. \\
         \hline
     \end{tabular}
     \caption{Descrizione dei linguaggi frontend}
     \label{tab:linguaggi_frontend}
 \end{table}
 
-\subsection{Tecnologie di build}
+\subsection{Tecnologie di build e runtime}
 \begin{table}[H]
     \centering
     \begin{tabular}{|p{0.20\textwidth}|p{0.10\textwidth}|p{0.55\textwidth}|}
@@ -278,6 +278,8 @@ I termini che vengono considerati meritevoli di approfondimenti sono indicati co
         \textbf{Nome} & \textbf{Versione} & \textbf{Descrizione} \\
         \hline
         \gls{Vite} & 7.3.1 & Build tool moderno e veloce per applicazioni web, con supporto nativo a ES modules e Hot Module Replacement. \\
+        \hline
+        Node.js & 20-alpine & Ambiente di runtime JavaScript lato server, utilizzato nel \gls{Dockerfile} per la fase di compilazione del frontend. \\
         \hline
     \end{tabular}
     \caption{Descrizione delle tecnologie di build}
@@ -295,7 +297,7 @@ I termini che vengono considerati meritevoli di approfondimenti sono indicati co
         \hline
         \gls{Pytest} & 7.0.0 & Framework di testing per Python, con sintassi semplice e supporto a fixture, parametrizzazione e plugin. \\
         \hline
-        testing library \gls{React} & 16.3.2 & Libreria per il testing di componenti \gls{React}, che fornisce utilities per interagire con i componenti in modo simile a come un utente reale lo farebbe. \\
+        React testing library & 16.3.2 & Libreria per il testing di componenti \gls{React}, che fornisce utilities per interagire con i componenti in modo simile a come un utente reale lo farebbe. \\
         \hline
     \end{tabular}
     \caption{Descrizione delle tecnologie di test}
@@ -309,7 +311,7 @@ I termini che vengono considerati meritevoli di approfondimenti sono indicati co
         \hline
         \textbf{Nome} & \textbf{Versione} & \textbf{Descrizione} \\
         \hline
-        \gls{Flask} & - & Microframework Python per lo sviluppo di \gls{API} REST, leggero ed estensibile tramite plugin. \\
+        \gls{Flask} & 3.1.3 & Microframework Python per lo sviluppo di \gls{API} REST, leggero ed estensibile tramite plugin. \\
         \hline
     \end{tabular}
     \caption{Descrizione del framework \gls{api} backend}
@@ -330,18 +332,40 @@ I termini che vengono considerati meritevoli di approfondimenti sono indicati co
     \label{tab:linguaggio_backend}
 \end{table}
 
-\subsection{Server backend}
+\subsection{Librerie backend}
 \begin{table}[H]
     \centering
     \begin{tabular}{|p{0.20\textwidth}|p{0.10\textwidth}|p{0.55\textwidth}|}
         \hline
         \textbf{Nome} & \textbf{Versione} & \textbf{Descrizione} \\
         \hline
-        - & - & - \\
+        OpenAI & 2.31.0 & Libreria ufficiale utilizzata per l'integrazione e la comunicazione con le \gls{API} dei modelli linguistici (LLM). \\
+        \hline
+        Pydantic & 2.12.5 & Libreria per la validazione dei dati e la serializzazione tramite annotazioni di tipo nativo in Python. \\
+        \hline
+        Flask-CORS & 6.0.2 & Estensione di Flask per la gestione sicura del Cross-Origin Resource Sharing tra frontend e backend. \\
+        \hline
+        Python-dotenv & 1.2.2 & Modulo per il caricamento delle variabili d'ambiente e chiavi API dai file \texttt{.env}. \\
         \hline
     \end{tabular}
-    \caption{Descrizione del server backend}
-    \label{tab:server_backend}
+    \caption{Descrizione delle librerie backend}
+    \label{tab:librerie_backend}
+\end{table}
+
+\subsection{Server Web}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|p{0.20\textwidth}|p{0.10\textwidth}|p{0.55\textwidth}|}
+        \hline
+        \textbf{Nome} & \textbf{Versione} & \textbf{Descrizione} \\
+        \hline
+        Nginx & alpine & Server web ad alte prestazioni utilizzato nel container \gls{Docker} per servire i file statici del frontend e gestire il routing. \\
+        \hline
+        Werkzeug & 3.1.8 & Server WSGI integrato in Flask, utilizzato attualmente come motore di esecuzione per l'ambiente backend. \\
+        \hline
+    \end{tabular}
+    \caption{Descrizione dei server web frontend e backend}
+    \label{tab:server_web}
 \end{table}
 
 \subsection{Tecnologie deployment}
@@ -351,12 +375,55 @@ I termini che vengono considerati meritevoli di approfondimenti sono indicati co
         \hline
         \textbf{Nome} & \textbf{Versione} & \textbf{Descrizione} \\
         \hline
-        \gls{Docker} & - & Piattaforma per la containerizzazione delle applicazioni, che garantisce ambienti riproducibili e portabili. \\
+        \gls{Docker} & 29.4.0 & Piattaforma per la containerizzazione, utilizzata per isolare frontend e backend in ambienti riproducibili. \\
+        \hline
+        Docker Compose & 5.1.2 & Strumento per definire e gestire applicazioni multi-container tramite il file \texttt{docker-compose.yml}. \\
         \hline
     \end{tabular}
     \caption{Descrizione delle tecnologie di deployment}
     \label{tab:tecnologie_deployment}
 \end{table}
+
+\newpage
+
+\section{Infrastruttura e deployment}
+Il sistema \textit{Second Brain} utilizza la tecnologia di containerizzazione \textbf{\gls{Docker}} per garantire l'isolamento dei componenti, la portabilità tra diversi ambienti di sviluppo e produzione e la gestione semplificata delle dipendenze.
+
+\subsection{Strategia di containerizzazione}
+L'architettura è suddivisa in due micro-servizi orchestrati tramite \texttt{\gls{docker}-compose}, che permette di definire reti virtuali interne e volumi per la persistenza o il \textit{hot-reloading} durante lo sviluppo.
+
+\subsection{Backend (\gls{Flask})}
+Il container del backend è ottimizzato per l'esecuzione di script Python in un ambiente leggero e sicuro.
+\begin{itemize}
+    \item \textbf{Immagine di base}: \texttt{python:3.12-slim}. La scelta della variante \textit{slim} riduce l'ingombro dell'immagine, contenendo solo le librerie essenziali per il runtime Python 3.12.
+    \item \textbf{Configurazione}: La directory di lavoro è impostata su \texttt{/app}. Il sistema installa le dipendenze tramite \texttt{pip} senza utilizzare la cache per mantenere l'immagine snella.
+    \item \textbf{Networking}: Il container espone la porta \texttt{8000}.
+    \item \textbf{Variabili d'ambiente}: Il backend riceve dinamicamente tramite il file \texttt{.env} le chiavi necessarie per il funzionamento degli LLM.
+\end{itemize}
+
+\subsection{Frontend (\gls{React} + \gls{Nginx})}
+Per il frontend è stata adottata una strategia di \textbf{Multi-stage Build}, che separa l'ambiente di compilazione da quello di esecuzione.
+\begin{itemize}
+    \item \textbf{Stage 1 (Build)}: Utilizza \texttt{node:20-alpine} per installare le dipendenze ed eseguire la build di produzione tramite \gls{Vite}. L'uso di Alpine Linux garantisce velocità e leggerezza nel processo di CI/CD.
+    \item \textbf{Stage 2 (Production)}: Il risultato della build viene copiato in un'immagine \texttt{\gls{nginx}:alpine}. \gls{Nginx} funge da web server statico ad alte prestazioni, configurato appositamente per gestire il routing \textit{client-side} tipico delle Single Page Application (SPA).
+\end{itemize}
+
+\subsection{Orchestrazione: \gls{Docker Compose}}
+Il file \texttt{\gls{docker}-compose.yml} coordina l'avvio sincronizzato dei servizi e la gestione delle risorse:
+\begin{itemize}
+    \item \textbf{Mapping delle porte}: Il frontend è reso accessibile all'host sulla porta \texttt{8080}, mappata sulla porta interna \texttt{80} di \gls{Nginx}.
+    \item \textbf{Dipendenze}: È definita una clausola \texttt{depends\_on} che assicura che il container del backend sia avviato prima di quello del frontend.
+    \item \textbf{Sviluppo \gls{Agile}}: Durante la fase di sviluppo, viene utilizzato un \textit{bind mount} per permettere al server \gls{Flask} di riflettere istantaneamente le modifiche al codice senza dover ricostruire l'immagine.
+\end{itemize}
+
+% immagine rappresentativa dell'ambiente docker
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{UMLimg/imgDocker.jpg}
+    \caption{Rappresentazione dell'architettura di deployment tramite Docker Compose}
+    \label{fig:architettura_deployment}
+\end{figure}
+
 
 \newpage
 
@@ -414,52 +481,219 @@ Sottomodulo funzionale che implementa algoritmi di post-processing basati su esp
 
 \newpage
 
-\section{Deployment}
-Il sistema \textit{Second Brain} utilizza la tecnologia di containerizzazione \textbf{\gls{Docker}} per garantire l'isolamento dei componenti, la portabilità tra diversi ambienti di sviluppo e produzione e la gestione semplificata delle dipendenze.
+% FRONTEND
+\section{Architettura del frontend}
+Il frontend del sistema è stato sviluppato utilizzando \textbf{\gls{React} 19}, adottando il pattern architetturale \textbf{MVVM} (Model-View-ViewModel). Questa scelta permette di separare nettamente la logica di business dalla logica di presentazione, facilitando il testing isolato dei componenti e la manutenibilità del codice.
 
-\subsection{Strategia di Containerizzazione}
-L'architettura è suddivisa in due micro-servizi orchestrati tramite \texttt{\gls{docker}-compose}, che permette di definire reti virtuali interne e volumi per la persistenza o il \textit{hot-reloading} durante lo sviluppo.
+L'organizzazione del progetto segue i principi della \textit{\gls{Feature-based Architecture}} (ispirata allo standard di settore \textbf{Bulletproof \gls{React}}). Invece di raggruppare i file per tipo (tutti i componenti insieme, tutti gli hook insieme), ogni funzionalità del sistema (es. \texttt{editor}, \texttt{history}) è isolata in un modulo autocontenuto che include i propri componenti, hook, store e definizioni di tipo.
 
-\subsection{Backend (\gls{Flask})}
-Il container del backend è ottimizzato per l'esecuzione di script Python in un ambiente leggero e sicuro.
+% =======
+% MODEL
+% =======
+\subsection{Model: stato e persistenza}
+Il Model rappresenta lo strato dei dati e della loro persistenza. Nel sistema non è una struttura passiva, ma è implementato tramite store globali gestiti con \textbf{\gls{Zustand}}, che fungono da unica fonte di verità (\textit{Single Source of Truth}) per lo stato dell'applicazione.
+Sono presenti due store principali:
 \begin{itemize}
-    \item \textbf{Immagine di base}: \texttt{python:3.12-slim}. La scelta della variante \textit{slim} riduce l'ingombro dell'immagine, contenendo solo le librerie essenziali per il runtime Python 3.12.
-    \item \textbf{Configurazione}: La directory di lavoro è impostata su \texttt{/app}. Il sistema installa le dipendenze tramite \texttt{pip} senza utilizzare la cache per mantenere l'immagine snella.
-    \item \textbf{Networking}: Il container espone la porta \texttt{8000}.
-    \item \textbf{Variabili d'ambiente}: Il backend riceve dinamicamente tramite il file \texttt{.env} le chiavi necessarie per il funzionamento degli LLM.
+    \item \texttt{useEditorMetaStore}: Gestisce i metadati dell'editor attivo, ovvero il nome del file (\texttt{fileName}), lo stato di modifica non salvata (\texttt{isDirty}) e il timestamp dell'ultimo salvataggio (\texttt{lastSaved}). Tramite il middleware \texttt{persist} di Zustand, sincronizza automaticamente questo stato nel \texttt{localStorage} del browser, garantendo che i dati sopravvivano al riavvio della pagina.
+    \item \texttt{useHistoryStore}: Gestisce l'elenco delle generazioni AI prodotte. Ogni voce è modellata dall'interfaccia \texttt{HistoryEntry}. Anche questo store utilizza il \texttt{localStorage} per rendere lo storico persistente tra le sessioni.
 \end{itemize}
 
-\subsection{Frontend (\gls{React} + \gls{Nginx})}
-Per il frontend è stata adottata una strategia di \textbf{Multi-stage Build}, che separa l'ambiente di compilazione da quello di esecuzione.
-\begin{itemize}
-    \item \textbf{Stage 1 (Build)}: Utilizza \texttt{node:20-alpine} per installare le dipendenze ed eseguire la build di produzione tramite \gls{Vite}. L'uso di Alpine Linux garantisce velocità e leggerezza nel processo di CI/CD.
-    \item \textbf{Stage 2 (Production)}: Il risultato della build viene copiato in un'immagine \texttt{\gls{nginx}:alpine}. \gls{Nginx} funge da web server statico ad alte prestazioni, configurato appositamente per gestire il routing \textit{client-side} tipico delle Single Page Application (SPA).
-\end{itemize}
+\textit{Nota}: Il contenuto testuale effettivo dell'editor, per ragioni di performance legate alla natura della libreria \gls{EasyMDE}, non transita attraverso lo store globale, ma viene salvato e sincronizzato direttamente in una chiave dedicata del \texttt{localStorage} gestita dal ViewModel dell'editor.
 
-\subsection{Orchestrazione: \gls{Docker Compose}}
-Il file \texttt{\gls{docker}-compose.yml} coordina l'avvio sincronizzato dei servizi e la gestione delle risorse:
-\begin{itemize}
-    \item \textbf{Mapping delle porte}: Il frontend è reso accessibile all'host sulla porta \texttt{8080}, mappata sulla porta interna \texttt{80} di \gls{Nginx}.
-    \item \textbf{Dipendenze}: È definita una clausola \texttt{depends\_on} che assicura che il container del backend sia avviato prima di quello del frontend.
-    \item \textbf{Sviluppo \gls{Agile}}: Durante la fase di sviluppo, viene utilizzato un \textit{bind mount} per permettere al server \gls{Flask} di riflettere istantaneamente le modifiche al codice senza dover ricostruire l'immagine.
-\end{itemize}
 
 \newpage
+% =======
+% VIEW
+% =======
+\subsection{View: componenti di presentazione}
+La View è costituita da componenti \gls{React} dichiarativi e prevalentemente \textit{presentational} (o "dumb"). Il loro unico compito è il rendering dell'interfaccia utente in base alle \textit{props} ricevute dal ViewModel. Non contengono logica di business né effettuano chiamate \gls{API} dirette: delegano ogni interazione dell'utente al ViewModel sottostante tramite callback, garantendo che lo strato di presentazione rimanga snello e facilmente testabile.
+Di seguito sono descritti i componenti principali della View.
 
-\section{Architettura del frontend}
-Il frontend del sistema è stato sviluppato utilizzando \textbf{\gls{React} 19}, adottando il pattern architetturale \textbf{MVVM} (Model-View-ViewModel). Questa scelta permette di separare nettamente la logica di business dalla logica di presentazione, facilitando il testing dei componenti e la manutenibilità del codice.
+% COMPONENTI
+\subsubsection{Topbar}
+% DESCRIZIONE
+Barra superiore dell'applicazione posizionata in testa all'editor. Il suo scopo principale è visualizzare il nome del documento corrente tramite un campo di input editabile, permettendone la rinominazione rapida.
 
-L'organizzazione del progetto segue i principi della \textit{\gls{Feature-based Architecture}} (ispirata a \textbf{Bulletproof \gls{React}}), in cui ogni funzionalità del sistema (come l'Editor o lo Storico) è isolata in moduli autocontenuti che includono i propri componenti, hook e store.
+% GRAFICO
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../UMLimg/Topbar.jpg}
+    \caption{UML TopBar}
+    \label{fig:uml_topbar}
+\end{figure}
 
-\subsection{Model}
-Il Model rappresenta lo strato dei dati e della persistenza. Nel nostro sistema, il Model non è una struttura passiva, ma è gestito tramite store globali realizzati con \textbf{\gls{Zustand}}. Questi store (\texttt{useEditorMetaStore}, \texttt{useHistoryStore}) fungono da singola fonte di verità (\textit{Single Source of Truth}) per lo stato dell'applicazione.
-Per garantire la persistenza dei dati senza un \gls{database} backend, il Model integra il middleware \texttt{persist}, che sincronizza automaticamente lo stato dello store con il \textbf{LocalStorage} del browser, assicurando che i documenti e lo storico siano disponibili anche dopo il riavvio della sessione.
+% PROPS (invece di attributi e metodi i componenti hanno dati e funzioni di callback nella props)
+\paragraph{Props (Dati)}
+\begin{itemize}
+    \item \texttt{documentName: string} - nome attuale del documento in fase di editing.
+\end{itemize}
 
-\subsection{View}
-La View è costituita da componenti \gls{React} dichiarativi e per la maggior parte "dumb" (o \textit{presentational}). Il loro unico compito è il rendering dell'interfaccia utente basandosi sulle \textit{props} ricevute. Le View non contengono logica di business né effettuano chiamate dirette alle \gls{API}; esse delegano ogni interazione dell'utente al ViewModel sottostante tramite callback, garantendo che lo strato di presentazione rimanga snello e facilmente testabile.
+\paragraph{Props (Callback)}
+\begin{itemize}
+    \item \texttt{onDocumentNameChange: (newName: string) => void} - funzione invocata alla modifica del titolo.
+    \item \texttt{onCloseDocument: () => void} - funzione invocata per chiudere il documento corrente.
+\end{itemize}
 
-\subsection{ViewModel}
-Il ViewModel funge da intermediario tra il Model e la View, ed è implementato attraverso \textbf{Custom Hooks} specializzati.
+
+\subsubsection{Sidebar}
+Barra laterale contenente i pulsanti di navigazione (switch tra editor e storico) e per le funzionalità operative (salvataggio, upload, stampa e azioni AI). Delega l'orchestrazione delle disabilitazioni (es. bloccare i bottoni AI quando si visualizza lo storico) tramite la logica della pagina padre.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../UMLimg/Sidebar.jpg}
+    \caption{UML SideBar}
+    \label{fig:uml_sidebar}
+\end{figure}
+
+\paragraph{Props (Dati)}
+\begin{itemize}
+    \item \texttt{activePage: 'editor' | 'history'} - determina la tipologia di view attualmente attiva per evidenziare il menu corretto (EditorPage o HistoryPage).
+\end{itemize}
+
+\paragraph{Props (Callback)}
+\begin{itemize}
+    \item \texttt{onNavigate: (page: 'editor' | 'history') => void} - aggiorna la view visualizzata.
+    \item \texttt{onUpload: () => void} - innesca il caricamento di un file locale.
+    \item \texttt{onSave: () => void} - innesca il flusso di salvataggio/esportazione.
+    \item \texttt{onPrint: () => void} - invoca la stampa del documento.
+    \item \texttt{onAiAction: () => void} - apre il pannello delle azioni di Intelligenza Artificiale.
+\end{itemize}
+
+
+\subsubsection{EditorButton}
+Componente atomico e riutilizzabile che definisce l'interfaccia standard per tutti i bottoni della \texttt{Sidebar}. Gestisce i propri stati visivi (\texttt{isActive}, \texttt{disabled}) usando classi generate tramite \gls{CSS Modules}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../UMLimg/EditorButton.jpg}
+    \caption{UML EditorButton}
+    \label{fig:uml_editorButton}
+\end{figure}
+
+\paragraph{Props (Dati)}
+\begin{itemize}
+    \item \texttt{icon: ReactNode} - asset vettoriale/icona del bottone.
+    \item \texttt{label: string} - etichetta testuale descrittiva.
+    \item \texttt{isActive?: boolean} - determina lo stile di selezione.
+    \item \texttt{disabled?: boolean} - inibisce l'interazione e applica lo stile di blocco.
+\end{itemize}
+
+\paragraph{Props (Callback)}
+\begin{itemize}
+    \item \texttt{onClick: () => void} - gestisce l'evento di pressione sul bottone.
+\end{itemize}
+
+
+\subsubsection{MarkdownEditor}
+Componente delegato al rendering del corpo principale dell'area di scrittura. Consiste in un wrapper reattivo attorno a una \texttt{textarea} nativa su cui l'istanza di \gls{EasyMDE} viene "agganciata" dal ViewModel. Gestisce autonomamente gli eventi di trascinamento (\textit{drag-and-drop}) dei file esterni.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../UMLimg/MarkDownEditor.jpg}
+    \caption{UML MarkDownEditor}
+    \label{fig:uml_markdownEditor}
+\end{figure}
+
+\paragraph{Props (Dati)}
+\begin{itemize}
+    \item \texttt{textAreaRef: React.RefObject<HTMLTextAreaElement | null>} - puntatore fisico al nodo DOM su cui istanziare la libreria esterna.
+\end{itemize}
+
+\paragraph{Props (Callback)}
+\begin{itemize}
+    \item \texttt{onFileDrop?: (file: File) => void} - intercetta il rilascio di un file sull'area di testo.
+\end{itemize}
+
+
+\subsubsection{SaveDocumentModal}
+Modale interattiva per la configurazione dell'esportazione del documento. Mantiene traccia dello stato locale (formato selezionato, modifiche al nome) e applica tecniche di \textit{sanitizzazione} sul testo immesso prima di confermare.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../UMLimg/SaveDocumentModal.jpg}
+    \caption{UML SaveDocumentModal}
+    \label{fig:uml_saveDocumentModal}
+\end{figure}
+
+\paragraph{Props (Dati)}
+\begin{itemize}
+    \item \texttt{isOpen: boolean} - controlla la visibilità a schermo.
+    \item \texttt{currentDocumentName: string} - funge da valore predefinito e \textit{placeholder} nell'input text.
+    \item \texttt{isExporting?: boolean} - stato transitorio che disabilita i controlli durante l'elaborazione del download.
+\end{itemize}
+
+\paragraph{Props (Callback)}
+\begin{itemize}
+    \item \texttt{onClose: () => void} - innesca la chiusura senza salvataggio.
+    \item \texttt{onExport: (format: ExportFormat, filename: string) => void} - passa i parametri sanitizzati al ViewModel per l'esecuzione del salvataggio.
+\end{itemize}
+
+
+\subsubsection{AiPanel}
+% descrizione
+% grafico
+\paragraph{Props (Dati)}
+\paragraph{Props (Callback)}
+
+
+\subsubsection{AiWidget}
+% descrizione
+% grafico
+\paragraph{Props (Dati)}
+\paragraph{Props (Callback)}
+
+
+\subsubsection{HistoryList}
+Componente per il rendering aggregato dello storico delle generazioni degli LLM. Gestisce internamente l'alternanza visiva tra stati di transizione (caricamento, errore) e lo stato di successo, delegando la visualizzazione del singolo nodo a \texttt{HistoryCard}.
+
+\subsection{HistoryList}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../UMLimg/HistoryList.jpg}
+    \caption{UML HistoryList}
+    \label{fig:uml_historyList}
+\end{figure}
+
+\paragraph{Props (Dati)}
+\begin{itemize}
+    \item \texttt{items: HistoryItem[]} - array di oggetti rappresentanti le generazioni AI.
+    \item \texttt{isLoading: boolean} - abilita il rendering dell'indicatore di caricamento.
+    \item \texttt{error: string | null} - stringa che riporta un messaggio d'errore nel caricamento della cronologia (se presente).
+\end{itemize}
+
+\paragraph{Props (Callback)}
+\begin{itemize}
+    \item \texttt{onDelete: (id: string) => void} - propaga verso l'alto la richiesta di rimozione di uno specifico elemento.
+\end{itemize}
+
+
+\subsection{HistoryCard}
+Componente granulare che rappresenta la singola scheda di interazione AI. Incapsula logiche puramente visive tramite \texttt{useState}, quali l'espansione/compressione di testi lunghi e il feedback del pulsante di copia negli appunti (\textit"Copiato!").
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../UMLimg/HistoryCard.jpg}
+    \caption{UML HistoryCard}
+    \label{fig:uml_historyCard}
+\end{figure}
+
+\paragraph{Props (Dati)}
+\begin{itemize}
+    \item \texttt{item: HistoryItem} - struttura dati completa dell'interazione (prompt, output, modello usato, data).
+\end{itemize}
+
+\paragraph{Props (Callback)}
+\begin{itemize}
+    \item \texttt{onDelete: (id: string) => void} - gestisce l'eliminazione di una card specifica.
+\end{itemize}
+
+
+\newpage
+% ============
+% VIEW-MODEL
+% ============
+\subsection{ViewModel: custom hooks e logica di business}
+Il ViewModel funge da intermediario tra il Model e la View ed è implementato tramite \textbf{Custom Hooks} specializzati. Ogni hook rispetta il \textit{Single Responsibility Principle} (SRP).
 Il ViewModel ha la responsabilità di:
 \begin{itemize}
     \item Esporre i dati e lo stato degli store alle View in un formato pronto per la visualizzazione.
@@ -467,211 +701,175 @@ Il ViewModel ha la responsabilità di:
     \item Manipolare direttamente le istanze di librerie esterne, come \textbf{\gls{EasyMDE}} per l'editor \gls{Markdown}, isolandone la complessità tecnica all'interno di hook dedicati.
 \end{itemize}
 
+% descrizione degli hooks singoli
+\subsubsection{useEditor}
+Hook centrale dell'applicazione. Gestisce il ciclo di vita dell'istanza \gls{EasyMDE} (creazione al mount, distruzione al cleanup). Implementa l'auto-save con tecnica di \textit{debounce} (500 ms) per evitare scritture eccessive su disco. Fornisce all'esterno un'interfaccia solida per interagire con il testo.
 
-\subsection{Topbar}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{../UMLimg/TopBar.jpg}
-    \caption{UML TopBar}
-    \label{fig:uml1.0}
-\end{figure}
-
-Il componente Topbar contiene dei pulsanti che consentono di formattare il testo secondo la sintassi \gls{Markdown}.\\
-
-\textbf{Attributi}:
-\begin{itemize}
-    \item \texttt{documentName:string} - nome del documento
-\end{itemize}
-
-\textbf{Metodi}:
-\begin{itemize}
-    \item \texttt{onDocumentNameChange:(newName:string) => void} - callback per aggiornare il nome del documento
-    \item \texttt{onCloseDocument:() => void} - callback per chiudere il documento
-\end{itemize}
-
-
-\subsection{Sidebar}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{../UMLimg/SideBar.jpg}
-    \caption{UML SideBar}
-    \label{fig:uml1.1}
-\end{figure}
-Il componente Sidebar contiene i pulsanti con le varie funzionalità AI.\\
-
-\textbf{Attributi}:
-\begin{itemize}
-    \item \texttt{documentName:string} - nome del documento
-\end{itemize}
-
-\textbf{Metodi}:
-\begin{itemize}
-    \item \texttt{activePage:'editor'|'history'} - tipologiia di view visualizzata nel corpo principale della pagina
-    \item \texttt{onNavigate:(page:'editor'|'history') => void} - callback per aggiornare la view visualizzata
-    \item \texttt{onUpload:() => void} - callback per caricare un documento
-    \item \texttt{onSave:() => void} - callback per salvare un documento
-    \item \texttt{onPrint:() => void} - callback per stampare un documento
-    \item \texttt{onAiAction:() => void} - callback per attivare un'azione AI
-\end{itemize}
-
-
-\subsection{EditorButton}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{../UMLimg/EditorButton.jpg}
-    \caption{UML EditorButton}
-    \label{fig:uml1.2}
-\end{figure}
-Il componente EditorButton è un bottone che viene utilizzato nella sideBar per i bottoni IA.\\
-
-\textbf{Attributi}:
-\begin{itemize}
-    \item \texttt{icon:ReactNode} - icona del bottone
-    \item \texttt{label:string} - testo del bottone
-    \item \texttt{isActive?:boolean} - 
-    \item \texttt{disabled?:boolean} - true se il bottone non è cliccabile dall'utente
-\end{itemize}
-
-\textbf{Metodi}:
-\begin{itemize}
-    \item \texttt{onClick:() => void} - callback per gestire il click sul bottone
-\end{itemize}
-
-
-\subsection{SaveDocumentModal}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{../UMLimg/SaveDocumentModal.jpg}
-    \caption{UML SaveDocumentModal}
-    \label{fig:uml1.3}
-\end{figure}
-Il componente SaveDocumentModal è il componente che rappresenta il modal per il salvataggio del documento.\\
-
-\textbf{Attributi}:
-\begin{itemize}
-    \item \texttt{isOpen:boolean} - true se il modal è aperto
-    \item \texttt{currentDocumentName:string} - nome attuale del documento, da mostrare come placeholder nell'input del nome del documento
-    \item \texttt{isExporting?:boolean} - true se il documento è in fase di esportazione, per disabilitare i bottoni
-\end{itemize}
-
-\textbf{Metodi}:
-\begin{itemize}
-    \item \texttt{onClose:() => void} - callback per chiudere il modal
-    \item \texttt{onExport:(format:ExportFormat, filename:string) => void} - callback per esportare il documento in un formato specifico
-\end{itemize}
-
-
-\subsection{MarkDownEditor}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{../UMLimg/MarkDownEditor.jpg}
-    \caption{UML MarkDownEditor}
-    \label{fig:uml1.4}
-\end{figure}
-Il componente MarkDownEditor è il componente che rappresenta il corpo principle della pagina e dove viene istanziato \gls{EasyMDE}.\\
-
-\textbf{Attributi}:
-\begin{itemize}
-    \item \texttt{textAreaRef:\gls{React}.RefObject<HTMLTextAreaElement | null>} - riferimento alla textarea su cui istanziare \gls{EasyMDE}
-    
-\end{itemize}
-
-\textbf{Metodi}:
-\begin{itemize}
-    \item \texttt{onFileDrop?:(file:File) => void} - callback per gestire il drop di un file sulla textarea
-\end{itemize}
-
-
-\subsection{HistoryList}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{../UMLimg/HistoryList.jpg}
-    \caption{UML HistoryList}
-    \label{fig:uml1.5}
-\end{figure}
-Il componente HistoryList è il componente che rappresenta la lista delle interazioni con l'IA.\\
-
-\textbf{Attributi}:
-\begin{itemize}
-    \item \texttt{items:HistoryItem[ ]} - lista delle interazioni con l'IA da mostrare nella cronologia
-    \item \texttt{isLoading:boolean} - true se la cronologia è in fase di caricamento, per mostrare un indicatore di caricamento
-    \item \texttt{error:string | null} - messaggio di errore da mostrare se c'è stato un errore nel caricamento della cronologia
-\end{itemize}
-
-\textbf{Metodi}:
-\begin{itemize}
-    \item \texttt{onDelete:(id:string) => void} - callback per gestire la cancellazione di una interazione dalla cronologia
-\end{itemize}
-
-
-\subsection{HistoryCard}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{../UMLimg/HistoryCard.jpg}
-    \caption{UML HistoryCard}
-    \label{fig:uml1.6}
-\end{figure}
-Il componente HistoryCard è il componente che rappresenta la scheda di una interazione con l'IA.\\
-
-\textbf{Attributi}:
-\begin{itemize}
-    \item \texttt{item:HistoryItem}
-\end{itemize}
-
-\textbf{Metodi}:
-\begin{itemize}
-    \item \texttt{onDelete:(id:string) => void} - callback per gestire la cancellazione di una interazione dalla cronologia
-\end{itemize}
-
-
-\subsection{UseEditor}
+% GRAFICO
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{../UMLimg/UseEditor.jpg}
     \caption{UML UseEditor}
-    \label{fig:uml1.7}
+    \label{fig:uml_useEditor}
 \end{figure}
-Hook per l'editor\\
 
-\textbf{Attributi}:
+\paragraph{Stato/Valori di ritorno}
 \begin{itemize}
-    \item \texttt{textArearef: \gls{React}.RefObject<HTMLTextAreaElement | null>} - riferimento alla textarea su cui istanziare \gls{EasyMDE}
-    \item \texttt{isReady: boolean} - true quando l'editor è pronto all'utilizzo
+    \item \texttt{textAreaRef: React.RefObject<HTMLTextAreaElement | null>} - riferimento iniettato nella view.
+    \item \texttt{isReady: boolean} - \textit{flag} che indica la completa inizializzazione del motore di rendering \gls{Markdown}.
 \end{itemize}
 
-\textbf{Metodi}:
+\paragraph{Funzioni esposte}
 \begin{itemize}
-    \item \texttt{getEditorText: () => string} - restiruisce il testo presente nell'editor
-    \item \texttt{getSelection: () => string} - restituisce il testo attualmente selezionato nell'editor
-    \item \texttt{insertTextAtCursor: (text: string) => void} - inserisce il testo nella posizione del cursore
-    \item \texttt{clearEditor: () => void} - cancella il contenuto dell'editor
-    \item \texttt{reloadFromStorage: () => void} - ricarica il contenuto del'editor
-    \item \texttt{onEntryAdded?: (entry: unknown) => void} - callback per gestire l'aggiunta di una nuova voce all'editor
+    \item \texttt{getEditorText: () => string} - restituisce l'intero contenuto testuale corrente.
+    \item \texttt{getSelection: () => string} - estrae la porzione di testo evidenziata dall'utente.
+    \item \texttt{insertTextAtCursor: (text: string) => void} - inietta testo elaborato (es. output AI) nella posizione attuale del cursore.
+    \item \texttt{clearEditor: () => void} - resetta l'area di lavoro.
+    \item \texttt{reloadFromStorage: () => void} - forza la sincronizzazione con il LocalStorage.
 \end{itemize}
 
 
-\subsection{Rappresentazione UML per il frontend}
+\subsubsection{useSaveDocument}
+Coordina il flusso di esportazione asincrono. Orchestra in sequenza la composizione sicura del filename, il download fisico (mediato dal file \texttt{fileHandler.ts}) e il dispatch verso lo store per aggiornare il timestamp di salvataggio. In caso di errore fallisce silenziosamente mantenendo la modale aperta per un nuovo tentativo.
 
+% grafico
+
+\paragraph{Stato/Valori di ritorno}
+\begin{itemize}
+    \item \texttt{isOpen: boolean} - stato di visibilità della modale di salvataggio.
+    \item \texttt{isExporting: boolean} - stato transitorio che indica se il processo di download è in corso.
+\end{itemize}
+
+\paragraph{Funzioni esposte}
+\begin{itemize}
+    \item \texttt{openModal: () => void} - innesca l'apertura della modale.
+    \item \texttt{closeModal: () => void} - innesca la chiusura della modale.
+    \item \texttt{handleExport: (rawFilename: string, format: ExportFormat, content: string) => Promise<void>} - processa la richiesta di esportazione, applica la mappa dei MIME type ed esegue il download.
+\end{itemize}
+
+
+\subsubsection{useFileUpload}
+Gestisce il caricamento asincrono tramite \texttt{FileReader}. Esegue controlli preventivi (validazione del formato supportato \texttt{.md} o \texttt{.txt}, dimensione massima 5 MB) e previene la perdita accidentale di dati non salvati bloccando l'utente e chiedendogli conferma tramite \texttt{window.confirm}.
+
+% grafico
+
+\paragraph{Stato/Valori di ritorno}
+\begin{itemize}
+    \item \texttt{fileInputRef: React.RefObject<HTMLInputElement>} - riferimento fisico all'input nascosto di tipo \texttt{file} nel DOM.
+\end{itemize}
+
+\paragraph{Funzioni esposte}
+\begin{itemize}
+    \item \texttt{triggerFileInput: () => void} - simula il click sull'input nascosto per aprire la finestra di dialogo di sistema.
+    \item \texttt{handleFileUpload: (event: React.ChangeEvent<HTMLInputElement>) => Promise<void>} - intercetta il file selezionato, lo valida e ne legge il contenuto testuale.
+\end{itemize}
+
+
+\subsubsection{usePrintDocument}
+Isola e rende testabile la logica di invocazione della stampa di sistema (\texttt{window.print()}). Implementa \textit{guard clauses} per impedire l'avvio del processo se il documento risulta vuoto.
+Questo hook opera esclusivamente in modo imperativo, non ha quindi nessuno stato locale esposto.
+
+% grafico
+
+\paragraph{Funzioni esposte}
+\begin{itemize}
+    \item \texttt{handlePrint: (content: string) => void} - verifica la lunghezza del contenuto e innesca la stampa del browser o genera un errore visivo.
+\end{itemize}
+
+
+\subsubsection{useHistory}
+Interfaccia la View con lo store dedicato (\texttt{useHistoryStore}), estraendo le interazioni passate. Per garantire alte prestazioni e fluidità UI, tramite \texttt{useMemo} applica dinamicamente i filtri di ricerca e l'ordinamento cronologico, assicurando che lo strato di presentazione riceva sempre informazioni formattate senza subire calcoli ridondanti.
+
+% grafico
+
+\paragraph{Stato/Valori di ritorno}
+\begin{itemize}
+    \item \texttt{entries: HistoryEntry[]} - array delle interazioni, eventualmente filtrato e ordinato in base ai criteri correnti.
+    \item \texttt{isLoading: boolean} - indica se i dati sono ancora in fase di recupero dal LocalStorage o dallo store.
+    \item \texttt{error: string | null} - eventuale stringa di errore occorso durante il fetching della history.
+\end{itemize}
+
+\paragraph{Funzioni esposte}
+\begin{itemize}
+    \item \texttt{deleteEntry: (id: string) => void} - innesca la cancellazione di una specifica riga dallo storico persistente.
+\end{itemize}
+
+
+\subsubsection{useAiOperations}
+% descrizione
+% grafico
+\paragraph{Stato/Valori di ritorno}
+\paragraph{Funzioni esposte}
+
+
+\newpage
+% DEPENDENCY INJECTION
+\subsection{Dependency Injection}
+A legare i tre strati architetturali intervengono le \textbf{Page} (\texttt{EditorPage} e \texttt{HistoryPage}). Questi componenti non appartengono né alla View pura né al ViewModel, ma fungono da \textbf{Orchestratori}.
+
+L'\texttt{EditorPage}, ad esempio, istanzia tutti i ViewModel necessari (\texttt{useEditor}, \texttt{useSaveDocument}, ecc.), legge lo stato dal Model e lo inietta nelle View. 
+
+Un principio trasversale adottato è la \textbf{Dependency Injection}: per evitare un forte accoppiamento, i ViewModel non si importano a vicenda. Ad esempio, \texttt{useEditor} non importa la logica dello storico, ma riceve una callback \texttt{onEntryAdded} passata dall'orchestratore. Questo approccio garantisce che ogni hook sia testabile in totale isolamento fornendo semplicemente dei \textit{mock} in fase di testing.
 
 
 \newpage
 
-\section{Design Pattern}
-\subsection{Strategy pattern}
+\section{Design pattern}
+La progettazione del sistema \textit{Second Brain} ha fatto largo uso di design pattern orientati agli oggetti e funzionali, al fine di garantire un basso accoppiamento e un'alta coesione del codice.
+
+\subsubsection{Facade pattern}
+Per la gestione delle comunicazioni HTTP con il backend, il sistema applica il \textbf{Pattern Facade} a due livelli sovrapposti, ciascuno con una responsabilità architetturale distinta. I ViewModel e i componenti della View non invocano mai direttamente la libreria esterna \texttt{Axios}; al contrario, si interfacciano con moduli dedicati che nascondono la complessità delle transazioni di rete dietro un'interfaccia unificata.
+
+\paragraph{Livello 1: \texttt{apiClient.ts} (Configurazione e normalizzazione)}
+Il primo livello costituisce la Facade sull'istanza di \texttt{Axios}. È responsabile di:
+\begin{itemize}
+    \item \textbf{Configurazione centralizzata}: Risolve dinamicamente la \texttt{baseURL} dalle variabili d'ambiente (\texttt{VITE\_API\_BASE\_URL}), con \textit{fallback} a \texttt{/api}, e imposta il timeout (\texttt{VITE\_API\_TIMEOUT}, default 30.000 ms). Garantisce che un unico punto del codice controlli i parametri di connessione.
+    \item \textbf{Normalizzazione degli errori}: Tramite un \textit{response interceptor}, tutte le eccezioni di rete (timeout, errori HTTP 4xx/5xx, richieste annullate tramite \texttt{AbortSignal}) vengono intercettate e trasformate in oggetti \texttt{Error} standard. La logica di normalizzazione è incapsulata nella funzione pura \texttt{transformApiError}, testabile in totale isolamento.
+    \item \textbf{Gestione della cancellazione}: Il supporto nativo all'\texttt{AbortSignal} permette ai ViewModel di annullare richieste in corso (es. operazione AI interrotta dall'utente) passando il segnale nella configurazione della chiamata.
+\end{itemize}
+L'interfaccia \texttt{ApiError} esportata definisce il contratto atteso per le risposte di errore del backend \gls{Flask}, garantendo una tipizzazione statica sicura su tutta la catena di chiamate.
+
+\paragraph{Livello 2: \texttt{aiCall.ts} (Astrazione dell'endpoint AI)}
+Il secondo livello rappresenta una Facade sull'\textit{endpoint specifico} del backend. Nasconde l'URL esatto (\texttt{/ai/generate}) e la struttura del payload JSON, esponendo una singola funzione asincrona:
+
+\begin{verbatim}
+executeOperation(payload: AiRequestPayload, signal?: AbortSignal)
+    : Promise<string>
+\end{verbatim}
+
+Il tipo \texttt{AiOperationId} enumerato in questo modulo costituisce il contratto tipizzato tra frontend e backend: ogni identificatore (es. \texttt{"summary"}, \texttt{"white\_hat"}) corrisponde a una chiave dell'\texttt{OPERATION\_REGISTRY} lato server, garantendo che il frontend non possa inviare comandi non riconosciuti.
+
+\paragraph{Architettura a cascata e vantaggi}
+I due livelli formano una \textbf{Facade a cascata} con responsabilità rigorosamente separate:
+\begin{itemize}
+    \item \texttt{apiClient}: Sa \textit{come} parlare con il server (timeout, header, normalizzazione). Non conosce il dominio applicativo (Intelligenza Artificiale).
+    \item \texttt{aiCall}: Sa \textit{dove} inviare la richiesta (\texttt{/ai/generate}) e \textit{cosa} spedire. Non conosce i dettagli implementativi di \texttt{Axios}.
+    \item \textbf{ViewModel} (es. \texttt{useAiOperations}): Sanno \textit{quando} chiamare l'AI e come gestire il risultato nella UI. Non conoscono né \texttt{Axios} né l'URL dell'endpoint.
+\end{itemize}
+
+Questa separazione porta due benefici misurabili in termini di qualità del software:
+\begin{enumerate}
+    \item \textbf{Disaccoppiamento tecnologico}: L'applicazione è agnostica rispetto al client HTTP. Una futura migrazione all'\gls{API} nativa \texttt{fetch} richiederebbe modifiche unicamente al file \texttt{apiClient.ts}, lasciando intatti tutti gli hook e i componenti.
+    \item \textbf{Testabilità tramite mocking}: Nei test di unità eseguiti con \gls{Vitest}, isolare la logica di rete è immediato: è sufficiente fornire un \textit{mock} di \texttt{executeOperation} senza dover intercettare richieste HTTP reali, rendendo i test deterministici e veloci.
+\end{enumerate}
+
+% grafico
+
+\newpage
+
+% STRATEGY
+\subsection{Pattern comportamentali: Strategy pattern}
 Il design pattern comportamentale Strategy definisce una famiglia di algoritmi, li incapsula in classi separate e li rende intercambiabili in modo dinamico.
 
 \subsubsection{Problema}
 L’architettura iniziale del backend presentava un'eccessiva complessità logica dovuta alla gestione di molteplici modelli LLM e diverse logiche di prompting. La presenza di numerosi blocchi condizionali (if/else o switch) all'interno dell'entry point (\texttt{app.py}) rendeva il codice rigido, difficile da scalare e violava il principio di singola responsabilità (Single Responsibility Principle).
-
 
 \subsubsection{Applicazione: \gls{prompt} strategies (ai\_strategies.py)}
 Questa prima applicazione del pattern gestisce la trasformazione del testo grezzo fornito dall'utente in un input strutturato e ottimizzato per l'IA.
 
 \paragraph{BaseAIStrategy}
 Definisce il contratto comune per tutte le strategie di generazione dei \gls{prompt}.
-\textbf{Proprietà e Metodi:}
+\textbf{Proprietà e metodi:}
 \begin{itemize}
     \item \texttt{temperature}: Definisce il livello di creatività dell'output (es. valori più alti per operazioni creative, più bassi per task analitici).
     \item \texttt{build(text: str)}: Impone a ogni sottoclasse di restituire una tupla contenente due stringhe: il \gls{System prompt} (il ruolo dell'IA) e lo \gls{User prompt} (il task specifico).
@@ -708,7 +906,6 @@ Sottoclasse concreta progettata per implementare il metodo dei "Sei Cappelli per
     \item build(self, text): Utilizza le f-string per iniettare i valori di hat\_name e focus all'interno dei \gls{prompt}.
 \end{itemize}
 
-
 \subsubsection{Applicazione: model strategies
 (model\_strategies.py)}
 Questa seconda applicazione del pattern isola completamente i dettagli tecnici (\gls{Endpoint}, \gls{API} Keys, payload JSON) necessari per comunicare con i diversi provider di Intelligenza Artificiale.
@@ -719,7 +916,7 @@ Questa seconda applicazione del pattern isola completamente i dettagli tecnici (
     \item generate(self, system\_prompt, user\_prompt): Definisce il contratto per l'invocazione del modello. Ogni classe concreta deve implementare la logica specifica per inviare i \gls{prompt} al fornitore e restituire la risposta come stringa pulita.
 \end{itemize}
 
-\paragraph{Implementazioni Concrete (ZucchettiLlamaStrategy e Gemma3Strategy)}
+\paragraph{Implementazioni concrete (ZucchettiLlamaStrategy e Gemma3Strategy)}
 Il sistema prevede due implementazioni concrete che espongono in modo polimorfico i modelli \gls{Llama 3.2} (per operazioni standard e traduzioni) e \gls{Gemma 3} (per il pensiero laterale dei Sei Cappelli).
 Entrambe le classi implementano la logica di chiamata \gls{API} (tramite modulo OpenAI compatibile), formattano la richiesta ed estraggono esclusivamente il contenuto testuale della risposta, isolandolo dai metadati di rete.\\
 \textbf{Metodi:}
@@ -735,7 +932,9 @@ Questa soluzione architetturale ottimizza l'uso delle risorse prevenendo l'apert
 
 \newpage
 
+\subsection{Pattern creazionali}
 \subsection{Registry pattern}
+% non è più un registry, ma un mappa - DA MODIFICARE
 Il pattern Registry funge da catalogo centralizzato e configuratore delle operazioni disponibili, disaccoppiando totalmente il Controller (\texttt{app.py}) dalla logica di creazione delle dipendenze.
 
 \subsubsection{Problema}
@@ -765,7 +964,6 @@ Il nucleo del pattern è implementato come un dizionario globale che associa ide
     \item \textbf{Routing dinamico dei modelli}: Il registro permette di assegnare il modello LLM più adatto a una specifica operazione. Ad esempio, nel sistema le operazioni editoriali e di traduzione sono instradate nativamente su \gls{Llama 3.2}, mentre le logiche di pensiero laterale dei Sei Cappelli sono delegate a \gls{Gemma 3:4B}.
     \item \textbf{Robustezza e fallback}: In caso di operazione non riconosciuta o assente nel payload della richiesta, il sistema fornisce una configurazione di default in modo trasparente tramite la costante \texttt{DEFAULT\_OPERATION = "summary"}, sfruttando il metodo \texttt{.get()} del dizionario ed evitando crash dell'applicazione.
 \end{itemize}
-
 
 
 \newpage
