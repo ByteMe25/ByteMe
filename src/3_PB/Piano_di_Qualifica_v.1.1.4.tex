@@ -103,11 +103,13 @@
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{\gls{Verifica}} \\
         \hline
-        1.1.4 & 17/04/2026 & Matteo Cuogo & Aggiunta sezione descrizione selezione modello per la correzione grammaticale & \\
+        1.1.5 & 21/04/2026 & Elisa Marchioro & Aggiunti component e unit test per feature editor e history & \\
         \hline
-        1.1.3 & 16/04/2026 & Matteo Cuogo & Aggiunte descrizioni ad ulteriori test & \\
+        1.1.4 & 17/04/2026 & Matteo Cuogo & Aggiunta sezione descrizione selezione modello per la correzione grammaticale & Elisa Marchioro\\
         \hline
-        1.1.2 & 12/04/2026 & Giulia Barzon & Aggiunta spiegazione metriche di \gls{qualità dell'output generativo} & \\
+        1.1.3 & 16/04/2026 & Matteo Cuogo & Aggiunte descrizioni ad ulteriori test & Elisa Marchioro\\
+        \hline
+        1.1.2 & 12/04/2026 & Giulia Barzon & Aggiunta spiegazione metriche di \gls{qualità dell'output generativo} & Elisa Marchioro\\
         \hline
         1.1.1 & 11/04/2026 & Elisa Marchioro & Mini fix & Giulia Barzon e Chiara Grossele\\
         \hline
@@ -146,6 +148,15 @@
 \newpage
 
 \setcounter{page}{1}
+
+\newcounter{codiceUT}
+\newcommand{\prossimoUT}{UT-\arabic{codiceUT}\stepcounter{codiceUT}}
+
+\newcounter{codiceCT}
+\newcommand{\prossimoCT}{CT-\arabic{codiceCT}\stepcounter{codiceCT}}
+
+\newcounter{codiceIT}
+\newcommand{\prossimoIT}{IT-\arabic{codiceIT}\stepcounter{codiceIT}}
 
 \section{Introduzione}
 
@@ -900,6 +911,8 @@ Per valutare quale modello fosse migliore abbiamo preso in considerazione divers
 \caption{Elenco metriche per selezione modelli AI}
 \end{table}
 
+\textit{Nota sull'efficienza temporale}: Si precisa che la latenza registrata non è un valore strettamente dipendente dalla sola complessità computazionale (numero di parametri) del modello scelto. Come indicato dal proponente Zucchetti, il tempo di risposta totale è influenzato in modo significativo da fattori infrastrutturali esterni, quali il carico istantaneo di lavoro sui server condivisi e i tempi tecnici di allocazione delle risorse hardware. Nello specifico, il processo di "attivazione" del modello sulla macchina di esecuzione (provisioning) può generare overhead variabili, rendendo la latenza un parametro non deterministico: un modello nominalmente più leggero potrebbe comunque presentare tempi di risposta superiori in scenari di congestione o in caso di inizializzazione a freddo (\textit{cold start}).
+
 \subsection{Applicazione delle metriche}
 Al fine di garantire una valutazione esaustiva, ogni membro del gruppo ha condotto sessioni di test comparativi individuali, redigendo appositi resoconti tecnici sulle prestazioni dei modelli linguistici.
 Di seguito si riporta la sintesi dei risultati emersi dai test collettivi.
@@ -964,8 +977,6 @@ Uno dei principali vantaggi di \gls{Pytest} è la sua sintassi intuitiva: i test
 
 La scelta di utilizzare \gls{Pytest} è quindi motivata dalla sua flessibilità, dalla leggibilità dei test prodotti e dall’ampio supporto della comunità.
 
-\newcounter{codiceUT}
-\newcommand{\prossimoUT}{UT-\arabic{codiceUT}\stepcounter{codiceUT}}
 
 \subsubsection{test\_ai\_strategies.py}
 Questa sezione descrive i test relativi al modulo ai\_strategies, che definisce le strategie di costruzione dei \gls{prompt} utilizzati per interagire con i modelli di intelligenza artificiale.
@@ -1312,11 +1323,291 @@ I test verificano la correttezza del registro delle operazioni, la validità del
 
 \newpage
 
-\section{Test d'integrazione - Fase PB}
+\subsection{Frontend}
+Gli unit test nel frontend hanno l’obiettivo di verificare il comportamento delle singole unità di codice in modo isolato, come funzioni, hook o logiche pure. In questo contesto utilizziamo Vitest come test runner, che consente di eseguire i test in modo veloce e con un’API molto simile a Jest, perfettamente integrata con progetti moderni basati su Vite.
+
+Questo tipo di test è fondamentale per garantire affidabilità e prevedibilità della logica applicativa, indipendentemente dall’interfaccia utente o da dipendenze esterne. Eventuali dipendenze vengono mockate, così da mantenere il focus esclusivamente sull’unità testata.
+
+\subsubsection{useHistoryStore.test.ts}
+Questo file contiene i test unitari per lo Store della storico delle generazioni AI. Verifica la logica di gestione dello stato globale (tramite Zustand), assicurando che le operazioni di inserimento (addEntry) e rimozione (deleteEntry) avvengano correttamente, che i dati vengano persistiti con ID e timestamp unici e che l'ordinamento degli elementi rispetti la cronologia (nuovi elementi in cima).
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.5} % Più respiro alle righe
+\begin{tabular}{|l|p{12cm}|c|}
+\hline
+\textbf{Codice} & \textbf{Descrizione} & \textbf{Stato} \\ \hline
+\prossimoUT & Verifica che, quando l'app viene aperta per la prima volta, l'elenco della cronologia non contenga dati residui. & Pass \\ \hline
+\prossimoUT & Controlla che addentry funzioni. Inserisce un elemento finto (mockEntry) e verifica che la lista passi da 0 a 1 elemento e che i dati salvati (come l'operazione "summary") siano corretti. & Pass \\ \hline
+\prossimoUT & Verifica che lo Store crei da solo un identificativo unico (id) e una data di registrazione (timestamp) per ogni riga. & Pass \\ \hline
+\prossimoUT & Verifica l'ordinamento. Se fai un riassunto ora e uno tra due minuti, quello più recente deve apparire per primo. & Pass \\ \hline
+\prossimoUT & Verifica deleteEntry. Aggiunge un elemento, recupera il suo ID appena creato e prova a cancellarlo. Se alla fine la lista è di nuovo lunga 0, il test passa. & Pass \\ \hline
+\prossimoUT & Verifica che, se elimini un elemento specifico, gli altri rimangano intatti, quindi aggiunge due elementi, ne elimina uno e verifica che ne sia rimasto esattamente uno e che sia quello che non volevi cancellare. & Pass \\ \hline
+
+\end{tabular}
+\caption{Tabella unit tests per useHistoryStore.ts}
+\end{table}
+
+\subsubsection{useHistory.test.ts}
+Testa l'hook (ViewModel) che funge da ponte tra lo store e la UI, verificando la corretta applicazione dei filtri di ricerca e delle opzioni di selezione.
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.5} % Più respiro alle righe
+\begin{tabular}{|l|p{12cm}|c|}
+\hline
+\textbf{Codice} & \textbf{Descrizione} & \textbf{Stato} \\ \hline
+\prossimoUT & Verifica che l'hook estragga correttamente l'array entries dallo store e restituisca gli stati predefiniti di isLoading (false) e error (null). & Pass \\ \hline
+\prossimoUT & Verifica che la funzione deleteEntry restituita dall'hook sia effettivamente collegata alla logica definita nel useHistoryStore. & Pass \\ \hline
+\prossimoUT & Verifica che l'hook filtri correttamente le generazioni in base all'operazione richiesta.. & Pass \\ \hline
+\prossimoUT & Verifica che l'hook filtri la lista in base al testo di ricerca, con logica case-insensitive. & Pass \\ \hline
+
+\end{tabular}
+\caption{Tabella unit tests per useHistory.ts}
+\end{table}
+
+\subsubsection{useEditorMetaStore.test.ts}
+Verifica la correttezza dello store Zustand che gestisce i metadati del documento aperto (nome file, stato "sporco", timestamp ultimo salvataggio). Ogni test parte da uno stato azzerato grazie al beforeEach che pulisce sia la memoria che il localStorage.
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.5} % Più respiro alle righe
+\begin{tabular}{|l|p{12cm}|c|}
+\hline
+\textbf{Codice} & \textbf{Descrizione} & \textbf{Stato} \\ \hline
+\prossimoUT & Verifica che lo stato iniziale ha fileName = 'Documento senza titolo', isDirty = false e lastSaved = null. & Pass \\ \hline
+\prossimoUT & Verifica che chiamare setFileName cambi il nome e porti isDirty a true. & Pass \\ \hline
+\prossimoUT & Verifica che markDirty altera solo isDirty, lasciando intatto il fileName. & Pass \\ \hline
+\prossimoUT & Verifica che dopo markSaved, isDirty torni false e lastSaved contenga un timestamp compreso tra prima e dopo la chiamata. & Pass \\ \hline
+\prossimoUT & Verifica che dopo setFileName, il localStorage contenga la chiave secondbrain-editor-meta con i valori aggiornati. & Pass \\ \hline
+\prossimoUT & Verifica che, preimpostando un valore nel localStorage e chiamando persist.rehydrate(), lo store rilegga correttamente i dati della sessione precedente. & Pass \\ \hline
+
+\end{tabular}
+\caption{Tabella unit tests per useEditorMetaStore.ts}
+\end{table}
+
+\subsubsection{useEditor.test.ts}
+Testa il core dell'editor (basato su EasyMDE). Verifica il caricamento da localStorage, l'API di manipolazione testo, l'auto-salvataggio con debounce e le funzioni di pulizia.
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.5} % Più respiro alle righe
+\begin{tabular}{|l|p{12cm}|c|}
+\hline
+\textbf{Codice} & \textbf{Descrizione} & \textbf{Stato} \\ \hline
+\prossimoUT & Verifica che venga inizializzato EasyMDE e venga caricato il contenuto da localStorage all'avvio. & Pass \\ \hline
+\prossimoUT & Verifica che il flag isReady diventi vero post-montaggio. & Pass \\ \hline
+\prossimoUT & Verifica che si attivi la vista affiancata dopo il caricamento. & Pass \\ \hline
+\prossimoUT & Verifica che non si ri-attivi side-by-side se è già attivo. & Pass \\ \hline
+\prossimoUT & Verifica che getEditorText restituisca il testo corrente dell\'istanza EasyMDE. & Pass \\ \hline
+\prossimoUT & Verifica che getSelection restituisca il testo selezionato da CodeMirror. & Pass \\ \hline
+\prossimoUT & Verifica che venga inserito il testo in fondo se non c'è selezione. & Pass \\ \hline
+\prossimoUT & Verifica che venga inserito il testo dopo la selezione se c'è testo selezionato. & Pass \\ \hline
+\prossimoUT & Verifica che il salvataggio avvenga dopo il debounce del contenuto. & Pass \\ \hline
+\prossimoUT & Verifica che venga eseguito flush immediato e chiamato toTextArea allo smontaggio. & Pass \\ \hline
+\prossimoUT & Verifica che il salvataggio avvenga allo smontaggio del componente. & Pass \\ \hline
+\prossimoUT & Verifica che clearEditor svuoti l'editor e rimuova il localStorage. & Pass \\ \hline
+\prossimoUT & Verifica che reloadFromStorage aggiorni EasyMDE con il contenuto del localStorage. & Pass \\ \hline
+\prossimoUT & Verifica che l'hook riceva correttamente la funzione onEntryAdded dall'esterno e la esponga intatta, garantendo il corretto disaccoppiamento tra la logica dell'editor e l'azione esterna associata. & Pass \\ \hline
+
+\end{tabular}
+\caption{Tabella unit tests per useEditor.ts}
+\end{table}
+
+\subsubsection{useFileUpload.test.ts}
+Verifica la logica di caricamento file: validazione estensione, limiti di dimensione, gestione dei conflitti (documento "sporco") e feedback all'utente tramite toast.
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.5} % Più respiro alle righe
+\begin{tabular}{|l|p{12cm}|c|}
+\hline
+\textbf{Codice} & \textbf{Descrizione} & \textbf{Stato} \\ \hline
+\prossimoUT & Verifica che vengano rifiutati i file con formato non supportato. & Pass \\ \hline
+\prossimoUT & Verifica che vengano rifiutati i file troppo grandi. & Pass \\ \hline
+\prossimoUT & Verifica che non venga caricato il file se l'utente annulla la conferma su un documento sporco. & Pass \\ \hline
+\prossimoUT & Verifica che venga letto un file correttamente, venga salvato in storage, venga aggiornato lo store e venga chiamato l'editor. & Pass \\ \hline
+\prossimoUT & Verifica che venga gestito correttamente lo stato isUploading (Spinner). & Pass \\ \hline
+
+\end{tabular}
+\caption{Tabella unit tests per useFileUpload.ts}
+\end{table}
+
+
+\subsubsection{usePrintDocument.test.ts}
+Testa la funzionalità di stampa, assicurandosi che non venga eseguita su documenti vuoti e che gli errori siano gestiti correttamente.
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.5} % Più respiro alle righe
+\begin{tabular}{|l|p{12cm}|c|}
+\hline
+\textbf{Codice} & \textbf{Descrizione} & \textbf{Stato} \\ \hline
+\prossimoUT & Verifica l'esistenza della funzione handlePrint. & Pass \\ \hline
+\prossimoUT & Verifica che venga chiamata window.print() se il documento non è vuoto. & Pass \\ \hline
+\prossimoUT & Verifica che venga bloccata la stampa e venga mostrato errore se il documento è vuoto. & Pass \\ \hline
+\prossimoUT & Verifica la gestione degli errori durante window.print(). & Pass \\ \hline
+
+\end{tabular}
+\caption{Tabella unit tests per usePrintDocument.ts}
+\end{table}
+
+\subsubsection{useSaveDocument.test.ts}
+Testa la funzionalità dell'esportazione: interazione con l'utente, composizione dei nomi file, chiamata ai download handler e gestione degli errori.
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.5} % Più respiro alle righe
+\begin{tabular}{|l|p{12cm}|c|}
+\hline
+\textbf{Codice} & \textbf{Descrizione} & \textbf{Stato} \\ \hline
+\prossimoUT & Verifica l'inizializzazione avvenga con la modale chiusa e senza caricamenti in corso. & Pass \\ \hline
+\prossimoUT & Verifica che la toggle modale permetta di aprire e chiudere la modale. & Pass \\ \hline
+\prossimoUT & Verifica che venga coordinata correttamente l'esportazione, venga aggiornato lo store e venga chiusa la modale. & Pass \\ \hline
+\prossimoUT & Verifica la corretta gestione del formato HTML. & Pass \\ \hline
+\prossimoUT & Verifica che, in caso di errore, la modale rimane aperta per permettere il retry. & Pass \\ \hline
+
+\end{tabular}
+\caption{Tabella unit tests per useSaveDocument.ts}
+\end{table}
+
 
 \newpage
 
 \section{Component Testing - Fase PB}
+I component test verificano il comportamento dei componenti React così come vengono utilizzati dall’utente finale. Utilizziamo React Testing Library, una libreria che promuove un approccio basato sull’uso reale dell’interfaccia, permettendo di interagire con il DOM come farebbe un utente.
+
+In combinazione con Vitest, questi test assicurano che il componente renderizzi correttamente, reagisca agli input dell’utente (click, input, ecc.) e mostri lo stato previsto. L’approccio evita di testare dettagli interni di implementazione, rendendo i test più robusti e meno fragili ai cambiamenti.
+
+\subsection{HistoryPage.test.tsx}
+Verifica che HistoryPage si comporti da orchestratore corretto tra i controlli UI (input di ricerca, select, bottone elimina) e il viewmodel useHistory. L'hook viene mockato con vi.mock e riconfigurato nei singoli test tramite mockReturnValue.
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.5} % Più respiro alle righe
+\begin{tabular}{|l|p{12cm}|c|}
+\hline
+\textbf{Codice} & \textbf{Descrizione} & \textbf{Stato} \\ \hline
+\prossimoCT & Verifica che il testo inserito nel campo di ricerca aggiorni correttamente i parametri del ViewModel (hook). & Pass \\ \hline
+\prossimoCT & Verifica che la selezione di un'operazione dal menu a tendina venga correttamente passata al ViewModel. & Pass \\ \hline
+\prossimoCT & Verifica che la pagina passi correttamente lo stato di isLoading dell'hook al componente HistoryList e che quindi mostri LoadingState. & Pass \\ \hline
+\prossimoCT & Verifica l'eliminazione partita da una card arrivi correttamente alla funzione deleteEntry fornita dall'hook. & Pass \\ \hline
+
+
+\end{tabular}
+\caption{Tabella component tests per HistoryPage.tsx}
+\end{table}
+
+\subsection{HistoryCard.test.tsx}
+Questo file definisce i test per il singolo componente HistoryCard. L'obiettivo è validare il rendering dei dati (testo originale, testo generato, operazione), la logica di visualizzazione condizionale (es. il pulsante "Mostra tutto" appare solo se il testo supera la soglia di caratteri) e le interazioni dell'utente, come la copia negli appunti e la chiamata alla funzione di eliminazione.
+
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.5} % Più respiro alle righe
+\begin{tabular}{|l|p{12cm}|c|}
+\hline
+\textbf{Codice} & \textbf{Descrizione} & \textbf{Stato} \\ \hline
+\prossimoCT & Verifica che il tipo di operazione (es. summary) venga visualizzato correttamente nell'header della card. & Pass \\ \hline
+\prossimoCT & Verifica che il testo originale sia correttamente renderizzato. & Pass \\ \hline
+\prossimoCT & Verifica che il testo generato sia correttamente renderizzato. & Pass \\ \hline
+\prossimoCT & Verifica che se i testi sono sotto la soglia (150/300 caratteri), il pulsante mostra tutto non deve esistere. & Pass \\ \hline
+\prossimoCT & Verifica che se il testo è corto non appaiano i puntini. & Pass \\ \hline
+\prossimoCT & Verifica che se il testo generato supera la soglia (150/300 caratteri) appaia il pulsante mostra tutto. & Pass \\ \hline
+\prossimoCT & Simula il click dell'utente sul tasto mostra tutto e verifica che l'etichetta del tasto cambi in mostra meno. & Pass \\ \hline
+\prossimoCT & Verifica che la funzione delete cancelli la generazione giusta. & Pass \\ \hline
+\prossimoCT & Simula l'interazione con il tasto copia, verificando che il testo generato venga correttamente inviato alla API Clipboard del browser. & Pass \\ \hline
+
+
+\end{tabular}
+\caption{Tabella component tests per HistoryCard.tsx}
+\end{table}
+
+\subsection{HistoryList.test.tsx}
+Questo file si occupa di testare il componente HistoryList, responsabile della visualizzazione di una collezione di HistoryCard. Verifica che il componente gestisca correttamente i diversi stati dell'interfaccia, come il caricamento (isLoading), la presenza di errori (error) e lo stato di lista vuota, confermando inoltre che la lista venga renderizzata e che le azioni (come l'eliminazione) vengano correttamente propagate ai componenti figli.
+
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.5} % Più respiro alle righe
+\begin{tabular}{|l|p{12cm}|c|}
+\hline
+\textbf{Codice} & \textbf{Descrizione} & \textbf{Stato} \\ \hline
+\prossimoCT & Verifica che, quando isLoading è true, venga visualizzato il componente LoadingState. & Pass \\ \hline
+\prossimoCT & Verifica che il componente ErrorState appaia quando viene passata una stringa di errore, mostrando il messaggio corretto. & Pass \\ \hline
+\prossimoCT & Verifica che, se non ci sono elementi e non stiamo caricando, venga visualizzato il componente EmptyState. & Pass \\ \hline
+\prossimoCT & Verifica che, passando una lista di card, il componente generi una lista e renderizzi i componenti HistoryCard al suo interno. & Pass \\ \hline
+\prossimoCT & Verifica che quando l'utente interagisce con una singola card nella lista, l'eliminazione risalga correttamente fino al componente padre con l'ID giusto. & Pass \\ \hline
+
+
+\end{tabular}
+\caption{Tabella component tests per HistoryList.tsx}
+\end{table}
+
+\subsection{EditorPage.test.tsx}
+Verifica che EditorPage si comporti da orchestratore corretto: riceve eventi dall'UI, li delega agli hook giusti, e passa i dati nel verso corretto tra i sottocomponenti. Per farlo, mocka tutti gli hook e tutti i componenti figli con versioni minimali che espongono solo i trigger necessari ai test.
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.5} % Più respiro alle righe
+\begin{tabular}{|l|p{12cm}|c|}
+\hline
+\textbf{Codice} & \textbf{Descrizione} & \textbf{Stato} \\ \hline
+\prossimoCT & Verifica che al mount, Topbar, Sidebar e MarkdownEditor siano presenti nel DOM; il modale di salvataggio è assente. & Pass \\ \hline
+\prossimoCT & Verifica che il click su "Save" nella Sidebar chiami openModal esattamente una volta. & Pass \\ \hline
+\prossimoCT & Verifica che il click su "Chiudi" nella Topbar chiami clearEditor e resetti il fileName al valore di default. & Pass \\ \hline
+\prossimoCT & Verifica che il click su "Upload" nella Sidebar chiami openFilePicker esattamente una volta. & Pass \\ \hline
+\prossimoCT & Verifica che il click su "Print" nella Sidebar chiami handlePrint esattamente una volta & Pass \\ \hline
+\prossimoCT & Verifica che l'evento drop sull'editor chiami uploadFile esattamente una volta. & Pass \\ \hline
+\prossimoCT & Verifica che il pannello AI sia assente inizialmente, che appaia dopo il click su "AI Panel", e che scompaia cliccando la "X". & Pass \\ \hline
+\prossimoCT & Verifica che quando il modale è aperto e si clicca "Esporta", handleExport viene chiamato con il testo restituito da getEditorText(). & Pass \\ \hline
+
+\end{tabular}
+\caption{Tabella component tests per HistoryPage.tsx}
+\end{table}
+
+\subsection{MarkdownEditor.test.tsx}
+Testa il componente editor, verificando il corretto rendering, la gestione dei file trascinati (drag \& drop) e il comportamento degli eventi del browser.
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.5} % Più respiro alle righe
+\begin{tabular}{|l|p{12cm}|c|}
+\hline
+\textbf{Codice} & \textbf{Descrizione} & \textbf{Stato} \\ \hline
+\prossimoCT & Verifica che il componente venga montato e contenga l'elemento textarea atteso. & Pass \\ \hline
+\prossimoCT & Simula un file trascinato sull'editor e verifica che venga chiamata la callback onFileDrop. & Pass \\ \hline
+\prossimoCT & Verifica che l'evento dragover sia intercettato per evitare il comportamento di default del browser. & Pass \\ \hline
+
+\end{tabular}
+\caption{Tabella component tests per MarkdownEditor.tsx}
+\end{table}
+
+\subsection{SaveDocumentModal.test.tsx}
+Verifica il ciclo di vita della modale di salvataggio: apertura/chiusura, sanitizzazione del nome file, gestione dello stato di esportazione e invocazione della funzione di export.
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.5} % Più respiro alle righe
+\begin{tabular}{|l|p{12cm}|c|}
+\hline
+\textbf{Codice} & \textbf{Descrizione} & \textbf{Stato} \\ \hline
+\prossimoCT & Verifica che la modale non sia nel DOM se isOpen è false. & Pass \\ \hline
+\prossimoCT & Verifica che, all'apertura, il nome file iniziale venga ripulito dall'estensione .md. & Pass \\ \hline
+\prossimoCT & Verifica che i tasti di chiusura chiamino la callback onClose. & Pass \\ \hline
+\prossimoCT & Verifica che caratteri non validi (es. < >) vengano sostituiti in tempo reale. & Pass \\ \hline
+\prossimoCT & Verifica che il filename venga composto correttamente e chiamata la funzione di onExport. & Pass \\ \hline
+\prossimoCT & Verifica che durante l'esportazione i campi siano disabilitati. & Pass \\ \hline
+
+\end{tabular}
+\caption{Tabella component tests per MarkdownEditor.tsx}
+\end{table}
+
+
+\newpage
+
+\section{Test d'integrazione - Fase PB}
+
 
 \newpage
 
