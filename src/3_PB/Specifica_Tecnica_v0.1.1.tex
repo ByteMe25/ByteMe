@@ -237,7 +237,7 @@ I termini che vengono considerati meritevoli di approfondimenti sono indicati co
         \hline
         Axios & 1.7.9 & Client HTTP basato su Promise per effettuare richieste REST dal browser. \\
         \hline
-        React Router DOM & 7.13.1 & Libreria standard per il routing dichiarativo in applicazioni \gls{React}, utilizzata per la navigazione tra le viste. \\
+        \gls{React Router} DOM & 7.13.1 & Libreria standard per il routing dichiarativo in applicazioni \gls{React}, utilizzata per la navigazione tra le viste. \\
         \hline
         \gls{Zustand} & 5.0.12 & Libreria di state management leggera, utilizzata per la gestione dello stato globale e la persistenza dei dati nel LocalStorage. \\
         \hline
@@ -245,7 +245,7 @@ I termini che vengono considerati meritevoli di approfondimenti sono indicati co
         \hline
         \gls{React} Hot Toast & 2.6.0 & Libreria leggera per la visualizzazione di notifiche toast personalizzabili. \\
         \hline
-        \gls{CSS Modules} & N/A (Integrato) & Sistema di scope locale per i fogli di stile CSS integrato in Vite, che evita conflitti tra classi. \\
+        \gls{CSS Modules} & N/A (Integrato) & Sistema di scope locale per i fogli di stile CSS integrato in \gls{Vite}, che evita conflitti tra classi. \\
         \hline
         ESLint & 9.39.1 & Strumento di linting per TypeScript, che aiuta a mantenere uno stile di codice coerente e a individuare errori. \\
         \hline
@@ -297,7 +297,7 @@ I termini che vengono considerati meritevoli di approfondimenti sono indicati co
         \hline
         \gls{Pytest} & 7.0.0 & Framework di testing per Python, con sintassi semplice e supporto a fixture, parametrizzazione e plugin. \\
         \hline
-        React testing library & 16.3.2 & Libreria per il testing di componenti \gls{React}, che fornisce utilities per interagire con i componenti in modo simile a come un utente reale lo farebbe. \\
+        \gls{React} testing library & 16.3.2 & Libreria per il testing di componenti \gls{React}, che fornisce utilities per interagire con i componenti in modo simile a come un utente reale lo farebbe. \\
         \hline
     \end{tabular}
     \caption{Descrizione delle tecnologie di test}
@@ -341,11 +341,11 @@ I termini che vengono considerati meritevoli di approfondimenti sono indicati co
         \hline
         OpenAI & 2.31.0 & Libreria ufficiale utilizzata per l'integrazione e la comunicazione con le \gls{API} dei modelli linguistici (LLM). \\
         \hline
-        Pydantic & 2.12.5 & Libreria per la validazione dei dati e la serializzazione tramite annotazioni di tipo nativo in Python. \\
+        Pydantic & 2.12.5 & Libreria per la \gls{validazione} dei dati e la serializzazione tramite annotazioni di tipo nativo in Python. \\
         \hline
-        Flask-CORS & 6.0.2 & Estensione di Flask per la gestione sicura del Cross-Origin Resource Sharing tra frontend e backend. \\
+        \gls{Flask}-CORS & 6.0.2 & Estensione di \gls{Flask} per la gestione sicura del Cross-Origin Resource Sharing tra frontend e backend. \\
         \hline
-        Python-dotenv & 1.2.2 & Modulo per il caricamento delle variabili d'ambiente e chiavi API dai file \texttt{.env}. \\
+        Python-dotenv & 1.2.2 & Modulo per il caricamento delle variabili d'ambiente e chiavi \gls{API} dai file \texttt{.env}. \\
         \hline
     \end{tabular}
     \caption{Descrizione delle librerie backend}
@@ -359,9 +359,9 @@ I termini che vengono considerati meritevoli di approfondimenti sono indicati co
         \hline
         \textbf{Nome} & \textbf{Versione} & \textbf{Descrizione} \\
         \hline
-        Nginx & alpine & Server web ad alte prestazioni utilizzato nel container \gls{Docker} per servire i file statici del frontend e gestire il routing. \\
+        \gls{Nginx} & alpine & Server web ad alte prestazioni utilizzato nel container \gls{Docker} per servire i file statici del frontend e gestire il routing. \\
         \hline
-        Werkzeug & 3.1.8 & Server WSGI integrato in Flask, utilizzato attualmente come motore di esecuzione per l'ambiente backend. \\
+        Werkzeug & 3.1.8 & Server WSGI integrato in \gls{Flask}, utilizzato attualmente come motore di esecuzione per l'ambiente backend. \\
         \hline
     \end{tabular}
     \caption{Descrizione dei server web frontend e backend}
@@ -377,7 +377,7 @@ I termini che vengono considerati meritevoli di approfondimenti sono indicati co
         \hline
         \gls{Docker} & 29.4.0 & Piattaforma per la containerizzazione, utilizzata per isolare frontend e backend in ambienti riproducibili. \\
         \hline
-        Docker Compose & 5.1.2 & Strumento per definire e gestire applicazioni multi-container tramite il file \texttt{docker-compose.yml}. \\
+        \gls{Docker Compose} & 5.1.2 & Strumento per definire e gestire applicazioni multi-container tramite il file \texttt{\gls{docker}-compose.yml}. \\
         \hline
     \end{tabular}
     \caption{Descrizione delle tecnologie di deployment}
@@ -420,7 +420,7 @@ Il file \texttt{\gls{docker}-compose.yml} coordina l'avvio sincronizzato dei ser
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.9\textwidth]{../UMLimg/imgDocker.jpg}
-    \caption{Rappresentazione dell'architettura di deployment tramite Docker Compose}
+    \caption{Rappresentazione dell'architettura di deployment tramite \gls{Docker Compose}}
     \label{fig:architettura_deployment}
 \end{figure}
 
@@ -494,7 +494,7 @@ L'organizzazione del progetto segue i principi della \textit{\gls{Feature-based 
 Il Model rappresenta lo strato dei dati e della loro persistenza. Nel sistema non è una struttura passiva, ma è implementato tramite store globali gestiti con \textbf{\gls{Zustand}}, che fungono da unica fonte di verità (\textit{Single Source of Truth}) per lo stato dell'applicazione.
 Sono presenti due store principali:
 \begin{itemize}
-    \item \texttt{useEditorMetaStore}: Gestisce i metadati dell'editor attivo, ovvero il nome del file (\texttt{fileName}), lo stato di modifica non salvata (\texttt{isDirty}) e il timestamp dell'ultimo salvataggio (\texttt{lastSaved}). Tramite il middleware \texttt{persist} di Zustand, sincronizza automaticamente questo stato nel \texttt{localStorage} del browser, garantendo che i dati sopravvivano al riavvio della pagina.
+    \item \texttt{useEditorMetaStore}: Gestisce i metadati dell'editor attivo, ovvero il nome del file (\texttt{fileName}), lo stato di modifica non salvata (\texttt{isDirty}) e il timestamp dell'ultimo salvataggio (\texttt{lastSaved}). Tramite il middleware \texttt{persist} di \gls{Zustand}, sincronizza automaticamente questo stato nel \texttt{localStorage} del browser, garantendo che i dati sopravvivano al riavvio della pagina.
     \item \texttt{useHistoryStore}: Gestisce l'elenco delle generazioni AI prodotte. Ogni voce è modellata dall'interfaccia \texttt{HistoryEntry}. Anche questo store utilizza il \texttt{localStorage} per rendere lo storico persistente tra le sessioni.
 \end{itemize}
 
@@ -596,7 +596,7 @@ Componente delegato al rendering del corpo principale dell'area di scrittura. Co
 
 \paragraph{Props (Dati)}
 \begin{itemize}
-    \item \texttt{textAreaRef: React.RefObject<HTMLTextAreaElement | null>} - puntatore fisico al nodo DOM su cui istanziare la libreria esterna.
+    \item \texttt{textAreaRef: \gls{React}.RefObject<HTMLTextAreaElement | null>} - puntatore fisico al nodo DOM su cui istanziare la libreria esterna.
 \end{itemize}
 
 \paragraph{Props (Callback)}
@@ -679,7 +679,7 @@ Componente granulare che rappresenta la singola scheda di interazione AI. Incaps
 
 \paragraph{Props (Dati)}
 \begin{itemize}
-    \item \texttt{item: HistoryItem} - struttura dati completa dell'interazione (prompt, output, modello usato, data).
+    \item \texttt{item: HistoryItem} - struttura dati completa dell'interazione (\gls{prompt}, output, modello usato, data).
 \end{itemize}
 
 \paragraph{Props (Callback)}
@@ -715,7 +715,7 @@ Hook centrale dell'applicazione. Gestisce il ciclo di vita dell'istanza \gls{Eas
 
 \paragraph{Stato/Valori di ritorno}
 \begin{itemize}
-    \item \texttt{textAreaRef: React.RefObject<HTMLTextAreaElement | null>} - riferimento iniettato nella view.
+    \item \texttt{textAreaRef: \gls{React}.RefObject<HTMLTextAreaElement | null>} - riferimento iniettato nella view.
     \item \texttt{isReady: boolean} - \textit{flag} che indica la completa inizializzazione del motore di rendering \gls{Markdown}.
 \end{itemize}
 
@@ -749,19 +749,19 @@ Coordina il flusso di esportazione asincrono. Orchestra in sequenza la composizi
 
 
 \subsubsection{useFileUpload}
-Gestisce il caricamento asincrono tramite \texttt{FileReader}. Esegue controlli preventivi (validazione del formato supportato \texttt{.md} o \texttt{.txt}, dimensione massima 5 MB) e previene la perdita accidentale di dati non salvati bloccando l'utente e chiedendogli conferma tramite \texttt{window.confirm}.
+Gestisce il caricamento asincrono tramite \texttt{FileReader}. Esegue controlli preventivi (\gls{validazione} del formato supportato \texttt{.md} o \texttt{.txt}, dimensione massima 5 MB) e previene la perdita accidentale di dati non salvati bloccando l'utente e chiedendogli conferma tramite \texttt{window.confirm}.
 
 % grafico
 
 \paragraph{Stato/Valori di ritorno}
 \begin{itemize}
-    \item \texttt{fileInputRef: React.RefObject<HTMLInputElement>} - riferimento fisico all'input nascosto di tipo \texttt{file} nel DOM.
+    \item \texttt{fileInputRef: \gls{React}.RefObject<HTMLInputElement>} - riferimento fisico all'input nascosto di tipo \texttt{file} nel DOM.
 \end{itemize}
 
 \paragraph{Funzioni esposte}
 \begin{itemize}
     \item \texttt{triggerFileInput: () => void} - simula il click sull'input nascosto per aprire la finestra di dialogo di sistema.
-    \item \texttt{handleFileUpload: (event: React.ChangeEvent<HTMLInputElement>) => Promise<void>} - intercetta il file selezionato, lo valida e ne legge il contenuto testuale.
+    \item \texttt{handleFileUpload: (event: \gls{React}.ChangeEvent<HTMLInputElement>) => Promise<void>} - intercetta il file selezionato, lo valida e ne legge il contenuto testuale.
 \end{itemize}
 
 
@@ -773,7 +773,7 @@ Questo hook opera esclusivamente in modo imperativo, non ha quindi nessuno stato
 
 \paragraph{Funzioni esposte}
 \begin{itemize}
-    \item \texttt{handlePrint: (content: string) => void} - verifica la lunghezza del contenuto e innesca la stampa del browser o genera un errore visivo.
+    \item \texttt{handlePrint: (content: string) => void} - \gls{verifica} la lunghezza del contenuto e innesca la stampa del browser o genera un errore visivo.
 \end{itemize}
 
 
@@ -823,14 +823,14 @@ Per la gestione delle comunicazioni HTTP con il backend, il sistema applica il \
 \paragraph{Livello 1: \texttt{apiClient.ts} (Configurazione e normalizzazione)}
 Il primo livello costituisce la Facade sull'istanza di \texttt{Axios}. È responsabile di:
 \begin{itemize}
-    \item \textbf{Configurazione centralizzata}: Risolve dinamicamente la \texttt{baseURL} dalle variabili d'ambiente (\texttt{VITE\_API\_BASE\_URL}), con \textit{fallback} a \texttt{/api}, e imposta il timeout (\texttt{VITE\_API\_TIMEOUT}, default 30.000 ms). Garantisce che un unico punto del codice controlli i parametri di connessione.
+    \item \textbf{Configurazione centralizzata}: Risolve dinamicamente la \texttt{baseURL} dalle variabili d'ambiente (\texttt{\gls{VITE}\_API\_BASE\_URL}), con \textit{fallback} a \texttt{/\gls{api}}, e imposta il timeout (\texttt{\gls{VITE}\_API\_TIMEOUT}, default 30.000 ms). Garantisce che un unico punto del codice controlli i parametri di connessione.
     \item \textbf{Normalizzazione degli errori}: Tramite un \textit{response interceptor}, tutte le eccezioni di rete (timeout, errori HTTP 4xx/5xx, richieste annullate tramite \texttt{AbortSignal}) vengono intercettate e trasformate in oggetti \texttt{Error} standard. La logica di normalizzazione è incapsulata nella funzione pura \texttt{transformApiError}, testabile in totale isolamento.
     \item \textbf{Gestione della cancellazione}: Il supporto nativo all'\texttt{AbortSignal} permette ai ViewModel di annullare richieste in corso (es. operazione AI interrotta dall'utente) passando il segnale nella configurazione della chiamata.
 \end{itemize}
 L'interfaccia \texttt{ApiError} esportata definisce il contratto atteso per le risposte di errore del backend \gls{Flask}, garantendo una tipizzazione statica sicura su tutta la catena di chiamate.
 
-\paragraph{Livello 2: \texttt{aiCall.ts} (Astrazione dell'endpoint AI)}
-Il secondo livello rappresenta una Facade sull'\textit{endpoint specifico} del backend. Nasconde l'URL esatto (\texttt{/ai/generate}) e la struttura del payload JSON, esponendo una singola funzione asincrona:
+\paragraph{Livello 2: \texttt{aiCall.ts} (Astrazione dell'\gls{endpoint} AI)}
+Il secondo livello rappresenta una Facade sull'\textit{\gls{endpoint} specifico} del backend. Nasconde l'URL esatto (\texttt{/ai/generate}) e la struttura del payload JSON, esponendo una singola funzione asincrona:
 
 \begin{verbatim}
 executeOperation(payload: AiRequestPayload, signal?: AbortSignal)
@@ -844,7 +844,7 @@ I due livelli formano una \textbf{Facade a cascata} con responsabilità rigorosa
 \begin{itemize}
     \item \texttt{apiClient}: Sa \textit{come} parlare con il server (timeout, header, normalizzazione). Non conosce il dominio applicativo (Intelligenza Artificiale).
     \item \texttt{aiCall}: Sa \textit{dove} inviare la richiesta (\texttt{/ai/generate}) e \textit{cosa} spedire. Non conosce i dettagli implementativi di \texttt{Axios}.
-    \item \textbf{ViewModel} (es. \texttt{useAiOperations}): Sanno \textit{quando} chiamare l'AI e come gestire il risultato nella UI. Non conoscono né \texttt{Axios} né l'URL dell'endpoint.
+    \item \textbf{ViewModel} (es. \texttt{useAiOperations}): Sanno \textit{quando} chiamare l'AI e come gestire il risultato nella UI. Non conoscono né \texttt{Axios} né l'URL dell'\gls{endpoint}.
 \end{itemize}
 
 Questa separazione porta due benefici misurabili in termini di qualità del software:
