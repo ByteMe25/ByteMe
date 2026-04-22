@@ -430,23 +430,23 @@ Il file \texttt{\gls{docker}-compose.yml} coordina l'avvio sincronizzato dei ser
 \newpage
 
 \section{Architettura del backend}
-Il sistema \textit{Second Brain} adotta il pattern architetturale \textbf{Layered Architecture} per il backend. L'adozione di questa struttura garantisce una netta separazione delle responsabilità e riduce l'accoppiamento tra i moduli software. Il flusso di esecuzione è strettamente unidirezionale (top-down): ogni strato funge da astrazione per quello superiore, gestendo esclusivamente la logica di propria competenza. Coerentemente con i requisiti di progetto, il backend è progettato per essere \textbf{stateless}, delegando la persistenza dei dati interamente al client. L'architettura logica si articola nei seguenti livelli:
+Il sistema \textit{Second Brain} adotta il pattern architetturale \textbf{Layered Architecture} per il backend. L'adozione di questa struttura garantisce una netta separazione delle responsabilità e riduce l'accoppiamento tra i moduli software. Il flusso di esecuzione è strettamente unidirezionale (top-down): ogni strato funge da astrazione per quello superiore, gestendo esclusivamente la logica di propria competenza. Coerentemente con i requisiti di progetto, il backend è progettato per essere \textbf{\gls{stateless}}, delegando la persistenza dei dati interamente al client. L'architettura logica si articola nei seguenti livelli:
 \begin{itemize}
-\item \textbf{Presentation Layer}: Espone gli endpoint REST, riceve le richieste HTTP e restituisce le risposte al client;
+\item \textbf{Presentation Layer}: Espone gli \gls{endpoint} REST, riceve le richieste HTTP e restituisce le risposte al client;
 \item \textbf{Business Logic}: Core funzionale del sistema, contiene le regole di dominio e orchestra le operazioni tramite il pattern Strategy;
 \item \textbf{Infrastructure Layer}: Gestisce la comunicazione con i provider LLM esterni e la post-elaborazione delle risposte.
 \end{itemize}
 
 \subsection{Presentation layer (app.py)}
-Rappresenta il punto di ingresso del backend ed è implementato nel modulo di routing di Flask. Ha il compito di esporre gli endpoint REST, ricevere le richieste HTTP in ingresso e restituire risposte JSON standardizzate al client. Questo strato non contiene logica di dominio né conoscenza dei prompt o dei modelli LLM: si limita a validare i payload in ingresso e delegare l'elaborazione agli strati sottostanti.
+Rappresenta il punto di ingresso del backend ed è implementato nel modulo di routing di \gls{Flask}. Ha il compito di esporre gli \gls{endpoint} REST, ricevere le richieste HTTP in ingresso e restituire risposte JSON standardizzate al client. Questo strato non contiene logica di dominio né conoscenza dei \gls{prompt} o dei modelli LLM: si limita a validare i payload in ingresso e delegare l'elaborazione agli strati sottostanti.
 
 \subsection{Business logic (ai\_strategies.py, operation\_registry.py)}
 È il nucleo funzionale del sistema, completamente isolato dal framework web e dal protocollo HTTP. Utilizza il pattern comportamentale Strategy per gestire la variabilità delle operazioni in modo estensibile.
 
 I componenti principali sono:
 \begin{itemize}
-\item \textbf{ai\_strategies.py} - gestione dei prompt: definisce come costruire i prompt per ogni operazione. Ogni strategia incapsula le istruzioni e la temperatura adatta al tipo di elaborazione richiesta, che sia un'operazione editoriale, una traduzione o un'analisi con i Sei Cappelli di De Bono.
-\item \textbf{operation\_registry.py} - mappatura delle operazioni: contiene una mappatura statica che associa ogni identificatore di operazione alla strategia di prompt e al modello LLM corretto tramite oggetti OperationConfig. Funge da punto di configurazione centrale del sistema.
+\item \textbf{ai\_strategies.py} - gestione dei \gls{prompt}: definisce come costruire i \gls{prompt} per ogni operazione. Ogni strategia incapsula le istruzioni e la \gls{temperatura} adatta al tipo di elaborazione richiesta, che sia un'operazione editoriale, una traduzione o un'analisi con i Sei Cappelli di De Bono.
+\item \textbf{operation\_registry.py} - mappatura delle operazioni: contiene una mappatura statica che associa ogni identificatore di operazione alla strategia di \gls{prompt} e al modello LLM corretto tramite oggetti OperationConfig. Funge da punto di configurazione centrale del sistema.
 \end{itemize}
 
 \subsection{Infrastructure layer}
@@ -454,17 +454,17 @@ Gestisce tutto ciò che riguarda il mondo esterno al dominio applicativo, isolan
 
 I componenti principali sono:
 \begin{itemize}
-\item \textbf{model\_strategies.py} — integrazione modelli LLM: astrae la comunicazione con i provider esterni tramite l'interfaccia AIModelStrategy, esponendo i modelli Llama 3.2 e Gemma 3 in modo polimorfico. Gestisce l'iniezione delle variabili d'ambiente necessarie.
+\item \textbf{model\_strategies.py} — integrazione modelli LLM: astrae la comunicazione con i provider esterni tramite l'interfaccia AIModelStrategy, esponendo i modelli \gls{Llama 3.2} e \gls{Gemma 3} in modo polimorfico. Gestisce l'iniezione delle variabili d'ambiente necessarie.
 \item \textbf{text\_cleaning.py} — servizi di supporto: pulisce le risposte dei modelli rimuovendo metatesto e preamboli indesiderati tramite espressioni regolari.
 \end{itemize}
 
 \subsection{Descrizione delle classi}
 
 \subsubsection{ai\_strategies.py}
-Questo file contiene la logica di costruzione dei prompt tramite il pattern Strategy.
+Questo file contiene la logica di costruzione dei \gls{prompt} tramite il pattern Strategy.
 
 \paragraph{BaseAIStrategy} 
-BaseAIStrategy è la classe astratta base del modulo. Dichiara la temperatura di default, fornisce il metodo \_validate() per la validazione dell'input e impone alle sottoclassi l'implementazione del metodo build(), che restituisce la coppia (system\_prompt, user\_prompt).
+BaseAIStrategy è la classe astratta base del modulo. Dichiara la \gls{temperatura} di default, fornisce il metodo \_validate() per la \gls{validazione} dell'input e impone alle sottoclassi l'implementazione del metodo build(), che restituisce la coppia (system\_prompt, user\_prompt).
 \begin{itemize}
 
 \item \textbf{Attributi}:
@@ -476,7 +476,7 @@ BaseAIStrategy è la classe astratta base del modulo. Dichiara la temperatura di
 \item \textbf{Metodi}: 
 
 \begin{itemize}
-\item \_validate(): metodo concreto ereditabile che verifica che il testo in ingresso non sia None, sollevando un TypeError in caso contrario.
+\item \_validate(): metodo concreto ereditabile che \gls{verifica} che il testo in ingresso non sia None, sollevando un TypeError in caso contrario.
 \item build(): metodo astratto che ogni sottoclasse deve implementare. Riceve il testo da elaborare e restituisce la coppia (system\_prompt, user\_prompt) da passare al modello LLM.
 \end{itemize}
 
@@ -484,27 +484,27 @@ BaseAIStrategy è la classe astratta base del modulo. Dichiara la temperatura di
 \end{itemize}
 
 \paragraph{SimplePromptStrategy} 
-SimplePromptStrategy è la strategia generica per operazioni editoriali standard. La temperatura è 0.5.
+SimplePromptStrategy è la strategia generica per operazioni editoriali standard. La \gls{temperatura} è 0.5.
 \begin{itemize}
 
 \item \textbf{Attributi}:
 
 \begin{itemize}
-\item role: stringa che definisce il ruolo assegnato al modello nel system prompt.
-\item task: stringa che definisce l'istruzione specifica inserita nello user prompt.
+\item role: stringa che definisce il ruolo assegnato al modello nel \gls{system \gls{prompt}}.
+\item task: stringa che definisce l'istruzione specifica inserita nello \gls{user \gls{prompt}}.
 \end{itemize}
 
 \item \textbf{Metodi}: 
 
 \begin{itemize}
-\item build(): combina role e task con il testo in ingresso, costruendo un system prompt e user prompt con l'istruzione specifica.
+\item build(): combina role e task con il testo in ingresso, costruendo un \gls{system \gls{prompt}} e \gls{user \gls{prompt}} con l'istruzione specifica.
 \end{itemize}
 
 
 \end{itemize}
 
 \paragraph{TranslationStrategy} 
-TranslationStrategy è la strategia specializzata per le traduzioni. La temperatura è 0.3, ridotta per favorire fedeltà al testo originale.
+TranslationStrategy è la strategia specializzata per le traduzioni. La \gls{temperatura} è 0.3, ridotta per favorire fedeltà al testo originale.
 \begin{itemize}
 
 \item \textbf{Attributi}:
@@ -516,7 +516,7 @@ TranslationStrategy è la strategia specializzata per le traduzioni. La temperat
 \item \textbf{Metodi}: 
 
 \begin{itemize}
-\item build(): costruisce un system prompt ottimizzato per la traduzione professionale e un user prompt che specifica la lingua e il testo da tradurre.
+\item build(): costruisce un \gls{system \gls{prompt}} ottimizzato per la traduzione professionale e un \gls{user \gls{prompt}} che specifica la lingua e il testo da tradurre.
 \end{itemize}
 
 
@@ -529,7 +529,7 @@ DeBonoHatStrategy è la strategia specializzata per i Sei Cappelli di De Bono. R
 \item \textbf{Attributi}:
 
 \begin{itemize}
-\item \_system\_prompt: system prompt preconfigurato che definisce la prospettiva del cappello.
+\item \_system\_prompt: \gls{system \gls{prompt}} preconfigurato che definisce la prospettiva del cappello.
 \item \_user\_task: istruzione strutturata che guida il modello nella produzione di un output organizzato per punti.
 \item temperature: sovrascrive il valore di default della classe base. Usiamo valori bassi (0.1) per i cappelli analitici (bianco, nero, blu) e valori alti (0.8) per i cappelli creativi ed emotivi (rosso, giallo, verde).
 \end{itemize}
@@ -537,26 +537,26 @@ DeBonoHatStrategy è la strategia specializzata per i Sei Cappelli di De Bono. R
 \item \textbf{Metodi}: 
 
 \begin{itemize}
-\item build(): combina \_user\_task con il testo in ingresso nel user prompt, restituendo la coppia con il system prompt preconfigurato.
+\item build(): combina \_user\_task con il testo in ingresso nel \gls{user \gls{prompt}}, restituendo la coppia con il \gls{system \gls{prompt}} preconfigurato.
 \end{itemize}
 
 \end{itemize}
 
 \paragraph{STRATEGIES}
-STRATEGIES è il dizionario statico che raccoglie tutte le istanze delle strategie di prompt disponibili nel sistema, indicizzate per identificatore di operazione (es. "summary", "black\_hat", "translate\_en"). Serve da sorgente da cui OPERATION\_REGISTRY attinge per comporre i propri OperationConfig.
+STRATEGIES è il dizionario statico che raccoglie tutte le istanze delle strategie di \gls{prompt} disponibili nel sistema, indicizzate per identificatore di operazione (es. "summary", "black\_hat", "translate\_en"). Serve da sorgente da cui OPERATION\_REGISTRY attinge per comporre i propri OperationConfig.
 
 \subsubsection{operation\_registry.py}
-Questo file contiene la struttura dati OperationConfig, un dataclass che accoppia una strategia di prompt con una classe di modelli AI. Il dizionario OPERATION\_REGISTRY costituisce la mappatura statica centrale del sistema: associa ogni identificatore di operazione (es. "summary", "black\_hat", "translate\_en") al corrispondente OperationConfig. Funge da punto di configurazione centrale, rendendo l'aggiunta di nuove operazioni una modifica localizzata.
+Questo file contiene la struttura dati OperationConfig, un dataclass che accoppia una strategia di \gls{prompt} con una classe di modelli AI. Il dizionario OPERATION\_REGISTRY costituisce la mappatura statica centrale del sistema: associa ogni identificatore di operazione (es. "summary", "black\_hat", "translate\_en") al corrispondente OperationConfig. Funge da punto di configurazione centrale, rendendo l'aggiunta di nuove operazioni una modifica localizzata.
 
 \paragraph{OperationConfig}
-Dataclass che accoppia una strategia di prompt con una classe di modelli AI.
+Dataclass che accoppia una strategia di \gls{prompt} con una classe di modelli AI.
 \begin{itemize}
 \item model\_class: riferimento alla classe del modello LLM da istanziare per l'operazione.
-\item prompt\_strategy: istanza della strategia di prompt da utilizzare per costruire i prompt dell'operazione.
+\item \gls{prompt}\_strategy: istanza della strategia di \gls{prompt} da utilizzare per costruire i \gls{prompt} dell'operazione.
 \end{itemize}
 
 \subsubsection{model\_strategies.py}
-Questo file permette l'astrazione della comunicazione con i provider esterni tramite il pattern Strategy. La classe base AIModelStrategy definisce l'interfaccia comune tramite il metodo generate(), che accetta i prompt e la temperatura e restituisce la risposta del modello.
+Questo file permette l'astrazione della comunicazione con i provider esterni tramite il pattern Strategy. La classe base AIModelStrategy definisce l'interfaccia comune tramite il metodo generate(), che accetta i \gls{prompt} e la \gls{temperatura} e restituisce la risposta del modello.
 
 \paragraph{AIModelStrategy} 
 AIModelStrategy è una classe astratta che, non avendo attributi né implementazioni concrete, funge da interfaccia comune per le strategie dei modelli AI.
@@ -571,49 +571,49 @@ AIModelStrategy è una classe astratta che, non avendo attributi né implementaz
 \end{itemize}
 
 \paragraph{ZucchettiLlamaStrategy} 
-ZucchettiLlamaStrategy è la strategia concreta per il modello Llama 3.2 3B, utilizzato per le operazioni editoriali standard e le traduzioni.
+ZucchettiLlamaStrategy è la strategia concreta per il modello \gls{Llama 3.2} 3B, utilizzato per le operazioni editoriali standard e le traduzioni.
 \begin{itemize}
 
 \item \textbf{Attributi}:
 
 \begin{itemize}
-\item client: istanza del client OpenAI-compatibile, inizializzata con API key e base URL letti dalle variabili d'ambiente.
+\item client: istanza del client OpenAI-compatibile, inizializzata con \gls{API} key e base URL letti dalle variabili d'ambiente.
 \item model: stringa identificativa del modello ("llama3.2:3b" in questo caso).
 \end{itemize}
 
 \item \textbf{Metodi}: 
 
 \begin{itemize}
-\item generate(): invoca il modello tramite il client, passando system prompt, user prompt e temperatura, e restituisce il contenuto testuale della risposta.
+\item generate(): invoca il modello tramite il client, passando \gls{system \gls{prompt}}, \gls{user \gls{prompt}} e \gls{temperatura}, e restituisce il contenuto testuale della risposta.
 \end{itemize}
 
 \end{itemize}
 
 \paragraph{Gemma3Strategy} 
-Gemma3Strategy è la strategia concreta per il modello Gemma 3 4B, utilizzato per le analisi con i Sei Cappelli di De Bono. Strutturalmente identica a ZucchettiLlamaStrategy, si differenzia per l'identificativo del modello ("gemma3:4b").
+Gemma3Strategy è la strategia concreta per il modello \gls{Gemma 3} 4B, utilizzato per le analisi con i Sei Cappelli di De Bono. Strutturalmente identica a ZucchettiLlamaStrategy, si differenzia per l'identificativo del modello ("gemma3:4b").
 \begin{itemize}
 
 \item \textbf{Attributi}:
 
 \begin{itemize}
-\item client: istanza del client OpenAI-compatibile, inizializzata con API key e base URL letti dalle variabili d'ambiente.
+\item client: istanza del client OpenAI-compatibile, inizializzata con \gls{API} key e base URL letti dalle variabili d'ambiente.
 \item model: stringa identificativa del modello ("gemma3:4b" in questo caso).
 \end{itemize}
 
 \item \textbf{Metodi}: 
 
 \begin{itemize}
-\item generate(): invoca il modello tramite il client, passando system prompt, user prompt e temperatura, e restituisce il contenuto testuale della risposta.
+\item generate(): invoca il modello tramite il client, passando \gls{system \gls{prompt}}, \gls{user \gls{prompt}} e \gls{temperatura}, e restituisce il contenuto testuale della risposta.
 \end{itemize}
 
 \end{itemize}
 
 \subsubsection{app.py}
-Il modulo non adotta una struttura a classi, ma è organizzato come un insieme di funzioni e configurazioni Flask.
+Il modulo non adotta una struttura a classi, ma è organizzato come un insieme di funzioni e configurazioni \gls{Flask}.
 \begin{itemize}
-\item app: istanza dell'applicazione Flask, configurata con CORS abilitato per permettere la comunicazione col frontend.
-\item generate\_ai\_text(): funzione principale del modulo, mappata sull'endpoint POST /api/ai/generate. Riceve il payload JSON, recupera la configurazione dalla mappatura OPERATION\_REGISTRY, istanzia il modello tramite get\_model(), costruisce i prompt e restituisce la risposta elaborata. In caso di errore, restituisce una risposta standardizzata con il messaggio di eccezione.
-\item root(): funzione mappata sull'endpoint GET /, utilizzata come health check per verificare che il server sia attivo. Restituisce il nome del servizio, lo stato e la lista delle operazioni disponibili.
+\item app: istanza dell'applicazione \gls{Flask}, configurata con CORS abilitato per permettere la comunicazione col frontend.
+\item generate\_ai\_text(): funzione principale del modulo, mappata sull'\gls{endpoint} POST /\gls{api}/ai/generate. Riceve il payload JSON, recupera la configurazione dalla mappatura OPERATION\_REGISTRY, istanzia il modello tramite get\_model(), costruisce i \gls{prompt} e restituisce la risposta elaborata. In caso di errore, restituisce una risposta standardizzata con il messaggio di eccezione.
+\item root(): funzione mappata sull'\gls{endpoint} GET /, utilizzata come health check per verificare che il server sia attivo. Restituisce il nome del servizio, lo stato e la lista delle operazioni disponibili.
 \end{itemize}
 
 \subsection{Rappresentazione UML per l'architettura del backend}
