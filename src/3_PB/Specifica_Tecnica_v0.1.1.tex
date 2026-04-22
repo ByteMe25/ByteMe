@@ -102,9 +102,9 @@
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{\gls{Verifica}} \\
         \hline
-        0.1.1 & 21/04/2026 & Giulia Barzon & Struttura documento e sezione MVVM, bozza del Facade & \\
+        0.1.1 & 21/04/2026 & Giulia Barzon & Struttura documento e sezione MVVM, bozza del Facade & Chiara Grossele\\
         \hline
-        0.1.0 & 21/04/2026 & Giulia Barzon & Completate sezione 1, 2 e 3 & \\
+        0.1.0 & 21/04/2026 & Giulia Barzon & Completate sezione 1, 2 e 3 & Chiara Grossele\\
         \hline
         0.0.10 & 20/04/2026 & Elisa Marchioro & Fix alle tabelle & Giulia Barzon\\
         \hline
@@ -194,11 +194,11 @@ I termini che vengono considerati meritevoli di approfondimenti sono indicati co
     \item \textit{Piano di Qualifica} versione 2.0.0 (Ultimo accesso: 20/04/2026) \\
     \href{https://byteme25.github.io/ByteMe/}{PB - Piano di Qualifica v2.0.0}
     \item Verbali interni ed esterni
-    \item \gls{Glossario} v2.0.0 (Ultimo accesso: 20/04/2026)\\
+    \item \gls{Glossario} versione 2.0.0 (Ultimo accesso: 20/04/2026)\\
     \href{https://byteme25.github.io/ByteMe/files.html}{Documenti interni - \gls{Glossario} v2.0.0}
     \item \gls{Repository} ufficiale di \gls{EasyMDE}: \url{https://github.com/Ionaru/easy-markdown-editor}\\ (Ultimo accesso: 24/03/2026)
      \item Documentazione linguaggio \gls{markdown} - CommonMark: \url{https://commonmark.org/}\\ (Ultimo accesso: 20/02/2026)
-    \item Documentazione \gls{React} 19: \url{https://react.dev}\\ Ultimo accesso: 16/04/2026
+    \item Documentazione \gls{React} 19: \url{https://react.dev}\\ (Ultimo accesso: 16/04/2026)
     \item Principi del Bulletproof \gls{React} (\gls{repository} ufficiale): \url{https://github.com/alan2207/bulletproof-react}\\ (Ultimo accesso: 16/04/2026)
     \item Documentazione \gls{Flask}: \url{https://flask.palletsprojects.com}\\ (Ultimo accesso: 10/03/2026)
     \item Documentazione \gls{Docker}: \url{https://docs.docker.com}\\ (Ultimo accesso: 27/02/2026)
@@ -304,7 +304,7 @@ I termini che vengono considerati meritevoli di approfondimenti sono indicati co
     \label{tab:tecnologie_test}
 \end{table}
 
-\subsection{Framework \gls{api} backend}
+\subsection{Framework \gls{API} backend}
 \begin{table}[H]
     \centering
     \begin{tabular}{|p{0.20\textwidth}|p{0.10\textwidth}|p{0.55\textwidth}|}
@@ -314,7 +314,7 @@ I termini che vengono considerati meritevoli di approfondimenti sono indicati co
         \gls{Flask} & 3.1.3 & Microframework Python per lo sviluppo di \gls{API} REST, leggero ed estensibile tramite plugin. \\
         \hline
     \end{tabular}
-    \caption{Descrizione del framework \gls{api} backend}
+    \caption{Descrizione del framework \gls{API} backend}
     \label{tab:api_backend}
 \end{table}
 
@@ -428,7 +428,7 @@ Il file \texttt{\gls{docker}-compose.yml} coordina l'avvio sincronizzato dei ser
 \newpage
 
 \section{Architettura del backend}
-Il sistema "Second Brain" adotta il pattern architetturale \textbf{Layered Architecture}. L'adozione di questa struttura garantisce una netta separazione delle responsabilità e riduce l'accoppiamento tra i moduli software. Il flusso di esecuzione è strettamente unidirezionale (top-down): ogni strato funge da astrazione per quello superiore, gestendo esclusivamente la logica di propria competenza.
+Il sistema \textit{Second Brain} adotta il pattern architetturale \textbf{Layered Architecture}. L'adozione di questa struttura garantisce una netta separazione delle responsabilità e riduce l'accoppiamento tra i moduli software. Il flusso di esecuzione è strettamente unidirezionale (top-down): ogni strato funge da astrazione per quello superiore, gestendo esclusivamente la logica di propria competenza.
 
 Nel sistema gli strati sono progettati come "strati chiusi": una richiesta transita solo verso lo strato immediatamente sottostante, garantendo che i dettagli implementativi di un livello rimangano isolati rispetto agli altri. Coerentemente con i requisiti di progetto, il backend è progettato per essere \textbf{\gls{stateless}}, delegando la persistenza dei dati interamente al client. L'architettura logica si articola nei seguenti livelli:
 \begin{itemize}
