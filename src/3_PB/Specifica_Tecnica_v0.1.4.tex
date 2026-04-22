@@ -70,7 +70,7 @@
         \centering
         \begin{tabular}{|l|p{5cm}|}
             \hline
-            \textbf{Versione} & 0.1.3 \\
+            \textbf{Versione} & 0.1.4 \\
             \hline
             \textbf{Stato} & In corso \\
             \hline
@@ -102,9 +102,11 @@
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{\gls{Verifica}} \\
         \hline
+        0.1.4 & 22/04/2026 & Giulia Barzon & Rivista sezione backend e strategy & \\
+        \hline
         0.1.3 & 22/04/2026 & Giulia Barzon & Correzione e diagramma sezione Facade, rivisto MVVM & \\
         \hline
-        0.1.2 & 22/04/2026 & Elisa Marchioro & Sistemata sezione architettura del backend & \\
+        0.1.2 & 22/04/2026 & Elisa Marchioro & Sistemata sezione architettura del backend & Giulia Barzon \\
         \hline
         0.1.1 & 21/04/2026 & Giulia Barzon & Struttura documento e sezione MVVM, bozza del Facade & Chiara Grossele, Elisa Marchioro\\
         \hline
@@ -146,9 +148,7 @@
 
 \section{Introduzione}
 \subsection{Scopo del documento}
-Il presente documento costituisce la \textbf{\gls{Specifica Tecnica}} del prodotto
-\textit{Second Brain}, proposto dall'azienda \textit{Zucchetti} al
-gruppo ByteMe.
+Il presente documento costituisce la \textbf{\gls{Specifica Tecnica}} del prodotto \textit{Second Brain}, proposto dall'azienda \textit{Zucchetti} al gruppo ByteMe.
  
 Il documento descrive in dettaglio:
 \begin{itemize}
@@ -163,11 +163,11 @@ Il documento è rivolto al team di sviluppo come guida implementativa e a
 committente e proponente come \gls{verifica} della coerenza tra scelte progettuali e requisiti concordati.
  
 \subsection{Approccio alla redazione}
-Il documento viene redatto in modo \textbf{incrementale}, assicurando coerenza con gli sviluppi in corso. Non puo essere considerato completo fino al rilascio della versione 1.0.0.
+Il documento viene redatto in modo \textbf{incrementale}, assicurando coerenza con gli sviluppi in corso. Non può essere considerato completo fino al rilascio della versione 1.0.0.
 
 \subsection{Scopo del prodotto}
 Il progetto \textit{Second Brain} mira a sviluppare un \gls{editor di testo} avanzato basato sul linguaggio \gls{Markdown} e potenziato dall'integrazione di Large Language Model (LLM).
-L'applicazione web consentira all'utente di:
+L'applicazione web consentirà all'utente di:
 \begin{itemize}
   \item scrivere e visualizzare in tempo reale testi formattati in \gls{Markdown};
   \item interagire con un LLM per riassumere, correggere, riscrivere e tradurre testi;
@@ -431,205 +431,218 @@ Il file \texttt{\gls{docker}-compose.yml} coordina l'avvio sincronizzato dei ser
 
 \newpage
 
-\section{Architettura del backend}
-Il sistema \textit{Second Brain} adotta il pattern architetturale \textbf{Layered Architecture} per il backend. L'adozione di questa struttura garantisce una netta separazione delle responsabilità e riduce l'accoppiamento tra i moduli software. Il flusso di esecuzione è strettamente unidirezionale (top-down): ogni strato funge da astrazione per quello superiore, gestendo esclusivamente la logica di propria competenza. Coerentemente con i requisiti di progetto, il backend è progettato per essere \textbf{\gls{stateless}}, delegando la persistenza dei dati interamente al client. L'architettura logica si articola nei seguenti livelli:
+\section{Backend: architettura}
+\subsection{Layered Architecture}
+L'Architettura a Livelli (nota anche come \textit{Layered Architecture} o \textit{N-tier Architecture}) è uno dei pattern architetturali più consolidati e rappresenta lo standard \textit{de facto} per la progettazione di applicazioni software \textit{enterprise}.
+
+Il principio cardine di questo pattern è la \textbf{Separation of Concerns} (Separazione delle Responsabilità): i componenti del sistema sono organizzati in strati orizzontali, dove ogni strato fornisce un'astrazione specifica e gestisce esclusivamente la logica di propria competenza. Questo approccio modulare limita il raggio d'azione dei singoli componenti, semplificando notevolmente lo sviluppo, il testing e la manutenzione dell'applicazione.
+
+\paragraph{Vincolo dei "Closed Layers" (Strati Chiusi)}
+Una caratteristica fondamentale di un'architettura a livelli ben progettata è l'isolamento degli strati. Affinché l'architettura sia solida, gli strati devono essere \textbf{chiusi}. Questo significa che il flusso di esecuzione segue una direttiva strettamente \textit{top-down}: una richiesta può transitare esclusivamente allo strato immediatamente sottostante. Di conseguenza, i livelli superiori ignorano del tutto i dettagli implementativi dei livelli inferiori, garantendo che le modifiche effettuate all'interno di uno strato non generino impatti a cascata sugli altri.
+
+\subsection{Applicazione del pattern}
+Il sistema \textit{Second Brain} adotta rigorosamente la \textbf{Layered Architecture} per il proprio backend. Coerentemente con i requisiti di progetto, il sistema è progettato per essere totalmente \textbf{\gls{stateless}}, delegando la persistenza dei dati interamente al client. L'architettura logica si articola nei seguenti tre livelli:
 \begin{itemize}
-\item \textbf{Presentation Layer}: Espone gli \gls{endpoint} REST, riceve le richieste HTTP e restituisce le risposte al client;
-\item \textbf{Business Logic}: Core funzionale del sistema, contiene le regole di dominio e orchestra le operazioni tramite il pattern Strategy;
-\item \textbf{Infrastructure Layer}: Gestisce la comunicazione con i provider LLM esterni e la post-elaborazione delle risposte.
+    \item \textbf{Presentation Layer}: Espone gli \gls{endpoint} REST, riceve le richieste HTTP e restituisce le risposte al client.
+    \item \textbf{Business Logic}: Core funzionale del sistema, contiene le regole di dominio e orchestra le operazioni AI in modo dinamico.
+    \item \textbf{Infrastructure Layer}: Gestisce la comunicazione fisica con i provider LLM esterni e la post-elaborazione delle risposte, isolando il resto del sistema dai dettagli di rete.
 \end{itemize}
 
+% DIAGRAMMA COMPLETO DI TUTTA L'ARCHITETTURA
+
+\newpage
+% ===================
+% PRESENTATION LAYER
+% ===================
 \subsection{Presentation layer (app.py)}
-Rappresenta il punto di ingresso del backend ed è implementato nel modulo di routing di \gls{Flask}. Ha il compito di esporre gli \gls{endpoint} REST, ricevere le richieste HTTP in ingresso e restituire risposte JSON standardizzate al client. Questo strato non contiene logica di dominio né conoscenza dei \gls{prompt} o dei modelli LLM: si limita a validare i payload in ingresso e delegare l'elaborazione agli strati sottostanti.
+Rappresenta il punto di ingresso del backend ed è implementato nel modulo di routing di \gls{Flask}. Ha il compito di esporre gli \gls{endpoint} REST (come \texttt{/api/ai/generate}), ricevere le richieste HTTP in ingresso e restituire risposte JSON standardizzate. Questo strato non contiene logica di dominio né conoscenza della struttura dei \gls{prompt} o dei modelli LLM: si limita a validare i payload in ingresso e a delegare l'elaborazione agli strati sottostanti, intercettando e formattando eventuali eccezioni.
 
+\subsubsection{Modulo: \texttt{app.py}}
+Il modulo non adotta una struttura a classi, ma è organizzato come un insieme di funzioni e configurazioni \gls{Flask}.
+\begin{itemize}
+    \item \texttt{app}: Istanza dell'applicazione \gls{Flask}, configurata con CORS abilitato per permettere la comunicazione sicura col frontend.
+    \item \texttt{generate\_ai\_text()}: Funzione principale del modulo, mappata sull'\gls{endpoint} POST \texttt{/api/ai/generate}. Riceve il payload JSON, estrae i parametri, interroga la mappatura delle operazioni, istanzia il modello tramite get\_model(), costruisce i \gls{prompt} e restituisce la risposta elaborata. In caso di errore, cattura l'eccezione e restituisce una risposta standardizzata con il messaggio di eccezione.
+    \item \texttt{root()}: Funzione mappata sull'\gls{endpoint} GET \texttt{/}, utilizzata come \textit{health check} per verificare che il server sia attivo. Restituisce lo stato del servizio e la lista delle operazioni supportate.
+\end{itemize}
+
+% DIAGRAMMA (?)
+
+\newpage
+% ===================
+% BUSINESS LOGIC
+% ===================
 \subsection{Business logic (ai\_strategies.py, operation\_registry.py)}
-È il nucleo funzionale del sistema, completamente isolato dal framework web e dal protocollo HTTP. Utilizza il pattern comportamentale Strategy per gestire la variabilità delle operazioni in modo estensibile.
+È il nucleo funzionale del sistema, completamente isolato dal framework web e dal protocollo HTTP. Si occupa di orchestrare il flusso dei dati e definire le regole per la costruzione dei contesti da inviare all'intelligenza artificiale.
 
-I componenti principali sono:
+\subsubsection{Modulo: \texttt{ai\_strategies.py} (Gestione dei \gls{prompt})}
+Questo modulo contiene la logica di business per la costruzione dinamica dei \gls{prompt}. Definisce il grado di creatività (\gls{temperatura}) e le istruzioni esatte per ogni tipo di elaborazione richiesta (editoriale, traduzione, Sei Cappelli di De Bono). 
+Per gestire l'enorme variabilità di queste operazioni in modo estensibile, le classi contenute in questo file (\texttt{SimplePromptStrategy}, \texttt{TranslationStrategy}, ecc.) sono state progettate applicando il \textbf{Pattern Strategy}.
+
+\textit{Nota}: I dettagli delle singole classi sono approfonditi nella sezione relativa ai Design Pattern.
+
+
+\subsubsection{Modulo: \texttt{operation\_registry.py} (Mappatura Operazioni)}
+Questo modulo funge da punto di giunzione dell'intera architettura, orchestrando il legame tra le strategie di contenuto (\gls{prompt}) e le strategie di esecuzione (modelli).
+
+\paragraph{Problema}
+L’integrazione tra le diverse strategie di prompting e i diversi LLM poneva un problema di accoppiamento rigido e di complessità gestionale. Senza un punto di coordinamento centrale, il Controller (\texttt{app.py}) avrebbe dovuto:
 \begin{itemize}
-\item \textbf{ai\_strategies.py} - gestione dei \gls{prompt}: definisce come costruire i \gls{prompt} per ogni operazione. Ogni strategia incapsula le istruzioni e la \gls{temperatura} adatta al tipo di elaborazione richiesta, che sia un'operazione editoriale, una traduzione o un'analisi con i Sei Cappelli di De Bono.
-\item \textbf{operation\_registry.py} - mappatura delle operazioni: contiene una mappatura statica che associa ogni identificatore di operazione alla strategia di \gls{prompt} e al modello LLM corretto tramite oggetti OperationConfig. Funge da punto di configurazione centrale del sistema.
+    \item Conoscere l'esistenza di tutte le classi concrete e importarle direttamente.
+    \item Gestire manualmente la logica di accoppiamento tra \gls{prompt} e modelli.
+    \item Contenere lunghi blocchi condizionali per istanziare la strategia corretta in base alla stringa ricevuta dal frontend.
+\end{itemize}
+Questa struttura avrebbe violato il principio di Inversione delle Dipendenze, rendendo l'aggiunta di una nuova operazione un processo rischioso e richiedendo la modifica del codice di routing principale ogni volta che viene introdotta una nuova funzionalità. Per ovviare a questo, si è optato per una mappatura centralizzata.
+
+\paragraph{OperationConfig} 
+La struttura \texttt{OperationConfig} è definita tramite il decoratore \texttt{@dataclass} ed è progettata per garantire un accoppiamento debole tra i componenti. Agisce come un contenitore che incapsula le dipendenze necessarie a ogni singola operazione.\\
+\textbf{Attributi:}
+\begin{itemize}
+    \item \texttt{model\_class} (\texttt{Type[AIModelStrategy]}): è il riferimento al tipo della classe del modello da istanziare, la cui creazione effettiva è delegata al sistema di caching (\texttt{get\_model}) visto in precedenza.
+    \item \texttt{\gls{prompt}\_strategy} (\texttt{BaseAIStrategy}): è un'istanza preconfigurata della strategia di \gls{prompt} specifica per quell'operazione.
 \end{itemize}
 
+\paragraph{OPERATION\_REGISTRY}
+Il nucleo del sistema è implementato come un dizionario globale che associa identificatori testuali univoci (es. \texttt{"summary"}, \texttt{"green\_hat"}) a oggetti \texttt{OperationConfig}. Questa architettura garantisce tre proprietà fondamentali:
+\begin{itemize}
+    \item \textbf{Adesione al principio Open-Closed}: Per aggiungere una nuova funzionalità è sufficiente registrare una nuova riga nel dizionario di configurazione. Il codice del controller rimane del tutto inalterato, chiuso alle modifiche ma aperto alle estensioni.
+    \item \textbf{Routing dinamico dei modelli}: Il registro permette di assegnare il modello LLM più adatto a una specifica operazione. Ad esempio, nel sistema le operazioni editoriali e di traduzione sono instradate nativamente su \gls{Llama 3.2}, mentre le logiche di pensiero laterale dei Sei Cappelli sono delegate a \gls{Gemma 3:4B}.
+    \item \textbf{Robustezza e fallback}: In caso di operazione non riconosciuta o assente nel payload della richiesta, il sistema fornisce una configurazione di default in modo trasparente tramite la costante \texttt{DEFAULT\_OPERATION = "summary"}, sfruttando il metodo \texttt{.get()} del dizionario ed evitando crash dell'applicazione.
+\end{itemize}
+
+
+% DIAGRAMMA (?)
+
+\newpage
+% =====================
+% INFRASTRUCTURE LAYER
+% =====================
 \subsection{Infrastructure layer}
-Gestisce tutto ciò che riguarda il mondo esterno al dominio applicativo, isolando il resto del sistema dalle complessità di rete e di post-elaborazione.
+Gestisce tutto ciò che riguarda il mondo esterno al dominio applicativo, isolando il resto del sistema dalle complessità della rete e dalla sintassi specifica delle singole API.
 
-I componenti principali sono:
+\subsubsection{Modulo: \texttt{model\_strategies.py} (Integrazione LLM)}
+Permette l'astrazione della comunicazione con i provider esterni. Le classi contenute in questo file si occupano di iniettare le chiavi \gls{API} lette dall'ambiente e di impacchettare la richiesta nel formato corretto. Anche in questo caso le classi (\texttt{ZucchettiLlamaStrategy}, \texttt{Gemma3Strategy}) implementano il \textbf{Pattern Strategy}.
 \begin{itemize}
-\item \textbf{model\_strategies.py} — integrazione modelli LLM: astrae la comunicazione con i provider esterni tramite l'interfaccia AIModelStrategy, esponendo i modelli \gls{Llama 3.2} e \gls{Gemma 3} in modo polimorfico. Gestisce l'iniezione delle variabili d'ambiente necessarie.
-\item \textbf{text\_cleaning.py} — servizi di supporto: pulisce le risposte dei modelli rimuovendo metatesto e preamboli indesiderati tramite espressioni regolari.
+    \item \textbf{Caching (\texttt{get\_model})}: All'interno di questo modulo è implementata una funzione di ottimizzazione che gestisce un dizionario globale privato (\texttt{\_model\_instances}). Se l'istanza di connessione a un modello non esiste, la crea; alle chiamate successive restituisce il riferimento in memoria, evitando di aprire connessioni ridondanti.
 \end{itemize}
 
-\subsection{Descrizione delle classi}
+\subsubsection{Modulo: \texttt{text\_cleaning.py} (Servizi di supporto)}
+Sottomodulo funzionale contenente algoritmi di post-processing basati su espressioni regolari (regex). Il suo unico scopo è "pulire" le risposte grezze dei modelli da metatesto, tag markdown e preamboli discorsivi indesiderati prima che questi vengano passati ai livelli superiori.
 
-\subsubsection{ai\_strategies.py}
-Questo file contiene la logica di costruzione dei \gls{prompt} tramite il pattern Strategy.
+% GRAFICO (?)
 
-\paragraph{BaseAIStrategy} 
-BaseAIStrategy è la classe astratta base del modulo. Dichiara la \gls{temperatura} di default, fornisce il metodo \_validate() per la \gls{validazione} dell'input e impone alle sottoclassi l'implementazione del metodo build(), che restituisce la coppia (system\_prompt, user\_prompt).
+
+\newpage
+
+% STRATEGY
+\section{Backend: design pattern}
+La progettazione del backend di \textit{Second Brain} si basa sull'applicazione di design pattern comportamentali e creazionali. L'obiettivo primario di questa scelta architetturale è garantire l'estensibilità del sistema: l'aggiunta di nuove operazioni AI o l'integrazione di nuovi modelli LLM deve poter avvenire senza alterare il codice di routing esistente, nel pieno rispetto dei principi SOLID (in particolare l'\textit{Open-Closed Principle} e il \textit{Single Responsibility Principle}).
+
+\subsection{Strategy pattern}
+Lo \textbf{Strategy} è un design pattern comportamentale il cui scopo principale è definire una famiglia di algoritmi, incapsularli in classi separate e renderli interscambiabili tra loro. Questo approccio permette agli algoritmi di variare in modo indipendente rispetto alle classi che li utilizzano, rendendo il codice modulare ed estensibile.
+
+In pratica, questo pattern si rivela fondamentale quando esistono diverse varianti di una stessa operazione logica e si vuole permettere al sistema di cambiare comportamento a \textit{runtime}, mantenendo inalterata la struttura generale dell'interfaccia.
+
+\paragraph{Struttura e vantaggi}
+Strutturalmente, il pattern si compone di tre elementi chiave:
 \begin{itemize}
-
-\item \textbf{Attributi}:
-
-\begin{itemize}
-\item temperature: attributo che definisce il grado di creatività della risposta del modello AI. Il valore di default è 0.5, sovrascrivibile nelle sottoclassi in base all'operazione.
+    \item \textbf{Strategy (interfaccia)}: Un contratto generico comune supportato da tutti gli algoritmi della famiglia.
+    \item \textbf{ConcreteStrategy}: Le classi concrete che implementano l'interfaccia \textit{Strategy}, definendo i dettagli di uno specifico algoritmo.
+    \item \textbf{Context}: L'elemento che necessita dell'algoritmo. Esso mantiene un riferimento all'interfaccia, ignorando i dettagli implementativi della \textit{ConcreteStrategy} con cui è configurato.
 \end{itemize}
 
-\item \textbf{Metodi}: 
+L'adozione di questo pattern porta tre importanti vantaggi:
+\begin{enumerate}
+    \item \textbf{Eliminazione degli statement condizionali}: Previene la proliferazione di classi client complesse e di lunghi blocchi \texttt{if/else} o \texttt{switch} per la selezione del comportamento.
+    \item \textbf{Alternativa all'ereditarietà}: Fornisce un approccio basato sulla composizione, più flessibile rispetto all'estensione diretta delle classi.
+    \item \textbf{Adesione ai principi SOLID (Open-Closed)}: Permette di aggiungere nuovi algoritmi semplicemente creando una nuova \textit{ConcreteStrategy}, senza modificare il \textit{Context} preesistente.
+\end{enumerate}
 
+\subsubsection{Problema}
+L’architettura iniziale del backend presentava un'eccessiva complessità logica dovuta alla gestione di molteplici modelli LLM e diverse logiche di prompting. La presenza di numerosi blocchi condizionali (if/else o switch) all'interno dell'entry point (\texttt{app.py}) rendeva il codice rigido, difficile da scalare e violava il principio di singola responsabilità (Single Responsibility Principle).
+
+\subsubsection{Applicazione 1: \gls{prompt} strategies (ai\_strategies.py)}
+Questa prima applicazione del pattern gestisce la trasformazione del testo grezzo fornito dall'utente in un input strutturato e ottimizzato per l'IA.
+
+\paragraph{BaseAIStrategy}
+Definisce il contratto astratto comune per tutte le strategie di generazione dei \gls{prompt}.
+\\ \textbf{Proprietà e metodi:}
 \begin{itemize}
-\item \_validate(): metodo concreto ereditabile che \gls{verifica} che il testo in ingresso non sia None, sollevando un TypeError in caso contrario.
-\item build(): metodo astratto che ogni sottoclasse deve implementare. Riceve il testo da elaborare e restituisce la coppia (system\_prompt, user\_prompt) da passare al modello LLM.
+    \item \texttt{temperature}: Definisce il livello di creatività dell'output. Dichiara un valore di default pari a 0.5, sovrascrivibile nelle classi figlie.
+    \item \texttt{\_validate()}: Metodo concreto ereditabile che \gls{verifica} la solidità dell'input (es. assicura che il testo non sia \texttt{None}, sollevando un \texttt{TypeError} in caso contrario).
+    \item \texttt{build(text: str)}: Metodo astratto che impone a ogni sottoclasse di restituire una tupla contenente due stringhe: il \gls{System prompt} (il ruolo dell'IA) e lo \gls{User prompt} (il task specifico).
 \end{itemize}
 
-
-\end{itemize}
-
-\paragraph{SimplePromptStrategy} 
-SimplePromptStrategy è la strategia generica per operazioni editoriali standard. La \gls{temperatura} è 0.5.
+\paragraph{SimplePromptStrategy}
+Utilizzata per le operazioni editoriali standard (riassunto, correzione grammaticale, riscrittura, \gls{distant writing}). Mantiene la \gls{temperatura} di default a 0.5 e costruisce \gls{prompt} diretti impostando istruzioni ferree per evitare preamboli discorsivi.
+\\ \textbf{Attributi e Metodi:}
 \begin{itemize}
-
-\item \textbf{Attributi}:
-
-\begin{itemize}
-\item role: stringa che definisce il ruolo assegnato al modello nel \gls{system \gls{prompt}}.
-\item task: stringa che definisce l'istruzione specifica inserita nello \gls{user \gls{prompt}}.
-\end{itemize}
-
-\item \textbf{Metodi}: 
-
-\begin{itemize}
-\item build(): combina role e task con il testo in ingresso, costruendo un \gls{system \gls{prompt}} e \gls{user \gls{prompt}} con l'istruzione specifica.
-\end{itemize}
-
-
+    \item \texttt{role} (str): Definisce l'identità dell'assistente (es. "Sei un correttore di bozze").
+    \item \texttt{task} (str): Definisce l'istruzione specifica da eseguire.
+    \item \texttt{build(text)}: Combina \texttt{role} e \texttt{task} con il testo in ingresso per formare la tupla richiesta.
 \end{itemize}
 
 \paragraph{TranslationStrategy} 
-TranslationStrategy è la strategia specializzata per le traduzioni. La \gls{temperatura} è 0.3, ridotta per favorire fedeltà al testo originale.
+Sottoclasse concreta specializzata nella gestione delle attività di traduzione multilingua. Questa classe ottimizza il \gls{prompt} per garantire che l'LLM operi esclusivamente come traduttore professionale, mantenendo la fedeltà linguistica. La \gls{temperatura} viene sovrascritta a 0.3 per favorire la massima fedeltà al testo originale.\\
+\textbf{Attributi:}
 \begin{itemize}
-
-\item \textbf{Attributi}:
-
+    \item language(str): Stringa che definisce la lingua di destinazione (es. "inglese", "cinese mandarino"). Questo attributo viene utilizzato per parametrizzare dinamicamente la richiesta al modello.
+\end{itemize}
+\textbf{Metodi:}
 \begin{itemize}
-\item language: stringa che definisce la lingua della traduzione.
+    \item build(text): Implementa la logica di costruzione del \gls{prompt} impostando un \gls{System \gls{Prompt}} rigido che definisce il ruolo (traduttore professionista) e i vincoli di output (nessuna frase introduttiva). Lo \gls{User \gls{Prompt}} include l'istruzione di traduzione specifica verso la lingua memorizzata nell'attributo language.
 \end{itemize}
 
-\item \textbf{Metodi}: 
-
+\paragraph{DeBonoHatStrategy}
+Sottoclasse concreta progettata per implementare il metodo dei "Sei Cappelli per Pensare" di Edward de Bono. Questa strategia guida l'LLM verso un'analisi laterale e strutturata, forzando il modello a osservare il testo da una singola prospettiva cognitiva alla volta (emotiva, logica, creativa, ecc.).\\
+\textbf{Attributi:}
 \begin{itemize}
-\item build(): costruisce un \gls{system \gls{prompt}} ottimizzato per la traduzione professionale e un \gls{user \gls{prompt}} che specifica la lingua e il testo da tradurre.
+    \item hat\_name(str): Memorizza il nome o il colore del cappello. Serve a definire l'identità dell'IA.
+    \item focus(str): Memorizza l'area di analisi specifica. Serve a guidare il focus del modello durante la generazione.
 \end{itemize}
 
-
-\end{itemize}
-
-\paragraph{DeBonoHatStrategy} 
-DeBonoHatStrategy è la strategia specializzata per i Sei Cappelli di De Bono. Riceve tutti i parametri di configurazione nel costruttore, permettendo di definire un comportamento completamente personalizzato per ciascun cappello.
+\textbf{Metodi:}
 \begin{itemize}
-
-\item \textbf{Attributi}:
-
-\begin{itemize}
-\item \_system\_prompt: \gls{system \gls{prompt}} preconfigurato che definisce la prospettiva del cappello.
-\item \_user\_task: istruzione strutturata che guida il modello nella produzione di un output organizzato per punti.
-\item temperature: sovrascrive il valore di default della classe base. Usiamo valori bassi (0.1) per i cappelli analitici (bianco, nero, blu) e valori alti (0.8) per i cappelli creativi ed emotivi (rosso, giallo, verde).
+    \item build(self, text): Utilizza le f-string per iniettare i valori di hat\_name e focus all'interno dei \gls{prompt}.
 \end{itemize}
 
-\item \textbf{Metodi}: 
+% DIAGRAMMA DELLE CLASSI
 
-\begin{itemize}
-\item build(): combina \_user\_task con il testo in ingresso nel \gls{user \gls{prompt}}, restituendo la coppia con il \gls{system \gls{prompt}} preconfigurato.
-\end{itemize}
-
-\end{itemize}
-
-\paragraph{STRATEGIES}
-STRATEGIES è il dizionario statico che raccoglie tutte le istanze delle strategie di \gls{prompt} disponibili nel sistema, indicizzate per identificatore di operazione (es. "summary", "black\_hat", "translate\_en"). Serve da sorgente da cui OPERATION\_REGISTRY attinge per comporre i propri OperationConfig.
-
-\subsubsection{operation\_registry.py}
-Questo file contiene la struttura dati OperationConfig, un dataclass che accoppia una strategia di \gls{prompt} con una classe di modelli AI. Il dizionario OPERATION\_REGISTRY costituisce la mappatura statica centrale del sistema: associa ogni identificatore di operazione (es. "summary", "black\_hat", "translate\_en") al corrispondente OperationConfig. Funge da punto di configurazione centrale, rendendo l'aggiunta di nuove operazioni una modifica localizzata.
-
-\paragraph{OperationConfig}
-Dataclass che accoppia una strategia di \gls{prompt} con una classe di modelli AI.
-\begin{itemize}
-\item model\_class: riferimento alla classe del modello LLM da istanziare per l'operazione.
-\item \gls{prompt}\_strategy: istanza della strategia di \gls{prompt} da utilizzare per costruire i \gls{prompt} dell'operazione.
-\end{itemize}
-
-\subsubsection{model\_strategies.py}
-Questo file permette l'astrazione della comunicazione con i provider esterni tramite il pattern Strategy. La classe base AIModelStrategy definisce l'interfaccia comune tramite il metodo generate(), che accetta i \gls{prompt} e la \gls{temperatura} e restituisce la risposta del modello.
+\subsubsection{Applicazione 2: model strategies (model\_strategies.py)}
+Questa seconda applicazione del pattern isola completamente i dettagli tecnici (\gls{Endpoint}, \gls{API} Keys, configurazione del client) necessari per comunicare con i diversi provider di Intelligenza Artificiale.
 
 \paragraph{AIModelStrategy} 
-AIModelStrategy è una classe astratta che, non avendo attributi né implementazioni concrete, funge da interfaccia comune per le strategie dei modelli AI.
+Interfaccia comune per tutti i modelli linguistici IA.
+\\ \textbf{Metodi:}
 \begin{itemize}
-
-\item \textbf{Metodi}: 
-
-\begin{itemize}
-\item generate(): metodo astratto che ogni sottoclasse deve implementare. Riceve system\_prompt, user\_prompt e temperature e restituisce la risposta del modello come stringa.
+    \item \texttt{generate(self, system\_prompt, user\_prompt, temperature)}: Definisce il contratto per l'invocazione del modello, imponendo alle classi concrete di inviare i \gls{prompt} al fornitore e restituire la risposta come stringa pulita.
 \end{itemize}
 
-\end{itemize}
-
-\paragraph{ZucchettiLlamaStrategy} 
-ZucchettiLlamaStrategy è la strategia concreta per il modello \gls{Llama 3.2} 3B, utilizzato per le operazioni editoriali standard e le traduzioni.
+\paragraph{Implementazioni concrete (ZucchettiLlamaStrategy e Gemma3Strategy)}
+Il sistema prevede due implementazioni concrete che espongono in modo polimorfico i modelli \gls{Llama 3.2} (per operazioni standard e traduzioni) e \gls{Gemma 3} (per il pensiero laterale dei Sei Cappelli).
+\\ \textbf{Attributi e Metodi:}
 \begin{itemize}
-
-\item \textbf{Attributi}:
-
-\begin{itemize}
-\item client: istanza del client OpenAI-compatibile, inizializzata con \gls{API} key e base URL letti dalle variabili d'ambiente.
-\item model: stringa identificativa del modello ("llama3.2:3b" in questo caso).
+    \item \texttt{client}: Istanza del client OpenAI-compatibile, inizializzata con \gls{API} key e base URL letti dalle variabili d'ambiente.
+    \item \texttt{model} (str): Stringa identificativa del modello instradato (es. \texttt{"llama3.2:3b"} o \texttt{"gemma3:4b"}).
+    \item \texttt{generate(...)}: Implementa la logica di chiamata \gls{API}, inviando i messaggi nel formato richiesto dal protocollo \textit{ChatCompletion}. Estrae e restituisce esclusivamente il contenuto testuale, isolandolo dai metadati di rete (es. token consumati).
 \end{itemize}
 
-\item \textbf{Metodi}: 
+\subsubsection{Caching (get\_model)}
+La funzione \texttt{get\_model(model\_class)} gestisce un dizionario globale privato (\texttt{\_model\_instances}) per la memorizzazione delle istanze, che funge quindi da cache.
+Quando il controller richiede una strategia di modello, la funzione \gls{verifica} se ne esiste già un'istanza nel dizionario: se non esiste, la crea e la salva; alle chiamate successive per la stessa classe, restituisce il riferimento già memorizzato. 
+Questa soluzione architetturale ottimizza l'uso delle risorse prevenendo l'apertura di connessioni multiple non necessarie ai client \gls{API}.
 
-\begin{itemize}
-\item generate(): invoca il modello tramite il client, passando \gls{system \gls{prompt}}, \gls{user \gls{prompt}} e \gls{temperatura}, e restituisce il contenuto testuale della risposta.
-\end{itemize}
-
-\end{itemize}
-
-\paragraph{Gemma3Strategy} 
-Gemma3Strategy è la strategia concreta per il modello \gls{Gemma 3} 4B, utilizzato per le analisi con i Sei Cappelli di De Bono. Strutturalmente identica a ZucchettiLlamaStrategy, si differenzia per l'identificativo del modello ("gemma3:4b").
-\begin{itemize}
-
-\item \textbf{Attributi}:
-
-\begin{itemize}
-\item client: istanza del client OpenAI-compatibile, inizializzata con \gls{API} key e base URL letti dalle variabili d'ambiente.
-\item model: stringa identificativa del modello ("gemma3:4b" in questo caso).
-\end{itemize}
-
-\item \textbf{Metodi}: 
-
-\begin{itemize}
-\item generate(): invoca il modello tramite il client, passando \gls{system \gls{prompt}}, \gls{user \gls{prompt}} e \gls{temperatura}, e restituisce il contenuto testuale della risposta.
-\end{itemize}
-
-\end{itemize}
-
-\subsubsection{app.py}
-Il modulo non adotta una struttura a classi, ma è organizzato come un insieme di funzioni e configurazioni \gls{Flask}.
-\begin{itemize}
-\item app: istanza dell'applicazione \gls{Flask}, configurata con CORS abilitato per permettere la comunicazione col frontend.
-\item generate\_ai\_text(): funzione principale del modulo, mappata sull'\gls{endpoint} POST /\gls{api}/ai/generate. Riceve il payload JSON, recupera la configurazione dalla mappatura OPERATION\_REGISTRY, istanzia il modello tramite get\_model(), costruisce i \gls{prompt} e restituisce la risposta elaborata. In caso di errore, restituisce una risposta standardizzata con il messaggio di eccezione.
-\item root(): funzione mappata sull'\gls{endpoint} GET /, utilizzata come health check per verificare che il server sia attivo. Restituisce il nome del servizio, lo stato e la lista delle operazioni disponibili.
-\end{itemize}
-
-\subsection{Rappresentazione UML per l'architettura del backend}
+% DIAGRAMMA DELLE CLASSI
 
 \newpage
 
 % FRONTEND
-\section{Architettura del frontend}
+\section{Frontend: architettura}
 Il frontend del sistema è stato sviluppato utilizzando \textbf{\gls{React} 19}, adottando il pattern architetturale \textbf{MVVM} (Model-View-ViewModel). Questa scelta permette di separare nettamente la logica di business dalla logica di presentazione, facilitando il testing isolato dei componenti e la manutenibilità del codice.
 
 L'organizzazione del progetto segue i principi della \textit{\gls{Feature-based Architecture}} (ispirata allo standard di settore \textbf{Bulletproof \gls{React}}). Invece di raggruppare i file per tipo (tutti i componenti insieme, tutti gli hook insieme), ogni funzionalità del sistema (es. \texttt{editor}, \texttt{history}) è isolata in un modulo autocontenuto che include i propri componenti, hook, store e definizioni di tipo.
 
 \subsection{Model-View-ViewModel (MVVM)}
-Il pattern architetturale \textbf{Model-View-ViewModel (MVVM)} è un'evoluzione dei pattern di presentazione (come MVC e MVP) progettata per separare rigorosamente lo sviluppo dell'interfaccia utente (UI) dalla logica di business e dallo stato dell'applicazione. È un pattern di riferimento per lo sviluppo client-side moderno e si adatta perfettamente al \gls{paradigma reattivo} di \gls{React}.
+Il pattern architetturale \textbf{Model-View-ViewModel (MVVM)} è un'evoluzione dei pattern di presentazione (come MVC e MVP) progettata per separare rigorosamente lo sviluppo dell'interfaccia utente (UI) dalla logica di business e dallo stato dell'applicazione. È un pattern di riferimento per lo sviluppo client-side moderno e si adatta perfettamente al paradigma reattivo di React.
 
 L'architettura si divide in tre strati le cui responsabilità sono nettamente separate:
 
@@ -962,18 +975,18 @@ Sono presenti due store principali:
 \subsection{Orchestrazione e Dependency Injection}
 A legare i tre strati architetturali (Model, View, ViewModel) intervengono le \textbf{Page} (\texttt{EditorPage} e \texttt{HistoryPage}). Questi componenti non appartengono né alla View pura (poiché conoscono lo stato globale e gli hook) né al ViewModel (poiché restituiscono markup \gls{JSX}). Essi fungono da \textbf{Orchestratori}.
 
-Il ruolo dell'\gls{orchestratore} è quello di istanziare i ViewModel, leggere lo stato dai Model e far fluire i dati e le callback verso il basso (tramite \textit{\gls{prop drilling}} limitato a un solo livello) per distribuirli alle View.
+Il ruolo dell'orchestratore è quello di istanziare i ViewModel, leggere lo stato dai Model e far fluire i dati e le callback verso il basso (tramite \textit{prop drilling} limitato a un solo livello) per distribuirli alle View.
 
-\subsubsection{EditorPage: \gls{orchestratore} dell'editor}
+\subsubsection{EditorPage: orchestratore dell'editor}
 \texttt{EditorPage} rappresenta l'entry point principale dell'applicazione e coordina la logica complessa dell'editor. Si occupa di:
 \begin{itemize}
     \item \textbf{Gestione dello stato locale}: Controlla stati puramente visivi e non condivisi, come l'apertura/chiusura del pannello AI (\texttt{isAiPanelOpen}).
     \item \textbf{Collegamento al Model}: Legge e aggiorna i metadati del documento (es. \texttt{fileName}, \texttt{isDirty}) richiamando \texttt{useEditorMetaStore}.
     \item \textbf{Istanziazione del ViewModel}: Monta gli hook dedicati (\texttt{useEditor}, \texttt{useSaveDocument}, \texttt{useFileUpload}, \texttt{usePrintDocument}).
-    \item \textbf{Composizione degli handler}: Crea funzioni ponte tra la View e il ViewModel. Ad esempio, \texttt{handleExportWithContent} recupera prima il testo tramite \texttt{editor.getEditorText()} e lo passa al ViewModel di salvataggio; \texttt{handleCloseDocument} \gls{verifica} la presenza di modifiche non salvate tramite \texttt{window.confirm} prima di resettare l'editor.
+    \item \textbf{Composizione degli handler}: Crea funzioni ponte tra la View e il ViewModel. Ad esempio, \texttt{handleExportWithContent} recupera prima il testo tramite \texttt{editor.getEditorText()} e lo passa al ViewModel di salvataggio; \texttt{handleCloseDocument} verifica la presenza di modifiche non salvate tramite \texttt{window.confirm} prima di resettare l'editor.
 \end{itemize}
 
-\subsubsection{HistoryPage: \gls{orchestratore} dello storico}
+\subsubsection{HistoryPage: orchestratore dello storico}
 \texttt{HistoryPage} coordina la vista della cronologia delle generazioni AI. Rispetto all'editor, ha un ruolo più limitato:
 \begin{itemize}
     \item \textbf{Stato dei filtri}: Mantiene localmente i criteri di ricerca dell'utente (\texttt{search} per il testo, \texttt{operation} per il tipo di task AI).
@@ -988,15 +1001,15 @@ La \textbf{Dependency Injection} è un pattern architetturale fondamentale dell'
 \paragraph{Applicazione nel frontend}
 Nel sistema \textit{Second Brain}, questo principio è stato adottato in modo trasversale nell'orchestrazione dei ViewModel. Per evitare dipendenze circolari o un accoppiamento rigido tra domini funzionali diversi, i \textit{custom hook} non importano mai la logica di altri hooks.
 
-Il caso più evidente si trova nell'istanza di \texttt{useEditor}: questo hook non importa lo store \texttt{useHistoryStore} per salvare le generazioni e ignora del tutto l'esistenza dello storico. Al contrario, è l'\gls{orchestratore} (\texttt{EditorPage}) che si fa carico di prelevare l'azione \texttt{addEntry} dallo store dello storico per poi iniettarla all'interno di \texttt{useEditor} tramite la callback \texttt{onEntryAdded}.
+Il caso più evidente si trova nell'istanza di \texttt{useEditor}: questo hook non importa lo store \texttt{useHistoryStore} per salvare le generazioni e ignora del tutto l'esistenza dello storico. Al contrario, è l'orchestratore (\texttt{EditorPage}) che si fa carico di prelevare l'azione \texttt{addEntry} dallo store dello storico per poi iniettarla all'interno di \texttt{useEditor} tramite la callback \texttt{onEntryAdded}.
 
 Questo approccio garantisce che ogni hook sia modulare e testabile in totale isolamento fornendo dei semplici \textit{mock} al momento dei test.
 
 
 \newpage
 
-\section{Design pattern}
-La progettazione del sistema \textit{Second Brain} ha fatto largo uso di design pattern orientati agli oggetti e funzionali, al fine di garantire un basso accoppiamento e un'alta coesione del codice.
+\section{Frontend: design pattern}
+La progettazione del frontend di \textit{Second Brain} ha fatto uso di design pattern strutturali orientati alla semplificazione dell'interfaccia tra i moduli. L'obiettivo primario, applicando pattern come la Facade, è garantire che la logica di presentazione (View e ViewModel) rimanga agnostica rispetto ai dettagli implementativi della comunicazione di rete, facilitando la testabilità del codice client-side.
 
 \subsection{Facade pattern}
 Il pattern \textbf{Facade} è un design pattern strutturale il cui scopo principale è fornire un'interfaccia unica e semplificata per gestire un sottosistema complesso composto da molteplici moduli.
@@ -1052,132 +1065,6 @@ Questa separazione porta due benefici misurabili in termini di qualità del soft
     \caption{UML del pattern Facade}
     \label{fig:uml_facade}
 \end{figure}
-
-\newpage
-
-% STRATEGY
-\subsection{Strategy pattern}
-Lo \textbf{Strategy} è un design pattern comportamentale il cui scopo principale è definire una famiglia di algoritmi, incapsularli in classi separate e renderli interscambiabili tra loro. Questo approccio permette agli algoritmi di variare in modo indipendente rispetto alle classi che li utilizzano, rendendo il codice modulare ed estensibile.
-
-In pratica, questo pattern si rivela fondamentale quando esistono diverse varianti di una stessa operazione logica e si vuole permettere al sistema di cambiare comportamento a \textit{runtime}, mantenendo inalterata la struttura generale dell'interfaccia.
-
-\paragraph{Struttura e vantaggi}
-Strutturalmente, il pattern si compone di tre elementi chiave:
-\begin{itemize}
-    \item \textbf{Strategy (interfaccia)}: Un contratto generico comune supportato da tutti gli algoritmi della famiglia.
-    \item \textbf{ConcreteStrategy}: Le classi concrete che implementano l'interfaccia \textit{Strategy}, definendo i dettagli di uno specifico algoritmo.
-    \item \textbf{Context}: L'elemento che necessita dell'algoritmo. Esso mantiene un riferimento all'interfaccia, ignorando i dettagli implementativi della \textit{ConcreteStrategy} con cui è configurato.
-\end{itemize}
-
-L'adozione di questo pattern porta tre importanti vantaggi:
-\begin{enumerate}
-    \item \textbf{Eliminazione degli statement condizionali}: Previene la proliferazione di classi client complesse e di lunghi blocchi \texttt{if/else} o \texttt{switch} per la selezione del comportamento.
-    \item \textbf{Alternativa all'ereditarietà}: Fornisce un approccio basato sulla composizione, più flessibile rispetto all'estensione diretta delle classi.
-    \item \textbf{Adesione ai principi SOLID (Open-Closed)}: Permette di aggiungere nuovi algoritmi semplicemente creando una nuova \textit{ConcreteStrategy}, senza modificare il \textit{Context} preesistente.
-\end{enumerate}
-
-\subsubsection{Problema}
-L’architettura iniziale del backend presentava un'eccessiva complessità logica dovuta alla gestione di molteplici modelli LLM e diverse logiche di prompting. La presenza di numerosi blocchi condizionali (if/else o switch) all'interno dell'entry point (\texttt{app.py}) rendeva il codice rigido, difficile da scalare e violava il principio di singola responsabilità (Single Responsibility Principle).
-
-\subsubsection{Applicazione: \gls{prompt} strategies (ai\_strategies.py)}
-Questa prima applicazione del pattern gestisce la trasformazione del testo grezzo fornito dall'utente in un input strutturato e ottimizzato per l'IA.
-
-\paragraph{BaseAIStrategy}
-Definisce il contratto comune per tutte le strategie di generazione dei \gls{prompt}.
-\textbf{Proprietà e metodi:}
-\begin{itemize}
-    \item \texttt{temperature}: Definisce il livello di creatività dell'output (es. valori più alti per operazioni creative, più bassi per task analitici).
-    \item \texttt{build(text: str)}: Impone a ogni sottoclasse di restituire una tupla contenente due stringhe: il \gls{System prompt} (il ruolo dell'IA) e lo \gls{User prompt} (il task specifico).
-\end{itemize}
-
-\paragraph{SimplePromptStrategy}
-Utilizzata per le operazioni editoriali standard (riassunto, correzione grammaticale, riscrittura, \gls{distant writing}). Costruisce \gls{prompt} diretti impostando un ruolo e istruzioni ferree per evitare preamboli discorsivi nella risposta dell'IA.
-\\ \textbf{Attributi:}
-\begin{itemize}
-    \item \texttt{role} (str): Definisce l'identità dell'assistente (es. "Sei un correttore di bozze").
-    \item \texttt{task} (str): Definisce l'istruzione specifica da eseguire.
-\end{itemize}
-
-\paragraph{TranslationStrategy} 
-Sottoclasse concreta specializzata nella gestione delle attività di traduzione multilingua. Questa classe ottimizza il \gls{prompt} per garantire che l'LLM operi esclusivamente come traduttore professionale, mantenendo la fedeltà linguistica.\\
-\textbf{Attributi:}
-\begin{itemize}
-    \item language(str): Stringa che definisce la lingua di destinazione (es. "inglese", "cinese mandarino"). Questo attributo viene utilizzato per parametrizzare dinamicamente la richiesta al modello.
-\end{itemize}
-\textbf{Metodi:}
-\begin{itemize}
-    \item build(text): Implementa la logica di costruzione del \gls{prompt} impostando un \gls{System \gls{Prompt}} rigido che definisce il ruolo (traduttore professionista) e i vincoli di output (nessuna frase introduttiva). Lo \gls{User \gls{Prompt}} include l'istruzione di traduzione specifica verso la lingua memorizzata nell'attributo language.
-\end{itemize}
-
-\paragraph{DeBonoHatStrategy}
-Sottoclasse concreta progettata per implementare il metodo dei "Sei Cappelli per Pensare" di Edward de Bono. Questa strategia guida l'LLM verso un'analisi laterale e strutturata, forzando il modello a osservare il testo da una singola prospettiva cognitiva alla volta (emotiva, logica, creativa, ecc.).\\
-\textbf{Attributi:}
-\begin{itemize}
-    \item hat\_name(str): Memorizza il nome o il colore del cappello. Serve a definire l'identità dell'IA.
-    \item focus(str): Memorizza l'area di analisi specifica. Serve a guidare il focus del modello durante la generazione.
-\end{itemize}
-\textbf{Metodi:}
-\begin{itemize}
-    \item build(self, text): Utilizza le f-string per iniettare i valori di hat\_name e focus all'interno dei \gls{prompt}.
-\end{itemize}
-
-\subsubsection{Applicazione: model strategies
-(model\_strategies.py)}
-Questa seconda applicazione del pattern isola completamente i dettagli tecnici (\gls{Endpoint}, \gls{API} Keys, payload JSON) necessari per comunicare con i diversi provider di Intelligenza Artificiale.
-
-\paragraph{AIModelStrategy} interfaccia comune per tutti i modelli linguistici IA.
-\\ \textbf{Metodi:}
-\begin{itemize}
-    \item generate(self, system\_prompt, user\_prompt): Definisce il contratto per l'invocazione del modello. Ogni classe concreta deve implementare la logica specifica per inviare i \gls{prompt} al fornitore e restituire la risposta come stringa pulita.
-\end{itemize}
-
-\paragraph{Implementazioni concrete (ZucchettiLlamaStrategy e Gemma3Strategy)}
-Il sistema prevede due implementazioni concrete che espongono in modo polimorfico i modelli \gls{Llama 3.2} (per operazioni standard e traduzioni) e \gls{Gemma 3} (per il pensiero laterale dei Sei Cappelli).
-Entrambe le classi implementano la logica di chiamata \gls{API} (tramite modulo OpenAI compatibile), formattano la richiesta ed estraggono esclusivamente il contenuto testuale della risposta, isolandolo dai metadati di rete.\\
-\textbf{Metodi:}
-\begin{itemize}
-    \item generate(system\_prompt, user\_prompt): Implementa la logica di chiamata \gls{API} tramite il modulo OpenAI, gestisce la struttura della richiesta inviando i due messaggi (System e User) nel formato richiesto dal protocollo ChatCompletion ed estrae e restituisce esclusivamente il contenuto testuale della risposta, isolandolo dai metadati della chiamata (come i token consumati o gli ID di richiesta).
-\end{itemize}
-
-\subsubsection{Caching (get\_model)}
-La funzione \texttt{get\_model(model\_class)} gestisce un dizionario globale privato (\texttt{\_model\_instances}) per la memorizzazione delle istanze, che funge quindi da cache.
-Quando il controller richiede una strategia di modello, la funzione \gls{verifica} se ne esiste già un'istanza nel dizionario: se non esiste, la crea e la salva; alle chiamate successive per la stessa classe, restituisce il riferimento già memorizzato. 
-Questa soluzione architetturale ottimizza l'uso delle risorse prevenendo l'apertura di connessioni multiple non necessarie ai client \gls{API}.
-
-
-\newpage
-
-\subsection{Registry pattern}
-% non è più un registry, ma un mappa - DA MODIFICARE
-Il pattern Registry funge da catalogo centralizzato e configuratore delle operazioni disponibili, disaccoppiando totalmente il Controller (\texttt{app.py}) dalla logica di creazione delle dipendenze.
-
-\subsubsection{Problema}
-L’integrazione tra le diverse strategie di prompting e i diversi LLM poneva un problema di accoppiamento rigido e di complessità gestionale. Senza un punto di coordinamento centrale, il Controller avrebbe dovuto:
-\begin{itemize}
-    \item Conoscere l'esistenza di tutte le classi concrete e importarle direttamente.
-    \item Gestire manualmente la logica di accoppiamento tra \gls{prompt} e modelli.
-    \item Contenere lunghi blocchi condizionali per istanziare la strategia corretta in base alla stringa ricevuta dal frontend.
-\end{itemize}
-Questa struttura avrebbe violato il principio di Inversione delle Dipendenze, rendendo l'aggiunta di una nuova operazione un processo rischioso e richiedendo la modifica del codice di routing principale ogni volta che viene introdotta una nuova funzionalità.
-
-\subsubsection{Applicazione: operation\_registry.py}
-Il modulo funge da punto di giunzione dell'intera architettura, orchestrando il legame tra le strategie di contenuto (\gls{prompt}) e le strategie di esecuzione (modelli).
-
-\paragraph{OperationConfig} 
-La struttura \texttt{OperationConfig} è definita tramite il decoratore \texttt{@dataclass} ed è progettata per garantire un accoppiamento debole tra i componenti. Agisce come un contenitore che incapsula le dipendenze necessarie a ogni singola operazione.\\
-\textbf{Attributi:}
-\begin{itemize}
-    \item \texttt{model\_class} (\texttt{Type[AIModelStrategy]}): è il riferimento al tipo della classe del modello da istanziare, la cui creazione effettiva è delegata al sistema di caching (\texttt{get\_model}) visto in precedenza.
-    \item \texttt{\gls{prompt}\_strategy} (\texttt{BaseAIStrategy}): è un'istanza preconfigurata della strategia di \gls{prompt} specifica per quell'operazione.
-\end{itemize}
-
-\paragraph{OPERATION\_REGISTRY}
-Il nucleo del pattern è implementato come un dizionario globale che associa identificatori testuali univoci (es. \texttt{"summary"}, \texttt{"green\_hat"}) a oggetti \texttt{OperationConfig}. Questa architettura garantisce tre proprietà fondamentali:
-\begin{itemize}
-    \item \textbf{Adesione al principio Open-Closed}: Per aggiungere una nuova funzionalità è sufficiente registrare una nuova riga nel dizionario di configurazione. Il codice del controller rimane del tutto inalterato, chiuso alle modifiche ma aperto alle estensioni.
-    \item \textbf{Routing dinamico dei modelli}: Il registro permette di assegnare il modello LLM più adatto a una specifica operazione. Ad esempio, nel sistema le operazioni editoriali e di traduzione sono instradate nativamente su \gls{Llama 3.2}, mentre le logiche di pensiero laterale dei Sei Cappelli sono delegate a \gls{Gemma 3:4B}.
-    \item \textbf{Robustezza e fallback}: In caso di operazione non riconosciuta o assente nel payload della richiesta, il sistema fornisce una configurazione di default in modo trasparente tramite la costante \texttt{DEFAULT\_OPERATION = "summary"}, sfruttando il metodo \texttt{.get()} del dizionario ed evitando crash dell'applicazione.
-\end{itemize}
 
 
 \newpage
