@@ -70,7 +70,7 @@
         \centering
         \begin{tabular}{|l|p{5cm}|}
             \hline
-            \textbf{Versione} & 0.1.1 \\
+            \textbf{Versione} & 0.1.3 \\
             \hline
             \textbf{Stato} & In corso \\
             \hline
@@ -102,7 +102,9 @@
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{\gls{Verifica}} \\
         \hline
-        0.1.2 & 22/04/2026 & Elisa marchioro & Sistemata sezione architettura del backend & \\
+        0.1.3 & 22/04/2026 & Giulia Barzon & Correzione e diagramma sezione Facade, rivisto MVVM & \\
+        \hline
+        0.1.2 & 22/04/2026 & Elisa Marchioro & Sistemata sezione architettura del backend & \\
         \hline
         0.1.1 & 21/04/2026 & Giulia Barzon & Struttura documento e sezione MVVM, bozza del Facade & Chiara Grossele, Elisa Marchioro\\
         \hline
@@ -626,27 +628,25 @@ Il frontend del sistema è stato sviluppato utilizzando \textbf{\gls{React} 19},
 
 L'organizzazione del progetto segue i principi della \textit{\gls{Feature-based Architecture}} (ispirata allo standard di settore \textbf{Bulletproof \gls{React}}). Invece di raggruppare i file per tipo (tutti i componenti insieme, tutti gli hook insieme), ogni funzionalità del sistema (es. \texttt{editor}, \texttt{history}) è isolata in un modulo autocontenuto che include i propri componenti, hook, store e definizioni di tipo.
 
-% =======
-% MODEL
-% =======
-\subsection{Model: stato e persistenza}
-Il Model rappresenta lo strato dei dati e della loro persistenza. Nel sistema non è una struttura passiva, ma è implementato tramite store globali gestiti con \textbf{\gls{Zustand}}, che fungono da unica fonte di verità (\textit{Single Source of Truth}) per lo stato dell'applicazione.
-Sono presenti due store principali:
+\subsection{Model-View-ViewModel (MVVM)}
+Il pattern architetturale \textbf{Model-View-ViewModel (MVVM)} è un'evoluzione dei pattern di presentazione (come MVC e MVP) progettata per separare rigorosamente lo sviluppo dell'interfaccia utente (UI) dalla logica di business e dallo stato dell'applicazione. È un pattern di riferimento per lo sviluppo client-side moderno e si adatta perfettamente al paradigma reattivo di React.
+
+L'architettura si divide in tre strati le cui responsabilità sono nettamente separate:
+
 \begin{itemize}
-    \item \texttt{useEditorMetaStore}: Gestisce i metadati dell'editor attivo, ovvero il nome del file (\texttt{fileName}), lo stato di modifica non salvata (\texttt{isDirty}) e il timestamp dell'ultimo salvataggio (\texttt{lastSaved}). Tramite il middleware \texttt{persist} di \gls{Zustand}, sincronizza automaticamente questo stato nel \texttt{localStorage} del browser, garantendo che i dati sopravvivano al riavvio della pagina.
-    \item \texttt{useHistoryStore}: Gestisce l'elenco delle generazioni AI prodotte. Ogni voce è modellata dall'interfaccia \texttt{HistoryEntry}. Anche questo store utilizza il \texttt{localStorage} per rendere lo storico persistente tra le sessioni.
+    \item \textbf{View (vista)}: Rappresenta l'interfaccia utente visibile (componenti \gls{JSX}/\gls{TSX}). Nel pattern MVVM, la View è prettamente dichiarativa e "passiva": non detiene la logica di business e non manipola direttamente i dati, ma si limita a renderizzare lo stato che le viene fornito e a delegare le azioni dell'utente ai livelli sottostanti.
+    \item \textbf{ViewModel}: Funge da intermediario intelligente tra la View e il Model. È una rappresentazione dello stato e della logica adattata per una specifica vista. Nel nostro sistema è implementato tramite \textit{Custom Hooks}: mantiene lo stato UI temporaneo, espone i dati e i comandi eseguibili, cattura gli eventi generati dalla View (es. click, input) e orchestra le chiamate verso le \gls{API} o verso il Model.
+    \item \textbf{Model (modello)}: Rappresenta il livello dei dati di dominio e della loro persistenza. Funge da \textit{Single Source of Truth} per l'applicazione. Non ha alcuna conoscenza della View; il suo compito è garantire la consistenza dei dati. Quando lo stato del Model cambia, i ViewModel ad esso sottoscritti (nel nostro caso tramite il pattern \textit{Observer} implementato da \gls{Zustand}) si aggiornano reattivamente, innescando di conseguenza un re-render della View associata.
 \end{itemize}
 
-\textit{Nota}: Il contenuto testuale effettivo dell'editor, per ragioni di performance legate alla natura della libreria \gls{EasyMDE}, non transita attraverso lo store globale, ma viene salvato e sincronizzato direttamente in una chiave dedicata del \texttt{localStorage} gestita dal ViewModel dell'editor.
 
-
-\newpage
 % =======
 % VIEW
 % =======
 \subsection{View: componenti di presentazione}
-La View è costituita da componenti \gls{React} dichiarativi e prevalentemente \textit{presentational} (o "dumb"). Il loro unico compito è il rendering dell'interfaccia utente in base alle \textit{props} ricevute dal ViewModel. Non contengono logica di business né effettuano chiamate \gls{API} dirette: delegano ogni interazione dell'utente al ViewModel sottostante tramite callback, garantendo che lo strato di presentazione rimanga snello e facilmente testabile.
-Di seguito sono descritti i componenti principali della View.
+La View del sistema è realizzata tramite componenti \textbf{\gls{React} 19} di tipo funzionale. Per massimizzare la manutenibilità, il gruppo ha adottato un approccio basato su componenti \textit{presentational} (o "dumb"): non detengono logica di dominio, ma si limitano a riflettere lo stato ricevuto dal ViewModel e a propagare le interazioni dell'utente tramite callback. Questo isolamento garantisce che lo strato visivo sia agnostico rispetto alla business logic sottostante.
+
+Di seguito sono descritti i componenti principali che compongono l'interfaccia.
 
 % COMPONENTI
 \subsubsection{Topbar}
@@ -942,13 +942,55 @@ Interfaccia la View con lo store dedicato (\texttt{useHistoryStore}), estraendo 
 
 
 \newpage
-% DEPENDENCY INJECTION
-\subsection{Dependency Injection}
-A legare i tre strati architetturali intervengono le \textbf{Page} (\texttt{EditorPage} e \texttt{HistoryPage}). Questi componenti non appartengono né alla View pura né al ViewModel, ma fungono da \textbf{Orchestratori}.
+% =======
+% MODEL
+% =======
+\subsection{Model: stato e persistenza}
+Il Model rappresenta lo strato dei dati e della loro persistenza. Nel sistema non è una struttura passiva, ma è implementato tramite store globali gestiti con \textbf{\gls{Zustand}}, che fungono da unica fonte di verità (\textit{Single Source of Truth}) per lo stato dell'applicazione.
+Sono presenti due store principali:
+\begin{itemize}
+    \item \texttt{useEditorMetaStore}: Gestisce i metadati dell'editor attivo, ovvero il nome del file (\texttt{fileName}), lo stato di modifica non salvata (\texttt{isDirty}) e il timestamp dell'ultimo salvataggio (\texttt{lastSaved}). Tramite il middleware \texttt{persist} di \gls{Zustand}, sincronizza automaticamente questo stato nel \texttt{localStorage} del browser, garantendo che i dati sopravvivano al riavvio della pagina.
+    \item \texttt{useHistoryStore}: Gestisce l'elenco delle generazioni AI prodotte. Ogni voce è modellata dall'interfaccia \texttt{HistoryEntry}. Anche questo store utilizza il \texttt{localStorage} per rendere lo storico persistente tra le sessioni.
+\end{itemize}
 
-L'\texttt{EditorPage}, ad esempio, istanzia tutti i ViewModel necessari (\texttt{useEditor}, \texttt{useSaveDocument}, ecc.), legge lo stato dal Model e lo inietta nelle View. 
+\textit{Nota}: Il contenuto testuale effettivo dell'editor, per ragioni di performance legate alla natura della libreria \gls{EasyMDE}, non transita attraverso lo store globale, ma viene salvato e sincronizzato direttamente in una chiave dedicata del \texttt{localStorage} gestita dal ViewModel dell'editor.
 
-Un principio trasversale adottato è la \textbf{Dependency Injection}: per evitare un forte accoppiamento, i ViewModel non si importano a vicenda. Ad esempio, \texttt{useEditor} non importa la logica dello storico, ma riceve una callback \texttt{onEntryAdded} passata dall'orchestratore. Questo approccio garantisce che ogni hook sia testabile in totale isolamento fornendo semplicemente dei \textit{mock} in fase di testing.
+
+\newpage
+
+% DEPENDENCY INJECTION e PAGINE
+\subsection{Orchestrazione e Dependency Injection}
+A legare i tre strati architetturali (Model, View, ViewModel) intervengono le \textbf{Page} (\texttt{EditorPage} e \texttt{HistoryPage}). Questi componenti non appartengono né alla View pura (poiché conoscono lo stato globale e gli hook) né al ViewModel (poiché restituiscono markup \gls{JSX}). Essi fungono da \textbf{Orchestratori}.
+
+Il ruolo dell'orchestratore è quello di istanziare i ViewModel, leggere lo stato dai Model e far fluire i dati e le callback verso il basso (tramite \textit{prop drilling} limitato a un solo livello) per distribuirli alle View.
+
+\subsubsection{EditorPage: orchestratore dell'editor}
+\texttt{EditorPage} rappresenta l'entry point principale dell'applicazione e coordina la logica complessa dell'editor. Si occupa di:
+\begin{itemize}
+    \item \textbf{Gestione dello stato locale}: Controlla stati puramente visivi e non condivisi, come l'apertura/chiusura del pannello AI (\texttt{isAiPanelOpen}).
+    \item \textbf{Collegamento al Model}: Legge e aggiorna i metadati del documento (es. \texttt{fileName}, \texttt{isDirty}) richiamando \texttt{useEditorMetaStore}.
+    \item \textbf{Istanziazione del ViewModel}: Monta gli hook dedicati (\texttt{useEditor}, \texttt{useSaveDocument}, \texttt{useFileUpload}, \texttt{usePrintDocument}).
+    \item \textbf{Composizione degli handler}: Crea funzioni ponte tra la View e il ViewModel. Ad esempio, \texttt{handleExportWithContent} recupera prima il testo tramite \texttt{editor.getEditorText()} e lo passa al ViewModel di salvataggio; \texttt{handleCloseDocument} verifica la presenza di modifiche non salvate tramite \texttt{window.confirm} prima di resettare l'editor.
+\end{itemize}
+
+\subsubsection{HistoryPage: orchestratore dello storico}
+\texttt{HistoryPage} coordina la vista della cronologia delle generazioni AI. Rispetto all'editor, ha un ruolo più limitato:
+\begin{itemize}
+    \item \textbf{Stato dei filtri}: Mantiene localmente i criteri di ricerca dell'utente (\texttt{search} per il testo, \texttt{operation} per il tipo di task AI).
+    \item \textbf{Delega la logica}: Passa i filtri dinamici al ViewModel \texttt{useHistory}, che si occupa del ricalcolo e dell'ordinamento delle voci.
+    \item \textbf{Riutilizzo della UI}: Importa la \texttt{Topbar} in modalità sola lettura (passando \texttt{() => \{\}} come callback di modifica) e la \texttt{Sidebar}, garantendo coerenza visiva con l'editor pur disabilitando i comandi non pertinenti.
+\end{itemize}
+
+
+\subsubsection{Dependency Injection (DI)}
+La \textbf{Dependency Injection} è un pattern architetturale fondamentale dell'Ingegneria del Software, volto a implementare il principio dell'Inversione del Controllo (IoC). Consiste nel fornire a un oggetto o a una funzione le dipendenze di cui ha bisogno dall'esterno, anziché permettere che sia il componente stesso a istanziarle o importarle in modo rigido. Questo approccio riduce l'accoppiamento (\textit{tight coupling}) tra i moduli, aumenta la coesione e rende il sistema altamente modulare e testabile.
+
+\paragraph{Applicazione nel frontend}
+Nel sistema \textit{Second Brain}, questo principio è stato adottato in modo trasversale nell'orchestrazione dei ViewModel. Per evitare dipendenze circolari o un accoppiamento rigido tra domini funzionali diversi, i \textit{custom hook} non importano mai la logica di altri hooks.
+
+Il caso più evidente si trova nell'istanza di \texttt{useEditor}: questo hook non importa lo store \texttt{useHistoryStore} per salvare le generazioni e ignora del tutto l'esistenza dello storico. Al contrario, è l'orchestratore (\texttt{EditorPage}) che si fa carico di prelevare l'azione \texttt{addEntry} dallo store dello storico per poi iniettarla all'interno di \texttt{useEditor} tramite la callback \texttt{onEntryAdded}.
+
+Questo approccio garantisce che ogni hook sia modulare e testabile in totale isolamento fornendo dei semplici \textit{mock} al momento dei test.
 
 
 \newpage
@@ -956,11 +998,22 @@ Un principio trasversale adottato è la \textbf{Dependency Injection}: per evita
 \section{Design pattern}
 La progettazione del sistema \textit{Second Brain} ha fatto largo uso di design pattern orientati agli oggetti e funzionali, al fine di garantire un basso accoppiamento e un'alta coesione del codice.
 
-\subsubsection{Facade pattern}
-Per la gestione delle comunicazioni HTTP con il backend, il sistema applica il \textbf{Pattern Facade} a due livelli sovrapposti, ciascuno con una responsabilità architetturale distinta. I ViewModel e i componenti della View non invocano mai direttamente la libreria esterna \texttt{Axios}; al contrario, si interfacciano con moduli dedicati che nascondono la complessità delle transazioni di rete dietro un'interfaccia unificata.
+\subsection{Facade pattern}
+Il pattern \textbf{Facade} è un design pattern strutturale il cui scopo principale è fornire un'interfaccia unica e semplificata per gestire un sottosistema complesso composto da molteplici moduli.
+L'obiettivo è nascondere le dipendenze e i dettagli implementativi al client, fornendogli un singolo punto di accesso di alto livello dal quale effettuare le richieste. Il Facade riceve i comandi dal client e si occupa di associarli alle logiche specifiche del sottosistema, delegando loro l'effettiva elaborazione. Le classi interne implementano le funzionalità in modo del tutto indipendente, ignare dell'esistenza del Facade stesso.
 
-\paragraph{Livello 1: \texttt{apiClient.ts} (Configurazione e normalizzazione)}
-Il primo livello costituisce la Facade sull'istanza di \texttt{Axios}. È responsabile di:
+L'applicazione di questo pattern comporta tre vantaggi architetturali primari:
+\begin{itemize}
+    \item \textbf{Accoppiamento debole (\textit{Loose coupling})}: Riduce drasticamente la superficie di contatto tra il client e il sottosistema, disaccoppiando chi utilizza i servizi da chi li implementa.
+    \item \textbf{Semplificazione e stratificazione}: Diminuisce la complessità generale, elimina le dipendenze circolari e favorisce l'organizzazione del sistema in layer netti e impermeabili.
+    \item \textbf{Manutenibilità e testabilità}: Isolare la complessità tecnica in un unico punto centralizzato facilita la scrittura di test automatici (tramite \textit{mocking}) e riduce l'impatto di eventuali refactoring.
+\end{itemize}
+
+\subsubsection{Applicazione del pattern: gestione della rete}
+Nel sistema \textit{Second Brain}, questo pattern è stato applicato per la gestione delle comunicazioni HTTP con il backend. Il sistema implementa una Facade a due livelli sovrapposti, ciascuno con una responsabilità architetturale distinta. I ViewModel e i componenti della View non invocano mai direttamente la libreria esterna \texttt{Axios}; al contrario, si interfacciano con moduli dedicati che nascondono la complessità delle transazioni di rete dietro un'interfaccia unificata.
+
+\paragraph{Livello 1: \texttt{apiClient.ts}}
+Il primo livello costituisce la Facade sul sottosistema di rete. Non si limita ad avvolgere l'istanza di \texttt{Axios}, ma orchestra diverse componenti del networking: la configurazione dell'ambiente, la logica di intercettazione (\textit{Interceptor}), il sistema di formattazione degli errori (\texttt{transformApiError}) e il motore di cancellazione (\texttt{AbortController}). Fornisce così un'interfaccia unica e semplificata per tutte queste operazioni di basso livello. È responsabile di:
 \begin{itemize}
     \item \textbf{Configurazione centralizzata}: Risolve dinamicamente la \texttt{baseURL} dalle variabili d'ambiente (\texttt{\gls{VITE}\_API\_BASE\_URL}), con \textit{fallback} a \texttt{/\gls{api}}, e imposta il timeout (\texttt{\gls{VITE}\_API\_TIMEOUT}, default 30.000 ms). Garantisce che un unico punto del codice controlli i parametri di connessione.
     \item \textbf{Normalizzazione degli errori}: Tramite un \textit{response interceptor}, tutte le eccezioni di rete (timeout, errori HTTP 4xx/5xx, richieste annullate tramite \texttt{AbortSignal}) vengono intercettate e trasformate in oggetti \texttt{Error} standard. La logica di normalizzazione è incapsulata nella funzione pura \texttt{transformApiError}, testabile in totale isolamento.
@@ -983,7 +1036,7 @@ I due livelli formano una \textbf{Facade a cascata} con responsabilità rigorosa
 \begin{itemize}
     \item \texttt{apiClient}: Sa \textit{come} parlare con il server (timeout, header, normalizzazione). Non conosce il dominio applicativo (Intelligenza Artificiale).
     \item \texttt{aiCall}: Sa \textit{dove} inviare la richiesta (\texttt{/ai/generate}) e \textit{cosa} spedire. Non conosce i dettagli implementativi di \texttt{Axios}.
-    \item \textbf{ViewModel} (es. \texttt{useAiOperations}): Sanno \textit{quando} chiamare l'AI e come gestire il risultato nella UI. Non conoscono né \texttt{Axios} né l'URL dell'\gls{endpoint}.
+    \item \textbf{ViewModel} (\texttt{useAiOperations}): Sa \textit{quando} chiamare l'AI e come gestire il risultato nella UI. Non conosce né \texttt{Axios} né l'URL dell'\gls{endpoint}.
 \end{itemize}
 
 Questa separazione porta due benefici misurabili in termini di qualità del software:
@@ -992,13 +1045,36 @@ Questa separazione porta due benefici misurabili in termini di qualità del soft
     \item \textbf{Testabilità tramite mocking}: Nei test di unità eseguiti con \gls{Vitest}, isolare la logica di rete è immediato: è sufficiente fornire un \textit{mock} di \texttt{executeOperation} senza dover intercettare richieste HTTP reali, rendendo i test deterministici e veloci.
 \end{enumerate}
 
-% grafico
+% diagramma
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../UMLimg/facade.jpg}
+    \caption{UML del pattern Facade}
+    \label{fig:uml_facade}
+\end{figure}
 
 \newpage
 
 % STRATEGY
-\subsection{Pattern comportamentali: Strategy pattern}
-Il design pattern comportamentale Strategy definisce una famiglia di algoritmi, li incapsula in classi separate e li rende intercambiabili in modo dinamico.
+\subsection{Strategy pattern}
+Lo \textbf{Strategy} è un design pattern comportamentale il cui scopo principale è definire una famiglia di algoritmi, incapsularli in classi separate e renderli interscambiabili tra loro. Questo approccio permette agli algoritmi di variare in modo indipendente rispetto alle classi che li utilizzano, rendendo il codice modulare ed estensibile.
+
+In pratica, questo pattern si rivela fondamentale quando esistono diverse varianti di una stessa operazione logica e si vuole permettere al sistema di cambiare comportamento a \textit{runtime}, mantenendo inalterata la struttura generale dell'interfaccia.
+
+\paragraph{Struttura e vantaggi}
+Strutturalmente, il pattern si compone di tre elementi chiave:
+\begin{itemize}
+    \item \textbf{Strategy (interfaccia)}: Un contratto generico comune supportato da tutti gli algoritmi della famiglia.
+    \item \textbf{ConcreteStrategy}: Le classi concrete che implementano l'interfaccia \textit{Strategy}, definendo i dettagli di uno specifico algoritmo.
+    \item \textbf{Context}: L'elemento che necessita dell'algoritmo. Esso mantiene un riferimento all'interfaccia, ignorando i dettagli implementativi della \textit{ConcreteStrategy} con cui è configurato.
+\end{itemize}
+
+L'adozione di questo pattern porta tre importanti vantaggi:
+\begin{enumerate}
+    \item \textbf{Eliminazione degli statement condizionali}: Previene la proliferazione di classi client complesse e di lunghi blocchi \texttt{if/else} o \texttt{switch} per la selezione del comportamento.
+    \item \textbf{Alternativa all'ereditarietà}: Fornisce un approccio basato sulla composizione, più flessibile rispetto all'estensione diretta delle classi.
+    \item \textbf{Adesione ai principi SOLID (Open-Closed)}: Permette di aggiungere nuovi algoritmi semplicemente creando una nuova \textit{ConcreteStrategy}, senza modificare il \textit{Context} preesistente.
+\end{enumerate}
 
 \subsubsection{Problema}
 L’architettura iniziale del backend presentava un'eccessiva complessità logica dovuta alla gestione di molteplici modelli LLM e diverse logiche di prompting. La presenza di numerosi blocchi condizionali (if/else o switch) all'interno dell'entry point (\texttt{app.py}) rendeva il codice rigido, difficile da scalare e violava il principio di singola responsabilità (Single Responsibility Principle).
@@ -1071,7 +1147,6 @@ Questa soluzione architetturale ottimizza l'uso delle risorse prevenendo l'apert
 
 \newpage
 
-\subsection{Pattern creazionali}
 \subsection{Registry pattern}
 % non è più un registry, ma un mappa - DA MODIFICARE
 Il pattern Registry funge da catalogo centralizzato e configuratore delle operazioni disponibili, disaccoppiando totalmente il Controller (\texttt{app.py}) dalla logica di creazione delle dipendenze.

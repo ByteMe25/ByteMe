@@ -68,7 +68,7 @@
         \centering
         \begin{tabular}{|l|p{5cm}|}            
             \hline
-            \textbf{Versione} & 1.2.0 \\
+            \textbf{Versione} & 1.2.1 \\
             \hline
             \textbf{Stato} & Da approvare \\
             \hline
@@ -95,6 +95,8 @@
     \begin{tabular}{|c|c|c|>{\raggedright\arraybackslash}p{0.35\textwidth}|p{0.18\textwidth}|}
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verifica} \\
+        \hline
+        1.2.1 & 22/04/2026 & Giulia Barzon & Aggiunti termini relativi ai pattern & \\
         \hline
         1.2.0 & 20/04/2026 & Giulia Barzon & Aggiunti nuovi termini della fase PB & \\
         \hline
@@ -398,6 +400,8 @@ dell'utente durante l'intera esperienza d'uso.
 \section*{O}
 \addcontentsline{toc}{section}{O}
 \begin{itemize}
+\item \textbf{Orchestratore}: Pattern architetturale in cui un componente "supervisore" coordina il flusso di dati e le interazioni tra diversi moduli o livelli dell'applicazione (come Model, View e ViewModel). Un orchestratore non esegue direttamente logica di business complessa né si occupa dei dettagli del rendering visivo, ma si limita a istanziare i componenti necessari, recuperare i dati dallo stato globale e iniettarli dove servono, fungendo da "regista" del sistema.
+
 \item \textbf{ORM (Object-Relational Mapping)}: Tecnica che permette di interagire con un database relazionale utilizzando oggetti del linguaggio di programmazione al posto di query SQL dirette. Nel POC si utilizza SQLAlchemy come ORM per mappare le tabelle del database PostgreSQL in classi Python.
 \end{itemize}
 
@@ -406,6 +410,8 @@ dell'utente durante l'intera esperienza d'uso.
 \section*{P}
 \addcontentsline{toc}{section}{P}
 \begin{itemize}
+\item \textbf{Paradigma Reattivo} (Reactive Paradigm): Modello di programmazione orientato alla gestione asincrona dei flussi di dati e alla propagazione automatica dei cambiamenti. Nello sviluppo di interfacce utente moderne (come in React), adottare un paradigma reattivo significa che l'interfaccia grafica (View) si aggiorna automaticamente in risposta alle mutazioni dello stato sottostante (Model o ViewModel), senza che lo sviluppatore debba manipolare manualmente il DOM (Document Object Model). Questo approccio si sposa con la programmazione dichiarativa: lo sviluppatore descrive come l'interfaccia dovrebbe apparire per ogni possibile stato dei dati, e il framework si occupa autonomamente di "reagire" ai cambiamenti, sincronizzando visivamente l'applicazione.
+
 \item \textbf{PascalCase}: Convenzione di nomenclatura in cui ogni parola inizia con la lettera maiuscola, senza separatori (es. \texttt{EditorPage}, \texttt{AuthContext}). In React è obbligatoria per i nomi dei componenti: una funzione con iniziale minuscola non viene riconosciuta come componente e causa violazioni delle Rules of Hooks.
 
 \item \textbf{PB (Product Baseline)}: È la definizione completa del prodotto dal punto di vista funzionale e progettuale, usata come base per sviluppo, test e verifica. Include anche l’MVP (Minimum Viable Product), cioè la versione minima del prodotto che contiene solo le funzionalità essenziali per essere testata dagli utenti e ricevere feedback.
@@ -432,9 +438,7 @@ l'affidabilità e il supporto a tipi di dati avanzati. Nel POC è utilizzato per
 
 \item \textbf{Proof of Concept (PoC)}: Prototipo iniziale e limitato del software, sviluppato per dimostrare la fattibilità delle funzionalità core e dell'idea del progetto in generale.
 
-\item \textbf{Prop drilling}: Problema che si verifica nelle applicazioni 
-React quando i dati devono essere passati come props attraverso 
-più livelli di componenti intermedi che non li utilizzano direttamente. Viene risolto tramite React Context, che rende i dati accessibili a qualsiasi componente della gerarchia senza passaggi intermedi.
+\item \textbf{Prop drilling}: Pratica di sviluppo tipica di React (e di altri framework basati su componenti) che consiste nel passare dati o funzioni (le props) da un componente padre a un componente figlio situato molto più in basso nell'albero, attraversando svariati componenti intermedi che non utilizzano direttamente quei dati. Sebbene sia utile per mantenere un flusso di dati unidirezionale e prevedibile, un prop drilling eccessivo può rendere il codice difficile da leggere e manutenere.
 
 \item \textbf{Pytest}: Un framework di testing per il linguaggio Python, caratterizzato da una sintassi semplice e dalla scalabilità per suite di test complesse. Viene utilizzato nel progetto per la verifica unitaria dei moduli e delle funzioni del backend.
 
