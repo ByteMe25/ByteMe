@@ -1480,7 +1480,7 @@ I component test verificano il comportamento dei componenti \gls{React} così co
 In combinazione con \gls{Vitest}, questi test assicurano che il componente renderizzi correttamente, reagisca agli input dell’utente (click, input, ecc.) e mostri lo stato previsto. L’approccio evita di testare dettagli interni di implementazione, rendendo i test più robusti e meno fragili ai cambiamenti.
 
 \subsection{HistoryPage.test.tsx}
-\gls{Verifica} che HistoryPage si comporti da orchestratore corretto tra i controlli UI (input di ricerca, select, bottone elimina) e il viewmodel useHistory. L'hook viene mockato con vi.mock e riconfigurato nei singoli test tramite mockReturnValue.
+\gls{Verifica} che HistoryPage si comporti da \gls{orchestratore} corretto tra i controlli UI (input di ricerca, select, bottone elimina) e il viewmodel useHistory. L'hook viene mockato con vi.mock e riconfigurato nei singoli test tramite mockReturnValue.
 
 \begin{table}[H]
 \centering
@@ -1545,7 +1545,7 @@ Questo file si occupa di testare il componente HistoryList, responsabile della v
 \end{table}
 
 \subsection{EditorPage.test.tsx}
-\gls{Verifica} che EditorPage si comporti da orchestratore corretto: riceve eventi dall'UI, li delega agli hook giusti, e passa i dati nel verso corretto tra i sottocomponenti. Per farlo, mocka tutti gli hook e tutti i componenti figli con versioni minimali che espongono solo i trigger necessari ai test.
+\gls{Verifica} che EditorPage si comporti da \gls{orchestratore} corretto: riceve eventi dall'UI, li delega agli hook giusti, e passa i dati nel verso corretto tra i sottocomponenti. Per farlo, mocka tutti gli hook e tutti i componenti figli con versioni minimali che espongono solo i trigger necessari ai test.
 
 \begin{table}[H]
 \centering

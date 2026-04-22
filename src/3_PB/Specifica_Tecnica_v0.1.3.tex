@@ -629,7 +629,7 @@ Il frontend del sistema è stato sviluppato utilizzando \textbf{\gls{React} 19},
 L'organizzazione del progetto segue i principi della \textit{\gls{Feature-based Architecture}} (ispirata allo standard di settore \textbf{Bulletproof \gls{React}}). Invece di raggruppare i file per tipo (tutti i componenti insieme, tutti gli hook insieme), ogni funzionalità del sistema (es. \texttt{editor}, \texttt{history}) è isolata in un modulo autocontenuto che include i propri componenti, hook, store e definizioni di tipo.
 
 \subsection{Model-View-ViewModel (MVVM)}
-Il pattern architetturale \textbf{Model-View-ViewModel (MVVM)} è un'evoluzione dei pattern di presentazione (come MVC e MVP) progettata per separare rigorosamente lo sviluppo dell'interfaccia utente (UI) dalla logica di business e dallo stato dell'applicazione. È un pattern di riferimento per lo sviluppo client-side moderno e si adatta perfettamente al paradigma reattivo di React.
+Il pattern architetturale \textbf{Model-View-ViewModel (MVVM)} è un'evoluzione dei pattern di presentazione (come MVC e MVP) progettata per separare rigorosamente lo sviluppo dell'interfaccia utente (UI) dalla logica di business e dallo stato dell'applicazione. È un pattern di riferimento per lo sviluppo client-side moderno e si adatta perfettamente al \gls{paradigma reattivo} di \gls{React}.
 
 L'architettura si divide in tre strati le cui responsabilità sono nettamente separate:
 
@@ -962,18 +962,18 @@ Sono presenti due store principali:
 \subsection{Orchestrazione e Dependency Injection}
 A legare i tre strati architetturali (Model, View, ViewModel) intervengono le \textbf{Page} (\texttt{EditorPage} e \texttt{HistoryPage}). Questi componenti non appartengono né alla View pura (poiché conoscono lo stato globale e gli hook) né al ViewModel (poiché restituiscono markup \gls{JSX}). Essi fungono da \textbf{Orchestratori}.
 
-Il ruolo dell'orchestratore è quello di istanziare i ViewModel, leggere lo stato dai Model e far fluire i dati e le callback verso il basso (tramite \textit{prop drilling} limitato a un solo livello) per distribuirli alle View.
+Il ruolo dell'\gls{orchestratore} è quello di istanziare i ViewModel, leggere lo stato dai Model e far fluire i dati e le callback verso il basso (tramite \textit{\gls{prop drilling}} limitato a un solo livello) per distribuirli alle View.
 
-\subsubsection{EditorPage: orchestratore dell'editor}
+\subsubsection{EditorPage: \gls{orchestratore} dell'editor}
 \texttt{EditorPage} rappresenta l'entry point principale dell'applicazione e coordina la logica complessa dell'editor. Si occupa di:
 \begin{itemize}
     \item \textbf{Gestione dello stato locale}: Controlla stati puramente visivi e non condivisi, come l'apertura/chiusura del pannello AI (\texttt{isAiPanelOpen}).
     \item \textbf{Collegamento al Model}: Legge e aggiorna i metadati del documento (es. \texttt{fileName}, \texttt{isDirty}) richiamando \texttt{useEditorMetaStore}.
     \item \textbf{Istanziazione del ViewModel}: Monta gli hook dedicati (\texttt{useEditor}, \texttt{useSaveDocument}, \texttt{useFileUpload}, \texttt{usePrintDocument}).
-    \item \textbf{Composizione degli handler}: Crea funzioni ponte tra la View e il ViewModel. Ad esempio, \texttt{handleExportWithContent} recupera prima il testo tramite \texttt{editor.getEditorText()} e lo passa al ViewModel di salvataggio; \texttt{handleCloseDocument} verifica la presenza di modifiche non salvate tramite \texttt{window.confirm} prima di resettare l'editor.
+    \item \textbf{Composizione degli handler}: Crea funzioni ponte tra la View e il ViewModel. Ad esempio, \texttt{handleExportWithContent} recupera prima il testo tramite \texttt{editor.getEditorText()} e lo passa al ViewModel di salvataggio; \texttt{handleCloseDocument} \gls{verifica} la presenza di modifiche non salvate tramite \texttt{window.confirm} prima di resettare l'editor.
 \end{itemize}
 
-\subsubsection{HistoryPage: orchestratore dello storico}
+\subsubsection{HistoryPage: \gls{orchestratore} dello storico}
 \texttt{HistoryPage} coordina la vista della cronologia delle generazioni AI. Rispetto all'editor, ha un ruolo più limitato:
 \begin{itemize}
     \item \textbf{Stato dei filtri}: Mantiene localmente i criteri di ricerca dell'utente (\texttt{search} per il testo, \texttt{operation} per il tipo di task AI).
@@ -988,7 +988,7 @@ La \textbf{Dependency Injection} è un pattern architetturale fondamentale dell'
 \paragraph{Applicazione nel frontend}
 Nel sistema \textit{Second Brain}, questo principio è stato adottato in modo trasversale nell'orchestrazione dei ViewModel. Per evitare dipendenze circolari o un accoppiamento rigido tra domini funzionali diversi, i \textit{custom hook} non importano mai la logica di altri hooks.
 
-Il caso più evidente si trova nell'istanza di \texttt{useEditor}: questo hook non importa lo store \texttt{useHistoryStore} per salvare le generazioni e ignora del tutto l'esistenza dello storico. Al contrario, è l'orchestratore (\texttt{EditorPage}) che si fa carico di prelevare l'azione \texttt{addEntry} dallo store dello storico per poi iniettarla all'interno di \texttt{useEditor} tramite la callback \texttt{onEntryAdded}.
+Il caso più evidente si trova nell'istanza di \texttt{useEditor}: questo hook non importa lo store \texttt{useHistoryStore} per salvare le generazioni e ignora del tutto l'esistenza dello storico. Al contrario, è l'\gls{orchestratore} (\texttt{EditorPage}) che si fa carico di prelevare l'azione \texttt{addEntry} dallo store dello storico per poi iniettarla all'interno di \texttt{useEditor} tramite la callback \texttt{onEntryAdded}.
 
 Questo approccio garantisce che ogni hook sia modulare e testabile in totale isolamento fornendo dei semplici \textit{mock} al momento dei test.
 
