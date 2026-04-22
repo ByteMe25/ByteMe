@@ -435,7 +435,7 @@ Il file \texttt{\gls{docker}-compose.yml} coordina l'avvio sincronizzato dei ser
 \subsection{Layered Architecture}
 L'Architettura a Livelli (nota anche come \textit{Layered Architecture} o \textit{N-tier Architecture}) è uno dei pattern architetturali più consolidati e rappresenta lo standard \textit{de facto} per la progettazione di applicazioni software \textit{enterprise}.
 
-Il principio cardine di questo pattern è la \textbf{Separation of Concerns} (Separazione delle Responsabilità): i componenti del sistema sono organizzati in strati orizzontali, dove ogni strato fornisce un'astrazione specifica e gestisce esclusivamente la logica di propria competenza. Questo approccio modulare limita il raggio d'azione dei singoli componenti, semplificando notevolmente lo sviluppo, il testing e la manutenzione dell'applicazione.
+Il principio cardine di questo pattern è la \textbf{\gls{Separation of Concerns}} (Separazione delle Responsabilità): i componenti del sistema sono organizzati in strati orizzontali, dove ogni strato fornisce un'astrazione specifica e gestisce esclusivamente la logica di propria competenza. Questo approccio modulare limita il raggio d'azione dei singoli componenti, semplificando notevolmente lo sviluppo, il testing e la manutenzione dell'applicazione.
 
 \paragraph{Vincolo dei "Closed Layers" (Strati Chiusi)}
 Una caratteristica fondamentale di un'architettura a livelli ben progettata è l'isolamento degli strati. Affinché l'architettura sia solida, gli strati devono essere \textbf{chiusi}. Questo significa che il flusso di esecuzione segue una direttiva strettamente \textit{top-down}: una richiesta può transitare esclusivamente allo strato immediatamente sottostante. Di conseguenza, i livelli superiori ignorano del tutto i dettagli implementativi dei livelli inferiori, garantendo che le modifiche effettuate all'interno di uno strato non generino impatti a cascata sugli altri.
@@ -455,13 +455,13 @@ Il sistema \textit{Second Brain} adotta rigorosamente la \textbf{Layered Archite
 % PRESENTATION LAYER
 % ===================
 \subsection{Presentation layer (app.py)}
-Rappresenta il punto di ingresso del backend ed è implementato nel modulo di routing di \gls{Flask}. Ha il compito di esporre gli \gls{endpoint} REST (come \texttt{/api/ai/generate}), ricevere le richieste HTTP in ingresso e restituire risposte JSON standardizzate. Questo strato non contiene logica di dominio né conoscenza della struttura dei \gls{prompt} o dei modelli LLM: si limita a validare i payload in ingresso e a delegare l'elaborazione agli strati sottostanti, intercettando e formattando eventuali eccezioni.
+Rappresenta il punto di ingresso del backend ed è implementato nel modulo di routing di \gls{Flask}. Ha il compito di esporre gli \gls{endpoint} REST (come \texttt{/\gls{api}/ai/generate}), ricevere le richieste HTTP in ingresso e restituire risposte JSON standardizzate. Questo strato non contiene logica di dominio né conoscenza della struttura dei \gls{prompt} o dei modelli LLM: si limita a validare i payload in ingresso e a delegare l'elaborazione agli strati sottostanti, intercettando e formattando eventuali eccezioni.
 
 \subsubsection{Modulo: \texttt{app.py}}
 Il modulo non adotta una struttura a classi, ma è organizzato come un insieme di funzioni e configurazioni \gls{Flask}.
 \begin{itemize}
     \item \texttt{app}: Istanza dell'applicazione \gls{Flask}, configurata con CORS abilitato per permettere la comunicazione sicura col frontend.
-    \item \texttt{generate\_ai\_text()}: Funzione principale del modulo, mappata sull'\gls{endpoint} POST \texttt{/api/ai/generate}. Riceve il payload JSON, estrae i parametri, interroga la mappatura delle operazioni, istanzia il modello tramite get\_model(), costruisce i \gls{prompt} e restituisce la risposta elaborata. In caso di errore, cattura l'eccezione e restituisce una risposta standardizzata con il messaggio di eccezione.
+    \item \texttt{generate\_ai\_text()}: Funzione principale del modulo, mappata sull'\gls{endpoint} POST \texttt{/\gls{api}/ai/generate}. Riceve il payload JSON, estrae i parametri, interroga la mappatura delle operazioni, istanzia il modello tramite get\_model(), costruisce i \gls{prompt} e restituisce la risposta elaborata. In caso di errore, cattura l'eccezione e restituisce una risposta standardizzata con il messaggio di eccezione.
     \item \texttt{root()}: Funzione mappata sull'\gls{endpoint} GET \texttt{/}, utilizzata come \textit{health check} per verificare che il server sia attivo. Restituisce lo stato del servizio e la lista delle operazioni supportate.
 \end{itemize}
 
@@ -517,7 +517,7 @@ Il nucleo del sistema è implementato come un dizionario globale che associa ide
 % INFRASTRUCTURE LAYER
 % =====================
 \subsection{Infrastructure layer}
-Gestisce tutto ciò che riguarda il mondo esterno al dominio applicativo, isolando il resto del sistema dalle complessità della rete e dalla sintassi specifica delle singole API.
+Gestisce tutto ciò che riguarda il mondo esterno al dominio applicativo, isolando il resto del sistema dalle complessità della rete e dalla sintassi specifica delle singole \gls{API}.
 
 \subsubsection{Modulo: \texttt{model\_strategies.py} (Integrazione LLM)}
 Permette l'astrazione della comunicazione con i provider esterni. Le classi contenute in questo file si occupano di iniettare le chiavi \gls{API} lette dall'ambiente e di impacchettare la richiesta nel formato corretto. Anche in questo caso le classi (\texttt{ZucchettiLlamaStrategy}, \texttt{Gemma3Strategy}) implementano il \textbf{Pattern Strategy}.
@@ -526,7 +526,7 @@ Permette l'astrazione della comunicazione con i provider esterni. Le classi cont
 \end{itemize}
 
 \subsubsection{Modulo: \texttt{text\_cleaning.py} (Servizi di supporto)}
-Sottomodulo funzionale contenente algoritmi di post-processing basati su espressioni regolari (regex). Il suo unico scopo è "pulire" le risposte grezze dei modelli da metatesto, tag markdown e preamboli discorsivi indesiderati prima che questi vengano passati ai livelli superiori.
+Sottomodulo funzionale contenente algoritmi di post-processing basati su espressioni regolari (regex). Il suo unico scopo è "pulire" le risposte grezze dei modelli da metatesto, tag \gls{markdown} e preamboli discorsivi indesiderati prima che questi vengano passati ai livelli superiori.
 
 % GRAFICO (?)
 
@@ -642,7 +642,7 @@ Il frontend del sistema è stato sviluppato utilizzando \textbf{\gls{React} 19},
 L'organizzazione del progetto segue i principi della \textit{\gls{Feature-based Architecture}} (ispirata allo standard di settore \textbf{Bulletproof \gls{React}}). Invece di raggruppare i file per tipo (tutti i componenti insieme, tutti gli hook insieme), ogni funzionalità del sistema (es. \texttt{editor}, \texttt{history}) è isolata in un modulo autocontenuto che include i propri componenti, hook, store e definizioni di tipo.
 
 \subsection{Model-View-ViewModel (MVVM)}
-Il pattern architetturale \textbf{Model-View-ViewModel (MVVM)} è un'evoluzione dei pattern di presentazione (come MVC e MVP) progettata per separare rigorosamente lo sviluppo dell'interfaccia utente (UI) dalla logica di business e dallo stato dell'applicazione. È un pattern di riferimento per lo sviluppo client-side moderno e si adatta perfettamente al paradigma reattivo di React.
+Il pattern architetturale \textbf{Model-View-ViewModel (MVVM)} è un'evoluzione dei pattern di presentazione (come MVC e MVP) progettata per separare rigorosamente lo sviluppo dell'interfaccia utente (UI) dalla logica di business e dallo stato dell'applicazione. È un pattern di riferimento per lo sviluppo client-side moderno e si adatta perfettamente al \gls{paradigma reattivo} di \gls{React}.
 
 L'architettura si divide in tre strati le cui responsabilità sono nettamente separate:
 
@@ -975,18 +975,18 @@ Sono presenti due store principali:
 \subsection{Orchestrazione e Dependency Injection}
 A legare i tre strati architetturali (Model, View, ViewModel) intervengono le \textbf{Page} (\texttt{EditorPage} e \texttt{HistoryPage}). Questi componenti non appartengono né alla View pura (poiché conoscono lo stato globale e gli hook) né al ViewModel (poiché restituiscono markup \gls{JSX}). Essi fungono da \textbf{Orchestratori}.
 
-Il ruolo dell'orchestratore è quello di istanziare i ViewModel, leggere lo stato dai Model e far fluire i dati e le callback verso il basso (tramite \textit{prop drilling} limitato a un solo livello) per distribuirli alle View.
+Il ruolo dell'\gls{orchestratore} è quello di istanziare i ViewModel, leggere lo stato dai Model e far fluire i dati e le callback verso il basso (tramite \textit{\gls{prop drilling}} limitato a un solo livello) per distribuirli alle View.
 
-\subsubsection{EditorPage: orchestratore dell'editor}
+\subsubsection{EditorPage: \gls{orchestratore} dell'editor}
 \texttt{EditorPage} rappresenta l'entry point principale dell'applicazione e coordina la logica complessa dell'editor. Si occupa di:
 \begin{itemize}
     \item \textbf{Gestione dello stato locale}: Controlla stati puramente visivi e non condivisi, come l'apertura/chiusura del pannello AI (\texttt{isAiPanelOpen}).
     \item \textbf{Collegamento al Model}: Legge e aggiorna i metadati del documento (es. \texttt{fileName}, \texttt{isDirty}) richiamando \texttt{useEditorMetaStore}.
     \item \textbf{Istanziazione del ViewModel}: Monta gli hook dedicati (\texttt{useEditor}, \texttt{useSaveDocument}, \texttt{useFileUpload}, \texttt{usePrintDocument}).
-    \item \textbf{Composizione degli handler}: Crea funzioni ponte tra la View e il ViewModel. Ad esempio, \texttt{handleExportWithContent} recupera prima il testo tramite \texttt{editor.getEditorText()} e lo passa al ViewModel di salvataggio; \texttt{handleCloseDocument} verifica la presenza di modifiche non salvate tramite \texttt{window.confirm} prima di resettare l'editor.
+    \item \textbf{Composizione degli handler}: Crea funzioni ponte tra la View e il ViewModel. Ad esempio, \texttt{handleExportWithContent} recupera prima il testo tramite \texttt{editor.getEditorText()} e lo passa al ViewModel di salvataggio; \texttt{handleCloseDocument} \gls{verifica} la presenza di modifiche non salvate tramite \texttt{window.confirm} prima di resettare l'editor.
 \end{itemize}
 
-\subsubsection{HistoryPage: orchestratore dello storico}
+\subsubsection{HistoryPage: \gls{orchestratore} dello storico}
 \texttt{HistoryPage} coordina la vista della cronologia delle generazioni AI. Rispetto all'editor, ha un ruolo più limitato:
 \begin{itemize}
     \item \textbf{Stato dei filtri}: Mantiene localmente i criteri di ricerca dell'utente (\texttt{search} per il testo, \texttt{operation} per il tipo di task AI).
@@ -1001,7 +1001,7 @@ La \textbf{Dependency Injection} è un pattern architetturale fondamentale dell'
 \paragraph{Applicazione nel frontend}
 Nel sistema \textit{Second Brain}, questo principio è stato adottato in modo trasversale nell'orchestrazione dei ViewModel. Per evitare dipendenze circolari o un accoppiamento rigido tra domini funzionali diversi, i \textit{custom hook} non importano mai la logica di altri hooks.
 
-Il caso più evidente si trova nell'istanza di \texttt{useEditor}: questo hook non importa lo store \texttt{useHistoryStore} per salvare le generazioni e ignora del tutto l'esistenza dello storico. Al contrario, è l'orchestratore (\texttt{EditorPage}) che si fa carico di prelevare l'azione \texttt{addEntry} dallo store dello storico per poi iniettarla all'interno di \texttt{useEditor} tramite la callback \texttt{onEntryAdded}.
+Il caso più evidente si trova nell'istanza di \texttt{useEditor}: questo hook non importa lo store \texttt{useHistoryStore} per salvare le generazioni e ignora del tutto l'esistenza dello storico. Al contrario, è l'\gls{orchestratore} (\texttt{EditorPage}) che si fa carico di prelevare l'azione \texttt{addEntry} dallo store dello storico per poi iniettarla all'interno di \texttt{useEditor} tramite la callback \texttt{onEntryAdded}.
 
 Questo approccio garantisce che ogni hook sia modulare e testabile in totale isolamento fornendo dei semplici \textit{mock} al momento dei test.
 
