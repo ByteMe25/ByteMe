@@ -102,7 +102,7 @@
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{\gls{Verifica}} \\
         \hline
-        0.1.6 & 23/04/2026 & Elisa Marchioro & Sistemata formattazione, aggiunta sezione API e aggiunta diagrammi UML backend & \\
+        0.1.6 & 23/04/2026 & Elisa Marchioro & Sistemata formattazione, aggiunta sezione \gls{API} e aggiunta diagrammi UML backend & \\
         \hline
         0.1.5 & 23/04/2026 & Giulia Barzon & Rivista sezione layered architecture & Elisa Marchioro\\
         \hline
@@ -435,10 +435,10 @@ Il file \texttt{\gls{docker}-compose.yml} coordina l'avvio sincronizzato dei ser
 
 \newpage
 
-\section{API}
-Il sistema adotta un’architettura basata su API REST (Representational State Transfer), uno stile architetturale per servizi web che consente comunicazione standardizzata, scalabile e disaccoppiata tra client e server. REST si basa sull’utilizzo del protocollo HTTP e sull’identificazione delle risorse tramite URI, promuovendo semplicità, interoperabilità e manutenibilità.
+\section{\gls{API}}
+Il sistema adotta un’architettura basata su \gls{API} REST (Representational State Transfer), uno stile architetturale per servizi web che consente comunicazione standardizzata, scalabile e disaccoppiata tra client e server. REST si basa sull’utilizzo del protocollo HTTP e sull’identificazione delle risorse tramite URI, promuovendo semplicità, interoperabilità e manutenibilità.
 
-\subsection{Principi e requisiti delle API REST}
+\subsection{Principi e requisiti delle \gls{API} REST}
 Per essere conforme allo stile REST, il sistema rispetta i seguenti principi:
 \begin{itemize}
 \item Architettura client-server: separazione netta tra frontend e backend;
@@ -453,18 +453,18 @@ PUT/PATCH → aggiornamento;
 DELETE → rimozione.
 \end{itemize}
 \item Formato dei dati standardizzato: scambio dati in formato JSON, facilmente leggibile e interoperabile tra sistemi eterogenei.
-\item Separazione delle responsabilità (Separation of Concerns): il client gestisce la presentazione, il server gestisce logica, orchestrazione e integrazione con servizi esterni.
-\item Scalabilità: grazie alla natura stateless, il backend può essere replicato e distribuito senza gestione di sessioni condivise.
+\item Separazione delle responsabilità (\gls{Separation of Concerns}): il client gestisce la presentazione, il server gestisce logica, orchestrazione e integrazione con servizi esterni.
+\item Scalabilità: grazie alla natura \gls{stateless}, il backend può essere replicato e distribuito senza gestione di sessioni condivise.
 \end{itemize}
 
 \subsection{Comunicazione client–server (Axios)}
-Nel frontend, la comunicazione con le API REST avviene tramite la libreria Axios, un HTTP client basato su promise che semplifica l’invio di richieste asincrone e la gestione delle risposte. 
-Nel contesto dell’applicazione, Axios è utilizzato nel frontend come client HTTP centralizzato per invocare le API REST esposte dal backend. In particolare, gestisce l’interazione con l’endpoint di generazione AI (POST /api/ai/generate), incapsulando tutta la logica di comunicazione.
+Nel frontend, la comunicazione con le \gls{API} REST avviene tramite la libreria Axios, un HTTP client basato su promise che semplifica l’invio di richieste asincrone e la gestione delle risposte. 
+Nel contesto dell’applicazione, Axios è utilizzato nel frontend come client HTTP centralizzato per invocare le \gls{API} REST esposte dal backend. In particolare, gestisce l’interazione con l’\gls{endpoint} di generazione AI (POST /\gls{api}/ai/generate), incapsulando tutta la logica di comunicazione.
 
 Nel dettaglio, Axios svolge le seguenti funzioni:
 \begin{itemize}
 \item Invio delle richieste al backend:
-Costruisce e invia la richiesta POST verso l’endpoint /api/ai/generate contenente:
+Costruisce e invia la richiesta POST verso l’\gls{endpoint} /\gls{api}/ai/generate contenente:
 \begin{itemize}
 \item il testo inserito dall’utente (text);
 \item l’operazione richiesta (operation);
@@ -487,7 +487,7 @@ Costruisce e invia la richiesta POST verso l’endpoint /api/ai/generate contene
 \item Il frontend invia una richiesta HTTP POST tramite Axios.
 \item Il controller backend riceve la richiesta e valida i dati.
 \item Viene selezionata la strategia di elaborazione tramite un registry interno.
-\item Il sistema costruisce i prompt per il modello AI.
+\item Il sistema costruisce i \gls{prompt} per il modello AI.
 \item Il backend invoca il modello per generare il contenuto.
 \item La risposta viene pulita e normalizzata.
 \item Il risultato viene restituito al client in formato JSON e gestito dal frontend.
