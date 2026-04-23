@@ -70,7 +70,7 @@
         \centering
         \begin{tabular}{|l|p{5cm}|}
             \hline
-            \textbf{Versione} & 0.1.4 \\
+            \textbf{Versione} & 0.1.5 \\
             \hline
             \textbf{Stato} & In corso \\
             \hline
@@ -102,6 +102,8 @@
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{\gls{Verifica}} \\
         \hline
+        0.1.5 & 23/04/2026 & Giulia Barzon & Rivista sezione layered architecture & \\
+        \hline
         0.1.4 & 22/04/2026 & Giulia Barzon & Rivista sezione backend e strategy & \\
         \hline
         0.1.3 & 22/04/2026 & Giulia Barzon & Correzione e diagramma sezione Facade, rivisto MVVM & \\
@@ -118,7 +120,7 @@
         \hline
         0.0.8 & 18/04/2026 & Joseph Grant & Aggiunti i hook frontend & Elisa Marchioro\\
         \hline
-        0.0.7 & 18/04/2026 & Matteo Cuogo & Aggiunta pattern Registry & Giulia Barzon, Elisa Marchioro\\
+        0.0.7 & 18/04/2026 & Matteo Cuogo & Aggiunto operation mapper & Giulia Barzon, Elisa Marchioro\\
         \hline
         0.0.6 & 17/04/2026 & Matteo Cuogo & Aggiunta sezione Design Pattern & Giulia Barzon, Elisa Marchioro\\
         \hline
@@ -431,58 +433,64 @@ Il file \texttt{\gls{docker}-compose.yml} coordina l'avvio sincronizzato dei ser
 
 \newpage
 
-\section{Backend: architettura}
+% architettura di sistema (generale)
+\section{Architettura del sistema}
 \subsection{Layered Architecture}
-L'Architettura a Livelli (nota anche come \textit{Layered Architecture} o \textit{N-tier Architecture}) è uno dei pattern architetturali più consolidati e rappresenta lo standard \textit{de facto} per la progettazione di applicazioni software \textit{enterprise}.
+Il sistema \textit{Second Brain} è stato progettato adottando il pattern architetturale \textbf{Layered Architecture} (o Architettura a Livelli), considerato lo standard \textit{de facto} per lo sviluppo di applicazioni moderne e scalabili.
 
 Il principio cardine di questo pattern è la \textbf{\gls{Separation of Concerns}} (Separazione delle Responsabilità): i componenti del sistema sono organizzati in strati orizzontali, dove ogni strato fornisce un'astrazione specifica e gestisce esclusivamente la logica di propria competenza. Questo approccio modulare limita il raggio d'azione dei singoli componenti, semplificando notevolmente lo sviluppo, il testing e la manutenzione dell'applicazione.
 
 \paragraph{Vincolo dei "Closed Layers" (Strati Chiusi)}
 Una caratteristica fondamentale di un'architettura a livelli ben progettata è l'isolamento degli strati. Affinché l'architettura sia solida, gli strati devono essere \textbf{chiusi}. Questo significa che il flusso di esecuzione segue una direttiva strettamente \textit{top-down}: una richiesta può transitare esclusivamente allo strato immediatamente sottostante. Di conseguenza, i livelli superiori ignorano del tutto i dettagli implementativi dei livelli inferiori, garantendo che le modifiche effettuate all'interno di uno strato non generino impatti a cascata sugli altri.
 
-\subsection{Applicazione del pattern}
-Il sistema \textit{Second Brain} adotta rigorosamente la \textbf{Layered Architecture} per il proprio backend. Coerentemente con i requisiti di progetto, il sistema è progettato per essere totalmente \textbf{\gls{stateless}}, delegando la persistenza dei dati interamente al client. L'architettura logica si articola nei seguenti tre livelli:
+L'implementazione standard adottata prevede la scomposizione del sistema in quattro livelli logici:
 \begin{itemize}
-    \item \textbf{Presentation Layer}: Espone gli \gls{endpoint} REST, riceve le richieste HTTP e restituisce le risposte al client.
-    \item \textbf{Business Logic}: Core funzionale del sistema, contiene le regole di dominio e orchestra le operazioni AI in modo dinamico.
-    \item \textbf{Infrastructure Layer}: Gestisce la comunicazione fisica con i provider LLM esterni e la post-elaborazione delle risposte, isolando il resto del sistema dai dettagli di rete.
+    \item \textbf{Presentation Layer}: Responsabile della gestione dell'interfaccia utente.
+    \item \textbf{Application Logic}: Riceve le informazioni dall'esterno, effettua i controlli formali, orchestra le operazioni e gestisce il flusso applicativo.
+    \item \textbf{Business Logic}: Il cuore del sistema, che implementa la logica funzionale vera e propria e le regole di dominio, isolato dal sistema di rete.
+    \item \textbf{Persistence Logic}: Lo strato dedicato alla conservazione dei dati nel tempo.
 \end{itemize}
 
-% DIAGRAMMA COMPLETO DI TUTTA L'ARCHITETTURA
+% DIAGRAMMA COMPLETO DI TUTTA L'ARCHITETTURA (o dopo)
 
-\newpage
+\subsection{Applicazione del pattern in "Second Brain"}
+Di seguito viene descritto in dettaglio come i moduli e i file del progetto realizzano i quattro livelli teorici dell'architettura.
+
+
+\subsubsection{Presentation Layer}
+Questo strato è fisicamente e logicamente disaccoppiato dal backend. È interamente delegato all'applicativo \textbf{Frontend} sviluppato in \gls{React} e \gls{TypeScript}. Non esegue elaborazioni semantiche sui testi, ma si occupa esclusivamente di presentare l'interfaccia visiva (UI), raccogliere gli input dell'utente (testo, preferenze di formattazione o di intelligenza artificiale) e inoltrare tali richieste al livello sottostante tramite chiamate \gls{api} HTTP.
+
 % ===================
-% PRESENTATION LAYER
+% APPLICATION LOGIC
 % ===================
-\subsection{Presentation layer (app.py)}
-Rappresenta il punto di ingresso del backend ed è implementato nel modulo di routing di \gls{Flask}. Ha il compito di esporre gli \gls{endpoint} REST (come \texttt{/\gls{api}/ai/generate}), ricevere le richieste HTTP in ingresso e restituire risposte JSON standardizzate. Questo strato non contiene logica di dominio né conoscenza della struttura dei \gls{prompt} o dei modelli LLM: si limita a validare i payload in ingresso e a delegare l'elaborazione agli strati sottostanti, intercettando e formattando eventuali eccezioni.
+\subsubsection{Application Logic}
+L'Application Logic rappresenta il punto di ingresso lato server. Nel sistema, questo ruolo è svolto integralmente dal modulo di routing del framework \gls{Flask} all'interno del file \texttt{app.py}, che agisce a tutti gli effetti come \textbf{Controller} delle \gls{api} HTTP (comunicanti via JSON). Questo strato non contiene logica di dominio né conoscenza della struttura dei \gls{prompt} o dei modelli LLM: si limita a validare i payload in ingresso e a delegare l'elaborazione agli strati sottostanti, intercettando e formattando eventuali eccezioni.
 
 \subsubsection{Modulo: \texttt{app.py}}
 Il modulo non adotta una struttura a classi, ma è organizzato come un insieme di funzioni e configurazioni \gls{Flask}.
 \begin{itemize}
     \item \texttt{app}: Istanza dell'applicazione \gls{Flask}, configurata con CORS abilitato per permettere la comunicazione sicura col frontend.
-    \item \texttt{generate\_ai\_text()}: Funzione principale del modulo, mappata sull'\gls{endpoint} POST \texttt{/\gls{api}/ai/generate}. Riceve il payload JSON, estrae i parametri, interroga la mappatura delle operazioni, istanzia il modello tramite get\_model(), costruisce i \gls{prompt} e restituisce la risposta elaborata. In caso di errore, cattura l'eccezione e restituisce una risposta standardizzata con il messaggio di eccezione.
+    \item \texttt{generate\_ai\_text()}: Funzione principale del modulo, mappata sull'\gls{endpoint} POST \texttt{/\gls{api}/ai/generate}. Riceve il payload JSON, estrae i parametri e agisce da \textit{Gateway}: interroga la mappatura delle operazioni, recupera l'istanza del modello e delega alla Business Logic la costruzione dei \gls{prompt}. Infine, restituisce la risposta elaborata al client. In caso di errore, cattura l'eccezione e restituisce una risposta standardizzata con il messaggio di errore.
     \item \texttt{root()}: Funzione mappata sull'\gls{endpoint} GET \texttt{/}, utilizzata come \textit{health check} per verificare che il server sia attivo. Restituisce lo stato del servizio e la lista delle operazioni supportate.
 \end{itemize}
 
-% DIAGRAMMA (?)
 
-\newpage
 % ===================
 % BUSINESS LOGIC
 % ===================
-\subsection{Business logic (ai\_strategies.py, operation\_registry.py)}
-È il nucleo funzionale del sistema, completamente isolato dal framework web e dal protocollo HTTP. Si occupa di orchestrare il flusso dei dati e definire le regole per la costruzione dei contesti da inviare all'intelligenza artificiale.
+\subsubsection{Business Logic}
+La \textbf{Business Logic} rappresenta il nucleo funzionale del sistema, completamente isolato dal framework web e dal protocollo HTTP. Questo strato si occupa di orchestrare il flusso dei dati e definire le regole di dominio per la costruzione dei contesti da inviare ai modelli di linguaggio. L'architettura di questo livello è suddivisa in moduli specializzati che utilizzano Design pattern per gestire l'elevata variabilità delle operazioni richieste.
 
 \subsubsection{Modulo: \texttt{ai\_strategies.py} (Gestione dei \gls{prompt})}
-Questo modulo contiene la logica di business per la costruzione dinamica dei \gls{prompt}. Definisce il grado di creatività (\gls{temperatura}) e le istruzioni esatte per ogni tipo di elaborazione richiesta (editoriale, traduzione, Sei Cappelli di De Bono). 
-Per gestire l'enorme variabilità di queste operazioni in modo estensibile, le classi contenute in questo file (\texttt{SimplePromptStrategy}, \texttt{TranslationStrategy}, ecc.) sono state progettate applicando il \textbf{Pattern Strategy}.
+Questo modulo contiene la logica di business necessaria per la generazione dinamica dei \gls{prompt}. Definisce i parametri operativi, come la \gls{temperatura}, e le istruzioni esatte per ogni tipo di elaborazione richiesta (editoriale, traduzione o analisi con i Sei Cappelli di De Bono). 
+
+Per gestire l'ampia gamma di operazioni in modo estensibile e modulare, le classi contenute in questo file (come \texttt{SimplePromptStrategy} e \texttt{DeBonoHatStrategy}) implementano il \textbf{Pattern Strategy}. Questo permette di isolare la logica di costruzione del testo di sistema dal resto dell'applicazione.
 
 \textit{Nota}: I dettagli delle singole classi sono approfonditi nella sezione relativa ai Design Pattern.
 
 
-\subsubsection{Modulo: \texttt{operation\_registry.py} (Mappatura Operazioni)}
-Questo modulo funge da punto di giunzione dell'intera architettura, orchestrando il legame tra le strategie di contenuto (\gls{prompt}) e le strategie di esecuzione (modelli).
+\subsubsection{Modulo: \texttt{operation\_mapper.py} (Mappatura Operazioni)}
+Questo modulo funge da punto di giunzione dell'intera architettura, orchestrando il legame tra le strategie di contenuto (\gls{prompt}) e le strategie di esecuzione (modelli LLM).
 
 \paragraph{Problema}
 L’integrazione tra le diverse strategie di prompting e i diversi LLM poneva un problema di accoppiamento rigido e di complessità gestionale. Senza un punto di coordinamento centrale, il Controller (\texttt{app.py}) avrebbe dovuto:
@@ -494,30 +502,22 @@ L’integrazione tra le diverse strategie di prompting e i diversi LLM poneva un
 Questa struttura avrebbe violato il principio di Inversione delle Dipendenze, rendendo l'aggiunta di una nuova operazione un processo rischioso e richiedendo la modifica del codice di routing principale ogni volta che viene introdotta una nuova funzionalità. Per ovviare a questo, si è optato per una mappatura centralizzata.
 
 \paragraph{OperationConfig} 
-La struttura \texttt{OperationConfig} è definita tramite il decoratore \texttt{@dataclass} ed è progettata per garantire un accoppiamento debole tra i componenti. Agisce come un contenitore che incapsula le dipendenze necessarie a ogni singola operazione.\\
+La struttura \texttt{OperationConfig} è definita tramite un \texttt{@dataclass} ed è progettata per garantire un accoppiamento debole tra i componenti. Agisce come un contenitore che incapsula le dipendenze necessarie a ogni singola operazione.\\
 \textbf{Attributi:}
 \begin{itemize}
-    \item \texttt{model\_class} (\texttt{Type[AIModelStrategy]}): è il riferimento al tipo della classe del modello da istanziare, la cui creazione effettiva è delegata al sistema di caching (\texttt{get\_model}) visto in precedenza.
+    \item \texttt{model\_class} (\texttt{Type[AIModelStrategy]}): è il riferimento al tipo della classe del modello da istanziare, la cui creazione effettiva è delegata al sistema di caching (\texttt{get\_model}).
     \item \texttt{\gls{prompt}\_strategy} (\texttt{BaseAIStrategy}): è un'istanza preconfigurata della strategia di \gls{prompt} specifica per quell'operazione.
 \end{itemize}
 
-\paragraph{OPERATION\_REGISTRY}
+
+\paragraph{OPERATION\_MAPPER}
 Il nucleo del sistema è implementato come un dizionario globale che associa identificatori testuali univoci (es. \texttt{"summary"}, \texttt{"green\_hat"}) a oggetti \texttt{OperationConfig}. Questa architettura garantisce tre proprietà fondamentali:
 \begin{itemize}
     \item \textbf{Adesione al principio Open-Closed}: Per aggiungere una nuova funzionalità è sufficiente registrare una nuova riga nel dizionario di configurazione. Il codice del controller rimane del tutto inalterato, chiuso alle modifiche ma aperto alle estensioni.
-    \item \textbf{Routing dinamico dei modelli}: Il registro permette di assegnare il modello LLM più adatto a una specifica operazione. Ad esempio, nel sistema le operazioni editoriali e di traduzione sono instradate nativamente su \gls{Llama 3.2}, mentre le logiche di pensiero laterale dei Sei Cappelli sono delegate a \gls{Gemma 3:4B}.
+    \item \textbf{Routing dinamico dei modelli}: Permette di assegnare il modello più adatto a una specifica operazione. Ad esempio, nel sistema le operazioni editoriali e di traduzione sono instradate nativamente su \gls{Llama 3.2}, mentre le logiche di pensiero laterale dei Sei Cappelli sono delegate a \gls{Gemma 3:4B}.
     \item \textbf{Robustezza e fallback}: In caso di operazione non riconosciuta o assente nel payload della richiesta, il sistema fornisce una configurazione di default in modo trasparente tramite la costante \texttt{DEFAULT\_OPERATION = "summary"}, sfruttando il metodo \texttt{.get()} del dizionario ed evitando crash dell'applicazione.
 \end{itemize}
 
-
-% DIAGRAMMA (?)
-
-\newpage
-% =====================
-% INFRASTRUCTURE LAYER
-% =====================
-\subsection{Infrastructure layer}
-Gestisce tutto ciò che riguarda il mondo esterno al dominio applicativo, isolando il resto del sistema dalle complessità della rete e dalla sintassi specifica delle singole \gls{API}.
 
 \subsubsection{Modulo: \texttt{model\_strategies.py} (Integrazione LLM)}
 Permette l'astrazione della comunicazione con i provider esterni. Le classi contenute in questo file si occupano di iniettare le chiavi \gls{API} lette dall'ambiente e di impacchettare la richiesta nel formato corretto. Anche in questo caso le classi (\texttt{ZucchettiLlamaStrategy}, \texttt{Gemma3Strategy}) implementano il \textbf{Pattern Strategy}.
@@ -525,10 +525,17 @@ Permette l'astrazione della comunicazione con i provider esterni. Le classi cont
     \item \textbf{Caching (\texttt{get\_model})}: All'interno di questo modulo è implementata una funzione di ottimizzazione che gestisce un dizionario globale privato (\texttt{\_model\_instances}). Se l'istanza di connessione a un modello non esiste, la crea; alle chiamate successive restituisce il riferimento in memoria, evitando di aprire connessioni ridondanti.
 \end{itemize}
 
+
 \subsubsection{Modulo: \texttt{text\_cleaning.py} (Servizi di supporto)}
-Sottomodulo funzionale contenente algoritmi di post-processing basati su espressioni regolari (regex). Il suo unico scopo è "pulire" le risposte grezze dei modelli da metatesto, tag \gls{markdown} e preamboli discorsivi indesiderati prima che questi vengano passati ai livelli superiori.
+Sottomodulo funzionale che utilizza espressioni regolari (regex) per validare e "ripulire" l'output testuale grezzo generato dagli LLM. Il suo scopo è garantire che il testo restituito al client sia privo di metatesto, preamboli discorsivi o tag \gls{markdown} residui, assicurando la coerenza del dominio.
 
 % GRAFICO (?)
+
+% ===================
+% PERSISTENCE LOGIC
+% ===================
+\subsubsection{Persistence Logic}
+Rappresenta lo strato inferiore deputato alla conservazione dei dati. In stretta conformità con il vincolo architetturale \textbf{RO-V-5} e in coerenza con la containerizzazione \gls{Docker}, l'architettura del backend è stata progettata per essere totalmente \textbf{\gls{stateless}} (priva di stato). Non è presente alcun database relazionale lato server: la Persistence Logic per salvare i documenti dell'editor e la cronologia delle generazioni è demandata interamente allo storage locale del client, sfruttando le \gls{api} del \textbf{LocalStorage}. Questa architettura garantisce abbattimento del carico server, scalabilità orizzontale e \textit{Privacy by Design}.
 
 
 \newpage
@@ -1042,7 +1049,7 @@ executeOperation(payload: AiRequestPayload, signal?: AbortSignal)
     : Promise<string>
 \end{verbatim}
 
-Il tipo \texttt{AiOperationId} enumerato in questo modulo costituisce il contratto tipizzato tra frontend e backend: ogni identificatore (es. \texttt{"summary"}, \texttt{"white\_hat"}) corrisponde a una chiave dell'\texttt{OPERATION\_REGISTRY} lato server, garantendo che il frontend non possa inviare comandi non riconosciuti.
+Il tipo \texttt{AiOperationId} enumerato in questo modulo costituisce il contratto tipizzato tra frontend e backend: ogni identificatore (es. \texttt{"summary"}, \texttt{"white\_hat"}) corrisponde a una chiave dell'\texttt{OPERATION\_MAPPER} lato server, garantendo che il frontend non possa inviare comandi non riconosciuti.
 
 \paragraph{Architettura a cascata e vantaggi}
 I due livelli formano una \textbf{Facade a cascata} con responsabilità rigorosamente separate:
