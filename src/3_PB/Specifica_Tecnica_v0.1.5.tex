@@ -102,11 +102,13 @@
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{\gls{Verifica}} \\
         \hline
-        0.1.5 & 23/04/2026 & Giulia Barzon & Rivista sezione layered architecture & \\
+        0.1.6 & 23/04/2026 & Elisa Marchioro & Sistemata formattazione, aggiunta sezione API e aggiunta diagrammi UML backend & \\
         \hline
-        0.1.4 & 22/04/2026 & Giulia Barzon & Rivista sezione backend e strategy & \\
+        0.1.5 & 23/04/2026 & Giulia Barzon & Rivista sezione layered architecture & Elisa Marchioro\\
         \hline
-        0.1.3 & 22/04/2026 & Giulia Barzon & Correzione e diagramma sezione Facade, rivisto MVVM & \\
+        0.1.4 & 22/04/2026 & Giulia Barzon & Rivista sezione backend e strategy & Elisa Marchioro\\
+        \hline
+        0.1.3 & 22/04/2026 & Giulia Barzon & Correzione e diagramma sezione Facade, rivisto MVVM & Elisa Marchioro\\
         \hline
         0.1.2 & 22/04/2026 & Elisa Marchioro & Sistemata sezione architettura del backend & Giulia Barzon \\
         \hline
@@ -433,6 +435,65 @@ Il file \texttt{\gls{docker}-compose.yml} coordina l'avvio sincronizzato dei ser
 
 \newpage
 
+\section{API}
+Il sistema adotta un’architettura basata su API REST (Representational State Transfer), uno stile architetturale per servizi web che consente comunicazione standardizzata, scalabile e disaccoppiata tra client e server. REST si basa sull’utilizzo del protocollo HTTP e sull’identificazione delle risorse tramite URI, promuovendo semplicità, interoperabilità e manutenibilità.
+
+\subsection{Principi e requisiti delle API REST}
+Per essere conforme allo stile REST, il sistema rispetta i seguenti principi:
+\begin{itemize}
+\item Architettura client-server: separazione netta tra frontend e backend;
+\item Statelessness: ogni richiesta contiene tutte le informazioni necessarie per essere elaborata; il server non mantiene stato tra richieste successive.
+\item Interfaccia uniforme: utilizzo coerente di:
+\begin{itemize}
+\item URI per identificare le risorse;
+\item Metodi HTTP standard:
+GET → recupero dati;
+POST → creazione/elaborazione;
+PUT/PATCH → aggiornamento;
+DELETE → rimozione.
+\end{itemize}
+\item Formato dei dati standardizzato: scambio dati in formato JSON, facilmente leggibile e interoperabile tra sistemi eterogenei.
+\item Separazione delle responsabilità (Separation of Concerns): il client gestisce la presentazione, il server gestisce logica, orchestrazione e integrazione con servizi esterni.
+\item Scalabilità: grazie alla natura stateless, il backend può essere replicato e distribuito senza gestione di sessioni condivise.
+\end{itemize}
+
+\subsection{Comunicazione client–server (Axios)}
+Nel frontend, la comunicazione con le API REST avviene tramite la libreria Axios, un HTTP client basato su promise che semplifica l’invio di richieste asincrone e la gestione delle risposte. 
+Nel contesto dell’applicazione, Axios è utilizzato nel frontend come client HTTP centralizzato per invocare le API REST esposte dal backend. In particolare, gestisce l’interazione con l’endpoint di generazione AI (POST /api/ai/generate), incapsulando tutta la logica di comunicazione.
+
+Nel dettaglio, Axios svolge le seguenti funzioni:
+\begin{itemize}
+\item Invio delle richieste al backend:
+Costruisce e invia la richiesta POST verso l’endpoint /api/ai/generate contenente:
+\begin{itemize}
+\item il testo inserito dall’utente (text);
+\item l’operazione richiesta (operation);
+\end{itemize}
+
+\item Gestione asincrona della comunicazione: permette al frontend di utilizzare async/await per gestire la chiamata senza bloccare l’interfaccia utente, migliorando la user experience.
+\item Serializzazione automatica dei dati: converte automaticamente gli oggetti JavaScript in JSON per il body della richiesta, senza necessità di gestione manuale.
+\item Gestione della risposta: riceve il JSON dal backend (es. generated\_text) e lo rende immediatamente disponibile al frontend per l’aggiornamento della UI.
+\item Gestione degli errori: centralizza la gestione di errori HTTP o di rete (es. 400, 500), permettendo di definire comportamenti uniformi (messaggi utente, retry, logging).
+\item Configurazione condivisa: consente di definire in un unico punto:
+\begin{itemize}
+\item baseURL del backend;
+\item eventuali headers;
+\item timeout e policy di retry.
+\end{itemize}
+\end{itemize}
+
+\subsection{Flusso di elaborazione}
+\begin{itemize}
+\item Il frontend invia una richiesta HTTP POST tramite Axios.
+\item Il controller backend riceve la richiesta e valida i dati.
+\item Viene selezionata la strategia di elaborazione tramite un registry interno.
+\item Il sistema costruisce i prompt per il modello AI.
+\item Il backend invoca il modello per generare il contenuto.
+\item La risposta viene pulita e normalizzata.
+\item Il risultato viene restituito al client in formato JSON e gestito dal frontend.
+\end{itemize}
+
+
 % architettura di sistema (generale)
 \section{Architettura del sistema}
 \subsection{Layered Architecture}
@@ -502,11 +563,13 @@ L’integrazione tra le diverse strategie di prompting e i diversi LLM poneva un
 Questa struttura avrebbe violato il principio di Inversione delle Dipendenze, rendendo l'aggiunta di una nuova operazione un processo rischioso e richiedendo la modifica del codice di routing principale ogni volta che viene introdotta una nuova funzionalità. Per ovviare a questo, si è optato per una mappatura centralizzata.
 
 \paragraph{OperationConfig} 
-La struttura \texttt{OperationConfig} è definita tramite un \texttt{@dataclass} ed è progettata per garantire un accoppiamento debole tra i componenti. Agisce come un contenitore che incapsula le dipendenze necessarie a ogni singola operazione.\\
-\textbf{Attributi:}
+La struttura \texttt{OperationConfig} è definita tramite un \texttt{@dataclass} ed è progettata per garantire un accoppiamento debole tra i componenti. Agisce come un contenitore che incapsula le dipendenze necessarie a ogni singola operazione.
+\begin{itemize}
+    \item\textbf{Attributi:}
 \begin{itemize}
     \item \texttt{model\_class} (\texttt{Type[AIModelStrategy]}): è il riferimento al tipo della classe del modello da istanziare, la cui creazione effettiva è delegata al sistema di caching (\texttt{get\_model}).
     \item \texttt{\gls{prompt}\_strategy} (\texttt{BaseAIStrategy}): è un'istanza preconfigurata della strategia di \gls{prompt} specifica per quell'operazione.
+\end{itemize}
 \end{itemize}
 
 
@@ -544,12 +607,20 @@ Rappresenta lo strato inferiore deputato alla conservazione dei dati. In stretta
 \section{Backend: design pattern}
 La progettazione del backend di \textit{Second Brain} si basa sull'applicazione di design pattern comportamentali e creazionali. L'obiettivo primario di questa scelta architetturale è garantire l'estensibilità del sistema: l'aggiunta di nuove operazioni AI o l'integrazione di nuovi modelli LLM deve poter avvenire senza alterare il codice di routing esistente, nel pieno rispetto dei principi SOLID (in particolare l'\textit{Open-Closed Principle} e il \textit{Single Responsibility Principle}).
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../UMLimg/backend.jpg}
+    \caption{UML Backend}
+    \label{fig:uml_backend}
+\end{figure}
+
+
 \subsection{Strategy pattern}
 Lo \textbf{Strategy} è un design pattern comportamentale il cui scopo principale è definire una famiglia di algoritmi, incapsularli in classi separate e renderli interscambiabili tra loro. Questo approccio permette agli algoritmi di variare in modo indipendente rispetto alle classi che li utilizzano, rendendo il codice modulare ed estensibile.
 
 In pratica, questo pattern si rivela fondamentale quando esistono diverse varianti di una stessa operazione logica e si vuole permettere al sistema di cambiare comportamento a \textit{runtime}, mantenendo inalterata la struttura generale dell'interfaccia.
 
-\paragraph{Struttura e vantaggi}
+\paragraph{Struttura}
 Strutturalmente, il pattern si compone di tre elementi chiave:
 \begin{itemize}
     \item \textbf{Strategy (interfaccia)}: Un contratto generico comune supportato da tutti gli algoritmi della famiglia.
@@ -557,6 +628,10 @@ Strutturalmente, il pattern si compone di tre elementi chiave:
     \item \textbf{Context}: L'elemento che necessita dell'algoritmo. Esso mantiene un riferimento all'interfaccia, ignorando i dettagli implementativi della \textit{ConcreteStrategy} con cui è configurato.
 \end{itemize}
 
+\paragraph{Problema}
+L’architettura iniziale del backend presentava un'eccessiva complessità logica dovuta alla gestione di molteplici modelli LLM e diverse logiche di prompting. La presenza di numerosi blocchi condizionali (if/else o switch) all'interno dell'entry point (\texttt{app.py}) rendeva il codice rigido, difficile da scalare e violava il principio di singola responsabilità (Single Responsibility Principle).
+
+\paragraph{Vantaggi}
 L'adozione di questo pattern porta tre importanti vantaggi:
 \begin{enumerate}
     \item \textbf{Eliminazione degli statement condizionali}: Previene la proliferazione di classi client complesse e di lunghi blocchi \texttt{if/else} o \texttt{switch} per la selezione del comportamento.
@@ -564,73 +639,99 @@ L'adozione di questo pattern porta tre importanti vantaggi:
     \item \textbf{Adesione ai principi SOLID (Open-Closed)}: Permette di aggiungere nuovi algoritmi semplicemente creando una nuova \textit{ConcreteStrategy}, senza modificare il \textit{Context} preesistente.
 \end{enumerate}
 
-\subsubsection{Problema}
-L’architettura iniziale del backend presentava un'eccessiva complessità logica dovuta alla gestione di molteplici modelli LLM e diverse logiche di prompting. La presenza di numerosi blocchi condizionali (if/else o switch) all'interno dell'entry point (\texttt{app.py}) rendeva il codice rigido, difficile da scalare e violava il principio di singola responsabilità (Single Responsibility Principle).
-
 \subsubsection{Applicazione 1: \gls{prompt} strategies (ai\_strategies.py)}
 Questa prima applicazione del pattern gestisce la trasformazione del testo grezzo fornito dall'utente in un input strutturato e ottimizzato per l'IA.
 
 \paragraph{BaseAIStrategy}
 Definisce il contratto astratto comune per tutte le strategie di generazione dei \gls{prompt}.
-\\ \textbf{Proprietà e metodi:}
+\begin{itemize}
+    \item\textbf{Attributi:}
 \begin{itemize}
     \item \texttt{temperature}: Definisce il livello di creatività dell'output. Dichiara un valore di default pari a 0.5, sovrascrivibile nelle classi figlie.
+\end{itemize}
+    \item \textbf{Metodi:}
+\begin{itemize}
     \item \texttt{\_validate()}: Metodo concreto ereditabile che \gls{verifica} la solidità dell'input (es. assicura che il testo non sia \texttt{None}, sollevando un \texttt{TypeError} in caso contrario).
     \item \texttt{build(text: str)}: Metodo astratto che impone a ogni sottoclasse di restituire una tupla contenente due stringhe: il \gls{System prompt} (il ruolo dell'IA) e lo \gls{User prompt} (il task specifico).
+\end{itemize}
 \end{itemize}
 
 \paragraph{SimplePromptStrategy}
 Utilizzata per le operazioni editoriali standard (riassunto, correzione grammaticale, riscrittura, \gls{distant writing}). Mantiene la \gls{temperatura} di default a 0.5 e costruisce \gls{prompt} diretti impostando istruzioni ferree per evitare preamboli discorsivi.
-\\ \textbf{Attributi e Metodi:}
+\begin{itemize}
+    \item\textbf{Attributi:}
 \begin{itemize}
     \item \texttt{role} (str): Definisce l'identità dell'assistente (es. "Sei un correttore di bozze").
     \item \texttt{task} (str): Definisce l'istruzione specifica da eseguire.
+\end{itemize}
+    \item\textbf{Metodi:}
+\begin{itemize}
     \item \texttt{build(text)}: Combina \texttt{role} e \texttt{task} con il testo in ingresso per formare la tupla richiesta.
+\end{itemize}
 \end{itemize}
 
 \paragraph{TranslationStrategy} 
-Sottoclasse concreta specializzata nella gestione delle attività di traduzione multilingua. Questa classe ottimizza il \gls{prompt} per garantire che l'LLM operi esclusivamente come traduttore professionale, mantenendo la fedeltà linguistica. La \gls{temperatura} viene sovrascritta a 0.3 per favorire la massima fedeltà al testo originale.\\
-\textbf{Attributi:}
+Sottoclasse concreta specializzata nella gestione delle attività di traduzione multilingua. Questa classe ottimizza il \gls{prompt} per garantire che l'LLM operi esclusivamente come traduttore professionale, mantenendo la fedeltà linguistica. La \gls{temperatura} viene sovrascritta a 0.3 per favorire la massima fedeltà al testo originale.
+\begin{itemize}
+    \item \textbf{Attributi:}
 \begin{itemize}
     \item language(str): Stringa che definisce la lingua di destinazione (es. "inglese", "cinese mandarino"). Questo attributo viene utilizzato per parametrizzare dinamicamente la richiesta al modello.
 \end{itemize}
-\textbf{Metodi:}
+\item \textbf{Metodi:}
 \begin{itemize}
     \item build(text): Implementa la logica di costruzione del \gls{prompt} impostando un \gls{System \gls{Prompt}} rigido che definisce il ruolo (traduttore professionista) e i vincoli di output (nessuna frase introduttiva). Lo \gls{User \gls{Prompt}} include l'istruzione di traduzione specifica verso la lingua memorizzata nell'attributo language.
 \end{itemize}
+\end{itemize}
 
 \paragraph{DeBonoHatStrategy}
-Sottoclasse concreta progettata per implementare il metodo dei "Sei Cappelli per Pensare" di Edward de Bono. Questa strategia guida l'LLM verso un'analisi laterale e strutturata, forzando il modello a osservare il testo da una singola prospettiva cognitiva alla volta (emotiva, logica, creativa, ecc.).\\
-\textbf{Attributi:}
+Sottoclasse concreta progettata per implementare il metodo dei "Sei Cappelli per Pensare" di Edward de Bono. Questa strategia guida l'LLM verso un'analisi laterale e strutturata, forzando il modello a osservare il testo da una singola prospettiva cognitiva alla volta (emotiva, logica, creativa, ecc.).
+\begin{itemize}
+    \item \textbf{Attributi:}
 \begin{itemize}
     \item hat\_name(str): Memorizza il nome o il colore del cappello. Serve a definire l'identità dell'IA.
     \item focus(str): Memorizza l'area di analisi specifica. Serve a guidare il focus del modello durante la generazione.
 \end{itemize}
 
-\textbf{Metodi:}
+\item \textbf{Metodi:}
 \begin{itemize}
     \item build(self, text): Utilizza le f-string per iniettare i valori di hat\_name e focus all'interno dei \gls{prompt}.
 \end{itemize}
+\end{itemize}
 
 % DIAGRAMMA DELLE CLASSI
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../UMLimg/ai_strategy.jpg}
+    \caption{UML Strategy AI}
+    \label{fig:uml_ai_strategy}
+\end{figure}
+
+
 
 \subsubsection{Applicazione 2: model strategies (model\_strategies.py)}
 Questa seconda applicazione del pattern isola completamente i dettagli tecnici (\gls{Endpoint}, \gls{API} Keys, configurazione del client) necessari per comunicare con i diversi provider di Intelligenza Artificiale.
 
 \paragraph{AIModelStrategy} 
 Interfaccia comune per tutti i modelli linguistici IA.
-\\ \textbf{Metodi:}
+\begin{itemize}
+    \item \textbf{Metodi:}
 \begin{itemize}
     \item \texttt{generate(self, system\_prompt, user\_prompt, temperature)}: Definisce il contratto per l'invocazione del modello, imponendo alle classi concrete di inviare i \gls{prompt} al fornitore e restituire la risposta come stringa pulita.
+\end{itemize}
 \end{itemize}
 
 \paragraph{Implementazioni concrete (ZucchettiLlamaStrategy e Gemma3Strategy)}
 Il sistema prevede due implementazioni concrete che espongono in modo polimorfico i modelli \gls{Llama 3.2} (per operazioni standard e traduzioni) e \gls{Gemma 3} (per il pensiero laterale dei Sei Cappelli).
-\\ \textbf{Attributi e Metodi:}
+\begin{itemize}
+    \item \textbf{Attributi:}
 \begin{itemize}
     \item \texttt{client}: Istanza del client OpenAI-compatibile, inizializzata con \gls{API} key e base URL letti dalle variabili d'ambiente.
+\end{itemize}
+    \item \textbf{Metodi:}
+\begin{itemize}
     \item \texttt{model} (str): Stringa identificativa del modello instradato (es. \texttt{"llama3.2:3b"} o \texttt{"gemma3:4b"}).
     \item \texttt{generate(...)}: Implementa la logica di chiamata \gls{API}, inviando i messaggi nel formato richiesto dal protocollo \textit{ChatCompletion}. Estrae e restituisce esclusivamente il contenuto testuale, isolandolo dai metadati di rete (es. token consumati).
+\end{itemize}
 \end{itemize}
 
 \subsubsection{Caching (get\_model)}
@@ -639,6 +740,12 @@ Quando il controller richiede una strategia di modello, la funzione \gls{verific
 Questa soluzione architetturale ottimizza l'uso delle risorse prevenendo l'apertura di connessioni multiple non necessarie ai client \gls{API}.
 
 % DIAGRAMMA DELLE CLASSI
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../UMLimg/model_strategy.jpg}
+    \caption{UML Strategy ModelAI}
+    \label{fig:uml_model_strategy}
+\end{figure}
 
 \newpage
 
@@ -805,7 +912,6 @@ Modale interattiva per la configurazione dell'esportazione del documento. Mantie
 \subsubsection{HistoryList}
 Componente per il rendering aggregato dello storico delle generazioni degli LLM. Gestisce internamente l'alternanza visiva tra stati di transizione (caricamento, errore) e lo stato di successo, delegando la visualizzazione del singolo nodo a \texttt{HistoryCard}.
 
-\subsection{HistoryList}
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{../UMLimg/HistoryList.jpg}
@@ -826,7 +932,7 @@ Componente per il rendering aggregato dello storico delle generazioni degli LLM.
 \end{itemize}
 
 
-\subsection{HistoryCard}
+\subsubsection{HistoryCard}
 Componente granulare che rappresenta la singola scheda di interazione AI. Incapsula logiche puramente visive tramite \texttt{useState}, quali l'espansione/compressione di testi lunghi e il feedback del pulsante di copia negli appunti (\textit"Copiato!").
 
 \begin{figure}[H]
