@@ -535,7 +535,7 @@ Sottomodulo funzionale che utilizza espressioni regolari (regex) per validare e 
 % PERSISTENCE LOGIC
 % ===================
 \subsubsection{Persistence Logic}
-Rappresenta lo strato inferiore deputato alla conservazione dei dati. In stretta conformità con il vincolo architetturale \textbf{RO-V-5} e in coerenza con la containerizzazione \gls{Docker}, l'architettura del backend è stata progettata per essere totalmente \textbf{\gls{stateless}} (priva di stato). Non è presente alcun database relazionale lato server: la Persistence Logic per salvare i documenti dell'editor e la cronologia delle generazioni è demandata interamente allo storage locale del client, sfruttando le \gls{api} del \textbf{LocalStorage}. Questa architettura garantisce abbattimento del carico server, scalabilità orizzontale e \textit{Privacy by Design}.
+Rappresenta lo strato inferiore deputato alla conservazione dei dati. In stretta conformità con il vincolo architetturale \textbf{RO-V-5} e in coerenza con la containerizzazione \gls{Docker}, l'architettura del backend è stata progettata per essere totalmente \textbf{\gls{stateless}} (priva di stato). Non è presente alcun \gls{database} relazionale lato server: la Persistence Logic per salvare i documenti dell'editor e la cronologia delle generazioni è demandata interamente allo storage locale del client, sfruttando le \gls{api} del \textbf{LocalStorage}. Questa architettura garantisce abbattimento del carico server, scalabilità orizzontale e \textit{Privacy by Design}.
 
 
 \newpage
