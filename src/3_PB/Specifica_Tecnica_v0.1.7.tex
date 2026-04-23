@@ -415,7 +415,7 @@ Il container del backend agisce da Server ed è ottimizzato per l'esecuzione del
 Il container del frontend agisce da nodo Client. Per la sua realizzazione è stata adottata una strategia di \textbf{Multi-stage Build}, che separa l'ambiente di compilazione da quello di esecuzione per minimizzare la dimensione finale dell'immagine.
 \begin{itemize}
     \item \textbf{Stage 1 (Build)}: Utilizza \texttt{node:20-alpine} per installare le dipendenze ed eseguire la build di produzione (\texttt{npm run build}) tramite \gls{Vite}. L'uso di Alpine Linux garantisce velocità nel processo di CI/CD.
-    \item \textbf{Stage 2 (Production)}: I file statici generati dalla build (\texttt{dist}) vengono copiati in un'immagine \texttt{\gls{nginx}:alpine}. \gls{Nginx} funge da web server statico ad alte prestazioni. Un aspetto cruciale di questo livello è l'iniezione di un file di configurazione personalizzato (\texttt{nginx.conf}), necessario per indirizzare tutte le richieste al file \texttt{index.html} e gestire correttamente il routing \textit{client-side} della Single Page Application (SPA).
+    \item \textbf{Stage 2 (Production)}: I file statici generati dalla build (\texttt{dist}) vengono copiati in un'immagine \texttt{\gls{nginx}:alpine}. \gls{Nginx} funge da web server statico ad alte prestazioni. Un aspetto cruciale di questo livello è l'iniezione di un file di configurazione personalizzato (\texttt{\gls{nginx}.conf}), necessario per indirizzare tutte le richieste al file \texttt{index.html} e gestire correttamente il routing \textit{client-side} della Single Page Application (SPA).
 \end{itemize}
 
 \subsection{Orchestrazione: \gls{Docker Compose}}
@@ -1076,7 +1076,7 @@ Interfaccia la View con lo store dedicato (\texttt{useHistoryStore}), estraendo 
 
 
 \subsubsection{useAiOperations}
-Hook orchestratore dedicato alla gestione delle interazioni con l'Intelligenza Artificiale. Funge da regista tra la View, i servizi di rete e lo stato globale del widget, isolando la logica di invocazione della Facade \texttt{aiCall} e gestendo il ciclo di vita delle richieste asincrone tramite un \texttt{AbortController} mantenuto in un \texttt{React.RefObject} (\texttt{controllerRef}). È l'unico punto del sistema responsabile della creazione delle istanze delle classi di stato, nelle quali inietta le callback operative necessarie, e dell'invocazione di \texttt{changeState} sullo store \texttt{aiWidgetStore}.
+Hook \gls{orchestratore} dedicato alla gestione delle interazioni con l'Intelligenza Artificiale. Funge da regista tra la View, i servizi di rete e lo stato globale del widget, isolando la logica di invocazione della Facade \texttt{aiCall} e gestendo il ciclo di vita delle richieste asincrone tramite un \texttt{AbortController} mantenuto in un \texttt{\gls{React}.RefObject} (\texttt{controllerRef}). È l'unico punto del sistema responsabile della creazione delle istanze delle classi di stato, nelle quali inietta le callback operative necessarie, e dell'invocazione di \texttt{changeState} sullo store \texttt{aiWidgetStore}.
 
 \paragraph{Props (dipendenze)}
 L'hook riceve in ingresso un oggetto di configurazione per interagire con l'editor in modo disaccoppiato:
@@ -1099,14 +1099,14 @@ Per le operazioni che non richiedono input utente (riassunto, correzione, traduz
 
 In caso di errore non derivante da cancellazione esplicita, il sistema transita in \texttt{ErrorState}; in caso di cancellazione (rilevata tramite \texttt{axios.isCancel}), la transizione viene soppressa e il widget rimane nell'ultimo stato coerente.
 
-\paragraph{Flusso Distant Writing}
-L'operazione \textit{Distant Writing} richiede un prompt esplicito da parte dell'utente. Il suo flusso è gestito dalla funzione interna \texttt{handleDistantWriting}, che estende il percorso standard con uno stato iniziale di input e la possibilità di rigenerazione:
+\paragraph{Flusso \gls{Distant Writing}}
+L'operazione \textit{\gls{Distant Writing}} richiede un \gls{prompt} esplicito da parte dell'utente. Il suo flusso è gestito dalla funzione interna \texttt{handleDistantWriting}, che estende il percorso standard con uno stato iniziale di input e la possibilità di rigenerazione:
 
 \begin{equation*}
 \texttt{Idle} \to \texttt{Input} \to \texttt{Loading} \to \texttt{Done} \xrightarrow{\text{rigenera}} \texttt{Input}
 \end{equation*}
 
-La callback \texttt{onConfirm} è definita come \textit{closure} all'interno di \texttt{handleDistantWriting}: cattura il riferimento ad \texttt{onConfirm} stessa per permettere la rigenerazione con il medesimo prompt, passandola come quarto argomento al costruttore di \texttt{DoneState}.
+La callback \texttt{onConfirm} è definita come \textit{closure} all'interno di \texttt{handleDistantWriting}: cattura il riferimento ad \texttt{onConfirm} stessa per permettere la rigenerazione con il medesimo \gls{prompt}, passandola come quarto argomento al costruttore di \texttt{DoneState}.
 
 \paragraph{Funzioni esposte}
 \begin{itemize}
@@ -1128,7 +1128,7 @@ L'hook adotta \texttt{useRef} per i campi \texttt{dragging} e \texttt{offset}, a
 
 \paragraph{Funzioni esposte}
 \begin{itemize}
-    \item \texttt{onMouseDown: (e: React.MouseEvent) => void} - \textit{handler} da collegare all'area sensibile al trascinamento (es. l'header di \texttt{AiWidget}). Al momento del click calcola l'offset tra la posizione del cursore e l'origine del componente, poi registra i \textit{listener} a livello di \texttt{window} per tracciare il movimento e rilevare il rilascio.
+    \item \texttt{onMouseDown: (e: \gls{React}.MouseEvent) => void} - \textit{handler} da collegare all'area sensibile al trascinamento (es. l'header di \texttt{AiWidget}). Al momento del click calcola l'offset tra la posizione del cursore e l'origine del componente, poi registra i \textit{listener} a livello di \texttt{window} per tracciare il movimento e rilevare il rilascio.
 \end{itemize}
 
 
@@ -1142,7 +1142,7 @@ Sono presenti due store principali:
 \begin{itemize}
     \item \texttt{useEditorMetaStore}: Gestisce i metadati dell'editor attivo, ovvero il nome del file (\texttt{fileName}), lo stato di modifica non salvata (\texttt{isDirty}) e il timestamp dell'ultimo salvataggio (\texttt{lastSaved}). Tramite il middleware \texttt{persist} di \gls{Zustand}, sincronizza automaticamente questo stato nel \texttt{localStorage} del browser, garantendo che i dati sopravvivano al riavvio della pagina.
     \item \texttt{useHistoryStore}: Gestisce l'elenco delle generazioni AI prodotte. Ogni voce è modellata dall'interfaccia \texttt{HistoryEntry}. Anche questo store utilizza il \texttt{localStorage} per rendere lo storico persistente tra le sessioni.
-    \item \texttt{aiWidgetStore}: Gestisce lo stato transitorio e non persistente dell'interfaccia dedicata all'intelligenza artificiale. A differenza degli altri store del sistema, questo modulo non utilizza il middleware di persistenza, garantendo che il widget ritorni sempre alla condizione iniziale di riposo (\texttt{IdleState}) ad ogni ricaricamento della pagina. Al suo interno memorizza l'istanza dell'oggetto di stato corrente (\texttt{widgetState}), permettendo il rendering polimorfo del widget, e mantiene il testo temporaneo inserito dall'utente per le richieste personalizzate (\texttt{prompt}).
+    \item \texttt{aiWidgetStore}: Gestisce lo stato transitorio e non persistente dell'interfaccia dedicata all'intelligenza artificiale. A differenza degli altri store del sistema, questo modulo non utilizza il middleware di persistenza, garantendo che il widget ritorni sempre alla condizione iniziale di riposo (\texttt{IdleState}) ad ogni ricaricamento della pagina. Al suo interno memorizza l'istanza dell'oggetto di stato corrente (\texttt{widgetState}), permettendo il rendering polimorfo del widget, e mantiene il testo temporaneo inserito dall'utente per le richieste personalizzate (\texttt{\gls{prompt}}).
 \end{itemize}
 
 \textit{Nota}: Il contenuto testuale effettivo dell'editor, per ragioni di performance legate alla natura della libreria \gls{EasyMDE}, non transita attraverso lo store globale, ma viene salvato e sincronizzato direttamente in una chiave dedicata del \texttt{localStorage} gestita dal ViewModel dell'editor.
@@ -1279,7 +1279,7 @@ Sono definite cinque classi concrete, ciascuna corrispondente a una fase del cic
     \item \textbf{\texttt{IdleState}}: Stato iniziale e di riposo; l'\texttt{AiWidget} non viene renderizzato quando lo stato corrente è un'istanza di questa classe.
     \item \textbf{\texttt{InputState}}: Mostra un'area di testo per l'inserimento del \gls{prompt} da parte dell'utente. Riceve nel costruttore due callback: \texttt{onConfirm} (invocata all'invio) e \texttt{onCancel} (per l'annullamento).
     \item \textbf{\texttt{LoadingState}}: Visualizza un indicatore di caricamento. Accetta opzionalmente una callback \texttt{onCancel} che, se fornita, abilita il pulsante di interruzione della richiesta.
-    \item \textbf{\texttt{DoneState}}: Mostra il testo generato e le azioni disponibili: \textit{Inserisci} (inserisce il risultato nell'editor e torna a \texttt{IdleState}), \textit{Scarta} (ritorna a \texttt{IdleState}) e, opzionalmente, \textit{Rigenera} (riporta a \texttt{InputState} con il \gls{prompt} precedente, disponibile solo per l'operazione \textit{Distant Writing}).
+    \item \textbf{\texttt{DoneState}}: Mostra il testo generato e le azioni disponibili: \textit{Inserisci} (inserisce il risultato nell'editor e torna a \texttt{IdleState}), \textit{Scarta} (ritorna a \texttt{IdleState}) e, opzionalmente, \textit{Rigenera} (riporta a \texttt{InputState} con il \gls{prompt} precedente, disponibile solo per l'operazione \textit{\gls{Distant Writing}}).
     \item \textbf{\texttt{ErrorState}}: Visualizza un messaggio d'errore e un pulsante per tornare a \texttt{IdleState}.
 \end{itemize}
 
@@ -1305,7 +1305,7 @@ Il flusso logico principale gestito dal ViewModel è il seguente:
 \texttt{Idle} \xrightarrow{\text{avvio operazione}} \texttt{Loading} \xrightarrow{\text{successo}} \texttt{Done} \xrightarrow{\text{inserisci / scarta}} \texttt{Idle}
 \end{equation*}
 
-Nel caso dell'operazione \textit{Distant Writing}, che richiede un \gls{prompt} esplicito dell'utente, il flusso viene esteso:
+Nel caso dell'operazione \textit{\gls{Distant Writing}}, che richiede un \gls{prompt} esplicito dell'utente, il flusso viene esteso:
 \begin{equation*}
 \texttt{Idle} \to \texttt{Input} \to \texttt{Loading} \to \texttt{Done} \xrightarrow{\text{rigenera}} \texttt{Input}
 \end{equation*}
