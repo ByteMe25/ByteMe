@@ -12,6 +12,7 @@
 \usepackage{fancyhdr}
 \usepackage{lastpage}
 \usepackage{longtable}
+\usepackage{amsmath}
 
 \usepackage{array}
 \newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
@@ -70,7 +71,7 @@
         \centering
         \begin{tabular}{|l|p{5cm}|}
             \hline
-            \textbf{Versione} & 0.1.5 \\
+            \textbf{Versione} & 0.1.7 \\
             \hline
             \textbf{Stato} & In corso \\
             \hline
@@ -101,6 +102,8 @@
     \begin{tabular}{|c|c|c|>{\raggedright\arraybackslash}p{0.35\textwidth}|p{0.18\textwidth}|}
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{\gls{Verifica}} \\
+        \hline
+        0.1.7 & 23/04/2026 & Giulia Barzon & Aggiunte componenti AI, migliorata sezione 3 & \\
         \hline
         0.1.6 & 23/04/2026 & Elisa Marchioro & Sistemata formattazione, aggiunta sezione \gls{API} e aggiunta diagrammi UML backend & \\
         \hline
@@ -394,34 +397,34 @@ I termini che vengono considerati meritevoli di approfondimenti sono indicati co
 
 \newpage
 
-\section{Infrastruttura e deployment}
-Il sistema \textit{Second Brain} utilizza la tecnologia di containerizzazione \textbf{\gls{Docker}} per garantire l'isolamento dei componenti, la portabilità tra diversi ambienti di sviluppo e produzione e la gestione semplificata delle dipendenze.
+\section{Architettura di deployment}
+Il sistema \textit{Second Brain} si basa su un'architettura di deployment di tipo \textbf{Client-Server}, distribuita fisicamente su nodi (container) logici distinti. Per l'implementazione pratica, il progetto utilizza la tecnologia di containerizzazione \textbf{\gls{Docker}} per garantire l'isolamento dei componenti, la portabilità tra diversi ambienti di sviluppo o produzione e la gestione semplificata delle dipendenze.
 
 \subsection{Strategia di containerizzazione}
-L'architettura è suddivisa in due micro-servizi orchestrati tramite \texttt{\gls{docker}-compose}, che permette di definire reti virtuali interne e volumi per la persistenza o il \textit{hot-reloading} durante lo sviluppo.
+L'applicativo è suddiviso in due servizi principali (il nodo Client e il nodo Server) orchestrati tramite \texttt{\gls{docker}-compose}. Questo strumento permette di definire reti virtuali interne, gestire le variabili d'ambiente in modo centralizzato e montare volumi per l'\textit{hot-reloading} durante le fasi di sviluppo.
 
 \subsection{Backend (\gls{Flask})}
-Il container del backend è ottimizzato per l'esecuzione di script Python in un ambiente leggero e sicuro.
+Il container del backend agisce da Server ed è ottimizzato per l'esecuzione del codice Python in un ambiente leggero e sicuro.
 \begin{itemize}
-    \item \textbf{Immagine di base}: \texttt{python:3.12-slim}. La scelta della variante \textit{slim} riduce l'ingombro dell'immagine, contenendo solo le librerie essenziali per il runtime Python 3.12.
-    \item \textbf{Configurazione}: La directory di lavoro è impostata su \texttt{/app}. Il sistema installa le dipendenze tramite \texttt{pip} senza utilizzare la cache per mantenere l'immagine snella.
-    \item \textbf{Networking}: Il container espone la porta \texttt{8000}.
-    \item \textbf{Variabili d'ambiente}: Il backend riceve dinamicamente tramite il file \texttt{.env} le chiavi necessarie per il funzionamento degli LLM.
+    \item \textbf{Immagine di base}: \texttt{python:3.12-slim}. La scelta della variante \textit{slim} riduce l'ingombro dell'immagine base, contenendo solo le librerie di sistema essenziali per il runtime Python 3.12.
+    \item \textbf{Configurazione}: La directory di lavoro (\texttt{WORKDIR}) è impostata su \texttt{/app}. Il sistema installa le dipendenze tramite \texttt{pip} utilizzando il flag \texttt{--no-cache-dir} per mantenere l'immagine di produzione più snella.
+    \item \textbf{Networking e Sicurezza}: Il container espone internamente la porta \texttt{8000}. Il backend riceve dinamicamente (tramite il file \texttt{.env} mappato nel Compose) le chiavi segrete e le credenziali per l'accesso ai provider LLM, evitando di esporre dati sensibili nel codice sorgente.
 \end{itemize}
 
 \subsection{Frontend (\gls{React} + \gls{Nginx})}
-Per il frontend è stata adottata una strategia di \textbf{Multi-stage Build}, che separa l'ambiente di compilazione da quello di esecuzione.
+Il container del frontend agisce da nodo Client. Per la sua realizzazione è stata adottata una strategia di \textbf{Multi-stage Build}, che separa l'ambiente di compilazione da quello di esecuzione per minimizzare la dimensione finale dell'immagine.
 \begin{itemize}
-    \item \textbf{Stage 1 (Build)}: Utilizza \texttt{node:20-alpine} per installare le dipendenze ed eseguire la build di produzione tramite \gls{Vite}. L'uso di Alpine Linux garantisce velocità e leggerezza nel processo di CI/CD.
-    \item \textbf{Stage 2 (Production)}: Il risultato della build viene copiato in un'immagine \texttt{\gls{nginx}:alpine}. \gls{Nginx} funge da web server statico ad alte prestazioni, configurato appositamente per gestire il routing \textit{client-side} tipico delle Single Page Application (SPA).
+    \item \textbf{Stage 1 (Build)}: Utilizza \texttt{node:20-alpine} per installare le dipendenze ed eseguire la build di produzione (\texttt{npm run build}) tramite \gls{Vite}. L'uso di Alpine Linux garantisce velocità nel processo di CI/CD.
+    \item \textbf{Stage 2 (Production)}: I file statici generati dalla build (\texttt{dist}) vengono copiati in un'immagine \texttt{\gls{nginx}:alpine}. \gls{Nginx} funge da web server statico ad alte prestazioni. Un aspetto cruciale di questo livello è l'iniezione di un file di configurazione personalizzato (\texttt{nginx.conf}), necessario per indirizzare tutte le richieste al file \texttt{index.html} e gestire correttamente il routing \textit{client-side} della Single Page Application (SPA).
 \end{itemize}
 
 \subsection{Orchestrazione: \gls{Docker Compose}}
 Il file \texttt{\gls{docker}-compose.yml} coordina l'avvio sincronizzato dei servizi e la gestione delle risorse:
 \begin{itemize}
-    \item \textbf{Mapping delle porte}: Il frontend è reso accessibile all'host sulla porta \texttt{8080}, mappata sulla porta interna \texttt{80} di \gls{Nginx}.
-    \item \textbf{Dipendenze}: È definita una clausola \texttt{depends\_on} che assicura che il container del backend sia avviato prima di quello del frontend.
-    \item \textbf{Sviluppo \gls{Agile}}: Durante la fase di sviluppo, viene utilizzato un \textit{bind mount} per permettere al server \gls{Flask} di riflettere istantaneamente le modifiche al codice senza dover ricostruire l'immagine.
+    \item \textbf{Mapping delle porte}: Il frontend è reso accessibile all'host esterno sulla porta \texttt{8080}, mappata sulla porta interna \texttt{80} del server \gls{Nginx}.
+    \item \textbf{Dipendenze di avvio}: È definita una clausola \texttt{depends\_on} che assicura che il container del backend sia istanziato prima di quello del frontend. Inoltre, la direttiva \texttt{pull\_policy: never} protegge l'ambiente di sviluppo dal download accidentale di immagini omonime dai registri pubblici.
+    \item \textbf{Ottimizzazione per lo sviluppo (Hot-reloading)}: Per velocizzare il ciclo di sviluppo, viene configurato un \textit{bind mount} (\texttt{./backend/src:/app/backend/src}) che permette al server \gls{Flask} di riflettere istantaneamente le modifiche al codice sorgente senza dover ricostruire l'immagine del container a ogni salvataggio.
+    \item \textbf{Iniezione dell'ambiente}: Il Compose si occupa di orchestrare e iniettare dinamicamente le variabili di configurazione (\texttt{environment}), prelevando le chiavi \gls{api} dei modelli LLM e i \textit{secret} applicativi direttamente dall'host, mantenendo i container agnostici rispetto alle credenziali.
 \end{itemize}
 
 % immagine rappresentativa dell'ambiente docker
@@ -431,6 +434,7 @@ Il file \texttt{\gls{docker}-compose.yml} coordina l'avvio sincronizzato dei ser
     \caption{Rappresentazione dell'architettura di deployment tramite \gls{Docker Compose}}
     \label{fig:architettura_deployment}
 \end{figure}
+
 
 
 \newpage
@@ -493,6 +497,8 @@ Costruisce e invia la richiesta POST verso l’\gls{endpoint} /\gls{api}/ai/gene
 \item Il risultato viene restituito al client in formato JSON e gestito dal frontend.
 \end{itemize}
 
+
+\newpage
 
 % architettura di sistema (generale)
 \section{Architettura del sistema}
@@ -598,7 +604,7 @@ Sottomodulo funzionale che utilizza espressioni regolari (regex) per validare e 
 % PERSISTENCE LOGIC
 % ===================
 \subsubsection{Persistence Logic}
-Rappresenta lo strato inferiore deputato alla conservazione dei dati. In stretta conformità con il vincolo architetturale \textbf{RO-V-5} e in coerenza con la containerizzazione \gls{Docker}, l'architettura del backend è stata progettata per essere totalmente \textbf{\gls{stateless}} (priva di stato). Non è presente alcun \gls{database} relazionale lato server: la Persistence Logic per salvare i documenti dell'editor e la cronologia delle generazioni è demandata interamente allo storage locale del client, sfruttando le \gls{api} del \textbf{LocalStorage}. Questa architettura garantisce abbattimento del carico server, scalabilità orizzontale e \textit{Privacy by Design}.
+Rappresenta lo strato inferiore deputato alla conservazione dei dati.  Coerentemente con la containerizzazione \gls{Docker}, l'architettura del backend è stata progettata per essere totalmente \textbf{\gls{stateless}} (priva di stato). Non è presente alcun \gls{database} relazionale lato server: la Persistence Logic per salvare i documenti dell'editor e la cronologia delle generazioni è demandata interamente allo storage locale del client, sfruttando le \gls{api} del \textbf{LocalStorage}. Questa architettura garantisce abbattimento del carico server, scalabilità orizzontale e \textit{Privacy by Design}.
 
 
 \newpage
@@ -894,19 +900,28 @@ Modale interattiva per la configurazione dell'esportazione del documento. Mantie
     \item \texttt{onExport: (format: ExportFormat, filename: string) => void} - passa i parametri sanitizzati al ViewModel per l'esecuzione del salvataggio.
 \end{itemize}
 
-
 \subsubsection{AiPanel}
-% descrizione
-% grafico
-\paragraph{Props (Dati)}
-\paragraph{Props (Callback)}
+Componente laterale di controllo dedicato alla selezione e all'invocazione delle operazioni di Intelligenza Artificiale. Funge da interfaccia di comando strutturata, organizzando le funzionalità in categorie logiche (operazioni testuali, strumenti di analisi De Bono, traduzioni multilingua).
+
+\paragraph{Responsabilità e logica}
+Essendo un componente connesso, l'\texttt{AiPanel} non riceve \textit{props} esterne, ma incapsula le seguenti logiche:
+\begin{itemize}
+    \item \textbf{Orchestrazione comandi}: Mappa la pressione dei bottoni (\texttt{EditorButton}) verso le funzioni esposte dal ViewModel \texttt{useAiOperations}.
+    \item \textbf{Gestione menù annidati}: Gestisce localmente lo stato di apertura/chiusura dei sottomenù (es. la lista delle lingue per la traduzione) tramite un set di identificatori (\texttt{openMenus}).
+    \item \textbf{Controllo di flusso}: Interroga lo store \texttt{useAiWidgetStore} per verificare se il sistema è in stato di attesa (\texttt{isIdle}); in caso di generazione già in corso, disabilita globalmente i propri comandi per prevenire richieste concorrenti.
+\end{itemize}
 
 
 \subsubsection{AiWidget}
-% descrizione
-% grafico
-\paragraph{Props (Dati)}
-\paragraph{Props (Callback)}
+Componente flottante e interattivo delegato alla gestione visuale del ciclo di vita di una richiesta AI. Il widget si sovrappone all'interfaccia principale e guida l'utente attraverso le diverse fasi dell'operazione: dall'input di parametri aggiuntivi (\gls{prompt} personalizzati) fino alla visualizzazione e all'inserimento del risultato nell'editor.
+
+\paragraph{Caratteristiche principali}
+Il componente si distingue per un'alta dinamicità e flessibilità architetturale:
+\begin{itemize}
+    \item \textbf{Rendering polimorfico}: Non possiede un markup statico unico. Utilizza degli stati per delegare il rendering del proprio corpo (\texttt{body}) e delle azioni (\texttt{actions}) all'oggetto di stato attualmente attivo nello store (\texttt{widgetState}).
+    \item \textbf{Esperienza utente}: Grazie all'hook \texttt{useDraggable}, il widget può essere spostato liberamente dall'utente all'interno dell'area di lavoro (tramite \textit{drag-and-drop} sull'header), evitando di coprire porzioni di testo rilevanti durante la consultazione dei risultati.
+    \item \textbf{Disaccoppiamento}: È totalmente agnostico rispetto all'operazione specifica che lo ha attivato; si limita a riflettere lo stato della "macchina a stati" sottostante definita nel ViewModel.
+\end{itemize}
 
 
 \subsubsection{HistoryList}
@@ -1061,10 +1076,60 @@ Interfaccia la View con lo store dedicato (\texttt{useHistoryStore}), estraendo 
 
 
 \subsubsection{useAiOperations}
-% descrizione
-% grafico
-\paragraph{Stato/Valori di ritorno}
+Hook orchestratore dedicato alla gestione delle interazioni con l'Intelligenza Artificiale. Funge da regista tra la View, i servizi di rete e lo stato globale del widget, isolando la logica di invocazione della Facade \texttt{aiCall} e gestendo il ciclo di vita delle richieste asincrone tramite un \texttt{AbortController} mantenuto in un \texttt{React.RefObject} (\texttt{controllerRef}). È l'unico punto del sistema responsabile della creazione delle istanze delle classi di stato, nelle quali inietta le callback operative necessarie, e dell'invocazione di \texttt{changeState} sullo store \texttt{aiWidgetStore}.
+
+\paragraph{Props (dipendenze)}
+L'hook riceve in ingresso un oggetto di configurazione per interagire con l'editor in modo disaccoppiato:
+\begin{itemize}
+    \item \texttt{getEditorText: () => string} - funzione per recuperare il contenuto totale.
+    \item \texttt{getSelection: () => string} - funzione per recuperare il testo selezionato.
+    \item \texttt{insertText: (text: string) => void} - funzione per iniettare il risultato nell'editor.
+    \item \texttt{onEntryAdded?: (entry: any) => void} - callback opzionale per il salvataggio nello storico.
+\end{itemize}
+
+\paragraph{Gestione dell'annullamento}
+Prima di ogni nuova richiesta, l'hook invoca \texttt{abort()} sull'eventuale controller precedente per annullare operazioni in corso, creando poi un nuovo \texttt{AbortController}. La funzione interna \texttt{handleCancel} incapsula questo comportamento e lo espone agli stati che ne necessitano (es. \texttt{LoadingState}).
+
+\paragraph{Flusso standard}
+Per le operazioni che non richiedono input utente (riassunto, correzione, traduzioni, Sei Cappelli), il flusso di transizione è il seguente:
+
+\begin{equation*}
+\texttt{Idle} \xrightarrow{\text{handleAction}} \texttt{Loading} \xrightarrow{\text{successo}} \texttt{Done} \xrightarrow{\text{inserisci / scarta}} \texttt{Idle}
+\end{equation*}
+
+In caso di errore non derivante da cancellazione esplicita, il sistema transita in \texttt{ErrorState}; in caso di cancellazione (rilevata tramite \texttt{axios.isCancel}), la transizione viene soppressa e il widget rimane nell'ultimo stato coerente.
+
+\paragraph{Flusso Distant Writing}
+L'operazione \textit{Distant Writing} richiede un prompt esplicito da parte dell'utente. Il suo flusso è gestito dalla funzione interna \texttt{handleDistantWriting}, che estende il percorso standard con uno stato iniziale di input e la possibilità di rigenerazione:
+
+\begin{equation*}
+\texttt{Idle} \to \texttt{Input} \to \texttt{Loading} \to \texttt{Done} \xrightarrow{\text{rigenera}} \texttt{Input}
+\end{equation*}
+
+La callback \texttt{onConfirm} è definita come \textit{closure} all'interno di \texttt{handleDistantWriting}: cattura il riferimento ad \texttt{onConfirm} stessa per permettere la rigenerazione con il medesimo prompt, passandola come quarto argomento al costruttore di \texttt{DoneState}.
+
 \paragraph{Funzioni esposte}
+\begin{itemize}
+    \item \texttt{handleAction: (operation: AiOperationId) => Promise<void>} - funzione principale che avvia il flusso AI. Intercetta il caso \texttt{"distant\_writing"} e lo delega a \\ \texttt{handleDistantWriting}; per tutte le altre operazioni, esegue direttamente il flusso standard.
+    \item \texttt{handleDistantWriting: () => void} - funzione che inizializza il flusso con input utente, portando il widget in \texttt{InputState} con la callback \texttt{onConfirm} preconfigurata.
+\end{itemize}
+
+
+\subsubsection{useDraggable}
+Hook di utilità incaricato di gestire la logica di posizionamento e trascinamento (\textit{drag-and-drop}) di componenti flottanti all'interno dell'interfaccia. Astrae la gestione dei \textit{listener} degli eventi del mouse (\texttt{mousemove}, \texttt{mouseup}) registrati a livello di \texttt{window}, garantendo che il trascinamento funzioni correttamente anche quando il cursore fuoriesce dai limiti del componente durante il movimento rapido.
+
+\paragraph{Scelte implementative}
+L'hook adotta \texttt{useRef} per i campi \texttt{dragging} e \texttt{offset}, anziché \texttt{useState}: essendo questi valori aggiornati ad alta frequenza durante il \textit{drag}, evitare re-render inutili è fondamentale per la fluidità visiva. Solo \texttt{pos} è dichiarato con \texttt{useState}, poiché è il dato che deve propagarsi al componente per aggiornarne il rendering. Il \textit{listener} \texttt{onMouseDown} è stabilizzato tramite \texttt{useCallback}, evitando che il riferimento alla funzione cambi ad ogni \textit{render} del componente ospitante. Al rilascio del mouse (\texttt{mouseup}), i \textit{listener} vengono rimossi tramite \texttt{removeEventListener}, prevenendo accumuli di \textit{handler} e potenziali \textit{memory leak}.
+
+\paragraph{Stato/Valori di ritorno}
+\begin{itemize}
+    \item \texttt{pos: \{ x: number, y: number \}} - coordinate spaziali attuali del componente, aggiornate reattivamente durante il trascinamento.
+\end{itemize}
+
+\paragraph{Funzioni esposte}
+\begin{itemize}
+    \item \texttt{onMouseDown: (e: React.MouseEvent) => void} - \textit{handler} da collegare all'area sensibile al trascinamento (es. l'header di \texttt{AiWidget}). Al momento del click calcola l'offset tra la posizione del cursore e l'origine del componente, poi registra i \textit{listener} a livello di \texttt{window} per tracciare il movimento e rilevare il rilascio.
+\end{itemize}
 
 
 \newpage
@@ -1077,6 +1142,7 @@ Sono presenti due store principali:
 \begin{itemize}
     \item \texttt{useEditorMetaStore}: Gestisce i metadati dell'editor attivo, ovvero il nome del file (\texttt{fileName}), lo stato di modifica non salvata (\texttt{isDirty}) e il timestamp dell'ultimo salvataggio (\texttt{lastSaved}). Tramite il middleware \texttt{persist} di \gls{Zustand}, sincronizza automaticamente questo stato nel \texttt{localStorage} del browser, garantendo che i dati sopravvivano al riavvio della pagina.
     \item \texttt{useHistoryStore}: Gestisce l'elenco delle generazioni AI prodotte. Ogni voce è modellata dall'interfaccia \texttt{HistoryEntry}. Anche questo store utilizza il \texttt{localStorage} per rendere lo storico persistente tra le sessioni.
+    \item \texttt{aiWidgetStore}: Gestisce lo stato transitorio e non persistente dell'interfaccia dedicata all'intelligenza artificiale. A differenza degli altri store del sistema, questo modulo non utilizza il middleware di persistenza, garantendo che il widget ritorni sempre alla condizione iniziale di riposo (\texttt{IdleState}) ad ogni ricaricamento della pagina. Al suo interno memorizza l'istanza dell'oggetto di stato corrente (\texttt{widgetState}), permettendo il rendering polimorfo del widget, e mantiene il testo temporaneo inserito dall'utente per le richieste personalizzate (\texttt{prompt}).
 \end{itemize}
 
 \textit{Nota}: Il contenuto testuale effettivo dell'editor, per ragioni di performance legate alla natura della libreria \gls{EasyMDE}, non transita attraverso lo store globale, ma viene salvato e sincronizzato direttamente in una chiave dedicata del \texttt{localStorage} gestita dal ViewModel dell'editor.
@@ -1178,6 +1244,75 @@ Questa separazione porta due benefici misurabili in termini di qualità del soft
     \caption{UML del pattern Facade}
     \label{fig:uml_facade}
 \end{figure}
+
+
+\newpage
+
+% GESTIONE DEGLI STATI DEI WIDGET
+\subsection{Gestione degli stati del widget AI}
+La gestione dell'interfaccia utente per il widget AI adotta un'evoluzione del pattern \textit{State} classico, che può essere definita come \textbf{Render-Delegate State Pattern} (o \textit{UI State Object Pattern}). Questa scelta permette di gestire la complessa variabilità visiva del widget in modo modulare e polimorfico.
+
+\subsubsection{Problema}
+L'idea tradizionale dello \textit{State Pattern} (GoF) prevede che l'oggetto-stato modifichi esclusivamente il comportamento logico di un contesto, rimanendo agnostico rispetto alla presentazione visiva. In un ambiente dichiarativo come \gls{React}, applicare questo approccio costringerebbe il componente principale a gestire enormi blocchi condizionali (lunghi costrutti \texttt{switch} o \texttt{if/else}) per decidere quale porzione di interfaccia renderizzare, producendo un codice rigido, frammentato e difficile da testare.
+
+\subsubsection{Soluzione: rendering delegato e stati polimorfi}
+Nel sistema implementato, ogni stato non è solo comportamentale ma è anche \textbf{presentazionale}. Ogni oggetto-stato è direttamente responsabile del proprio rendering \gls{React}, permettendo al componente \texttt{AiWidget} di agire come un semplice coordinatore passivo.
+
+% diagramma per le classi degli stati
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{../UMLimg/widgetState.jpg}
+    \caption{Diagramma delle classi del Render-Delegate State Pattern}
+    \label{fig:uml_ai_widget_state}
+\end{figure}
+
+\subsubsection{Interfaccia \texttt{IWidgetState}}
+Tutti gli stati implementano l'interfaccia comune \texttt{IWidgetState}. Il componente \texttt{AiWidget} non dipende da nessuna delle classi concrete, ma conosce esclusivamente i due metodi definiti dal contratto:
+\begin{itemize}
+    \item \texttt{render()}: Metodo obbligatorio che produce il contenuto visivo principale del widget.
+    \item \texttt{renderActions()}: Metodo opzionale che produce i pulsanti contestuali mostrati nel footer dell'interfaccia.
+\end{itemize}
+
+\subsubsection{Classi di stato}
+Sono definite cinque classi concrete, ciascuna corrispondente a una fase del ciclo di vita dell'operazione AI:
+\begin{itemize}
+    \item \textbf{\texttt{IdleState}}: Stato iniziale e di riposo; l'\texttt{AiWidget} non viene renderizzato quando lo stato corrente è un'istanza di questa classe.
+    \item \textbf{\texttt{InputState}}: Mostra un'area di testo per l'inserimento del \gls{prompt} da parte dell'utente. Riceve nel costruttore due callback: \texttt{onConfirm} (invocata all'invio) e \texttt{onCancel} (per l'annullamento).
+    \item \textbf{\texttt{LoadingState}}: Visualizza un indicatore di caricamento. Accetta opzionalmente una callback \texttt{onCancel} che, se fornita, abilita il pulsante di interruzione della richiesta.
+    \item \textbf{\texttt{DoneState}}: Mostra il testo generato e le azioni disponibili: \textit{Inserisci} (inserisce il risultato nell'editor e torna a \texttt{IdleState}), \textit{Scarta} (ritorna a \texttt{IdleState}) e, opzionalmente, \textit{Rigenera} (riporta a \texttt{InputState} con il \gls{prompt} precedente, disponibile solo per l'operazione \textit{Distant Writing}).
+    \item \textbf{\texttt{ErrorState}}: Visualizza un messaggio d'errore e un pulsante per tornare a \texttt{IdleState}.
+\end{itemize}
+
+Le callback iniettate nei costruttori vengono catturate in chiusura al momento della transizione, mantenendo il riferimento al contesto operativo corrente senza che gli stati si conoscano tra loro.
+
+
+\subsubsection{Orchestrazione: store globale e ViewModel}
+La "macchina a stati" polimorfica è orchestrata attraverso la collaborazione tra lo store globale e la logica di business del ViewModel.
+
+\paragraph{Lo store (\texttt{aiWidgetStore})}
+Lo stato corrente è mantenuto globalmente in uno store gestito tramite la libreria \textbf{\gls{Zustand}}. Nello store, lo stato non è un parametro primitivo, ma un'istanza diretta dell'interfaccia \texttt{IWidgetState}. Le transizioni avvengono sostituendo integralmente l'istanza tramite la funzione dedicata \texttt{changeState(newState: IWidgetState)}, che innesca l'aggiornamento reattivo dell'interfaccia.
+
+\paragraph{ViewModel (\texttt{useAiOperations})}
+L'orchestrazione delle transizioni è centralizzata nel \textit{custom hook} \texttt{useAiOperations}. Questo componente funge da "regista" del pattern:
+\begin{itemize}
+    \item Istanzia le classi di stato iniettando le callback operative.
+    \item Gestisce le chiamate \gls{api} verso il backend.
+    \item Gestisce il ciclo di vita dell'\texttt{AbortController} per la cancellazione delle richieste.
+\end{itemize}
+
+Il flusso logico principale gestito dal ViewModel è il seguente:
+\begin{equation*}
+\texttt{Idle} \xrightarrow{\text{avvio operazione}} \texttt{Loading} \xrightarrow{\text{successo}} \texttt{Done} \xrightarrow{\text{inserisci / scarta}} \texttt{Idle}
+\end{equation*}
+
+Nel caso dell'operazione \textit{Distant Writing}, che richiede un \gls{prompt} esplicito dell'utente, il flusso viene esteso:
+\begin{equation*}
+\texttt{Idle} \to \texttt{Input} \to \texttt{Loading} \to \texttt{Done} \xrightarrow{\text{rigenera}} \texttt{Input}
+\end{equation*}
+In entrambi i percorsi, un errore durante la chiamata porta istantaneamente a \texttt{ErrorState}, mentre la cancellazione esplicita da parte dell'utente riporta direttamente a \texttt{IdleState}.
+
+\subsubsection{Separazione delle responsabilità}
+Questa architettura garantisce una netta separazione tra rendering e logica: \texttt{AiWidget} è un componente puramente presentazionale che delega ogni decisione all'oggetto stato corrente; le classi di stato non contengono logica di business ma solo struttura visiva e callback iniettate; \texttt{useAiOperations} è l'unico punto in cui risiede la logica applicativa, le transizioni di stato e la gestione degli errori.
 
 
 \newpage
