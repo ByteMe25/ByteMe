@@ -71,7 +71,7 @@
         \centering
         \begin{tabular}{|l|p{5cm}|}
             \hline
-            \textbf{Versione} & 1.1.6 \\
+            \textbf{Versione} & 1.1.7 \\
             \hline
             \textbf{Stato} & Da approvare \\
             \hline
@@ -102,6 +102,8 @@
     \begin{tabular}{|c|c|c|>{\raggedright\arraybackslash}p{0.35\textwidth}|p{0.18\textwidth}|}
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{\gls{Verifica}} \\
+        \hline
+        1.1.7 & 24/04/2026 & Elisa Marchioro & Aggiunti component test AiWidget e AiPanel & \\
         \hline
         1.1.6 & 24/04/2026 & Elisa Marchioro & Aggiunti altri unit test & \\
         \hline
@@ -1528,6 +1530,41 @@ Testa un hook React che orchestra le operazioni AI su testo (riassunto, riscritt
 \caption{Tabella unit tests per useAiOperations.ts}
 \end{table}
 
+\subsubsection{fileHandler.test.ts}
+Testa una funzione downloadFile che gestisce il download lato browser. Verifica l'intera sequenza DOM: creazione del Blob, generazione dell'URL oggetto, simulazione del click su un link invisibile e pulizia delle risorse.
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.5} % Più respiro alle righe
+\begin{tabular}{|l|p{12cm}|c|}
+\hline
+\textbf{Codice} & \textbf{Descrizione} & \textbf{Stato} \\ \hline
+\prossimoUT & Verifica l'intera sequenza: createObjectURL, creazione <a>, impostazione di href e download, click, rimozione dal DOM e revokeObjectURL. & Pass \\ \hline
+
+\end{tabular}
+\caption{Tabella unit tests per fileHandler.ts}
+\end{table}
+
+\subsubsection{filenameUtils.test.ts}
+Testa due funzioni di utilità per la gestione dei nomi file: sanitizeFilename (pulizia caratteri illegali e spazi) e composeFilename (composizione nome + estensione con casi limite).
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.5} % Più respiro alle righe
+\begin{tabular}{|l|p{12cm}|c|}
+\hline
+\textbf{Codice} & \textbf{Descrizione} & \textbf{Stato} \\ \hline
+\prossimoUT & Verifica che caratteri come <, >, | vengono sostituiti con \_ & Pass \\ \hline
+\prossimoUT & Verifica che sequenze di spazi multipli vengono ridotte a uno solo. & Pass \\ \hline
+\prossimoUT & Verifica che gli spazi iniziali o finali non vengano rimossi (per non bloccare la digitazione). & Pass \\ \hline
+\prossimoUT & Verifica che il nome sanitizzato e trimmato viene unito all'estensione con un punto. & Pass \\ \hline
+\prossimoUT & Verifica che venga gestito sia "md" che ".md" producendo sempre "test.md". & Pass \\ \hline
+\prossimoUT & Verifica che con stringa vuota o solo spazi, usa "documento" come nome di default. & Pass \\ \hline
+
+\end{tabular}
+\caption{Tabella unit tests per fileHandler.ts}
+\end{table}
+
 \newpage
 
 \section{Component Testing - Fase PB}
@@ -1657,6 +1694,78 @@ Testa il componente editor, verificando il corretto rendering, la gestione dei f
 
 \end{tabular}
 \caption{Tabella component tests per MarkdownEditor.tsx}
+\end{table}
+
+\subsection{AiWidget.test.tsx}
+Testa il componente React AiWidget, un widget flottante e trascinabile che cambia aspetto in base allo stato corrente (Idle, Loading, Done, Error, Input). Verifica visibilità, contenuto, pulsanti e interazioni per ogni stato.
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.5} % Più respiro alle righe
+\begin{tabular}{|l|p{12cm}|c|}
+\hline
+\textbf{Codice} & \textbf{Descrizione} & \textbf{Stato} \\ \hline
+\prossimoCT & \gls{Verifica} che con lo stato Idle il componente non renderizzi niente. & Pass \\ \hline
+\prossimoCT & \gls{Verifica} che con qualsiasi stato non-Idle, il widget appaia con il titolo. & Pass \\ \hline
+\prossimoCT & \gls{Verifica} che il testo "Loading…" sia presente. & Pass \\ \hline
+\prossimoCT & \gls{Verifica} che il pulsante "Annulla" appaia solo LoadingState ha onCancel. & Pass \\ \hline
+\prossimoCT & \gls{Verifica} che venga chiamato onCancel quando si clicca "Annulla". & Pass \\ \hline
+\prossimoCT & \gls{Verifica} che non vengano mostrate azioni se LoadingState non ha onCancel. & Pass \\ \hline
+\prossimoCT & \gls{Verifica} che il risultato prodotto dall'AI sia visibile. & Pass \\ \hline
+\prossimoCT & \gls{Verifica} che entrambi i pulsanti "Inserisci" e "Scarta" siano presenti. & Pass \\ \hline
+\prossimoCT & \gls{Verifica} che venga chiamata onInsert con il testo corretto quando si clicca "Inserisci". & Pass \\ \hline
+\prossimoCT & \gls{Verifica} che venga chiamata onDiscard quando si clicca "Scarta". & Pass \\ \hline
+\prossimoCT & \gls{Verifica} che venga mostrato il pulsante "Rigenera" solo se onRegenerate è definito. & Pass \\ \hline
+\prossimoCT & \gls{Verifica} che NON mostri il pulsante "Rigenera" se onRegenerate non è definito. & Pass \\ \hline
+\prossimoCT & \gls{Verifica} che venga chiamata onRegenerate quando si clicca "Rigenera". & Pass \\ \hline
+\prossimoCT & \gls{Verifica} che venga mostrato il pulsante "Scarta". & Pass \\ \hline
+\prossimoCT & \gls{Verifica} che venga mostrata la textarea per il prompt. & Pass \\ \hline
+\prossimoCT & \gls{Verifica} che venga mostrato il pulsante "Annulla". & Pass \\ \hline
+\prossimoCT & \gls{Verifica} che il pulsante "Invia" sia disabilitato se il prompt è vuoto. & Pass \\ \hline
+\prossimoCT & \gls{Verifica} che il pulsante "Invia" venga abilitato quando viene digitato del testo. & Pass \\ \hline
+\prossimoCT & \gls{Verifica} che venga chiamato onConfirm con il testo inserito quando si clicca "Invia". & Pass \\ \hline
+\prossimoCT & \gls{Verifica} che venga chiamato onCancel quando si clicca "Annulla". & Pass \\ \hline
+\prossimoCT & \gls{Verifica} che venga prepopolata la textarea con initialPrompt se fornito. & Pass \\ \hline
+\prossimoCT & \gls{Verifica} che "Generazione AI" sia presente ogni volta che il widget è visibile. & Pass \\ \hline
+\prossimoCT & \gls{Verifica} che sia posizionato con le coordinate fornite da useDraggable. & Pass \\ \hline
+
+
+\end{tabular}
+\caption{Tabella component tests per AiWidget.tsx}
+\end{table}
+
+\subsection{AiPanel.test.tsx}
+Testa il componente React AiPanel, il pannello laterale con i bottoni per le operazioni AI. Verifica il rendering iniziale, i sottomenu a comparsa (Traduci, Sei Cappelli), la disabilitazione durante la generazione e il corretto passaggio delle props all'hook useAiOperations.
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.5} % Più respiro alle righe
+\begin{tabular}{|l|p{12cm}|c|}
+\hline
+\textbf{Codice} & \textbf{Descrizione} & \textbf{Stato} \\ \hline
+\prossimoCT & Verifica che tutti i bottoni principali siano presenti nel DOM. & Pass \\ \hline
+\prossimoCT & Verifica che il pulsante di chiusura sia visibile. & Pass \\ \hline
+\prossimoCT & Verifica che i sottomenu di Traduci e Sei Cappelli siano chiusi all'avvio. & Pass \\ \hline
+\prossimoCT & Verifica che il click su X chiami onClose una volta. & Pass \\ \hline
+\prossimoCT & Verifica che il click su Riassumi chiami handleAction con summary. & Pass \\ \hline
+\prossimoCT & Verifica che il click su Riscrivi chiami handleAction con rewrite. & Pass \\ \hline
+\prossimoCT & Verifica che il click su Correggi chiami handleAction con fix\_grammar. & Pass \\ \hline
+\prossimoCT & Verifica che il click su Distant Writing chiami handleAction con distant\_writing. & Pass \\ \hline
+\prossimoCT & Verifica che il click su Traduci mostri le lingue disponibili. & Pass \\ \hline
+\prossimoCT & Verifica che un secondo click su Traduci nasconda le lingue (toggle). & Pass \\ \hline
+\prossimoCT & Verifica che il click su una lingua chiami handleAction con l'operazione corretta. & Pass \\ \hline
+\prossimoCT & Verifica che la scelta di una lingua chiuda il sottomenu. & Pass \\ \hline
+\prossimoCT & Verifica che il click su Sei Cappelli mostri tutti i cappelli. & Pass \\ \hline
+\prossimoCT & Verifica che il click su un cappello chiami handleAction con l'operazione corretta. & Pass \\ \hline
+\prossimoCT & Verifica che la scelta di un cappello chiuda il sottomenu. & Pass \\ \hline
+\prossimoCT & Verifica che tutti i bottoni siano disabilitati durante il LoadingState. & Pass \\ \hline
+\prossimoCT & Verifica che il click su un bottone disabilitato non chiami handleAction. & Pass \\ \hline
+\prossimoCT & Verifica che i bottoni tornino abilitati quando lo stato torna Idle. & Pass \\ \hline
+\prossimoCT & Verifica che getEditorText, getSelection, insertText e onEntryAdded vengano passate correttamente a useAiOperations. & Pass \\ \hline
+
+
+\end{tabular}
+\caption{Tabella component tests per AiPanel.tsx}
 \end{table}
 
 
