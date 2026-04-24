@@ -71,11 +71,11 @@
         \centering
         \begin{tabular}{|l|p{5cm}|}
             \hline
-            \textbf{Versione} & 0.1.7 \\
+            \textbf{Versione} & 0.1.8 \\
             \hline
             \textbf{Stato} & In corso \\
             \hline
-            \textbf{Redazione} & Giulia Barzon, Joseph Grant, Chiara Grossele, Matteo Cuogo\\
+            \textbf{Redazione} & Giulia Barzon, Joseph Grant, Chiara Grossele, Matteo Cuogo, Tommaso Tombacco\\
             \hline
             \textbf{\gls{Verifica}} & Da verificare\\
             \hline
@@ -102,6 +102,8 @@
     \begin{tabular}{|c|c|c|>{\raggedright\arraybackslash}p{0.35\textwidth}|p{0.18\textwidth}|}
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{\gls{Verifica}} \\
+        \hline
+        0.1.8 & 24/04/2026 & Tommaso Tombacco & Modifica sezione AiWidget e modifica dello stato dei requisiti legati ad AI & \\
         \hline
         0.1.7 & 23/04/2026 & Giulia Barzon & Aggiunte componenti AI, migliorata sezione 3 & \\
         \hline
@@ -1250,13 +1252,14 @@ Questa separazione porta due benefici misurabili in termini di qualità del soft
 
 % GESTIONE DEGLI STATI DEI WIDGET
 \subsection{Gestione degli stati del widget AI}
-La gestione dell'interfaccia utente per il widget AI adotta un'evoluzione del pattern \textit{State} classico, che può essere definita come \textbf{Render-Delegate State Pattern} (o \textit{UI State Object Pattern}). Questa scelta permette di gestire la complessa variabilità visiva del widget in modo modulare e polimorfico.
+La gestione dell'interfaccia utente per il widget AI adotta un implementazione a \textbf{stati}. Questa scelta permette di gestire la complessa variabilità visiva del widget in modo modulare e polimorfico.
 
 \subsubsection{Problema}
-L'idea tradizionale dello \textit{State Pattern} (GoF) prevede che l'oggetto-stato modifichi esclusivamente il comportamento logico di un contesto, rimanendo agnostico rispetto alla presentazione visiva. In un ambiente dichiarativo come \gls{React}, applicare questo approccio costringerebbe il componente principale a gestire enormi blocchi condizionali (lunghi costrutti \texttt{switch} o \texttt{if/else}) per decidere quale porzione di interfaccia renderizzare, producendo un codice rigido, frammentato e difficile da testare.
+L’AI Widget è un componente che espone diverse funzionalità in base allo stato dell’operazione in corso. Ogni operazione attraversa una serie di fasi, rendendo esplicita all’utente la condizione della richiesta. Ad esempio, nel caso di un riassunto, il widget passa da uno stato di caricamento, che comunica la necessità di attendere e in cui è possibile annullare l'operazione, a uno stato di visualizzazione del risultato, che l’utente può inserire, eliminare o rigenerare.\\\\
+In un ambiente dichiarativo come React, adottare questo approccio porterebbe il componente principale a gestire ampi blocchi condizionali (come costrutti \texttt{switch} o \texttt{if/else}) per determinare quale porzione di interfaccia renderizzare, generando codice rigido, frammentato e difficile da testare.
 
 \subsubsection{Soluzione: rendering delegato e stati polimorfi}
-Nel sistema implementato, ogni stato non è solo comportamentale ma è anche \textbf{presentazionale}. Ogni oggetto-stato è direttamente responsabile del proprio rendering \gls{React}, permettendo al componente \texttt{AiWidget} di agire come un semplice coordinatore passivo.
+Nel sistema implementato, il widget si limita a invocare il metodo di rendering dello stato corrente e le relative funzionalità, senza conoscerne l’effettiva implementazione. Ogni stato non è solo comportamentale, ma anche \textbf{presentazionale}: ciascun oggetto-stato è direttamente responsabile del proprio rendering in \gls{React}. Questo consente al componente \texttt{AiWidget} di agire come un semplice coordinatore passivo.
 
 % diagramma per le classi degli stati
 \begin{figure}[H]
@@ -1279,7 +1282,7 @@ Sono definite cinque classi concrete, ciascuna corrispondente a una fase del cic
     \item \textbf{\texttt{IdleState}}: Stato iniziale e di riposo; l'\texttt{AiWidget} non viene renderizzato quando lo stato corrente è un'istanza di questa classe.
     \item \textbf{\texttt{InputState}}: Mostra un'area di testo per l'inserimento del \gls{prompt} da parte dell'utente. Riceve nel costruttore due callback: \texttt{onConfirm} (invocata all'invio) e \texttt{onCancel} (per l'annullamento).
     \item \textbf{\texttt{LoadingState}}: Visualizza un indicatore di caricamento. Accetta opzionalmente una callback \texttt{onCancel} che, se fornita, abilita il pulsante di interruzione della richiesta.
-    \item \textbf{\texttt{DoneState}}: Mostra il testo generato e le azioni disponibili: \textit{Inserisci} (inserisce il risultato nell'editor e torna a \texttt{IdleState}), \textit{Scarta} (ritorna a \texttt{IdleState}) e, opzionalmente, \textit{Rigenera} (riporta a \texttt{InputState} con il \gls{prompt} precedente, disponibile solo per l'operazione \textit{\gls{Distant Writing}}).
+    \item \textbf{\texttt{DoneState}}: Mostra il testo generato e le azioni disponibili: \textit{Inserisci} (inserisce il risultato nell'editor e riporta il widget a \texttt{IdleState}), \textit{Scarta} (riporta il widget a \texttt{IdleState}) e \textit{Rigenera} che, in base all'operazione riporta a \texttt{InputState} con il \gls{prompt} precedente oppure ripete la richiesta con gli stessi parametri.
     \item \textbf{\texttt{ErrorState}}: Visualizza un messaggio d'errore e un pulsante per tornare a \texttt{IdleState}.
 \end{itemize}
 
@@ -1290,7 +1293,8 @@ Le callback iniettate nei costruttori vengono catturate in chiusura al momento d
 La "macchina a stati" polimorfica è orchestrata attraverso la collaborazione tra lo store globale e la logica di business del ViewModel.
 
 \paragraph{Lo store (\texttt{aiWidgetStore})}
-Lo stato corrente è mantenuto globalmente in uno store gestito tramite la libreria \textbf{\gls{Zustand}}. Nello store, lo stato non è un parametro primitivo, ma un'istanza diretta dell'interfaccia \texttt{IWidgetState}. Le transizioni avvengono sostituendo integralmente l'istanza tramite la funzione dedicata \texttt{changeState(newState: IWidgetState)}, che innesca l'aggiornamento reattivo dell'interfaccia.
+Lo stato corrente è mantenuto globalmente in uno store gestito tramite la libreria \textbf{\gls{Zustand}}. Nello store, lo stato non è un parametro primitivo, ma un'istanza diretta dell'interfaccia \texttt{IWidgetState}. Le transizioni avvengono sostituendo integralmente l'istanza tramite la funzione dedicata \texttt{changeState(newState: IWidgetState)}, che innesca l'aggiornamento reattivo dell'interfaccia.\\\\
+Lo store si occupa inoltre di mantenere il \textit{prompt} relativo all’ultima operazione, in modo da poterlo recuperare facilmente in caso di rigenerazione.
 
 \paragraph{ViewModel (\texttt{useAiOperations})}
 L'orchestrazione delle transizioni è centralizzata nel \textit{custom hook} \texttt{useAiOperations}. Questo componente funge da "regista" del pattern:
@@ -1312,7 +1316,7 @@ Nel caso dell'operazione \textit{\gls{Distant Writing}}, che richiede un \gls{pr
 In entrambi i percorsi, un errore durante la chiamata porta istantaneamente a \texttt{ErrorState}, mentre la cancellazione esplicita da parte dell'utente riporta direttamente a \texttt{IdleState}.
 
 \subsubsection{Separazione delle responsabilità}
-Questa architettura garantisce una netta separazione tra rendering e logica: \texttt{AiWidget} è un componente puramente presentazionale che delega ogni decisione all'oggetto stato corrente; le classi di stato non contengono logica di business ma solo struttura visiva e callback iniettate; \texttt{useAiOperations} è l'unico punto in cui risiede la logica applicativa, le transizioni di stato e la gestione degli errori.
+Questa architettura garantisce una netta separazione tra rendering e logica: \texttt{AiWidget} è un componente principalmente coordinatore che delega ogni decisione all’oggetto stato corrente; le classi di stato gestiscono la struttura visiva e le callback iniettate, senza contenere logica di business; \texttt{useAiOperations} rappresenta l’unico punto in cui risiedono la logica applicativa, le transizioni di stato e la gestione degli errori.
 
 
 \newpage
@@ -1414,69 +1418,69 @@ RO-F-29 & L'utente può scegliere una combinazione di formattazioni dalla \gls{t
 \hline
 RO-F-30 & Il sistema deve permettere all'utente di selezionare porzioni di testo da inviare all'agente esterno. & Soddisfatto \\
 \hline
-RO-F-31 & Il sistema permette di inviare del testo ad un agente esterno. & ... \\
+RO-F-31 & Il sistema permette di inviare del testo ad un agente esterno. & Soddisfatto \\
 \hline
-RO-F-32 & L'utente deve poter accedere alle azioni sul testo tramite agente esterno in ogni momento. & ... \\
+RO-F-32 & L'utente deve poter accedere alle azioni sul testo tramite agente esterno in ogni momento. & Soddisfatto \\
 \hline
-RO-F-33 & Il testo generato viene prima mostrato come proposta, separata visivamente dal testo dell'utente. & ... \\
+RO-F-33 & Il testo generato viene prima mostrato come proposta, separata visivamente dal testo dell'utente. & Soddisfatto \\
 \hline
-RO-F-34 & Il testo in stato di proposta include le opzioni di conferma, annullamento e rigenerazione. & ... \\
+RO-F-34 & Il testo in stato di proposta include le opzioni di conferma, annullamento e rigenerazione. & Soddisfatto \\
 \hline
-RO-F-35 & Il sistema non permette la modifica del testo generato mentre è in stato di proposta. & ... \\
+RO-F-35 & Il sistema non permette la modifica del testo generato mentre è in stato di proposta. & Soddisfatto \\
 \hline
-RO-F-36 & Il testo generato dall'agente esterno, una volta confermato, viene inserito nella posizione del cursore se presente, altrimenti in fondo al testo. & ... \\
+RO-F-36 & Il testo generato dall'agente esterno, una volta confermato, viene inserito nella posizione del cursore se presente, altrimenti in fondo al testo. & Soddisfatto \\
 \hline
-RO-F-37 & Una proposta che viene confermata viene inserita nel documento nell'editor e la sezione di proposta viene rimossa. & ... \\
+RO-F-37 & Una proposta che viene confermata viene inserita nel documento nell'editor e la sezione di proposta viene rimossa. & Soddisfatto \\
 \hline
-RO-F-38 & Una volta generato e confermato, il testo dell'agente esterno è modificabile tramite le stesse funzionalità dell'editor disponibili per il testo utente. & ... \\
+RO-F-38 & Una volta generato e confermato, il testo dell'agente esterno è modificabile tramite le stesse funzionalità dell'editor disponibili per il testo utente. & Soddisfatto \\
 \hline
-RO-F-39 & Una proposta annullata comporta la rimozione del testo generato dalla sezione di proposta e la rimozione della sezione stessa. & ... \\
+RO-F-39 & Una proposta annullata comporta la rimozione del testo generato dalla sezione di proposta e la rimozione della sezione stessa. & Soddisfatto \\
 \hline
-RO-F-40 & Una proposta che viene rigenerata viene rimandata all'agente esterno con gli stessi parametri e la nuova risposta sovrascrive la proposta corrente. & ... \\
+RO-F-40 & Una proposta che viene rigenerata viene rimandata all'agente esterno con gli stessi parametri e la nuova risposta sovrascrive la proposta corrente. & Soddisfatto \\
 \hline
-RO-F-41 & Il sistema deve informare l'utente con un messaggio in caso di errore durante la comunicazione con il servizio LLM. & ... \\
+RO-F-41 & Il sistema deve informare l'utente con un messaggio in caso di errore durante la comunicazione con il servizio LLM. & Soddisfatto \\
 \hline
-RO-F-42 & L'utente può annullare un'operazione AI in corso prima del suo completamento. & ... \\
+RO-F-42 & L'utente può annullare un'operazione AI in corso prima del suo completamento. & Soddisfatto \\
 \hline
-RO-F-43 & In seguito all'annullamento di un'operazione AI, il documento rimane nello stato precedente alla richiesta. & ... \\
+RO-F-43 & In seguito all'annullamento di un'operazione AI, il documento rimane nello stato precedente alla richiesta. & Soddisfatto \\
 \hline
-RO-F-44 & Se la generazione di testo si blocca prematuramente, rimane ciò che è già stato generato, in attesa che l'utente confermi, rigeneri o elimini la proposta. & ... \\
+RO-F-44 & Se la generazione di testo si blocca prematuramente, rimane ciò che è già stato generato, in attesa che l'utente confermi, rigeneri o elimini la proposta. & Soddisfatto \\
 \hline
-RO-F-45 & L'agente esterno applica modifiche esclusivamente al testo selezionato dall'utente. Un contesto aggiuntivo può essere fornito solo a scopo interpretativo e non deve essere alterato. & ... \\
+RO-F-45 & L'agente esterno applica modifiche esclusivamente al testo selezionato dall'utente. Un contesto aggiuntivo può essere fornito solo a scopo interpretativo e non deve essere alterato. & Soddisfatto \\
 \hline
 RO-F-46 & L'utente può consultare il registro delle generazioni AI effettuate. & Soddisfatto \\
 \hline
 RO-F-47 & Il sistema deve gestire il caso in cui lo storico delle generazioni AI sia vuoto, informando l'utente con un messaggio appropriato. & Soddisfatto \\
 \hline
-RO-F-48 & Ogni generazione di testo dell'agente esterno viene inclusa nel registro delle generazioni, incluse quelle annullate dall'utente. & ... \\
+RO-F-48 & Ogni generazione di testo dell'agente esterno viene inclusa nel registro delle generazioni, incluse quelle annullate dall'utente. & Soddisfatto \\
 \hline
 RO-F-49 & Il sistema deve permettere all'utente di visualizzare il testo completo di una generazione dallo storico AI. & Soddisfatto \\
 \hline
-RO-F-50 & L'utente deve poter riassumere tutto o una parte selezionata del testo usando un agente esterno. & ... \\
+RO-F-50 & L'utente deve poter riassumere tutto o una parte selezionata del testo usando un agente esterno. & Soddisfatto \\
 \hline
-RO-F-51 & L'utente deve poter usare un agente esterno per riscrivere tutto o una parte selezionata del testo migliorandolo seguendo determinate specifiche come sintassi, stile e chiarezza. & ... \\
+RO-F-51 & L'utente deve poter usare un agente esterno per riscrivere tutto o una parte selezionata del testo migliorandolo seguendo determinate specifiche come sintassi, stile e chiarezza. & Soddisfatto \\
 \hline
-RO-F-52 & L'utente deve poter tradurre il testo usando un agente esterno in: inglese, italiano, tedesco, francese, spagnolo e cinese mandarino. & ... \\
+RO-F-52 & L'utente deve poter tradurre il testo usando un agente esterno in: inglese, italiano, tedesco, francese, spagnolo e cinese mandarino. & Soddisfatto \\
 \hline
-RO-F-53 & Se l'utente avvia una traduzione senza selezionare la lingua di destinazione, il sistema lo notifica e blocca l'operazione. & ... \\
+RO-F-53 & Se l'utente avvia una traduzione senza selezionare la lingua di destinazione, il sistema lo notifica e blocca l'operazione. & Soddisfatto \\
 \hline
-RO-F-54 & Il sistema permette di avviare la correzione grammaticale del testo tramite agente esterno. & ... \\
+RO-F-54 & Il sistema permette di avviare la correzione grammaticale del testo tramite agente esterno. & Soddisfatto \\
 \hline
-RO-F-55 & Se non vengono rilevati errori grammaticali, il sistema informa l'utente dell'esito positivo della correzione. & ... \\
+RO-F-55 & Se non vengono rilevati errori grammaticali, il sistema informa l'utente dell'esito positivo della correzione. & Soddisfatto \\
 \hline
-RO-F-56 & Il sistema consente all'utente di avviare l'analisi critica del testo selezionato o dell'intero documento utilizzando il cappello di De Bono scelto. & ... \\
+RO-F-56 & Il sistema consente all'utente di avviare l'analisi critica del testo selezionato o dell'intero documento utilizzando il cappello di De Bono scelto. & Soddisfatto \\
 \hline
-RO-F-57 & Se il testo è insufficiente per l'analisi critica, il sistema notifica l'utente e interrompe l'operazione. & ... \\
+RO-F-57 & Se il testo è insufficiente per l'analisi critica, il sistema notifica l'utente e interrompe l'operazione. & Soddisfatto \\
 \hline
-RO-F-58 & Se l'utente avvia l'analisi critica senza selezionare un cappello di De Bono, il sistema lo notifica e blocca l'operazione. & ... \\
+RO-F-58 & Se l'utente avvia l'analisi critica senza selezionare un cappello di De Bono, il sistema lo notifica e blocca l'operazione. & Soddisfatto \\
 \hline
-RO-F-59 & Il sistema permette l'invio di un \gls{prompt} scritto dall'utente per la generazione di testo tramite agente esterno. & ... \\
+RO-F-59 & Il sistema permette l'invio di un \gls{prompt} scritto dall'utente per la generazione di testo tramite agente esterno. & Soddisfatto \\
 \hline
-RO-F-60 & Il sistema permette la modifica del \gls{prompt} da inviare all'agente esterno prima dell'invio. & ... \\
+RO-F-60 & Il sistema permette la modifica del \gls{prompt} da inviare all'agente esterno prima dell'invio. & Soddisfatto \\
 \hline
-RO-F-61 & L'agente esterno può generare testo basandosi su un \gls{prompt} fornitogli dall'utente. & ... \\
+RO-F-61 & L'agente esterno può generare testo basandosi su un \gls{prompt} fornitogli dall'utente. & Soddisfatto \\
 \hline
-RO-F-62 & Se il \gls{prompt} fornito dall'utente è vuoto o incompleto, il sistema notifica l'utente e impedisce l'invio. & ... \\
+RO-F-62 & Se il \gls{prompt} fornito dall'utente è vuoto o incompleto, il sistema notifica l'utente e impedisce l'invio. & Soddisfatto \\
 \hline
 RO-F-63 & L'utente può caricare un file dal proprio dispositivo all'interno dell'editor. & Soddisfatto \\
 \hline
