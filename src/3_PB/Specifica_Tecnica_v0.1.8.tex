@@ -1256,7 +1256,7 @@ La gestione dell'interfaccia utente per il widget AI adotta un implementazione a
 
 \subsubsection{Problema}
 L’AI Widget è un componente che espone diverse funzionalità in base allo stato dell’operazione in corso. Ogni operazione attraversa una serie di fasi, rendendo esplicita all’utente la condizione della richiesta. Ad esempio, nel caso di un riassunto, il widget passa da uno stato di caricamento, che comunica la necessità di attendere e in cui è possibile annullare l'operazione, a uno stato di visualizzazione del risultato, che l’utente può inserire, eliminare o rigenerare.\\\\
-In un ambiente dichiarativo come React, adottare questo approccio porterebbe il componente principale a gestire ampi blocchi condizionali (come costrutti \texttt{switch} o \texttt{if/else}) per determinare quale porzione di interfaccia renderizzare, generando codice rigido, frammentato e difficile da testare.
+In un ambiente dichiarativo come \gls{React}, adottare questo approccio porterebbe il componente principale a gestire ampi blocchi condizionali (come costrutti \texttt{switch} o \texttt{if/else}) per determinare quale porzione di interfaccia renderizzare, generando codice rigido, frammentato e difficile da testare.
 
 \subsubsection{Soluzione: rendering delegato e stati polimorfi}
 Nel sistema implementato, il widget si limita a invocare il metodo di rendering dello stato corrente e le relative funzionalità, senza conoscerne l’effettiva implementazione. Ogni stato non è solo comportamentale, ma anche \textbf{presentazionale}: ciascun oggetto-stato è direttamente responsabile del proprio rendering in \gls{React}. Questo consente al componente \texttt{AiWidget} di agire come un semplice coordinatore passivo.
@@ -1294,7 +1294,7 @@ La "macchina a stati" polimorfica è orchestrata attraverso la collaborazione tr
 
 \paragraph{Lo store (\texttt{aiWidgetStore})}
 Lo stato corrente è mantenuto globalmente in uno store gestito tramite la libreria \textbf{\gls{Zustand}}. Nello store, lo stato non è un parametro primitivo, ma un'istanza diretta dell'interfaccia \texttt{IWidgetState}. Le transizioni avvengono sostituendo integralmente l'istanza tramite la funzione dedicata \texttt{changeState(newState: IWidgetState)}, che innesca l'aggiornamento reattivo dell'interfaccia.\\\\
-Lo store si occupa inoltre di mantenere il \textit{prompt} relativo all’ultima operazione, in modo da poterlo recuperare facilmente in caso di rigenerazione.
+Lo store si occupa inoltre di mantenere il \textit{\gls{prompt}} relativo all’ultima operazione, in modo da poterlo recuperare facilmente in caso di rigenerazione.
 
 \paragraph{ViewModel (\texttt{useAiOperations})}
 L'orchestrazione delle transizioni è centralizzata nel \textit{custom hook} \texttt{useAiOperations}. Questo componente funge da "regista" del pattern:
