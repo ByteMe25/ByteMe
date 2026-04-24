@@ -1531,7 +1531,7 @@ Testa un hook \gls{React} che orchestra le operazioni AI su testo (riassunto, ri
 \end{table}
 
 \subsubsection{fileHandler.test.ts}
-Testa una funzione downloadFile che gestisce il download lato browser. Verifica l'intera sequenza DOM: creazione del Blob, generazione dell'URL oggetto, simulazione del click su un link invisibile e pulizia delle risorse.
+Testa una funzione downloadFile che gestisce il download lato browser. \gls{Verifica} l'intera sequenza DOM: creazione del Blob, generazione dell'URL oggetto, simulazione del click su un link invisibile e pulizia delle risorse.
 
 \begin{table}[H]
 \centering
@@ -1539,7 +1539,7 @@ Testa una funzione downloadFile che gestisce il download lato browser. Verifica 
 \begin{tabular}{|l|p{12cm}|c|}
 \hline
 \textbf{Codice} & \textbf{Descrizione} & \textbf{Stato} \\ \hline
-\prossimoUT & Verifica l'intera sequenza: createObjectURL, creazione <a>, impostazione di href e download, click, rimozione dal DOM e revokeObjectURL. & Pass \\ \hline
+\prossimoUT & \gls{Verifica} l'intera sequenza: createObjectURL, creazione <a>, impostazione di href e download, click, rimozione dal DOM e revokeObjectURL. & Pass \\ \hline
 
 \end{tabular}
 \caption{Tabella unit tests per fileHandler.ts}
@@ -1554,12 +1554,12 @@ Testa due funzioni di utilità per la gestione dei nomi file: sanitizeFilename (
 \begin{tabular}{|l|p{12cm}|c|}
 \hline
 \textbf{Codice} & \textbf{Descrizione} & \textbf{Stato} \\ \hline
-\prossimoUT & Verifica che caratteri come <, >, | vengono sostituiti con \_ & Pass \\ \hline
-\prossimoUT & Verifica che sequenze di spazi multipli vengono ridotte a uno solo. & Pass \\ \hline
-\prossimoUT & Verifica che gli spazi iniziali o finali non vengano rimossi (per non bloccare la digitazione). & Pass \\ \hline
-\prossimoUT & Verifica che il nome sanitizzato e trimmato viene unito all'estensione con un punto. & Pass \\ \hline
-\prossimoUT & Verifica che venga gestito sia "md" che ".md" producendo sempre "test.md". & Pass \\ \hline
-\prossimoUT & Verifica che con stringa vuota o solo spazi, usa "documento" come nome di default. & Pass \\ \hline
+\prossimoUT & \gls{Verifica} che caratteri come <, >, | vengono sostituiti con \_ & Pass \\ \hline
+\prossimoUT & \gls{Verifica} che sequenze di spazi multipli vengono ridotte a uno solo. & Pass \\ \hline
+\prossimoUT & \gls{Verifica} che gli spazi iniziali o finali non vengano rimossi (per non bloccare la digitazione). & Pass \\ \hline
+\prossimoUT & \gls{Verifica} che il nome sanitizzato e trimmato viene unito all'estensione con un punto. & Pass \\ \hline
+\prossimoUT & \gls{Verifica} che venga gestito sia "md" che ".md" producendo sempre "test.md". & Pass \\ \hline
+\prossimoUT & \gls{Verifica} che con stringa vuota o solo spazi, usa "documento" come nome di default. & Pass \\ \hline
 
 \end{tabular}
 \caption{Tabella unit tests per fileHandler.ts}
@@ -1697,7 +1697,7 @@ Testa il componente editor, verificando il corretto rendering, la gestione dei f
 \end{table}
 
 \subsection{AiWidget.test.tsx}
-Testa il componente React AiWidget, un widget flottante e trascinabile che cambia aspetto in base allo stato corrente (Idle, Loading, Done, Error, Input). Verifica visibilità, contenuto, pulsanti e interazioni per ogni stato.
+Testa il componente \gls{React} AiWidget, un widget flottante e trascinabile che cambia aspetto in base allo stato corrente (Idle, Loading, Done, Error, Input). \gls{Verifica} visibilità, contenuto, pulsanti e interazioni per ogni stato.
 
 \begin{table}[H]
 \centering
@@ -1719,9 +1719,9 @@ Testa il componente React AiWidget, un widget flottante e trascinabile che cambi
 \prossimoCT & \gls{Verifica} che NON mostri il pulsante "Rigenera" se onRegenerate non è definito. & Pass \\ \hline
 \prossimoCT & \gls{Verifica} che venga chiamata onRegenerate quando si clicca "Rigenera". & Pass \\ \hline
 \prossimoCT & \gls{Verifica} che venga mostrato il pulsante "Scarta". & Pass \\ \hline
-\prossimoCT & \gls{Verifica} che venga mostrata la textarea per il prompt. & Pass \\ \hline
+\prossimoCT & \gls{Verifica} che venga mostrata la textarea per il \gls{prompt}. & Pass \\ \hline
 \prossimoCT & \gls{Verifica} che venga mostrato il pulsante "Annulla". & Pass \\ \hline
-\prossimoCT & \gls{Verifica} che il pulsante "Invia" sia disabilitato se il prompt è vuoto. & Pass \\ \hline
+\prossimoCT & \gls{Verifica} che il pulsante "Invia" sia disabilitato se il \gls{prompt} è vuoto. & Pass \\ \hline
 \prossimoCT & \gls{Verifica} che il pulsante "Invia" venga abilitato quando viene digitato del testo. & Pass \\ \hline
 \prossimoCT & \gls{Verifica} che venga chiamato onConfirm con il testo inserito quando si clicca "Invia". & Pass \\ \hline
 \prossimoCT & \gls{Verifica} che venga chiamato onCancel quando si clicca "Annulla". & Pass \\ \hline
@@ -1735,7 +1735,7 @@ Testa il componente React AiWidget, un widget flottante e trascinabile che cambi
 \end{table}
 
 \subsection{AiPanel.test.tsx}
-Testa il componente React AiPanel, il pannello laterale con i bottoni per le operazioni AI. Verifica il rendering iniziale, i sottomenu a comparsa (Traduci, Sei Cappelli), la disabilitazione durante la generazione e il corretto passaggio delle props all'hook useAiOperations.
+Testa il componente \gls{React} AiPanel, il pannello laterale con i bottoni per le operazioni AI. \gls{Verifica} il rendering iniziale, i sottomenu a comparsa (Traduci, Sei Cappelli), la disabilitazione durante la generazione e il corretto passaggio delle props all'hook useAiOperations.
 
 \begin{table}[H]
 \centering
@@ -1743,25 +1743,25 @@ Testa il componente React AiPanel, il pannello laterale con i bottoni per le ope
 \begin{tabular}{|l|p{12cm}|c|}
 \hline
 \textbf{Codice} & \textbf{Descrizione} & \textbf{Stato} \\ \hline
-\prossimoCT & Verifica che tutti i bottoni principali siano presenti nel DOM. & Pass \\ \hline
-\prossimoCT & Verifica che il pulsante di chiusura sia visibile. & Pass \\ \hline
-\prossimoCT & Verifica che i sottomenu di Traduci e Sei Cappelli siano chiusi all'avvio. & Pass \\ \hline
-\prossimoCT & Verifica che il click su X chiami onClose una volta. & Pass \\ \hline
-\prossimoCT & Verifica che il click su Riassumi chiami handleAction con summary. & Pass \\ \hline
-\prossimoCT & Verifica che il click su Riscrivi chiami handleAction con rewrite. & Pass \\ \hline
-\prossimoCT & Verifica che il click su Correggi chiami handleAction con fix\_grammar. & Pass \\ \hline
-\prossimoCT & Verifica che il click su Distant Writing chiami handleAction con distant\_writing. & Pass \\ \hline
-\prossimoCT & Verifica che il click su Traduci mostri le lingue disponibili. & Pass \\ \hline
-\prossimoCT & Verifica che un secondo click su Traduci nasconda le lingue (toggle). & Pass \\ \hline
-\prossimoCT & Verifica che il click su una lingua chiami handleAction con l'operazione corretta. & Pass \\ \hline
-\prossimoCT & Verifica che la scelta di una lingua chiuda il sottomenu. & Pass \\ \hline
-\prossimoCT & Verifica che il click su Sei Cappelli mostri tutti i cappelli. & Pass \\ \hline
-\prossimoCT & Verifica che il click su un cappello chiami handleAction con l'operazione corretta. & Pass \\ \hline
-\prossimoCT & Verifica che la scelta di un cappello chiuda il sottomenu. & Pass \\ \hline
-\prossimoCT & Verifica che tutti i bottoni siano disabilitati durante il LoadingState. & Pass \\ \hline
-\prossimoCT & Verifica che il click su un bottone disabilitato non chiami handleAction. & Pass \\ \hline
-\prossimoCT & Verifica che i bottoni tornino abilitati quando lo stato torna Idle. & Pass \\ \hline
-\prossimoCT & Verifica che getEditorText, getSelection, insertText e onEntryAdded vengano passate correttamente a useAiOperations. & Pass \\ \hline
+\prossimoCT & \gls{Verifica} che tutti i bottoni principali siano presenti nel DOM. & Pass \\ \hline
+\prossimoCT & \gls{Verifica} che il pulsante di chiusura sia visibile. & Pass \\ \hline
+\prossimoCT & \gls{Verifica} che i sottomenu di Traduci e Sei Cappelli siano chiusi all'avvio. & Pass \\ \hline
+\prossimoCT & \gls{Verifica} che il click su X chiami onClose una volta. & Pass \\ \hline
+\prossimoCT & \gls{Verifica} che il click su Riassumi chiami handleAction con summary. & Pass \\ \hline
+\prossimoCT & \gls{Verifica} che il click su Riscrivi chiami handleAction con rewrite. & Pass \\ \hline
+\prossimoCT & \gls{Verifica} che il click su Correggi chiami handleAction con fix\_grammar. & Pass \\ \hline
+\prossimoCT & \gls{Verifica} che il click su \gls{Distant Writing} chiami handleAction con distant\_writing. & Pass \\ \hline
+\prossimoCT & \gls{Verifica} che il click su Traduci mostri le lingue disponibili. & Pass \\ \hline
+\prossimoCT & \gls{Verifica} che un secondo click su Traduci nasconda le lingue (toggle). & Pass \\ \hline
+\prossimoCT & \gls{Verifica} che il click su una lingua chiami handleAction con l'operazione corretta. & Pass \\ \hline
+\prossimoCT & \gls{Verifica} che la scelta di una lingua chiuda il sottomenu. & Pass \\ \hline
+\prossimoCT & \gls{Verifica} che il click su Sei Cappelli mostri tutti i cappelli. & Pass \\ \hline
+\prossimoCT & \gls{Verifica} che il click su un cappello chiami handleAction con l'operazione corretta. & Pass \\ \hline
+\prossimoCT & \gls{Verifica} che la scelta di un cappello chiuda il sottomenu. & Pass \\ \hline
+\prossimoCT & \gls{Verifica} che tutti i bottoni siano disabilitati durante il LoadingState. & Pass \\ \hline
+\prossimoCT & \gls{Verifica} che il click su un bottone disabilitato non chiami handleAction. & Pass \\ \hline
+\prossimoCT & \gls{Verifica} che i bottoni tornino abilitati quando lo stato torna Idle. & Pass \\ \hline
+\prossimoCT & \gls{Verifica} che getEditorText, getSelection, insertText e onEntryAdded vengano passate correttamente a useAiOperations. & Pass \\ \hline
 
 
 \end{tabular}
