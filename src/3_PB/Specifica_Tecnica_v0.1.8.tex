@@ -71,7 +71,7 @@
         \centering
         \begin{tabular}{|l|p{5cm}|}
             \hline
-            \textbf{Versione} & 0.1.8 \\
+            \textbf{Versione} & 0.1.9 \\
             \hline
             \textbf{Stato} & In corso \\
             \hline
@@ -102,6 +102,8 @@
     \begin{tabular}{|c|c|c|>{\raggedright\arraybackslash}p{0.35\textwidth}|p{0.18\textwidth}|}
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{\gls{Verifica}} \\
+        \hline
+        0.1.9 & 24/04/2026 & Matteo Cuogo & Aggiornamento dello stato di soddisfacimento di alcuni requisiti & \\
         \hline
         0.1.8 & 24/04/2026 & Tommaso Tombacco & Modifica sezione AiWidget e modifica dello stato dei requisiti legati ad AI & \\
         \hline
@@ -1492,15 +1494,15 @@ RO-F-66 & Prima di procedere con il caricamento di un file, il sistema chiede co
 \hline
 RO-F-67 & Il sistema deve informare l'utente con un messaggio di esito (successo o errore) al termine di ogni tentativo di caricamento file. & Soddisfatto \\
 \hline
-RO-F-68 & Il sistema deve validare il formato del file selezionato e impedire il caricamento di formati non supportati. & ... \\
+RO-F-68 & Il sistema deve validare il formato del file selezionato e impedire il caricamento di formati non supportati. & Soddisfatto \\
 \hline
-RO-F-69 & Il sistema deve validare le dimensioni del file selezionato e impedire il caricamento di file che superano la dimensione massima consentita. & ... \\
+RO-F-69 & Il sistema deve validare le dimensioni del file selezionato e impedire il caricamento di file che superano la dimensione massima consentita. & Soddisfatto \\
 \hline
-RO-F-70 & Il sistema deve impedire il caricamento di file corrotti o illeggibili. & ... \\
+RO-F-70 & Il sistema deve impedire il caricamento di file corrotti o illeggibili. & Soddisfatto \\
 \hline
 RO-F-71 & Il sistema deve permettere all'utente di rimuovere il file che ha caricato. & Soddisfatto \\
 \hline
-RO-F-72 & L'utente può annullare l'operazione di rimozione del file caricato, lasciando l'editor nel suo stato precedente. & ... \\
+RO-F-72 & L'utente può annullare l'operazione di rimozione del file caricato, lasciando l'editor nel suo stato precedente. & Soddisfatto \\
 \hline
 RO-F-73 & Il sistema deve essere in grado di convertire il documento da \gls{Markdown} al formato selezionato dall'utente. & Soddisfatto \\
 \hline
@@ -1530,23 +1532,23 @@ RD-F-1 & Il sistema deve supportare l'uso di scorciatoie da tastiera per le oper
 \hline
 RD-F-2 & Il sistema deve permettere di cambiare modalità di visualizzazione (Solo Editor, Solo Anteprima, Split View). & Soddisfatto \\
 \hline
-RD-F-3 & Il sistema deve supportare il caricamento tramite drag-and-drop (trascinamento file nell'area dell'editor). & ... \\
+RD-F-3 & Il sistema deve supportare il caricamento tramite drag-and-drop (trascinamento file nell'area dell'editor). & Soddisfatto \\
 \hline
 RD-F-4 & Se sono presenti modifiche non salvate, il sistema chiede conferma all'utente prima di caricare un nuovo file. & Soddisfatto\\
 \hline
-RD-F-5 & Il parsing del contenuto del file caricato deve gestire caratteri non validi senza causare il crash dell'applicazione. & ... \\
+RD-F-5 & Il parsing del contenuto del file caricato deve gestire caratteri non validi senza causare il crash dell'applicazione. & Soddisfatto \\
 \hline
-RD-F-6 & I messaggi di errore relativi al caricamento file devono essere esplicativi e suggerire come procedere. & ... \\
+RD-F-6 & I messaggi di errore relativi al caricamento file devono essere esplicativi e suggerire come procedere. & Soddisfatto \\
 \hline
 RD-F-7 & Il sistema deve offrire più opzioni per le operazioni comuni sui file come carica nuovo, stampa, chiudi. & Soddisfatto \\
 \hline
-RD-F-8 & Il sistema deve consentire l'esportazione del documento in formato PDF. & ... \\
+RD-F-8 & Il sistema deve consentire l'esportazione del documento in formato PDF. & Non soddisfatto \\
 \hline
 RD-F-9 & Il sistema deve consentire l'esportazione del documento in formato HTML. & Soddisfatto \\
 \hline
-RD-F-10 & Il sistema deve consentire l'esportazione del documento in formato ODT. & ... \\
+RD-F-10 & Il sistema deve consentire l'esportazione del documento in formato ODT. & Non soddisfatto \\
 \hline
-RD-F-11 & Il sistema deve consentire l'esportazione del documento in formato DOCX. & ... \\
+RD-F-11 & Il sistema deve consentire l'esportazione del documento in formato DOCX. & Non soddisfatto \\
 \hline
 RD-F-12 & L'utente deve poter scegliere se esportare l'intero documento o un range di pagine selezionate. & Non soddisfatto \\
 \hline
@@ -1558,9 +1560,9 @@ RD-F-15 & Il sistema deve aprire il dialogo di stampa nativo del browser per con
 \hline
 
 % OPZIONALI
-ROP-F-1 & L'utente può ricercare parole nel testo attraverso l'editor & ... \\
+ROP-F-1 & L'utente può ricercare parole nel testo attraverso l'editor & Non soddisfatto \\
 \hline
-ROP-F-2 & Il sistema deve informare l'utente se la ricerca non ha prodotto occorrenze nel testo. & ... \\
+ROP-F-2 & Il sistema deve informare l'utente se la ricerca non ha prodotto occorrenze nel testo. & Non soddisfatto \\
 \hline
 ROP-F-3 & La sezione di testo generata come proposta è visibilmente diversa dal testo utente & Soddisfatto \\
 \hline
@@ -1576,9 +1578,9 @@ ROP-F-8 & La sezione di testo in stato di proposta viene colorata in base al tip
 \hline
 ROP-F-9 & Il sistema deve visualizzare sia il testo originale che la traduzione generata, permettendo all'utente di confrontarle. & Soddisfatto \\
 \hline
-ROP-F-10 & Se il testo selezionato è già nella lingua di destinazione della traduzione, il sistema avvisa l'utente e interrompe l'operazione. & ... \\
+ROP-F-10 & Se il testo selezionato è già nella lingua di destinazione della traduzione, il sistema avvisa l'utente e interrompe l'operazione. & Non soddisfatto \\
 \hline
-ROP-F-11 & Il sistema offre esempi per la richiesta di generazione di testo a partire da un estratto & ... \\
+ROP-F-11 & Il sistema offre esempi per la richiesta di generazione di testo a partire da un estratto & Non soddisfatto \\
 \hline
 ROP-F-12 & Il sistema permette di inserire un grafico generato, con dati presenti nel testo, scelto tra diversi tipi disponibili all'utente & Non soddisfatto \\
 \hline
