@@ -51,7 +51,6 @@ aside .flexbox {
 
 .logo_wrap {
     margin: 50px auto 0px;
-    /*border: 2px solid #a5abbd;*/
     border-radius: 50%;
     overflow: hidden;
 }
@@ -172,6 +171,7 @@ a:visited {
     flex-wrap: wrap;
     justify-content: space-around;
     gap: 10px;
+    margin-bottom: 15px;
 }
 
 #about .member_contact > p{
@@ -185,8 +185,6 @@ a:visited {
 
 #candidatura{
     width: 45%;
-    background-color: var(--text);
-    color: var(--background);
 }
 
 .special_link{
@@ -236,9 +234,12 @@ a:visited {
     color: var(--primary);
 }
 
+#pb{
+    background-color: var(--text);
+    color: var(--background);
+}
 
-#candidatura a,
-#rtb a{
+#pb a{
     color: var(--background);
 }
 
@@ -280,8 +281,6 @@ a:visited {
 
 #rtb{
     width: 55%;
-    background-color: var(--text);
-    color: var(--background);
 }
 
 footer {
