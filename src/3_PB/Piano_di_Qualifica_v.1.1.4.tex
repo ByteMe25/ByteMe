@@ -1476,7 +1476,7 @@ Testa la funzionalità dell'esportazione: interazione con l'utente, composizione
 \end{table}
 
 \subsubsection{useDraggable.test.ts}
-Testa un hook React per il drag di elementi UI via mouse. Copre il calcolo della posizione, la gestione di più movimenti consecutivi, e l'aggiunta/rimozione corretta dei listener su window.
+Testa un hook \gls{React} per il drag di elementi UI via mouse. Copre il calcolo della posizione, la gestione di più movimenti consecutivi, e l'aggiunta/rimozione corretta dei listener su window.
 
 \begin{table}[H]
 \centering
@@ -1484,20 +1484,20 @@ Testa un hook React per il drag di elementi UI via mouse. Copre il calcolo della
 \begin{tabular}{|l|p{12cm}|c|}
 \hline
 \textbf{Codice} & \textbf{Descrizione} & \textbf{Stato} \\ \hline
-\prossimoUT & Verifica che la posizione cambi correttamente dopo mousedown + mousemove. & Pass \\ \hline
-\prossimoUT & Verifica il calcolo dell'offset quando si parte da una posizione non nulla. & Pass \\ \hline
-\prossimoUT & Verifica che ogni mousemove aggiorni la posizione all'ultimo valore. & Pass \\ \hline
-\prossimoUT & Verifica che dopo mouseup, ulteriori mousemove non devono modificare la posizione. & Pass \\ \hline
-\prossimoUT & Verifica che removeEventListener venga chiamato per mousemove e mouseup. & Pass \\ \hline
-\prossimoUT & Verifica che un mousemove senza mousedown precedente non alteri la posizione & Pass \\ \hline
-\prossimoUT & Verifica che addEventListener venga chiamato per mousemove e mouseup. & Pass \\ \hline
+\prossimoUT & \gls{Verifica} che la posizione cambi correttamente dopo mousedown + mousemove. & Pass \\ \hline
+\prossimoUT & \gls{Verifica} il calcolo dell'offset quando si parte da una posizione non nulla. & Pass \\ \hline
+\prossimoUT & \gls{Verifica} che ogni mousemove aggiorni la posizione all'ultimo valore. & Pass \\ \hline
+\prossimoUT & \gls{Verifica} che dopo mouseup, ulteriori mousemove non devono modificare la posizione. & Pass \\ \hline
+\prossimoUT & \gls{Verifica} che removeEventListener venga chiamato per mousemove e mouseup. & Pass \\ \hline
+\prossimoUT & \gls{Verifica} che un mousemove senza mousedown precedente non alteri la posizione & Pass \\ \hline
+\prossimoUT & \gls{Verifica} che addEventListener venga chiamato per mousemove e mouseup. & Pass \\ \hline
 
 \end{tabular}
 \caption{Tabella unit tests per useDraggable.ts}
 \end{table}
 
 \subsubsection{useAiOperations.test.ts}
-Testa un hook React che orchestra le operazioni AI su testo (riassunto, riscrittura, traduzione, ecc.). Copre la selezione del testo sorgente, il ciclo di vita degli stati del widget (Idle → Loading → Done/Error), il flusso speciale distant\_writing con input utente, e il meccanismo di cancellazione via AbortSignal.
+Testa un hook \gls{React} che orchestra le operazioni AI su testo (riassunto, riscrittura, traduzione, ecc.). Copre la selezione del testo sorgente, il ciclo di vita degli stati del widget (Idle → Loading → Done/Error), il flusso speciale distant\_writing con input utente, e il meccanismo di cancellazione via AbortSignal.
 
 \begin{table}[H]
 \centering
@@ -1505,26 +1505,26 @@ Testa un hook React che orchestra le operazioni AI su testo (riassunto, riscritt
 \begin{tabular}{|l|p{12cm}|c|}
 \hline
 \textbf{Codice} & \textbf{Descrizione} & \textbf{Stato} \\ \hline
-\prossimoUT & Verifica che se c'è testo selezionato, viene passato quello ad aiCall. & Pass \\ \hline
+\prossimoUT & \gls{Verifica} che se c'è testo selezionato, viene passato quello ad aiCall. & Pass \\ \hline
 \prossimoUT & Verificache con selezione vuota, viene usato l'intero contenuto dell'editor. & Pass \\ \hline
-\prossimoUT & Verifica che il widget passa a LoadingState mentre aiCall è in attesa. & Pass \\ \hline
-\prossimoUT & Verifica che a chiamata completata, il widget passi a DoneState. & Pass \\ \hline
-\prossimoUT & Verifica che dopo il successo, onEntryAdded riceva operazione, testo input/output e timestamp. & Pass \\ \hline
-\prossimoUT & Verifica che se aiCall rigetta, il widget passa a ErrorState. & Pass \\ \hline
-\prossimoUT & Verifica che se il reject non è un'istanza di Error, venga mostrato "Errore sconosciuto". & Pass \\ \hline
-\prossimoUT & Verifica che l'ID dell'operazione sia incluso nei parametri della chiamata. & Pass \\ \hline
-\prossimoUT & Verifica che distant\_writing imposti InputState senza effettuare subito la chiamata. & Pass \\ \hline
-\prossimoUT & Verifica che, dopo che l'utente inserisce il prompt e clicca Invia, aiCall venga invocato. & Pass \\ \hline
-\prossimoUT & Verifica che dopo il successo, il DoneState mostri il pulsante "Rigenera". & Pass \\ \hline
-\prossimoUT & Verifica che, cliccando "Rigenera", il widget torni a InputState con il prompt precedente. & Pass \\ \hline
-\prossimoUT & Verifica che il metodo esposto direttamente imposti subito InputState. & Pass \\ \hline
-\prossimoUT & Verifica che, cliccando "Inserisci", venga chiamato insertText con il testo generato. & Pass \\ \hline
-\prossimoUT & Verifica che, dopo "Inserisci", il widget torni a IdleState. & Pass \\ \hline
-\prossimoUT & Verifica che, dopo "Scarta", il widget torni a IdleState. & Pass \\ \hline
-\prossimoUT & Verifica che "Scarta" non deve invocare insertText. & Pass \\ \hline
-\prossimoUT & Verifica che il signal di cancellazione venga sempre passato. & Pass \\ \hline
-\prossimoUT & Verifica che, cliccando "Annulla" nel LoadingState, il widget torni a IdleState. & Pass \\ \hline
-\prossimoUT & Verifica che una cancellazione non faccia transitare in ErrorState. & Pass \\ \hline
+\prossimoUT & \gls{Verifica} che il widget passa a LoadingState mentre aiCall è in attesa. & Pass \\ \hline
+\prossimoUT & \gls{Verifica} che a chiamata completata, il widget passi a DoneState. & Pass \\ \hline
+\prossimoUT & \gls{Verifica} che dopo il successo, onEntryAdded riceva operazione, testo input/output e timestamp. & Pass \\ \hline
+\prossimoUT & \gls{Verifica} che se aiCall rigetta, il widget passa a ErrorState. & Pass \\ \hline
+\prossimoUT & \gls{Verifica} che se il reject non è un'istanza di Error, venga mostrato "Errore sconosciuto". & Pass \\ \hline
+\prossimoUT & \gls{Verifica} che l'ID dell'operazione sia incluso nei parametri della chiamata. & Pass \\ \hline
+\prossimoUT & \gls{Verifica} che distant\_writing imposti InputState senza effettuare subito la chiamata. & Pass \\ \hline
+\prossimoUT & \gls{Verifica} che, dopo che l'utente inserisce il \gls{prompt} e clicca Invia, aiCall venga invocato. & Pass \\ \hline
+\prossimoUT & \gls{Verifica} che dopo il successo, il DoneState mostri il pulsante "Rigenera". & Pass \\ \hline
+\prossimoUT & \gls{Verifica} che, cliccando "Rigenera", il widget torni a InputState con il \gls{prompt} precedente. & Pass \\ \hline
+\prossimoUT & \gls{Verifica} che il metodo esposto direttamente imposti subito InputState. & Pass \\ \hline
+\prossimoUT & \gls{Verifica} che, cliccando "Inserisci", venga chiamato insertText con il testo generato. & Pass \\ \hline
+\prossimoUT & \gls{Verifica} che, dopo "Inserisci", il widget torni a IdleState. & Pass \\ \hline
+\prossimoUT & \gls{Verifica} che, dopo "Scarta", il widget torni a IdleState. & Pass \\ \hline
+\prossimoUT & \gls{Verifica} che "Scarta" non deve invocare insertText. & Pass \\ \hline
+\prossimoUT & \gls{Verifica} che il signal di cancellazione venga sempre passato. & Pass \\ \hline
+\prossimoUT & \gls{Verifica} che, cliccando "Annulla" nel LoadingState, il widget torni a IdleState. & Pass \\ \hline
+\prossimoUT & \gls{Verifica} che una cancellazione non faccia transitare in ErrorState. & Pass \\ \hline
 
 \end{tabular}
 \caption{Tabella unit tests per useAiOperations.ts}

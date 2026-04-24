@@ -68,9 +68,9 @@
         \centering
         \begin{tabular}{|l|p{5cm}|}
             \hline
-            \textbf{Versione} & 1.1.0 \\
+            \textbf{Versione} & 2.0.0 \\
             \hline
-            \textbf{Stato} & Da approvare \\
+            \textbf{Stato} & Approvato \\
             \hline
             \textbf{Redazione} & Giulia Barzon, Joseph Grant, Elisa Marchioro \\
             \hline
@@ -99,9 +99,11 @@
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{\gls{Verifica}} \\
         \hline
-        1.1.0 & 20/04/2026 & Giulia Barzon & Aggiunte sezioni 9, 10, 11& \\
+        2.0.0 & 24/04/2026 & Matteo Cuogo & Approvazione documento& \\
         \hline
-        1.0.8 & 10/04/2026 & Giulia Barzon & Sezioni setup test in locale e \gls{Git} Flow & \\
+        1.1.0 & 20/04/2026 & Giulia Barzon & Aggiunte sezioni 9, 10, 11& Matteo Cuogo\\
+        \hline
+        1.0.8 & 10/04/2026 & Giulia Barzon & Sezioni setup test in locale e \gls{Git} Flow & Matteo Cuogo\\
         \hline
         1.0.7 & 26/03/2026 & Elisa Marchioro & Miglioramento sezione 5 e 6 & Chiara Grossele, Giulia Barzon\\
         \hline
@@ -287,8 +289,6 @@ strumenti adottati dal gruppo.
 \newpage
 
 \section{Gestione del codice e documentazione}
-aggiungi intro
-
 Il gruppo adotta una strategia multi-\gls{repository} su \textit{\gls{GitHub}} per separare la gestione documentale dallo sviluppo tecnico:
 \begin{itemize}
     \item \textbf{ByteMe}: \gls{Repository} dedicata esclusivamente alla documentazione ufficiale del progetto (Norme, Piano di Progetto, Analisi, ecc.) in formato LaTex.
@@ -329,7 +329,7 @@ ByteMe/
 Ogni cartella contiene quindi tutti i documenti relativi alle rispettive fasi del progetto.
 La cartella dei Documenti interni contiene le \gls{Norme di Progetto} (ovvero il documento \gls{Way of working}) e il \gls{Glossario}.
 La cartella docs contiene i file relativi al sito web del gruppo, dove sono esposti i documenti in pdf.
-La cartella src contiene i file .tex di tutti i documenti del gruppo, che vengono convertiti in .pdf nelle cartelle corrette al momento del push sulla \gls{repository}. Per rendere automatico questo processo si usa il file compileLatex.yml che si trova nella cartella .gitignore.
+La cartella src contiene i file .tex di tutti i documenti del gruppo, che vengono convertiti in .pdf nelle cartelle corrette al momento del push sulla \gls{repository}. Per rendere automatico questo processo si usa il file compileLatex.yml che si trova nella cartella .\gls{github}/workflows.
 Le cartelle relative ai verbali contengono tutti i verbali in pdf relativi alle riunioni interne del gruppo o agli incontri con la proponente.
 
 \subsubsection{Attività: sviluppo della documentazione}
@@ -1169,7 +1169,7 @@ Ogni qualvolta sia necessario assegnare un modello a una specifica funzionalità
 
 La scelta del modello finale è vincolata al superamento delle seguenti soglie quantitative, misurate manualmente o automaticamente:
 \begin{itemize}
-    \item \textbf{Aderenza al ruolo (AR)}: Valutazione manuale su scala discreta (0, 1, 2). Un modello è accettabile se ottiene un punteggio $\ge 2$ nell'80\% dei campioni.
+    \item \textbf{Aderenza al ruolo (AR)}: Valutazione manuale su scala discreta (0, 1, 2). Un modello è accettabile se ottiene un punteggio $= 2$ nell'80\% dei campioni.
     \item \textbf{Conformità strutturale (CS)}: \gls{Verifica} binaria del rispetto dei vincoli di formato (es. output solo in \gls{Markdown}). Soglia minima: 80\%.
     \item \textbf{Tasso di allucinazione (HR)}: Controllo manuale della fedeltà al testo sorgente. Non deve superare il 5\%.
     \item \textbf{Efficienza temporale}: Misurazione automatica della latenza. Il tempo di risposta deve essere $\le 60$ secondi per sessione.
