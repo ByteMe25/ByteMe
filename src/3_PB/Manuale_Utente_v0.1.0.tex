@@ -193,8 +193,8 @@ Sebbene l'elaborazione dei modelli linguistici ($LLM_G$) avvenga su server remot
 \subsection{Requisiti software}
 Trattandosi di un'applicazione distribuita tramite container, l'unico software richiesto per l'installazione è \textbf{\gls{Docker}} (comprensivo di \gls{Docker} Compose).
 \begin{itemize}
-    \item \textbf{Per utenti Windows/Mac}: Si consiglia l'installazione di \textit{Docker Desktop}.
-    \item \textbf{Per utenti Linux}: Assicurarsi che il servizio \texttt{docker} sia attivo e che l'utente disponga dei permessi necessari per eseguire \texttt{docker-compose}.
+    \item \textbf{Per utenti Windows/Mac}: Si consiglia l'installazione di \textit{\gls{Docker} Desktop}.
+    \item \textbf{Per utenti Linux}: Assicurarsi che il servizio \texttt{\gls{docker}} sia attivo e che l'utente disponga dei permessi necessari per eseguire \texttt{\gls{docker}-compose}.
 \end{itemize}
 
 \subsection{Connessione Internet}
@@ -230,16 +230,16 @@ Successivamente, entra nella cartella del progetto:
     \texttt{cd PB\_ByteMe}
 \end{center}
 
-\subsection{Configurazione delle chiavi API}
+\subsection{Configurazione delle chiavi \gls{API}}
 Affinché le funzioni di Intelligenza Artificiale siano operative, è necessario fornire al sistema le credenziali di accesso ai modelli linguistici.
 \begin{enumerate}
     \item Individua nella cartella principale il file denominato \texttt{.env.example}.
     \item Crea una copia del file e rinominala esattamente in \texttt{.env}.
-    \item Apri il file \texttt{.env} con un editor di testo e compila i campi richiesti:
+    \item Apri il file \texttt{.env} con un \gls{editor di testo} e compila i campi richiesti:
     \begin{itemize}
         \item \texttt{OPENAI\_API\_KEY}: Inserisci la tua chiave segreta fornita dal provider (es. Zucchetti o OpenAI).
         \item \texttt{OPENAI\_BASE\_URL}: Inserisci l'indirizzo del server che eroga i modelli.
-        \item \texttt{FLASK\_SECRET\_KEY}: Inserisci una stringa casuale a tua scelta per mettere in sicurezza le sessioni tecniche del server.
+        \item \texttt{\gls{FLASK}\_SECRET\_KEY}: Inserisci una stringa casuale a tua scelta per mettere in sicurezza le sessioni tecniche del server.
     \end{itemize}
 \end{enumerate}
 
@@ -341,7 +341,7 @@ Posizionata a sinistra, la \textit{Sidebar} è il centro operativo del software.
     \end{minipage}
 \end{figure}
 
-\subsection{L'editor Markdown}
+\subsection{L'editor \gls{Markdown}}
 L'area centrale ospita il motore di scrittura basato su sintassi \gls{Markdown}. L'editor offre strumenti di formattazione rapida (grassetto, corsivo, liste, link...) tramite una barra degli strumenti dedicata situata appena sopra l'area di inserimento del testo.
 
 \begin{figure}[H]
@@ -351,8 +351,8 @@ L'area centrale ospita il motore di scrittura basato su sintassi \gls{Markdown}.
     \label{fig:toolbar}
 \end{figure}
 
-\paragraph{Toolbar: formattazioni Markdown}
-La barra degli strumenti permette di applicare i principali stili grafici senza dover digitare manualmente i simboli della sintassi Markdown. Di seguito sono elencate le funzioni disponibili e la relativa sintassi che verrà inserita nel documento:
+\paragraph{\gls{Toolbar}: formattazioni \gls{Markdown}}
+La barra degli strumenti permette di applicare i principali stili grafici senza dover digitare manualmente i simboli della sintassi \gls{Markdown}. Di seguito sono elencate le funzioni disponibili e la relativa sintassi che verrà inserita nel documento:
 
 \begin{enumerate}
     \item \textbf{Stili del testo}:
@@ -398,7 +398,7 @@ La barra degli strumenti permette di applicare i principali stili grafici senza 
 
 
 \paragraph{Modalità di visualizzazione}
-Per facilitare la revisione dei documenti, l'editor permette di alternare tra tre modalità di visualizzazione utilizzando le icone presenti nella toolbar dell'area di testo:
+Per facilitare la revisione dei documenti, l'editor permette di alternare tra tre modalità di visualizzazione utilizzando le icone presenti nella \gls{toolbar} dell'area di testo:
 
 \begin{enumerate}
     \item \textbf{Solo editor}: Visualizza esclusivamente il codice sorgente \gls{Markdown}. Ideale per la fase di stesura veloce.
@@ -454,7 +454,7 @@ Nella finestra di esportazione è possibile:
     \item \textbf{Definire il nome del file}: Il sistema propone come predefinito il titolo impostato nella \textit{Topbar}, ma è possibile modificarlo liberamente prima del download.
     \item \textbf{Scegliere il formato}: Sono disponibili diversi formati per garantire la compatibilità con altri software:
     \begin{itemize}
-        \item \textbf{Markdown (.md)}: Mantiene il codice sorgente originale.
+        \item \textbf{\gls{Markdown} (.md)}: Mantiene il codice sorgente originale.
         \item \textbf{Testo (.txt)}: Formato universale e leggero, ideale per salvare e leggere il contenuto testuale base su qualsiasi dispositivo.
         \item \textbf{HTML (.html)}: Per la pubblicazione diretta sul web.
     \end{itemize}
@@ -553,10 +553,10 @@ Questa sezione implementa il celebre metodo di Edward de Bono per il pensiero la
     \item \textbf{Cappello Blu (Organizzazione)}: Fornisce una sintesi strutturata e una visione d'insieme, definendo le priorità e i passi successivi logici.
 \end{itemize}
 
-\subsection{Distant Writing (Generazione da zero)}
-Il \textit{Distant Writing} è lo strumento dedicato alla creazione di nuovi contenuti. 
+\subsection{\gls{Distant Writing} (Generazione da zero)}
+Il \textit{\gls{Distant Writing}} è lo strumento dedicato alla creazione di nuovi contenuti. 
 \begin{itemize}
-    \item \textbf{Processo}: Attivando questa funzione, comparirà una finestra di input dove l'utente può inserire un'istruzione (prompt) descrivendo ciò che desidera ottenere (es: "Scrivi un'email formale di sollecito per una fattura scaduta").
+    \item \textbf{Processo}: Attivando questa funzione, comparirà una finestra di input dove l'utente può inserire un'istruzione (\gls{prompt}) descrivendo ciò che desidera ottenere (es: "Scrivi un'email formale di sollecito per una fattura scaduta").
     \item \textbf{Risultato}: L'AI elabora l'input e propone un testo completo, strutturato e pronto per essere inserito nell'editor. Se il risultato non soddisfa pienamente, è possibile utilizzare la funzione \textbf{Rigenera} per ottenere una variante diversa mantenendo la stessa istruzione originale.
 \end{itemize}
 
@@ -586,21 +586,21 @@ Una volta che l'AI ha completato l'elaborazione, il widget espone tre opzioni op
     \item \textbf{Rigenera}: Se il risultato non è soddisfacente, questo comando invia nuovamente la richiesta all'AI per ottenere una variante diversa, mantenendo lo stesso contesto o le stesse istruzioni.
 \end{itemize}
 
-\subsection{Distant Writing: generazione creativa}
-La funzione \textbf{Distant Writing} è dedicata alla creazione di nuovi contenuti a partire da un'idea o un'istruzione specifica. A differenza degli strumenti editoriali, questa modalità richiede un input testuale diretto (\textit{prompt}) da parte dell'utente.
+\subsection{\gls{Distant Writing}: generazione creativa}
+La funzione \textbf{\gls{Distant Writing}} è dedicata alla creazione di nuovi contenuti a partire da un'idea o un'istruzione specifica. A differenza degli strumenti editoriali, questa modalità richiede un input testuale diretto (\textit{\gls{prompt}}) da parte dell'utente.
 
 \paragraph{Procedura di utilizzo}
 \begin{enumerate}
     \item Posiziona il cursore nell'editor nel punto esatto dove desideri che il testo venga generato.
-    \item Apri il pannello AI e seleziona \textbf{Distant Writing}.
-    \item Scrivi un prompt, un'istruzione o un'idea nel campo dedicato.
+    \item Apri il pannello AI e seleziona \textbf{\gls{Distant Writing}}.
+    \item Scrivi un \gls{prompt}, un'istruzione o un'idea nel campo dedicato.
     \item Clicca su invia: il sistema mostrerà il widget di caricamento e, successivamente, la proposta testuale pronta per essere inserita o rigenerata.
 \end{enumerate}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{../ManualeUtenteimg/widget_distant_writing.png}
-    \caption{Interfaccia di input per il Distant Writing.}
+    \caption{Interfaccia di input per il \gls{Distant Writing}.}
     \label{fig:ai_widget_distant_writing}
 \end{figure}
 
@@ -684,13 +684,13 @@ Di seguito sono elencate le soluzioni ai problemi più comuni in cui potresti in
 \paragraph{\gls{Docker} mostra un errore di "Porta già in uso" (Port already allocated)}
 Questo accade quando un'altra applicazione sul tuo computer sta già utilizzando la porta \texttt{8080} (necessaria per l'interfaccia) o la \texttt{8000} (necessaria per il server).
 \begin{itemize}
-    \item \textbf{Soluzione}: Interrompi l'applicazione in conflitto, oppure apri il file \texttt{docker-compose.yml} con un editor di testo e modifica il parametro \texttt{ports} (es. da \texttt{"8080:8080"} a \texttt{"8081:8080"}). Successivamente, ripeti il comando di avvio e accedi a \texttt{http://localhost:8081}.
+    \item \textbf{Soluzione}: Interrompi l'applicazione in conflitto, oppure apri il file \texttt{\gls{docker}-compose.yml} con un \gls{editor di testo} e modifica il parametro \texttt{ports} (es. da \texttt{"8080:8080"} a \texttt{"8081:8080"}). Successivamente, ripeti il comando di avvio e accedi a \texttt{http://localhost:8081}.
 \end{itemize}
 
-\paragraph{Il terminale mostra l'errore "docker-compose command not found"}
+\paragraph{Il terminale mostra l'errore "\gls{docker}-compose command not found"}
 L'installazione di \gls{Docker} Desktop potrebbe non essere andata a buon fine o le variabili d'ambiente del tuo sistema operativo non sono aggiornate.
 \begin{itemize}
-    \item \textbf{Soluzione}: Assicurati che l'applicazione \gls{Docker} Desktop sia aperta e in esecuzione in background prima di digitare i comandi nel terminale. Se utilizzi una versione molto recente, prova a digitare \texttt{docker compose} (senza il trattino).
+    \item \textbf{Soluzione}: Assicurati che l'applicazione \gls{Docker} Desktop sia aperta e in esecuzione in background prima di digitare i comandi nel terminale. Se utilizzi una versione molto recente, prova a digitare \texttt{\gls{docker compose}} (senza il trattino).
 \end{itemize}
 
 \subsection{Problemi durante l'utilizzo}
@@ -698,7 +698,7 @@ L'installazione di \gls{Docker} Desktop potrebbe non essere andata a buon fine o
 \paragraph{L'Intelligenza Artificiale risponde con uno stato di errore continuo}
 Se il widget restituisce immediatamente un errore ogni volta che si avvia un'operazione, il server non riesce a comunicare con il provider linguistico.
 \begin{itemize}
-    \item \textbf{Soluzione 1}: Verifica di aver creato correttamente il file \texttt{.env} nella cartella principale e di aver inserito chiavi API valide, come spiegato nel capitolo di Installazione. Se hai modificato il file \texttt{.env} a sistema già avviato, devi riavviare l'applicazione (\texttt{Ctrl + C} nel terminale, seguito nuovamente da \texttt{docker-compose up --build}).
+    \item \textbf{Soluzione 1}: \gls{Verifica} di aver creato correttamente il file \texttt{.env} nella cartella principale e di aver inserito chiavi \gls{API} valide, come spiegato nel capitolo di Installazione. Se hai modificato il file \texttt{.env} a sistema già avviato, devi riavviare l'applicazione (\texttt{Ctrl + C} nel terminale, seguito nuovamente da \texttt{\gls{docker}-compose up --build}).
     \item \textbf{Soluzione 2}: Assicurati che il tuo computer sia connesso a Internet. Sebbene il software funzioni localmente, le operazioni AI richiedono una connessione attiva per interrogare i modelli LLM.
 \end{itemize}
 
