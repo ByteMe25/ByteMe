@@ -68,9 +68,9 @@
         \centering
         \begin{tabular}{|l|p{5cm}|}            
             \hline
-            \textbf{Versione} & 1.2.1 \\
+            \textbf{Versione} & 2.0.0 \\
             \hline
-            \textbf{Stato} & Da approvare \\
+            \textbf{Stato} & Approvato \\
             \hline
             \textbf{Redazione} & Giulia Barzon, Elisa Marchioro \\
             \hline
@@ -96,13 +96,15 @@
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verifica} \\
         \hline
-        1.2.1 & 22/04/2026 & Giulia Barzon & Aggiunti termini relativi ai pattern & \\
+        2.0.0 & 24/04/2026 & Matteo Cuogo & Approvazione documento & \\
         \hline
-        1.2.0 & 20/04/2026 & Giulia Barzon & Aggiunti nuovi termini della fase PB & \\
+        1.2.1 & 22/04/2026 & Giulia Barzon & Aggiunti termini relativi ai pattern & Matteo Cuogo\\
         \hline
-        1.1.3 & 20/04/2026 & Giulia Barzon & Aggiunti termini stateless e Zustand & \\
+        1.2.0 & 20/04/2026 & Giulia Barzon & Aggiunti nuovi termini della fase PB & Matteo Cuogo\\
         \hline
-        1.1.2 & 12/04/2026 & Giulia Barzon & Aggiunti termini relativi a prompt e LLM & \\
+        1.1.3 & 20/04/2026 & Giulia Barzon & Aggiunti termini stateless e Zustand & Matteo Cuogo\\
+        \hline
+        1.1.2 & 12/04/2026 & Giulia Barzon & Aggiunti termini relativi a prompt e LLM & Matteo Cuogo\\
         \hline
         1.1.1 & 21/03/2026 & Elisa Marchioro & Aggiunta sezione "Script: glossario.py" & Matteo Cuogo, Tommaso Tombacco\\
         \hline
@@ -170,7 +172,7 @@ Metrica tipica: Failure Density (densità di fallimenti nei test).
 
 \item \textbf{Allucinazione (AI)}: Fenomeno tipico dei modelli linguistici generativi in cui il sistema produce informazioni fattualmente errate, inventate o non deducibili dal testo di input fornito. La riduzione di tale fenomeno è un obiettivo primario dell'assicurazione della qualità nel progetto Second Brain.
 
-\item \textbf{Analisi dei requisiti}: Fase in cui si raccolgono e si comprendono i bisogni del cliente e cosa deve fare il software.
+\item \textbf{Analisi dei requisiti}: Fase in cui si raccolgono e si comprendono i bisogni del cliente e la definizione delle funzionalità che il software deve fornire.
 
 \item \textbf{Analisi Dinamica}: Attività di verifica che prevede l'esecuzione del codice software (oggetti di prova) su un processore reale o virtuale, fornendo dati in input e controllando che l'output corrisponda ai risultati attesi (oracolo). Corrisponde ai test "veri e propri" (Test di unità, Test di integrazione, Test di sistema, Test di accettazione, Test di Regressione).
 
@@ -202,7 +204,7 @@ Metrica tipica: Failure Density (densità di fallimenti nei test).
 \addcontentsline{toc}{section}{C}
 \begin{itemize}
 
-\item \textbf{CA (Custumer Acceptance)}: Fase in cui il cliente controlla il prodotto consegnato e conferma che rispetta i requisiti richiesti.
+\item \textbf{CA (Customer Acceptance)}: Fase in cui il cliente controlla il prodotto consegnato e conferma che rispetta i requisiti richiesti.
 
 \item \textbf{Checklist}: Lista di controllo contenente elementi specifici da verificare manualmente durante le attività di revisione (Inspection o Walkthrough) di documenti o codice. Serve a garantire che errori comuni (es. ortografia, formattazione, mancanza di caption) siano individuati e corretti in modo sistematico.
 
@@ -211,7 +213,7 @@ Serve a valutare l'efficacia dei test: più è alta, minore è il rischio di dif
 
 \item \textbf{Commit}: Registrazione di un insieme di modifiche nella repository, accompagnata da un messaggio che descrive cosa è stato modificato.
 
-\item \textbf{Complessità Ciclomatica (McCabe)}: Metrica software che misura la complessità del flusso di controllo di un programma contandone il numero di percorsi linearmente indipendenti. Si calcola con la formula $v(G)=e-n+2p$ (dove $e$ sono gli archi, $n$ i nodi, $p$ le componenti connesse). Un valore alto indica un codice difficile da testare e mantenere, poiché cresce con la presenza di branch, salti e iterazioni. Metrica definita nel Piano di Qualifica.
+\item \textbf{Complessità Ciclomatica (McCabe)}: Metrica software che misura la complessità del flusso di controllo di un programma contandone il numero di percorsi linearmente indipendenti. Si calcola con la formula $v(G)=e-n+2p$ (dove $e$ è il numero di archi, $n$ il numero di nodi, $p$ il numero di componenti connesse). Un valore alto indica un codice difficile da testare e mantenere, poiché cresce con la presenza di branch, salti e iterazioni. Metrica definita nel Piano di Qualifica.
 
 \item \textbf{Conformità Strutturale (CS)}: Metrica di qualità che misura la capacità del modello di rispettare rigorosamente i vincoli atomici e le istruzioni operative fornite nello \textit{User Prompt} (es. richiesta di formato Markdown, assenza di preamboli, lunghezza massima).
 
@@ -309,7 +311,7 @@ adatto a progetti di dimensioni contenute come il POC.
 
 \item \textbf{Git Hooks}: Script automatici eseguiti da Git prima o dopo eventi specifici (come commit, push, merge). Nel progetto viene utilizzato in particolare l'hook di \texttt{pre-push} per eseguire automaticamente la suite di test unitari e bloccare il caricamento di codice fallato sulla repository remota (Quality Gate).
 
-\item \textbf{Glossario}: Raccolta di vocaboli meno comuni in quanto limitati a un ambiente o propri di una determinata disciplina, accompagnati ognuno dalla spiegazione del significato o da altre osservazioni. Nel nostro caso raccoglierà tutte le parole relative al nostro progetto che meritano di ulteriori precisazioni o che vengono applicate in un particlare contesto.
+\item \textbf{Glossario}: Raccolta di vocaboli meno comuni in quanto limitati a un ambiente o propri di una determinata disciplina, accompagnati ognuno dalla spiegazione del significato o da altre osservazioni. Nel nostro caso raccoglierà tutte le parole relative al nostro progetto che meritano di ulteriori precisazioni o che vengono applicate in un particolare contesto.
 
 \item \textbf{Ground Truth}: Nel contesto della validazione delloutput dell'IA, rappresenta l'informazione di riferimento "vera" e verificata (il testo originale fornito dall'utente) rispetto alla quale viene misurata l'accuratezza e l'assenza di allucinazioni dell'output generato.
 \end{itemize}
@@ -485,7 +487,7 @@ Esempio requisiti di vincolo:
 \item Tecnologici: il progetto deve essere un'applicazione web basata su HTML/JS e che l'editor deve essere basato su Markdown. 
 \item Architetturali: l'applicazione deve funzionare prevalentemente client-side (sul browser).
 \item Interfaccia esterna: usare le API standard (tipo OpenAI) per collegarsi all'LLM.
-Licenza/Consegna: il codice deve essere pubblicato su un repository pubblico (es. GitHub) con licenza open-source (non so se considerarlo un requisito).
+Licenza/Consegna: il codice deve essere pubblicato su un repository pubblico (es. GitHub) con licenza open-source.
 \end{itemize}
 
 \item \textbf{REST (Representational State Transfer)}: Stile architetturale per la progettazione di API web basato su risorse identificate da URL e su operazioni espresse tramite metodi HTTP standard (GET, POST, PUT, DELETE). Le API REST sono stateless: ogni richiesta contiene tutte le informazioni necessarie per essere elaborata indipendentemente.
@@ -539,7 +541,7 @@ automaticamente connessioni e transazioni.
 
 \item \textbf{Stateless} (Senza stato): In architettura del software, si riferisce a un sistema, server o protocollo di comunicazione in cui non viene memorizzata alcuna informazione relativa allo stato della sessione o alle interazioni precedenti del client. In un'architettura stateless ogni singola richiesta HTTP inviata al server deve essere autocontenuta, ovvero deve includere tutte le informazioni necessarie affinché il server possa comprenderla ed elaborarla in modo totalmente indipendente. Nel contesto del progetto Second Brain, il backend è progettato come gateway stateless: non memorizza documenti, login o cronologie, ma si limita ad eseguire elaborazioni on-demand (come le chiamate LLM), delegando interamente la persistenza e la gestione dello stato al frontend.
 
-\item \textbf{System Prompt}: Parte si un prompt che definisce l'identità, il ruolo, i vincoli etici e il tono di voce che l'intelligenza artificiale deve assumere durante l'interazione. Non è visibile direttamente dall'utente finale ma ne condiziona profondamente il comportamento.
+\item \textbf{System Prompt}: Parte di un prompt che definisce l'identità, il ruolo, i vincoli etici e il tono di voce che l'intelligenza artificiale deve assumere durante l'interazione. Non è visibile direttamente dall'utente finale ma ne condiziona profondamente il comportamento.
 \end{itemize}
 
 \newpage
