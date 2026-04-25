@@ -75,7 +75,7 @@
             \hline
             \textbf{Stato} & In corso \\
             \hline
-            \textbf{Redazione} & Giulia Barzon, Joseph Grant, Chiara Grossele, Matteo Cuogo, Tommaso Tombacco\\
+            \textbf{Redazione} & Tutto il gruppo\\
             \hline
             \textbf{\gls{Verifica}} & Da verificare\\
             \hline
@@ -102,6 +102,8 @@
     \begin{tabular}{|c|c|c|>{\raggedright\arraybackslash}p{0.35\textwidth}|p{0.18\textwidth}|}
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{\gls{Verifica}} \\
+        \hline
+        0.2.0 & 25/04/2026 & Elisa Marchioro & Aggiornamento subsubsection caching & \\
         \hline
         0.1.9 & 24/04/2026 & Matteo Cuogo & Aggiornamento dello stato di soddisfacimento di alcuni requisiti & \\
         \hline
@@ -745,9 +747,13 @@ Il sistema prevede due implementazioni concrete che espongono in modo polimorfic
 \end{itemize}
 
 \subsubsection{Caching (get\_model)}
-La funzione \texttt{get\_model(model\_class)} gestisce un dizionario globale privato (\texttt{\_model\_instances}) per la memorizzazione delle istanze, che funge quindi da cache.
-Quando il controller richiede una strategia di modello, la funzione \gls{verifica} se ne esiste già un'istanza nel dizionario: se non esiste, la crea e la salva; alle chiamate successive per la stessa classe, restituisce il riferimento già memorizzato. 
-Questa soluzione architetturale ottimizza l'uso delle risorse prevenendo l'apertura di connessioni multiple non necessarie ai client \gls{API}.
+La funzione \texttt{get\_model(model\_class)} fornisce un’istanza unica per ciascun modello richiesto, evitando la creazione di più istanze della stessa classe e ottimizzando così l’utilizzo delle risorse.
+
+Il meccanismo di caching è implementato tramite il decoratore \texttt{@lru\_cache} della libreria standard \texttt{functools}. Alla prima richiesta di un determinato modello, l’istanza viene creata e salvata; nelle chiamate successive, viene restituito direttamente il riferimento già memorizzato.
+
+L’utilizzo di \texttt{functools} consente di affidarsi a una soluzione robusta e consolidata, che gestisce in modo trasparente anche gli aspetti legati alla concorrenza tra thread. Questo approccio riduce la complessità del codice e migliora l’affidabilità complessiva del sistema.
+
+Nel contesto specifico dell’applicazione, la presenza di più istanze non avrebbe comportato criticità rilevanti, ma si è comunque scelto di adottare una soluzione più rigorosa per garantire maggiore solidità e aderenza alle buone pratiche di progettazione.
 
 % DIAGRAMMA DELLE CLASSI
 \begin{figure}[H]
