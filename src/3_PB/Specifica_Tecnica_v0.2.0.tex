@@ -13,6 +13,7 @@
 \usepackage{lastpage}
 \usepackage{longtable}
 \usepackage{amsmath}
+\usepackage{enumitem}
 
 \usepackage{array}
 \newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
@@ -111,7 +112,7 @@
         \hline
         0.1.7 & 23/04/2026 & Giulia Barzon & Aggiunte componenti AI, migliorata sezione 3 & \\
         \hline
-        0.1.6 & 23/04/2026 & Elisa Marchioro & Sistemata formattazione, aggiunta sezione \gls{API} e aggiunta diagrammi UML backend & \\
+        0.1.6 & 23/04/2026 & Elisa Marchioro & Sistemata formattazione, aggiunta sezione \gls{API} e aggiunta diagrammi UML backend & Chiara Grossele \\
         \hline
         0.1.5 & 23/04/2026 & Giulia Barzon & Rivista sezione layered architecture & Elisa Marchioro\\
         \hline
@@ -451,41 +452,41 @@ Il sistema adotta un’architettura basata su \gls{API} REST (Representational S
 \subsection{Principi e requisiti delle \gls{API} REST}
 Per essere conforme allo stile REST, il sistema rispetta i seguenti principi:
 \begin{itemize}
-\item Architettura client-server: separazione netta tra frontend e backend;
-\item Statelessness: ogni richiesta contiene tutte le informazioni necessarie per essere elaborata; il server non mantiene stato tra richieste successive.
-\item Interfaccia uniforme: utilizzo coerente di:
-\begin{itemize}
-\item URI per identificare le risorse;
-\item Metodi HTTP standard:
-GET → recupero dati;
-POST → creazione/elaborazione;
-PUT/PATCH → aggiornamento;
-DELETE → rimozione.
+\item \textbf{Architettura client-server}: separazione netta tra frontend e backend;
+\item \textbf{Statelessness}: ogni richiesta contiene tutte le informazioni necessarie per essere elaborata e il server non mantiene stato tra richieste successive.
+\item \textbf{Interfaccia uniforme}: utilizzo coerente di:
+    \begin{itemize}[label=\textbullet]
+        \item URI per identificare le risorse;
+        \item Metodi HTTP standard:
+            GET → recupero dati;
+            POST → creazione/elaborazione;
+            PUT/PATCH → aggiornamento;
+            DELETE → rimozione.
 \end{itemize}
-\item Formato dei dati standardizzato: scambio dati in formato JSON, facilmente leggibile e interoperabile tra sistemi eterogenei.
-\item Separazione delle responsabilità (\gls{Separation of Concerns}): il client gestisce la presentazione, il server gestisce logica, orchestrazione e integrazione con servizi esterni.
-\item Scalabilità: grazie alla natura \gls{stateless}, il backend può essere replicato e distribuito senza gestione di sessioni condivise.
+\item \textbf{Formato dei dati standardizzato}: scambio dati in formato JSON, facilmente leggibile e interoperabile tra sistemi eterogenei.
+\item \textbf{Separazione delle responsabilità (\gls{Separation of Concerns})}: il client gestisce la presentazione, il server gestisce logica, orchestrazione e integrazione con servizi esterni.
+\item \textbf{Scalabilità}: grazie alla natura \gls{stateless}, il backend può essere replicato e distribuito senza gestione di sessioni condivise.
 \end{itemize}
 
 \subsection{Comunicazione client–server (Axios)}
-Nel frontend, la comunicazione con le \gls{API} REST avviene tramite la libreria Axios, un HTTP client basato su promise che semplifica l’invio di richieste asincrone e la gestione delle risposte. 
+Nel frontend, la comunicazione con le \gls{API} REST avviene tramite la libreria \textbf{Axios}, un HTTP client basato su promise che semplifica l’invio di richieste asincrone e la gestione delle risposte. 
 Nel contesto dell’applicazione, Axios è utilizzato nel frontend come client HTTP centralizzato per invocare le \gls{API} REST esposte dal backend. In particolare, gestisce l’interazione con l’\gls{endpoint} di generazione AI (POST /\gls{api}/ai/generate), incapsulando tutta la logica di comunicazione.
 
 Nel dettaglio, Axios svolge le seguenti funzioni:
 \begin{itemize}
-\item Invio delle richieste al backend:
+\item \textbf{Invio delle richieste al backend}:
 Costruisce e invia la richiesta POST verso l’\gls{endpoint} /\gls{api}/ai/generate contenente:
-\begin{itemize}
+\begin{itemize}[label=\textbullet]
 \item il testo inserito dall’utente (text);
 \item l’operazione richiesta (operation);
 \end{itemize}
 
-\item Gestione asincrona della comunicazione: permette al frontend di utilizzare async/await per gestire la chiamata senza bloccare l’interfaccia utente, migliorando la user experience.
-\item Serializzazione automatica dei dati: converte automaticamente gli oggetti JavaScript in JSON per il body della richiesta, senza necessità di gestione manuale.
-\item Gestione della risposta: riceve il JSON dal backend (es. generated\_text) e lo rende immediatamente disponibile al frontend per l’aggiornamento della UI.
-\item Gestione degli errori: centralizza la gestione di errori HTTP o di rete (es. 400, 500), permettendo di definire comportamenti uniformi (messaggi utente, retry, logging).
-\item Configurazione condivisa: consente di definire in un unico punto:
-\begin{itemize}
+\item \textbf{Gestione asincrona della comunicazione}: permette al frontend di utilizzare async/await per gestire la chiamata senza bloccare l’interfaccia utente, migliorando la user experience.
+\item \textbf{Serializzazione automatica dei dati}: converte automaticamente gli oggetti JavaScript in JSON per il body della richiesta, senza necessità di gestione manuale.
+\item \textbf{Gestione della risposta}: riceve il JSON dal backend (es. generated\_text) e lo rende immediatamente disponibile al frontend per l’aggiornamento della UI.
+\item \textbf{Gestione degli errori}: centralizza la gestione di errori HTTP o di rete (es. 400, 500), permettendo di definire comportamenti uniformi (messaggi utente, retry, logging).
+\item \textbf{Configurazione condivisa}: consente di definire in un unico punto:
+\begin{itemize}[label=\textbullet]
 \item baseURL del backend;
 \item eventuali headers;
 \item timeout e policy di retry.
@@ -493,7 +494,7 @@ Costruisce e invia la richiesta POST verso l’\gls{endpoint} /\gls{api}/ai/gene
 \end{itemize}
 
 \subsection{Flusso di elaborazione}
-\begin{itemize}
+\begin{enumerate}
 \item Il frontend invia una richiesta HTTP POST tramite Axios.
 \item Il controller backend riceve la richiesta e valida i dati.
 \item Viene selezionata la strategia di elaborazione tramite un registry interno.
@@ -501,7 +502,7 @@ Costruisce e invia la richiesta POST verso l’\gls{endpoint} /\gls{api}/ai/gene
 \item Il backend invoca il modello per generare il contenuto.
 \item La risposta viene pulita e normalizzata.
 \item Il risultato viene restituito al client in formato JSON e gestito dal frontend.
-\end{itemize}
+\end{enumerate}
 
 
 \newpage
