@@ -71,7 +71,7 @@
         \centering
         \begin{tabular}{|l|p{5cm}|}
             \hline
-            \textbf{Versione} & 1.2.0 \\
+            \textbf{Versione} & 1.2.1 \\
             \hline
             \textbf{Stato} & Da approvare \\
             \hline
@@ -102,6 +102,8 @@
     \begin{tabular}{|c|c|c|>{\raggedright\arraybackslash}p{0.35\textwidth}|p{0.18\textwidth}|}
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{\gls{Verifica}} \\
+        \hline
+        1.2.1 & 25/04/2026 & Tommaso Tombacco & Aggiunta sezione su analisi funzionalità riscrittura & \\
         \hline
         1.2.0 & 25/04/2026 & Elisa Marchioro & Aggiunta sezione e test integrazione & Giulia Barzon\\
         \hline
@@ -984,6 +986,38 @@ In particolare i tre modelli sono stati classificati nel seguente ordine:
 \paragraph{Modello scelto} Sulla base dei dati raccolti è stato scelto il modello \textbf{Qwen 3 (30B)} per implementare la funzionalità del riassunto del testo. Il modello è stato in grado di fornire un riassunto di qualità con un tempo di risposta sotto la soglia massima
 
 \subsubsection{Riscrittura del testo}
+Per la valutazione della funzionalità di riscrittura del testo sono stati condotti test su due tipologie di input: testi già ben strutturati e testi assimilabili a “flussi di pensiero”, ovvero contenuti caratterizzati da una forma poco curata e da una struttura non lineare. Questa seconda tipologia è stata introdotta con l’obiettivo di valutare il comportamento dei modelli in scenari più realistici e complessi.\\\\
+I modelli oggetto di valutazione sono stati i seguenti:
+\begin{itemize}
+    \item Llama 3.2 (3B)
+    \item Qwen 3 (1.7B)
+    \item Qwen 3 (30B)
+    \item Gemma 3 (4B)
+    \item Gemma 3 (27B)
+    \item Gemma 3 (270M)
+    \item Deepseek-r1 (8B)
+\end{itemize}
+
+\paragraph{Confronto modelli e risultati}
+L’analisi dei risultati ha portato all’esclusione dei modelli di fascia più alta, in particolare \textbf{gemma3:27b} e \textbf{qwen3:30b}. Questa decisione è stata motivata dal fatto che modelli di fascia media, come \textbf{gemma3:4b} e \textbf{deepseek-r1:8b}, hanno dimostrato prestazioni adeguate al task, rendendo l’impiego di modelli più pesanti non necessario in relazione al rapporto tra qualità dell’output e costo computazionale.\\\\
+I modelli di fascia più bassa invece, come \textbf{gemma3:270m} e \textbf{qwen3:1.7b}, hanno evidenziato criticità significative nel rispetto delle istruzioni. In particolare, sono emerse difficoltà nel mantenere il vincolo di eliminazione delle frasi introduttive e dei riferimenti al prompt, oltre a problemi di coerenza con il contesto. In alcuni casi, tali modelli hanno prodotto risposte in lingua inglese, nonostante l’input fosse interamente in italiano.
+
+\paragraph{Modello scelto}
+La scelta finale è ricaduta sul modello \textbf{gemma3:4b}, che ha dimostrato un'elevata coerenza con gli input forniti, assenza di fenomeni di allucinazione e capacità di riscrivere testi informali o non strutturati in forma tecnica e formale.\\\\
+Il prompt utilizzato per eseguire i vari test è stato:
+\begin{verbatim}
+    Sei un assistente professionale specializzato nella riscrittura di testi tecnici.
+    Devi mantenere un tono formale, chiaro e preciso.
+    Non devi aggiungere informazioni non presenti nel testo originale.
+    Non devi usare elenchi puntati
+    Riscrivi il seguente testo migliorandone la chiarezza e la scorrevolezza.
+    Vincoli:
+    - Mantieni tutte le informazioni presenti.
+    - Non aggiungere esempi o dettagli non presenti nel testo.
+    - Mantieni un tono formale.
+    - Lunghezza simile all’originale (±10%).
+    - Non usare elenchi puntati.
+\end{verbatim}
 
 \subsubsection{\gls{Distant writing}}
 
