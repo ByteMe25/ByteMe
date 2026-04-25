@@ -1806,12 +1806,12 @@ Testa il componente \gls{React} AiPanel, il pannello laterale con i bottoni per 
 \newpage
 
 \section{Test d'integrazione - Fase PB}
-I test di integrazione verificano il corretto funzionamento dell’applicazione quando più componenti interagiscono tra loro. A differenza dei test unitari, che isolano singole funzioni, questi test coprono flussi completi, permettendo di individuare errori legati allo scambio di dati, alla costruzione dei prompt e alla gestione delle risposte tra i vari livelli del sistema.
+I \gls{test di integrazione} verificano il corretto funzionamento dell’applicazione quando più componenti interagiscono tra loro. A differenza dei test unitari, che isolano singole funzioni, questi test coprono flussi completi, permettendo di individuare errori legati allo scambio di dati, alla costruzione dei \gls{prompt} e alla gestione delle risposte tra i vari livelli del sistema.
 
-Per l’implementazione è stato utilizzato pytest, che consente di scrivere test in modo semplice e leggibile. In questo contesto vengono sfruttate le fixture per configurare il client dell’applicazione e simulare il modello AI, la parametrizzazione per testare più casi con lo stesso codice e il mocking per evitare chiamate reali al modello, rendendo i test più veloci e deterministici.
+Per l’implementazione è stato utilizzato \gls{pytest}, che consente di scrivere test in modo semplice e leggibile. In questo contesto vengono sfruttate le fixture per configurare il client dell’applicazione e simulare il modello AI, la parametrizzazione per testare più casi con lo stesso codice e il mocking per evitare chiamate reali al modello, rendendo i test più veloci e deterministici.
 
 \subsection{test\_integration.py}
-I test nel file verificano il comportamento dell’endpoint /api/ai/generate, coprendo l’intero flusso applicativo (endpoint → mapper → strategia → modello → pulizia della risposta). Vengono testate le operazioni principali (riassunto, traduzione, riscrittura), le modalità di analisi basate sui “De Bono Hats”, la corretta costruzione dei prompt, il passaggio dei parametri al modello (come la temperatura), e la pulizia dell’output generato. Inoltre, sono inclusi test per la gestione degli errori, i casi di fallback e la modalità di distant writing, garantendo che il sistema si comporti correttamente anche in scenari non standard.
+I test nel file verificano il comportamento dell’\gls{endpoint} /\gls{api}/ai/generate, coprendo l’intero flusso applicativo (\gls{endpoint} → mapper → strategia → modello → pulizia della risposta). Vengono testate le operazioni principali (riassunto, traduzione, riscrittura), le modalità di analisi basate sui “De Bono Hats”, la corretta costruzione dei \gls{prompt}, il passaggio dei parametri al modello (come la \gls{temperatura}), e la pulizia dell’output generato. Inoltre, sono inclusi test per la gestione degli errori, i casi di fallback e la modalità di \gls{distant writing}, garantendo che il sistema si comporti correttamente anche in scenari non standard.
 
 
 \begin{table}[H]
@@ -1820,24 +1820,24 @@ I test nel file verificano il comportamento dell’endpoint /api/ai/generate, co
 \begin{tabular}{|l|p{12cm}|c|}
 \hline
 \textbf{Codice} & \textbf{Descrizione} & \textbf{Stato} \\ \hline
-\prossimoIT & Verifica che il server risponda 200 con status "running" e la lista delle operazioni attive. & Pass \\ \hline
-\prossimoIT & Verifica che le operazioni standard restituiscano 200 con generated\_text non vuoto. & Pass \\ \hline
-\prossimoIT & Verifica che i sei cappelli di De Bono restituiscano 200 con generated\_text non vuoto. & Pass \\ \hline
-\prossimoIT & Verifica che la temperatura definita nella strategia venga passata correttamente a model.generate(). & Pass \\ \hline
-\prossimoIT & Verifica che il user\_prompt costruito per le traduzioni contenga il nome della lingua target. & Pass \\ \hline
-\prossimoIT & Verifica che il system\_prompt di ogni cappello contenga il nome del cappello corrispondente. & Pass \\ \hline
-\prossimoIT & Verifica che le frasi introduttive tipiche delle risposte AI vengano rimosse da clean\_ai\_response(). & Pass \\ \hline
-\prossimoIT & Verifica che una richiesta senza text per un'operazione standard restituisca 400. & Pass \\ \hline
-\prossimoIT & Verifica che distant\_writing senza prompt restituisca 400. & Pass \\ \hline
-\prossimoIT & Verifica che un'eccezione sollevata dal modello AI restituisca 500 con un campo message. & Pass \\ \hline
-\prossimoIT & Verifica che il backend usi summary come default quando operation è assente nel body. & Pass \\ \hline
-\prossimoIT & Verifica che un'operazione non mappata faccia fallback su DEFAULT\_OPERATION senza errori. & Pass \\ \hline
-\prossimoIT & Verifica che distant\_writing funzioni correttamente con solo prompt e text vuoto. & Pass \\ \hline
-\prossimoIT & Verifica che il testo del prompt venga incluso nel user\_prompt passato al modello. & Pass \\ \hline
-\prossimoIT & Verifica che distant\_writing gestisca correttamente sia text che prompt valorizzati insieme. & Pass \\ \hline
+\prossimoIT & \gls{Verifica} che il server risponda 200 con status "running" e la lista delle operazioni attive. & Pass \\ \hline
+\prossimoIT & \gls{Verifica} che le operazioni standard restituiscano 200 con generated\_text non vuoto. & Pass \\ \hline
+\prossimoIT & \gls{Verifica} che i sei cappelli di De Bono restituiscano 200 con generated\_text non vuoto. & Pass \\ \hline
+\prossimoIT & \gls{Verifica} che la \gls{temperatura} definita nella strategia venga passata correttamente a model.generate(). & Pass \\ \hline
+\prossimoIT & \gls{Verifica} che il user\_prompt costruito per le traduzioni contenga il nome della lingua target. & Pass \\ \hline
+\prossimoIT & \gls{Verifica} che il system\_prompt di ogni cappello contenga il nome del cappello corrispondente. & Pass \\ \hline
+\prossimoIT & \gls{Verifica} che le frasi introduttive tipiche delle risposte AI vengano rimosse da clean\_ai\_response(). & Pass \\ \hline
+\prossimoIT & \gls{Verifica} che una richiesta senza text per un'operazione standard restituisca 400. & Pass \\ \hline
+\prossimoIT & \gls{Verifica} che distant\_writing senza \gls{prompt} restituisca 400. & Pass \\ \hline
+\prossimoIT & \gls{Verifica} che un'eccezione sollevata dal modello AI restituisca 500 con un campo message. & Pass \\ \hline
+\prossimoIT & \gls{Verifica} che il backend usi summary come default quando operation è assente nel body. & Pass \\ \hline
+\prossimoIT & \gls{Verifica} che un'operazione non mappata faccia fallback su DEFAULT\_OPERATION senza errori. & Pass \\ \hline
+\prossimoIT & \gls{Verifica} che distant\_writing funzioni correttamente con solo \gls{prompt} e text vuoto. & Pass \\ \hline
+\prossimoIT & \gls{Verifica} che il testo del \gls{prompt} venga incluso nel user\_prompt passato al modello. & Pass \\ \hline
+\prossimoIT & \gls{Verifica} che distant\_writing gestisca correttamente sia text che \gls{prompt} valorizzati insieme. & Pass \\ \hline
 
 \end{tabular}
-\caption{Tabella test di integrazione in test\_integration.py}
+\caption{Tabella \gls{test di integrazione} in test\_integration.py}
 \end{table}
 
 \newpage
