@@ -67,7 +67,7 @@
         \centering
         \begin{tabular}{|l|p{5cm}|}
             \hline
-            \textbf{Versione} & 0.1.1 \\
+            \textbf{Versione} & 0.1.2 \\
             \hline
             \textbf{Stato} & In corso\\
             \hline
@@ -99,7 +99,9 @@
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{\gls{Verifica}} \\
         \hline
-        0.1.1 & 24/04/2026 & Elisa Marchioro & Piccoli fix & \\
+        0.1.2 & 25/04/2026 & Giulia Barzon & Aggiunti screenshoot mancanti & \\
+        \hline
+        0.1.1 & 24/04/2026 & Elisa Marchioro & Piccoli fix & Giulia Barzon\\
         \hline
         0.1.0 & 24/04/2026 & Giulia Barzon & Completate sezioni 1,2,3 e bozza di tutte le altre sezioni & Elisa Marchioro\\
         \hline
@@ -357,42 +359,41 @@ L'area centrale ospita il motore di scrittura basato su sintassi \gls{Markdown}.
 La barra degli strumenti permette di applicare i principali stili grafici senza dover digitare manualmente i simboli della sintassi \gls{Markdown}. Di seguito sono elencate le funzioni disponibili e la relativa sintassi che verrà inserita nel documento:
 
 \begin{enumerate}
+    \item \textbf{Undo e Redo delle operazioni}:
+    \begin{itemize}
+        \item \textbf{Undo (Annulla)}: Annulla l'ultima modifica effettuata all'interno dell'editor, permettendo di tornare immediatamente allo stato precedente del documento.
+        \item \textbf{Redo (Ripristina)}: Riapplica un'operazione che è stata appena annullata tramite il comando Undo, recuperando la modifica scartata.
+    \end{itemize}
     \item \textbf{Stili del testo}:
     \begin{itemize}
         \item \textbf{Grassetto}: aumenta lo spessore del testo selezionato. Sintassi: \texttt{**testo**}.
         \item \textbf{Corsivo}: inclina il testo per enfasi. Sintassi: \texttt{*testo*}.
-        \item \textbf{Titolo}: trasforma la riga corrente in un'intestazione di primo livello. Sintassi: \texttt{\# Titolo}.
+        \item \textbf{Sottolineato}: Sottolinea il testo selezionato.
     \end{itemize}
-    
-    \item \textbf{Blocchi e liste}:
+    \item \textbf{Intestazioni}:
     \begin{itemize}
-        \item \textbf{Citazione}: crea un blocco di testo rientrato. Sintassi: \texttt{> testo}.
-        \item \textbf{Lista puntata}: genera un elenco non ordinato. Sintassi: \texttt{- elemento}.
-        \item \textbf{Lista numerata}: genera un elenco ordinato. Sintassi: \texttt{1. elemento}.
-    \end{itemize}
-    
-    \item \textbf{Collegamenti e Media}:
-    \begin{itemize}
-        \item \textbf{Link}: inserisce un collegamento ipertestuale su una porzione di testo. Sintassi: \texttt{[testo](url)}.
-        \item \textbf{Immagine}: inserisce un riferimento visivo a un'immagine esterna. Sintassi: \texttt{![descrizione](url)}.
+        \item \textbf{Aumenta intestazione}: Incrementa il livello gerarchico del titolo (ad esempio da H2 a H1), aumentando la dimensione del carattere e l'importanza della sezione. Sintassi: aggiunge un simbolo \texttt{\#}.
+        \item \textbf{Diminuisce intestazione}: Riduce il livello gerarchico del titolo (ad esempio da H1 a H2), diminuendo la dimensione del carattere per creare sottosezioni. Sintassi: rimuove un simbolo \texttt{\#}.
     \end{itemize}
     
     \item \textbf{Strumenti strutturali}:
     \begin{itemize}
-        \item \textbf{Tabella}: inserisce una griglia tabellare predefinita con tre colonne. Sintassi: \texttt{| col1 | col2 | col3 |}.
-        \item \textbf{Linea orizzontale}: inserisce un separatore di sezione grafico. Sintassi: \texttt{---}.
+        \item \textbf{Tabella}: Inserisce una griglia tabellare predefinita con tre colonne. Sintassi: \texttt{| col1 | col2 | col3 |}.
+        \item \textbf{Linea orizzontale}: Inserisce un separatore di sezione grafico per dividere visivamente i contenuti. Sintassi: \texttt{---}.
+        \item \textbf{Link}: Inserisce un collegamento ipertestuale su una porzione di testo selezionata. Sintassi: \texttt{[testo](url)}.
     \end{itemize}
     
-    \item \textbf{Controlli della Vista}:
+    \item \textbf{Liste ed elenchi}:
     \begin{itemize}
-        \item \textbf{Anteprima}: attiva la visualizzazione del documento formattato a schermo intero.
-        \item \textbf{Vista affiancata}: divide lo schermo tra codice sorgente e anteprima in tempo reale.
-        \item \textbf{Schermo intero}: espande l'editor per occupare l'intera finestra del browser.
+        \item \textbf{Lista puntata}: genera un elenco non ordinato. Sintassi: \texttt{- elemento}.
+        \item \textbf{Lista numerata}: genera un elenco ordinato. Sintassi: \texttt{1. elemento}.
     \end{itemize}
-    
-    \item \textbf{Supporto}:
+
+    \item \textbf{Strumenti di modifica}:
     \begin{itemize}
-        \item \textbf{Guida}: apre una finestra di consultazione rapida sulla sintassi \gls{Markdown} ufficiale.
+        \item \textbf{Copia}: Memorizza la porzione di testo selezionata negli appunti di sistema per poterla riutilizzare.
+        \item \textbf{Incolla}: Inserisce il testo precedentemente salvato negli appunti alla posizione attuale del cursore.
+        \item \textbf{Taglia}: Rimuove il testo selezionato dal documento e lo memorizza negli appunti per spostarlo in un'altra posizione. 
     \end{itemize}
 
     \item \textbf{Modalità di visualizzazione}
@@ -403,7 +404,6 @@ La barra degli strumenti permette di applicare i principali stili grafici senza 
         \item \textbf{Solo anteprima}: Nasconde il codice sorgente e mostra il documento formattato come apparirebbe in una pagina web o in una stampa.
         \item \textbf{Vista affiancata (Split View)}: Divide l'area centrale in due parti; a sinistra è possibile continuare a scrivere, mentre a destra l'anteprima si aggiorna istantaneamente ad ogni pressione di tasto.
     \end{enumerate}
-    
 \end{enumerate}
 
 \textit{Nota: È possibile applicare la formattazione sia selezionando prima il testo e poi premendo il pulsante, sia cliccando sul pulsante e scrivendo all'interno dei simboli generati.}
@@ -417,6 +417,7 @@ La barra degli strumenti permette di applicare i principali stili grafici senza 
 \end{figure}
 
 
+\newpage
 % ===========================================
 % GESTIONE DEI FILE
 % ===========================================
@@ -424,7 +425,7 @@ La barra degli strumenti permette di applicare i principali stili grafici senza 
 Oltre alla fase di scrittura, \textit{Second Brain} offre strumenti avanzati per l'importazione, l'esportazione e la stampa dei documenti, permettendo una gestione completa del flusso di lavoro digitale.
 
 \subsection{Caricamento di documenti (.md, .txt)}
-Il sistema permette di riprendere il lavoro su file già esistenti tramite due modalità di caricamento:
+Il sistema permette di riprendere il lavoro su file già esistenti tramite due modalità di caricamento.
 
 \subsubsection{Caricamento standard (Sidebar)}
 Cliccando sull'icona di \textbf{Upload} nella \textit{Sidebar} sinistra, si aprirà la finestra di selezione file del sistema operativo. È possibile selezionare un file con estensione \texttt{.md} o \texttt{.txt}. Se l'area di scrittura non è vuota, il sistema chiederà conferma prima di procedere per evitare di perdere il testo attuale.
@@ -589,6 +590,13 @@ Una volta che l'AI ha completato l'elaborazione, il widget espone tre opzioni op
     \item \textbf{Rigenera}: Se il risultato non è soddisfacente, questo comando invia nuovamente la richiesta all'AI per ottenere una variante diversa, mantenendo lo stesso contesto o le stesse istruzioni.
 \end{itemize}
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{../ManualeUtenteimg/es_generazione.png}
+    \caption{Esempio di widget che contiene il testo generato dall'AI. In basso a destra i pulsanti di gestione delle generazioni.}
+    \label{fig:ai_widget_loading}
+\end{figure}
+
 \subsection{\gls{Distant Writing}: generazione creativa}
 La funzione \textbf{\gls{Distant Writing}} è dedicata alla creazione di nuovi contenuti a partire da un'idea o un'istruzione specifica. A differenza degli strumenti editoriali, questa modalità richiede un input testuale diretto (\textit{\gls{prompt}}) da parte dell'utente.
 
@@ -661,10 +669,16 @@ Il sistema applica un ordinamento **cronologico decrescente**: le generazioni pi
 Ogni voce dello storico è racchiusa in una scheda informativa dettagliata che espone:
 \begin{itemize}
     \item \textbf{Intestazione}: Mostra l'icona e il nome dell'operazione eseguita e il timestamp esatto (data e ora).
+     \item \textbf{Testo iniziale}: Mostra il testo selezionato dall'utente, su cui è stata chiamata un'operazione di AI.
     \item \textbf{Risultato}: Il corpo principale della scheda che contiene il testo generato. Da qui è possibile selezionare e copiare il testo per riutilizzarlo nell'editor.
 \end{itemize}
 
-% screenshoot esempio di una generazione
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{../ManualeUtenteimg/es_generazione2.png}
+    \caption{Esempio di operazione AI: è stata fatta un'analisi del testo con il Cappello Bianco; l'utente ha confermato e inserito la risposta nell'editor e questa è stata salvata nello storico.}
+    \label{fig:esempio_storico}
+\end{figure}
 
 \subsection{Gestione della memoria locale}
 Le generazioni occupano spazio nella memoria del browser. Sebbene il sistema sia ottimizzato per gestire centinaia di voci, è possibile gestire la pulizia dei dati:
@@ -673,6 +687,13 @@ Le generazioni occupano spazio nella memoria del browser. Sebbene il sistema sia
 \end{itemize}
 
 \textit{Nota sulla sicurezza}: Lo storico è strettamente legato al browser in uso. Se si utilizza la modalità di navigazione in incognito, lo storico verrà cancellato automaticamente alla chiusura della finestra. Per conservare i risultati a lungo termine, si consiglia di esportare periodicamente i documenti principali.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{../ManualeUtenteimg/storico_generazione.png}
+    \caption{Pulsanti per eliminare e copiare il testo di una generazione presente nello Storico.}
+    \label{fig:elimina_generazione}
+\end{figure}
 
 
 \newpage
