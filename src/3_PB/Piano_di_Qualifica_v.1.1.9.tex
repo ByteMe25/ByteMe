@@ -71,11 +71,11 @@
         \centering
         \begin{tabular}{|l|p{5cm}|}
             \hline
-            \textbf{Versione} & 1.1.8 \\
+            \textbf{Versione} & 1.1.9 \\
             \hline
             \textbf{Stato} & Da approvare \\
             \hline
-            \textbf{Redazione} & Elisa Marchioro, Giulia Barzon \\
+            \textbf{Redazione} & Elisa Marchioro, Giulia Barzon, Chiara Grossele, Joseph Grant, Matteo Cuogo \\
             \hline
             \textbf{\gls{Verifica}} & Verificato \\
             \hline
@@ -103,13 +103,15 @@
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{\gls{Verifica}} \\
         \hline
-        1.1.8 & 24/04/2026 & Joseph Grant & Aggiunta sezione \gls{distant writing} & \\
+        1.1.9 & 25/04/2026 & Chiara Grossele & Aggiunta sezione riassunto del testo & \\
+        \hline
+        1.1.8 & 24/04/2026 & Joseph Grant & Aggiunta sezione \gls{distant writing} & Chiara Grossele\\
         \hline
         1.1.7 & 24/04/2026 & Elisa Marchioro & Aggiunti component test AiWidget e AiPanel & Joseph Grant \\
         \hline
         1.1.6 & 24/04/2026 & Elisa Marchioro & Aggiunti altri unit test & \\
         \hline
-        1.1.5 & 21/04/2026 & Elisa Marchioro & Aggiunti component e unit test per feature editor e history & \\
+        1.1.5 & 21/04/2026 & Elisa Marchioro & Aggiunti component e unit test per feature editor e history & Chiara Grossele\\
         \hline
         1.1.4 & 17/04/2026 & Matteo Cuogo & Aggiunta sezione descrizione selezione modello per la correzione grammaticale & Elisa Marchioro\\
         \hline
@@ -964,6 +966,19 @@ I test hanno confermato che per operazioni di correzione critica, la dimensione 
 Sulla base delle evidenze raccolte, il gruppo ha selezionato \gls{Gemma 3} (27B) come motore principale per le funzioni di correzione. Il modello ha superato la soglia di affidabilità richiesta, garantendo "correzioni perfette" senza i rallentamenti strutturali riscontrati nel modello Qwen da 30B.
 
 \subsubsection{Riassunto del testo}
+In questa sezione è documentato lo studio svolto sulle capacità dei diversi modelli LLM a elaborare un riassunto su una porzione di testo dato. Tramite questa ricerca abbiamo potuto stabilire i tre modelli più adatti a svolgere questa funzionalità.
+\paragraph{Confronto modelli e risultati}
+La ricerca ha voluto testare i vari modelli per verificare la capacità di produrre un riassunto di qualità e coerente al testo fornito. Alla fine del test si è potuto valutare i diversi riassunti ottenuti e stabilire quali LLM fossero migliori in questo compito: \textbf{Qwen 3 (30B)},\textbf{Qwen 3.5 (27B)} e \textbf{Gemma 3 (27B)}.\\
+Questi tre modelli hanno fornito tre riassunti fedeli al testo e completi con dettagli chiave, seguendo le indicazioni del prompt e mantenendo un tempo di risposta adeguato.\\
+In particolare i tre modelli sono stati classificati nel seguente ordine:
+\begin{enumerate}
+    \item Qwen 3 (30B)
+    \item Qwen 3.5 (27B)
+    \item Gemma 3 (27B)
+\end{enumerate}
+
+\paragraph{Modello scelto} Sulla base dei dati raccolti è stato scelto il modello \textbf{Qwen 3 (30B)} per implementare la funzionalità del riassunto del testo. Il modello è stato in grado di fornire un riassunto di qualità con un tempo di risposta sotto la soglia massima
+
 \subsubsection{Riscrittura del testo}
 \subsubsection{\gls{Distant writing}}
 
@@ -971,15 +986,15 @@ Sulla base delle evidenze raccolte, il gruppo ha selezionato \gls{Gemma 3} (27B)
  L'analisi è stata condotta principalmente sulla base di indici di qualità del testo come Gulpease.
  I modelli hanno avuto performance abbastanza simili. L'unico outlier è stato il modello:
  \begin{itemize}
-    \item \textbf{deepseek-r1 (8b):} Che ha ottenuto un indice di Gulpease di 63, contro la media di 55 ottenuta dagli altri modelli.\\
+    \item \textbf{deepseek-r1 (8b):} questo modello ha ottenuto un indice di Gulpease di 63, contro la media di 55 ottenuta dagli altri modelli.\\
  \end{itemize}
-Abbiamo deciso di usare il seguente \gls{prompt}, che si aggiunge all'input dell'utente: 
+Il gruppo ha deciso di usare il seguente \gls{prompt}, che si aggiunge all'input dell'utente: 
 \begin{verbatim}
     Sei uno scrittore creativo di livello mondiale.
     Ti occupi di scrivere espandendo concetti ed idee che ti vengono fornite. 
     Sei famoso per essere bravo ad adattarti a qualsiasi tono richiesto.
 \end{verbatim} 
-Questo \gls{prompt} cerca di assicurare il corretto tono per la richiesta dell'utente e di costringere l'IA a focalizzarsi sulla correttezza e qualità del testo.
+Questo \gls{prompt} ha lo scopo di stabilire il corretto tono per la richiesta dell'utente e di costringere il modello a focalizzarsi sulla correttezza e qualità del testo.
 
 
 \newpage
@@ -1590,7 +1605,7 @@ I component test verificano il comportamento dei componenti \gls{React} così co
 In combinazione con \gls{Vitest}, questi test assicurano che il componente renderizzi correttamente, reagisca agli input dell’utente (click, input, ecc.) e mostri lo stato previsto. L’approccio evita di testare dettagli interni di implementazione, rendendo i test più robusti e meno fragili ai cambiamenti.
 
 \subsection{HistoryPage.test.tsx}
-\gls{Verifica} che HistoryPage si comporti da \gls{orchestratore} corretto tra i controlli UI (input di ricerca, select, bottone elimina) e il viewmodel useHistory. L'hook viene mockato con vi.mock e riconfigurato nei singoli test tramite mockReturnValue.
+\gls{Verifica} che HistoryPage si comporti da \gls{orchestratore} corretto tra i controlli UI (input di ricerca, select, bottone elimina) e il ViewModel useHistory. L'hook viene mockato con vi.mock e riconfigurato nei singoli test tramite mockReturnValue.
 
 \begin{table}[H]
 \centering
@@ -1899,4 +1914,3 @@ Tuttavia, la ridistribuzione dei carichi di lavoro ha permesso di recuperare il 
 \textbf{RTB:} La percentuale complessiva di metriche soddisfatte ha registrato due flessioni (attorno all'80\%) in corrispondenza degli \gls{Sprint} 3 e 5, principalmente a causa degli sforamenti temporali (SPI < 0.90). Tuttavia, la tenuta impeccabile delle metriche economiche (CPI, CV sempre ottimali) e il recupero finale hanno permesso di chiudere la fase con il 100\% degli indicatori in stato accettabile o ottimale. Il processo adottato è pertanto ritenuto maturo e validato.
 
 \end{document}
-
