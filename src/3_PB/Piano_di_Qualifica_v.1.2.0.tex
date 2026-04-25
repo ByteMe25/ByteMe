@@ -103,11 +103,11 @@
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{\gls{Verifica}} \\
         \hline
-        1.2.0 & 25/04/2026 & Elisa Marchioro & Aggiunta sezione e test integrazione & \\
+        1.2.0 & 25/04/2026 & Elisa Marchioro & Aggiunta sezione e test integrazione & Giulia Barzon\\
         \hline
-        1.1.9 & 25/04/2026 & Chiara Grossele & Aggiunta sezione riassunto del testo & \\
+        1.1.9 & 25/04/2026 & Chiara Grossele & Aggiunta sezione riassunto del testo & Giulia Barzon\\
         \hline
-        1.1.8 & 24/04/2026 & Joseph Grant & Aggiunta sezione \gls{distant writing} & Chiara Grossele\\
+        1.1.8 & 24/04/2026 & Joseph Grant & Aggiunta sezione \gls{distant writing} & Chiara Grossele, Giulia Barzon\\
         \hline
         1.1.7 & 24/04/2026 & Elisa Marchioro & Aggiunti component test AiWidget e AiPanel & Joseph Grant \\
         \hline
@@ -946,6 +946,7 @@ I test si sono concentrati principalmente sul confronto tra \textbf{\gls{Llama 3
 Sulla base dei dati raccolti, il modello \textbf{\gls{Gemma 3}} ha superato ampiamente le soglie ottimali per le metriche AR e CS in compiti di profilazione psicologica complessa. Di conseguenza, il gruppo ha deciso di assegnare l'intera suite dei Sei Cappelli al modello \gls{Gemma 3}, riservando \gls{Llama 3.2} a operazioni editoriali più standard (riassunti, correzioni grammaticali) dove il tono discorsivo risulta meno penalizzante. Sono stati testati anche gli altri cinque Cappelli di De Bono e i risultati sono coerenti con quanto riportato per il Cappello Bianco.
 
 \subsubsection{Traduzione del testo}
+
 \subsubsection{Correzione grammaticale del testo}
  Per integrare lo studio sui modelli è stata condotta una sessione di testing dedicata alle capacità di correzione grammaticale, analizzando come la scala dei parametri influenzi la capacità di individuare refusi e incongruenze sintattiche.
  \paragraph{Confronto modelli e risultati}
@@ -968,9 +969,10 @@ I test hanno confermato che per operazioni di correzione critica, la dimensione 
 Sulla base delle evidenze raccolte, il gruppo ha selezionato \gls{Gemma 3} (27B) come motore principale per le funzioni di correzione. Il modello ha superato la soglia di affidabilità richiesta, garantendo "correzioni perfette" senza i rallentamenti strutturali riscontrati nel modello Qwen da 30B.
 
 \subsubsection{Riassunto del testo}
-In questa sezione è documentato lo studio svolto sulle capacità dei diversi modelli LLM a elaborare un riassunto su una porzione di testo dato. Tramite questa ricerca abbiamo potuto stabilire i tre modelli più adatti a svolgere questa funzionalità.
+In questa sezione è documentato lo studio svolto sulle capacità dei diversi modelli LLM di elaborare un riassunto su una porzione di testo dato. Con questa ricerca abbiamo potuto stabilire i tre modelli migliori per questa funzionalità.
+
 \paragraph{Confronto modelli e risultati}
-La ricerca ha voluto testare i vari modelli per verificare la capacità di produrre un riassunto di qualità e coerente al testo fornito. Alla fine del test si è potuto valutare i diversi riassunti ottenuti e stabilire quali LLM fossero migliori in questo compito: \textbf{Qwen 3 (30B)},\textbf{Qwen 3.5 (27B)} e \textbf{\gls{Gemma 3} (27B)}.\\
+La ricerca ha voluto testare i vari modelli per verificare la capacità di produrre un riassunto di qualità e coerente al testo fornito. Alla fine del test i modelli migliori per questo compito sono risultati i seguenti: \textbf{Qwen 3 (30B)},\textbf{Qwen 3.5 (27B)} e \textbf{\gls{Gemma 3} (27B)}.\\
 Questi tre modelli hanno fornito tre riassunti fedeli al testo e completi con dettagli chiave, seguendo le indicazioni del \gls{prompt} e mantenendo un tempo di risposta adeguato.\\
 In particolare i tre modelli sono stati classificati nel seguente ordine:
 \begin{enumerate}
@@ -982,6 +984,7 @@ In particolare i tre modelli sono stati classificati nel seguente ordine:
 \paragraph{Modello scelto} Sulla base dei dati raccolti è stato scelto il modello \textbf{Qwen 3 (30B)} per implementare la funzionalità del riassunto del testo. Il modello è stato in grado di fornire un riassunto di qualità con un tempo di risposta sotto la soglia massima
 
 \subsubsection{Riscrittura del testo}
+
 \subsubsection{\gls{Distant writing}}
 
  \paragraph{Confronto modelli e risultati}
