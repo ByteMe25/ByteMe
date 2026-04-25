@@ -71,7 +71,7 @@
             \hline
             \textbf{Stato} & In corso\\
             \hline
-            \textbf{Redazione} & Giulia Barzon\\
+            \textbf{Redazione} & Giulia Barzon, Elisa Marchioro\\
             \hline
             \textbf{\gls{Verifica}} & Verificato \\
             \hline
@@ -99,7 +99,7 @@
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{\gls{Verifica}} \\
         \hline
-        0.1.2 & 25/04/2026 & Giulia Barzon & Aggiunti screenshoot mancanti & \\
+        0.1.2 & 25/04/2026 & Giulia Barzon & Aggiunti screenshoot mancanti & Joseph Grant \\
         \hline
         0.1.1 & 24/04/2026 & Elisa Marchioro & Piccoli fix & Giulia Barzon\\
         \hline
@@ -213,7 +213,7 @@ Trattandosi di un'applicazione distribuita tramite container, l'unico software r
 \section{Installazione e avvio}
 In questa parte del manuale viene illustrato come installare e avviare \textbf{"Second Brain"} sul proprio computer. Sebbene la destinazione finale del prodotto sia l'esecuzione su server dedicati dell'azienda proponente, la configurazione in locale è il modo più rapido per esplorarne le funzionalità.
 
-Per utilizzare \textbf{Second Brain} sul proprio computer, il metodo più semplice è l'utilizzo di \textbf{\gls{Docker}}. Questa tecnologia permette di "impacchettare" tutto il software necessario in contenitori pronti all'uso, evitando di dover installare manualmente \gls{database} o linguaggi di programmazione specifici.
+Per utilizzare \textbf{Second Brain} sul proprio computer, il metodo più semplice è l'utilizzo di \textbf{\gls{Docker}}. Questa tecnologia permette di "impacchettare" tutto il software necessario in contenitori pronti all'uso, evitando di dover installare manualmente linguaggi di programmazione specifici.
 
 \subsection{Installazione di \gls{Docker} Desktop}
 Prima di tutto, è necessario installare il programma principale sul proprio computer:
@@ -722,7 +722,7 @@ L'installazione di \gls{Docker} Desktop potrebbe non essere andata a buon fine o
 \paragraph{L'Intelligenza Artificiale risponde con uno stato di errore continuo}
 Se il widget restituisce immediatamente un errore ogni volta che si avvia un'operazione, il server non riesce a comunicare con il provider linguistico.
 \begin{itemize}
-    \item \textbf{Soluzione 1}: \gls{Verifica} di aver creato correttamente il file \texttt{.env} nella cartella principale e di aver inserito chiavi \gls{API} valide, come spiegato nel capitolo di Installazione. Se hai modificato il file \texttt{.env} a sistema già avviato, devi riavviare l'applicazione (\texttt{Ctrl + C} nel terminale, seguito nuovamente da \texttt{\gls{docker}-compose up --build}).
+    \item \textbf{Soluzione 1}: Verifica di aver creato correttamente il file \texttt{.env} nella cartella principale e di aver inserito chiavi \gls{API} valide, come spiegato nel capitolo di Installazione. Se hai modificato il file \texttt{.env} a sistema già avviato, devi riavviare l'applicazione (\texttt{Ctrl + C} nel terminale, seguito nuovamente da \texttt{\gls{docker}-compose up --build}).
     \item \textbf{Soluzione 2}: Assicurati che il tuo computer sia connesso a Internet. Sebbene il software funzioni localmente, le operazioni AI richiedono una connessione attiva per interrogare i modelli LLM.
 \end{itemize}
 
