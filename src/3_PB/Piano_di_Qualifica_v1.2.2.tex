@@ -103,6 +103,8 @@
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{\gls{Verifica}} \\
         \hline
+        1.2.3 & 26/04/2026 & Elisa Marchioro & Aggiunta scelta modello traduzione e sistemati due test in test\_model\_strategies & \\
+        \hline
         1.2.2 & 26/04/2026 & Chiara Grossele & Aggiunta test nella sezione test model strategies.py & Giulia Barzon \\
         \hline
         1.2.1 & 25/04/2026 & Tommaso Tombacco & Aggiunta sezione su analisi funzionalità riscrittura & Giulia Barzon\\
@@ -950,6 +952,20 @@ I test si sono concentrati principalmente sul confronto tra \textbf{\gls{Llama 3
 Sulla base dei dati raccolti, il modello \textbf{\gls{Gemma 3}} ha superato ampiamente le soglie ottimali per le metriche AR e CS in compiti di profilazione psicologica complessa. Di conseguenza, il gruppo ha deciso di assegnare l'intera suite dei Sei Cappelli al modello \gls{Gemma 3}, riservando \gls{Llama 3.2} a operazioni editoriali più standard (riassunti, correzioni grammaticali) dove il tono discorsivo risulta meno penalizzante. Sono stati testati anche gli altri cinque Cappelli di De Bono e i risultati sono coerenti con quanto riportato per il Cappello Bianco.
 
 \subsubsection{Traduzione del testo}
+Per la valutazione della funzionalità di traduzione sono stati analizzati diversi modelli linguistici con l’obiettivo di misurarne l’accuratezza, la coerenza semantica e la velocità di risposta su coppie di lingue differenti, con particolare attenzione alle traduzioni a partire dalla lingua italiana. I modelli migliori presi in considerazione sono stati \textbf{Llama 3.2 (3B)}, \textbf{Qwen 3 (1.7B)} e \textbf{Gemma 3 (4B)}.
+
+\paragraph{Confronto modelli e risultati}
+L’analisi ha evidenziato alcune differenze significative tra i modelli:
+
+\begin{itemize}
+    \item \textbf{Llama 3.2 (3B)}: ha mostrato alcune criticità in più rispetto agli altri modelli. In alcuni casi non ha rispettato la lingua di destinazione richiesta, producendo ad esempio traduzioni in inglese invece che in tedesco (la lingua selezionata). Questo comportamento indica una scarsa affidabilità nel contesto di traduzione linguistica. Inoltre, è risultato il modello più lento tra quelli testati.
+    \item \textbf{Qwen 3 (1.7B)}: ha fornito traduzioni complessivamente corrette, con una buona aderenza al significato del testo originale. Il tempo di risposta è risultato adeguato, rendendolo quindi un buon modello per la traduzione.
+    \item \textbf{Gemma 3 (4B)}: è stato identificato come il modello più preciso. Le traduzioni prodotte risultano fedeli al testo di origine e grammaticalmente corrette. Ha inoltre mantenuto buoni tempi di risposta, leggermente migliori rispetto agli altri modelli testati.
+\end{itemize}
+
+\paragraph{Modello scelto}
+Sulla base dei risultati ottenuti, il gruppo ha selezionato \textbf{Gemma 3 (4B)} come modello per la funzionalità di traduzione. La scelta è motivata dalla maggiore accuratezza e affidabilità dimostrata sulle lingue testate, unite a un tempo di risposta adeguato per il sistema.
+
 
 \subsubsection{Correzione grammaticale del testo}
  Per integrare lo studio sui modelli è stata condotta una sessione di testing dedicata alle capacità di correzione grammaticale, analizzando come la scala dei parametri influenzi la capacità di individuare refusi e incongruenze sintattiche.
@@ -1365,7 +1381,7 @@ I test hanno lo scopo di verificare il corretto funzionamento delle strategie, i
 \hline
 \textbf{Codice} & \textbf{Descrizione} & \textbf{Stato} \\ \hline
 \prossimoUT & \gls{Verifica} che la classe base non possa essere usata direttamente. & Pass \\ \hline
-\prossimoUT & \gls{Verifica} che get\_model restituisca sempre la stessa istanza (Singleton). & Pass \\ \hline
+\prossimoUT & Verifica che get\_model restituisca istanze diverse dopo aver svuotato la cache. & Pass \\ \hline
 \prossimoUT & \gls{Verifica} che la strategia Llama formatti correttamente la richiesta per il client OpenAI (utilizzando un Mock dell'\gls{API} di rete per garantire l'isolamento del test) & Pass \\ \hline
 \prossimoUT & \gls{Verifica} che la strategia Qwen3 formatti correttamente la richiesta per il client OpenAI (utilizzando un Mock dell'\gls{API} di rete per garantire l'isolamento del test). & Pass \\ \hline
 \prossimoUT & \gls{Verifica} che la strategia Gemma3 formatti correttamente la richiesta per il client OpenAI (utilizzando un Mock dell'\gls{API} di rete per garantire l'isolamento del test). & Pass \\ \hline
@@ -1376,7 +1392,7 @@ I test hanno lo scopo di verificare il corretto funzionamento delle strategie, i
 \prossimoUT & \gls{Verifica} che le istanze create siano del tipo corretto e non si sovrappongano. & Pass \\ \hline
 \prossimoUT & \gls{Verifica} che venga lanciato un errore se mancano le variabili d'ambiente. & Pass \\ \hline
 \prossimoUT & \gls{Verifica} che la strategia gestisca una risposta vuota o mancante. & Pass \\ \hline
-\prossimoUT & \gls{Verifica} il corretto ripopolamento del registro interno se svuotato manualmente. & Pass \\ \hline
+\prossimoUT & Verifica che get\_model restituisca la stessa istanza per la stessa classe. & Pass \\ \hline
 
 \end{tabular}
 \caption{Tabella unit tests per test\_model\_strategies.py}
