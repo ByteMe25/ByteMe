@@ -72,7 +72,7 @@
         \centering
         \begin{tabular}{|l|p{5cm}|}
             \hline
-            \textbf{Versione} & 0.2.1 \\
+            \textbf{Versione} & 0.2.2 \\
             \hline
             \textbf{Stato} & In corso \\
             \hline
@@ -104,13 +104,15 @@
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{\gls{Verifica}} \\
         \hline
+        0.2.2 & 26/04/2026 & Giulia Barzon & Aggiornati diagrammi frontend & \\
+        \hline
         0.2.1 & 25/04/2026 & Giulia Barzon & Aggiornamento requisiti soddisfatti & \\
         \hline
         0.2.0 & 25/04/2026 & Elisa Marchioro & Aggiornamento subsubsection caching & \\
         \hline
         0.1.9 & 24/04/2026 & Matteo Cuogo & Aggiornamento dello stato di soddisfacimento di alcuni requisiti & Giulia Barzon\\
         \hline
-        0.1.8 & 24/04/2026 & Tommaso Tombacco & Modifica sezione AiWidget e modifica dello stato dei requisiti legati ad AI & \\
+        0.1.8 & 24/04/2026 & Tommaso Tombacco & Modifica sezione AiWidget e modifica dello stato dei requisiti legati ad AI & Giulia Barzon \\
         \hline
         0.1.7 & 23/04/2026 & Giulia Barzon & Aggiunte componenti AI, migliorata sezione 3 & \\
         \hline
@@ -794,18 +796,18 @@ La View del sistema è realizzata tramite componenti \textbf{\gls{React} 19} di 
 
 Di seguito sono descritti i componenti principali che compongono l'interfaccia.
 
+% DIAGRAMMA PER I COMPONENTI DELLA VIEW DELL'EDITOR
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../UMLimg/componenti_view_editor.jpg}
+    \caption{Diagramma UML dei componenti della View: composizione di EditorPage}
+    \label{fig:uml_view_editor}
+\end{figure}
+
 % COMPONENTI
 \subsubsection{Topbar}
 % DESCRIZIONE
 Barra superiore dell'applicazione posizionata in testa all'editor. Il suo scopo principale è visualizzare il nome del documento corrente tramite un campo di input editabile, permettendone la rinominazione rapida.
-
-% GRAFICO
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{../UMLimg/Topbar.jpg}
-    \caption{UML TopBar}
-    \label{fig:uml_topbar}
-\end{figure}
 
 % PROPS (invece di attributi e metodi i componenti hanno dati e funzioni di callback nella props)
 \paragraph{Props (Dati)}
@@ -822,13 +824,6 @@ Barra superiore dell'applicazione posizionata in testa all'editor. Il suo scopo 
 
 \subsubsection{Sidebar}
 Barra laterale contenente i pulsanti di navigazione (switch tra editor e storico) e per le funzionalità operative (salvataggio, upload, stampa e azioni AI). Delega l'orchestrazione delle disabilitazioni (es. bloccare i bottoni AI quando si visualizza lo storico) tramite la logica della pagina padre.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{../UMLimg/Sidebar.jpg}
-    \caption{UML SideBar}
-    \label{fig:uml_sidebar}
-\end{figure}
 
 \paragraph{Props (Dati)}
 \begin{itemize}
@@ -848,13 +843,6 @@ Barra laterale contenente i pulsanti di navigazione (switch tra editor e storico
 \subsubsection{EditorButton}
 Componente atomico e riutilizzabile che definisce l'interfaccia standard per tutti i bottoni della \texttt{Sidebar}. Gestisce i propri stati visivi (\texttt{isActive}, \texttt{disabled}) usando classi generate tramite \gls{CSS Modules}.
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{../UMLimg/EditorButton.jpg}
-    \caption{UML EditorButton}
-    \label{fig:uml_editorButton}
-\end{figure}
-
 \paragraph{Props (Dati)}
 \begin{itemize}
     \item \texttt{icon: ReactNode} - asset vettoriale/icona del bottone.
@@ -872,13 +860,6 @@ Componente atomico e riutilizzabile che definisce l'interfaccia standard per tut
 \subsubsection{MarkdownEditor}
 Componente delegato al rendering del corpo principale dell'area di scrittura. Consiste in un wrapper reattivo attorno a una \texttt{textarea} nativa su cui l'istanza di \gls{EasyMDE} viene "agganciata" dal ViewModel. Gestisce autonomamente gli eventi di trascinamento (\textit{drag-and-drop}) dei file esterni.
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{../UMLimg/MarkDownEditor.jpg}
-    \caption{UML MarkDownEditor}
-    \label{fig:uml_markdownEditor}
-\end{figure}
-
 \paragraph{Props (Dati)}
 \begin{itemize}
     \item \texttt{textAreaRef: \gls{React}.RefObject<HTMLTextAreaElement | null>} - puntatore fisico al nodo DOM su cui istanziare la libreria esterna.
@@ -892,13 +873,6 @@ Componente delegato al rendering del corpo principale dell'area di scrittura. Co
 
 \subsubsection{SaveDocumentModal}
 Modale interattiva per la configurazione dell'esportazione del documento. Mantiene traccia dello stato locale (formato selezionato, modifiche al nome) e applica tecniche di \textit{sanitizzazione} sul testo immesso prima di confermare.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{../UMLimg/SaveDocumentModal.jpg}
-    \caption{UML SaveDocumentModal}
-    \label{fig:uml_saveDocumentModal}
-\end{figure}
 
 \paragraph{Props (Dati)}
 \begin{itemize}
@@ -937,15 +911,16 @@ Il componente si distingue per un'alta dinamicità e flessibilità architettural
 \end{itemize}
 
 
-\subsubsection{HistoryList}
-Componente per il rendering aggregato dello storico delle generazioni degli LLM. Gestisce internamente l'alternanza visiva tra stati di transizione (caricamento, errore) e lo stato di successo, delegando la visualizzazione del singolo nodo a \texttt{HistoryCard}.
-
+% DIAGRAMMA PER I COMPONENTI DELLA VIEW DELLO STORICO
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{../UMLimg/HistoryList.jpg}
-    \caption{UML HistoryList}
-    \label{fig:uml_historyList}
+    \includegraphics[width=0.8\textwidth]{../UMLimg/componenti_view_storico.jpg}
+    \caption{Diagramma UML dei componenti della View: composizione di HistoryPage}
+    \label{fig:uml_view_storico}
 \end{figure}
+
+\subsubsection{HistoryList}
+Componente per il rendering aggregato dello storico delle generazioni degli LLM. Gestisce internamente l'alternanza visiva tra stati di transizione (caricamento, errore) e lo stato di successo, delegando la visualizzazione del singolo nodo a \texttt{HistoryCard}.
 
 \paragraph{Props (Dati)}
 \begin{itemize}
@@ -961,14 +936,7 @@ Componente per il rendering aggregato dello storico delle generazioni degli LLM.
 
 
 \subsubsection{HistoryCard}
-Componente granulare che rappresenta la singola scheda di interazione AI. Incapsula logiche puramente visive tramite \texttt{useState}, quali l'espansione/compressione di testi lunghi e il feedback del pulsante di copia negli appunti (\textit"Copiato!").
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{../UMLimg/HistoryCard.jpg}
-    \caption{UML HistoryCard}
-    \label{fig:uml_historyCard}
-\end{figure}
+Componente granulare che rappresenta la singola scheda di interazione AI. Incapsula logiche puramente visive tramite \texttt{useState}, quali l'espansione/compressione di testi lunghi e il feedback del pulsante di copia negli appunti.
 
 \paragraph{Props (Dati)}
 \begin{itemize}
@@ -1266,7 +1234,8 @@ Questa separazione porta due benefici misurabili in termini di qualità del soft
 La gestione dell'interfaccia utente per il widget AI adotta un implementazione a \textbf{stati}. Questa scelta permette di gestire la complessa variabilità visiva del widget in modo modulare e polimorfico.
 
 \subsubsection{Problema}
-L’AI Widget è un componente che espone diverse funzionalità in base allo stato dell’operazione in corso. Ogni operazione attraversa una serie di fasi, rendendo esplicita all’utente la condizione della richiesta. Ad esempio, nel caso di un riassunto, il widget passa da uno stato di caricamento, che comunica la necessità di attendere e in cui è possibile annullare l'operazione, a uno stato di visualizzazione del risultato, che l’utente può inserire, eliminare o rigenerare.\\\\
+L’AI Widget è un componente che espone diverse funzionalità in base allo stato dell’operazione in corso. Ogni operazione attraversa una serie di fasi, rendendo esplicita all’utente la condizione della richiesta. Ad esempio, nel caso di un riassunto, il widget passa da uno stato di caricamento, in cui l'utente attende la risposta e in cui è possibile solo annullare l'operazione, a uno stato di visualizzazione del risultato, che l’utente può inserire, eliminare o rigenerare.
+
 In un ambiente dichiarativo come \gls{React}, adottare questo approccio porterebbe il componente principale a gestire ampi blocchi condizionali (come costrutti \texttt{switch} o \texttt{if/else}) per determinare quale porzione di interfaccia renderizzare, generando codice rigido, frammentato e difficile da testare.
 
 \subsubsection{Soluzione: rendering delegato e stati polimorfi}
