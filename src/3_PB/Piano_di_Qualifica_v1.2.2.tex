@@ -71,7 +71,7 @@
         \centering
         \begin{tabular}{|l|p{5cm}|}
             \hline
-            \textbf{Versione} & 1.2.1 \\
+            \textbf{Versione} & 1.2.2 \\
             \hline
             \textbf{Stato} & Da approvare \\
             \hline
@@ -102,6 +102,8 @@
     \begin{tabular}{|c|c|c|>{\raggedright\arraybackslash}p{0.35\textwidth}|p{0.18\textwidth}|}
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{\gls{Verifica}} \\
+        \hline
+        1.2.2 & 26/04/2026 & Chiara Grossele & Aggiunta test nella sezione \textit{test model strategies.py}& \\
         \hline
         1.2.1 & 25/04/2026 & Tommaso Tombacco & Aggiunta sezione su analisi funzionalità riscrittura & Giulia Barzon\\
         \hline
@@ -1351,6 +1353,7 @@ I test hanno lo scopo di verificare il corretto funzionamento delle strategie, i
 \prossimoUT & \gls{Verifica} che la classe base non possa essere usata direttamente. & Pass \\ \hline
 \prossimoUT & \gls{Verifica} che get\_model restituisca sempre la stessa istanza (Singleton). & Pass \\ \hline
 \prossimoUT & \gls{Verifica} che la strategia Llama formatti correttamente la richiesta per il client OpenAI (utilizzando un \textbf{Mock} dell'\gls{API} di rete per garantire l'isolamento del test) & Pass \\ \hline
+\prossimoUT & \gls{Verifica} che la strategia Qwen3 formatti correttamente la richiesta per il client OpenAI (utilizzando un \textbf{Mock} dell'\gls{API} di rete per garantire l'isolamento del test). & Pass \\ \hline
 \prossimoUT & \gls{Verifica} che la strategia Gemma3 formatti correttamente la richiesta per il client OpenAI (utilizzando un \textbf{Mock} dell'\gls{API} di rete per garantire l'isolamento del test). & Pass \\ \hline
 \prossimoUT & \gls{Verifica} che la strategia Llama gestisca (o sollevi) errori dall'\gls{API}. & Pass \\ \hline
 \prossimoUT & \gls{Verifica} che get\_model distingua correttamente tra tipi diversi di modelli. & Pass \\ \hline
