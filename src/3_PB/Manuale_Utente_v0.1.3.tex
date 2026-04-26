@@ -71,7 +71,7 @@
             \hline
             \textbf{Stato} & In corso\\
             \hline
-            \textbf{Redazione} & Giulia Barzon, Elisa Marchioro\\
+            \textbf{Redazione} & Giulia Barzon\\
             \hline
             \textbf{\gls{Verifica}} & Verificato \\
             \hline
@@ -99,7 +99,9 @@
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{\gls{Verifica}} \\
         \hline
-        0.1.2 & 25/04/2026 & Giulia Barzon & Aggiunti screenshoot mancanti & Joseph Grant \\
+        0.1.3 & 26/04/2026 & Giulia Barzon & Inserito elenco delle figure & \\
+        \hline
+        0.1.2 & 25/04/2026 & Giulia Barzon & Aggiunti screenshoot mancanti & \\
         \hline
         0.1.1 & 24/04/2026 & Elisa Marchioro & Piccoli fix & Giulia Barzon\\
         \hline
@@ -119,7 +121,14 @@
 \thispagestyle{empty}
 \newpage
 
-% Dalla quarta pagina - Contenuto principale
+% Inserisce l'elenco delle figure
+\phantomsection
+\addcontentsline{toc}{section}{Elenco delle figure}
+\listoffigures
+
+\newpage
+
+% Contenuto principale
 \setcounter{page}{1}
 
 \section{Introduzione}
@@ -213,7 +222,7 @@ Trattandosi di un'applicazione distribuita tramite container, l'unico software r
 \section{Installazione e avvio}
 In questa parte del manuale viene illustrato come installare e avviare \textbf{"Second Brain"} sul proprio computer. Sebbene la destinazione finale del prodotto sia l'esecuzione su server dedicati dell'azienda proponente, la configurazione in locale è il modo più rapido per esplorarne le funzionalità.
 
-Per utilizzare \textbf{Second Brain} sul proprio computer, il metodo più semplice è l'utilizzo di \textbf{\gls{Docker}}. Questa tecnologia permette di "impacchettare" tutto il software necessario in contenitori pronti all'uso, evitando di dover installare manualmente linguaggi di programmazione specifici.
+Per utilizzare \textbf{Second Brain} sul proprio computer, il metodo più semplice è l'utilizzo di \textbf{\gls{Docker}}. Questa tecnologia permette di "impacchettare" tutto il software necessario in contenitori pronti all'uso, evitando di dover installare manualmente \gls{database} o linguaggi di programmazione specifici.
 
 \subsection{Installazione di \gls{Docker} Desktop}
 Prima di tutto, è necessario installare il programma principale sul proprio computer:
