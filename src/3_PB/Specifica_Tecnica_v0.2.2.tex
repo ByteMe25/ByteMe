@@ -776,6 +776,15 @@ Il frontend del sistema è stato sviluppato utilizzando \textbf{\gls{React} 19},
 
 L'organizzazione del progetto segue i principi della \textit{\gls{Feature-based Architecture}} (ispirata allo standard di settore \textbf{Bulletproof \gls{React}}). Invece di raggruppare i file per tipo (tutti i componenti insieme, tutti gli hook insieme), ogni funzionalità del sistema (es. \texttt{editor}, \texttt{history}) è isolata in un modulo autocontenuto che include i propri componenti, hook, store e definizioni di tipo.
 
+
+% diagramma completo per MVVM
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{../UMLimg/MVVM.jpg}
+    \caption{Diagramma delle classi: architettura globale del frontend secondo il pattern MVVM.}
+    \label{fig:uml_mvvm}
+\end{figure}
+
 \subsection{Model-View-ViewModel (MVVM)}
 Il pattern architetturale \textbf{Model-View-ViewModel (MVVM)} è un'evoluzione dei pattern di presentazione (come MVC e MVP) progettata per separare rigorosamente lo sviluppo dell'interfaccia utente (UI) dalla logica di business e dallo stato dell'applicazione. È un pattern di riferimento per lo sviluppo client-side moderno e si adatta perfettamente al \gls{paradigma reattivo} di \gls{React}.
 
@@ -962,17 +971,16 @@ Il ViewModel ha la responsabilità di:
     \item Manipolare direttamente le istanze di librerie esterne, come \textbf{\gls{EasyMDE}} per l'editor \gls{Markdown}, isolandone la complessità tecnica all'interno di hook dedicati.
 \end{itemize}
 
-% descrizione degli hooks singoli
-\subsubsection{useEditor}
-Hook centrale dell'applicazione. Gestisce il ciclo di vita dell'istanza \gls{EasyMDE} (creazione al mount, distruzione al cleanup). Implementa l'auto-save con tecnica di \textit{debounce} (500 ms) per evitare scritture eccessive su disco. Fornisce all'esterno un'interfaccia solida per interagire con il testo.
-
-% GRAFICO
+% GRAFICO per gli hooks dell'editor - DA CAMBIARE
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{../UMLimg/UseEditor.jpg}
+    \includegraphics[width=1\textwidth]{../UMLimg/UseEditor.jpg}
     \caption{UML UseEditor}
-    \label{fig:uml_useEditor}
+    \label{fig:uml_hooks_Editor}
 \end{figure}
+
+\subsubsection{useEditor}
+Hook centrale dell'applicazione. Gestisce il ciclo di vita dell'istanza \gls{EasyMDE} (creazione al mount, distruzione al cleanup). Implementa l'auto-save con tecnica di \textit{debounce} (500 ms) per evitare scritture eccessive su disco. Fornisce all'esterno un'interfaccia solida per interagire con il testo.
 
 \paragraph{Stato/Valori di ritorno}
 \begin{itemize}
@@ -989,11 +997,8 @@ Hook centrale dell'applicazione. Gestisce il ciclo di vita dell'istanza \gls{Eas
     \item \texttt{reloadFromStorage: () => void} - forza la sincronizzazione con il LocalStorage.
 \end{itemize}
 
-
 \subsubsection{useSaveDocument}
 Coordina il flusso di esportazione asincrono. Orchestra in sequenza la composizione sicura del filename, il download fisico (mediato dal file \texttt{fileHandler.ts}) e il dispatch verso lo store per aggiornare il timestamp di salvataggio. In caso di errore fallisce silenziosamente mantenendo la modale aperta per un nuovo tentativo.
-
-% grafico
 
 \paragraph{Stato/Valori di ritorno}
 \begin{itemize}
@@ -1008,11 +1013,8 @@ Coordina il flusso di esportazione asincrono. Orchestra in sequenza la composizi
     \item \texttt{handleExport: (rawFilename: string, format: ExportFormat, content: string) => Promise<void>} - processa la richiesta di esportazione, applica la mappa dei MIME type ed esegue il download.
 \end{itemize}
 
-
 \subsubsection{useFileUpload}
 Gestisce il caricamento asincrono tramite \texttt{FileReader}. Esegue controlli preventivi (\gls{validazione} del formato supportato \texttt{.md} o \texttt{.txt}, dimensione massima 5 MB) e previene la perdita accidentale di dati non salvati bloccando l'utente e chiedendogli conferma tramite \texttt{window.confirm}.
-
-% grafico
 
 \paragraph{Stato/Valori di ritorno}
 \begin{itemize}
@@ -1025,12 +1027,9 @@ Gestisce il caricamento asincrono tramite \texttt{FileReader}. Esegue controlli 
     \item \texttt{handleFileUpload: (event: \gls{React}.ChangeEvent<HTMLInputElement>) => Promise<void>} - intercetta il file selezionato, lo valida e ne legge il contenuto testuale.
 \end{itemize}
 
-
 \subsubsection{usePrintDocument}
 Isola e rende testabile la logica di invocazione della stampa di sistema (\texttt{window.print()}). Implementa \textit{guard clauses} per impedire l'avvio del processo se il documento risulta vuoto.
 Questo hook opera esclusivamente in modo imperativo, non ha quindi nessuno stato locale esposto.
-
-% grafico
 
 \paragraph{Funzioni esposte}
 \begin{itemize}
@@ -1041,7 +1040,13 @@ Questo hook opera esclusivamente in modo imperativo, non ha quindi nessuno stato
 \subsubsection{useHistory}
 Interfaccia la View con lo store dedicato (\texttt{useHistoryStore}), estraendo le interazioni passate. Per garantire alte prestazioni e fluidità UI, tramite \texttt{useMemo} applica dinamicamente i filtri di ricerca e l'ordinamento cronologico, assicurando che lo strato di presentazione riceva sempre informazioni formattate senza subire calcoli ridondanti.
 
-% grafico
+% diagramma che mostra i collegamenti tra view storico e hooks + store
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{../UMLimg/hooks_storico.jpg}
+    \caption{Architettura del modulo History: interazione tra l'hook useHistory e lo store Zustand.}
+    \label{fig:uml_hooks_storico}
+\end{figure}
 
 \paragraph{Stato/Valori di ritorno}
 \begin{itemize}
@@ -1071,30 +1076,19 @@ L'hook riceve in ingresso un oggetto di configurazione per interagire con l'edit
 \paragraph{Gestione dell'annullamento}
 Prima di ogni nuova richiesta, l'hook invoca \texttt{abort()} sull'eventuale controller precedente per annullare operazioni in corso, creando poi un nuovo \texttt{AbortController}. La funzione interna \texttt{handleCancel} incapsula questo comportamento e lo espone agli stati che ne necessitano (es. \texttt{LoadingState}).
 
-\paragraph{Flusso standard}
-Per le operazioni che non richiedono input utente (riassunto, correzione, traduzioni, Sei Cappelli), il flusso di transizione è il seguente:
-
-\begin{equation*}
-\texttt{Idle} \xrightarrow{\text{handleAction}} \texttt{Loading} \xrightarrow{\text{successo}} \texttt{Done} \xrightarrow{\text{inserisci / scarta}} \texttt{Idle}
-\end{equation*}
-
-In caso di errore non derivante da cancellazione esplicita, il sistema transita in \texttt{ErrorState}; in caso di cancellazione (rilevata tramite \texttt{axios.isCancel}), la transizione viene soppressa e il widget rimane nell'ultimo stato coerente.
-
-\paragraph{Flusso \gls{Distant Writing}}
-L'operazione \textit{\gls{Distant Writing}} richiede un \gls{prompt} esplicito da parte dell'utente. Il suo flusso è gestito dalla funzione interna \texttt{handleDistantWriting}, che estende il percorso standard con uno stato iniziale di input e la possibilità di rigenerazione:
-
-\begin{equation*}
-\texttt{Idle} \to \texttt{Input} \to \texttt{Loading} \to \texttt{Done} \xrightarrow{\text{rigenera}} \texttt{Input}
-\end{equation*}
-
-La callback \texttt{onConfirm} è definita come \textit{closure} all'interno di \texttt{handleDistantWriting}: cattura il riferimento ad \texttt{onConfirm} stessa per permettere la rigenerazione con il medesimo \gls{prompt}, passandola come quarto argomento al costruttore di \texttt{DoneState}.
-
 \paragraph{Funzioni esposte}
 \begin{itemize}
     \item \texttt{handleAction: (operation: AiOperationId) => Promise<void>} - funzione principale che avvia il flusso AI. Intercetta il caso \texttt{"distant\_writing"} e lo delega a \\ \texttt{handleDistantWriting}; per tutte le altre operazioni, esegue direttamente il flusso standard.
     \item \texttt{handleDistantWriting: () => void} - funzione che inizializza il flusso con input utente, portando il widget in \texttt{InputState} con la callback \texttt{onConfirm} preconfigurata.
 \end{itemize}
 
+% grafico con il dettaglio di useAiOperaions e useDraggable
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{../UMLimg/hooks_ai.jpg}
+    \caption{UML funzionalità AI: interazione tra ViewModel, Store globale e stati del widget.}
+    \label{fig:uml_hooks_ai}
+\end{figure}
 
 \subsubsection{useDraggable}
 Hook di utilità incaricato di gestire la logica di posizionamento e trascinamento (\textit{drag-and-drop}) di componenti flottanti all'interno dell'interfaccia. Astrae la gestione dei \textit{listener} degli eventi del mouse (\texttt{mousemove}, \texttt{mouseup}) registrati a livello di \texttt{window}, garantendo che il trascinamento funzioni correttamente anche quando il cursore fuoriesce dai limiti del componente durante il movimento rapido.
@@ -1221,7 +1215,7 @@ Questa separazione porta due benefici misurabili in termini di qualità del soft
 % diagramma
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{../UMLimg/facade.jpg}
+    \includegraphics[width=1\textwidth]{../UMLimg/facade.jpg}
     \caption{UML del pattern Facade}
     \label{fig:uml_facade}
 \end{figure}
@@ -1244,7 +1238,7 @@ Nel sistema implementato, il widget si limita a invocare il metodo di rendering 
 % diagramma per le classi degli stati
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.9\textwidth]{../UMLimg/widgetState.jpg}
+    \includegraphics[width=1\textwidth]{../UMLimg/widgetState.jpg}
     \caption{Diagramma delle classi del Render-Delegate State Pattern}
     \label{fig:uml_ai_widget_state}
 \end{figure}
