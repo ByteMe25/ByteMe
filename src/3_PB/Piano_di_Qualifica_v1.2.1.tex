@@ -103,7 +103,7 @@
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{\gls{Verifica}} \\
         \hline
-        1.2.1 & 25/04/2026 & Tommaso Tombacco & Aggiunta sezione su analisi funzionalità riscrittura & \\
+        1.2.1 & 25/04/2026 & Tommaso Tombacco & Aggiunta sezione su analisi funzionalità riscrittura & Giulia Barzon\\
         \hline
         1.2.0 & 25/04/2026 & Elisa Marchioro & Aggiunta sezione e test integrazione & Giulia Barzon\\
         \hline
@@ -113,7 +113,7 @@
         \hline
         1.1.7 & 24/04/2026 & Elisa Marchioro & Aggiunti component test AiWidget e AiPanel & Joseph Grant \\
         \hline
-        1.1.6 & 24/04/2026 & Elisa Marchioro & Aggiunti altri unit test & \\
+        1.1.6 & 24/04/2026 & Elisa Marchioro & Aggiunti altri unit test & Giulia Barzon\\
         \hline
         1.1.5 & 21/04/2026 & Elisa Marchioro & Aggiunti component e unit test per feature editor e history & Chiara Grossele\\
         \hline
@@ -1003,7 +1003,7 @@ L’analisi dei risultati ha portato all’esclusione dei modelli di fascia più
 I modelli di fascia più bassa invece, come \textbf{gemma3:270m} e \textbf{qwen3:1.7b}, hanno evidenziato criticità significative nel rispetto delle istruzioni. In particolare, sono emerse difficoltà nel mantenere il vincolo di eliminazione delle frasi introduttive e dei riferimenti al \gls{prompt}, oltre a problemi di coerenza con il contesto. In alcuni casi, tali modelli hanno prodotto risposte in lingua inglese, nonostante l’input fosse interamente in italiano.
 
 \paragraph{Modello scelto}
-La scelta finale è ricaduta sul modello \textbf{gemma3:4b}, che ha dimostrato un'elevata coerenza con gli input forniti, assenza di fenomeni di allucinazione e capacità di riscrivere testi informali o non strutturati in forma tecnica e formale.\\\\
+La scelta finale è ricaduta sul modello \textbf{gemma3:4b}, che ha dimostrato un'elevata coerenza con gli input forniti, assenza di allucinazioni e capacità di riscrivere testi informali o non strutturati in forma tecnica e formale.\\\\
 Il \gls{prompt} utilizzato per eseguire i vari test è stato:
 \begin{verbatim}
     Sei un assistente professionale specializzato nella riscrittura di testi tecnici.
@@ -1351,6 +1351,7 @@ I test hanno lo scopo di verificare il corretto funzionamento delle strategie, i
 \prossimoUT & \gls{Verifica} che la classe base non possa essere usata direttamente. & Pass \\ \hline
 \prossimoUT & \gls{Verifica} che get\_model restituisca sempre la stessa istanza (Singleton). & Pass \\ \hline
 \prossimoUT & \gls{Verifica} che la strategia Llama chiami correttamente il client OpenAI. & Pass \\ \hline
+\prossimoUT & \gls{Verifica} che la strategia Gemma3 chiami correttamente il client OpenAI. & Pass \\ \hline
 \prossimoUT & \gls{Verifica} che la strategia Llama gestisca (o sollevi) errori dall'\gls{API}. & Pass \\ \hline
 \prossimoUT & \gls{Verifica} che get\_model distingua correttamente tra tipi diversi di modelli. & Pass \\ \hline
 \prossimoUT & \gls{Verifica} che le istanze create siano del tipo corretto e non si sovrappongano. & Pass \\ \hline
