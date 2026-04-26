@@ -103,7 +103,7 @@
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{\gls{Verifica}} \\
         \hline
-        1.2.2 & 26/04/2026 & Chiara Grossele & Aggiunta test nella sezione \textit{test model strategies.py}& \\
+        1.2.2 & 26/04/2026 & Chiara Grossele & Aggiunta test nella sezione test model strategies.py & Giulia Barzon \\
         \hline
         1.2.1 & 25/04/2026 & Tommaso Tombacco & Aggiunta sezione su analisi funzionalità riscrittura & Giulia Barzon\\
         \hline
@@ -1141,6 +1141,20 @@ Qui vengono descritti i test relativi alla strategia basata sui “Sei Cappelli 
 \caption{Tabella unit tests per i Sei Cappelli di De Bono}
 \end{table}
 
+\paragraph{TestDistantWritingStrategy}
+Questa sezione contiene i test specifici per la strategia di \gls{distant writing}. L'obiettivo è verificare che il sistema assembli correttamente il testo di contesto fornito dall'utente con il prompt personalizzato, garantendo che entrambi gli elementi siano presenti nell'output finale.
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|l|p{12cm}|c|}
+    \hline
+    \textbf{Codice} & \textbf{Descrizione} & \textbf{Stato} \\ \hline
+    \prossimoUT & \gls{Verifica} che il \gls{Distant Writing} inserisca correttamente sia il \gls{prompt} utente sia il testo di contesto all'interno dei prompt generati verso il modello AI. & Pass \\ \hline
+\end{tabular}
+\caption{Tabella unit tests di TestDistantWritingStrategy}
+\end{table}
+
 \paragraph{TestStrategiesDict}
 Questa sezione valida la correttezza del dizionario che raccoglie tutte le strategie disponibili. I test controllano sia la completezza delle strategie registrate sia la loro tipologia, assicurando che ogni voce sia associata alla classe corretta e produca output validi.
 
@@ -1352,9 +1366,11 @@ I test hanno lo scopo di verificare il corretto funzionamento delle strategie, i
 \textbf{Codice} & \textbf{Descrizione} & \textbf{Stato} \\ \hline
 \prossimoUT & \gls{Verifica} che la classe base non possa essere usata direttamente. & Pass \\ \hline
 \prossimoUT & \gls{Verifica} che get\_model restituisca sempre la stessa istanza (Singleton). & Pass \\ \hline
-\prossimoUT & \gls{Verifica} che la strategia Llama formatti correttamente la richiesta per il client OpenAI (utilizzando un \textbf{Mock} dell'\gls{API} di rete per garantire l'isolamento del test) & Pass \\ \hline
-\prossimoUT & \gls{Verifica} che la strategia Qwen3 formatti correttamente la richiesta per il client OpenAI (utilizzando un \textbf{Mock} dell'\gls{API} di rete per garantire l'isolamento del test). & Pass \\ \hline
-\prossimoUT & \gls{Verifica} che la strategia Gemma3 formatti correttamente la richiesta per il client OpenAI (utilizzando un \textbf{Mock} dell'\gls{API} di rete per garantire l'isolamento del test). & Pass \\ \hline
+\prossimoUT & \gls{Verifica} che la strategia Llama formatti correttamente la richiesta per il client OpenAI (utilizzando un Mock dell'\gls{API} di rete per garantire l'isolamento del test) & Pass \\ \hline
+\prossimoUT & \gls{Verifica} che la strategia Qwen3 formatti correttamente la richiesta per il client OpenAI (utilizzando un Mock dell'\gls{API} di rete per garantire l'isolamento del test). & Pass \\ \hline
+\prossimoUT & \gls{Verifica} che la strategia Gemma3 formatti correttamente la richiesta per il client OpenAI (utilizzando un Mock dell'\gls{API} di rete per garantire l'isolamento del test). & Pass \\ \hline
+\prossimoUT & \gls{Verifica} che la strategia DeepSeek formatti correttamente la richiesta per il client OpenAI (utilizzando un \textbf{Mock} dell'\gls{API} di rete per garantire l'isolamento del test). & Pass \\
+\hline
 \prossimoUT & \gls{Verifica} che la strategia Llama gestisca (o sollevi) errori dall'\gls{API}. & Pass \\ \hline
 \prossimoUT & \gls{Verifica} che get\_model distingua correttamente tra tipi diversi di modelli. & Pass \\ \hline
 \prossimoUT & \gls{Verifica} che le istanze create siano del tipo corretto e non si sovrappongano. & Pass \\ \hline
