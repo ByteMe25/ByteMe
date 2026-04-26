@@ -1350,8 +1350,8 @@ I test hanno lo scopo di verificare il corretto funzionamento delle strategie, i
 \textbf{Codice} & \textbf{Descrizione} & \textbf{Stato} \\ \hline
 \prossimoUT & \gls{Verifica} che la classe base non possa essere usata direttamente. & Pass \\ \hline
 \prossimoUT & \gls{Verifica} che get\_model restituisca sempre la stessa istanza (Singleton). & Pass \\ \hline
-\prossimoUT & \gls{Verifica} che la strategia Llama chiami correttamente il client OpenAI. & Pass \\ \hline
-\prossimoUT & \gls{Verifica} che la strategia Gemma3 chiami correttamente il client OpenAI. & Pass \\ \hline
+\prossimoUT & Verifica che la strategia Llama formatti correttamente la richiesta per il client OpenAI (utilizzando un \textbf{Mock} dell'API di rete per garantire l'isolamento del test) & Pass \\ \hline
+\prossimoUT & Verifica che la strategia Gemma3 formatti correttamente la richiesta per il client OpenAI (utilizzando un \textbf{Mock} dell'API di rete per garantire l'isolamento del test). & Pass \\ \hline
 \prossimoUT & \gls{Verifica} che la strategia Llama gestisca (o sollevi) errori dall'\gls{API}. & Pass \\ \hline
 \prossimoUT & \gls{Verifica} che get\_model distingua correttamente tra tipi diversi di modelli. & Pass \\ \hline
 \prossimoUT & \gls{Verifica} che le istanze create siano del tipo corretto e non si sovrappongano. & Pass \\ \hline
@@ -1634,7 +1634,7 @@ Testa due funzioni di utilità per la gestione dei nomi file: sanitizeFilename (
 \prossimoUT & \gls{Verifica} che con stringa vuota o solo spazi, usa "documento" come nome di default. & Pass \\ \hline
 
 \end{tabular}
-\caption{Tabella unit tests per fileHandler.ts}
+\caption{Tabella unit tests per filenameUtils.ts}
 \end{table}
 
 \newpage
@@ -1728,7 +1728,7 @@ Questo file si occupa di testare il componente HistoryList, responsabile della v
 \prossimoCT & \gls{Verifica} che quando il modale è aperto e si clicca "Esporta", handleExport viene chiamato con il testo restituito da getEditorText(). & Pass \\ \hline
 
 \end{tabular}
-\caption{Tabella component tests per HistoryPage.tsx}
+\caption{Tabella component tests per EditorPage.tsx}
 \end{table}
 
 \subsection{MarkdownEditor.test.tsx}
@@ -1765,7 +1765,7 @@ Testa il componente editor, verificando il corretto rendering, la gestione dei f
 \prossimoCT & \gls{Verifica} che durante l'esportazione i campi siano disabilitati. & Pass \\ \hline
 
 \end{tabular}
-\caption{Tabella component tests per MarkdownEditor.tsx}
+\caption{Tabella component tests per SaveDocumentModal.tsx}
 \end{table}
 
 \subsection{AiWidget.test.tsx}
