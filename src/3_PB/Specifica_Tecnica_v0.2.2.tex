@@ -533,9 +533,7 @@ L'implementazione standard adottata prevede la scomposizione del sistema in quat
     \item \textbf{Application Logic}: Riceve le informazioni dall'esterno, effettua i controlli formali, orchestra le operazioni e gestisce il flusso applicativo.
     \item \textbf{Business Logic}: Il cuore del sistema, che implementa la logica funzionale vera e propria e le regole di dominio, isolato dal sistema di rete.
     \item \textbf{Persistence Logic}: Lo strato dedicato alla conservazione dei dati nel tempo.
-\end{itemize}
-
-% DIAGRAMMA COMPLETO DI TUTTA L'ARCHITETTURA (o dopo)
+\end{itemize}    
 
 \subsection{Applicazione del pattern in "Second Brain"}
 Di seguito viene descritto in dettaglio come i moduli e i file del progetto realizzano i quattro livelli teorici dell'architettura.
@@ -589,10 +587,10 @@ Questa struttura avrebbe violato il principio di Inversione delle Dipendenze, re
 La struttura \texttt{OperationConfig} è definita tramite un \texttt{@dataclass} ed è progettata per garantire un accoppiamento debole tra i componenti. Agisce come un contenitore che incapsula le dipendenze necessarie a ogni singola operazione.
 \begin{itemize}
     \item\textbf{Attributi:}
-\begin{itemize}
-    \item \texttt{model\_class} (\texttt{Type[AIModelStrategy]}): è il riferimento al tipo della classe del modello da istanziare, la cui creazione effettiva è delegata al sistema di caching (\texttt{get\_model}).
-    \item \texttt{\gls{prompt}\_strategy} (\texttt{BaseAIStrategy}): è un'istanza preconfigurata della strategia di \gls{prompt} specifica per quell'operazione.
-\end{itemize}
+    \begin{itemize}
+        \item \texttt{model\_class} (\texttt{Type[AIModelStrategy]}): è il riferimento al tipo della classe del modello da istanziare, la cui creazione effettiva è delegata al sistema di caching (\texttt{get\_model}).
+        \item \texttt{\gls{prompt}\_strategy} (\texttt{BaseAIStrategy}): è un'istanza preconfigurata della strategia di \gls{prompt} specifica per quell'operazione.
+    \end{itemize}
 \end{itemize}
 
 
@@ -615,8 +613,6 @@ Permette l'astrazione della comunicazione con i provider esterni. Le classi cont
 \subsubsection{Modulo: \texttt{text\_cleaning.py} (Servizi di supporto)}
 Sottomodulo funzionale che utilizza espressioni regolari (regex) per validare e "ripulire" l'output testuale grezzo generato dagli LLM. Il suo scopo è garantire che il testo restituito al client sia privo di metatesto, preamboli discorsivi o tag \gls{markdown} residui, assicurando la coerenza del dominio.
 
-% GRAFICO (?)
-
 % ===================
 % PERSISTENCE LOGIC
 % ===================
@@ -632,11 +628,10 @@ La progettazione del backend di \textit{Second Brain} si basa sull'applicazione 
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{../UMLimg/backend.jpg}
-    \caption{UML Backend}
+    \includegraphics[width=1\textwidth]{../UMLimg/backend.jpg}
+    \caption{Diagramma UML Backend: layered architecture e strategy pattern}
     \label{fig:uml_backend}
 \end{figure}
-
 
 \subsection{Strategy pattern}
 Lo \textbf{Strategy} è un design pattern comportamentale il cui scopo principale è definire una famiglia di algoritmi, incapsularli in classi separate e renderli interscambiabili tra loro. Questo approccio permette agli algoritmi di variare in modo indipendente rispetto alle classi che li utilizzano, rendendo il codice modulare ed estensibile.
@@ -724,11 +719,10 @@ Sottoclasse concreta progettata per implementare il metodo dei "Sei Cappelli per
 % DIAGRAMMA DELLE CLASSI
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{../UMLimg/ai_strategy.jpg}
-    \caption{UML Strategy AI}
+    \includegraphics[width=0.8\textwidth]{../UMLimg/ai_strategies.jpg}
+    \caption{Diagramma UMl: Strategy pattern applicato alle operazioni AI}
     \label{fig:uml_ai_strategy}
 \end{figure}
-
 
 
 \subsubsection{Applicazione 2: model strategies (model\_strategies.py)}
@@ -757,6 +751,15 @@ Il sistema prevede due implementazioni concrete che espongono in modo polimorfic
 \end{itemize}
 \end{itemize}
 
+% DIAGRAMMA DELLE CLASSI
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../UMLimg/ai_model_strategies.jpg}
+    \caption{Diagramma UMl: Strategy pattern applicato alla scelta dei LLM}
+    \label{fig:uml_model_strategy}
+\end{figure}
+
+
 \subsubsection{Caching (get\_model)}
 La funzione \texttt{get\_model(model\_class)} fornisce un’istanza unica per ciascun modello richiesto, evitando la creazione di più istanze della stessa classe e ottimizzando così l’utilizzo delle risorse.
 
@@ -766,13 +769,6 @@ L’utilizzo di \texttt{functools} consente di affidarsi a una soluzione robusta
 
 Nel contesto specifico dell’applicazione, la presenza di più istanze non avrebbe comportato criticità rilevanti, ma si è comunque scelto di adottare una soluzione più rigorosa per garantire maggiore solidità e aderenza alle buone pratiche di progettazione.
 
-% DIAGRAMMA DELLE CLASSI
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{../UMLimg/model_strategy.jpg}
-    \caption{UML Strategy ModelAI}
-    \label{fig:uml_model_strategy}
-\end{figure}
 
 \newpage
 
