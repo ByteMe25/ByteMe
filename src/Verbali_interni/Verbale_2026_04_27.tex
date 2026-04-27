@@ -1,0 +1,157 @@
+\documentclass[a4paper,12pt]{article}
+
+% ===== Pacchetti utili =====
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[italian]{babel}
+\usepackage{geometry}
+\usepackage{array}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+
+% ===== Impostazioni di pagina =====
+\geometry{margin=2.5cm}
+\setlength{\parskip}{6pt}
+\setlength{\parindent}{0pt}
+
+% ===== Intestazione e piè di pagina =====
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Verbale 27/04/2026}
+\rhead{ByteMe}
+\cfoot{\thepage}
+
+% ===== Documento =====
+\begin{document}
+
+\vspace*{\fill}
+\begin{center}
+    \includegraphics[width=0.5\textwidth]{../LogoByteMe.jpg}\\[1cm]
+    {\Huge \textbf{Verbale Riunione}}\\[0.5cm]
+    {\Large ByteMe}\\[0.5cm]
+    \rule{0.6\textwidth}{0.6pt}\\[0.5cm]
+    \textit{Data: 27 aprile 2026}
+\end{center}
+\vspace*{\fill}
+
+\pagebreak
+   \rule{1\textwidth}{0.4pt}\\[4pt]
+
+
+\textbf{Data:} 27/04/2026 \\
+\textbf{Ora di inizio:} 15:15 \\
+\textbf{Ora di fine:} 16:00 \\
+\textbf{Luogo / Piattaforma:} Discord
+\begin{center}
+   \rule{1\textwidth}{0.4pt}\\
+\end{center}
+
+\section*{ Partecipanti}
+
+\begin{longtable}{|p{0.45\textwidth}|p{0.45\textwidth}|}
+\hline
+\textbf{Nome e Cognome} & \textbf{Ruolo} \\ \hline
+ Giulia Barzon & Responsabile \\ \hline
+ Matteo Cuogo & Verificatore \\ \hline
+ Elisa Marchioro & Amministratore e Programmatore \\ \hline
+ Joseph Grant & Amministratore e Verificatore \\ \hline
+ Tommaso Tombacco & Verificatore e Programmatore \\ \hline
+ Chiara Grossele - ASSENTE & Amministratore e Verificatore \\ \hline
+ \end{longtable}
+
+\section*{Ordine del giorno}
+\begin{enumerate}
+    \item Verifica e approvazione stato avanzamento documenti PB.
+    \item Verifica finale di alcuni diagrammi UML.
+    \item Pianificazione ruoli e attività per l'ultimo sprint.
+    \item Organizzazione presentazione per Zucchetti e slide per il Prof. Cardin.
+    \item Varie ed eventuali (Email, gestione classi ridondanti).
+\end{enumerate}
+
+\section*{Resoconto della riunione}
+
+\subsection*{1. Verifica e approvazione documenti}
+È stato effettuato un controllo incrociato sui documenti per la fase di Product Baseline (PB).
+\begin{itemize}
+    \item \textbf{Specifica Tecnica:} In fase di finalizzazione.
+    \item \textbf{Manuale Utente:} È stato concluso e va verificato, poi può essere approvata la versione ufficiale 1.0.0.
+    \item \textbf{Piano di Qualifica:} Aggiornamento necessario per includere il cruscotto di qualità definitivo e gli esiti degli ultimi test; può ritenersi quasi concluso e va verificato.
+    \item \textbf{Piano di Progetto:} Elisa si occupa dell'aggiornamento finale delle tabelle di consuntivo; poi va verificato.
+\end{itemize}
+Tutti i documenti in PB devono essere verificati, subire un avanzamento di versione e l'approvazione finale. I documenti \textit{Norme di Progetto} e \textit{Glossario} sono considerati definitivi.
+
+\subsection*{2. Diagrammi UML e architettura}
+Il gruppo ha analizzato la necessità di rendere i diagrammi più esaustivi per la Specifica Tecnica:
+\begin{itemize}
+    \item \textbf{Frontend:} Valutata espansione del diagramma MVVM includendo esplicitamente il Facade e gli stati dei Widget AI.
+    \item \textbf{Integrazione:} Creazione di un diagramma completo che mostri l'interazione tra Backend e Frontend.
+    \item \textbf{Codice:} Valutazione della rimozione della classe \texttt{ZucchettiLlamaStrategy} sia dal codice che dalla documentazione/diagrammi se ritenuta obsoleta o non utilizzata.
+\end{itemize}
+
+\subsection*{3. Presentazione per Zucchetti e slide per Cardin}
+La presentazione per l'azienda deve essere pronta entro mercoledì. La suddivisione delle parti è la seguente:
+\begin{itemize}
+    \item \textbf{Introduzione, tecnologie e dipendenze:} Matteo
+    \item \textbf{Interfaccia generale, editor markdown e gestione file:} Joseph
+    \item \textbf{Funzionalità AI:} Elisa
+    \item \textbf{Scelta e valutazione dei modelli LLM:} Giulia
+    \item \textbf{AI Widget:} Tommaso
+    \item \textbf{Storico generazioni:} Chiara
+\end{itemize}
+Per il \textbf{Prof. Cardin}: le slide seguiranno un approccio tecnico-didattico, inserendo il relativo diagramma UML subito dopo la descrizione di ogni Pattern. La preparazione delle slide è prevista entro la fine della settimana corrente.
+
+\subsection*{4. Comunicazioni e testing}
+Giulia invierà mercoledì un'email riassuntiva al Prof. Vardanega con il resoconto delle attività, sostituendo per questa settimana il diario di bordo. Sul fronte tecnico, Elisa procederà con la stesura degli ultimi test.
+
+\subsection*{5. Comunicazione urgente: Indisponibilità servizi AI}
+Il gruppo prende atto della comunicazione ricevuta da Zucchetti: **dal 29/04 al 04/05 i servizi LLM dell'infrastruttura di Padova non saranno disponibili** per trasferimento sede. La comunicazione è arrivata un'ora dopo la fine del meeting.
+\begin{itemize}
+    \item \textbf{Impatto:} Impossibilità di testare le funzionalità AI in tempo reale durante i giorni di downtime.
+    \item \textbf{Mitigazione:} Necessità di completare i test critici entro il 28/04.
+    \item \textbf{Riconfigurazione:} Al ripristino (previsto il 05/05), sarà necessario aggiornare gli indirizzi IP negli ambienti di test/configurazione.
+\end{itemize}
+
+\section*{Decisioni prese}
+\begin{itemize}
+    \item Verifica e approvazione di tutti i documenti PB con relativo scatto di versione.
+    \item Rimozione del cinese dal Manuale Utente (requisito opzionale).
+    \item Inserimento obbligatorio dei diagrammi post-descrizione pattern nelle slide per Cardin.
+    \item Sostituzione temporanea del diario di bordo con email di resoconto.
+\end{itemize}
+
+
+\section*{Azioni da intraprendere}
+\begin{longtable}{|p{0.42\textwidth}|p{0.25\textwidth}|p{0.12\textwidth}|p{0.15\textwidth}|}
+\hline
+\textbf{Attività} & \textbf{Responsabile} & \textbf{Scadenza} & \textbf{Stato} \\ \hline
+Completamento presentazione Zucchetti & Tutti & 29/04 & In corso \\ \hline
+Email di resoconto a Tullio & Giulia B. & 29/04 & Pianificata \\ \hline
+Aggiornamento PdQ (Cruscotto e Test) & Verificatori & 30/04 & In corso \\ \hline
+Implementazione Test & Elisa M. & 01/05 & Pianificata \\ \hline
+Integrazione diagrammi UML completi & Amministratori & 01/05 & In corso \\ \hline
+Preparazione slide per Cardin & Tutti & 03/05 & Pianificata \\ \hline
+\end{longtable}
+
+
+
+\section*{Prossima riunione}
+\subsection*{Prossima riunione interna}
+\textbf{Data prevista:} 30/04/2026 \\
+\textbf{Luogo / Piattaforma:} Discord \\
+\textbf{Obiettivo principale:} Confronto finale e preparazione alla presentazione del progetto ai committenti. \\
+
+\subsection*{Prossima riunione esterna}
+\textbf{Data prevista:} 29/04/2026 \\
+\textbf{Luogo / Piattaforma:} Google Meet \\
+\textbf{Obiettivo principale:} Confronto con la proponente per validare il progetto Second Brain concluso. \\
+
+
+
+\textbf{Redatto da:} Giulia Barzon \\
+\textbf{Data di redazione:} 27/04/2026
+
+\end{document}
