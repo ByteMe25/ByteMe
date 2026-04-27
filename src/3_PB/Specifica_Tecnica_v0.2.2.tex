@@ -600,13 +600,13 @@ La struttura \texttt{OperationConfig} è definita tramite un \texttt{@dataclass}
 Il nucleo del sistema è implementato come un dizionario globale che associa identificatori testuali univoci (es. \texttt{"summary"}, \texttt{"green\_hat"}) a oggetti \texttt{OperationConfig}. Questa architettura garantisce tre proprietà fondamentali:
 \begin{itemize}
     \item \textbf{Adesione al principio Open-Closed}: Per aggiungere una nuova funzionalità è sufficiente registrare una nuova riga nel dizionario di configurazione. Il codice del controller rimane del tutto inalterato, chiuso alle modifiche ma aperto alle estensioni.
-    \item \textbf{Routing dinamico dei modelli}: Permette di assegnare il modello più adatto a una specifica operazione. Ad esempio, nel sistema le operazioni editoriali e di traduzione sono instradate nativamente su \gls{Llama 3.2}, mentre le logiche di pensiero laterale dei Sei Cappelli sono delegate a \gls{Gemma 3:4B}.
+    \item \textbf{Routing dinamico dei modelli}: Permette di assegnare il modello più adatto a una specifica operazione. Ad esempio, nel sistema le operazioni logiche di pensiero laterale dei Sei Cappelli sono delegate a \gls{Gemma 3:4B}.
     \item \textbf{Robustezza e fallback}: In caso di operazione non riconosciuta o assente nel payload della richiesta, il sistema fornisce una configurazione di default in modo trasparente tramite la costante \texttt{DEFAULT\_OPERATION = "summary"}, sfruttando il metodo \texttt{.get()} del dizionario ed evitando crash dell'applicazione.
 \end{itemize}
 
 
 \subsubsection{Modulo: \texttt{model\_strategies.py} (Integrazione LLM)}
-Permette l'astrazione della comunicazione con i provider esterni. Le classi contenute in questo file si occupano di iniettare le chiavi \gls{API} lette dall'ambiente e di impacchettare la richiesta nel formato corretto. Anche in questo caso le classi (\texttt{ZucchettiLlamaStrategy}, \texttt{Gemma3Strategy}) implementano il \textbf{Pattern Strategy}.
+Permette l'astrazione della comunicazione con i provider esterni. Le classi contenute in questo file si occupano di iniettare le chiavi \gls{API} lette dall'ambiente e di impacchettare la richiesta nel formato corretto. Anche in questo caso le classi (\texttt{ZucchettiDeepSeekStrategy}, \texttt{Gemma3Strategy}, \texttt{Qwen3Strategy}) implementano il \textbf{Pattern Strategy}.
 \begin{itemize}
     \item \textbf{Caching (\texttt{get\_model})}: All'interno di questo modulo è implementata una funzione di ottimizzazione che gestisce un dizionario globale privato (\texttt{\_model\_instances}). Se l'istanza di connessione a un modello non esiste, la crea; alle chiamate successive restituisce il riferimento in memoria, evitando di aprire connessioni ridondanti.
 \end{itemize}
@@ -739,8 +739,8 @@ Interfaccia comune per tutti i modelli linguistici IA.
 \end{itemize}
 \end{itemize}
 
-\paragraph{Implementazioni concrete (ZucchettiLlamaStrategy e Gemma3Strategy)}
-Il sistema prevede due implementazioni concrete che espongono in modo polimorfico i modelli \gls{Llama 3.2} (per operazioni standard e traduzioni) e \gls{Gemma 3} (per il pensiero laterale dei Sei Cappelli).
+\paragraph{Implementazioni concrete (ZucchettiDeepSeekStrategy, Gemma3Strategy, Qwen3Strategy)}
+Il sistema prevede tre implementazioni concrete che espongono in modo polimorfico i modelli \gls{Deepseek } (per operazioni di distant writing),  \gls{Gemma 3} (per il pensiero laterale dei Sei Cappelli, riscrittura del testo e correzione grammaticale) e \gls{Qwen 3} (per operazioni di riassunto).
 \begin{itemize}
     \item \textbf{Attributi:}
 \begin{itemize}
@@ -748,7 +748,7 @@ Il sistema prevede due implementazioni concrete che espongono in modo polimorfic
 \end{itemize}
     \item \textbf{Metodi:}
 \begin{itemize}
-    \item \texttt{model} (str): Stringa identificativa del modello instradato (es. \texttt{"llama3.2:3b"} o \texttt{"gemma3:4b"}).
+    \item \texttt{model} (str): Stringa identificativa del modello instradato (es. \texttt{"gemma3:4b"}).
     \item \texttt{generate(...)}: Implementa la logica di chiamata \gls{API}, inviando i messaggi nel formato richiesto dal protocollo \textit{ChatCompletion}. Estrae e restituisce esclusivamente il contenuto testuale, isolandolo dai metadati di rete (es. token consumati).
 \end{itemize}
 \end{itemize}
