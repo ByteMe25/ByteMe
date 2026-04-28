@@ -1927,24 +1927,24 @@ A differenza dei test unitari, che verificano singole parti di codice, i test en
 \subsection{Codegen}
 Playwright mette a disposizione uno strumento chiamato Codegen che permette di generare automaticamente il codice dei test registrando le azioni dell’utente nel browser. Avviando il comando npx playwright codegen <url>, si apre una finestra in cui ogni interazione (click, inserimento di testo, navigazione) viene tradotta in tempo reale in codice.
 
-Questo strumento è particolarmente utile per iniziare rapidamente a scrivere test, anche senza conoscere nel dettaglio le API di Playwright. Nel nostro caso, il codice generato è stato usato come base e poi migliorato aggiungendo controlli espliciti e una gestione più accurata delle operazioni asincrone.
+Questo strumento è particolarmente utile per iniziare rapidamente a scrivere test, anche senza conoscere nel dettaglio le \gls{API} di Playwright. Nel nostro caso, il codice generato è stato usato come base e poi migliorato aggiungendo controlli espliciti e una gestione più accurata delle operazioni asincrone.
 
 \subsection{Smoke test}
 Gli smoke test sono test di base che servono a verificare rapidamente che le funzionalità principali dell’applicazione funzionino dopo una modifica al codice. Non coprono tutti i casi possibili, ma controllano che le operazioni essenziali non siano rotte.
 
-In questo progetto sono stati realizzati quattro smoke test, uno per ciascuna funzionalità principale dell’editor: caricamento file, salvataggio/esportazione, stampa e operazioni AI. Ogni test esegue un flusso semplice (come farebbe un utente) e verifica con expect() che il risultato sia quello atteso.
+In questo progetto sono stati realizzati quattro smoke test, uno per ciascuna funzionalità principale dell’editor: caricamento file, salvataggio/esportazione, stampa e operazioni AI. Ogni test esegue un flusso semplice (come farebbe un utente) e \gls{verifica} con expect() che il risultato sia quello atteso.
 
-Per quanto riguarda le funzionalità AI, le chiamate all’endpoint /api/ai/generate sono state simulate (mockate), così da rendere i test indipendenti dal backend e ottenere risultati sempre uguali e affidabili.
+Per quanto riguarda le funzionalità AI, le chiamate all’\gls{endpoint} /\gls{api}/ai/generate sono state simulate (mockate), così da rendere i test indipendenti dal backend e ottenere risultati sempre uguali e affidabili.
 
 \subsubsection{load\_smoke.spec.ts}
 \begin{itemize}
-\item \textbf{Caricamento file}: questo test verifica che il pulsante “Carica File” funzioni correttamente. In particolare, controlla che al click venga aperto il dialog di selezione file del browser, segno che l’utente può caricare un documento.
+\item \textbf{Caricamento file}: questo test \gls{verifica} che il pulsante “Carica File” funzioni correttamente. In particolare, controlla che al click venga aperto il dialog di selezione file del browser, segno che l’utente può caricare un documento.
 \item \textbf{Stato}: Pass.
 \end{itemize}
 
 \subsubsection{save\_smoke.spec.ts}
 \begin{itemize}
-\item \textbf{Salvataggio ed esportazione file}: questo test verifica che la funzionalità di salvataggio ed esportazione funzioni correttamente. Dopo aver aperto il menu “Salva File”, viene selezionata l’opzione “Esporta” e si controlla che venga avviato il download di un file. Il test verifica inoltre che il file generato abbia un nome valido, assicurando che l’esportazione sia avvenuta con successo.
+\item \textbf{Salvataggio ed esportazione file}: questo test \gls{verifica} che la funzionalità di salvataggio ed esportazione funzioni correttamente. Dopo aver aperto il menu “Salva File”, viene selezionata l’opzione “Esporta” e si controlla che venga avviato il download di un file. Il test \gls{verifica} inoltre che il file generato abbia un nome valido, assicurando che l’esportazione sia avvenuta con successo.
 \item \textbf{Stato}: Pass.
 \end{itemize}
 
@@ -1956,7 +1956,7 @@ Per quanto riguarda le funzionalità AI, le chiamate all’endpoint /api/ai/gene
 
 \subsubsection{ai\_smoke.spec.ts}
 \begin{itemize}
-\item \textbf{Operazioni AI}: questo test verifica il funzionamento delle operazioni AI, simulando una richiesta di traduzione in inglese. La chiamata al backend viene mockata per ottenere una risposta immediata e controllata. Il test verifica che il testo generato possa essere inserito correttamente nell’editor e che non si verifichino errori durante il processo.
+\item \textbf{Operazioni AI}: questo test \gls{verifica} il funzionamento delle operazioni AI, simulando una richiesta di traduzione in inglese. La chiamata al backend viene mockata per ottenere una risposta immediata e controllata. Il test \gls{verifica} che il testo generato possa essere inserito correttamente nell’editor e che non si verifichino errori durante il processo.
 \item \textbf{Stato}: Pass.
 \end{itemize}
 
