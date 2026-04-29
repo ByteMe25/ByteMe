@@ -262,6 +262,13 @@ a:visited {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
 }
 
+.btn-repo img {
+    width: 18px;
+    height: 18px;
+    vertical-align: middle;
+    margin-right: 6px;
+}
+
 #all_files{
     width: 100%;
     max-width: unset;
