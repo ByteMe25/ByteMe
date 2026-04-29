@@ -1193,7 +1193,7 @@ Senza un punto di accesso centralizzato, ogni componente o ViewModel che necessi
 \subsubsection{Applicazione}
 Il file \texttt{apiClient.ts} funge da Facade per il sottosistema di networking. Il suo scopo è nascondere la complessità di Axios e fornire un'interfaccia semplificata e centralizzata per tutta l'applicazione. Invece di configurare i parametri di rete in ogni componente, il Facade si occupa di:
 \begin{itemize}
-\item \textbf{Centralizzazione della configurazione}: gestisce in un unico punto la \texttt{baseURL}, il timeout e gli header standard, leggendone i valori dalle variabili d'ambiente (\texttt{VITE\_API\_BASE\_URL}, \texttt{VITE\_API\_TIMEOUT}) con fallback ai valori di default. Qualsiasi modifica ai parametri di connessione richiede interventi esclusivamente in questo file.
+\item \textbf{Centralizzazione della configurazione}: gestisce in un unico punto la \texttt{baseURL}, il timeout e gli header standard, leggendone i valori dalle variabili d'ambiente (\texttt{\gls{VITE}\_API\_BASE\_URL}, \texttt{\gls{VITE}\_API\_TIMEOUT}) con fallback ai valori di default. Qualsiasi modifica ai parametri di connessione richiede interventi esclusivamente in questo file.
 \item \textbf{Normalizzazione degli errori}: tramite un response interceptor, intercetta qualsiasi fallimento (assenza di connessione, errori HTTP 4xx/5xx, timeout, richieste annullate tramite \texttt{AbortSignal}) e lo trasforma in un oggetto \texttt{Error} standard attraverso la funzione pura \texttt{transformApiError}. Questo garantisce che il resto dell'applicazione riceva sempre errori omogenei, indipendentemente dalla causa tecnica del problema.
 \item \textbf{Gestione unificata della cancellazione}: integra il supporto nativo all'\texttt{AbortSignal}, permettendo ai ViewModel di interrompere richieste pendenti (ad esempio quando l'utente annulla un'operazione AI in corso) senza che questa logica debba essere replicata nei singoli componenti.
 \end{itemize}
@@ -1202,10 +1202,10 @@ Il file \texttt{apiClient.ts} funge da Facade per il sottosistema di networking.
 Mentre il Facade gestisce il \textit{come} comunicare, \texttt{aiCall.ts} agisce come un Gateway applicativo. Questo pattern ha il compito di incapsulare l'accesso a una risorsa esterna specifica — in questo caso, le funzionalità di Intelligenza Artificiale del backend — esponendo un'interfaccia orientata al dominio anziché al protocollo HTTP.
 
 \subsubsection{Problema}
-Senza un Gateway, ogni ViewModel che necessita di invocare un'operazione AI dovrebbe conoscere l'URL esatto dell'endpoint, costruire manualmente il payload JSON nel formato atteso dal backend e estrarre il testo generato dalla struttura della risposta HTTP. Questo comporterebbe una dipendenza diretta tra la logica di presentazione e i dettagli implementativi del servizio AI: qualsiasi modifica all'endpoint o al formato dei dati richiederebbe interventi su tutti i componenti che effettuano la chiamata.
+Senza un Gateway, ogni ViewModel che necessita di invocare un'operazione AI dovrebbe conoscere l'URL esatto dell'\gls{endpoint}, costruire manualmente il payload JSON nel formato atteso dal backend e estrarre il testo generato dalla struttura della risposta HTTP. Questo comporterebbe una dipendenza diretta tra la logica di presentazione e i dettagli implementativi del servizio AI: qualsiasi modifica all'\gls{endpoint} o al formato dei dati richiederebbe interventi su tutti i componenti che effettuano la chiamata.
 
 \subsubsection{Applicazione}
-Il Gateway astrae l'endpoint specifico (\texttt{/ai/generate}) e traduce il linguaggio del frontend in quello richiesto dal server:
+Il Gateway astrae l'\gls{endpoint} specifico (\texttt{/ai/generate}) e traduce il linguaggio del frontend in quello richiesto dal server:
 \begin{itemize}
 \item \textbf{Interfaccia di dominio}: espone il metodo \texttt{executeOperation}, che accetta parametri tipizzati (\texttt{AiRequestPayload}, \texttt{AbortSignal}) e restituisce direttamente una \texttt{Promise<string>}, nascondendo la struttura raw della risposta HTTP (\texttt{AiResponse.generated\_text}) ai livelli superiori.
 \item \textbf{Contratto dei tipi}: il tipo enumerato \texttt{AiOperationId} definisce staticamente l'insieme delle operazioni permesse (come \texttt{summary}, \texttt{rewrite}, \texttt{fix\_grammar}), garantendo a compile-time che il frontend non possa inviare comandi non riconosciuti dall'\texttt{OPERATION\_MAPPER} lato server.
@@ -1216,14 +1216,14 @@ Il Gateway astrae l'endpoint specifico (\texttt{/ai/generate}) e traduce il ling
 L'architettura segue una struttura a strati che garantisce un alto grado di disaccoppiamento:
 \begin{itemize}
 \item \textbf{ViewModel (useAiOperations.ts)}: non ha alcuna conoscenza di URL o di Axios. Invoca il Gateway richiedendo l'esecuzione di un'operazione di dominio ("Riassumi questo testo"), gestendo esclusivamente la logica di stato della UI.
-\item \textbf{Gateway (aiCall.ts)}: conosce la struttura del servizio AI. Costruisce il payload corretto e lo delega al Facade, specificando l'endpoint di destinazione.
+\item \textbf{Gateway (aiCall.ts)}: conosce la struttura del servizio AI. Costruisce il payload corretto e lo delega al Facade, specificando l'\gls{endpoint} di destinazione.
 \item \textbf{Facade (apiClient.ts)}: esegue materialmente la trasmissione HTTP, gestendo i dettagli tecnici di basso livello e garantendo che qualsiasi anomalia di rete venga restituita in un formato omogeneo e gestibile.
 \end{itemize}
 
 \subsection{Vantaggi}
-Questa architettura porta benefici misurabili in termini di qualità del software. Dal punto di vista della testabilità, è possibile verificare la logica del Gateway simulando il Facade, oppure testare i componenti dell'interfaccia utente fornendo un mock di \texttt{executeOperation}, senza mai dover effettuare chiamate reali ai server. Dal punto di vista del disaccoppiamento tecnologico, una futura migrazione da Axios all'API nativa \texttt{fetch} richiederebbe modifiche unicamente ad \texttt{apiClient.ts}, lasciando intatti tutti gli hook e i componenti.
+Questa architettura porta benefici misurabili in termini di qualità del software. Dal punto di vista della testabilità, è possibile verificare la logica del Gateway simulando il Facade, oppure testare i componenti dell'interfaccia utente fornendo un mock di \texttt{executeOperation}, senza mai dover effettuare chiamate reali ai server. Dal punto di vista del disaccoppiamento tecnologico, una futura migrazione da Axios all'\gls{API} nativa \texttt{fetch} richiederebbe modifiche unicamente ad \texttt{apiClient.ts}, lasciando intatti tutti gli hook e i componenti.
 
-Il gruppo è consapevole che, dato l'attuale numero di endpoint esposti dal backend, la separazione tra Facade e Gateway introduce una complessità non strettamente necessaria allo stato attuale del sistema. La scelta è stata deliberata e motivata dall'estensibilità futura verso nuovi endpoint (autenticazione, salvataggio remoto dei documenti), dalla necessità di centralizzare la gestione degli errori tipici del contesto AI (timeout lunghi, risposte di provider esterni), e dalla volontà di applicare consapevolmente principi di disaccoppiamento nell'ambito del corso di Ingegneria del Software.
+Il gruppo è consapevole che, dato l'attuale numero di \gls{endpoint} esposti dal backend, la separazione tra Facade e Gateway introduce una complessità non strettamente necessaria allo stato attuale del sistema. La scelta è stata deliberata e motivata dall'estensibilità futura verso nuovi \gls{endpoint} (autenticazione, salvataggio remoto dei documenti), dalla necessità di centralizzare la gestione degli errori tipici del contesto AI (timeout lunghi, risposte di provider esterni), e dalla volontà di applicare consapevolmente principi di disaccoppiamento nell'ambito del corso di Ingegneria del Software.
 
 
 % diagramma
