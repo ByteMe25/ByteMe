@@ -7,6 +7,8 @@
 \usepackage{float}
 \usepackage{enumitem}
 \usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{array}
 \usepackage{booktabs}
 \usepackage{caption}
 \usepackage{hyperref}
@@ -71,13 +73,13 @@
         \centering
         \begin{tabular}{|l|p{5cm}|}
             \hline
-            \textbf{Versione} & 1.2.4 \\
+            \textbf{Versione} & 1.2.5 \\
             \hline
             \textbf{Stato} & Da approvare \\
             \hline
             \textbf{Redazione} & Tutto il gruppo \\
             \hline
-            \textbf{\gls{Verifica}} & Verificato \\
+            \textbf{\gls{Verifica}} & Da verificare \\
             \hline
             \textbf{Approvazione} & Joseph Grant \\
             \hline
@@ -102,6 +104,8 @@
     \begin{tabular}{|c|c|c|>{\raggedright\arraybackslash}p{0.35\textwidth}|p{0.18\textwidth}|}
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{\gls{Verifica}} \\
+        \hline
+        1.2.5 & 29/04/2026 & Giulia Barzon & Aggiunti test di sistema & \\
         \hline
         1.2.4 & 28/04/2026 & Elisa Marchioro & Aggiunti test E2E & \\
         \hline
@@ -1917,7 +1921,7 @@ I test nel file verificano il comportamento dell’\gls{endpoint} /\gls{api}/ai/
 
 \newpage
 
-\section{End-to-End Testing (E2E) - Fase PB}
+\section{Test End-to-End (E2E) - Fase PB}
 Per quanto riguarda i test E2E, abbiamo scelto di usare \textbf{playwright}, che è un framework open source sviluppato da Microsoft per il testing end-to-end di applicazioni web. Permette di simulare le azioni di un utente reale nel browser, come cliccare, compilare form o navigare tra le pagine, e di verificare che tutto funzioni correttamente.
 
 Supporta i principali browser (Chromium, Firefox e WebKit) ed esegue gli stessi test su tutti, senza bisogno di configurazioni complesse. Include anche funzionalità utili come il mocking delle chiamate di rete e la cattura automatica di screenshot o video in caso di errore.
@@ -1962,6 +1966,92 @@ Per quanto riguarda le funzionalità AI, le chiamate all’\gls{endpoint} /\gls{
 
 \newpage
 
+\section{Test di sistema - Fase PB}
+I \textbf{test di sistema} (TS) rappresentano l'attività di analisi dinamica volta a verificare il comportamento dell'intero prodotto software nella sua interezza. Il loro scopo principale è accertare che il sistema integrato soddisfi tutti i requisiti funzionali, non funzionali e di qualità definiti nel documento di Analisi dei Requisiti. Trattandosi di test di tipo black-box, essi valutano il sistema dall'esterno concentrandosi esclusivamente sulla corrispondenza tra gli input forniti e gli output attesi, ignorando i dettagli della logica interna del codice. Questa fase costituisce un'attività di verifica interna al gruppo, eseguita a valle dei test di integrazione, ed è fondamentale per misurare il grado di copertura dei requisiti in preparazione al collaudo finale.
+
+Lo stato di ogni test è indicato da una di queste sigle:
+\begin{itemize}
+    \item \textbf{S (Superato):} il test è stato eseguito con successo e l'esito corrisponde a quanto atteso;
+    \item \textbf{NS (Non Superato):} il test è stato eseguito ma l'esito è differente da quanto atteso;
+    \item \textbf{NI (Non Implementato):} la funzionalità associata al test non è ancora stata sviluppata o è stata esclusa dal rilascio corrente.
+\end{itemize}
+
+\begin{longtable}{|c|p{9cm}|p{3cm}|c|}
+\caption{Tabella dei Test di Sistema} \label{tab:test_sistema} \\
+\hline
+\textbf{ID Test} & \textbf{Descrizione} & \textbf{Requisiti Coperti} & \textbf{Stato} \\
+\hline
+\endfirsthead
+
+\hline
+\textbf{ID Test} & \textbf{Descrizione} & \textbf{Requisiti Coperti} & \textbf{Stato} \\
+\hline
+\endhead
+
+\hline
+\endlastfoot
+
+TS-01 & \textbf{Azione:} L'utente digita testo formattato in Markdown nell'editor e ne seleziona una porzione. \newline \textbf{Esito atteso:} Il testo appare correttamente, l'anteprima si aggiorna e la selezione avviene senza blocchi. & RO-F-1, RO-F-3, RO-F-4, RO-F-5, RO-F-6 & S \\
+\hline
+TS-02 & \textbf{Azione:} L'utente disconnette il dispositivo o simula un blocco dell'editor durante la scrittura. \newline \textbf{Esito atteso:} Il sistema mostra un messaggio di errore avvisando del problema. & RO-F-2, RD-F-16, RD-F-17 & S \\
+\hline
+TS-03 & \textbf{Azione:} L'utente seleziona del testo, utilizza il comando "Taglia" (o "Copia") e poi "Incolla" in un altro punto. \newline \textbf{Esito atteso:} Il testo viene rimosso/copiato e reinserito nella nuova posizione. & RO-F-7, RO-F-8, RO-F-9 & S \\
+\hline
+TS-04 & \textbf{Azione:} L'utente esegue una modifica e preme "Annulla" e successivamente "Ripristina". \newline \textbf{Esito atteso:} Lo stato del documento torna alla versione precedente e poi viene nuovamente ripristinato. & RO-F-10, RO-F-11, RO-F-12, RO-F-13 & S \\
+\hline
+TS-05 & \textbf{Azione:} L'utente clicca le icone di formattazione nella toolbar su un testo selezionato. \newline \textbf{Esito atteso:} I relativi tag Markdown vengono inseriti e l'anteprima mostra lo stile applicato. & RO-F-14, RO-F-15, RO-F-16, RO-F-17, RO-F-23, RO-F-24, RO-F-25 & S \\
+\hline
+TS-06 & \textbf{Azione:} L'utente inserisce intestazioni o link tramite i comandi della toolbar. \newline \textbf{Esito atteso:} Gli elementi vengono renderizzati correttamente nell'anteprima. & RO-F-18, RO-F-19, RO-F-22 & S \\
+\hline
+TS-07 & \textbf{Azione:} L'utente crea una lista puntata e aggiunge dei sotto-elementi indentati. \newline \textbf{Esito atteso:} Il sistema formatta correttamente la gerarchia della lista sia nell'editor che nell'anteprima. & RO-F-20, RO-F-21, RO-F-26 & S \\
+\hline
+TS-08 & \textbf{Azione:} L'utente clicca su "grassetto" senza testo selezionato e scrive. \newline \textbf{Esito atteso:} Il nuovo testo viene automaticamente racchiuso tra i tag di formattazione. & RO-F-27 & S \\
+\hline
+TS-09 & \textbf{Azione:} L'utente cambia modalità di visualizzazione dell'editor. \newline \textbf{Esito atteso:} L'interfaccia si adatta correttamente. & RD-F-2 & S \\
+\hline
+
+TS-10 & \textbf{Azione:} L'utente seleziona un paragrafo e richiede un'elaborazione AI. \newline \textbf{Esito atteso:} Il sistema invia il testo al modello LLM e mostra la proposta in un'area distinta. & RO-F-28, RO-F-29, RO-F-30, RO-F-31, RO-F-39, ROP-F-3, ROP-F-8 & S \\
+\hline
+TS-11 & \textbf{Azione:} L'utente, davanti a una proposta AI, sceglie di confermarla o annullarla. \newline \textbf{Esito atteso:} Se confermato, il testo viene inserito nel documento; se annullato, la proposta scompare e il documento rimane inalterato. & RO-F-32, RO-F-33, RO-F-34, RO-F-35, RO-F-36, RO-F-37 & S \\
+\hline
+TS-12 & \textbf{Azione:} L'utente clicca su "Rigenera" su una proposta AI o interrompe un'operazione in corso. \newline \textbf{Esito atteso:} La richiesta viene reinviata all'AI sostituendo la proposta corrente, oppure l'operazione in corso si ferma ripristinando lo stato precedente. & RO-F-38, RO-F-40, RO-F-41, RO-F-42, RO-F-43 & S \\
+\hline
+TS-13 & \textbf{Azione:} L'utente accede alla cronologia AI, applica un filtro ed elimina una voce. \newline \textbf{Esito atteso:} La lista viene filtrata correttamente e l'elemento rimosso sparisce dallo storico. & RO-F-45, RO-F-46, RO-F-47, RO-F-48, ROP-F-4, ROP-F-5, ROP-F-6, ROP-F-44, ROP-F-45 & S \\
+\hline
+TS-14 & \textbf{Azione:} L'utente richiede la funzione "Riassunto" su un testo selezionato. \newline \textbf{Esito atteso:} L'AI genera una versione concisa ma coerente del contenuto originale. & RO-F-49 & S
+\\ \hline
+TS-15 & \textbf{Azione:} L'utente seleziona una lingua e richiede la "Traduzione". \newline \textbf{Esito atteso:} Il testo viene convertito correttamente nella lingua scelta mantenendo il significato. & RO-F-50, RO-F-51, ROP-F-9, ROP-F-10 & S \\
+\hline
+TS-16 & \textbf{Azione:} L'utente avvia la "Correzione Grammaticale" su un testo con errori. \newline \textbf{Esito atteso:} Il sistema propone le correzioni o notifica l'assenza di errori se il testo è già corretto. & RO-F-52, RO-F-53 & S \\
+\hline
+TS-17 & \textbf{Azione:} L'utente applica uno dei "Sei Cappelli di De Bono" a un'idea. \newline \textbf{Esito atteso:} L'AI produce un'analisi critica basata sulla prospettiva del cappello selezionato. & RO-F-54, RO-F-55, RO-F-56 & S \\
+\hline
+TS-18 & \textbf{Azione:} L'utente inserisce un prompt testuale per generare un nuovo contenuto (Distant Writing). \newline \textbf{Esito atteso:} Il sistema genera una bozza di testo coerente con le istruzioni fornite. & RO-F-57, RO-F-58, RO-F-59, RO-F-60, ROP-F-11 & S \\ \hline
+
+TS-19 & \textbf{Azione:} L'utente inserisce una formula matematica complessa. \newline \textbf{Esito atteso:} Il sistema non renderizza l'elemento correttamente l'elemento e segnala l'errore. & ROP-F-17, ROP-F-18 & NI \\
+\hline
+
+TS-20 & \textbf{Azione:} L'utente carica un file Markdown tramite esplora risorse. \newline \textbf{Esito atteso:} Il contenuto viene importato nell'editor dopo conferma di eventuale sovrascrittura. & RO-F-61, RO-F-62, RO-F-63, RO-F-64, RO-F-65, RD-F-3, RD-F-4, RD-F-5 & S \\ \hline
+TS-21 & \textbf{Azione:} L'utente tenta di caricare un file non supportato o superiore a 5MB. \newline \textbf{Esito atteso:} Il sistema blocca l'azione e visualizza un messaggio di avviso specifico. & RO-F-66, RO-F-67, RO-F-68, RO-F-81, RD-F-6 & S \\
+\hline
+TS-22 & \textbf{Azione:} L'utente seleziona un formato ed esporta il documento. \newline \textbf{Esito atteso:} Viene scaricato un file nel formato scelto (md, txt, html) contenente il testo formattato. & RO-F-71, RO-F-72, RO-F-73, RO-F-74, RO-F-75, RO-F-76, RD-F-8, RD-F-9, RD-F-10, RD-F-11, RD-F-12 & S \\
+\hline
+TS-23 & \textbf{Azione:} L'utente avvia il comando di stampa dal menu. \newline \textbf{Esito atteso:} Si apre correttamente la finestra di dialogo di stampa del sistema operativo. & RO-F-77, RO-F-78, RD-F-15 & S \\
+\hline
+TS-24 & \textbf{Azione:} L'utente scrive un testo, chiude il browser e lo riapre. \newline \textbf{Esito atteso:} Il testo e la cronologia locale sono ancora presenti grazie al LocalStorage. & RO-F-79, RO-F-80 & S \\
+\hline
+TS-25 & \textbf{Azione:} L'utente tenta di salvare un documento in un database remoto. \newline \textbf{Esito atteso:} L'azione viene bloccata causa assenza del servizio di sincronizzazione cloud. & ROP-F-36, ROP-F-37, ROP-F-38, ROP-F-40 & NI \\
+\hline
+TS-26 & \textbf{Azione:} L'utente clicca il pulsante per rimuovere un file caricato e sceglie di confermare o annullare l'operazione nel pop-up. \newline \textbf{Esito atteso:} Se confermata, il file viene rimosso; se annullata, l'eliminazione viene interrotta e il documento rimane intatto nell'editor. & RO-F-69, RO-F-70 & S \\
+\hline
+
+\end{longtable}
+
+
+\newpage
+
+\section{Test di accettazione - Fase PB}
+I \textbf{test di accettazione} (TA), o di collaudo, costituiscono la fase di validazione formale e definitiva del prodotto software prima del suo rilascio. A differenza delle precedenti fasi di verifica, il cui scopo è accertare se il sistema è stato "costruito nel modo giusto", il collaudo risponde alla domanda fondamentale della validazione: "è stato costruito il sistema giusto?". L'obiettivo esclusivo dei TA è dimostrare in modo oggettivo, attraverso l'esecuzione di specifici casi di prova, che il software consegnato soddisfa pienamente i bisogni e i requisiti utente concordati originariamente nel Capitolato d'appalto. Il superamento con successo di questa fase determina l'accettazione formale e la conclusione del progetto.
 
 
 
