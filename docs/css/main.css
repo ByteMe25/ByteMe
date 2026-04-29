@@ -243,6 +243,25 @@ a:visited {
     color: var(--background);
 }
 
+.btn-repo {
+    display: inline-block;
+    background-color: var(--background);
+    color: var(--text);
+    border: none;
+    border-radius: 8px;
+    padding: 8px 18px;
+    font-family: "Inter Tight", sans-serif;
+    font-size: 15px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.btn-repo:hover {
+    background-color: var(--primary);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
 #all_files{
     width: 100%;
     max-width: unset;
