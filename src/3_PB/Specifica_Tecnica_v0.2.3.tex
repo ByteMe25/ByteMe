@@ -72,7 +72,7 @@
         \centering
         \begin{tabular}{|l|p{5cm}|}
             \hline
-            \textbf{Versione} & 0.2.2 \\
+            \textbf{Versione} & 0.2.3 \\
             \hline
             \textbf{Stato} & In corso \\
             \hline
@@ -103,6 +103,8 @@
     \begin{tabular}{|c|c|c|>{\raggedright\arraybackslash}p{0.35\textwidth}|p{0.18\textwidth}|}
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{\gls{Verifica}} \\
+        \hline
+        0.2.3 & 29/04/2026 & Joseph Grant & aggiunta diagrammi hook, correzione diagrammi & \\
         \hline
         0.2.2 & 26/04/2026 & Giulia Barzon & Aggiornati diagrammi frontend & Joseph Grant \\
         \hline
@@ -805,10 +807,6 @@ L'architettura si divide in tre strati le cui responsabilità sono nettamente se
 % VIEW
 % =======
 \subsection{View: componenti di presentazione}
-La View del sistema è realizzata tramite componenti \textbf{\gls{React} 19} di tipo funzionale. Per massimizzare la manutenibilità, il gruppo ha adottato un approccio basato su componenti \textit{presentational} (o "dumb"): non detengono logica di dominio, ma si limitano a riflettere lo stato ricevuto dal ViewModel e a propagare le interazioni dell'utente tramite callback. Questo isolamento garantisce che lo strato visivo sia agnostico rispetto alla business logic sottostante.
-
-Di seguito sono descritti i componenti principali che compongono l'interfaccia.
-
 % DIAGRAMMA PER I COMPONENTI DELLA VIEW DELL'EDITOR
 \begin{figure}[H]
     \centering
@@ -816,6 +814,12 @@ Di seguito sono descritti i componenti principali che compongono l'interfaccia.
     \caption{Diagramma UML dei componenti della View: composizione di EditorPage}
     \label{fig:uml_view_editor}
 \end{figure}
+
+La View del sistema è realizzata tramite componenti \textbf{\gls{React} 19} di tipo funzionale. Per massimizzare la manutenibilità, il gruppo ha adottato un approccio basato su componenti \textit{presentational} (o "dumb"): non detengono logica di dominio, ma si limitano a riflettere lo stato ricevuto dal ViewModel e a propagare le interazioni dell'utente tramite callback. Questo isolamento garantisce che lo strato visivo sia agnostico rispetto alla business logic sottostante.
+
+Di seguito sono descritti i componenti principali che compongono l'interfaccia.
+
+
 
 % COMPONENTI
 \subsubsection{Topbar}
@@ -967,6 +971,14 @@ Componente granulare che rappresenta la singola scheda di interazione AI. Incaps
 % VIEW-MODEL
 % ============
 \subsection{ViewModel: custom hooks e logica di business}
+% GRAFICO per gli hooks dell'editor
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{../UMLimg/hooks_editor.jpg}
+    \caption{UML hooks editor}
+    \label{fig:uml_hooks_Editor}
+\end{figure}
+
 Il ViewModel funge da intermediario tra il Model e la View ed è implementato tramite \textbf{Custom Hooks} specializzati. Ogni hook rispetta il \textit{Single Responsibility Principle} (SRP).
 Il ViewModel ha la responsabilità di:
 \begin{itemize}
@@ -974,14 +986,6 @@ Il ViewModel ha la responsabilità di:
     \item Gestire la logica di interazione complessa (ad esempio, l'orchestrazione delle \gls{API} AI tramite la Facade \texttt{aiCall}).
     \item Manipolare direttamente le istanze di librerie esterne, come \textbf{\gls{EasyMDE}} per l'editor \gls{Markdown}, isolandone la complessità tecnica all'interno di hook dedicati.
 \end{itemize}
-
-% GRAFICO per gli hooks dell'editor - DA CAMBIARE
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=1\textwidth]{../UMLimg/UseEditor.jpg}
-    \caption{UML UseEditor}
-    \label{fig:uml_hooks_Editor}
-\end{figure}
 
 \subsubsection{useEditor}
 Hook centrale dell'applicazione. Gestisce il ciclo di vita dell'istanza \gls{EasyMDE} (creazione al mount, distruzione al cleanup). Implementa l'auto-save con tecnica di \textit{debounce} (500 ms) per evitare scritture eccessive su disco. Fornisce all'esterno un'interfaccia solida per interagire con il testo.
@@ -1042,8 +1046,6 @@ Questo hook opera esclusivamente in modo imperativo, non ha quindi nessuno stato
 
 
 \subsubsection{useHistory}
-Interfaccia la View con lo store dedicato (\texttt{useHistoryStore}), estraendo le interazioni passate. Per garantire alte prestazioni e fluidità UI, tramite \texttt{useMemo} applica dinamicamente i filtri di ricerca e l'ordinamento cronologico, assicurando che lo strato di presentazione riceva sempre informazioni formattate senza subire calcoli ridondanti.
-
 % diagramma che mostra i collegamenti tra view storico e hooks + store
 \begin{figure}[H]
     \centering
@@ -1051,6 +1053,11 @@ Interfaccia la View con lo store dedicato (\texttt{useHistoryStore}), estraendo 
     \caption{Architettura del modulo History: interazione tra l'hook useHistory e lo store \gls{Zustand}.}
     \label{fig:uml_hooks_storico}
 \end{figure}
+
+
+Interfaccia la View con lo store dedicato (\texttt{useHistoryStore}), estraendo le interazioni passate. Per garantire alte prestazioni e fluidità UI, tramite \texttt{useMemo} applica dinamicamente i filtri di ricerca e l'ordinamento cronologico, assicurando che lo strato di presentazione riceva sempre informazioni formattate senza subire calcoli ridondanti.
+
+
 
 \paragraph{Stato/Valori di ritorno}
 \begin{itemize}
@@ -1066,6 +1073,13 @@ Interfaccia la View con lo store dedicato (\texttt{useHistoryStore}), estraendo 
 
 
 \subsubsection{useAiOperations}
+% grafico con il dettaglio di useAiOperaions e useDraggable
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{../UMLimg/hooks_ai.jpg}
+    \caption{UML funzionalità AI: interazione tra ViewModel, Store globale e stati del widget.}
+    \label{fig:uml_hooks_ai}
+\end{figure}
 Hook \gls{orchestratore} dedicato alla gestione delle interazioni con l'Intelligenza Artificiale. Funge da regista tra la View, i servizi di rete e lo stato globale del widget, isolando la logica di invocazione della Facade \texttt{aiCall} e gestendo il ciclo di vita delle richieste asincrone tramite un \texttt{AbortController} mantenuto in un \texttt{\gls{React}.RefObject} (\texttt{controllerRef}). È l'unico punto del sistema responsabile della creazione delle istanze delle classi di stato, nelle quali inietta le callback operative necessarie, e dell'invocazione di \texttt{changeState} sullo store \texttt{aiWidgetStore}.
 
 \paragraph{Props (dipendenze)}
@@ -1085,14 +1099,6 @@ Prima di ogni nuova richiesta, l'hook invoca \texttt{abort()} sull'eventuale con
     \item \texttt{handleAction: (operation: AiOperationId) => Promise<void>} - funzione principale che avvia il flusso AI. Intercetta il caso \texttt{"distant\_writing"} e lo delega a \\ \texttt{handleDistantWriting}; per tutte le altre operazioni, esegue direttamente il flusso standard.
     \item \texttt{handleDistantWriting: () => void} - funzione che inizializza il flusso con input utente, portando il widget in \texttt{InputState} con la callback \texttt{onConfirm} preconfigurata.
 \end{itemize}
-
-% grafico con il dettaglio di useAiOperaions e useDraggable
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=1\textwidth]{../UMLimg/hooks_ai.jpg}
-    \caption{UML funzionalità AI: interazione tra ViewModel, Store globale e stati del widget.}
-    \label{fig:uml_hooks_ai}
-\end{figure}
 
 \subsubsection{useDraggable}
 Hook di utilità incaricato di gestire la logica di posizionamento e trascinamento (\textit{drag-and-drop}) di componenti flottanti all'interno dell'interfaccia. Astrae la gestione dei \textit{listener} degli eventi del mouse (\texttt{mousemove}, \texttt{mouseup}) registrati a livello di \texttt{window}, garantendo che il trascinamento funzioni correttamente anche quando il cursore fuoriesce dai limiti del componente durante il movimento rapido.
@@ -1116,8 +1122,14 @@ L'hook adotta \texttt{useRef} per i campi \texttt{dragging} e \texttt{offset}, a
 % MODEL
 % =======
 \subsection{Model: stato e persistenza}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{../UMLimg/model.jpg}
+    \caption{model}
+    \label{fig:model}
+\end{figure}
 Il Model rappresenta lo strato dei dati e della loro persistenza. Nel sistema non è una struttura passiva, ma è implementato tramite store globali gestiti con \textbf{\gls{Zustand}}, che fungono da unica fonte di verità (\textit{Single Source of Truth}) per lo stato dell'applicazione.
-Sono presenti due store principali:
+Sono presenti tre store principali:
 \begin{itemize}
     \item \texttt{useEditorMetaStore}: Gestisce i metadati dell'editor attivo, ovvero il nome del file (\texttt{fileName}), lo stato di modifica non salvata (\texttt{isDirty}) e il timestamp dell'ultimo salvataggio (\texttt{lastSaved}). Tramite il middleware \texttt{persist} di \gls{Zustand}, sincronizza automaticamente questo stato nel \texttt{localStorage} del browser, garantendo che i dati sopravvivano al riavvio della pagina.
     \item \texttt{useHistoryStore}: Gestisce l'elenco delle generazioni AI prodotte. Ogni voce è modellata dall'interfaccia \texttt{HistoryEntry}. Anche questo store utilizza il \texttt{localStorage} per rendere lo storico persistente tra le sessioni.
@@ -1169,7 +1181,17 @@ Questo approccio garantisce che ogni hook sia modulare e testabile in totale iso
 \section{Frontend: design pattern}
 La progettazione del frontend di \textit{Second Brain} ha fatto uso di design pattern strutturali orientati alla semplificazione dell'interfaccia tra i moduli. L'obiettivo primario, applicando pattern come la Facade, è garantire che la logica di presentazione (View e ViewModel) rimanga agnostica rispetto ai dettagli implementativi della comunicazione di rete, facilitando la testabilità del codice client-side.
 
+
 \subsection{Facade pattern}
+
+% diagramma
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{../UMLimg/facade.jpg}
+    \caption{Facade pattern}    
+    \label{fig:facade}
+\end{figure}
+
 Il pattern \textbf{Facade} è un design pattern strutturale il cui scopo principale è fornire un'interfaccia unica e semplificata per gestire un sottosistema complesso composto da molteplici moduli.
 L'obiettivo è nascondere le dipendenze e i dettagli implementativi al client, fornendogli un singolo punto di accesso di alto livello dal quale effettuare le richieste. Il Facade riceve i comandi dal client e si occupa di associarli alle logiche specifiche del sottosistema, delegando loro l'effettiva elaborazione. Le classi interne implementano le funzionalità in modo del tutto indipendente, ignare dell'esistenza del Facade stesso.
 
@@ -1216,13 +1238,6 @@ Questa separazione porta due benefici misurabili in termini di qualità del soft
     \item \textbf{Testabilità tramite mocking}: Nei test di unità eseguiti con \gls{Vitest}, isolare la logica di rete è immediato: è sufficiente fornire un \textit{mock} di \texttt{executeOperation} senza dover intercettare richieste HTTP reali, rendendo i test deterministici e veloci.
 \end{enumerate}
 
-% diagramma
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=1\textwidth]{../UMLimg/facade.jpg}
-    \caption{UML del pattern Facade}
-    \label{fig:uml_facade}
-\end{figure}
 
 
 \newpage
