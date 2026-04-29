@@ -72,7 +72,7 @@
         \centering
         \begin{tabular}{|l|p{5cm}|}
             \hline
-            \textbf{Versione} & 0.2.4 \\
+            \textbf{Versione} & 0.2.5 \\
             \hline
             \textbf{Stato} & In corso \\
             \hline
@@ -104,9 +104,11 @@
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{\gls{Verifica}} \\
         \hline
-        0.2.4 & 29/04/2026 & Matteo Cuogo & sistemazione layered architecture & \\
+        0.2.5 & 29/04/2026 & Elisa Marchioro & Sistemata sezione design pattern frontend & \\
         \hline
-        0.2.3 & 29/04/2026 & Joseph Grant & aggiunta diagrammi hook, correzione diagrammi & \\
+        0.2.4 & 29/04/2026 & Matteo Cuogo & Sistemazione layered architecture & \\
+        \hline
+        0.2.3 & 29/04/2026 & Joseph Grant & Aggiunta diagrammi hook, correzione diagrammi & \\
         \hline
         0.2.2 & 26/04/2026 & Giulia Barzon & Aggiornati diagrammi frontend & Joseph Grant \\
         \hline
@@ -1173,64 +1175,64 @@ Questo approccio garantisce che ogni hook sia modulare e testabile in totale iso
 \newpage
 
 \section{Frontend: design pattern}
-La progettazione del frontend di \textit{Second Brain} ha fatto uso di design pattern strutturali orientati alla semplificazione dell'interfaccia tra i moduli. L'obiettivo primario, applicando pattern come la Facade, è garantire che la logica di presentazione (View e ViewModel) rimanga agnostica rispetto ai dettagli implementativi della comunicazione di rete, facilitando la testabilità del codice client-side.
+La progettazione del frontend di \textit{Second Brain} ha fatto uso di design pattern strutturali 
+orientati alla semplificazione dell'interfaccia tra i moduli e al disaccoppiamento tra la logica 
+di presentazione e i dettagli implementativi della comunicazione di rete. Nel sistema, la 
+comunicazione con il backend non avviene mai tramite chiamate dirette alla libreria esterna 
+\texttt{Axios}: è stata invece adottata un'architettura a due pattern distinti e complementari, 
+in cui il Facade si occupa del \textit{come} comunicare con il server, e il Gateway del 
+\textit{cosa} richiedere, garantendo che View e ViewModel rimangano agnostici rispetto a 
+entrambi gli aspetti.
 
+\subsection{Facade pattern - apiClient.ts}
+Il pattern \textbf{Facade} è un design pattern strutturale il cui scopo principale è fornire un'interfaccia unica e semplificata per gestire un sottosistema complesso. L'obiettivo è nascondere le dipendenze e i dettagli implementativi al client, fornendogli un singolo punto di accesso di alto livello. Questo comporta tre vantaggi architetturali principali: riduce la superficie di contatto tra il client e il sottosistema (\textit{loose coupling}); diminuisce la complessità generale favorendo l'organizzazione in layer netti; facilita la scrittura di test automatici tramite \textit{mocking} e riduce l'impatto di eventuali refactoring.
 
-\subsection{Facade pattern}
+\subsubsection{Problema}
+Senza un punto di accesso centralizzato, ogni componente o ViewModel che necessita di comunicare con il backend dovrebbe configurare autonomamente la libreria Axios, gestire i propri errori di rete e implementare la logica di cancellazione delle richieste. Questo approccio porterebbe a duplicazione del codice, comportamenti eterogenei in caso di errore e un forte accoppiamento tra la logica di presentazione e i dettagli implementativi del trasporto HTTP.
+
+\subsubsection{Applicazione}
+Il file \texttt{apiClient.ts} funge da Facade per il sottosistema di networking. Il suo scopo è nascondere la complessità di Axios e fornire un'interfaccia semplificata e centralizzata per tutta l'applicazione. Invece di configurare i parametri di rete in ogni componente, il Facade si occupa di:
+\begin{itemize}
+\item \textbf{Centralizzazione della configurazione}: gestisce in un unico punto la \texttt{baseURL}, il timeout e gli header standard, leggendone i valori dalle variabili d'ambiente (\texttt{VITE\_API\_BASE\_URL}, \texttt{VITE\_API\_TIMEOUT}) con fallback ai valori di default. Qualsiasi modifica ai parametri di connessione richiede interventi esclusivamente in questo file.
+\item \textbf{Normalizzazione degli errori}: tramite un response interceptor, intercetta qualsiasi fallimento (assenza di connessione, errori HTTP 4xx/5xx, timeout, richieste annullate tramite \texttt{AbortSignal}) e lo trasforma in un oggetto \texttt{Error} standard attraverso la funzione pura \texttt{transformApiError}. Questo garantisce che il resto dell'applicazione riceva sempre errori omogenei, indipendentemente dalla causa tecnica del problema.
+\item \textbf{Gestione unificata della cancellazione}: integra il supporto nativo all'\texttt{AbortSignal}, permettendo ai ViewModel di interrompere richieste pendenti (ad esempio quando l'utente annulla un'operazione AI in corso) senza che questa logica debba essere replicata nei singoli componenti.
+\end{itemize}
+
+\subsection{Gateway - aiCall.ts}
+Mentre il Facade gestisce il \textit{come} comunicare, \texttt{aiCall.ts} agisce come un Gateway applicativo. Questo pattern ha il compito di incapsulare l'accesso a una risorsa esterna specifica — in questo caso, le funzionalità di Intelligenza Artificiale del backend — esponendo un'interfaccia orientata al dominio anziché al protocollo HTTP.
+
+\subsubsection{Problema}
+Senza un Gateway, ogni ViewModel che necessita di invocare un'operazione AI dovrebbe conoscere l'URL esatto dell'endpoint, costruire manualmente il payload JSON nel formato atteso dal backend e estrarre il testo generato dalla struttura della risposta HTTP. Questo comporterebbe una dipendenza diretta tra la logica di presentazione e i dettagli implementativi del servizio AI: qualsiasi modifica all'endpoint o al formato dei dati richiederebbe interventi su tutti i componenti che effettuano la chiamata.
+
+\subsubsection{Applicazione}
+Il Gateway astrae l'endpoint specifico (\texttt{/ai/generate}) e traduce il linguaggio del frontend in quello richiesto dal server:
+\begin{itemize}
+\item \textbf{Interfaccia di dominio}: espone il metodo \texttt{executeOperation}, che accetta parametri tipizzati (\texttt{AiRequestPayload}, \texttt{AbortSignal}) e restituisce direttamente una \texttt{Promise<string>}, nascondendo la struttura raw della risposta HTTP (\texttt{AiResponse.generated\_text}) ai livelli superiori.
+\item \textbf{Contratto dei tipi}: il tipo enumerato \texttt{AiOperationId} definisce staticamente l'insieme delle operazioni permesse (come \texttt{summary}, \texttt{rewrite}, \texttt{fix\_grammar}), garantendo a compile-time che il frontend non possa inviare comandi non riconosciuti dall'\texttt{OPERATION\_MAPPER} lato server.
+\item \textbf{Isolamento delle modifiche}: se l'URL del backend o la struttura del payload dovesse cambiare, sarebbe sufficiente intervenire esclusivamente su questo file, senza propagare modifiche alla logica dei componenti UI.
+\end{itemize}
+
+\subsection{Collaborazione tra i componenti}
+L'architettura segue una struttura a strati che garantisce un alto grado di disaccoppiamento:
+\begin{itemize}
+\item \textbf{ViewModel (useAiOperations.ts)}: non ha alcuna conoscenza di URL o di Axios. Invoca il Gateway richiedendo l'esecuzione di un'operazione di dominio ("Riassumi questo testo"), gestendo esclusivamente la logica di stato della UI.
+\item \textbf{Gateway (aiCall.ts)}: conosce la struttura del servizio AI. Costruisce il payload corretto e lo delega al Facade, specificando l'endpoint di destinazione.
+\item \textbf{Facade (apiClient.ts)}: esegue materialmente la trasmissione HTTP, gestendo i dettagli tecnici di basso livello e garantendo che qualsiasi anomalia di rete venga restituita in un formato omogeneo e gestibile.
+\end{itemize}
+
+\subsection{Vantaggi}
+Questa architettura porta benefici misurabili in termini di qualità del software. Dal punto di vista della testabilità, è possibile verificare la logica del Gateway simulando il Facade, oppure testare i componenti dell'interfaccia utente fornendo un mock di \texttt{executeOperation}, senza mai dover effettuare chiamate reali ai server. Dal punto di vista del disaccoppiamento tecnologico, una futura migrazione da Axios all'API nativa \texttt{fetch} richiederebbe modifiche unicamente ad \texttt{apiClient.ts}, lasciando intatti tutti gli hook e i componenti.
+
+Il gruppo è consapevole che, dato l'attuale numero di endpoint esposti dal backend, la separazione tra Facade e Gateway introduce una complessità non strettamente necessaria allo stato attuale del sistema. La scelta è stata deliberata e motivata dall'estensibilità futura verso nuovi endpoint (autenticazione, salvataggio remoto dei documenti), dalla necessità di centralizzare la gestione degli errori tipici del contesto AI (timeout lunghi, risposte di provider esterni), e dalla volontà di applicare consapevolmente principi di disaccoppiamento nell'ambito del corso di Ingegneria del Software.
+
 
 % diagramma
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{../UMLimg/facade.jpg}
-    \caption{Facade pattern}    
-    \label{fig:facade}
+    \caption{UML del pattern Facade}
+    \label{fig:uml_facade}
 \end{figure}
-
-Il pattern \textbf{Facade} è un design pattern strutturale il cui scopo principale è fornire un'interfaccia unica e semplificata per gestire un sottosistema complesso composto da molteplici moduli.
-L'obiettivo è nascondere le dipendenze e i dettagli implementativi al client, fornendogli un singolo punto di accesso di alto livello dal quale effettuare le richieste. Il Facade riceve i comandi dal client e si occupa di associarli alle logiche specifiche del sottosistema, delegando loro l'effettiva elaborazione. Le classi interne implementano le funzionalità in modo del tutto indipendente, ignare dell'esistenza del Facade stesso.
-
-L'applicazione di questo pattern comporta tre vantaggi architetturali primari:
-\begin{itemize}
-    \item \textbf{Accoppiamento debole (\textit{Loose coupling})}: Riduce drasticamente la superficie di contatto tra il client e il sottosistema, disaccoppiando chi utilizza i servizi da chi li implementa.
-    \item \textbf{Semplificazione e stratificazione}: Diminuisce la complessità generale, elimina le dipendenze circolari e favorisce l'organizzazione del sistema in layer netti e impermeabili.
-    \item \textbf{Manutenibilità e testabilità}: Isolare la complessità tecnica in un unico punto centralizzato facilita la scrittura di test automatici (tramite \textit{mocking}) e riduce l'impatto di eventuali refactoring.
-\end{itemize}
-
-\subsubsection{Applicazione del pattern: gestione della rete}
-Nel sistema \textit{Second Brain}, questo pattern è stato applicato per la gestione delle comunicazioni HTTP con il backend. Il sistema implementa una Facade a due livelli sovrapposti, ciascuno con una responsabilità architetturale distinta. I ViewModel e i componenti della View non invocano mai direttamente la libreria esterna \texttt{Axios}; al contrario, si interfacciano con moduli dedicati che nascondono la complessità delle transazioni di rete dietro un'interfaccia unificata.
-
-\paragraph{Livello 1: \texttt{apiClient.ts}}
-Il primo livello costituisce la Facade sul sottosistema di rete. Non si limita ad avvolgere l'istanza di \texttt{Axios}, ma orchestra diverse componenti del networking: la configurazione dell'ambiente, la logica di intercettazione (\textit{Interceptor}), il sistema di formattazione degli errori (\texttt{transformApiError}) e il motore di cancellazione (\texttt{AbortController}). Fornisce così un'interfaccia unica e semplificata per tutte queste operazioni di basso livello. È responsabile di:
-\begin{itemize}
-    \item \textbf{Configurazione centralizzata}: Risolve dinamicamente la \texttt{baseURL} dalle variabili d'ambiente (\texttt{\gls{VITE}\_API\_BASE\_URL}), con \textit{fallback} a \texttt{/\gls{api}}, e imposta il timeout (\texttt{\gls{VITE}\_API\_TIMEOUT}, default 30.000 ms). Garantisce che un unico punto del codice controlli i parametri di connessione.
-    \item \textbf{Normalizzazione degli errori}: Tramite un \textit{response interceptor}, tutte le eccezioni di rete (timeout, errori HTTP 4xx/5xx, richieste annullate tramite \texttt{AbortSignal}) vengono intercettate e trasformate in oggetti \texttt{Error} standard. La logica di normalizzazione è incapsulata nella funzione pura \texttt{transformApiError}, testabile in totale isolamento.
-    \item \textbf{Gestione della cancellazione}: Il supporto nativo all'\texttt{AbortSignal} permette ai ViewModel di annullare richieste in corso (es. operazione AI interrotta dall'utente) passando il segnale nella configurazione della chiamata.
-\end{itemize}
-L'interfaccia \texttt{ApiError} esportata definisce il contratto atteso per le risposte di errore del backend \gls{Flask}, garantendo una tipizzazione statica sicura su tutta la catena di chiamate.
-
-\paragraph{Livello 2: \texttt{aiCall.ts} (Astrazione dell'\gls{endpoint} AI)}
-Il secondo livello rappresenta una Facade sull'\textit{\gls{endpoint} specifico} del backend. Nasconde l'URL esatto (\texttt{/ai/generate}) e la struttura del payload JSON, esponendo una singola funzione asincrona:
-
-\begin{verbatim}
-executeOperation(payload: AiRequestPayload, signal?: AbortSignal)
-    : Promise<string>
-\end{verbatim}
-
-Il tipo \texttt{AiOperationId} enumerato in questo modulo costituisce il contratto tipizzato tra frontend e backend: ogni identificatore (es. \texttt{"summary"}, \texttt{"white\_hat"}) corrisponde a una chiave dell'\texttt{OPERATION\_MAPPER} lato server, garantendo che il frontend non possa inviare comandi non riconosciuti.
-
-\paragraph{Architettura a cascata e vantaggi}
-I due livelli formano una \textbf{Facade a cascata} con responsabilità rigorosamente separate:
-\begin{itemize}
-    \item \texttt{apiClient}: Sa \textit{come} parlare con il server (timeout, header, normalizzazione). Non conosce il dominio applicativo (Intelligenza Artificiale).
-    \item \texttt{aiCall}: Sa \textit{dove} inviare la richiesta (\texttt{/ai/generate}) e \textit{cosa} spedire. Non conosce i dettagli implementativi di \texttt{Axios}.
-    \item \textbf{ViewModel} (\texttt{useAiOperations}): Sa \textit{quando} chiamare l'AI e come gestire il risultato nella UI. Non conosce né \texttt{Axios} né l'URL dell'\gls{endpoint}.
-\end{itemize}
-
-Questa separazione porta due benefici misurabili in termini di qualità del software:
-\begin{enumerate}
-    \item \textbf{Disaccoppiamento tecnologico}: L'applicazione è agnostica rispetto al client HTTP. Una futura migrazione all'\gls{API} nativa \texttt{fetch} richiederebbe modifiche unicamente al file \texttt{apiClient.ts}, lasciando intatti tutti gli hook e i componenti.
-    \item \textbf{Testabilità tramite mocking}: Nei test di unità eseguiti con \gls{Vitest}, isolare la logica di rete è immediato: è sufficiente fornire un \textit{mock} di \texttt{executeOperation} senza dover intercettare richieste HTTP reali, rendendo i test deterministici e veloci.
-\end{enumerate}
 
 
 
