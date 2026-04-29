@@ -72,7 +72,7 @@
         \centering
         \begin{tabular}{|l|p{5cm}|}
             \hline
-            \textbf{Versione} & 0.2.3 \\
+            \textbf{Versione} & 0.2.4 \\
             \hline
             \textbf{Stato} & In corso \\
             \hline
@@ -103,6 +103,8 @@
     \begin{tabular}{|c|c|c|>{\raggedright\arraybackslash}p{0.35\textwidth}|p{0.18\textwidth}|}
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{\gls{Verifica}} \\
+        \hline
+        0.2.4 & 29/04/2026 & Matteo Cuogo & sistemazione layered architecture & \\
         \hline
         0.2.3 & 29/04/2026 & Joseph Grant & aggiunta diagrammi hook, correzione diagrammi & \\
         \hline
@@ -531,16 +533,15 @@ Il principio cardine di questo pattern è la \textbf{\gls{Separation of Concerns
 \paragraph{Vincolo dei "Closed Layers" (Strati Chiusi)}
 Una caratteristica fondamentale di un'architettura a livelli ben progettata è l'isolamento degli strati. Affinché l'architettura sia solida, gli strati devono essere \textbf{chiusi}. Questo significa che il flusso di esecuzione segue una direttiva strettamente \textit{top-down}: una richiesta può transitare esclusivamente allo strato immediatamente sottostante. Di conseguenza, i livelli superiori ignorano del tutto i dettagli implementativi dei livelli inferiori, garantendo che le modifiche effettuate all'interno di uno strato non generino impatti a cascata sugli altri.
 
-L'implementazione standard adottata prevede la scomposizione del sistema in quattro livelli logici:
+L'implementazione standard adottata prevede la scomposizione del sistema in tre livelli logici:
 \begin{itemize}
     \item \textbf{Presentation Layer}: Responsabile della gestione dell'interfaccia utente.
     \item \textbf{Application Logic}: Riceve le informazioni dall'esterno, effettua i controlli formali, orchestra le operazioni e gestisce il flusso applicativo.
     \item \textbf{Business Logic}: Il cuore del sistema, che implementa la logica funzionale vera e propria e le regole di dominio, isolato dal sistema di rete.
-    \item \textbf{Persistence Logic}: Lo strato dedicato alla conservazione dei dati nel tempo.
 \end{itemize}    
 
 \subsection{Applicazione del pattern in "Second Brain"}
-Di seguito viene descritto in dettaglio come i moduli e i file del progetto realizzano i quattro livelli teorici dell'architettura.
+Di seguito viene descritto in dettaglio come i moduli e i file del progetto realizzano i tre livelli teorici dell'architettura.
 
 
 \subsubsection{Presentation Layer}
@@ -616,13 +617,6 @@ Permette l'astrazione della comunicazione con i provider esterni. Le classi cont
 
 \subsubsection{Modulo: \texttt{text\_cleaning.py} (Servizi di supporto)}
 Sottomodulo funzionale che utilizza espressioni regolari (regex) per validare e "ripulire" l'output testuale grezzo generato dagli LLM. Il suo scopo è garantire che il testo restituito al client sia privo di metatesto, preamboli discorsivi o tag \gls{markdown} residui, assicurando la coerenza del dominio.
-
-% ===================
-% PERSISTENCE LOGIC
-% ===================
-\subsubsection{Persistence Logic}
-Rappresenta lo strato inferiore deputato alla conservazione dei dati.  Coerentemente con la containerizzazione \gls{Docker}, l'architettura del backend è stata progettata per essere totalmente \textbf{\gls{stateless}} (priva di stato). Non è presente alcun \gls{database} relazionale lato server: la Persistence Logic per salvare i documenti dell'editor e la cronologia delle generazioni è demandata interamente allo storage locale del client, sfruttando le \gls{api} del \textbf{LocalStorage}. Questa architettura garantisce abbattimento del carico server, scalabilità orizzontale e \textit{Privacy by Design}.
-
 
 \newpage
 
