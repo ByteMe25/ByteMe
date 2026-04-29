@@ -65,7 +65,7 @@
         \centering
         \begin{tabular}{|l|p{5cm}|}
             \hline
-            \textbf{Versione} & 0.1.0 \\
+            \textbf{Versione} & 0.2.0 \\
             \hline
             \textbf{Stato} & Da approvare \\
             \hline
@@ -95,6 +95,8 @@
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{\gls{Verifica}} \\
         \hline
+        0.2.0 & 29/04/2026 & Giulia Barzon & Aggiornamneto con i dati del PdP & \\
+        \hline
         0.1.0 & 20/04/2026 & Giulia Barzon & Iniziale stesura documento & Elisa Marchioro\\
         \hline
     \end{tabularx}
@@ -115,7 +117,7 @@
 \section{Presentazione}
 Il gruppo \textbf{ByteMe} intende formalmente candidarsi per la revisione \textbf{Product Baseline (PB)} relativa al capitolato C6 "Progetto Second Brain", proposto dall'azienda Zucchetti S.p.A.
 
-In questa fase, il team ha evoluto l'architettura individuata durante la RTB, consolidando le scelte tecnologiche e completando lo sviluppo delle funzionalità core del sistema. Viene riportato di seguito il link al sito web ufficiale del progetto dove è possibile consultare la documentazione del gruppo aggiornata:
+In questa fase, il team ha portato a termine la progettazione, la codifica e il testing del prodotto, consolidando le scelte tecnologiche fatte durante la fase RTB e completando lo sviluppo delle funzionalità core del sistema. Viene riportato di seguito il link al sito web ufficiale del progetto dove è possibile consultare la documentazione del gruppo aggiornata:
 \begin{center}
     \url{https://byteme25.github.io/ByteMe/}
 \end{center}
@@ -127,27 +129,29 @@ In questa fase, il team ha evoluto l'architettura individuata durante la RTB, co
     \item {\gls{Analisi dei Requisiti} v2.0.0}
     \item {Piano di Qualifica v2.0.0}
     \item {Piano di Progetto v2.0.0}
+    \item {Norme di Progetto v2.0.0}
+    \item {Glossario v2.0.0}
+    \item {Verbali interni ed esterni}
 \end{itemize}
 
 
 \subsection{Minimum Viable Product (MVP)}
-Il prodotto consegnato per la fase PB rappresenta il \textbf{Minimum Viable Product (MVP)} del sistema Second Brain. Rispetto al Proof of Concept della fase precedente, il sistema presenta ora un'architettura definitiva basata su \textbf{\gls{React} 19} e \textbf{TypeScript} per il frontend, e un gateway \textbf{\gls{stateless}} in \textbf{\gls{Flask}} per il backend. 
-
-Sono state implementate con successo le strategie di \gls{prompt} engineering per tutte le operazioni AI richieste (Riassunto, Correzione, Traduzione e i Sei Cappelli di De Bono), garantendo un'integrazione fluida e sicura con i modelli linguistici tramite protocolli standard. La persistenza dei dati è stata ottimizzata lato client tramite l'utilizzo di \textit{\gls{Zustand}} e del LocalStorage, assicurando velocità e privacy.
+Il prodotto consegnato costituisce il \textbf{Minimum Viable Product (MVP)} del sistema. Rispetto al Proof of Concept realizzato nella fase RTB, il software è stato interamente consolidato e trasformato in uno strumento stabile, sicuro e pronto all'uso. Sono state rese pienamente operative tutte le funzionalità basate sull'intelligenza artificiale e soddisfatti tutti i requisiti obbligatori e parte di quelli desiderabili e opzionali. Il sistema è stato verificato con diversi test e validato formalmente dall'azienda proponente in data 28 aprile 2026.
 
 Il codice sorgente del MVP del sistema Second Brain è consultabile alla seguente \gls{repository} \gls{GitHub}:
 \begin{center}
  \url{https://github.com/ByteMe25/PB_ByteMe}
 \end{center}
 
+Nel nostro sito è possibile consultare anche il \textbf{Verbale del 28 aprile 2026}, ovvero il verbale esterno che formalizza la validazione del prodotto finale da parte dell'azienda proponente Zucchetti:
+\begin{center}
+ \url{https://byteme25.github.io/ByteMe/}
+\end{center}
+
 \newpage
-\section{Costi e impegni orari}
-Di seguito viene presentato il bilancio aggiornato dell'impiego orario e dei costi, considerando la chiusura della fase di sviluppo intensivo dell'MVP (\gls{Sprint} 13).
 
-\subsection*{Stato del budget e rendicontazione}
-Al termine dello \gls{sprint} 13, il costo cumulato del progetto (PAC) ammonta a \textbf{8.722,50 euro}. 
-
-Sebbene nell'ultimo periodo lo sforzo di codifica abbia richiesto un investimento superiore al preventivato (1020,00 euro contro i 795,00 euro stimati), il gruppo mantiene un margine di sicurezza positivo grazie ai risparmi accumulati nella fase RTB. Il monte ore residuo e il budget rimanente risultano pienamente sufficienti per coprire la fase di chiusura e la revisione finale (CA).
+\section{Riepilogo e consuntivo finale}
+Il progetto si conclude rispettando i vincoli di bilancio stabiliti in fase di candidatura. Nonostante lo sforzo intensivo richiesto per la chiusura del prodotto negli ultimi sprint, il gruppo ha chiuso il progetto con un buon risparmio rispetto al budget preventivato (BAC).
 
 \begin{table}[H]
     \centering
@@ -156,18 +160,17 @@ Sebbene nell'ultimo periodo lo sforzo di codifica abbia richiesto un investiment
         \hline
         \textbf{Voce} & \textbf{Ore} & \textbf{Costo (€)} \\
         \hline
-        Totale ore preventivate (BAC) & 558 & 11.395,00 \\
-        Consuntivo totale a fine \gls{Sprint} 13 (PAC) & \textbf{431} & \textbf{8.722,50} \\
+        Preventivo iniziale (BAC) & 558 & 11.395,00 \\
+        Consuntivo finale (PAC) & \textbf{548} & \textbf{10.712,50} \\
         \hline
-        \textbf{Budget Residuo (EAC)} & \textbf{127} & \textbf{2.762,50} \\
+        \textbf{Risparmio complessivo} & \textbf{10} & \textbf{682,50} \\
         \hline
     \end{tabular}
     \vspace{0.2cm}
-    \caption{Riepilogo ore e costi aggiornato allo \gls{Sprint} 13.}
+    \caption{Riepilogo finale di ore e costi del progetto.}
 \end{table}
 
 
-\newpage
 \section{Conclusione}
 Confidando in una valutazione positiva della nostra proposta, restiamo a disposizione per ogni eventuale chiarimento e porgiamo distinti saluti.
 
