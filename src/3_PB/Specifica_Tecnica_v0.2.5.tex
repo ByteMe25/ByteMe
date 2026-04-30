@@ -669,7 +669,7 @@ Definisce il contratto astratto comune per tutte le strategie di generazione dei
     \item \textbf{Metodi:}
 \begin{itemize}
     \item \texttt{\_validate()}: Metodo concreto ereditabile che \gls{verifica} la solidità dell'input (es. assicura che il testo non sia \texttt{None}, sollevando un \texttt{TypeError} in caso contrario).
-    \item \texttt{build(text: str, prompt: str)}: Metodo astratto che impone a ogni sottoclasse di restituire una tupla contenente due stringhe: il \gls{System prompt} (il ruolo dell'IA) e lo \gls{User prompt} (il task specifico).
+    \item \texttt{build(text: str, \gls{prompt}: str)}: Metodo astratto che impone a ogni sottoclasse di restituire una tupla contenente due stringhe: il \gls{System prompt} (il ruolo dell'IA) e lo \gls{User prompt} (il task specifico).
 \end{itemize}
 \end{itemize}
 
@@ -683,7 +683,7 @@ Utilizzata per le operazioni editoriali standard (riassunto, correzione grammati
 \end{itemize}
     \item\textbf{Metodi:}
 \begin{itemize}
-    \item \texttt{build(text: str, prompt: str)}: Combina \texttt{role} e \texttt{task} con il testo in ingresso per formare la tupla richiesta.
+    \item \texttt{build(text: str, \gls{prompt}: str)}: Combina \texttt{role} e \texttt{task} con il testo in ingresso per formare la tupla richiesta.
 \end{itemize}
 \end{itemize}
 
@@ -696,7 +696,7 @@ Sottoclasse concreta specializzata nella gestione delle attività di traduzione 
 \end{itemize}
 \item \textbf{Metodi:}
 \begin{itemize}
-    \item build(text: str, prompt: str): Implementa la logica di costruzione del \gls{prompt} impostando un \gls{System \gls{Prompt}} rigido che definisce il ruolo (traduttore professionista) e i vincoli di output (nessuna frase introduttiva). Lo \gls{User \gls{Prompt}} include l'istruzione di traduzione specifica verso la lingua memorizzata nell'attributo language.
+    \item build(text: str, \gls{prompt}: str): Implementa la logica di costruzione del \gls{prompt} impostando un \gls{System \gls{Prompt}} rigido che definisce il ruolo (traduttore professionista) e i vincoli di output (nessuna frase introduttiva). Lo \gls{User \gls{Prompt}} include l'istruzione di traduzione specifica verso la lingua memorizzata nell'attributo language.
 \end{itemize}
 \end{itemize}
 
@@ -712,12 +712,12 @@ Sottoclasse concreta progettata per implementare il metodo dei "Sei Cappelli per
 
 \item \textbf{Metodi:}
 \begin{itemize}
-    \item build(text: str, prompt: str): Utilizza le f-string per iniettare i valori di hat\_name e focus all'interno dei \gls{prompt}.
+    \item build(text: str, \gls{prompt}: str): Utilizza le f-string per iniettare i valori di hat\_name e focus all'interno dei \gls{prompt}.
 \end{itemize}
 \end{itemize}
 
 \paragraph{DistantWritingStrategy}
-Sottoclasse concreta dedicata alla funzionalità di generazione creativa di contenuti. A differenza delle altre strategie, gestisce la particolarità di ricevere un input testuale diretto dall'utente (prompt) accompagnato da un testo di contesto opzionale. La temperatura viene sovrascritta a 0.7 per favorire una maggiore creatività del modello.
+Sottoclasse concreta dedicata alla funzionalità di generazione creativa di contenuti. A differenza delle altre strategie, gestisce la particolarità di ricevere un input testuale diretto dall'utente (\gls{prompt}) accompagnato da un testo di contesto opzionale. La \gls{temperatura} viene sovrascritta a 0.7 per favorire una maggiore creatività del modello.
 \begin{itemize}
     \item \textbf{Attributi:}
     \begin{itemize}
@@ -726,7 +726,7 @@ Sottoclasse concreta dedicata alla funzionalità di generazione creativa di cont
     
     \item \textbf{Metodi:}
     \begin{itemize}
-        \item build(text: str, prompt: str): Implementa la logica di costruzione unendo l'istruzione dell'utente (prompt) e l'eventuale text fornito come contesto. Imposta inoltre un System Prompt rigoroso per evitare frasi introduttive.
+        \item build(text: str, \gls{prompt}: str): Implementa la logica di costruzione unendo l'istruzione dell'utente (\gls{prompt}) e l'eventuale text fornito come contesto. Imposta inoltre un \gls{System \gls{Prompt}} rigoroso per evitare frasi introduttive.
     \end{itemize}
 \end{itemize}
 
