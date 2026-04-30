@@ -98,15 +98,14 @@
 \thispagestyle{empty}
 \section*{Registro dei Cambiamenti}
 
-\begin{table}[H]
-    \centering          
-    \begin{tabular}{|c|c|c|>{\raggedright\arraybackslash}p{0.35\textwidth}|p{0.18\textwidth}|}
-        \hline
-        \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{\gls{Verifica}} \\
-        \hline
+\begin{longtable}{|>{\centering\arraybackslash}p{0.10\textwidth}|>{\centering\arraybackslash}p{0.12\textwidth}|>{\centering\arraybackslash}p{0.18\textwidth}|>{\raggedright\arraybackslash}p{0.35\textwidth}|>{\raggedright\arraybackslash}p{0.15\textwidth}|}
+    \hline
+    \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{\gls{Verifica}} \\
+    \hline
+    \endhead
         0.2.5 & 29/04/2026 & Elisa Marchioro & Sistemata sezione design pattern frontend & \\
         \hline
-        0.2.4 & 29/04/2026 & Matteo Cuogo & Sistemazione layered architecture & \\
+        0.2.4 & 29/04/2026 & Matteo Cuogo & Sistemazione layered architecture & Giulia Barzon\\
         \hline
         0.2.3 & 29/04/2026 & Joseph Grant & Aggiunta diagrammi hook, correzione diagrammi & Matteo Cuogo\\
         \hline
@@ -114,7 +113,7 @@
         \hline
         0.2.1 & 25/04/2026 & Giulia Barzon & Aggiornamento requisiti soddisfatti & Joseph Grant \\
         \hline
-        0.2.0 & 25/04/2026 & Elisa Marchioro & Aggiornamento subsubsection caching & Joseph Grant \\
+        0.2.0 & 25/04/2026 & Elisa Marchioro & Aggiornamento subsubsection caching & Joseph Grant, Giulia Barzon \\
         \hline
         0.1.9 & 24/04/2026 & Matteo Cuogo & Aggiornamento dello stato di soddisfacimento di alcuni requisiti & Giulia Barzon\\
         \hline
@@ -156,10 +155,10 @@
         \hline
         0.0.1 & 28/03/2026 & Giulia Barzon & Creazione del documento, scrittura introduzione & Tommaso Tombacco \\
         \hline
-    \end{tabular}
     \caption{Registro delle versioni del documento}
     \label{tab:versionamento}
-\end{table}
+\end{longtable}
+
 \newpage
 
 % Terza pagina - Indice
@@ -214,7 +213,7 @@ I termini che vengono considerati meritevoli di approfondimenti sono indicati co
 
 \subsection{Riferimenti}
 \begin{itemize}
-  \item \textit{\gls{Norme di Progetto}} versione 2.0.0\\
+  \item \textit{\gls{Norme di Progetto}} versione 2.0.0 (Ultimo accesso: 20/04/2026)\\
   \href{https://byteme25.github.io/ByteMe/files.html}{ByteMe/\gls{Norme di Progetto} v2.0.0}
   \item Capitolato d'appalto C6: \textit{Second Brain} (Zucchetti S.p.A.)\\ \url{https://www.math.unipd.it/~tullio/IS-1/2025/Progetto/C6.pdf}
   \item Regolamento del progetto didattico:\\
@@ -606,18 +605,18 @@ Il nucleo del sistema è implementato come un dizionario globale che associa ide
 \begin{itemize}
     \item \textbf{Adesione al principio Open-Closed}: Per aggiungere una nuova funzionalità è sufficiente registrare una nuova riga nel dizionario di configurazione. Il codice del controller rimane del tutto inalterato, chiuso alle modifiche ma aperto alle estensioni.
     \item \textbf{Routing dinamico dei modelli}: Permette di assegnare il modello più adatto a una specifica operazione. Ad esempio, nel sistema le operazioni logiche di pensiero laterale dei Sei Cappelli sono delegate a \gls{Gemma 3:4B}.
-    \item \textbf{Robustezza e fallback}: In caso di operazione non riconosciuta o assente nel payload della richiesta, il sistema fornisce una configurazione di default in modo trasparente tramite la costante \texttt{DEFAULT\_OPERATION = "summary"}, sfruttando il metodo \texttt{.get()} del dizionario ed evitando crash dell'applicazione.
+    \item \textbf{Robustezza e fallback}: In caso di operazione non riconosciuta o assente nel payload della richiesta, il sistema fornisce una configurazione di default in modo trasparente tramite la costante \texttt{DEFAULT\_OPERATION\_KEY= "summary"}, sfruttando il metodo \texttt{.get()} del dizionario ed evitando crash dell'applicazione.
 \end{itemize}
 
 
 \subsubsection{Modulo: \texttt{model\_strategies.py} (Integrazione LLM)}
 Permette l'astrazione della comunicazione con i provider esterni. Le classi contenute in questo file si occupano di iniettare le chiavi \gls{API} lette dall'ambiente e di impacchettare la richiesta nel formato corretto. Anche in questo caso le classi (\texttt{ZucchettiDeepSeekStrategy}, \texttt{Gemma3Strategy}, \texttt{Qwen3Strategy}) implementano il \textbf{Pattern Strategy}.
 \begin{itemize}
-    \item \textbf{Caching (\texttt{get\_model})}: All'interno di questo modulo è implementata una funzione di ottimizzazione che gestisce un dizionario globale privato (\texttt{\_model\_instances}). Se l'istanza di connessione a un modello non esiste, la crea; alle chiamate successive restituisce il riferimento in memoria, evitando di aprire connessioni ridondanti.
+    \item \textbf{Caching (\texttt{get\_model})}: All'interno di questo modulo è implementata una funzione per l'istanziazione dei modelli LLM. Per evitare di aprire connessioni ridondanti, la funzione è ottimizzata tramite il decoratore \texttt{@lru\_cache} della libreria standard \texttt{functools}. Alla prima richiesta di una classe modello, l'istanza viene creata; alle chiamate successive, il decoratore intercetta la richiesta e restituisce direttamente il riferimento in memoria, garantendo efficienza e sicurezza concorrenziale (thread-safety).
 \end{itemize}
 
 
-\subsubsection{Modulo: \texttt{text\_cleaning.py} (Servizi di supporto)}
+\subsubsection{Modulo: \texttt{utils/text\_cleaning.py} (Servizi di supporto)}
 Sottomodulo funzionale che utilizza espressioni regolari (regex) per validare e "ripulire" l'output testuale grezzo generato dagli LLM. Il suo scopo è garantire che il testo restituito al client sia privo di metatesto, preamboli discorsivi o tag \gls{markdown} residui, assicurando la coerenza del dominio.
 
 \newpage
@@ -670,12 +669,12 @@ Definisce il contratto astratto comune per tutte le strategie di generazione dei
     \item \textbf{Metodi:}
 \begin{itemize}
     \item \texttt{\_validate()}: Metodo concreto ereditabile che \gls{verifica} la solidità dell'input (es. assicura che il testo non sia \texttt{None}, sollevando un \texttt{TypeError} in caso contrario).
-    \item \texttt{build(text: str)}: Metodo astratto che impone a ogni sottoclasse di restituire una tupla contenente due stringhe: il \gls{System prompt} (il ruolo dell'IA) e lo \gls{User prompt} (il task specifico).
+    \item \texttt{build(text: str, prompt: str)}: Metodo astratto che impone a ogni sottoclasse di restituire una tupla contenente due stringhe: il \gls{System prompt} (il ruolo dell'IA) e lo \gls{User prompt} (il task specifico).
 \end{itemize}
 \end{itemize}
 
 \paragraph{SimplePromptStrategy}
-Utilizzata per le operazioni editoriali standard (riassunto, correzione grammaticale, riscrittura, \gls{distant writing}). Mantiene la \gls{temperatura} di default a 0.5 e costruisce \gls{prompt} diretti impostando istruzioni ferree per evitare preamboli discorsivi.
+Utilizzata per le operazioni editoriali standard (riassunto, correzione grammaticale, riscrittura). Mantiene la \gls{temperatura} di default a 0.5 e costruisce \gls{prompt} diretti impostando istruzioni ferree per evitare preamboli discorsivi.
 \begin{itemize}
     \item\textbf{Attributi:}
 \begin{itemize}
@@ -684,7 +683,7 @@ Utilizzata per le operazioni editoriali standard (riassunto, correzione grammati
 \end{itemize}
     \item\textbf{Metodi:}
 \begin{itemize}
-    \item \texttt{build(text)}: Combina \texttt{role} e \texttt{task} con il testo in ingresso per formare la tupla richiesta.
+    \item \texttt{build(text: str, prompt: str)}: Combina \texttt{role} e \texttt{task} con il testo in ingresso per formare la tupla richiesta.
 \end{itemize}
 \end{itemize}
 
@@ -697,7 +696,7 @@ Sottoclasse concreta specializzata nella gestione delle attività di traduzione 
 \end{itemize}
 \item \textbf{Metodi:}
 \begin{itemize}
-    \item build(text): Implementa la logica di costruzione del \gls{prompt} impostando un \gls{System \gls{Prompt}} rigido che definisce il ruolo (traduttore professionista) e i vincoli di output (nessuna frase introduttiva). Lo \gls{User \gls{Prompt}} include l'istruzione di traduzione specifica verso la lingua memorizzata nell'attributo language.
+    \item build(text: str, prompt: str): Implementa la logica di costruzione del \gls{prompt} impostando un \gls{System \gls{Prompt}} rigido che definisce il ruolo (traduttore professionista) e i vincoli di output (nessuna frase introduttiva). Lo \gls{User \gls{Prompt}} include l'istruzione di traduzione specifica verso la lingua memorizzata nell'attributo language.
 \end{itemize}
 \end{itemize}
 
@@ -706,15 +705,31 @@ Sottoclasse concreta progettata per implementare il metodo dei "Sei Cappelli per
 \begin{itemize}
     \item \textbf{Attributi:}
 \begin{itemize}
-    \item hat\_name(str): Memorizza il nome o il colore del cappello. Serve a definire l'identità dell'IA.
-    \item focus(str): Memorizza l'area di analisi specifica. Serve a guidare il focus del modello durante la generazione.
+    \item system\_prompt (str): Memorizza le istruzioni di sistema complete che definiscono il ruolo, il tono e i vincoli del cappello specifico.
+    \item user\_task (str): Memorizza le direttive di formattazione e le domande specifiche a cui il modello deve rispondere analizzando il testo.
+    \item temperature (float): Il livello di creatività assegnato a quello specifico cappello.
 \end{itemize}
 
 \item \textbf{Metodi:}
 \begin{itemize}
-    \item build(self, text): Utilizza le f-string per iniettare i valori di hat\_name e focus all'interno dei \gls{prompt}.
+    \item build(text: str, prompt: str): Utilizza le f-string per iniettare i valori di hat\_name e focus all'interno dei \gls{prompt}.
 \end{itemize}
 \end{itemize}
+
+\paragraph{DistantWritingStrategy}
+Sottoclasse concreta dedicata alla funzionalità di generazione creativa di contenuti. A differenza delle altre strategie, gestisce la particolarità di ricevere un input testuale diretto dall'utente (prompt) accompagnato da un testo di contesto opzionale. La temperatura viene sovrascritta a 0.7 per favorire una maggiore creatività del modello.
+\begin{itemize}
+    \item \textbf{Attributi:}
+    \begin{itemize}
+        \item role (str): Definisce l'identità creativa dell'IA (es. "Sei uno scrittore creativo di livello mondiale")
+    \end{itemize}
+    
+    \item \textbf{Metodi:}
+    \begin{itemize}
+        \item build(text: str, prompt: str): Implementa la logica di costruzione unendo l'istruzione dell'utente (prompt) e l'eventuale text fornito come contesto. Imposta inoltre un System Prompt rigoroso per evitare frasi introduttive.
+    \end{itemize}
+\end{itemize}
+
 
 % DIAGRAMMA DELLE CLASSI
 \begin{figure}[H]
@@ -763,11 +778,12 @@ Il sistema prevede tre implementazioni concrete che espongono in modo polimorfic
 \subsubsection{Caching (get\_model)}
 La funzione \texttt{get\_model(model\_class)} fornisce un’istanza unica per ciascun modello richiesto, evitando la creazione di più istanze della stessa classe e ottimizzando così l’utilizzo delle risorse.
 
-Il meccanismo di caching è implementato tramite il decoratore \texttt{@lru\_cache} della libreria standard \texttt{functools}. Alla prima richiesta di un determinato modello, l’istanza viene creata e salvata; nelle chiamate successive, viene restituito direttamente il riferimento già memorizzato.
+Il meccanismo di caching è implementato tramite il decoratore \texttt{@lru\_cache} della libreria standard \texttt{functools}. Alla prima richiesta di un determinato modello, l’istanza viene creata e salvata; nelle chiamate successive con la stessa classe come argomento, \texttt{@lru\_cache} restituisce direttamente il riferimento già memorizzato.
 
-L’utilizzo di \texttt{functools} consente di affidarsi a una soluzione robusta e consolidata, che gestisce in modo trasparente anche gli aspetti legati alla concorrenza tra thread. Questo approccio riduce la complessità del codice e migliora l’affidabilità complessiva del sistema.
+L’utilizzo di \texttt{functools} consente di affidarsi a una soluzione robusta e consolidata, che gestisce in modo trasparente anche gli aspetti legati alla concorrenza tra thread, evitando la necessità di gestire dizionari globali o lock manuali all'interno del codice applicativo. Questo approccio riduce la complessità del codice e migliora l’affidabilità complessiva del sistema.
 
 Nel contesto specifico dell’applicazione, la presenza di più istanze non avrebbe comportato criticità rilevanti, ma si è comunque scelto di adottare una soluzione più rigorosa per garantire maggiore solidità e aderenza alle buone pratiche di progettazione.
+
 
 
 \newpage
