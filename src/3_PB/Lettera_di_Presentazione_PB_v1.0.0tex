@@ -65,15 +65,15 @@
         \centering
         \begin{tabular}{|l|p{5cm}|}
             \hline
-            \textbf{Versione} & 0.2.0 \\
+            \textbf{Versione} & 1.0.0\\
             \hline
-            \textbf{Stato} & Da approvare \\
+            \textbf{Stato} & Approvato \\
             \hline
             \textbf{Redazione} & Giulia Barzon \\
             \hline
-            \textbf{\gls{Verifica}} & Da verificare \\
+            \textbf{\gls{Verifica}} & Joseph Grant, Elisa Marchioro \\
             \hline
-            \textbf{Approvazione} & Da approvare \\
+            \textbf{Approvazione} & Giulia Barzon \\
             \hline
             \textbf{Proprietario} & ByteMe \\
             \hline
@@ -94,6 +94,8 @@
     \begin{tabularx}{\textwidth}{|c|c|c|>{\raggedright\arraybackslash}X|c|}
         \hline
         \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{\gls{Verifica}} \\
+        \hline
+        1.0.0 & 30/04/2026 & Giulia Barzon & Approvazione finale & \\
         \hline
         0.2.0 & 29/04/2026 & Giulia Barzon & Aggiornamneto con i dati del PdP & Joseph Grant\\
         \hline
