@@ -99,12 +99,11 @@
 \thispagestyle{empty}
 \section*{Registro dei Cambiamenti}
 
-\begin{table}[H]
-    \centering
-    \begin{tabular}{|c|c|c|>{\raggedright\arraybackslash}p{0.35\textwidth}|p{0.18\textwidth}|}
-        \hline
-        \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{\gls{Verifica}} \\
-        \hline
+\begin{longtable}{|>{\centering\arraybackslash}p{0.10\textwidth}|>{\centering\arraybackslash}p{0.12\textwidth}|>{\centering\arraybackslash}p{0.18\textwidth}|>{\raggedright\arraybackslash}p{0.35\textwidth}|>{\raggedright\arraybackslash}p{0.15\textwidth}|}
+    \hline
+    \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{\gls{Verifica}} \\
+    \hline
+    \endhead
         1.2.5 & 29/04/2026 & Giulia Barzon & Aggiunti \gls{test di sistema} & \\
         \hline
         1.2.4 & 28/04/2026 & Elisa Marchioro & Aggiunti test E2E & \\
@@ -157,10 +156,9 @@
         \hline
         0.1.0 & 15/12/2025 & Giulia Barzon & Creazione del documento, scrittura introduzione e \gls{checklist} & Elisa Marchioro\\
         \hline
-    \end{tabular}
     \caption{Registro delle versioni del documento}
     \label{tab:versionamento}
-\end{table}
+\end{longtable}
 
 \newpage
 

@@ -92,12 +92,11 @@
 \thispagestyle{empty}
 \section*{Registro dei Cambiamenti}
 
-\begin{longtable}[H]{|c|c|c|>{\raggedright\arraybackslash}p{0.3\textwidth}|c|}
-    \caption{Registro delle versioni del documento}
-    \label{tab:versionamento} \\
-        \hline
-        \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{\gls{Verifica}} \\
-        \hline
+\begin{longtable}{|>{\centering\arraybackslash}p{0.10\textwidth}|>{\centering\arraybackslash}p{0.12\textwidth}|>{\centering\arraybackslash}p{0.18\textwidth}|>{\raggedright\arraybackslash}p{0.35\textwidth}|>{\raggedright\arraybackslash}p{0.15\textwidth}|}
+    \hline
+    \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{\gls{Verifica}} \\
+    \hline
+    \endhead
         2.0.0 & 27/04/2026 & Giulia Barzon & Approvazione finale del documento & \\
         \hline
         1.5.0 & 25/04/2026 & Giulia Barzon & Modificati due requisiti & Joseph Grant \\
@@ -194,6 +193,8 @@
         \hline
         0.0.1 & 20/11/2025 & Giulia Barzon & Creazione del documento e scrittura introduzione & Elisa Marchioro\\
         \hline
+    \caption{Registro delle versioni del documento}
+    \label{tab:versionamento}
 \end{longtable}
 
 \newpage
