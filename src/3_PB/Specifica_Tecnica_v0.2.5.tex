@@ -1220,10 +1220,10 @@ Il file \texttt{apiClient.ts} funge da Facade per il sottosistema di networking.
 aiCall.ts è il modulo che si occupa di mediare l'accesso alle funzionalità di intelligenza artificiale del backend, esponendo un'interfaccia orientata al dominio anziché al protocollo HTTP.
 
 \subsubsection{Problema}
-Senza questo modulo, ogni ViewModel che necessita di invocare un'operazione AI dovrebbe conoscere l'URL esatto dell'endpoint, costruire manualmente il payload JSON nel formato atteso dal backend ed estrarre il testo generato dalla struttura della risposta HTTP. Questo comporterebbe una dipendenza diretta tra la logica di presentazione e i dettagli implementativi del servizio AI: qualsiasi modifica all'endpoint o al formato dei dati richiederebbe interventi su tutti i componenti che effettuano la chiamata.
+Senza questo modulo, ogni ViewModel che necessita di invocare un'operazione AI dovrebbe conoscere l'URL esatto dell'\gls{endpoint}, costruire manualmente il payload JSON nel formato atteso dal backend ed estrarre il testo generato dalla struttura della risposta HTTP. Questo comporterebbe una dipendenza diretta tra la logica di presentazione e i dettagli implementativi del servizio AI: qualsiasi modifica all'\gls{endpoint} o al formato dei dati richiederebbe interventi su tutti i componenti che effettuano la chiamata.
 
 \subsubsection{Applicazione}
-Il modulo astrae l'endpoint specifico (/ai/generate) e traduce il linguaggio del frontend in quello richiesto dal server:
+Il modulo astrae l'\gls{endpoint} specifico (/ai/generate) e traduce il linguaggio del frontend in quello richiesto dal server:
 \begin{itemize}
 \item \textbf{Interfaccia di dominio}: espone il metodo \texttt{executeOperation}, che accetta parametri tipizzati (\texttt{AiRequestPayload}, \texttt{AbortSignal}) e restituisce direttamente una \texttt{Promise<string>}, nascondendo la struttura raw della risposta HTTP (\texttt{AiResponse.generated\_text}) ai livelli superiori.
 \item \textbf{Contratto dei tipi}: il tipo enumerato \texttt{AiOperationId} definisce staticamente l'insieme delle operazioni permesse (come \texttt{summary}, \texttt{rewrite}, \texttt{fix\_grammar}), garantendo a compile-time che il frontend non possa inviare comandi non riconosciuti dall'\texttt{OPERATION\_MAPPER} lato server.
