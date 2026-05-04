@@ -72,7 +72,7 @@
         \centering
         \begin{tabular}{|l|p{5cm}|}
             \hline
-            \textbf{Versione} & 0.2.5 \\
+            \textbf{Versione} & 0.2.6 \\
             \hline
             \textbf{Stato} & In corso \\
             \hline
@@ -103,6 +103,8 @@
     \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{\gls{Verifica}} \\
     \hline
     \endhead
+        0.2.6 & 04/05/2026 & Elisa Marchioro & Mini fix a design pattern frontend & \\
+        \hline
         0.2.5 & 29/04/2026 & Elisa Marchioro & Sistemata sezione design pattern frontend & \\
         \hline
         0.2.4 & 29/04/2026 & Matteo Cuogo & Sistemazione layered architecture & Giulia Barzon\\
@@ -1214,14 +1216,14 @@ Il file \texttt{apiClient.ts} funge da Facade per il sottosistema di networking.
 \item \textbf{Gestione unificata della cancellazione}: integra il supporto nativo all'\texttt{AbortSignal}, permettendo ai ViewModel di interrompere richieste pendenti (ad esempio quando l'utente annulla un'operazione AI in corso) senza che questa logica debba essere replicata nei singoli componenti.
 \end{itemize}
 
-\subsection{Gateway - aiCall.ts}
-Mentre il Facade gestisce il \textit{come} comunicare, \texttt{aiCall.ts} agisce come un Gateway applicativo. Questo pattern ha il compito di incapsulare l'accesso a una risorsa esterna specifica — in questo caso, le funzionalità di Intelligenza Artificiale del backend — esponendo un'interfaccia orientata al dominio anziché al protocollo HTTP.
+\subsection{Modulo aiCall.ts}
+aiCall.ts è il modulo che si occupa di mediare l'accesso alle funzionalità di intelligenza artificiale del backend, esponendo un'interfaccia orientata al dominio anziché al protocollo HTTP.
 
 \subsubsection{Problema}
-Senza un Gateway, ogni ViewModel che necessita di invocare un'operazione AI dovrebbe conoscere l'URL esatto dell'\gls{endpoint}, costruire manualmente il payload JSON nel formato atteso dal backend e estrarre il testo generato dalla struttura della risposta HTTP. Questo comporterebbe una dipendenza diretta tra la logica di presentazione e i dettagli implementativi del servizio AI: qualsiasi modifica all'\gls{endpoint} o al formato dei dati richiederebbe interventi su tutti i componenti che effettuano la chiamata.
+Senza questo modulo, ogni ViewModel che necessita di invocare un'operazione AI dovrebbe conoscere l'URL esatto dell'endpoint, costruire manualmente il payload JSON nel formato atteso dal backend ed estrarre il testo generato dalla struttura della risposta HTTP. Questo comporterebbe una dipendenza diretta tra la logica di presentazione e i dettagli implementativi del servizio AI: qualsiasi modifica all'endpoint o al formato dei dati richiederebbe interventi su tutti i componenti che effettuano la chiamata.
 
 \subsubsection{Applicazione}
-Il Gateway astrae l'\gls{endpoint} specifico (\texttt{/ai/generate}) e traduce il linguaggio del frontend in quello richiesto dal server:
+Il modulo astrae l'endpoint specifico (/ai/generate) e traduce il linguaggio del frontend in quello richiesto dal server:
 \begin{itemize}
 \item \textbf{Interfaccia di dominio}: espone il metodo \texttt{executeOperation}, che accetta parametri tipizzati (\texttt{AiRequestPayload}, \texttt{AbortSignal}) e restituisce direttamente una \texttt{Promise<string>}, nascondendo la struttura raw della risposta HTTP (\texttt{AiResponse.generated\_text}) ai livelli superiori.
 \item \textbf{Contratto dei tipi}: il tipo enumerato \texttt{AiOperationId} definisce staticamente l'insieme delle operazioni permesse (come \texttt{summary}, \texttt{rewrite}, \texttt{fix\_grammar}), garantendo a compile-time che il frontend non possa inviare comandi non riconosciuti dall'\texttt{OPERATION\_MAPPER} lato server.
@@ -1231,15 +1233,15 @@ Il Gateway astrae l'\gls{endpoint} specifico (\texttt{/ai/generate}) e traduce i
 \subsection{Collaborazione tra i componenti}
 L'architettura segue una struttura a strati che garantisce un alto grado di disaccoppiamento:
 \begin{itemize}
-\item \textbf{ViewModel (useAiOperations.ts)}: non ha alcuna conoscenza di URL o di Axios. Invoca il Gateway richiedendo l'esecuzione di un'operazione di dominio ("Riassumi questo testo"), gestendo esclusivamente la logica di stato della UI.
-\item \textbf{Gateway (aiCall.ts)}: conosce la struttura del servizio AI. Costruisce il payload corretto e lo delega al Facade, specificando l'\gls{endpoint} di destinazione.
+\item \textbf{ViewModel (useAiOperations.ts)}: non ha alcuna conoscenza di URL o di Axios. Invoca aiCall richiedendo l'esecuzione di un'operazione di dominio ("Riassumi questo testo"), gestendo esclusivamente la logica di stato della UI.
+\item \textbf{aiCall.ts}: conosce la struttura del servizio AI. Costruisce il payload corretto e lo delega al Facade, specificando l'\gls{endpoint} di destinazione.
 \item \textbf{Facade (apiClient.ts)}: esegue materialmente la trasmissione HTTP, gestendo i dettagli tecnici di basso livello e garantendo che qualsiasi anomalia di rete venga restituita in un formato omogeneo e gestibile.
 \end{itemize}
 
 \subsection{Vantaggi}
-Questa architettura porta benefici misurabili in termini di qualità del software. Dal punto di vista della testabilità, è possibile verificare la logica del Gateway simulando il Facade, oppure testare i componenti dell'interfaccia utente fornendo un mock di \texttt{executeOperation}, senza mai dover effettuare chiamate reali ai server. Dal punto di vista del disaccoppiamento tecnologico, una futura migrazione da Axios all'\gls{API} nativa \texttt{fetch} richiederebbe modifiche unicamente ad \texttt{apiClient.ts}, lasciando intatti tutti gli hook e i componenti.
+Questa architettura porta benefici misurabili in termini di qualità del software. Dal punto di vista della testabilità, è possibile verificare la logica di aiCall.ts simulando il Facade, oppure testare i componenti dell'interfaccia utente fornendo un mock di executeOperation, senza mai dover effettuare chiamate reali ai server. Dal punto di vista del disaccoppiamento tecnologico, una futura migrazione da Axios all'\gls{API} nativa \texttt{fetch} richiederebbe modifiche unicamente ad \texttt{apiClient.ts}, lasciando intatti tutti gli hook e i componenti.
 
-Il gruppo è consapevole che, dato l'attuale numero di \gls{endpoint} esposti dal backend, la separazione tra Facade e Gateway introduce una complessità non strettamente necessaria allo stato attuale del sistema. La scelta è stata deliberata e motivata dall'estensibilità futura verso nuovi \gls{endpoint} (autenticazione, salvataggio remoto dei documenti), dalla necessità di centralizzare la gestione degli errori tipici del contesto AI (timeout lunghi, risposte di provider esterni), e dalla volontà di applicare consapevolmente principi di disaccoppiamento nell'ambito del corso di Ingegneria del Software.
+Il gruppo è consapevole che, dato l'attuale numero di \gls{endpoint} esposti dal backend, il Facade e il modulo aiCall introducono una complessità non strettamente necessaria allo stato attuale del sistema. La scelta è stata deliberata e motivata dall'estensibilità futura verso nuovi \gls{endpoint} (autenticazione, salvataggio remoto dei documenti), dalla necessità di centralizzare la gestione degli errori tipici del contesto AI (timeout lunghi, risposte di provider esterni), e dalla volontà di applicare consapevolmente principi di disaccoppiamento nell'ambito del corso di Ingegneria del Software.
 
 
 % diagramma
