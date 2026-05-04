@@ -104,9 +104,9 @@
     \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{\gls{Verifica}} \\
     \hline
     \endhead
-        1.2.5 & 29/04/2026 & Giulia Barzon & Aggiunti \gls{test di sistema} & \\
+        1.2.5 & 29/04/2026 & Giulia Barzon & Aggiunti \gls{test di sistema} & Chiara Grossele\\
         \hline
-        1.2.4 & 28/04/2026 & Elisa Marchioro & Aggiunti test E2E & \\
+        1.2.4 & 28/04/2026 & Elisa Marchioro & Aggiunti test E2E & Chiara Grossele\\
         \hline
         1.2.3 & 26/04/2026 & Elisa Marchioro & Aggiunta scelta modello traduzione e sistemati due test in test\_model\_strategies & Joseph Grant\\
         \hline
@@ -1920,19 +1920,19 @@ I test nel file verificano il comportamento dell’\gls{endpoint} /\gls{api}/ai/
 \newpage
 
 \section{Test End-to-End (E2E) - Fase PB}
-Per quanto riguarda i test E2E, abbiamo scelto di usare \textbf{playwright}, che è un framework open source sviluppato da Microsoft per il testing end-to-end di applicazioni web. Permette di simulare le azioni di un utente reale nel browser, come cliccare, compilare form o navigare tra le pagine, e di verificare che tutto funzioni correttamente.
+Per quanto riguarda i test E2E, abbiamo scelto di usare \textbf{Playwright}, un framework open source sviluppato da Microsoft per il testing end-to-end di applicazioni web. Il suo scopo principale è simulare il comportamento di un utente reale all'interno del browser (navigazione tra pagine, compilazione di form, interazioni con elementi UI) verificando che l'intera applicazione risponda correttamente.
 
-Supporta i principali browser (Chromium, Firefox e WebKit) ed esegue gli stessi test su tutti, senza bisogno di configurazioni complesse. Include anche funzionalità utili come il mocking delle chiamate di rete e la cattura automatica di screenshot o video in caso di errore.
+Supporta i principali browser (Chromium, Firefox e WebKit) e consente di eseguire la stessa suite di test su engine diversi senza bisogno di configurazioni complesse. Il framework include inoltre funzionalità utili come il mocking delle chiamate di rete e la cattura automatica di screenshot o video in caso di fallimento, rendendo la diagnostica degli errori più immediata.
 
-A differenza dei test unitari, che verificano singole parti di codice, i test end-to-end controllano l’intero flusso dell’applicazione, dal frontend al backend, simulando un utilizzo reale.
+A differenza dei test unitari, che verificano singole parti di codice, i test end-to-end controllano l’intero flusso dell’applicazione, dal frontend al backend, riproducendo scenari d'uso reali e garantendo che le varie componenti del sistema collaborino correttamente.
 
 \subsection{Codegen}
-Playwright mette a disposizione uno strumento chiamato Codegen che permette di generare automaticamente il codice dei test registrando le azioni dell’utente nel browser. Avviando il comando npx playwright codegen <url>, si apre una finestra in cui ogni interazione (click, inserimento di testo, navigazione) viene tradotta in tempo reale in codice.
+Playwright mette a disposizione uno strumento chiamato Codegen che permette di generare automaticamente il codice dei test registrando le azioni dell’utente nel browser. Avviando il comando \texttt{npx playwright codegen <url>}, si apre una finestra in cui ogni interazione (click, inserimento di testo, navigazione) viene tradotta in tempo reale in codice.
 
 Questo strumento è particolarmente utile per iniziare rapidamente a scrivere test, anche senza conoscere nel dettaglio le \gls{API} di Playwright. Nel nostro caso, il codice generato è stato usato come base e poi migliorato aggiungendo controlli espliciti e una gestione più accurata delle operazioni asincrone.
 
 \subsection{Smoke test}
-Gli smoke test sono test di base che servono a verificare rapidamente che le funzionalità principali dell’applicazione funzionino dopo una modifica al codice. Non coprono tutti i casi possibili, ma controllano che le operazioni essenziali non siano rotte.
+Gli smoke test sono test di base che servono a verificare rapidamente che le funzionalità principali dell’applicazione funzionino dopo una modifica al codice. Non coprono tutti i casi possibili, ma controllano che le operazioni essenziali avvengano senza errori e ritornino un risultato corretto.
 
 In questo progetto sono stati realizzati quattro smoke test, uno per ciascuna funzionalità principale dell’editor: caricamento file, salvataggio/esportazione, stampa e operazioni AI. Ogni test esegue un flusso semplice (come farebbe un utente) e \gls{verifica} con expect() che il risultato sia quello atteso.
 
@@ -1952,7 +1952,7 @@ Per quanto riguarda le funzionalità AI, le chiamate all’\gls{endpoint} /\gls{
 
 \subsubsection{print\_smoke.spec.ts}
 \begin{itemize}
-\item \textbf{Stampa}: questo test controlla che la funzionalità di stampa sia attivabile. Dopo il click sul pulsante “Stampa”, viene verificato che non si verifichino errori JavaScript, assicurando che l’operazione venga avviata senza problemi.
+\item \textbf{Stampa}: questo test controlla che la funzionalità di stampa sia attivabile. Dopo il click sul pulsante “Stampa”, viene verificato che non avvengano errori JavaScript, assicurando che l’operazione venga avviata senza problemi.
 \item \textbf{Stato}: Pass.
 \end{itemize}
 
@@ -1975,7 +1975,6 @@ Lo stato di ogni test è indicato da una di queste sigle:
 \end{itemize}
 
 \begin{longtable}{|c|p{9cm}|p{3cm}|c|}
-\caption{Tabella dei \gls{Test di Sistema}} \label{tab:test_sistema} \\
 \hline
 \textbf{ID Test} & \textbf{Descrizione} & \textbf{Requisiti Coperti} & \textbf{Stato} \\
 \hline
@@ -1986,7 +1985,7 @@ Lo stato di ogni test è indicato da una di queste sigle:
 \hline
 \endhead
 
-\hline
+\caption{Tabella dei \gls{Test di Sistema}} \label{tab:test_sistema} 
 \endlastfoot
 
 TS-01 & \textbf{Azione:} L'utente digita testo formattato in \gls{Markdown} nell'editor e ne seleziona una porzione. \newline \textbf{Esito atteso:} Il testo appare correttamente, l'anteprima si aggiorna e la selezione avviene senza blocchi. & RO-F-1, RO-F-3, RO-F-4, RO-F-5, RO-F-6 & S \\
@@ -2022,7 +2021,7 @@ TS-15 & \textbf{Azione:} L'utente seleziona una lingua e richiede la "Traduzione
 \hline
 TS-16 & \textbf{Azione:} L'utente avvia la "Correzione Grammaticale" su un testo con errori. \newline \textbf{Esito atteso:} Il sistema propone le correzioni o notifica l'assenza di errori se il testo è già corretto. & RO-F-52, RO-F-53 & S \\
 \hline
-TS-17 & \textbf{Azione:} L'utente applica uno dei "Sei Cappelli di De Bono" a un'idea. \newline \textbf{Esito atteso:} L'AI produce un'analisi critica basata sulla prospettiva del cappello selezionato. & RO-F-54, RO-F-55, RO-F-56 & S \\
+TS-17 & \textbf{Azione:} L'utente applica uno dei "Sei Cappelli di De Bono" a un testo fornito. \newline \textbf{Esito atteso:} L'AI produce un'analisi critica basata sulla prospettiva del cappello selezionato. & RO-F-54, RO-F-55, RO-F-56 & S \\
 \hline
 TS-18 & \textbf{Azione:} L'utente inserisce un \gls{prompt} testuale per generare un nuovo contenuto (\gls{Distant Writing}). \newline \textbf{Esito atteso:} Il sistema genera una bozza di testo coerente con le istruzioni fornite. & RO-F-57, RO-F-58, RO-F-59, RO-F-60, ROP-F-11 & S \\ \hline
 
@@ -2042,9 +2041,7 @@ TS-25 & \textbf{Azione:} L'utente tenta di salvare un documento in un \gls{datab
 \hline
 TS-26 & \textbf{Azione:} L'utente clicca il pulsante per rimuovere un file caricato e sceglie di confermare o annullare l'operazione nel pop-up. \newline \textbf{Esito atteso:} Se confermata, il file viene rimosso; se annullata, l'eliminazione viene interrotta e il documento rimane intatto nell'editor. & RO-F-69, RO-F-70 & S \\
 \hline
-
 \end{longtable}
-
 
 \newpage
 
