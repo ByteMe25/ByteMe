@@ -1924,16 +1924,16 @@ I test nel file verificano il comportamento dell’\gls{endpoint} /\gls{api}/ai/
 \newpage
 
 \section{Test End-to-End (E2E) - Fase PB}
-Per quanto riguarda i test E2E, abbiamo scelto di usare \textbf{Playwright}, un framework open source sviluppato da Microsoft per il testing end-to-end di applicazioni web. Il suo scopo principale è simulare il comportamento di un utente reale all'interno del browser (navigazione tra pagine, compilazione di form, interazioni con elementi UI) verificando che l'intera applicazione risponda correttamente.
+Per quanto riguarda i test E2E, abbiamo scelto di usare \textbf{\gls{Playwright}}, un framework open source sviluppato da Microsoft per il testing end-to-end di applicazioni web. Il suo scopo principale è simulare il comportamento di un utente reale all'interno del browser (navigazione tra pagine, compilazione di form, interazioni con elementi UI) verificando che l'intera applicazione risponda correttamente.
 
 Supporta i principali browser (Chromium, Firefox e WebKit) e consente di eseguire la stessa suite di test su engine diversi senza bisogno di configurazioni complesse. Il framework include inoltre funzionalità utili come il mocking delle chiamate di rete e la cattura automatica di screenshot o video in caso di fallimento, rendendo la diagnostica degli errori più immediata.
 
 A differenza dei test unitari, che verificano singole parti di codice, i test end-to-end controllano l’intero flusso dell’applicazione, dal frontend al backend, riproducendo scenari d'uso reali e garantendo che le varie componenti del sistema collaborino correttamente.
 
 \subsection{Codegen}
-Playwright mette a disposizione uno strumento chiamato Codegen che permette di generare automaticamente il codice dei test registrando le azioni dell’utente nel browser. Avviando il comando \texttt{npx playwright codegen <url>}, si apre una finestra in cui ogni interazione (click, inserimento di testo, navigazione) viene tradotta in tempo reale in codice.
+\gls{Playwright} mette a disposizione uno strumento chiamato Codegen che permette di generare automaticamente il codice dei test registrando le azioni dell’utente nel browser. Avviando il comando \texttt{npx \gls{playwright} codegen <url>}, si apre una finestra in cui ogni interazione (click, inserimento di testo, navigazione) viene tradotta in tempo reale in codice.
 
-Questo strumento è particolarmente utile per iniziare rapidamente a scrivere test, anche senza conoscere nel dettaglio le \gls{API} di Playwright. Nel nostro caso, il codice generato è stato usato come base e poi migliorato aggiungendo controlli espliciti e una gestione più accurata delle operazioni asincrone.
+Questo strumento è particolarmente utile per iniziare rapidamente a scrivere test, anche senza conoscere nel dettaglio le \gls{API} di \gls{Playwright}. Nel nostro caso, il codice generato è stato usato come base e poi migliorato aggiungendo controlli espliciti e una gestione più accurata delle operazioni asincrone.
 
 \subsection{Smoke test}
 Gli smoke test sono test di base che servono a verificare rapidamente che le funzionalità principali dell’applicazione funzionino dopo una modifica al codice. Non coprono tutti i casi possibili, ma controllano che le operazioni essenziali avvengano senza errori e ritornino un risultato corretto.
