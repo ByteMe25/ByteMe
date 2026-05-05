@@ -103,9 +103,9 @@
     \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{\gls{Verifica}} \\
     \hline
     \endhead
-        0.2.6 & 04/05/2026 & Elisa Marchioro & Mini fix a design pattern frontend & \\
+        0.2.6 & 04/05/2026 & Elisa Marchioro & Mini fix a design pattern frontend & Giulia Barzon\\
         \hline
-        0.2.5 & 29/04/2026 & Elisa Marchioro & Sistemata sezione design pattern frontend & \\
+        0.2.5 & 29/04/2026 & Elisa Marchioro & Sistemata sezione design pattern frontend & Giulia Barzon\\
         \hline
         0.2.4 & 29/04/2026 & Matteo Cuogo & Sistemazione layered architecture & Giulia Barzon\\
         \hline
@@ -787,7 +787,6 @@ L’utilizzo di \texttt{functools} consente di affidarsi a una soluzione robusta
 Nel contesto specifico dell’applicazione, la presenza di più istanze non avrebbe comportato criticità rilevanti, ma si è comunque scelto di adottare una soluzione più rigorosa per garantire maggiore solidità e aderenza alle buone pratiche di progettazione.
 
 
-
 \newpage
 
 % FRONTEND
@@ -1203,13 +1202,14 @@ in cui il Facade si occupa del \textit{come} comunicare con il server, e il Gate
 entrambi gli aspetti.
 
 \subsection{Facade pattern - apiClient.ts}
-Il pattern \textbf{Facade} è un design pattern strutturale il cui scopo principale è fornire un'interfaccia unica e semplificata per gestire un sottosistema complesso. L'obiettivo è nascondere le dipendenze e i dettagli implementativi al client, fornendogli un singolo punto di accesso di alto livello. Questo comporta tre vantaggi architetturali principali: riduce la superficie di contatto tra il client e il sottosistema (\textit{loose coupling}); diminuisce la complessità generale favorendo l'organizzazione in layer netti; facilita la scrittura di test automatici tramite \textit{mocking} e riduce l'impatto di eventuali refactoring.
+Il pattern \textbf{Facade} è un design pattern strutturale il cui scopo è fornire un'interfaccia unica e semplice per un sottosistema complesso. L'obiettivo non è nascondere o bloccare l'accesso alle funzionalità di basso livello, ma fornire una "vista di default" semplificata che riduca il numero di classi con cui il client deve interagire. Nel nostro sistema, l'adozione di questo pattern comporta due vantaggi architetturali primari: realizza un accoppiamento lasco (\textit{loose coupling}) tra i ViewModel e l'infrastruttura di rete, e diminuisce la complessità generale favorendo una rigida stratificazione (layered architecture).
 
 \subsubsection{Problema}
-Senza un punto di accesso centralizzato, ogni componente o ViewModel che necessita di comunicare con il backend dovrebbe configurare autonomamente la libreria Axios, gestire i propri errori di rete e implementare la logica di cancellazione delle richieste. Questo approccio porterebbe a duplicazione del codice, comportamenti eterogenei in caso di errore e un forte accoppiamento tra la logica di presentazione e i dettagli implementativi del trasporto HTTP.
+Il sottosistema di networking della nostra applicazione è composto da diverse entità che devono collaborare: il client HTTP (Axios), i meccanismi di intercettazione delle richieste, il formattatore degli errori e i token di cancellazione (AbortSignal). 
+Senza un punto di accesso centralizzato, ogni componente o ViewModel dovrebbe istanziare e orchestrare autonomamente tutte queste entità. Questo approccio porterebbe a duplicazione del codice, comportamenti eterogenei in caso di errore e un forte accoppiamento tra la logica di presentazione e i dettagli implementativi del trasporto HTTP.
 
 \subsubsection{Applicazione}
-Il file \texttt{apiClient.ts} funge da Facade per il sottosistema di networking. Il suo scopo è nascondere la complessità di Axios e fornire un'interfaccia semplificata e centralizzata per tutta l'applicazione. Invece di configurare i parametri di rete in ogni componente, il Facade si occupa di:
+Il file \texttt{apiClient.ts} funge da Facade per il sottosistema di networking. Il suo scopo è orchestrare le varie componenti infrastrutturali fornendo un'interfaccia semplificata ai livelli superiori. Invece di dover gestire le singole entità di rete, i ViewModel si interfacciano unicamente con il Facade, il quale si occupa di:
 \begin{itemize}
 \item \textbf{Centralizzazione della configurazione}: gestisce in un unico punto la \texttt{baseURL}, il timeout e gli header standard, leggendone i valori dalle variabili d'ambiente (\texttt{\gls{VITE}\_API\_BASE\_URL}, \texttt{\gls{VITE}\_API\_TIMEOUT}) con fallback ai valori di default. Qualsiasi modifica ai parametri di connessione richiede interventi esclusivamente in questo file.
 \item \textbf{Normalizzazione degli errori}: tramite un response interceptor, intercetta qualsiasi fallimento (assenza di connessione, errori HTTP 4xx/5xx, timeout, richieste annullate tramite \texttt{AbortSignal}) e lo trasforma in un oggetto \texttt{Error} standard attraverso la funzione pura \texttt{transformApiError}. Questo garantisce che il resto dell'applicazione riceva sempre errori omogenei, indipendentemente dalla causa tecnica del problema.
