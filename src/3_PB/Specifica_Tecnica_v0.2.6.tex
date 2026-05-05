@@ -107,13 +107,13 @@
         \hline
         0.2.5 & 29/04/2026 & Elisa Marchioro & Sistemata sezione design pattern frontend & Giulia Barzon, Matteo Cuogo\\
         \hline
-        0.2.4 & 29/04/2026 & Matteo Cuogo & Sistemazione layered architecture & Giulia Barzon\\
+        0.2.4 & 29/04/2026 & Matteo Cuogo & Sistemazione layered architecture & Giulia Barzon, Elisa Marchioro\\
         \hline
-        0.2.3 & 29/04/2026 & Joseph Grant & Aggiunta diagrammi hook, correzione diagrammi & Matteo Cuogo\\
+        0.2.3 & 29/04/2026 & Joseph Grant & Aggiunta diagrammi hook, correzione diagrammi & Matteo Cuogo, Elisa Marchioro\\
         \hline
-        0.2.2 & 26/04/2026 & Giulia Barzon & Aggiornati diagrammi frontend & Joseph Grant \\
+        0.2.2 & 26/04/2026 & Giulia Barzon & Aggiornati diagrammi frontend & Joseph Grant, Elisa Marchioro\\
         \hline
-        0.2.1 & 25/04/2026 & Giulia Barzon & Aggiornamento requisiti soddisfatti & Joseph Grant \\
+        0.2.1 & 25/04/2026 & Giulia Barzon & Aggiornamento requisiti soddisfatti & Joseph Grant, Elisa Marchioro\\
         \hline
         0.2.0 & 25/04/2026 & Elisa Marchioro & Aggiornamento subsubsection caching & Joseph Grant, Giulia Barzon \\
         \hline
@@ -333,6 +333,8 @@ I termini che vengono considerati meritevoli di approfondimenti sono indicati co
         \gls{Pytest} & 7.0.0 & Framework di testing per Python, con sintassi semplice e supporto a fixture, parametrizzazione e plugin. \\
         \hline
         \gls{React} testing library & 16.3.2 & Libreria per il testing di componenti \gls{React}, che fornisce utilities per interagire con i componenti in modo simile a come un utente reale lo farebbe. \\
+        \hline
+        Playwright & 1.59.1 & Framework open-source per test end-to-end che automatizza browser e simula l’utente reale per verificare il funzionamento dell’app. \\
         \hline
     \end{tabular}
     \caption{Descrizione delle tecnologie di test}
@@ -1196,8 +1198,8 @@ La progettazione del frontend di \textit{Second Brain} ha fatto uso di design pa
 orientati alla semplificazione dell'interfaccia tra i moduli e al disaccoppiamento tra la logica 
 di presentazione e i dettagli implementativi della comunicazione di rete. Nel sistema, la 
 comunicazione con il backend non avviene mai tramite chiamate dirette alla libreria esterna 
-\texttt{Axios}: è stata invece adottata un'architettura a due pattern distinti e complementari, 
-in cui il Facade si occupa del \textit{come} comunicare con il server, e il Gateway del 
+\texttt{Axios}: è stata invece adottata un'architettura a due "strati", 
+in cui il Facade si occupa del \textit{come} comunicare con il server, e il modulo aiCall.ts del 
 \textit{cosa} richiedere, garantendo che View e ViewModel rimangano agnostici rispetto a 
 entrambi gli aspetti.
 
