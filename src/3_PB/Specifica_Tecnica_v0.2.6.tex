@@ -656,8 +656,8 @@ L’architettura iniziale del backend presentava un'eccessiva complessità logic
 L'adozione di questo pattern porta tre importanti vantaggi:
 \begin{enumerate}
     \item \textbf{Eliminazione degli statement condizionali}: Previene la proliferazione di classi client complesse e di lunghi blocchi \texttt{if/else} o \texttt{switch} per la selezione del comportamento.
-    \item \textbf{Alternativa all'ereditarietà}: Fornisce un approccio basato sulla composizione, più flessibile rispetto all'estensione diretta delle classi.
     \item \textbf{Adesione ai principi SOLID (Open-Closed)}: Permette di aggiungere nuovi algoritmi semplicemente creando una nuova \textit{ConcreteStrategy}, senza modificare il \textit{Context} preesistente.
+    \item \textbf{Miglioramento della testabilità}: Ogni \textit{ConcreteStrategy} può essere testata in isolamento.
 \end{enumerate}
 
 \subsubsection{Applicazione 1: \gls{prompt} strategies (ai\_strategies.py)}
