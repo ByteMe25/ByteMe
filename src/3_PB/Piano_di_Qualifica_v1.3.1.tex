@@ -73,7 +73,7 @@
         \centering
         \begin{tabular}{|l|p{5cm}|}
             \hline
-            \textbf{Versione} & 1.3.0 \\
+            \textbf{Versione} & 1.3.1 \\
             \hline
             \textbf{Stato} & Da approvare \\
             \hline
@@ -104,6 +104,8 @@
     \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{\gls{Verifica}} \\
     \hline
     \endhead
+        1.3.1 & 06/04/2026 & Joseph Grant & Aggiunta grafici qualità di prodotto & \\
+        \hline
         1.3.0 & 05/04/2026 & Giulia Barzon & Aggiornato cruscotto & \\
         \hline
         1.2.6 & 04/04/2026 & Tommaso Tombaco & Aggiunti \gls{test di accettazione} & Elisa Marchioro\\
@@ -2281,6 +2283,103 @@ Tuttavia, la ridistribuzione dei carichi di lavoro ha permesso di recuperare il 
 \noindent \textbf{PB:} Durante la fase PB, l'indice di stabilità dei requisiti si è mantenuto su valori ottimali, prossimi al 100\%. Salvo alcune piccole rifiniture apportate all'inizio della fase (negli \gls{Sprint} 8 e 10) in seguito ai feedback ricevuti durante la revisione RTB, non sono stati introdotti nuovi requisiti o modifiche sostanziali al perimetro del prodotto. Questo ha permesso al team di focalizzarsi interamente sull'implementazione software senza subire interruzioni dovute a cambi di specifiche.
 
 \newpage
+
+
+\subsection{Qualità di prodotto}
+
+\subsubsection{Requirement coverage}
+% [GRAFICO Req coverage]
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{../graficiMetriche/Requirement Coverage rispetto a Sprint.png}
+    \caption{Requirement coverage}
+\end{figure}
+
+\noindent \textbf{PB:} Dall'inizio della fase PB di sviluppo, la copertura dei requisiti è dapprima diminuita, avendo scartato il codice del PoC, poi è cresciuta in maniera costante fino alla fine dello sprint.\\
+
+\subsubsection{Acceptance Test Pass Rate }
+% [GRAFICO Acceptance Test Pass Rate]
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{../graficiMetriche/Acceptance Test Pass Rate rispetto a Sprint.png}
+    \caption{Acceptance Test Pass Rate}
+\end{figure}
+
+\noindent \textbf{PB:} Questa metrica si è mantenuta stabile l'intera durata della fase PB.
+
+
+\subsubsection{Functional Defect Density}
+% [GRAFICO Functional Defect Density]
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{../graficiMetriche/Functional Defect Density.png}
+    \caption{Functional Defect Density}
+\end{figure}
+
+\noindent \textbf{PB:} Tranne durante una prima fase di sviluppo, in cui la densità di difetti è stata più elevata a causa della fase di apprendimento delle tecnologie e della scrittura del codice, la metrica si è mantenuta costantemente al di sotto della soglia di accettazione (0.5) per tutta la durata della fase PB.
+
+
+\subsubsection{Availability }
+% [GRAFICO Availability]
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{../graficiMetriche/Availability rispetto a Sprint.png}
+    \caption{Availability}
+\end{figure}
+
+\noindent \textbf{PB:} Questa metrica si è mantenuta stabile per l'intera durata della fase PB.
+
+
+
+\subsubsection{Error Rate }
+% [GRAFICO Error Rate]
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{../graficiMetriche/Error Rate rispetto a Sprint.png}
+    \caption{Error Rate}
+\end{figure}
+
+\noindent \textbf{PB:} L'error rate ha subito un picco per gli sprint 11-13 dovuto a problematiche con i server delle LLM, che hanno reso inutilizzabili tutte le funzionalità ad esse connesse. Questi problemi hanno bloccato i test per quelle funzionalità e rallentato lo sviluppo, ma il team non ha il controllo dei server esterni.
+
+
+\subsubsection{Response time e AI processing time }
+% [GRAFICO Error Rate]
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{../graficiMetriche/Response Time (s) e AI Processing Time (s).png}
+    \caption{Response Time e AI Processing Time}
+\end{figure}
+
+\noindent \textbf{PB:} Le risposte IA dipendono principalmente da quanto stanno venendo utilizzati i server nel quale risiedono, ma il team ha scelto i modelli cercando di bilanciare qualità e velocità. Questo è riflesso in una leggera riduzione nel response time medio negli sprint finali.
+
+
+\subsubsection{Success rate, SUS score, User Satisfaction Rate }
+% [GRAFICO Error Rate]
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{../graficiMetriche/Task Success Rate_SUS Score_User Satisfaction Rate .png}
+    \caption{Task Success Rate, SUS Score e User Satisfaction Rate}
+\end{figure}
+
+\noindent \textbf{PB:} Non abbiamo ritenuto necessario iniziare a testare queste metriche fino al raggiungimento di un prodotto con un sufficiente numero di requisiti soddisfatti.
+
+
+\subsubsection{Test coverage, Change failure rate }
+% [GRAFICO Error Rate]
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{../graficiMetriche/Test Coverage, Change Failure Rate rispetto a Sprint.png}
+    \caption{Test Coverage, Change Failure Rate}
+\end{figure}
+
+\noindent \textbf{PB:} Il test coverage rate è cresciuto assieme al numero di requisiti soddisfatti, mentre il change failure rate è diminuito man mano che il team ha acquisito maggiore padronanza del codice e delle tecnologie utilizzate.
+
+\newpage
+
+
+
+\newpage
+
 \subsubsection{Requisiti soddisfatti}
 
 \begin{figure}[H]
@@ -2296,8 +2395,6 @@ Per quanto riguarda i requisiti \textbf{Desiderabili} e \textbf{Opzionali}, si n
 
 Tuttavia, durante la progettazione e la codifica dell'MVP (fase PB), il team ha rivalutato queste scelte. Al fine di concentrare tutte le risorse disponibili sull'ottimizzazione e sull'affidabilità delle operazioni basate sull'Intelligenza Artificiale, i requisiti opzionali legati all'infrastruttura backend (come il \gls{database} e gli account utente) sono stati scartati in favore di un salvataggio locale (LocalStorage). 
 Questa scelta ha ridotto la percentuale dei requisiti \textbf{Desiderabili al 60\%} e degli \textbf{Opzionali al 22\%}, permettendo però di consegnare un prodotto finale stabile, performante e in linea con gli obiettivi principali concordati con la proponente.
-
-\newpage
 
 \subsubsection{Rischi Non Calcolati (RNC)}
 % [GRAFICO RNC]
