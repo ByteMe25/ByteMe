@@ -653,10 +653,9 @@ Strutturalmente, il pattern si compone di tre elementi chiave:
 L’architettura iniziale del backend presentava un'eccessiva complessità logica dovuta alla gestione di molteplici modelli LLM e diverse logiche di prompting. La presenza di numerosi blocchi condizionali (if/else o switch) all'interno dell'entry point (\texttt{app.py}) rendeva il codice rigido, difficile da scalare e violava il principio di singola responsabilità (Single Responsibility Principle).
 
 \paragraph{Vantaggi}
-L'adozione di questo pattern porta tre importanti vantaggi:
+L'adozione di questo pattern porta due importanti vantaggi:
 \begin{enumerate}
     \item \textbf{Eliminazione degli statement condizionali}: Previene la proliferazione di classi client complesse e di lunghi blocchi \texttt{if/else} o \texttt{switch} per la selezione del comportamento.
-    \item \textbf{Alternativa all'ereditarietà}: Fornisce un approccio basato sulla composizione, più flessibile rispetto all'estensione diretta delle classi.
     \item \textbf{Adesione ai principi SOLID (Open-Closed)}: Permette di aggiungere nuovi algoritmi semplicemente creando una nuova \textit{ConcreteStrategy}, senza modificare il \textit{Context} preesistente.
 \end{enumerate}
 
@@ -1198,8 +1197,8 @@ La progettazione del frontend di \textit{Second Brain} ha fatto uso di design pa
 orientati alla semplificazione dell'interfaccia tra i moduli e al disaccoppiamento tra la logica 
 di presentazione e i dettagli implementativi della comunicazione di rete. Nel sistema, la 
 comunicazione con il backend non avviene mai tramite chiamate dirette alla libreria esterna 
-\texttt{Axios}: è stata invece adottata un'architettura a due pattern distinti e complementari, 
-in cui il Facade si occupa del \textit{come} comunicare con il server, e il Gateway del 
+\texttt{Axios}: è stata invece adottata un'architettura a due moduli distinti e complementari, 
+in cui il Facade (apiClient.ts) si occupa del \textit{come} comunicare con il server, e aiCall.ts del 
 \textit{cosa} richiedere, garantendo che View e ViewModel rimangano agnostici rispetto a 
 entrambi gli aspetti.
 
