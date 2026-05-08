@@ -431,10 +431,10 @@ Il sistema \textit{Second Brain} si basa su un'architettura di tipo \textbf{Clie
 \begin{itemize}
     \item \textbf{Client (Frontend)}: applicazione \gls{React} eseguita interamente nel browser dell'utente. Si occupa esclusivamente della presentazione e dell'interazione con l'utente: raccoglie gli input, invia le richieste al server e aggiorna l'interfaccia con i risultati ricevuti. Non contiene logica di dominio né accede direttamente ai modelli LLM.
     
-    \item \textbf{Server (Backend)}: applicazione \gls{Flask} eseguita lato server. Espone un'interfaccia HTTP, riceve le richieste del client, orchestra la logica applicativa e di dominio (selezione della strategia, costruzione dei prompt, invocazione dei modelli LLM) e restituisce i risultati al client in formato JSON.
+    \item \textbf{Server (Backend)}: applicazione \gls{Flask} eseguita lato server. Espone un'interfaccia HTTP, riceve le richieste del client, orchestra la logica applicativa e di dominio (selezione della strategia, costruzione dei \gls{prompt}, invocazione dei modelli LLM) e restituisce i risultati al client in formato JSON.
 \end{itemize}
 
-Questa separazione garantisce la \textbf{Separation of Concerns}: il client gestisce esclusivamente la presentazione, mentre il server centralizza la logica, l'orchestrazione e l'integrazione con i servizi esterni (provider LLM). Grazie alla natura \textbf{stateless} delle comunicazioni, ogni richiesta HTTP contiene tutte le informazioni necessarie per essere elaborata indipendentemente, rendendo il backend replicabile e distribuibile senza necessità di gestione condivisa dello stato di sessione.
+Questa separazione garantisce la \textbf{\gls{Separation of Concerns}}: il client gestisce esclusivamente la presentazione, mentre il server centralizza la logica, l'orchestrazione e l'integrazione con i servizi esterni (provider LLM). Grazie alla natura \textbf{\gls{stateless}} delle comunicazioni, ogni richiesta HTTP contiene tutte le informazioni necessarie per essere elaborata indipendentemente, rendendo il backend replicabile e distribuibile senza necessità di gestione condivisa dello stato di sessione.
 
 \newpage
 
@@ -442,7 +442,7 @@ Questa separazione garantisce la \textbf{Separation of Concerns}: il client gest
 Il pattern Client-Server descritto nella sezione precedente è realizzato fisicamente tramite la tecnologia di containerizzazione \textbf{\gls{Docker}}, che garantisce l'isolamento dei componenti, la portabilità tra ambienti di sviluppo e produzione e la gestione semplificata delle dipendenze.
 
 Ciascuno dei due nodi logici (client e server) corrisponde a un container 
-Docker distinto, orchestrati tramite \texttt{\gls{docker}-compose}. 
+\gls{Docker} distinto, orchestrati tramite \texttt{\gls{docker}-compose}. 
 Entrambi i nodi adottano un'\textbf{architettura monolitica}: il backend 
 è un singolo processo \gls{Flask} che incapsula l'intera logica applicativa, 
 mentre il frontend è una Single Page Application compilata in un unico bundle 
