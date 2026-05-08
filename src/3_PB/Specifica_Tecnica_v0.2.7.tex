@@ -72,15 +72,15 @@
         \centering
         \begin{tabular}{|l|p{5cm}|}
             \hline
-            \textbf{Versione} & 1.0.0 \\
+            \textbf{Versione} & 0.2.7 \\
             \hline
-            \textbf{Stato} & Approvato \\
+            \textbf{Stato} & Da approvare \\
             \hline
             \textbf{Redazione} & Tutto il gruppo\\
             \hline
             \textbf{\gls{Verifica}} & Tutto il gruppo\\
             \hline
-            \textbf{Approvazione} & Giulia Barzon\\
+            \textbf{Approvazione} & \\
             \hline
             \textbf{Proprietario} & ByteMe \\
             \hline
@@ -103,7 +103,7 @@
     \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{\gls{Verifica}} \\
     \hline
     \endhead
-        1.0.0 & 05/05/2026 & Giulia Barzon & Approvazione finale & \\
+        0.2.7 & 08/05/2026 & Giulia Barzon & Piccolo fix sezione layered e deployment & \\
         \hline
         0.2.6 & 04/05/2026 & Elisa Marchioro & Mini fix a design pattern frontend & Giulia Barzon Chiara Grossele\\
         \hline
@@ -425,8 +425,28 @@ I termini che vengono considerati meritevoli di approfondimenti sono indicati co
 
 \newpage
 
-\section{Architettura di deployment}
-Il sistema \textit{Second Brain} si basa su un'architettura di deployment di tipo \textbf{Client-Server}, distribuita fisicamente su nodi (container) logici distinti. Per l'implementazione pratica, il progetto utilizza la tecnologia di containerizzazione \textbf{\gls{Docker}} per garantire l'isolamento dei componenti, la portabilità tra diversi ambienti di sviluppo o produzione e la gestione semplificata delle dipendenze.
+\section{Architettura Client-Server}
+Il sistema \textit{Second Brain} si basa su un'architettura di tipo \textbf{Client-Server}, distribuita fisicamente su nodi (container) logici distinti, che comunicano tramite protocollo HTTP.
+
+\begin{itemize}
+    \item \textbf{Client (Frontend)}: applicazione \gls{React} eseguita interamente nel browser dell'utente. Si occupa esclusivamente della presentazione e dell'interazione con l'utente: raccoglie gli input, invia le richieste al server e aggiorna l'interfaccia con i risultati ricevuti. Non contiene logica di dominio né accede direttamente ai modelli LLM.
+    
+    \item \textbf{Server (Backend)}: applicazione \gls{Flask} eseguita lato server. Espone un'interfaccia HTTP, riceve le richieste del client, orchestra la logica applicativa e di dominio (selezione della strategia, costruzione dei prompt, invocazione dei modelli LLM) e restituisce i risultati al client in formato JSON.
+\end{itemize}
+
+Questa separazione garantisce la \textbf{Separation of Concerns}: il client gestisce esclusivamente la presentazione, mentre il server centralizza la logica, l'orchestrazione e l'integrazione con i servizi esterni (provider LLM). Grazie alla natura \textbf{stateless} delle comunicazioni, ogni richiesta HTTP contiene tutte le informazioni necessarie per essere elaborata indipendentemente, rendendo il backend replicabile e distribuibile senza necessità di gestione condivisa dello stato di sessione.
+
+\newpage
+
+\section{Deployment}
+Il pattern Client-Server descritto nella sezione precedente è realizzato fisicamente tramite la tecnologia di containerizzazione \textbf{\gls{Docker}}, che garantisce l'isolamento dei componenti, la portabilità tra ambienti di sviluppo e produzione e la gestione semplificata delle dipendenze.
+
+Ciascuno dei due nodi logici (client e server) corrisponde a un container 
+Docker distinto, orchestrati tramite \texttt{\gls{docker}-compose}. 
+Entrambi i nodi adottano un'\textbf{architettura monolitica}: il backend 
+è un singolo processo \gls{Flask} che incapsula l'intera logica applicativa, 
+mentre il frontend è una Single Page Application compilata in un unico bundle 
+statico servito da \gls{Nginx}.
 
 \subsection{Strategia di containerizzazione}
 L'applicativo è suddiviso in due servizi principali (il nodo Client e il nodo Server) orchestrati tramite \texttt{\gls{docker}-compose}. Questo strumento permette di definire reti virtuali interne, gestire le variabili d'ambiente in modo centralizzato e montare volumi per l'\textit{hot-reloading} durante le fasi di sviluppo.
@@ -458,12 +478,10 @@ Il file \texttt{\gls{docker}-compose.yml} coordina l'avvio sincronizzato dei ser
 % immagine rappresentativa dell'ambiente docker
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.9\textwidth]{../UMLimg/imgDocker.jpg}
+    \includegraphics[width=0.8\textwidth]{../UMLimg/imgDocker.jpg}
     \caption{Rappresentazione dell'architettura di deployment tramite \gls{Docker Compose}}
     \label{fig:architettura_deployment}
 \end{figure}
-
-
 
 \newpage
 
@@ -525,15 +543,13 @@ Costruisce e invia la richiesta POST verso l’\gls{endpoint} /\gls{api}/ai/gene
 \item Il risultato viene restituito al client in formato JSON e gestito dal frontend.
 \end{enumerate}
 
-
 \newpage
 
-% architettura di sistema (generale)
-\section{Architettura del sistema}
+\section{Backend: architettura}
 \subsection{Layered Architecture}
-Il sistema \textit{Second Brain} è stato progettato adottando il pattern architetturale \textbf{Layered Architecture} (o Architettura a Livelli), considerato lo standard \textit{de facto} per lo sviluppo di applicazioni moderne e scalabili.
+Il backend del sistema \textit{Second Brain} è stato progettato adottando il pattern architetturale \textbf{Layered Architecture} (o Architettura a Livelli), considerato lo standard \textit{de facto} per lo sviluppo di applicazioni moderne e scalabili.
 
-Il principio cardine di questo pattern è la \textbf{\gls{Separation of Concerns}} (Separazione delle Responsabilità): i componenti del sistema sono organizzati in strati orizzontali, dove ogni strato fornisce un'astrazione specifica e gestisce esclusivamente la logica di propria competenza. Questo approccio modulare limita il raggio d'azione dei singoli componenti, semplificando notevolmente lo sviluppo, il testing e la manutenzione dell'applicazione.
+Il principio cardine di questo pattern è la \textbf{\gls{Separation of Concerns}} (Separazione delle Responsabilità): i componenti del sistema sono organizzati in strati orizzontali, dove ogni strato fornisce un'astrazione specifica e gestisce esclusivamente la logica di propria competenza. Questo approccio semplifica lo sviluppo, il testing e la manutenzione dell'applicazione.
 
 \paragraph{Vincolo dei "Closed Layers" (Strati Chiusi)}
 Una caratteristica fondamentale di un'architettura a livelli ben progettata è l'isolamento degli strati. Affinché l'architettura sia solida, gli strati devono essere \textbf{chiusi}. Questo significa che il flusso di esecuzione segue una direttiva strettamente \textit{top-down}: una richiesta può transitare esclusivamente allo strato immediatamente sottostante. Di conseguenza, i livelli superiori ignorano del tutto i dettagli implementativi dei livelli inferiori, garantendo che le modifiche effettuate all'interno di uno strato non generino impatti a cascata sugli altri.
