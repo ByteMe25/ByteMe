@@ -554,8 +554,8 @@ Il principio cardine di questo pattern è la \textbf{\gls{Separation of Concerns
 L'implementazione standard adottata prevede la scomposizione del sistema in tre livelli logici:
 \begin{itemize}
     \item \textbf{Application Logic}: punto di ingresso del backend. Riceve le richieste HTTP in arrivo dal client, valida i payload, gestisce il routing e orchestra il flusso verso gli strati sottostanti. Non contiene logica di dominio né conosce i dettagli implementativi delle strategie o dei provider LLM.
-    \item \textbf{Business Logic}: nucleo funzionale del sistema, completamente isolato dal framework web e da qualsiasi dettaglio di I/O. Implementa le regole di dominio (costruzione dei prompt per le operazioni AI) utilizzando esclusivamente astrazioni dei servizi esterni, senza conoscerne i dettagli tecnologici.
-    \item \textbf{Infrastructure Layer}: strato inferiore dell'architettura, che incapsula e nasconde agli strati superiori tutti i dettagli tecnologici di accesso ai servizi esterni. In assenza di un database relazionale, questo strato svolge il ruolo analogo a quello di un Persistence Layer classico: gestisce le credenziali, stabilisce le connessioni con i provider LLM tramite protocollo OpenAI-compatibile e traduce le risposte nel formato atteso dallo strato superiore.
+    \item \textbf{Business Logic}: nucleo funzionale del sistema, completamente isolato dal framework web e da qualsiasi dettaglio di I/O. Implementa le regole di dominio (costruzione dei \gls{prompt} per le operazioni AI) utilizzando esclusivamente astrazioni dei servizi esterni, senza conoscerne i dettagli tecnologici.
+    \item \textbf{Infrastructure Layer}: strato inferiore dell'architettura, che incapsula e nasconde agli strati superiori tutti i dettagli tecnologici di accesso ai servizi esterni. In assenza di un \gls{database} relazionale, questo strato svolge il ruolo analogo a quello di un Persistence Layer classico: gestisce le credenziali, stabilisce le connessioni con i provider LLM tramite protocollo OpenAI-compatibile e traduce le risposte nel formato atteso dallo strato superiore.
     \textit{Secondo la documentazione ufficiale Microsoft sull'architettura delle applicazioni web, le chiamate di rete a servizi esterni rientrano esplicitamente nelle responsabilità dell'Infrastructure Layer~\cite{microsoft_web_arch}. Sostituire un provider LLM richiede modifiche esclusivamente a questo strato.}
 \end{itemize}
 
@@ -583,7 +583,7 @@ Il modulo non adotta una struttura a classi, ma è organizzato come un insieme d
 \begin{itemize}
     \item \texttt{app}: Istanza dell'applicazione \gls{Flask}, configurata con CORS abilitato per permettere la comunicazione sicura col nodo client (frontend).
     
-    \item \texttt{generate\_ai\_text()}: Funzione principale del modulo, mappata sull'\gls{endpoint} POST \texttt{/\gls{api}/ai/generate}. Riceve il payload JSON, estrae i parametri e agisce da \textit{orchestratore}: interroga la mappatura delle operazioni, recupera l'istanza del modello e delega alla Business Logic la costruzione dei \gls{prompt}. Infine, restituisce la risposta elaborata e ripulita al client. In caso di errore, cattura l'eccezione e restituisce una risposta HTTP standardizzata con il messaggio di errore.
+    \item \texttt{generate\_ai\_text()}: Funzione principale del modulo, mappata sull'\gls{endpoint} POST \texttt{/\gls{api}/ai/generate}. Riceve il payload JSON, estrae i parametri e agisce da \textit{\gls{orchestratore}}: interroga la mappatura delle operazioni, recupera l'istanza del modello e delega alla Business Logic la costruzione dei \gls{prompt}. Infine, restituisce la risposta elaborata e ripulita al client. In caso di errore, cattura l'eccezione e restituisce una risposta HTTP standardizzata con il messaggio di errore.
     
     \item \texttt{root()}: Funzione mappata sull'\gls{endpoint} GET \texttt{/}, utilizzata come \textit{health check} per verificare che il server sia attivo. Restituisce lo stato del servizio e la lista delle operazioni supportate dal Mapper.
 \end{itemize}
@@ -602,7 +602,7 @@ Per gestire l'ampia gamma di operazioni in modo estensibile e modulare, le class
 \textit{Nota}: I dettagli delle singole classi sono approfonditi nella sezione relativa ai Design Pattern.
 
 \subsubsection{Modulo: \texttt{operation\_mapper.py} (Mappatura Operazioni)}
-Questo modulo funge da punto di giunzione dell'intera architettura, associando le strategie di prompt alle strategie di esecuzione (modelli LLM) nel rispetto delle regole di dominio.
+Questo modulo funge da punto di giunzione dell'intera architettura, associando le strategie di \gls{prompt} alle strategie di esecuzione (modelli LLM) nel rispetto delle regole di dominio.
 
 \paragraph{Problema}
 L’integrazione tra le diverse strategie di prompting e i diversi LLM poneva un problema di accoppiamento rigido e di complessità gestionale. Senza un punto di coordinamento centrale, il Controller (\texttt{app.py}) avrebbe dovuto:
