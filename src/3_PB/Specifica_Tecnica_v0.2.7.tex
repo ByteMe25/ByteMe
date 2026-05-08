@@ -103,7 +103,7 @@
     \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{\gls{Verifica}} \\
     \hline
     \endhead
-        0.2.7 & 08/05/2026 & Giulia Barzon & Piccolo fix sezione layered e deployment & \\
+        0.2.7 & 08/05/2026 & Giulia Barzon & Piccolo fix sezione layered e deployment & Elisa Marchioro\\
         \hline
         0.2.6 & 04/05/2026 & Elisa Marchioro & Mini fix a design pattern frontend & Giulia Barzon Chiara Grossele\\
         \hline
@@ -555,8 +555,7 @@ L'implementazione standard adottata prevede la scomposizione del sistema in tre 
 \begin{itemize}
     \item \textbf{Application Logic}: punto di ingresso del backend. Riceve le richieste HTTP in arrivo dal client, valida i payload, gestisce il routing e orchestra il flusso verso gli strati sottostanti. Non contiene logica di dominio né conosce i dettagli implementativi delle strategie o dei provider LLM.
     \item \textbf{Business Logic}: nucleo funzionale del sistema, completamente isolato dal framework web e da qualsiasi dettaglio di I/O. Implementa le regole di dominio (costruzione dei \gls{prompt} per le operazioni AI) utilizzando esclusivamente astrazioni dei servizi esterni, senza conoscerne i dettagli tecnologici.
-    \item \textbf{Infrastructure Layer}: strato inferiore dell'architettura, che incapsula e nasconde agli strati superiori tutti i dettagli tecnologici di accesso ai servizi esterni. In assenza di un \gls{database} relazionale, questo strato svolge il ruolo analogo a quello di un Persistence Layer classico: gestisce le credenziali, stabilisce le connessioni con i provider LLM tramite protocollo OpenAI-compatibile e traduce le risposte nel formato atteso dallo strato superiore.
-    \textit{Secondo la documentazione ufficiale Microsoft sull'architettura delle applicazioni web, le chiamate di rete a servizi esterni rientrano esplicitamente nelle responsabilità dell'Infrastructure Layer~\cite{microsoft_web_arch}. Sostituire un provider LLM richiede modifiche esclusivamente a questo strato.}
+    \item \textbf{Infrastructure Layer}: strato inferiore dell'architettura, che incapsula e nasconde agli strati superiori tutti i dettagli tecnologici di accesso ai servizi esterni. Questo strato gestisce le credenziali, stabilisce le connessioni con i provider LLM tramite protocollo OpenAI-compatibile e traduce le risposte nel formato atteso dallo strato superiore.
 \end{itemize}
 
 \paragraph{Vincolo dei "Closed Layers" (Strati Chiusi)}
