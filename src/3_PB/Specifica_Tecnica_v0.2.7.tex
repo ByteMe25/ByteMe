@@ -72,7 +72,7 @@
         \centering
         \begin{tabular}{|l|p{5cm}|}
             \hline
-            \textbf{Versione} & 0.2.7 \\
+            \textbf{Versione} & 0.2.8 \\
             \hline
             \textbf{Stato} & Da approvare \\
             \hline
@@ -103,6 +103,8 @@
     \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{\gls{Verifica}} \\
     \hline
     \endhead
+        0.2.8 & 09/05/2026 & Elisa Marchioro & Modifiche sezione API & \\
+        \hline
         0.2.7 & 08/05/2026 & Giulia Barzon & Piccolo fix sezione layered e deployment & Elisa Marchioro\\
         \hline
         0.2.6 & 04/05/2026 & Elisa Marchioro & Mini fix a design pattern frontend & Giulia Barzon Chiara Grossele\\
@@ -532,15 +534,53 @@ Costruisce e invia la richiesta POST verso l’\gls{endpoint} /\gls{api}/ai/gene
 \end{itemize}
 \end{itemize}
 
+\subsubsection{Organizzazione del codice}
+Per mantenere il codice ordinato e facile da modificare, la comunicazione HTTP non viene usata direttamente nei componenti dell'interfaccia, ma è organizzata in due moduli sovrapposti.
+
+\paragraph{Modulo apiClient.ts}
+apiClient.ts è il modulo che si occupa della comunicazione HTTP dell'applicazione, esponendo un'istanza di Axios preconfigurata e condivisa come punto di accesso centralizzato all'infrastruttura di rete.
+\begin{itemize}
+\item \textbf{Problema} Il sottosistema di networking della nostra applicazione è composto da diverse entità che devono collaborare: il client HTTP (Axios), i meccanismi di intercettazione delle richieste, il formattatore degli errori e i token di cancellazione (AbortSignal). 
+Senza un punto di accesso centralizzato, ogni componente o ViewModel dovrebbe istanziare e orchestrare autonomamente tutte queste entità. Questo approccio porterebbe a duplicazione del codice, comportamenti eterogenei in caso di errore e un forte accoppiamento tra la logica di presentazione e i dettagli implementativi del trasporto HTTP.
+\item \textbf{Applicazione} Il modulo apiClient.ts è un'istanza di Axios preconfigurata e condivisa in tutta l'applicazione. Centralizza in un unico punto la baseURL, il timeout e gli header standard, leggendoli dalle variabili d'ambiente. Tramite un response interceptor, intercetta qualsiasi errore (di rete, HTTP o di cancellazione tramite AbortSignal) e lo trasforma in un oggetto Error omogeneo attraverso la funzione transformApiError. In questo modo il resto dell'applicazione riceve sempre errori in un formato uniforme.
+\end{itemize}
+
+\paragraph{Modulo aiCall.ts}
+aiCall.ts è il modulo che si occupa di mediare l'accesso alle funzionalità di intelligenza artificiale del backend, esponendo un'interfaccia orientata al dominio anziché al protocollo HTTP.
+\begin{itemize}
+\item \textbf{Problema} Senza questo modulo, ogni ViewModel che necessita di invocare un'operazione AI dovrebbe conoscere l'URL esatto dell'\gls{endpoint}, costruire manualmente il payload JSON nel formato atteso dal backend ed estrarre il testo generato dalla struttura della risposta HTTP. Questo comporterebbe una dipendenza diretta tra la logica di presentazione e i dettagli implementativi del servizio AI: qualsiasi modifica all'\gls{endpoint} o al formato dei dati richiederebbe interventi su tutti i componenti che effettuano la chiamata.
+\item \textbf{Applicazione} Il modulo astrae l'\gls{endpoint} specifico (/ai/generate) e traduce il linguaggio del frontend in quello richiesto dal server:
+\begin{itemize}
+\item \textbf{Interfaccia di dominio}: espone il metodo \texttt{executeOperation}, che accetta parametri tipizzati (\texttt{AiRequestPayload}, \texttt{AbortSignal}) e restituisce direttamente una \texttt{Promise<string>}, nascondendo la struttura raw della risposta HTTP (AiResponse.generated\_text) ai livelli superiori.
+\item \textbf{Contratto dei tipi}: il tipo enumerato \texttt{AiOperationId} definisce staticamente l'insieme delle operazioni permesse (come \texttt{summary}, \texttt{rewrite}, \texttt{fix\_grammar}), garantendo a compile-time che il frontend non possa inviare comandi non riconosciuti dall'\texttt{OPERATION\_MAPPER} lato server.
+\item \textbf{Isolamento delle modifiche}: se l'URL del backend o la struttura del payload dovesse cambiare, sarebbe sufficiente intervenire esclusivamente su questo file, senza propagare modifiche alla logica dei componenti UI.
+\end{itemize}
+\end{itemize}
+
+\paragraph{Collaborazione tra i componenti}
+L'architettura segue una struttura a strati che garantisce un alto grado di disaccoppiamento:
+\begin{itemize}
+\item \textbf{ViewModel (useAiOperations.ts)}: non ha alcuna conoscenza di URL o di Axios. Invoca aiCall richiedendo l'esecuzione di un'operazione di dominio ("Riassumi questo testo"), gestendo esclusivamente la logica di stato della UI.
+\item \textbf{aiCall.ts}: conosce la struttura del servizio AI. Costruisce il payload corretto e lo delega al Facade, specificando l'\gls{endpoint} di destinazione.
+\item \textbf{apiClient.ts}: esegue materialmente la trasmissione HTTP, gestendo i dettagli tecnici di basso livello e garantendo che qualsiasi anomalia di rete venga restituita in un formato omogeneo e gestibile.
+\end{itemize}
+
+\paragraph{Vantaggi}
+Questa architettura porta benefici misurabili in termini di qualità del software. Dal punto di vista della testabilità, la separazione in livelli distinti facilita la testabilità dei singoli moduli e riduce l'accoppiamento tra la logica di presentazione e i dettagli implementativi della comunicazione HTTP. Dal punto di vista del disaccoppiamento tecnologico, una futura migrazione da Axios all'\gls{API} nativa \texttt{fetch} richiederebbe modifiche unicamente ad \texttt{apiClient.ts}, lasciando intatti tutti gli hook e i componenti.
+
+Il gruppo è consapevole che, dato l'attuale numero di \gls{endpoint} esposti dal backend, il modulo apiClient e il modulo aiCall introducono una complessità non strettamente necessaria allo stato attuale del sistema. La scelta è stata deliberata e motivata dall'estensibilità futura verso nuovi \gls{endpoint} (autenticazione, salvataggio remoto dei documenti), dalla necessità di centralizzare la gestione degli errori tipici del contesto AI (timeout lunghi, risposte di provider esterni), e dalla volontà di applicare consapevolmente principi di disaccoppiamento nell'ambito del corso di Ingegneria del Software.
+
+
 \subsection{Flusso di elaborazione}
 \begin{enumerate}
-\item Il frontend invia una richiesta HTTP POST tramite Axios.
+\item Il ViewModel invoca \texttt{executeOperation} tramite il modulo \texttt{aiCall.ts}.
+\item \texttt{aiCall.ts} delega la richiesta HTTP POST ad \texttt{apiClient}, specificando l'\gls{endpoint} \texttt{/ai/generate} e il payload.
 \item Il controller backend riceve la richiesta e valida i dati.
 \item Viene selezionata la strategia di elaborazione tramite un registry interno.
 \item Il sistema costruisce i \gls{prompt} per il modello AI.
 \item Il backend invoca il modello per generare il contenuto.
 \item La risposta viene pulita e normalizzata.
-\item Il risultato viene restituito al client in formato JSON e gestito dal frontend.
+\item Il risultato viene restituito al client in formato JSON, estratto da \texttt{apiClient} e restituito come stringa al ViewModel.
 \end{enumerate}
 
 \newpage
@@ -1224,60 +1264,6 @@ in cui il Facade (apiClient.ts) si occupa del \textit{come} comunicare con il se
 \textit{cosa} richiedere, garantendo che View e ViewModel rimangano agnostici rispetto a 
 entrambi gli aspetti.
 
-\subsection{Facade pattern - apiClient.ts}
-Il pattern \textbf{Facade} è un design pattern strutturale il cui scopo è fornire un'interfaccia unica e semplice per un sottosistema complesso. L'obiettivo non è nascondere o bloccare l'accesso alle funzionalità di basso livello, ma fornire una "vista di default" semplificata che riduca il numero di classi con cui il client deve interagire. Nel nostro sistema, l'adozione di questo pattern comporta due vantaggi architetturali primari: realizza un accoppiamento lasco (\textit{loose coupling}) tra i ViewModel e l'infrastruttura di rete, e diminuisce la complessità generale favorendo una rigida stratificazione (layered architecture).
-
-\subsubsection{Problema}
-Il sottosistema di networking della nostra applicazione è composto da diverse entità che devono collaborare: il client HTTP (Axios), i meccanismi di intercettazione delle richieste, il formattatore degli errori e i token di cancellazione (AbortSignal). 
-Senza un punto di accesso centralizzato, ogni componente o ViewModel dovrebbe istanziare e orchestrare autonomamente tutte queste entità. Questo approccio porterebbe a duplicazione del codice, comportamenti eterogenei in caso di errore e un forte accoppiamento tra la logica di presentazione e i dettagli implementativi del trasporto HTTP.
-
-\subsubsection{Applicazione}
-Il file \texttt{apiClient.ts} funge da Facade per il sottosistema di networking. Il suo scopo è orchestrare le varie componenti infrastrutturali fornendo un'interfaccia semplificata ai livelli superiori. Invece di dover gestire le singole entità di rete, i ViewModel si interfacciano unicamente con il Facade, il quale si occupa di:
-\begin{itemize}
-\item \textbf{Centralizzazione della configurazione}: gestisce in un unico punto la \texttt{baseURL}, il timeout e gli header standard, leggendone i valori dalle variabili d'ambiente (\texttt{\gls{VITE}\_API\_BASE\_URL}, \texttt{\gls{VITE}\_API\_TIMEOUT}) con fallback ai valori di default. Qualsiasi modifica ai parametri di connessione richiede interventi esclusivamente in questo file.
-\item \textbf{Normalizzazione degli errori}: tramite un response interceptor, intercetta qualsiasi fallimento (assenza di connessione, errori HTTP 4xx/5xx, timeout, richieste annullate tramite \texttt{AbortSignal}) e lo trasforma in un oggetto \texttt{Error} standard attraverso la funzione pura \texttt{transformApiError}. Questo garantisce che il resto dell'applicazione riceva sempre errori omogenei, indipendentemente dalla causa tecnica del problema.
-\item \textbf{Gestione unificata della cancellazione}: integra il supporto nativo all'\texttt{AbortSignal}, permettendo ai ViewModel di interrompere richieste pendenti (ad esempio quando l'utente annulla un'operazione AI in corso) senza che questa logica debba essere replicata nei singoli componenti.
-\end{itemize}
-
-\subsection{Modulo aiCall.ts}
-aiCall.ts è il modulo che si occupa di mediare l'accesso alle funzionalità di intelligenza artificiale del backend, esponendo un'interfaccia orientata al dominio anziché al protocollo HTTP.
-
-\subsubsection{Problema}
-Senza questo modulo, ogni ViewModel che necessita di invocare un'operazione AI dovrebbe conoscere l'URL esatto dell'\gls{endpoint}, costruire manualmente il payload JSON nel formato atteso dal backend ed estrarre il testo generato dalla struttura della risposta HTTP. Questo comporterebbe una dipendenza diretta tra la logica di presentazione e i dettagli implementativi del servizio AI: qualsiasi modifica all'\gls{endpoint} o al formato dei dati richiederebbe interventi su tutti i componenti che effettuano la chiamata.
-
-\subsubsection{Applicazione}
-Il modulo astrae l'\gls{endpoint} specifico (/ai/generate) e traduce il linguaggio del frontend in quello richiesto dal server:
-\begin{itemize}
-\item \textbf{Interfaccia di dominio}: espone il metodo \texttt{executeOperation}, che accetta parametri tipizzati (\texttt{AiRequestPayload}, \texttt{AbortSignal}) e restituisce direttamente una \texttt{Promise<string>}, nascondendo la struttura raw della risposta HTTP (\texttt{AiResponse.generated\_text}) ai livelli superiori.
-\item \textbf{Contratto dei tipi}: il tipo enumerato \texttt{AiOperationId} definisce staticamente l'insieme delle operazioni permesse (come \texttt{summary}, \texttt{rewrite}, \texttt{fix\_grammar}), garantendo a compile-time che il frontend non possa inviare comandi non riconosciuti dall'\texttt{OPERATION\_MAPPER} lato server.
-\item \textbf{Isolamento delle modifiche}: se l'URL del backend o la struttura del payload dovesse cambiare, sarebbe sufficiente intervenire esclusivamente su questo file, senza propagare modifiche alla logica dei componenti UI.
-\end{itemize}
-
-\subsection{Collaborazione tra i componenti}
-L'architettura segue una struttura a strati che garantisce un alto grado di disaccoppiamento:
-\begin{itemize}
-\item \textbf{ViewModel (useAiOperations.ts)}: non ha alcuna conoscenza di URL o di Axios. Invoca aiCall richiedendo l'esecuzione di un'operazione di dominio ("Riassumi questo testo"), gestendo esclusivamente la logica di stato della UI.
-\item \textbf{aiCall.ts}: conosce la struttura del servizio AI. Costruisce il payload corretto e lo delega al Facade, specificando l'\gls{endpoint} di destinazione.
-\item \textbf{Facade (apiClient.ts)}: esegue materialmente la trasmissione HTTP, gestendo i dettagli tecnici di basso livello e garantendo che qualsiasi anomalia di rete venga restituita in un formato omogeneo e gestibile.
-\end{itemize}
-
-\subsection{Vantaggi}
-Questa architettura porta benefici misurabili in termini di qualità del software. Dal punto di vista della testabilità, è possibile verificare la logica di aiCall.ts simulando il Facade, oppure testare i componenti dell'interfaccia utente fornendo un mock di executeOperation, senza mai dover effettuare chiamate reali ai server. Dal punto di vista del disaccoppiamento tecnologico, una futura migrazione da Axios all'\gls{API} nativa \texttt{fetch} richiederebbe modifiche unicamente ad \texttt{apiClient.ts}, lasciando intatti tutti gli hook e i componenti.
-
-Il gruppo è consapevole che, dato l'attuale numero di \gls{endpoint} esposti dal backend, il Facade e il modulo aiCall introducono una complessità non strettamente necessaria allo stato attuale del sistema. La scelta è stata deliberata e motivata dall'estensibilità futura verso nuovi \gls{endpoint} (autenticazione, salvataggio remoto dei documenti), dalla necessità di centralizzare la gestione degli errori tipici del contesto AI (timeout lunghi, risposte di provider esterni), e dalla volontà di applicare consapevolmente principi di disaccoppiamento nell'ambito del corso di Ingegneria del Software.
-
-
-% diagramma
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=1\textwidth]{../UMLimg/facade.jpg}
-    \caption{UML del pattern Facade}
-    \label{fig:uml_facade}
-\end{figure}
-
-
-
-\newpage
 
 % GESTIONE DEGLI STATI DEI WIDGET
 \subsection{Gestione degli stati del widget AI}
