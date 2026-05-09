@@ -1255,14 +1255,12 @@ Questo approccio garantisce che ogni hook sia modulare e testabile in totale iso
 \newpage
 
 \section{Frontend: design pattern}
-La progettazione del frontend di \textit{Second Brain} ha fatto uso di design pattern strutturali 
-orientati alla semplificazione dell'interfaccia tra i moduli e al disaccoppiamento tra la logica 
-di presentazione e i dettagli implementativi della comunicazione di rete. Nel sistema, la 
-comunicazione con il backend non avviene mai tramite chiamate dirette alla libreria esterna 
-\texttt{Axios}: è stata invece adottata un'architettura a due moduli distinti e complementari, 
-in cui il Facade (apiClient.ts) si occupa del \textit{come} comunicare con il server, e aiCall.ts del 
-\textit{cosa} richiedere, garantendo che View e ViewModel rimangano agnostici rispetto a 
-entrambi gli aspetti.
+La progettazione del frontend di \textit{Second Brain} ha fatto uso di soluzioni 
+architetturali consolidate orientate alla separazione delle responsabilità, 
+al disaccoppiamento tra i moduli e alla gestione ordinata della complessità 
+dell'interfaccia utente. L'obiettivo è stato mantenere View e ViewModel il più 
+possibile agnostici rispetto ai dettagli implementativi, favorendo codice 
+modulare, leggibile e manutenibile.
 
 
 % GESTIONE DEGLI STATI DEI WIDGET
