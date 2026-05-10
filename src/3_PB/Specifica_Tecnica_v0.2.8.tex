@@ -103,7 +103,7 @@
     \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{\gls{Verifica}} \\
     \hline
     \endhead
-        0.2.8 & 09/05/2026 & Elisa Marchioro & Modifiche sezione \gls{API} & \\
+        0.2.8 & 09/05/2026 & Elisa Marchioro & Modifiche sezione \gls{API} & Giuia Barzon\\
         \hline
         0.2.7 & 08/05/2026 & Giulia Barzon & Piccolo fix sezione layered e deployment & Elisa Marchioro\\
         \hline
@@ -484,110 +484,6 @@ Il file \texttt{\gls{docker}-compose.yml} coordina l'avvio sincronizzato dei ser
     \caption{Rappresentazione dell'architettura di deployment tramite \gls{Docker Compose}}
     \label{fig:architettura_deployment}
 \end{figure}
-
-\newpage
-
-\section{\gls{API}}
-Il sistema adotta un’architettura basata su \gls{API} REST (Representational State Transfer), uno stile architetturale per servizi web che consente comunicazione standardizzata, scalabile e disaccoppiata tra client e server. REST si basa sull’utilizzo del protocollo HTTP e sull’identificazione delle risorse tramite URI, promuovendo semplicità, interoperabilità e manutenibilità.
-
-\subsection{Principi e requisiti delle \gls{API} REST}
-Per essere conforme allo stile REST, il sistema rispetta i seguenti principi:
-\begin{itemize}
-\item \textbf{Architettura client-server}: separazione netta tra frontend e backend;
-\item \textbf{Statelessness}: ogni richiesta contiene tutte le informazioni necessarie per essere elaborata e il server non mantiene stato tra richieste successive.
-\item \textbf{Interfaccia uniforme}: utilizzo coerente di:
-    \begin{itemize}[label=\textbullet]
-        \item URI per identificare le risorse;
-        \item Metodi HTTP standard:
-            GET → recupero dati;
-            POST → creazione/elaborazione;
-            PUT/PATCH → aggiornamento;
-            DELETE → rimozione.
-\end{itemize}
-\item \textbf{Formato dei dati standardizzato}: scambio dati in formato JSON, facilmente leggibile e interoperabile tra sistemi eterogenei.
-\item \textbf{Separazione delle responsabilità (\gls{Separation of Concerns})}: il client gestisce la presentazione, il server gestisce logica, orchestrazione e integrazione con servizi esterni.
-\item \textbf{Scalabilità}: grazie alla natura \gls{stateless}, il backend può essere replicato e distribuito senza gestione di sessioni condivise.
-\end{itemize}
-
-\subsection{Comunicazione client–server (Axios)}
-Nel frontend, la comunicazione con le \gls{API} REST avviene tramite la libreria \textbf{Axios}, un HTTP client basato su promise che semplifica l’invio di richieste asincrone e la gestione delle risposte. 
-Nel contesto dell’applicazione, Axios è utilizzato nel frontend come client HTTP centralizzato per invocare le \gls{API} REST esposte dal backend. In particolare, gestisce l’interazione con l’\gls{endpoint} di generazione AI (POST /\gls{api}/ai/generate), incapsulando tutta la logica di comunicazione.
-
-Nel dettaglio, Axios svolge le seguenti funzioni:
-\begin{itemize}
-\item \textbf{Invio delle richieste al backend}:
-Costruisce e invia la richiesta POST verso l’\gls{endpoint} /\gls{api}/ai/generate contenente:
-\begin{itemize}[label=\textbullet]
-\item il testo inserito dall’utente (text);
-\item l’operazione richiesta (operation);
-\end{itemize}
-
-\item \textbf{Gestione asincrona della comunicazione}: permette al frontend di utilizzare async/await per gestire la chiamata senza bloccare l’interfaccia utente, migliorando la user experience.
-\item \textbf{Serializzazione automatica dei dati}: converte automaticamente gli oggetti JavaScript in JSON per il body della richiesta, senza necessità di gestione manuale.
-\item \textbf{Gestione della risposta}: riceve il JSON dal backend (es. generated\_text) e lo rende immediatamente disponibile al frontend per l’aggiornamento della UI.
-\item \textbf{Gestione degli errori}: centralizza la gestione di errori HTTP o di rete (es. 400, 500), permettendo di definire comportamenti uniformi (messaggi utente, retry, logging).
-\item \textbf{Configurazione condivisa}: consente di definire in un unico punto:
-\begin{itemize}[label=\textbullet]
-\item baseURL del backend;
-\item eventuali headers;
-\item timeout e policy di retry.
-\end{itemize}
-\end{itemize}
-
-\subsubsection{Organizzazione del codice}
-Per mantenere il codice ordinato e facile da modificare, la comunicazione HTTP non viene usata direttamente nei componenti dell'interfaccia, ma è organizzata in due moduli sovrapposti.
-
-\paragraph{Modulo apiClient.ts}
-apiClient.ts è il modulo che si occupa della comunicazione HTTP dell'applicazione, esponendo un'istanza di Axios preconfigurata e condivisa come punto di accesso centralizzato all'infrastruttura di rete.
-\begin{itemize}
-\item \textbf{Problema} Il sottosistema di networking della nostra applicazione è composto da diverse entità che devono collaborare: il client HTTP (Axios), i meccanismi di intercettazione delle richieste, il formattatore degli errori e i token di cancellazione (AbortSignal). 
-Senza un punto di accesso centralizzato, ogni componente o ViewModel dovrebbe istanziare e orchestrare autonomamente tutte queste entità. Questo approccio porterebbe a duplicazione del codice, comportamenti eterogenei in caso di errore e un forte accoppiamento tra la logica di presentazione e i dettagli implementativi del trasporto HTTP.
-\item \textbf{Applicazione} Il modulo apiClient.ts è un'istanza di Axios preconfigurata e condivisa in tutta l'applicazione. Centralizza in un unico punto la baseURL, il timeout e gli header standard, leggendoli dalle variabili d'ambiente. Tramite un response interceptor, intercetta qualsiasi errore (di rete, HTTP o di cancellazione tramite AbortSignal) e lo trasforma in un oggetto Error omogeneo attraverso la funzione transformApiError. In questo modo il resto dell'applicazione riceve sempre errori in un formato uniforme.
-\end{itemize}
-
-\paragraph{Modulo aiCall.ts}
-aiCall.ts è il modulo che si occupa di mediare l'accesso alle funzionalità di intelligenza artificiale del backend, esponendo un'interfaccia orientata al dominio anziché al protocollo HTTP.
-\begin{itemize}
-\item \textbf{Problema} Senza questo modulo, ogni ViewModel che necessita di invocare un'operazione AI dovrebbe conoscere l'URL esatto dell'\gls{endpoint}, costruire manualmente il payload JSON nel formato atteso dal backend ed estrarre il testo generato dalla struttura della risposta HTTP. Questo comporterebbe una dipendenza diretta tra la logica di presentazione e i dettagli implementativi del servizio AI: qualsiasi modifica all'\gls{endpoint} o al formato dei dati richiederebbe interventi su tutti i componenti che effettuano la chiamata.
-\item \textbf{Applicazione} Il modulo astrae l'\gls{endpoint} specifico (/ai/generate) e traduce il linguaggio del frontend in quello richiesto dal server:
-\begin{itemize}
-\item \textbf{Interfaccia di dominio}: espone il metodo \texttt{executeOperation}, che accetta parametri tipizzati (\texttt{AiRequestPayload}, \texttt{AbortSignal}) e restituisce direttamente una \texttt{Promise<string>}, nascondendo la struttura raw della risposta HTTP (AiResponse.generated\_text) ai livelli superiori.
-\item \textbf{Contratto dei tipi}: il tipo enumerato \texttt{AiOperationId} definisce staticamente l'insieme delle operazioni permesse (come \texttt{summary}, \texttt{rewrite}, \texttt{fix\_grammar}), garantendo a compile-time che il frontend non possa inviare comandi non riconosciuti dall'\texttt{OPERATION\_MAPPER} lato server.
-\item \textbf{Isolamento delle modifiche}: se l'URL del backend o la struttura del payload dovesse cambiare, sarebbe sufficiente intervenire esclusivamente su questo file, senza propagare modifiche alla logica dei componenti UI.
-\end{itemize}
-\end{itemize}
-
-\paragraph{Collaborazione tra i componenti}
-L'architettura segue una struttura a strati che garantisce un alto grado di disaccoppiamento:
-\begin{itemize}
-\item \textbf{ViewModel (useAiOperations.ts)}: non ha alcuna conoscenza di URL o di Axios. Invoca aiCall richiedendo l'esecuzione di un'operazione di dominio ("Riassumi questo testo"), gestendo esclusivamente la logica di stato della UI.
-\item \textbf{aiCall.ts}: conosce la struttura del servizio AI. Costruisce il payload corretto e lo delega al Facade, specificando l'\gls{endpoint} di destinazione.
-\item \textbf{apiClient.ts}: esegue materialmente la trasmissione HTTP, gestendo i dettagli tecnici di basso livello e garantendo che qualsiasi anomalia di rete venga restituita in un formato omogeneo e gestibile.
-\end{itemize}
-
-\paragraph{Vantaggi}
-Questa architettura porta benefici misurabili in termini di qualità del software. Dal punto di vista della testabilità, la separazione in livelli distinti facilita la testabilità dei singoli moduli e riduce l'accoppiamento tra la logica di presentazione e i dettagli implementativi della comunicazione HTTP. Dal punto di vista del disaccoppiamento tecnologico, una futura migrazione da Axios all'\gls{API} nativa \texttt{fetch} richiederebbe modifiche unicamente ad \texttt{apiClient.ts}, lasciando intatti tutti gli hook e i componenti.
-
-Il gruppo è consapevole che, dato l'attuale numero di \gls{endpoint} esposti dal backend, il modulo apiClient e il modulo aiCall introducono una complessità non strettamente necessaria allo stato attuale del sistema. La scelta è stata deliberata e motivata dall'estensibilità futura verso nuovi \gls{endpoint} (autenticazione, salvataggio remoto dei documenti), dalla necessità di centralizzare la gestione degli errori tipici del contesto AI (timeout lunghi, risposte di provider esterni), e dalla volontà di applicare consapevolmente principi di disaccoppiamento nell'ambito del corso di Ingegneria del Software.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=1\textwidth]{../UMLimg/facade.jpg}
-    \caption{UML del pattern Facade}
-    \label{fig:uml_facade}
-\end{figure}
-
-\subsection{Flusso di elaborazione}
-\begin{enumerate}
-\item Il ViewModel invoca \texttt{executeOperation} tramite il modulo \texttt{aiCall.ts}.
-\item \texttt{aiCall.ts} delega la richiesta HTTP POST ad \texttt{apiClient}, specificando l'\gls{endpoint} \texttt{/ai/generate} e il payload.
-\item Il controller backend riceve la richiesta e valida i dati.
-\item Viene selezionata la strategia di elaborazione tramite un registry interno.
-\item Il sistema costruisce i \gls{prompt} per il modello AI.
-\item Il backend invoca il modello per generare il contenuto.
-\item La risposta viene pulita e normalizzata.
-\item Il risultato viene restituito al client in formato JSON, estratto da \texttt{apiClient} e restituito come stringa al ViewModel.
-\end{enumerate}
 
 \newpage
 
@@ -1136,10 +1032,7 @@ Questo hook opera esclusivamente in modo imperativo, non ha quindi nessuno stato
     \label{fig:uml_hooks_storico}
 \end{figure}
 
-
 Interfaccia la View con lo store dedicato (\texttt{useHistoryStore}), estraendo le interazioni passate. Per garantire alte prestazioni e fluidità UI, tramite \texttt{useMemo} applica dinamicamente i filtri di ricerca e l'ordinamento cronologico, assicurando che lo strato di presentazione riceva sempre informazioni formattate senza subire calcoli ridondanti.
-
-
 
 \paragraph{Stato/Valori di ritorno}
 \begin{itemize}
@@ -1221,7 +1114,6 @@ Sono presenti tre store principali:
 \textit{Nota}: Il contenuto testuale effettivo dell'editor, per ragioni di performance legate alla natura della libreria \gls{EasyMDE}, non transita attraverso lo store globale, ma viene salvato e sincronizzato direttamente in una chiave dedicata del \texttt{localStorage} gestita dal ViewModel dell'editor.
 
 
-\newpage
 
 % DEPENDENCY INJECTION e PAGINE
 \subsection{Orchestrazione e Dependency Injection}
@@ -1246,7 +1138,6 @@ Il ruolo dell'\gls{orchestratore} è quello di istanziare i ViewModel, leggere l
     \item \textbf{Riutilizzo della UI}: Importa la \texttt{Topbar} in modalità sola lettura (passando \texttt{() => \{\}} come callback di modifica) e la \texttt{Sidebar}, garantendo coerenza visiva con l'editor pur disabilitando i comandi non pertinenti.
 \end{itemize}
 
-
 \subsubsection{Dependency Injection (DI)}
 La \textbf{Dependency Injection} è un pattern architetturale fondamentale dell'Ingegneria del Software, volto a implementare il principio dell'Inversione del Controllo (IoC). Consiste nel fornire a un oggetto o a una funzione le dipendenze di cui ha bisogno dall'esterno, anziché permettere che sia il componente stesso a istanziarle o importarle in modo rigido. Questo approccio riduce l'accoppiamento (\textit{tight coupling}) tra i moduli, aumenta la coesione e rende il sistema altamente modulare e testabile.
 
@@ -1257,35 +1148,25 @@ Il caso più evidente si trova nell'istanza di \texttt{useEditor}: questo hook n
 
 Questo approccio garantisce che ogni hook sia modulare e testabile in totale isolamento fornendo dei semplici \textit{mock} al momento dei test.
 
-
 \newpage
 
-\section{Frontend: design pattern}
-La progettazione del frontend di \textit{Second Brain} ha fatto uso di soluzioni 
-architetturali consolidate orientate alla separazione delle responsabilità, 
-al disaccoppiamento tra i moduli e alla gestione ordinata della complessità 
-dell'interfaccia utente. L'obiettivo è stato mantenere View e ViewModel il più 
-possibile agnostici rispetto ai dettagli implementativi, favorendo codice 
-modulare, leggibile e manutenibile.
-
-
 % GESTIONE DEGLI STATI DEI WIDGET
-\subsection{Gestione degli stati del widget AI}
+\section{Frontend: gestione degli stati del widget AI}
 La gestione dell'interfaccia utente per il widget AI adotta un implementazione a \textbf{stati}. Questa scelta permette di gestire la complessa variabilità visiva del widget in modo modulare e polimorfico.
 
-\subsubsection{Problema}
+\subsection{Problema}
 L’AI Widget è un componente che espone diverse funzionalità in base allo stato dell’operazione in corso. Ogni operazione attraversa una serie di fasi, rendendo esplicita all’utente la condizione della richiesta. Ad esempio, nel caso di un riassunto, il widget passa da uno stato di caricamento, in cui l'utente attende la risposta e in cui è possibile solo annullare l'operazione, a uno stato di visualizzazione del risultato, che l’utente può inserire, eliminare o rigenerare.
 
 In un ambiente dichiarativo come \gls{React}, adottare questo approccio porterebbe il componente principale a gestire ampi blocchi condizionali (come costrutti \texttt{switch} o \texttt{if/else}) per determinare quale porzione di interfaccia renderizzare, generando codice rigido, frammentato e difficile da testare.
 
-\subsubsection{Soluzione: rendering delegato e stati polimorfi}
+\subsection{Soluzione: rendering delegato e stati polimorfi}
 Nel sistema implementato, il widget si limita a invocare il metodo di rendering dello stato corrente e le relative funzionalità, senza conoscerne l’effettiva implementazione. Ogni stato non è solo comportamentale, ma anche \textbf{presentazionale}: ciascun oggetto-stato è direttamente responsabile del proprio rendering in \gls{React}. Questo consente al componente \texttt{AiWidget} di agire come un semplice coordinatore passivo.
 
 % diagramma per le classi degli stati
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{../UMLimg/widgetState.jpg}
-    \caption{Diagramma delle classi del Render-Delegate State Pattern}
+    \caption{Diagramma UML che mostra la gestione dei Widget AI}
     \label{fig:uml_ai_widget_state}
 \end{figure}
 
@@ -1309,14 +1190,14 @@ Sono definite cinque classi concrete, ciascuna corrispondente a una fase del cic
 Le callback iniettate nei costruttori vengono catturate in chiusura al momento della transizione, mantenendo il riferimento al contesto operativo corrente senza che gli stati si conoscano tra loro.
 
 
-\subsubsection{Orchestrazione: store globale e ViewModel}
+\subsection{Orchestrazione: store globale e ViewModel}
 La "macchina a stati" polimorfica è orchestrata attraverso la collaborazione tra lo store globale e la logica di business del ViewModel.
 
-\paragraph{Lo store (\texttt{aiWidgetStore})}
-Lo stato corrente è mantenuto globalmente in uno store gestito tramite la libreria \textbf{\gls{Zustand}}. Nello store, lo stato non è un parametro primitivo, ma un'istanza diretta dell'interfaccia \texttt{IWidgetState}. Le transizioni avvengono sostituendo integralmente l'istanza tramite la funzione dedicata \texttt{changeState(newState: IWidgetState)}, che innesca l'aggiornamento reattivo dell'interfaccia.\\\\
+\subsubsection{Lo store (\texttt{aiWidgetStore})}
+Lo stato corrente è mantenuto globalmente in uno store gestito tramite la libreria \textbf{\gls{Zustand}}. Nello store, lo stato non è un parametro primitivo, ma un'istanza diretta dell'interfaccia \texttt{IWidgetState}. Le transizioni avvengono sostituendo integralmente l'istanza tramite la funzione dedicata\\ \texttt{changeState(newState: IWidgetState)}, che innesca l'aggiornamento reattivo dell'interfaccia.\\\\
 Lo store si occupa inoltre di mantenere il \textit{\gls{prompt}} relativo all’ultima operazione, in modo da poterlo recuperare facilmente in caso di rigenerazione.
 
-\paragraph{ViewModel (\texttt{useAiOperations})}
+\subsubsection{ViewModel (\texttt{useAiOperations})}
 L'orchestrazione delle transizioni è centralizzata nel \textit{custom hook} \texttt{useAiOperations}. Questo componente funge da "regista" del pattern:
 \begin{itemize}
     \item Istanzia le classi di stato iniettando le callback operative.
@@ -1335,8 +1216,143 @@ Nel caso dell'operazione \textit{\gls{Distant Writing}}, che richiede un \gls{pr
 \end{equation*}
 In entrambi i percorsi, un errore durante la chiamata porta istantaneamente a \texttt{ErrorState}, mentre la cancellazione esplicita da parte dell'utente riporta direttamente a \texttt{IdleState}.
 
-\subsubsection{Separazione delle responsabilità}
+\subsection{Separazione delle responsabilità}
 Questa architettura garantisce una netta separazione tra rendering e logica: \texttt{AiWidget} è un componente principalmente coordinatore che delega ogni decisione all’oggetto stato corrente; le classi di stato gestiscono la struttura visiva e le callback iniettate, senza contenere logica di business; \texttt{useAiOperations} rappresenta l’unico punto in cui risiedono la logica applicativa, le transizioni di stato e la gestione degli errori.
+
+\newpage
+
+\section{Interfaccia \gls{API}}
+Il sistema adotta un'interfaccia \gls{API} basata sullo stile architetturale
+\textbf{\gls{RPC}} (Remote Procedure Call), specificatamente nella variante
+\textbf{JSON-RPC-like} su HTTP.
+
+\subsection{Confronto REST e RPC}
+REST e RPC sono due stili architetturali distinti per la progettazione
+delle \gls{API}. Entrambi utilizzano HTTP come protocollo sottostante
+e JSON come formato di scambio, ma differiscono nel modello mentale con cui organizzano la comunicazione.
+
+\paragraph{REST: Representational State Transfer}
+REST è uno stile architetturale formalizzato da Roy Fielding nel 2000. Il suo modello mentale è orientato alle \textbf{risorse} (sostantivi): ogni entità del dominio è identificata da un URI univoco e le operazioni su di essa sono espresse dai verbi HTTP standard
+(\texttt{GET}, \texttt{POST}, \texttt{PUT}/\texttt{PATCH}, \texttt{DELETE}).
+\begin{itemize}
+    \item \textbf{Domanda chiave}: «Qual è l'oggetto coinvolto?»
+    \item \textbf{Esempio}: \texttt{POST /api/articles} crea un articolo; \texttt{DELETE /api/articles/42} lo elimina.
+    \item \textbf{Adatto a}: operazioni CRUD su risorse persistenti, \gls{API} pubbliche, sistemi che beneficiano della cache HTTP nativa.
+\end{itemize}
+
+\paragraph{RPC: Remote Procedure Call}
+RPC è un paradigma in cui il client invoca direttamente una \textbf{funzione} (procedura) sul server, come se fosse una chiamata locale. Il modello mentale è orientato alle \textbf{azioni} (verbi): l'operazione da eseguire è specificata nel corpo della richiesta, non nell'URL.
+\begin{itemize}
+    \item \textbf{Domanda chiave}: «Quale funzione devo chiamare?»
+    \item \textbf{Esempio}: \texttt{POST /api/generate} con body
+    \texttt{\{"operationId": "summary", "text": ""\}}.
+    \item \textbf{Adatto a}: azioni su dati, chiamate interne, domini orientati alle procedure come l'elaborazione AI.
+\end{itemize}
+
+\subsection{Motivazione della scelta: JSON-RPC-like}
+Le operazioni AI del sistema (\textit{summary}, \textit{rewrite}, \textit{translate}, analisi con i Sei Cappelli di De Bono...) sono \textbf{azioni su un testo}, non operazioni CRUD su risorse persistenti. Non esiste un «documento di riassunto» da creare, aggiornare o eliminare: esiste una trasformazione da applicare. Questo dominio è intrinsecamente orientato alle procedure, rendendo RPC il pattern semanticamente più corretto.
+
+Tutta la comunicazione AI transita attraverso un unico \gls{endpoint}:
+\begin{center}
+    \texttt{POST /api/ai/generate}
+\end{center}
+Il tipo di operazione da eseguire sul server è specificato nel corpo della richiesta (body JSON) tramite il campo \texttt{operationId}:
+\begin{verbatim}
+{
+  "operationId": "summary",
+  "text": "testo da elaborare",
+  "prompt": "" 
+}
+\end{verbatim}
+
+A titolo comparativo, un'implementazione REST avrebbe richiesto endpoint separati per ogni operazione:
+\begin{verbatim}
+    POST /api/ai/summary
+    POST /api/ai/rewrite
+    POST /api/ai/fix-grammar
+    POST /api/ai/translate/it
+\end{verbatim}
+Questa struttura non avrebbe apportato vantaggi concreti (nessuna risorsa identificabile, nessuna cacheabilità) a fronte di una maggiore complessità di routing lato backend e frontend.
+
+L'interfaccia rispetta comunque i seguenti principi fondamentali del protocollo HTTP:
+\begin{itemize}
+    \item \textbf{Statelessness}: ogni richiesta è autocontenuta; il server non mantiene stato tra richieste successive.
+    \item \textbf{Uso corretto dei metodi HTTP}: \texttt{POST} per operazioni con effetti sul server; \texttt{GET} per l'health check.
+    \item \textbf{Formato JSON}: scambio dati standardizzato e interoperabile tra sistemi eterogenei.
+    \item \textbf{Separazione delle responsabilità}: il client gestisce la presentazione; il server gestisce logica, orchestrazione e integrazione con i provider LLM.
+    \item \textbf{Scalabilità}: la natura \gls{stateless} permette di replicare il backend senza gestione di sessioni condivise.
+\end{itemize}
+
+\subsection{Comunicazione client–server (Axios e Servizi)}
+Nel frontend, la comunicazione con il backend avviene tramite la libreria \textbf{Axios}, un HTTP client basato su \textit{Promise} che semplifica l'invio di richieste asincrone e la gestione delle risposte. Axios è utilizzato come motore di rete centralizzato per invocare l'\gls{endpoint} di generazione AI, ma viene incapsulato all'interno di moduli di servizio (\texttt{apiClient.ts} e \texttt{aiCall.ts}) per evitare che i componenti dell'interfaccia dipendano dai dettagli di trasporto.
+
+Nel dettaglio, l'infrastruttura basata su Axios svolge le seguenti funzioni:
+\begin{itemize}
+    \item \textbf{Invio delle richieste al backend}: costruisce e invia la richiesta \texttt{POST} verso \texttt{/api/ai/generate} contenente i parametri dell'operazione, ovvero l'operazione richiesta dall'utente (\texttt{operationId}), il testo base (\texttt{text}) e l'eventuale istruzione aggiuntiva (\texttt{prompt}, utilizzato nel Distant Writing).
+    \item \textbf{Gestione asincrona}: permette ai ViewModel del frontend di utilizzare nativamente \texttt{async}/\texttt{await} senza bloccare il thread principale dell'interfaccia utente.
+    \item \textbf{Serializzazione automatica}: converte trasparentemente i \textit{payload} e gli oggetti JavaScript in stringhe JSON senza necessità di parsing manuale.
+    \item \textbf{Estrazione della risposta}: riceve il JSON dal backend, ne estrae il campo utile (\texttt{generated\_text}) e lo rende immediatamente disponibile al frontend sotto forma di stringa per l'aggiornamento della UI.
+    \item \textbf{Normalizzazione degli errori (\textit{Interceptor})}: centralizza la cattura di errori HTTP o di rete (es. codici \texttt{400}, \texttt{500} o timeout) e, tramite un intercettore, li trasforma in oggetti \texttt{ApiError} standardizzati, garantendo un comportamento uniforme in tutta l'applicazione.
+    \item \textbf{Configurazione condivisa}: consente di definire in un unico punto (\texttt{apiClient.ts}) la \texttt{baseURL} del backend letta dall'ambiente, eventuali headers, timeout e token di cancellazione (\texttt{AbortSignal}).
+\end{itemize}
+
+
+\subsection{Organizzazione del codice}
+Per mantenere il codice ordinato e facile da modificare, la comunicazione HTTP non viene usata direttamente nei componenti dell'interfaccia, ma è organizzata in due moduli sovrapposti.
+
+\subsubsection{Modulo apiClient.ts}
+apiClient.ts è il modulo che si occupa della comunicazione HTTP dell'applicazione, esponendo un'istanza di Axios preconfigurata e condivisa come punto di accesso centralizzato all'infrastruttura di rete.
+\begin{itemize}
+    \item \textbf{Problema:} Il sottosistema di networking della nostra applicazione è composto da diverse entità che devono collaborare: il client HTTP (Axios), i meccanismi di intercettazione delle richieste, il formattatore degli errori e i token di cancellazione (AbortSignal). 
+    Senza un punto di accesso centralizzato, ogni componente dovrebbe istanziare e orchestrare autonomamente tutte queste entità. Questo approccio porterebbe a duplicazione del codice, comportamenti eterogenei in caso di errore e un forte accoppiamento tra la logica di presentazione e i dettagli implementativi del trasporto HTTP.
+    
+    \item \textbf{Applicazione:} Il modulo apiClient.ts è un'istanza di Axios preconfigurata e condivisa in tutta l'applicazione. Centralizza in un unico punto la baseURL, il timeout e gli header standard, leggendoli dalle variabili d'ambiente. Tramite un response interceptor, intercetta qualsiasi errore (di rete, HTTP o di cancellazione tramite AbortSignal) e lo trasforma in un oggetto Error omogeneo attraverso la funzione transformApiError. In questo modo il resto dell'applicazione riceve sempre errori in un formato uniforme.
+\end{itemize}
+
+\subsubsection{Modulo aiCall.ts}
+aiCall.ts è il modulo che si occupa di mediare l'accesso alle funzionalità di intelligenza artificiale del backend, esponendo un'interfaccia orientata al dominio anziché al protocollo HTTP.
+\begin{itemize}
+    \item \textbf{Problema:} Senza questo modulo, ogni ViewModel che necessita di invocare un'operazione AI dovrebbe conoscere l'URL esatto dell'\gls{endpoint}, costruire manualmente il payload JSON nel formato atteso dal backend ed estrarre il testo generato dalla struttura della risposta HTTP. Questo comporterebbe una dipendenza diretta tra la logica di presentazione e i dettagli implementativi del servizio AI: qualsiasi modifica all'\gls{endpoint} o al formato dei dati richiederebbe interventi su tutti i componenti che effettuano la chiamata.
+    
+    \item \textbf{Applicazione:} Il modulo astrae l'\gls{endpoint} specifico (/ai/generate) e traduce il linguaggio del frontend in quello richiesto dal server:
+    \begin{itemize}
+        \item \textbf{Interfaccia di dominio}: espone il metodo \texttt{executeOperation}, che accetta parametri tipizzati (\texttt{AiRequestPayload}, \texttt{AbortSignal}) e restituisce direttamente una \texttt{Promise<string>}, nascondendo la struttura raw della risposta HTTP (AiResponse.generated\_text) ai livelli superiori.
+        \item \textbf{Contratto dei tipi}: il tipo enumerato \texttt{AiOperationId} definisce staticamente l'insieme delle operazioni permesse (come \texttt{summary}, \texttt{rewrite}, \texttt{fix\_grammar}), garantendo a compile-time che il frontend non possa inviare comandi non riconosciuti dall'\texttt{OPERATION\_MAPPER} lato server.
+        \item \textbf{Isolamento delle modifiche}: se l'URL del backend o la struttura del payload dovesse cambiare, sarebbe sufficiente intervenire esclusivamente su questo file, senza propagare modifiche alla logica dei componenti UI.
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Collaborazione tra i componenti}
+L'architettura segue una struttura a strati che garantisce un alto grado di disaccoppiamento:
+\begin{itemize}
+    \item \textbf{ViewModel (useAiOperations.ts)}: non ha alcuna conoscenza di URL o di Axios. Invoca aiCall richiedendo l'esecuzione di un'operazione di dominio ("Riassumi questo testo"), gestendo esclusivamente la logica di stato della UI.
+    \item \textbf{aiCall.ts}: conosce la struttura del servizio AI, costruisce il payload corretto e lo delega ad apiClient, specificando l'\gls{endpoint} di destinazione.
+    \item \textbf{apiClient.ts}: esegue materialmente la trasmissione HTTP, gestendo i dettagli tecnici di basso livello e garantendo che qualsiasi anomalia di rete venga restituita in un formato omogeneo e gestibile.
+\end{itemize}
+
+\subsubsection{Vantaggi}
+Questa architettura porta benefici misurabili in termini di qualità del software. Dal punto di vista della testabilità, la separazione in livelli distinti facilita l'esecuzione dei test dei singoli moduli e riduce l'accoppiamento tra la logica di presentazione e i dettagli implementativi della comunicazione HTTP. Dal punto di vista del disaccoppiamento tecnologico, una futura migrazione da Axios all'\gls{API} nativa \texttt{fetch} richiederebbe modifiche unicamente ad \texttt{apiClient.ts}, lasciando intatti tutti gli hook e i componenti.
+
+Il gruppo è consapevole che, dato l'attuale numero di \gls{endpoint} esposti dal backend, il modulo apiClient e il modulo aiCall introducono una complessità non strettamente necessaria allo stato attuale del sistema. La scelta è stata deliberata e motivata dall'estensibilità futura verso nuovi \gls{endpoint} (autenticazione, salvataggio remoto dei documenti), dalla necessità di centralizzare la gestione degli errori tipici del contesto AI (timeout lunghi, risposte di provider esterni), e dalla volontà di applicare consapevolmente principi di disaccoppiamento nell'ambito del corso di Ingegneria del Software.
+
+\subsubsection{Flusso di elaborazione}
+\begin{enumerate}
+\item Il ViewModel invoca \texttt{executeOperation} tramite il modulo \texttt{aiCall.ts}.
+\item \texttt{aiCall.ts} delega la richiesta HTTP POST ad \texttt{apiClient}, specificando l'\gls{endpoint} \\ \texttt{/ai/generate} e il payload.
+\item Il controller backend riceve la richiesta e valida i dati.
+\item Viene selezionata la strategia di elaborazione tramite un registry interno.
+\item Il sistema costruisce i \gls{prompt} per il modello AI.
+\item Il backend invoca il modello per generare il contenuto.
+\item La risposta viene pulita e normalizzata.
+\item Il risultato viene restituito al client in formato JSON, estratto da \texttt{apiClient} e restituito come stringa al ViewModel.
+\end{enumerate}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{../UMLimg/api.jpg}
+    \caption{Diagramma UML: Interazione tra i moduli di servizio HTTP}
+    \label{fig:uml_api}
+\end{figure}
 
 
 \newpage
