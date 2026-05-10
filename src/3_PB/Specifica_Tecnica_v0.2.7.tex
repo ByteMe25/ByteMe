@@ -570,6 +570,12 @@ Questa architettura porta benefici misurabili in termini di qualità del softwar
 
 Il gruppo è consapevole che, dato l'attuale numero di \gls{endpoint} esposti dal backend, il modulo apiClient e il modulo aiCall introducono una complessità non strettamente necessaria allo stato attuale del sistema. La scelta è stata deliberata e motivata dall'estensibilità futura verso nuovi \gls{endpoint} (autenticazione, salvataggio remoto dei documenti), dalla necessità di centralizzare la gestione degli errori tipici del contesto AI (timeout lunghi, risposte di provider esterni), e dalla volontà di applicare consapevolmente principi di disaccoppiamento nell'ambito del corso di Ingegneria del Software.
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{../UMLimg/facade.jpg}
+    \caption{UML del pattern Facade}
+    \label{fig:uml_facade}
+\end{figure}
 
 \subsection{Flusso di elaborazione}
 \begin{enumerate}
