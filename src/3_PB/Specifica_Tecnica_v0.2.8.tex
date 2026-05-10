@@ -1236,7 +1236,7 @@ REST è uno stile architetturale formalizzato da Roy Fielding nel 2000. Il suo m
 (\texttt{GET}, \texttt{POST}, \texttt{PUT}/\texttt{PATCH}, \texttt{DELETE}).
 \begin{itemize}
     \item \textbf{Domanda chiave}: «Qual è l'oggetto coinvolto?»
-    \item \textbf{Esempio}: \texttt{POST /api/articles} crea un articolo; \texttt{DELETE /api/articles/42} lo elimina.
+    \item \textbf{Esempio}: \texttt{POST /\gls{api}/articles} crea un articolo; \texttt{DELETE /\gls{api}/articles/42} lo elimina.
     \item \textbf{Adatto a}: operazioni CRUD su risorse persistenti, \gls{API} pubbliche, sistemi che beneficiano della cache HTTP nativa.
 \end{itemize}
 
@@ -1244,7 +1244,7 @@ REST è uno stile architetturale formalizzato da Roy Fielding nel 2000. Il suo m
 RPC è un paradigma in cui il client invoca direttamente una \textbf{funzione} (procedura) sul server, come se fosse una chiamata locale. Il modello mentale è orientato alle \textbf{azioni} (verbi): l'operazione da eseguire è specificata nel corpo della richiesta, non nell'URL.
 \begin{itemize}
     \item \textbf{Domanda chiave}: «Quale funzione devo chiamare?»
-    \item \textbf{Esempio}: \texttt{POST /api/generate} con body
+    \item \textbf{Esempio}: \texttt{POST /\gls{api}/generate} con body
     \texttt{\{"operationId": "summary", "text": ""\}}.
     \item \textbf{Adatto a}: azioni su dati, chiamate interne, domini orientati alle procedure come l'elaborazione AI.
 \end{itemize}
@@ -1254,7 +1254,7 @@ Le operazioni AI del sistema (\textit{summary}, \textit{rewrite}, \textit{transl
 
 Tutta la comunicazione AI transita attraverso un unico \gls{endpoint}:
 \begin{center}
-    \texttt{POST /api/ai/generate}
+    \texttt{POST /\gls{api}/ai/generate}
 \end{center}
 Il tipo di operazione da eseguire sul server è specificato nel corpo della richiesta (body JSON) tramite il campo \texttt{operationId}:
 \begin{verbatim}
@@ -1265,7 +1265,7 @@ Il tipo di operazione da eseguire sul server è specificato nel corpo della rich
 }
 \end{verbatim}
 
-A titolo comparativo, un'implementazione REST avrebbe richiesto endpoint separati per ogni operazione:
+A titolo comparativo, un'implementazione REST avrebbe richiesto \gls{endpoint} separati per ogni operazione:
 \begin{verbatim}
     POST /api/ai/summary
     POST /api/ai/rewrite
@@ -1288,7 +1288,7 @@ Nel frontend, la comunicazione con il backend avviene tramite la libreria \textb
 
 Nel dettaglio, l'infrastruttura basata su Axios svolge le seguenti funzioni:
 \begin{itemize}
-    \item \textbf{Invio delle richieste al backend}: costruisce e invia la richiesta \texttt{POST} verso \texttt{/api/ai/generate} contenente i parametri dell'operazione, ovvero l'operazione richiesta dall'utente (\texttt{operationId}), il testo base (\texttt{text}) e l'eventuale istruzione aggiuntiva (\texttt{prompt}, utilizzato nel Distant Writing).
+    \item \textbf{Invio delle richieste al backend}: costruisce e invia la richiesta \texttt{POST} verso \texttt{/\gls{api}/ai/generate} contenente i parametri dell'operazione, ovvero l'operazione richiesta dall'utente (\texttt{operationId}), il testo base (\texttt{text}) e l'eventuale istruzione aggiuntiva (\texttt{\gls{prompt}}, utilizzato nel \gls{Distant Writing}).
     \item \textbf{Gestione asincrona}: permette ai ViewModel del frontend di utilizzare nativamente \texttt{async}/\texttt{await} senza bloccare il thread principale dell'interfaccia utente.
     \item \textbf{Serializzazione automatica}: converte trasparentemente i \textit{payload} e gli oggetti JavaScript in stringhe JSON senza necessità di parsing manuale.
     \item \textbf{Estrazione della risposta}: riceve il JSON dal backend, ne estrae il campo utile (\texttt{generated\_text}) e lo rende immediatamente disponibile al frontend sotto forma di stringa per l'aggiornamento della UI.
