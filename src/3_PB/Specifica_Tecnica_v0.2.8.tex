@@ -274,7 +274,7 @@ I termini che vengono considerati meritevoli di approfondimenti sono indicati co
         \hline
         \gls{EasyMDE} & 2.20.0 & Editor \gls{Markdown} con anteprima in tempo reale, basato su CodeMirror. \\
         \hline
-        Axios & 1.7.9 & Client HTTP basato su Promise per effettuare richieste REST dal browser. \\
+        Axios & 1.7.9 & Client HTTP basato su Promise per effettuare richieste HTTP dal browser. \\
         \hline
         \gls{React Router} DOM & 7.13.1 & Libreria standard per il routing dichiarativo in applicazioni \gls{React}, utilizzata per la navigazione tra le viste. \\
         \hline
@@ -350,7 +350,7 @@ I termini che vengono considerati meritevoli di approfondimenti sono indicati co
         \hline
         \textbf{Nome} & \textbf{Versione} & \textbf{Descrizione} \\
         \hline
-        \gls{Flask} & 3.1.3 & Microframework Python per lo sviluppo di \gls{API} REST, leggero ed estensibile tramite plugin. \\
+        \gls{Flask} & 3.1.3 & Microframework Python per lo sviluppo di \gls{API}, leggero ed estensibile tramite plugin. \\
         \hline
     \end{tabular}
     \caption{Descrizione del framework \gls{API} backend}
@@ -489,7 +489,7 @@ Il file \texttt{\gls{docker}-compose.yml} coordina l'avvio sincronizzato dei ser
 
 \section{Backend: architettura}
 \subsection{Layered Architecture}
-Il backend del sistema \textit{Second Brain} è stato progettato adottando il pattern architetturale \textbf{Layered Architecture} (o Architettura a Livelli), considerato lo standard \textit{de facto} per lo sviluppo di applicazioni moderne e scalabili.
+Il backend del sistema \textit{Second Brain} è stato progettato adottando il pattern architetturale \textbf{Layered Architecture} (o Architettura a Livelli).
 
 Il principio cardine di questo pattern è la \textbf{\gls{Separation of Concerns}} (Separazione delle Responsabilità): i componenti del sistema sono organizzati in strati orizzontali, dove ogni strato fornisce un'astrazione specifica e gestisce esclusivamente la logica di propria competenza. Questo approccio semplifica lo sviluppo, il testing e la manutenzione dell'applicazione.
 
