@@ -1276,7 +1276,7 @@ A titolo comparativo, un'implementazione REST avrebbe richiesto \gls{endpoint} s
 \end{verbatim}
 Questa struttura non avrebbe apportato vantaggi concreti (nessuna risorsa identificabile, nessuna cacheabilità) a fronte di una maggiore complessità di routing lato backend e frontend.
 
-L'interfaccia rispetta comunque i seguenti principi fondamentali del protocollo HTTP:
+L'interfaccia rispetta i seguenti principi:
 \begin{itemize}
     \item \textbf{Statelessness}: ogni richiesta è autocontenuta; il server non mantiene stato tra richieste successive.
     \item \textbf{Uso corretto dei metodi HTTP}: \texttt{POST} per operazioni con effetti sul server; \texttt{GET} per l'health check.
