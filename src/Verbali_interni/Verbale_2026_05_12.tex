@@ -1,4 +1,5 @@
 \documentclass[a4paper,12pt]{article}
+\newcommand{\gls}[1]{#1\textsubscript{G}}
 
 % ===== Pacchetti utili =====
 \usepackage[utf8]{inputenc}
@@ -76,7 +77,7 @@ Il gruppo ha discusso l'esito del colloquio appena sostenuto con il prof. Cardin
 \subsection*{2. Feedback sull'architettura di Deployment e Layered Architecture}
 Durante l'esposizione sono emerse alcune imprecisioni terminologiche e concettuali segnalate dal docente:
 \begin{itemize}
-    \item \textbf{Deployment del Frontend:} È stata fatta confusione sul concetto di monolite. Il professore ha chiarito che l'architettura di deployment del nostro frontend non deve essere definita "monolite", ma propriamente \textit{Single Page Application} (SPA). Sebbene il concetto fosse già stato citato dal gruppo, non è stato espresso in modo sufficientemente chiaro durante la presentazione e va rivista la sua definizone nella Specifica Tecnica.
+    \item \textbf{Deployment del Frontend:} È stata fatta confusione sul concetto di monolite. Il professore ha chiarito che l'architettura di deployment del nostro frontend non deve essere definita "monolite", ma propriamente \textit{Single Page Application} (SPA). Sebbene il concetto fosse già stato citato dal gruppo, non è stato espresso in modo sufficientemente chiaro durante la presentazione e va rivista la sua definizone nella \gls{Specifica Tecnica}.
     \item \textbf{Layered Architecture:} È stata evidenziata la necessità di rivedere un dettaglio specifico riguardante l'Infrastructure Layer, che andrà corretto nella documentazione.
 \end{itemize}
 
@@ -84,7 +85,7 @@ Durante l'esposizione sono emerse alcune imprecisioni terminologiche e concettua
 Il professore ha sollevato un dubbio importante sul diagramma UML che rappresenta l'editor, legato all'implementazione del pattern MVVM, in particolare alle dipendenze tra View, ViewModel e Model. Il gruppo deve ora approfondire questo aspetto per capire la natura del problema: è necessario verificare se si tratta esclusivamente di una svista nella rappresentazione grafica del diagramma o se riflette un'effettiva lacuna architetturale a livello di codice sorgente.
 
 \subsection*{4. Prossimi passi e conclusione del progetto}
-Il gruppo resta attualmente in attesa del feedback completo e definitivo da parte del prof. Cardin, che verrà fornito dopo l'analisi della nostra Specifica Tecnica. Una volta ricevuto questo riscontro e apportate le eventuali correzioni finali, il gruppo procederà a richiedere l'ultimo colloquio con il prof. Vardanega per concludere ufficialmente il progetto. Nel frattempo, i membri inizieranno già a strutturare e preparare le slide per quest'ultima presentazione.
+Il gruppo resta attualmente in attesa del feedback completo e definitivo da parte del prof. Cardin, che verrà fornito dopo l'analisi della nostra \gls{Specifica Tecnica}. Una volta ricevuto questo riscontro e apportate le eventuali correzioni finali, il gruppo procederà a richiedere l'ultimo colloquio con il prof. Vardanega per concludere ufficialmente il progetto. Nel frattempo, i membri inizieranno già a strutturare e preparare le slide per quest'ultima presentazione.
 
 \newpage
 
@@ -102,7 +103,7 @@ Il gruppo resta attualmente in attesa del feedback completo e definitivo da part
 \begin{longtable}{|p{0.42\textwidth}|p{0.25\textwidth}|p{0.12\textwidth}|p{0.15\textwidth}|}
 \hline
 \textbf{Attività} & \textbf{Responsabile} & \textbf{Scadenza} & \textbf{Stato} \\ \hline
-Correzioni e migliorie da attuare alla Specifica Tecnica & Tutti & 15/05 & Da avviare \\ \hline
+Correzioni e migliorie da attuare alla \gls{Specifica Tecnica} & Tutti & 15/05 & Da avviare \\ \hline
 Attesa feedback completo prof. Cardin sulla ST & Tutti & - & In corso \\ \hline
 Presentazione prof. Vardanega & Tutti & 15/05 & In corso \\ \hline
 Richiesta colloquio finale prof. Vardanega & Tutti & Post feedback & In attesa \\ \hline
