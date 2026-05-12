@@ -1,0 +1,116 @@
+\documentclass[a4paper,12pt]{article}
+
+% ===== Pacchetti utili =====
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[italian]{babel}
+\usepackage{geometry}
+\usepackage{array}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+
+% ===== Impostazioni di pagina =====
+\geometry{margin=2.5cm}
+\setlength{\parskip}{6pt}
+\setlength{\parindent}{0pt}
+
+% ===== Intestazione e piè di pagina =====
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Verbale 12/05/2026}
+\rhead{ByteMe}
+\cfoot{\thepage}
+
+% ===== Documento =====
+\begin{document}
+
+\vspace*{\fill}
+\begin{center}
+    \includegraphics[width=0.5\textwidth]{../LogoByteMe.jpg}\\[1cm]
+    {\Huge \textbf{Verbale Riunione}}\\[0.5cm]
+    {\Large ByteMe}\\[0.5cm]
+    \rule{0.6\textwidth}{0.6pt}\\[0.5cm]
+    \textit{Data: 12 maggio 2026}
+\end{center}
+\vspace*{\fill}
+
+\pagebreak
+   \rule{1\textwidth}{0.4pt}\\[4pt]
+
+
+\textbf{Data:} 12/05/2026 \\
+\textbf{Ora di inizio:} 9:20 \\
+\textbf{Ora di fine:} 10:00 \\
+\textbf{Luogo / Piattaforma:} Discord
+\begin{center}
+   \rule{1\textwidth}{0.4pt}\\
+\end{center}
+
+\section*{ Partecipanti}
+\begin{itemize}
+    \item Giulia Barzon
+    \item Elisa Marchioro
+    \item Chiara Grossele
+    \item Tommaso Tombacco
+    \item Joseph Grant
+    \item Matteo Cuogo
+\end{itemize}
+
+\section*{Ordine del giorno}
+\begin{enumerate}
+    \item Resoconto e analisi della presentazione della PB al prof. Cardin.
+    \item Discussione sui feedback e sulle imprecisioni architetturali segnalate.
+    \item Pianificazione per il colloquio finale con il prof. Vardanega.
+\end{enumerate}
+
+\newpage
+
+\section*{Resoconto della riunione}
+\subsection*{1. Esito della presentazione al prof. Cardin}
+Il gruppo ha discusso l'esito del colloquio appena sostenuto con il prof. Cardin. La presentazione della Product Baseline (PB) è andata complessivamente abbstanza bene. Il gruppo ha notato un miglioramento nel modo di esprimersi e nell'esposizione generale rispetto alle riunioni precedenti, anche se il professore ha sottolineato che ci sono ancora margini di miglioramento per rendere la comunicazione più incisiva.
+
+\subsection*{2. Feedback sull'architettura di Deployment e Layered Architecture}
+Durante l'esposizione sono emerse alcune imprecisioni terminologiche e concettuali segnalate dal docente:
+\begin{itemize}
+    \item \textbf{Deployment del Frontend:} È stata fatta confusione sul concetto di monolite. Il professore ha chiarito che l'architettura di deployment del nostro frontend non deve essere definita "monolite", ma propriamente \textit{Single Page Application} (SPA). Sebbene il concetto fosse già stato citato dal gruppo, non è stato espresso in modo sufficientemente chiaro durante la presentazione e va rivista la sua definizone nella Specifica Tecnica.
+    \item \textbf{Layered Architecture:} È stata evidenziata la necessità di rivedere un dettaglio specifico riguardante l'Infrastructure Layer, che andrà corretto nella documentazione.
+\end{itemize}
+
+\subsection*{3. Feedback sul Pattern MVVM}
+Il professore ha sollevato un dubbio importante sul diagramma UML che rappresenta l'editor, legato all'implementazione del pattern MVVM, in particolare alle dipendenze tra View, ViewModel e Model. Il gruppo deve ora approfondire questo aspetto per capire la natura del problema: è necessario verificare se si tratta esclusivamente di una svista nella rappresentazione grafica del diagramma o se riflette un'effettiva lacuna architetturale a livello di codice sorgente.
+
+\subsection*{4. Prossimi passi e conclusione del progetto}
+Il gruppo resta attualmente in attesa del feedback completo e definitivo da parte del prof. Cardin, che verrà fornito dopo l'analisi della nostra Specifica Tecnica. Una volta ricevuto questo riscontro e apportate le eventuali correzioni finali, il gruppo procederà a richiedere l'ultimo colloquio con il prof. Vardanega per concludere ufficialmente il progetto. Nel frattempo, i membri inizieranno già a strutturare e preparare le slide per quest'ultima presentazione.
+
+\newpage
+
+\section*{Decisioni prese}
+\begin{itemize}
+    \item Analizzare il codice sorgente dell'editor e confrontarlo con il diagramma UML del pattern MVVM per individuare e risolvere l'incongruenza segnalata.
+    \item Correggere la documentazione per sostituire il termine errato "monolite" con "Single Page Application" (SPA) in riferimento al frontend.
+    \item Sistemare il dettaglio dell'Infrastructure Layer all'interno della Layered Architecture.
+    \item Attendere il feedback del prof. Cardin per eventuali altre correzioni e migliorie da attuare.
+    \item Iniziare a redigere la presentazione per il prof. Vardanega.
+\end{itemize}
+
+
+\section*{Azioni da intraprendere}
+\begin{longtable}{|p{0.42\textwidth}|p{0.25\textwidth}|p{0.12\textwidth}|p{0.15\textwidth}|}
+\hline
+\textbf{Attività} & \textbf{Responsabile} & \textbf{Scadenza} & \textbf{Stato} \\ \hline
+Correzioni e migliorie da attuare alla Specifica Tecnica & Tutti & 15/05 & Da avviare \\ \hline
+Attesa feedback completo prof. Cardin sulla ST & Tutti & - & In corso \\ \hline
+Presentazione prof. Vardanega & Tutti & 15/05 & In corso \\ \hline
+Richiesta colloquio finale prof. Vardanega & Tutti & Post feedback & In attesa \\ \hline
+\end{longtable}
+
+\vspace{1cm}
+
+\textbf{Redatto da:} Giulia Barzon \\
+\textbf{Data di redazione:} 12/05/2026
+
+\end{document}
